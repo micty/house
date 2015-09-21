@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../dest/global.debug.css" rel="stylesheet" />
+    <style>
+        hr{
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <hr />
+    <ul class="page-label">
+        <li class="left-btn"><a href="javascript:"><i></i></a></li>
+        <li>
+            <input type="text" value="1/25" />
+        </li>
+        <li class="right-btn"><a href="javascript:"><i></i></a></li>
+    </ul>
+
+    <hr />
+
+    <div class="page-panel">
+            <ul class="pagination">
+                <li class="buttons">
+                    <ul>
+                        <li class="LR-button disabled"><i class="left-btn"></i></li>
+                        <!--通过active来切换选中-->
+                        <li class="item active">1</li>
+                        <li class="item">2</li>
+                        <li class="item">3</li>
+                        <li class="item">4</li>
+                        <li class="item">5</li>
+
+                        <!-- 添加类名为more空白标签的li来实现【···】 -->
+                        <li class="more"></li>
+                        <li class="LR-button"><i class="right-btn"></i></li>
+                    </ul>
+                </li>
+                <li class="page-count">共<span>0000000</span>页
+                </li>
+                <li class="page-jump">
+                    <span>到第</span>
+                    <input type="text" class="page-number" />
+                    <span>页</span>
+                    <a href="javascript:void(0)" class="jump-button">确定</a>
+                </li>
+            </ul>
+        </div>
+</body>
+</html>

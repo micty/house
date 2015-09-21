@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=100">
+  <title>订单列表</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/content.css">
+</head>
+
+<body>
+  <div class="main-content">
+    <div class="panel">
+      <div class="panel-title">订单列表</div>
+      <div class="panel-content">
+        <div class="table-wrapper">
+          <div class="table-header">
+            <form class="form-inline">
+              <div class="input-prepend">
+                <span class="add-on">订单状态</span>
+                <select class="input-small" id="prependedInput" type="text">
+                  <option value="all">全部</option>
+                  <option value="all">待提交</option>
+                  <option value="all">缺货</option>
+                </select>
+              </div>
+              <div class="input-prepend">
+                <span class="add-on">订单编号</span>
+                <input class="input-small" id="prependedInput" type="text">
+              </div>
+              <button class="btn"><i class="fa fa-search"></i>搜索</button>
+            </form>
+          </div>
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>状态</th>
+              <th>订单编号</th>
+              <th>总费用</th>
+              <th>物流</th>
+              <th>buyerid</th>
+              <th>国家</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td>@fat</td>
+              <td>@fat</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Larry the Bird</td>
+              <td>Larry the Bird</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="table-pager pagination">
+            <ul>
+              <li class="disabled"><a href="#"><i class="fa fa-backward"></i></a></li>
+              <li class="disabled"><a href="#"><i class="fa fa-step-backward"></i></a></li>
+              <li class="page-num"><input type="text" value="1"> / 20</li>
+              <li><a href="#"><i class="fa fa-step-forward"></i></a></li>
+              <li><a href="#"><i class="fa fa-forward"></i></a></li>
+              <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+            </ul>
+            <div class="pager-summary">第1条至3条, 共58条</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

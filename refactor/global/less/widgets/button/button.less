@@ -1,0 +1,132 @@
+﻿@import '../../../../baseless/base.less';
+
+@btn-bg:#54add3;
+@bg-dropdonw: #7bc5e1;
+
+//public color
+@blue: #53a5dd;
+@red: #ea542a;
+@gray-dark: #838383;
+@gray-light: #b3b3b3;
+@dark: #141414;
+@orange: #ed8244;
+
+.kerp-btn-menu {
+    display: inline-block;
+
+    .kerp-btn-item {
+        ._border-right-radius(0);
+    }
+
+    .btn-more {
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        background: @btn-bg;
+        z-index: 20;
+
+        li {
+            text-align: center;
+            min-width: 80px;
+            background-color: transparent;
+            font-size: 14px;
+
+            &:hover {
+                background: darken(@btn-bg, 10%);
+            }
+        }
+
+        a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            padding: 2px 0;
+        }
+    }
+
+    ol.on {
+        height: auto;
+    }
+
+    .bt-dropdown {
+        vertical-align: middle;
+        display: inline-block;
+        height: 25px;
+        width: 25px;
+        margin-top: -4px;
+        margin-left: -5px;
+        background: @bg-dropdonw;
+        position: relative;
+        cursor: pointer;
+        ._border-right-radius (3px);
+
+        &:hover {
+
+            .icon-dropdown {
+                -moz-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+        }
+
+        .icon-dropdown {
+            ._triangle-top(5px, #fff);
+            top: 11px;
+            left: 7px;
+            -moz-transition: transform 0.5s;
+            -o-transition: transform 0.5s;
+            -webkit-transition: transform 0.5s;
+            transition: transform 0.5s;
+            -moz-transform-origin: 50% 25%;
+            -ms-transform-origin: 50% 25%;
+            -o-transform-origin: 50% 25%;
+            -webkit-transform-origin: 50% 25%;
+            transform-origin: 50% 25%;
+        }
+    }
+
+    span.on {
+
+        .icon-dropdown {
+            -moz-transform: rotate(-180deg);
+            -ms-transform: rotate(-180deg);
+            -o-transform: rotate(-180deg);
+            -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+        }
+
+        &:hover {
+            .icon-dropdown {
+                -moz-transform: rotate(-180deg);
+                -ms-transform: rotate(-180deg);
+                -o-transform: rotate(-180deg);
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+            }
+        }
+    }
+}
+
+
+.kerp-btn-item {
+    border: none;
+    font-size: 14px;
+    color: #fff;
+    background: @btn-bg;
+    padding: 0 14px;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+
+    &:hover{
+        text-decoration: none;
+        background: darken(@btn-bg, 10%);
+    }
+}

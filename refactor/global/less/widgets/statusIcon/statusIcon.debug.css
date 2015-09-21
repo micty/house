@@ -1,0 +1,115 @@
+.status-icon {
+  padding: 2px;
+  height: 12px;
+  line-height: 12px;
+  border: 0;
+  border-radius: 1px;
+  font-style: normal;
+  font-size: 12px;
+  font-family: 'Microsoft YaHei';
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+.status-icon:hover {
+  text-decoration: none;
+}
+.gift {
+  background: #59ce93;
+}
+.gift:after {
+  content: '赠';
+}
+.absence {
+  background: #ef965e;
+}
+.absence:after {
+  content: '缺';
+}
+.refund {
+  background: #ec6457;
+}
+.refund:after {
+  content: '退';
+}
+.overweight {
+  background: #b94d45;
+}
+.overweight:after {
+  content: '超重';
+}
+.not-arrive {
+  background: #a0908e;
+}
+.not-arrive:after {
+  content: '不到';
+}
+.join {
+  background: #66be66;
+}
+.join:after {
+  content: '合';
+}
+.refund2 {
+  background: #877d77;
+}
+.refund2:after {
+  content: '退';
+}
+.logistics {
+  background: #ec6457;
+}
+.logistics:after {
+  content: '物';
+}
+.distribution {
+  background: #ec6457;
+}
+.distribution:after {
+  content: '配';
+}
+.deliver {
+  background: #ec6457;
+}
+.deliver:after {
+  content: '发';
+}
+.nerver {
+  background: #ecedf1;
+}
+.confirm-btn {
+  background: #75cfd2;
+  padding: 4px 6px;
+}
+.batch-input {
+  background: #75cfd2;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 18px;
+  padding-right: 6px;
+  margin-left: -18px;
+  position: relative;
+}
+.batch-input:before {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 3px 2px;
+  width: 0;
+  height: 0;
+  content: ' ';
+}
+.batch-input:after {
+  content: ' ';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 10px;
+  left: 4px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+  border-width: 6px;
+}

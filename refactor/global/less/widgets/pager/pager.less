@@ -1,0 +1,249 @@
+﻿@import '../../../../baseless/base.less';
+
+
+//
+// 分页控件
+//
+//变量
+@font-color: #282828;
+@font-color-active: #54add3;
+@font-color-invert: #fff;
+@bg-color: #fff;
+@bg-color-active: #54add3;
+@btn-color-jump: #7f8390;
+@btn-color-sub: #54add3;
+@btn-icon-color: #282828;
+@border-color: #dbdee6;
+@border-radius: 3px;
+
+
+// 简易分页器
+.page-label {
+    font-size: 12px;
+
+    li {
+        position: relative;
+        float: left;
+        border: 1px solid @border-color;
+        height: 22px;
+        line-height: 22px;
+        margin-left: 10px;
+        -moz-border-radius: @border-radius;
+        -webkit-border-radius: @border-radius;
+        border-radius: @border-radius;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        >label {
+            padding: 0 5px;
+        }
+
+        >input {
+            text-align: center;
+            border: none;
+            width: 50px;
+            background-color: transparent;
+            padding: 0 6px;
+            line-height: 20px;
+            height: 20px;
+
+            &:focus {
+                background: #fff;
+            }
+        }
+    }
+
+    .left-btn {
+
+        a{
+            padding: 0 11px;
+        }
+
+        i {
+            top: 4px;
+            left: -1px;
+            ._triangle-right(7px, @btn-color-jump);
+        }
+    }
+
+    .right-btn {
+        a{
+            padding: 0 11px;
+        }
+
+        i {
+            top: 3px;
+            left: 8px;
+            ._triangle-left(7px, @btn-color-jump);
+        }
+    }
+
+    ._clearfix();
+
+    .disabled {
+        cursor: default;
+    }
+}
+
+// 完整分页器
+.pagination {
+    font-size: 12px;
+    color: @font-color;
+
+    >li {
+        float: left;
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+    }
+
+    .buttons {
+        .LR-button {
+            position: relative;
+            float: left;
+            margin-left: 6px;
+            border: 1px solid @border-color;
+            height: 23px;
+            line-height: 23px;
+            padding-left: 11px;
+            padding-right: 11px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            color: @btn-icon-color;
+
+            &:hover {
+                color: @font-color-active;
+            }
+
+            .right-btn {
+                top: 4px;
+                left: 9px;
+                ._triangle-left(7px, @btn-color-jump);
+            }
+
+            .left-btn {
+                top: 4px;
+                left: -1px;
+                ._triangle-right(7px, @btn-color-jump);
+            }
+        }
+
+        .item {
+            float: left;
+            margin-left: 6px;
+            border: 1px solid @border-color;
+            height: 23px;
+            line-height: 23px;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            cursor: pointer;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+
+            &:hover {
+                background-color: @bg-color-active;
+                color: @font-color-invert;
+                border-color: transparent;
+            }
+        }
+
+        .more {
+            float: left;
+            margin-left: 6px;
+            height: 26px;
+            line-height: 26px;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            border-color: transparent;
+            cursor: auto;
+
+            &:hover {
+                background-color: @bg-color;
+                color: @font-color;
+            }
+
+            &:after {
+                content: "...";
+                display: inline;
+            }
+        }
+
+        li {
+
+            &:first-child {
+                margin-left: 0px;
+            }
+        }
+
+        .active {
+            color: @font-color-active;
+            border-color: transparent;
+
+            &:hover {
+                background-color: transparent;
+                color: @font-color-active;
+            }
+        }
+
+        .disabled {
+            cursor: default;
+
+            &:hover {
+                border-color: @border-color;
+                background-color: @bg-color;
+                color: @font-color;
+            }
+        }
+
+        ._clearfix();
+    }
+
+
+    .page-count {
+        margin: 0 10px;
+    }
+
+    .page-jump {
+        margin-left: 10px;
+
+        span {
+            margin: 0 10px;
+        }
+
+        .page-number {
+            width: 40px;
+            border: 1px solid @border-color;
+            padding: 6px 0;
+            text-align: center;
+            height: 12px;
+            line-height: 12px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .jump-button {
+            display: inline-block;
+            padding: 0 10px;
+            background-color: @btn-color-sub;
+            color: @font-color-invert;
+            text-decoration: none;
+            text-align: center;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+    }
+
+    ._clearfix();
+}

@@ -1,0 +1,81 @@
+{
+    code: 0,
+    message: "ok",
+    data: {
+        totalCount: 123,
+        list: [
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            },
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            },
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            },
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            },
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            },
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            },
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            },
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            },
+            {
+                no: 'U00430-A9900',
+                name: '产品名称',
+                weight: 2,
+                location: 'b',
+                amount: 100,
+                importTime: '2014-05-14'
+            }
+        ]
+    }
+}

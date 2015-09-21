@@ -1,0 +1,22 @@
+body {
+  overflow: hidden;
+}
+.address-picker select {
+  height: 28px;
+  width: 30%;
+  border: 1px solid #d4d9e1;
+  border-radius: 2px;
+  font-size: 12px;
+  color: #282828;
+  margin-right: 4%;
+}
+.address-picker select:last-child {
+  margin-right: 0;
+}
+.address-picker select option {
+  color: #282828;
+  font: 14px;
+}
+.address-picker .not-selected {
+  color: #c1c1c1;
+}

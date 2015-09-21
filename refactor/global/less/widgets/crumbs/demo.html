@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../dest/global.debug.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <!-- brea-crumbs-box和selector-box中间不能插入其他标签 -->
+        <div class="bread-crumbs-box">
+            <ol class="bread-crumbs" style="float: left;">
+                <li><a href="#">全部</a>
+                    <span>
+                        <i class="icon-dropdown"></i>
+                    </span>
+                </li>
+                <li><a href="#">服装</a>
+                    <span class="on">
+                        <i class="icon-dropdown"></i>
+                    </span>
+                </li>
+                <li><a href="#">女装</a>
+                    <span>
+                        <i class="icon-dropdown"></i>
+                    </span>
+                </li>
+                <li class="last"><a href="#">上装</a></li>
+            </ol>
+        </div>
+        <div style="float: right;">
+            <span>test</span>
+        </div>
+        <!-- selector-box和selector-panel需同时存在 -->
+        <div class="selector-panel">
+
+            <!-- 一个ol为一级弹出层，topN的N为前面各级被点击菜单索引值之和   -->
+            <ol class="top0">
+                <li class="actived">服装<i class="leaf-item"></i></li>
+                <li>食品<i class="leaf-item"></i></li>
+            </ol>
+            <ol class="top1">
+                <li>男装<i class="leaf-item"></i></li>
+                <li class="actived">女装<i class="leaf-item"></i></li>
+            </ol>
+            <ol class="top3">
+                <li>男装<i class="leaf-item"></i></li>
+                <li>女装女装女装女装女装<i></i></li>
+                <li>女装<i></i></li>
+                <li>女装</li>
+                <li>女装</li>
+            </ol>
+        </div>
+
+    </div>
+</body>
+</html>

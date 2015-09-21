@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=100">
+  <title>产品列表</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/content.css">
+</head>
+
+<body>
+  <div class="main-content">
+    <div class="panel">
+      <div class="panel-title">产品列表</div>
+      <div class="panel-content">
+        <div class="table-wrapper">
+          <div class="table-header">
+            <form class="form-inline">
+              <div class="input-prepend">
+                <span class="add-on">产品编号</span>
+                <input class="input-small" id="prependedInput" type="text">
+              </div>
+              <button class="btn"><i class="fa fa-search"></i>搜索</button>
+            </form>
+          </div>
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>产品编号</th>
+              <th>产品名称</th>
+              <th>库存位置</th>
+              <th>重量</th>
+              <th>库存数量</th>
+              <th>录入时间</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+              <td class="td-actions">
+                <i class="fa fa-pencil-square text-info"></i>
+                <i class="fa fa-minus-square text-error"></i>
+                <a class="fa fa-file-text text-success"></a>
+                <div class="popover bottom show" style="top: 30px;left:-30px;">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">芭比娃娃</h3>
+                  <div class="popover-content">
+                    <div class="card-item">宽<b>20cm</b></div>
+                    <div class="card-item">宽<b>20cm</b></div>
+                    <div class="card-item">宽<b>20cm</b></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td>@fat</td>
+              <td>@fat</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Larry the Bird</td>
+              <td>Larry the Bird</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="table-pager pagination">
+            <ul>
+              <li class="disabled"><a href="#"><i class="fa fa-backward"></i></a></li>
+              <li class="disabled"><a href="#"><i class="fa fa-step-backward"></i></a></li>
+              <li class="page-num"><input type="text" value="1"> / 20</li>
+              <li><a href="#"><i class="fa fa-step-forward"></i></a></li>
+              <li><a href="#"><i class="fa fa-forward"></i></a></li>
+              <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+            </ul>
+            <div class="pager-summary">第1条至3条, 共58条</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

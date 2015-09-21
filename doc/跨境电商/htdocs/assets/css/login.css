@@ -1,0 +1,170 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+html {
+  height: 100%;
+}
+body {
+  position: relative;
+  background: #bcbcbc;
+  font-size: 75%;
+  line-height: 1.75em;
+  color: #666666;
+  height: 100%;
+  min-height: 100%;
+  overflow: auto;
+}
+body,
+input,
+select,
+textarea {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+}
+textarea {
+  resize: vertical;
+}
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+.login-page {
+  background: #efefef url(../img/rightbg.png) repeat top left;
+  height: auto;
+  min-height: 0;
+}
+.loginpanle {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  font-size: 16px;
+}
+.loginpanle .form-title {
+  background: #ededed;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#ededed), to(#dedede));
+  background: -webkit-linear-gradient(#ededed 0%, #dedede 100%);
+  background: -moz-linear-gradient(#ededed 0%, #dedede 100%);
+  background: -o-linear-gradient(#ededed 0%, #dedede 100%);
+  background: linear-gradient(#ededed 0%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dedede', GradientType=0);
+  padding: 20px 15px;
+  font-weight: bold;
+  border: 1px solid #bbb;
+  border-bottom: 0;
+  text-align: center;
+}
+.loginpanle .login-form {
+  padding: 30px 20px;
+  background: #444;
+}
+.loginpanle .login-form .input-prepend {
+  display: block;
+  position: relative;
+  padding-left: 36px;
+}
+.loginpanle .login-form .input-prepend .add-on {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 16px;
+  padding: 7px 9px;
+  padding: 7.8px 9px \0;
+  height: auto;
+}
+.loginpanle .login-form .input-prepend input {
+  width: 100%;
+  font-size: 16px;
+  padding: 7px 9px;
+  height: 36px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.loginpanle .login-form .btn-wrapper .btn {
+  width: 100px;
+  margin-right: 10px;
+}
+.loginpanle .login-form .btn-wrapper a {
+  color: #fff;
+  text-decoration: none;
+  font-size: .8em;
+}
+.loginpanle .form-shadow {
+  margin-top: 16px;
+  background: #aaa;
+  height: 18px;
+  border-radius: 30%;
+  -moz-filter: blur(10px);
+  -webkit-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='10');
+}
+@-moz-document url-prefix() {
+  .loginpanle .form-shadow {
+    display: none;
+  }
+}

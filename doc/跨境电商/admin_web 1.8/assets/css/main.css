@@ -1,0 +1,319 @@
+html {
+  height: 100%;
+}
+body {
+  position: relative;
+  background: #bcbcbc;
+  font-size: 75%;
+  line-height: 1.75em;
+  color: #666666;
+  height: 100%;
+  min-height: 100%;
+  overflow: auto;
+}
+body,
+input,
+select,
+textarea {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+}
+textarea {
+  resize: vertical;
+}
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+.main-wrapper {
+  width: 1100px;
+  margin: 0 auto;
+  clear: both;
+  float: none;
+  position: relative;
+  min-height: 100%;
+  background-color: #f7f7f7;
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background: #f7f7f7 url(../img/leftbg.png) repeat-y -80px 0;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.main-wrapper.full-wrapper {
+  min-width: 1100px;
+  width: 100%;
+}
+.header-panel {
+  min-height: 50px;
+  background-color: #3b6998;
+  color: #fff;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-left: 1px solid #45729e;
+  overflow: visible;
+}
+.header-panel .logopanel {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 50px;
+  padding-left: 20px;
+  float: left;
+}
+.header-panel .logopanel .logo {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+.header-panel .funcpanel {
+  float: right;
+  padding: 7px 10px 0 0;
+}
+.header-panel .funcpanel > .switch-width {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 35px;
+  height: 35px;
+  width: 30px;
+  font-size: 18px;
+}
+.header-panel .funcpanel > .switch-width .fa {
+  color: #ccc;
+}
+.header-panel .funcpanel > .switch-width .fa:hover {
+  color: #fff;
+}
+.header-panel .funcpanel > .dropdown {
+  display: inline-block;
+}
+.header-panel .funcpanel > .dropdown .dropdown-toggle {
+  display: inline-block;
+  background: #0b4073;
+  padding: 7px 10px;
+  color: #ccc;
+  text-decoration: none;
+  -webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+.header-panel .funcpanel > .dropdown .dropdown-toggle:hover {
+  color: #fff;
+}
+.header-panel .funcpanel > .dropdown .dropdown-toggle .caret {
+  border-top-color: #ccc;
+  margin-left: 10px;
+}
+.header-panel .funcpanel > .dropdown .dropdown-menu {
+  right: 0;
+  left: auto;
+  border-radius: 0;
+}
+.footer-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  background-color: #222;
+  font-size: 14px;
+  line-height: 38px;
+  border: 1px solid #373737;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+/*------------------------左侧菜单面板--------------------*/
+.leftpanel {
+  position: relative;
+  float: left;
+  margin-left: 0;
+  width: 180px;
+}
+.sidemenu .nav-tabs {
+  border-color: #bbb;
+  border-bottom: 1px solid #bbb;
+}
+.sidemenu .nav-tabs .nav-header {
+  padding: 4px 15px;
+}
+.sidemenu .nav-tabs li {
+  border-top: 1px solid #bbb;
+  margin: 0;
+  margin-right: 1px;
+  background: #ededed;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#ededed), to(#dedede));
+  background: -webkit-linear-gradient(#ededed 0%, #dedede 100%);
+  background: -moz-linear-gradient(#ededed 0%, #dedede 100%);
+  background: -o-linear-gradient(#ededed 0%, #dedede 100%);
+  background: linear-gradient(#ededed 0%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dedede', GradientType=0);
+}
+.sidemenu .nav-tabs li a {
+  border: 0;
+  color: #666;
+  text-decoration: none;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.3);
+}
+.sidemenu .nav-tabs li a span {
+  display: inline-block;
+  vertical-align: top;
+  margin: 2px 5px 0 0;
+  opacity: .6;
+}
+.sidemenu .nav-tabs li a:hover {
+  border: 0;
+}
+.sidemenu .nav-tabs ul {
+  list-style: none;
+  position: relative;
+  overflow: visible;
+  margin: 0;
+}
+.sidemenu .nav-tabs ul li {
+  margin-right: 0;
+  background: #d3d3d3;
+  filter: none;
+  position: relative;
+}
+.sidemenu .nav-tabs ul li a {
+  padding: 5px 10px;
+  display: block;
+  padding-left: 33px;
+}
+.sidemenu .nav-tabs ul li a:hover {
+  background-color: #d7d7d7;
+}
+.sidemenu .nav-tabs ul li.active {
+  right: -1px;
+  background: #efefef url(../img/rightbg.png) repeat top left;
+}
+.sidemenu .nav-tabs ul li.active a:hover {
+  cursor: default;
+  background: inherit;
+}
+.sidemenu .nav-tabs .dropdown > a {
+  background-image: url(../img/arrowdown.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.sidemenu .nav-tabs .dropdown > a:hover {
+  background-color: #eee;
+}
+/*---------------右侧内容区域----------------------*/
+.rightpanel {
+  margin-left: 10px;
+  background: #efefef url(../img/rightbg.png) repeat top left;
+  height: 50px;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  position: relative;
+}
+.rightpanel .frmtabs {
+  margin-top: 3px;
+  padding-left: 16px;
+  border-bottom: 1px solid #bbb;
+  -webkit-box-shadow: inset 0 -2px 2px -1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 -2px 2px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -2px 2px -1px rgba(0, 0, 0, 0.2);
+}
+.rightpanel .frmtabs:before,
+.rightpanel .frmtabs:after {
+  clear: both;
+  display: table;
+  content: " ";
+  line-height: 0;
+}
+.rightpanel .frmtabs .frmtab {
+  float: left;
+  cursor: pointer;
+  border: 1px solid #bbb;
+  -webkit-box-shadow: inset 0 -2px 2px -1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 -2px 2px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -2px 2px -1px rgba(0, 0, 0, 0.2);
+  padding: 2.2px 20px;
+  padding-right: 34px;
+  margin-left: -6px;
+  background-color: #d3d3d3;
+  position: relative;
+  border-radius: 3px 3px 0 0;
+  margin-bottom: -1px;
+  font-weight: bold;
+}
+.rightpanel .frmtabs .frmtab .close {
+  position: absolute;
+  right: 4px;
+  top: 2px;
+  width: 16px;
+  text-align: left;
+  font-size: 16px;
+}
+.rightpanel .frmtabs .frmtab.active {
+  -webkit-box-shadow: -2px -2px 2px rgba(0, 0, 0, 0.2), 2px -2px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -2px -2px 2px rgba(0, 0, 0, 0.2), 2px -2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px -2px 2px rgba(0, 0, 0, 0.2), 2px -2px 2px rgba(0, 0, 0, 0.2);
+  background: #efefef url(../img/rightbg.png) repeat top left;
+  z-index: 8;
+  border-color: #bbb;
+  border-bottom-color: transparent;
+  overflow: visible;
+}
+.rightpanel .iframes iframe {
+  width: 100%;
+  min-height: 100%;
+  border: none;
+  display: none;
+  position: relative;
+  left: 0;
+}
+.rightpanel .iframes iframe.active {
+  display: block;
+}
+/*-------页面顶部的加载提示------------*/
+.loading-tips {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+  padding: 4px;
+  color: #777;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: 1px 2px 4px #444444;
+  -moz-box-shadow: 1px 2px 4px #444444;
+  box-shadow: 1px 2px 4px #444444;
+  cursor: default;
+  border-radius: 0 0 4px 4px;
+  text-align: center;
+  z-index: 102;
+}
+.loading-tips.loading-info {
+  color: #ffffff;
+  background-color: #5bc0de;
+  background-color: rgba(91, 192, 222, 0.9);
+}
+.loading-tips.loading-warning {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  background-color: rgba(240, 173, 78, 0.9);
+}
+.loading-tips.loading-danger {
+  color: #ffffff;
+  background-color: #d9534f;
+  background-color: rgba(217, 83, 79, 0.9);
+}
+.loading-tips.loading-success {
+  color: #ffffff;
+  background-color: #5cb85c;
+  background-color: rgba(92, 184, 92, 0.9);
+}

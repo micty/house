@@ -1,0 +1,287 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+html {
+  height: 100%;
+}
+body {
+  position: relative;
+  background: #bcbcbc;
+  font-size: 75%;
+  line-height: 1.75em;
+  color: #666666;
+  height: 100%;
+  min-height: 100%;
+  overflow: auto;
+}
+body,
+input,
+select,
+textarea {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+}
+textarea {
+  resize: vertical;
+}
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+body {
+  background: #efefef url(../img/rightbg.png) repeat top left;
+}
+.main-content {
+  padding: 15px;
+}
+.panel {
+  margin-bottom: 20px;
+}
+.panel .panel-title {
+  padding: 6px 8px;
+  font-size: 1.2em;
+  color: #333;
+  background: #ededed;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#ededed), to(#dedede));
+  background: -webkit-linear-gradient(#ededed 0%, #dedede 100%);
+  background: -moz-linear-gradient(#ededed 0%, #dedede 100%);
+  background: -o-linear-gradient(#ededed 0%, #dedede 100%);
+  background: linear-gradient(#ededed 0%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dedede', GradientType=0);
+  border: 1px solid #bbb;
+}
+.panel .panel-content {
+  padding-top: 6px;
+}
+/*------调整table有hover的table的颜色--------*/
+.table-hover tbody tr:hover > td,
+.table-hover tbody tr:hover > th {
+  background-color: #ededed;
+}
+/*--- table row 选中时的效果---------*/
+.table tbody tr.selected > td,
+.table tbody tr.selected > th {
+  background-color: #e5e5e5;
+}
+td.td-actions {
+  padding: 0 6px;
+}
+td.td-actions .fa {
+  font-size: 2em;
+  margin-top: 6px;
+  cursor: pointer;
+}
+td.td-actions .fa + .fa {
+  margin-left: 8px;
+}
+td.td-actions .fa.fa-pencil-square {
+  color: #49afcd;
+}
+td.td-actions .fa.fa-minus-square {
+  color: #bd362f;
+}
+/*-----分页组件----------*/
+.pagination {
+  margin: 6px 0;
+  display: inline-block;
+}
+.pagination ul {
+  overflow: hidden;
+}
+.pagination ul > li {
+  display: block;
+  float: left;
+}
+.pagination ul > li.page-num {
+  border: 1px solid #ddd;
+  border-left: 0;
+  padding-right: 4px;
+}
+.pagination ul > li.page-num input {
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  width: 40px;
+  text-align: center;
+  border-right: 1px solid #dfdfdf;
+  margin-right: 4px;
+}
+.pagination .pager-summary {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+}
+/*------ 表格----------*/
+.table-wrapper .table-header {
+  margin: 0;
+  padding: 4px;
+  border: 1px solid #ddd;
+  line-height: 0;
+}
+.table-wrapper .table-header + .table-bordered {
+  border-top: none;
+}
+.table-wrapper .table-header .form-inline {
+  display: inline-block;
+  vertical-align: top;
+}
+.table-wrapper .table-header .form-inline .input-prepend,
+.table-wrapper .table-header .form-inline .input-append {
+  margin-right: 8px;
+}
+.table-wrapper .table-function {
+  list-style: none;
+  display: inline-block;
+  color: #333;
+  font-size: 1.1em;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.table-wrapper .table-function li {
+  float: left;
+  display: inline-block;
+  padding: 3px 6px;
+  margin-right: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.table-wrapper .table-function li:hover {
+  border-color: #bbb;
+  background: #ededed;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#ededed), to(#dedede));
+  background: -webkit-linear-gradient(#ededed 0%, #dedede 100%);
+  background: -moz-linear-gradient(#ededed 0%, #dedede 100%);
+  background: -o-linear-gradient(#ededed 0%, #dedede 100%);
+  background: linear-gradient(#ededed 0%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dedede', GradientType=0);
+}
+.table-wrapper .table-function li.disabled {
+  opacity: .6;
+  filter: alpha(opacity=60);
+  cursor: default;
+}
+.table-wrapper .table-function li.disabled:hover {
+  border-color: transparent;
+  background: none;
+}
+.table-wrapper .table-function li i {
+  margin-right: 4px;
+}
+.table-wrapper .table-function li i.fa-plus-square,
+.table-wrapper .table-function li i.fa-key {
+  color: #5bb75b;
+}
+.table-wrapper .table-function li i.fa-pencil-square {
+  color: #49afcd;
+}
+.table-wrapper .table-function li i.fa-minus-square {
+  color: #bd362f;
+}
+.table-wrapper .table {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+.table-wrapper .table-bordered thead tr:first-child > th:first-child,
+.table-wrapper .table-bordered tbody tr:last-child > td:first-child {
+  border-radius: 0;
+}
+.table-wrapper .table-pager {
+  display: block;
+}
+/*------ 表单 -----------*/
+.form-wrapper .form-horizontal {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.form-wrapper .form-horizontal .control-group {
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.form-wrapper .form-horizontal .control-group .control-label {
+  width: 120px;
+}
+.form-wrapper .form-horizontal .control-group .controls {
+  margin-left: 130px;
+}
+.form-wrapper .form-horizontal .btn-control {
+  clear: both;
+}
+.form-wrapper .form-horizontal .btn-control .btn {
+  margin-left: 10px;
+}
+.form-wrapper fieldset {
+  border: 1px solid #bbb;
+  padding: 8px;
+}
+.form-wrapper fieldset legend {
+  width: auto;
+  font-size: 1.1em;
+  margin-left: 20px;
+  padding: 0 8px;
+}

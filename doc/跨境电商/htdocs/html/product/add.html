@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=100">
+    <title>录入产品</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/content.css">
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="panel">
+            <div class="panel-title">产品基本信息</div>
+            <div class="panel-content">
+                <div class="form-wrapper form-horizontal">
+                    <div class="form-horizontal">
+                        <div class="control-group ">
+                            <label class="control-label" >产品编号</label>
+                            <div class="controls">
+                                <input type="text" id="txtCode">
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label" >产品名称</label>
+                            <div class="controls">
+                                <input type="text" id="txtName">
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label">库存下限</label>
+                            <div class="controls">
+                                <input type="text" id="txtLimit">
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label">重量</label>
+                            <div class="controls">
+                                <input type="text" id="txtWeight">
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label">长</label>
+                            <div class="controls">
+                                <input type="text" id="txtLong">
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label">宽</label>
+                            <div class="controls">
+                                <input type="text" id="txtWidth">
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label">高</label>
+                            <div class="controls">
+                                <input type="text" id="txtHeight">
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label">备注</label>
+                            <div class="controls">
+                                <textarea id="txtComment"></textarea>
+                            </div>
+                        </div>
+                        <div class="btn-control">
+                            <button id="btnSave" class="btn btn-primary pull-right">保存</button>
+                            <button id="btnCancel" class="btn pull-right">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript"src="../../js/jquery-1.11.0.js"></script>
+    <script type="text/javascript"src="../../js/miniquery.debug.js"></script>
+    <script type="text/javascript"src="../../js/lib.js"></script>
+    <script type="text/javascript" src="add.js"></script>
+</body>
+
+</html>

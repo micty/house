@@ -1,0 +1,184 @@
+﻿@import '../../../../baseless/base.less';
+
+
+@color-font: #000;
+@color-border: #ddd;
+@color-font-hover: #4fb0d1;
+@hover-color: #4fb0d1;
+@btn-color: #4fb0d1;
+@btn-icon-color: #7bc7e7;
+
+
+//用于生成弹出菜单高度定位
+@itemHeight: 25px;
+.topN(@n) when ( @n > -1) {
+    .topN((@n - 1));
+
+    .top@{n}{
+        margin-top: @itemHeight * @n;
+    }
+}
+
+.bread-crumbs-box {
+    ._clearfix();
+}
+
+.bread-crumbs {
+
+    &:before, &:after {
+        content: " ";
+        display: table;
+        zoom: 1;
+        clear: both;
+    }
+
+    >li {
+        position: relative;
+        padding-left: 5px;
+        height: 25px;
+        line-height: 25px;
+        float: left;
+
+        &:hover {
+
+            a {
+                color: @color-font-hover;
+            }
+
+            /*span {
+                background: @btn-icon-color;
+            }*/
+
+            /*.icon-dropdown {
+                border-color: transparent transparent transparent #fff;
+            }*/
+        }
+
+        a {
+            padding: 0 5px;
+            font-size: 12px;
+            color: @color-font;
+            text-decoration: none;
+        }
+
+        span {
+            display: inline-block;
+            vertical-align: top;
+            height: 25px;
+            width: 20px;
+            cursor: pointer;
+
+            &:hover{
+                .icon-dropdown{
+                    border-color: transparent transparent transparent @color-font-hover;
+                }
+            }
+        }
+
+        .on {
+
+            .icon-dropdown {
+                -moz-transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+                -o-transform: rotate(90deg);
+                -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
+            }
+        }
+
+        .icon-dropdown {
+            -moz-transform-origin: 25% 50%;
+            -ms-transform-origin: 25% 50%;
+            -o-transform-origin: 25% 50%;
+            -webkit-transform-origin: 25% 50%;
+            transform-origin: 25% 50%;
+            -moz-transition: transform 0.5s;
+            -o-transition: transform 0.5s;
+            -webkit-transition: transform 0.5s;
+            transition: transform 0.5s;
+            position: absolute;
+            border-style: solid;
+            border-width: 4px 6px;
+            border-color: transparent transparent transparent @color-border;
+            top: 9px;
+            right: 0px;
+        }
+    }
+
+    .last {
+
+        &:hover {
+            background-color: transparent;
+
+            a {
+                cursor: text;
+                color: @color-font;
+            }
+        }
+    }
+}
+
+
+.selector-panel {
+    position: absolute;
+    z-index: 20;
+
+    &:before, &:after {
+        content: " ";
+        display: table;
+        zoom: 1;
+        clear: both;
+    }
+
+    ol {
+        vertical-align: top;
+        position: relative;
+        margin-left: -5px;
+        background: #fff;
+        display: inline-block;
+        -moz-box-shadow: 1px 1px 5px #bababa;
+        -webkit-box-shadow: 1px 1px 5px #bababa;
+        box-shadow: 1px 1px 5px #bababa;
+        border: 1px solid #e7e7e7;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        li {
+            position: relative;
+            min-width: 50px;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 20px;
+            cursor: pointer;
+
+            &:hover {
+                background: @hover-color;
+                color: #fff;
+
+                .branch-item {
+                    border-color: transparent transparent transparent #fff;
+                }
+            }
+        }
+
+        .branch-item {
+            right: 2px;
+            top: 10px;
+            ._triangle-left(5px, #ddd);
+        }
+
+        .actived {
+            background: @hover-color;
+            border-color: transparent transparent transparent #fff;
+            color: #fff;
+
+            .branch-item {
+                border-color: transparent transparent transparent #fff;
+            }
+        }
+    }
+
+    .topN(100);
+}

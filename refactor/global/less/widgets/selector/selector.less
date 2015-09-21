@@ -1,0 +1,30 @@
+﻿
+@color-font: #282828;
+
+.address-picker {
+
+    select {
+        height: 28px;
+        width: 30%;
+        border: 1px solid #d4d9e1;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        font-size: 12px;
+        color: @color-font;
+        margin-right: 4%;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        option {
+            color: @color-font;
+            font: 14px;
+        }
+    }
+
+    .not-selected {
+        color: #c1c1c1;
+    }
+}

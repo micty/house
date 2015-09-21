@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>登录</title>
+
+    <!--grunt.css.begin-->
+    <link rel="stylesheet" href="css/login.debug.css" />
+    <!--grunt.css.end-->
+
+</head>
+<body>
+    <div class="login-box">
+        <div class="title"></div>
+        <div class="content">
+            <div class="login-panel">
+                <ul>
+                    <li id="li-tabs" class="tabs">
+                        <div class="left select-tab">
+                            <div class="tab">
+                                电商
+                                <div class="selected-back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right select-tab">
+                            <div class="tab">
+                                进销存
+                                <div class="selected-back">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user-label first">
+                        <input id="txt-user" type="text" placeholder="账号 / 邮箱" />
+                    </li>
+                    <li class="user-label">
+                        <input id="txt-password" type="password" placeholder="密码" />
+                    </li>
+                    <li>
+                        <div id="btn-login" class="login-bt">立即登录</div>
+                    </li>
+                    <li>
+                        <div class="right get-pas">
+                            <a href="javascript:">忘记密码</a>
+                        </div>
+                    </li>
+                    <li class="login-link">
+                        <a href="javascript:">
+                            <img src="css/img/qq_icon_normal.png" class="link-icon" />
+
+                            QQ登录
+                        </a>
+                        <a href="javascript:">
+                            <img src="css/img/alipay_icon_normal.png" class="link-icon" />
+                            支付宝登录
+                        </a>
+                    </li>
+                    <li class="hidden">
+                        <div id="div-warn" class="warm-box">
+                            <!--
+                            {content}
+                            -->
+                        </div>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="footer">
+            <ul>
+                <li><span>(C)版权所有 金蝶国际软件集团</span></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">产品评价</a></li>
+                <li><a href="#">在线提问</a></li>
+                <li><a href="#">应用商店</a></li>
+                <li><a href="#">云之家</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="lib/jquery/jquery-1.11.1.debug.js"></script>
+    <script src="lib/miniquery/miniquery.debug.js"></script>
+    <script src="lib/kerp/kerp.debug.js"></script>
+    <script src="config.js"></script>
+
+    <!--grunt.js.begin-->
+    <script src="modules/login/Tabs.js"></script>
+    <script src="modules/login/WarnTip.js"></script>
+    <script src="modules/login/Login.js"></script>
+    <script src="login.js"></script>
+    <!--grunt.js.end-->
+
+
+</body>
+</html>

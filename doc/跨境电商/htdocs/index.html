@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=100" />
+    <title>Main Page</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    
+</head>
+<body>
+    <div id="divWrapper" class="main-wrapper full-wrapper">
+        <div class="header-panel clearfix">
+            <div class="logopanel">
+                <a href="#" class="logo"><!--欢迎进入跨界仓储管理系统--></a>
+            </div>
+            <div class="funcpanel">
+                <div class="switch-width" title="切换页面宽度">
+                    <i id="btnSwitchWidth" class="fa fa-compress"></i>
+                </div>
+                <div class="dropdown">
+                    <a id="aUserInfos"  class="dropdown-toggle" href="#">
+                    <!--
+                        Hi, {name}! <b class="caret"></b>
+                    -->
+                    </a>
+                    <ul id="ulUserInfos" class="dropdown-menu">
+                        <li>
+                            <a href="javascript:"><span class="icon-edit"></span>编辑资料</a>
+                        </li>
+                        <li>
+                            <a href="javascript:"><span class="icon-wrench"></span>账户设置</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="javascript:PageNs.UserInfos.logout()">
+                                <span class="icon-off"></span>退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="leftpanel">
+            <div class="sidemenu">
+                <div class="nav-header">菜单导航</div>
+                <ul id="ulSidebar" class="nav nav-tabs nav-stacked">
+                <!--
+                    <li class="dropdown">
+                        <a href="#"><span class="{iconClass}"></span>{name}</a>
+                        <ul>
+                            #--item.begin--#
+                            <li id="sidebar_item_{id}">
+                                <a href="javascript:PageNs.Sidebar.active('{id}');">{name}</a>
+                            </li>
+                            #--item.end--#
+                        </ul>
+                    </li>
+                -->
+                </ul>
+            </div>
+        </div>
+        <div class="rightpanel clearfix">
+            <div id="divFrameTabs" class="frmtabs">
+            <!--
+                <div id="frametabs_item_{id}" onclick="PageNs.FrameTabs.active('{id}')" class="frmtab">
+                    {name}<span class="close" onclick="PageNs.FrameTabs.remove('{id}', event)" title="关闭本标签页">×</span>
+                </div>
+            -->
+            </div>
+            <div id="divIframes" class="iframes">
+                
+            </div>
+        </div>
+        <!-- <div class="clearfix"></div> -->
+        <div class="footer-panel clearfix">
+            华人仓储版权所有 © 2014
+        </div>
+    </div>
+    <div id="divLoadingTip" class="loading-tips loading-info" style="display:none;">
+        正在加载,请稍后...
+    </div>
+
+    <!--samples.pager
+        <ul>
+            <li class="{firstPageClass}">
+                <a href="javascript:void('first')" title="第一页">
+                    <i class="fa fa-backward"></i>
+                </a>
+            </li>
+            <li class="{previousPageClass}">
+                <a href="javascript:void('previous')" title="上一页">
+                    <i class="fa fa-step-backward"></i>
+                </a>
+            </li>
+            <li class="page-num">
+                <input type="text" value="{pageNo}" title="直接按回车确定">/ {pageCount}
+            </li>
+            <li class="{nextPageClass}">
+                <a href="javascript:void('next')" title="下一页">
+                    <i class="fa fa-step-forward"></i>
+                </a>
+            </li>
+            <li class="{finalPageClass}">
+                <a href="javascript:void('final')" title="最后一页">
+                    <i class="fa fa-forward"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void('refresh')" title="刷新当前页">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="pager-summary">
+            第 {beginIndex} 条至 {endIndex} 条, 共 {totalCount} 条
+        </div>
+    samples.pager-->
+
+    <script type="text/javascript"src="js/jquery-1.11.0.js"></script>
+    <script type="text/javascript"src="js/miniquery.debug.js"></script>
+    <script type="text/javascript"src="js/lib.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

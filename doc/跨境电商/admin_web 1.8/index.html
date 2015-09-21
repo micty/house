@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=100">
+  <title>Main Page</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <script src="./assets/js/jquery-1.11.0.min.js"></script>
+  <script src="./assets/js/index.js"></script>
+</head>
+
+<body>
+  <!-- 给main-wrapper添加class "full-wrapper" 即可满屏 -->
+  <div class="main-wrapper">
+    <div class="header-panel clearfix">
+      <div class="logopanel">
+        <a href="#" class="logo">
+          欢迎进入跨界仓储管理系统
+        </a>
+      </div>
+      <div class="funcpanel">
+        <!-- 监听 switch-width 来切换满屏-->
+        <div class="switch-width">
+          <!-- 满屏后 fa-expand 换成 fa-compress -->
+          <i class="fa fa-expand"></i>
+        </div>
+        <!-- 给 dropdown 添加class "open" 即可展开菜单-->
+        <div class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">Hi, Saiya! <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="javascript:;"><span class="icon-edit"></span> 编辑资料</a></li>
+                  <li><a href="javascript:;"><span class="icon-wrench"></span> 账户设置</a></li>
+                  <li class="divider"></li>
+                  <li><a href="javascript:;"><span class="icon-off"></span> 退出</a></li>
+              </ul>
+          </div>
+      </div>
+    </div>
+    <div class="leftpanel">
+      <div class="sidemenu">
+        <ul class="nav nav-tabs nav-stacked">
+          <li class="nav-header">菜单导航</li>
+          <li class="dropdown">
+            <a href="javascript:;"><span class="icon-briefcase"></span>系统管理</a>
+            <ul>
+              <li data-frameid="fsys-users" data-url="./system/users.html">
+                <a href="javascript:;">用户管理</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="javascript:;"><span class="icon-th-large"></span>产品管理</a>
+            <ul>
+              <li data-frameid="fpr-add" data-url="./product/add.html" class="">
+                <a href="javascript:;">新增产品</a>
+              </li>
+              <li data-frameid="fpr-import" data-url="./product/import.html">
+                <a href="javascript:;">导入产品</a>
+              </li>
+              <li data-frameid="fpr-list" data-url="./product/list.html" class="active">
+                <a href="javascript:;">产品列表</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="javascript:;"><span class="icon-list-alt"></span>订单管理</a>
+            <ul>
+              <li data-frameid="for-add" data-url="./order/add.html">
+                <a href="javascript:;">录入订单</a>
+              </li>
+              <li data-frameid="for-import" data-url="./order/import.html">
+                <a href="javascript:;">导入订单</a>
+              </li>
+              <li data-frameid="for-list" data-url="./order/list.html">
+                <a href="javascript:;">订单列表</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="rightpanel clearfix">
+      <div class="frmtabs">
+        <div class="frmtab active" data-frameid="fpr-list">
+          产品列表
+          <span class="close">×</span>
+        </div>
+        <div class="frmtab" data-frameid="fpr-edit">
+          产品详情
+          <span class="close">×</span>
+        </div>
+      </div>
+      <div class="iframes">
+        <iframe src="./product/list.html" id="fpr-list" frameborder="0" class="active"></iframe>
+        <iframe src="./product/edit.html" id="fpr-edit" frameborder="0"></iframe>
+      </div>
+    </div>
+    <div class="footer-panel clearfix">
+      华人仓储版权所有 © 2014
+    </div>
+  </div>
+  <div class="loading-tips loading-info">
+    正在加载,请稍后...
+  </div>
+</body>
+
+</html>
