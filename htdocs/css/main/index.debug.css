@@ -20,39 +20,40 @@ body {
 .side-bar {
   position: fixed;
   height: 100%;
-  width: 130px;
-  background: #F0F0F0;
+  width: 150px;
+  background: #4B6FB0;
 }
 .side-bar .banner {
-  background: #58bdc7;
+  background: #5392CC;
   color: #fff;
   text-align: center;
   line-height: 55px;
   height: 55px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .side-bar .banner .title {
   font-size: 22px;
 }
 .side-bar .menu-group {
   width: 100%;
-  height: 30px;
-  background: url(img/icons.png) no-repeat 0px -68px;
+  height: 5px;
+  /*background: url(img/icons.png) no-repeat 0px -68px;*/
 }
 .side-bar .menus {
   text-align: left;
   font-size: 14px;
-  color: #666;
-  background: linear-gradient(#ededed 0%, #dedede 100%);
-  text-shadow: 1px 1px rgba(255, 255, 255, 0.3);
+  color: #fff;
+  margin: 0 5px;
 }
 .side-bar .menus .hover {
-  background: #fff !important;
+  background: #ADBDDB;
+  color: #000;
 }
 .side-bar .menus li {
-  line-height: 50px;
+  line-height: 44px;
   cursor: pointer;
-  border-bottom: 1px solid #bbb;
+  border-radius: 5px;
 }
 .side-bar .menus li:nth-child(odd) {
   /*background: #5C8DBA;*/
@@ -70,7 +71,7 @@ body {
   font-size: 14px;
   color: #fff;
   position: fixed;
-  left: 130px;
+  left: 152px;
   background: #3b4754;
   padding: 10px 20px;
   min-width: 100px;
@@ -150,7 +151,7 @@ body {
   margin-top: -145px;
 }
 .content {
-  padding-left: 130px;
+  padding-left: 152px;
 }
 .content .header {
   line-height: 55px;
@@ -359,7 +360,7 @@ body {
   vertical-align: sub;
 }
 .content .tab-panel .tabs .hover {
-  background: #5ec6d8;
+  background: #5392CC;
   color: #fff;
 }
 .content .tab-panel .tabs .hover .icon-home {
