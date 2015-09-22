@@ -1,7 +1,6 @@
 ﻿
 
-
-; (function () {
+KISP.launch(function (require, module) {
 
 
     var $ = require('$');
@@ -15,11 +14,11 @@
         return;
     }
 
-    var Container = require('Container');
-    var Todo = require('Todo');
-    var Flow = require('Flow');
-    var Query = require('Query');
-    var Message = require('Message');
+    var Container = module.require('Container');
+    var Todo = module.require('Todo');
+    var Flow = module.require('Flow');
+    var Query = module.require('Query');
+    var Message = module.require('Message');
 
     Container.render();
     Todo.render();
@@ -48,6 +47,5 @@
     });
 
 
-
     
-})();
+});

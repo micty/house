@@ -2,7 +2,7 @@
 /**
 * 待办任务模块。
 */
-define('Todo', function (require, module, exports) {
+define('/Todo', function (require, module, exports) {
 
 
     var $ = require('$');

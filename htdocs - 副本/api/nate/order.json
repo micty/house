@@ -1,0 +1,124 @@
+﻿
+
+
+{
+    "code": 200,
+    "msg": "",
+    "data": {
+		"pager": {
+		   "page": 1,
+		   "size": 20,
+		   "order": "orderID asc,createTime desc",
+		   "total": 2
+	   },
+       "items": [
+           {
+            webOrderID: '564515151',
+            payTime: '2014-06-23 09:40',
+            orderStatus: '已合并',
+            buyernick: '齐天大圣',
+            deliveryStateName: '广东省',
+            deliveryCityName: '深圳市',
+            deliveryDistrictName: '南山区',
+            deliveryAddress: '科技南十二路',
+            logisticsCompany: '顺丰',
+            buyerMessage: '请给我寄圆通快递',
+            outerMemo: '收货地址修改为：广东省深圳市南山区科技园科技男十二路',
+            goodsItems: [
+                {
+                    picPath: '../../css/order/img/u283.png',
+                    title: '雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛',
+                    price: 920.00,
+                    amount: 12,
+                    gift: 1,
+                    absence: 1,
+                    refund: 1,
+                    flag: 1,
+                    skuname:
+                        [{
+                            skuTitle: '商品编号',
+                            skuValue: 'B1251534',
+                            skuType: 0
+                        },
+                        {
+                            skuTitle: '净含量',
+                            skuValue: '50ml '
+                        },
+                        {
+                            skuTitle: '颜色',
+                            skuValue: '肤色'
+                        }
+                        ]
+                }
+            ]
+
+
+        },
+        {
+            webOrderID: '564515151',
+            payTime: '2014-06-23 09:40',
+            orderStatus: '已合并',
+            buyernick: '齐天大圣',
+            deliveryStateName: '广东省',
+            deliveryCityName: '深圳市',
+            deliveryDistrictName: '南山区',
+            deliveryAddress: '科技南十二路',
+            logisticsCompany: '顺丰',
+            buyerMessage: '请给我寄圆通快递',
+            outerMemo: '收货地址修改为：广东省深圳市南山区科技园科技男十二路',
+            goodsItems: [
+                {
+                    picPath: '../../css/order/img/u283.png',
+                    title: '雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛雅诗兰黛',
+                    price: 920.00,
+                    amount: 12,
+                    gift: 1,
+                    absence: 1,
+                    refund: 1,
+                    flag: 1,
+                    skuname:
+                        [{
+                            skuTitle: '商品编号',
+                            skuValue: 'B1251534'
+                        },
+                        {
+                            skuTitle: '净含量',
+                            skuValue: '50ml '
+                        },
+                        {
+                            skuTitle: '颜色',
+                            skuValue: '肤色'
+                        }
+                        ]
+                },
+                {
+                    picPath: '../../css/order/img/u283.png',
+                    title: '哇哈哈哈哈',
+                    price: 920.00,
+                    amount: 12,
+                    gift: 0,
+                    absence: 1,
+                    refund: 1,
+                    flag: 0,
+                    skuname: [
+                        {
+                            skuTitle: '商品编号',
+                            skuValue: 'B1251534'
+                        },
+                        {
+                            skuTitle: '净含量',
+                            skuValue: '50ml '
+                        },
+                        {
+                            skuTitle: '颜色',
+                            skuValue: '肤色'
+                        }
+                    ]
+                }
+            ]
+
+
+        }]
+   }
+}
+

@@ -1,8 +1,7 @@
 ﻿
-//控制器。 
-//注意：所有模块均对控制器可见。
-; (function () {
 
+
+KISP.launch(function (require, module) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -10,13 +9,13 @@
 
     var Iframe = KERP.require('Iframe');
 
-    var MenuData = require('MenuData');
-    var Sidebar = require('Sidebar');
-    var PageTabs = require('PageTabs');
-    var PageList = require('PageList');
-    var Iframes = require('Iframes');
-    var Tips = require('Tips');
-    var UserInfos = require('UserInfos');
+    var MenuData = module.require('MenuData');
+    var Sidebar = module.require('Sidebar');
+    var PageTabs = module.require('PageTabs');
+    var PageList = module.require('PageList');
+    var Iframes = module.require('Iframes');
+    var Tips = module.require('Tips');
+    var UserInfos = module.require('UserInfos');
 
 
     //重写
@@ -31,7 +30,7 @@
             PageList.add(item); //安静模式，不触发事件
             Iframes.add(item);  //会触发 active 事件
         },
-       
+
     });
 
 
@@ -111,7 +110,7 @@
         }
     });
 
-    
+
     //加载菜单数据
     MenuData.load(function (data) {
 
@@ -132,8 +131,8 @@
             Iframes.add(item);
 
         });
-       
-       
+
+
     });
 
 
@@ -158,15 +157,6 @@
             PageList.add(item); //安静模式，不触发事件
             Iframes.add(item, true); //强制刷新
         });
-
-        //var item = group;
-        //item.id = $.String.random();
-
-        //PageTabs.add(item); //安静模式，不触发事件
-        //PageList.add(item); //安静模式，不触发事件
-        //Iframes.add(item, true); //强制刷新
-        
-
     });
 
 
@@ -175,8 +165,6 @@
     PageList.render();
     Iframes.render();
     UserInfos.render();
+});
 
 
-
-
-})();

@@ -2,7 +2,7 @@
 /**
 * 任务流模块。
 */
-define('Flow', function (require, module, exports) {
+define('/Flow', function (require, module, exports) {
 
 
     var $ = require('$');

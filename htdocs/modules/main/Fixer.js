@@ -3,7 +3,7 @@
 /**
 * 固定器模块
 */
-define('Fixer', function (require, module, exports) {
+define('/Fixer', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');

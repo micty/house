@@ -5,17 +5,18 @@
 * 页签列表模块
 * 
 */
-define('PageList', function (require, module, exports) {
+define('/PageList', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KERP = require('KERP');
 
+    var Emitter = MiniQuery.require('Emitter');
+    var emitter = new Emitter();
 
     var div = document.getElementById('div-page-list');
     var ul = document.getElementById('ul-page-list');
 
-    var emitter = MiniQuery.Event.create();
 
 
     var isVisible = false;
@@ -179,7 +180,7 @@ define('PageList', function (require, module, exports) {
         }
 
         $(div).addClass('tab-more-show');
-        $(ul).slideDown(function () {
+        $(ul).slideDown('fast', function () {
             isVisible = true;
         });
     }
@@ -232,10 +233,11 @@ define('PageList', function (require, module, exports) {
     function closeAll() {
 
         //最后一个任务是 hide()
-        var endIndex = lastIndex() + 1;
+        var endIndex = lastIndex();
+        var tasks = $.Array.pad(1, endIndex + 1);
 
-        var tasks = $.Array.keep(1, endIndex, function (item, index) {
-            return index < endIndex ? fnTask : hide;
+        tasks = $.Array.keep(tasks, function (item, index) {
+            return item < endIndex ? fnTask : hide;
         });
 
         KERP.require('Multitask').serial(tasks); //串行执行任务队列

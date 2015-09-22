@@ -2,7 +2,7 @@
 /**
 * 容器模块。
 */
-define('Container', function (require, module, exports) {
+define('/Container', function (require, module, exports) {
 
 
     var $ = require('$');

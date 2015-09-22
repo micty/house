@@ -5,7 +5,7 @@
 /**
 * 提示信息条模块。
 */
-define('Tips', function (require, module, exports) {
+define('/Tips', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -31,10 +31,12 @@ define('Tips', function (require, module, exports) {
         }
     ]);
 
+    var indexList = $.Array.pad(0, 12);
+
     //菊花旋转部分的 html 只填充一次即可复用。 先把菊花部分填充。
     var sample = $.String.format(samples['div'], {
 
-        'rotates': $.Array([]).pad(0, 12).keep(function (item, index) {
+        'rotates': $.Array.keep(indexList, function (item, index) {
             return $.String.format(samples['rotate'], {
                 'order': item
             });

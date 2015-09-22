@@ -4,11 +4,14 @@
 * Iframes 模块
 * 
 */
-define('Iframes', function (require, module, exports) {
+define('/Iframes', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KERP = require('KERP');
+
+    var Emitter = MiniQuery.require('Emitter');
+    var emitter = new Emitter();
 
     var div = document.getElementById('div-iframes');
     var sample = $.String.between(div.innerHTML, '<!--', '-->');
@@ -17,7 +20,6 @@ define('Iframes', function (require, module, exports) {
     var prefix = 'iframe-' + $.String.random(4) + '-'; //iframe.id 中的随机前缀串，防止 id 意外冲突
     var tabs = null;
 
-    var emitter = MiniQuery.Event.create();
 
 
 
@@ -153,7 +155,7 @@ define('Iframes', function (require, module, exports) {
 
         list.push(item);
 
-        var url = $.Url.randomQueryString(item.url); //增加一个随机 key，以确保缓存失效
+        var url = $.require('Url').randomQueryString(item.url); //增加一个随机 key，以确保缓存失效
 
         //填充
         var html = $.String.format(sample, {

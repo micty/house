@@ -1,0 +1,20 @@
+﻿
+
+
+
+//可以生成很复杂的动态数据，并根据提交的参数进行处理。
+//具有真正模拟后台逻辑的能力。
+KERP.Proxy.response(function (data, config) {
+
+    return {
+
+        code: 205, //注意这里
+        msg: 'fail by 205, for test',
+        data: {
+            
+        }
+
+    }
+
+});
+

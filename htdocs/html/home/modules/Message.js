@@ -2,7 +2,7 @@
 /**
 * 最新消息模块。
 */
-define('Message', function (require, module, exports) {
+define('/Message', function (require, module, exports) {
 
 
     var $ = require('$');

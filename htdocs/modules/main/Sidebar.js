@@ -4,10 +4,13 @@
 /**
 * 侧边菜单栏模块
 */
-define('Sidebar', function (require, module, exports) {
+define('/Sidebar', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
+    var Emitter = MiniQuery.require('Emitter');
+
+
     var KERP = require('KERP');
 
 
@@ -15,7 +18,7 @@ define('Sidebar', function (require, module, exports) {
     var ul = document.getElementById('ul-sidebar');
     var div = ul.parentNode;
 
-    var emitter = MiniQuery.Event.create();
+    var emitter = new Emitter();
     var tabs = null;
     var list = [];
     var activedItem = null;

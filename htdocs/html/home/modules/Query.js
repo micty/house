@@ -2,7 +2,7 @@
 /**
 * 快捷查询模块。
 */
-define('Query', function (require, module, exports) {
+define('/Query', function (require, module, exports) {
 
 
     var $ = require('$');

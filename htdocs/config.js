@@ -1,8 +1,10 @@
 ﻿
 
-; (function ($, MiniQuery, KERP) {
+; (function (KISP) {
 
- 
+    var $ = KISP.require('$');
+
+
     /**
     * 字符串中的 {~} 表示站头的根地址；{@} 表示使用的文件版本 debug 或 min
     *
@@ -65,52 +67,9 @@
             hideIfLessThen: 0,
         },
 
-        //级联路径默认配置
-        CascadePath: {
-            activedClass: 'on',
-            fields: {
-                text: 'name',
-                child: 'items',
-            },
-        },
+      
 
-        //级联弹出菜单默认配置
-        CascadeMenus: {
-            activedClass: 'actived',
-            leafClass: 'leaf-item',
-            delay: 100,
-            fields: {
-                text: 'name',
-                child: 'items',
-            },
-        },
-
-        //级联导航器默认配置
-        CascadeNavigator: {
-            containers: {
-                path: '#div-cascade-path',
-                menus: '#div-cascade-menus'
-            },
-            fields: {
-                text: 'name',
-                child: 'items',
-            },
-        },
-
-        //级联选择器默认配置
-        CascadePicker: {
-            selectedIndexes: [-1, -1, -1],
-            defaultTexts: [],
-            defaultText: '--请选择--',
-            hideNone: true,
-            data: 'data/address/array.simple.js',
-            varname: '__AddressData__',
-            fields: {
-                value: 0,
-                text: 1,
-                child: 2
-            }
-        },
+        
 
         //动态加载模块的默认配置 (for seajs)
         Seajs: {
@@ -188,31 +147,141 @@
 
 
 
+    ////调试模式下使用。
+    ////使用 grunt 工具构建页面后，本区代码可以去掉
+    //if (KERP.require('Debug').check()) {
+
+    //    var Module = KERP.require('Module');
+    //    var define = Module.define;
+
+    //    define('$', function () {
+    //        return $;
+    //    });
+
+    //    define('MiniQuery', function () {
+    //        return MiniQuery;
+    //    });
+
+    //    define('KERP', function () {
+    //        return KERP;
+    //    });
+
+    //    window.define = define;
+    //    window.require = Module.require;
+    //}
+    
+
+
+    KISP.require('Module').define('KERP', function () {
+        return KERP;
+    });
+
+
+    /**grunt.debug.begin*/ //------------------------------------------------------------------------>
+
+
+    // 开发过程中用到的配置，正式发布后可去掉
+    KISP.config({  // KISP 内部模块所需要的默认配置
+
+        'SSH.API': {
+            eid: '517531', //该值会给 Login 模块改写
+            openid: '55a6173ee4b01b9ae3c1c952', //该值会给 Login 模块改写
+            proxy: {
+                //'GetPromotionForOrderNew1': 'api/ssh/GetPromotionForOrderNew.js',
+                //'GetPromotionDetail': 'api/ssh/GetPromotionDetail.js',
+                //'saveCollect': 'api/saveCollect.js',
+                'GetRefundBill': 'api/ssh/GetRefundBill.js',
+            },
+
+        },
+        'Proxy': {
+            delay: {
+                min: 500,
+                max: 1500
+            },
+        },
+    });
+
+
+    KISP.data({
+        'CloudAPI': {
+            eid: '517531', //该值会给 Login 模块改写
+            proxy: {
+                //'GetItemList': 'api/GetItemList.js',
+            },
+        },
+    });
+
     //调试模式下使用。
-    //使用 grunt 工具构建页面后，本区代码可以去掉
-    if (KERP.require('Debug').check()) {
+    //使用 grunt 工具构建页面后，本区域的代码会给去掉。
 
-        var Module = KERP.require('Module');
-        var define = Module.define;
 
-        define('$', function () {
-            return $;
+    // 开发过程中用到的配置，发布后可去掉
+    KISP.config({  // KISP 内部模块所需要的默认配置
+
+        'API': {
+            //在开发阶段，为了防止后台过快的返回数据而显示让某些需要显示
+            //"数据加载中"的效果不明显， 这里强行加上一个随机延迟时间，
+            //以模拟真实的慢速网络， 发布后，应该去掉该配置。
+            //delay: {
+            //    min: 400,
+            //    max: 1200,
+            //},
+
+            proxy: {
+                //'GetItemList': 'api/GetItemList.js',
+                //'GetVIPList': 'api/GetVIPList.js',
+                //'GetGoodList': 'api/GetGoodList.js',
+                //'GetHotWords': 'api/GetHotWords.js',
+
+            },
+
+            field: {
+                code: 'Result',
+                msg: 'ErrMsg',
+                data: 'Data',
+            },
+        },
+
+        'Proxy': {
+            //delay: {
+            //    min: 500,
+            //    max: 1500
+            //},
+        },
+    });
+
+    //开发阶段，把 define 变成全局变量
+    window.define = KISP.require('Module').define;
+
+    //window.onerror = function (msg, a, b) {
+    //    alert([msg, a, b].join(', '));
+    //};
+
+
+    var alert = window.alert;
+    window.alert = function () {
+        var $ = KISP.require('$');
+        var args = [].slice.call(arguments, 0);
+        args = $.Array.keep(args, function (item, index) {
+            if (typeof item == 'object') {
+                return JSON.stringify(item, null, 4);
+            }
+
+            return String(item);
         });
 
-        define('MiniQuery', function () {
-            return MiniQuery;
-        });
+        alert(args.join(', '));
 
-        define('KERP', function () {
-            return KERP;
-        });
+    };
 
-        window.define = define;
-        window.require = Module.require;
-    }
+    //构建后，grunt 会插入构建时间到下面。
+    KISP.data('build-date-time', '会自动更新');
+
+    // <----------------------------------------------------------------------------------------
+    /**grunt.debug.end*/
     
-    
 
-})(jQuery, MiniQuery, KERP);
+})(KISP);
 
 

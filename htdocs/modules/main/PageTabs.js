@@ -4,12 +4,14 @@
 /**
 * 页签模块
 */
-define('PageTabs', function (require, module, exports) {
+define('/PageTabs', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KERP = require('KERP');
 
+    var Emitter = MiniQuery.require('Emitter');
+    var emitter = new Emitter();
 
     var home = document.getElementById('div-tab-home');
     var ul = document.getElementById('ul-page-tabs');
@@ -37,7 +39,6 @@ define('PageTabs', function (require, module, exports) {
         },
     ]);
 
-    var emitter = MiniQuery.Event.create();
     var tabs = null;
     var list = [];
 

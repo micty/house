@@ -4,7 +4,7 @@
 /**
 * 侧边菜单栏的数据模块
 */
-define('MenuData', function (require, module, exports) {
+define('/MenuData', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -35,7 +35,7 @@ define('MenuData', function (require, module, exports) {
 
         var base = KERP.Url.root() + 'data/sidebar/';
 
-        $.Script.load({
+        $.require('Script').load({
             url: [
                 base + 'Sidebar.js',
             ],

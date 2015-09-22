@@ -4,7 +4,7 @@
 /**
 * 用户信息模块
 */
-define('UserInfos', function (require, module, exports) {
+define('/UserInfos', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
