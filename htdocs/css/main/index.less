@@ -3,7 +3,7 @@
     font-family: 'Microsoft YaHei';
 }
 
-@font-color: #929da7;
+@font-color: #000;
 @border-color: #d9dcdf;
 
 
@@ -277,6 +277,7 @@ body{
                         ul {
                             background: #fff;
                             border: 1px solid #ddd;
+                            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 
                             li {
                                 padding: 2px 6px;
@@ -317,7 +318,8 @@ body{
     }
 
     .tab-panel {
-        background: #f0f2f3;
+        /*background: #f0f2f3;*/
+        border-bottom: solid 1px #5392CC;
 
         &:after, &:before {
             content: "";
@@ -345,9 +347,10 @@ body{
                 margin-left: 2px;
                 float: left;
                 padding-left: 10px;
-                background: #e1e5e8;
-                color: #929da7;
+                /*background: #e1e5e8;*/
+                color: #000;
                 cursor: pointer;
+                border-radius: 5px 5px 0px 0px;
 
                 &:first-child {
                     margin-left: 0;
@@ -440,6 +443,7 @@ body{
 
                     &:hover {
                         background: darken(#fff, 10%);
+                        color: #000;
                     }
 
                     .icon-close {
@@ -453,7 +457,9 @@ body{
                 }
 
                 .on {
-                    background: darken(#fff, 10%);
+                    /*background: darken(#fff, 10%);*/
+                    background: #5392CC;
+                    color: #fff;
                 }
             }
         }
@@ -470,6 +476,7 @@ body{
 
             .tab-more-content {
                 display: block;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             }
         }
     }

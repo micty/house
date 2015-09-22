@@ -169,7 +169,7 @@ body {
   background: url(img/icons.png) no-repeat 0px -53px;
 }
 .content .header .search-box > input {
-  color: #929da7;
+  color: #000000;
   line-height: 30px;
   font-family: italic;
   width: 170px;
@@ -181,7 +181,7 @@ body {
   color: #b6babd;
 }
 .content .header .user-info {
-  color: #929da7;
+  color: #000000;
   float: right;
   margin-right: 30px;
 }
@@ -274,6 +274,7 @@ body {
 .content .header .user-info .user-setting .setting-more .box ul {
   background: #fff;
   border: 1px solid #ddd;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 .content .header .user-info .user-setting .setting-more .box ul li {
   padding: 2px 6px;
@@ -300,7 +301,8 @@ body {
   display: block;
 }
 .content .tab-panel {
-  background: #f0f2f3;
+  /*background: #f0f2f3;*/
+  border-bottom: solid 1px #5392CC;
 }
 .content .tab-panel:after,
 .content .tab-panel:before {
@@ -328,9 +330,10 @@ body {
   margin-left: 2px;
   float: left;
   padding-left: 10px;
-  background: #e1e5e8;
-  color: #929da7;
+  /*background: #e1e5e8;*/
+  color: #000;
   cursor: pointer;
+  border-radius: 5px 5px 0px 0px;
 }
 .content .tab-panel .tabs li:first-child {
   margin-left: 0;
@@ -397,7 +400,7 @@ body {
 }
 .content .tab-panel .tab-more .tab-more-content li {
   line-height: 35px;
-  color: #929da7;
+  color: #000000;
   padding-left: 15px;
   padding-right: 25px;
   min-width: 110px;
@@ -410,6 +413,7 @@ body {
 }
 .content .tab-panel .tab-more .tab-more-content li:hover {
   background: #e6e6e6;
+  color: #000;
 }
 .content .tab-panel .tab-more .tab-more-content li .icon-close {
   background: url(img/icon_close.png);
@@ -420,7 +424,9 @@ body {
   right: 10px;
 }
 .content .tab-panel .tab-more .tab-more-content .on {
-  background: #e6e6e6;
+  /*background: darken(#fff, 10%);*/
+  background: #5392CC;
+  color: #fff;
 }
 .content .tab-panel .tab-more-show .tab-dropdown {
   -moz-transform: rotate(180deg);
@@ -431,6 +437,7 @@ body {
 }
 .content .tab-panel .tab-more-show .tab-more-content {
   display: block;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 .content .iframes {
   padding: 32px 32px 0 32px;
