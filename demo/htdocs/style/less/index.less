@@ -1,16 +1,5 @@
 ﻿
 
-/*长按 a 标签会造成一定区域出现 “蒙板式” 的阴影，解决方案是添加以下的CSS代码（只在ipad和iphone中有效）*/
-* {
-    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
 body {
     font-size: 1.0em;
     overflow: hidden;
@@ -35,30 +24,3 @@ ul {
 
 
 
-.pulldown {
-    position: absolute;
-    height: 26px;
-    top: 46px;
-    left: 0px;
-    right: 0px;
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    z-index: 99;
-    font-size: 14px;
-    z-index: 1025;
-}
-
-.pullup {
-    position: absolute;
-    bottom: 55px;
-    left: 0px;
-    right: 0px;
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    z-index: 99;
-    font-size: 14px;
-    z-index: 1025;
-
-}

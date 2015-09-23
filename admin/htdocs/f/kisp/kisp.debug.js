@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: house 
 * version: 3.0.0
-* build: 2015-09-23 11:16:11
+* build: 2015-09-23 17:33:00
 * files: 61(59)
 *    partial/house/begin.js
 *    core/Module.js
@@ -5162,6 +5162,13 @@ define('Scroller', function (require, module,  exports) {
     * 滚动器构造函数。
     */
     function Scroller(el, config) {
+
+        //重载 Scroller(config)
+        if ($.Object.isPlain(el)) {
+            config = el;
+            el = config.el;
+        }
+
 
         Mapper.setGuid(this);
 
