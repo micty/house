@@ -1,6 +1,21 @@
 
 /.svn
-/build
-/bin/node_modules
-/lib/kerp/bin/node_modules
+
+
+/admin/bin/node_modules
+/admin/build
+/admin/htdocs/index.html
+/admin/htdocs/style/css
+
+
+/demo/bin/node_modules
+/demo/build
+/demo/htdocs/index.html
+/demo/htdocs/style/css
+
+
+/old/bin/node_modules
+/old/build
+/old/lib/kerp/bin/node_modules
+/old/lib/kerp/build
 

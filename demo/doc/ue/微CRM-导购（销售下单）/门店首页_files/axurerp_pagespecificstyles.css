@@ -1,0 +1,272 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../门店首页_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:321px;
+    height:625px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:327px;
+    height:631px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:304px;
+    width:317px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../门店首页_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:319px;
+    height:49px;
+}
+
+#u2_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:319px;
+    height:49px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:16px;
+    width:315px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../门店首页_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:105px;
+    top:18px;
+    width:147px;
+    height:30px;
+}
+
+#u4_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:153px;
+    height:36px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:143px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../门店首页_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:2px;
+    top:48px;
+    width:320px;
+    height:58px;
+}
+
+#u6_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:64px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:21px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../门店首页_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:270px;
+    top:54px;
+    width:32px;
+    height:32px;
+}
+
+#u8_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:32px;
+    height:32px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:28px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10 {
+    position:absolute;
+    left:270px;
+    top:90px;
+    width:44px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u11_normal {
+    background-image: url('../门店首页_files/u11_normal.png');
+}
+
+.u11_container {
+    position:absolute;
+    left:12px;
+    top:55px;
+    width:240px;
+    height:40px;
+}
+
+#u11_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:246px;
+    height:46px;
+}
+
+.u12 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:236px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13_container {
+    position:absolute;
+    left:2px;
+    top:106px;
+    width:321px;
+    height:521px;
+}
+
+#u13_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:321px;
+    height:521px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:252px;
+    width:317px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

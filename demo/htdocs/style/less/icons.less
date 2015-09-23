@@ -1,0 +1,122 @@
+﻿
+
+/*所有的图标 以及base64放在此处*/
+
+// 实例
+// 图片名称约定： default-icon-图标名
+
+.set-icon(@path) {
+    background-image: data-uri(@path);
+    background-repeat: no-repeat;
+}
+
+.default-icon-clear {
+    .set-icon('../img/clear.png');
+}
+
+.default-icon-search { 
+    .set-icon('../img/search.png');
+} 
+
+.default-icon-more {
+    .set-icon('../img/more.png');
+}
+
+.default-icon-scan {
+    .set-icon('../img/scan.png');
+}
+
+.default-icon-scan-gray {
+    .set-icon('../img/scan-gray.png');
+}
+.default-icon-delete {
+    .set-icon('../img/delete.png');
+}
+.default-icon-delete-a{
+    .set-icon('../img/delete-a.png');
+}
+
+.default-icon-check{
+    .set-icon('../img/check.png');
+}
+.default-icon-attr-select {
+    &.selected{
+        .set-icon('../img/attr-select.png');
+    }
+}
+.default-icon-plus {
+    .set-icon('../img/plus.png');
+}
+.default-icon-cash {
+    .set-icon('../img/cash.png');
+}
+.default-icon-vip-green {
+    .set-icon('../img/vip-green.png');
+}
+/*首页图标 start*/
+.default-icon-main {
+    .set-icon('../img/main.png');
+    &.on{
+        .set-icon('../img/main-pressed.png');
+    }
+}
+
+.default-icon-cart {
+    .set-icon('../img/cart.png');
+    &.on{
+        .set-icon('../img/cart-pressed.png');
+    }
+}
+
+.default-icon-person {
+    .set-icon('../img/person.png');
+    &.on{
+        .set-icon('../img/person-pressed.png');
+    }
+}
+
+.default-icon-good {
+    .set-icon('../img/good.png');
+    &.pressed{
+        .set-icon('../img/good-pressed.png');
+    }
+}
+
+.default-icon-recharge {
+    .set-icon('../img/recharge.png');
+    &.pressed{
+        .set-icon('../img/recharge-pressed.png');
+    }
+}
+
+.default-icon-vip {
+    .set-icon('../img/vip.png');
+    &.pressed{
+        .set-icon('../img/vip-pressed.png');
+    }
+}
+
+.default-icon-bill {
+    .set-icon('../img/bill.png');
+    &.pressed{
+        .set-icon('../img/bill-pressed.png');
+    }
+}
+
+/*首页图标 end*/
+
+/*我里面图标 start*/
+.default-icon-sanjiao {
+    .set-icon('../img/sanjiao.png');
+}
+.default-icon-Uorderd {
+    .set-icon('../img/Uorder-d.png');
+}
+/*我里面图标 end*/
+ 
+
+/*我里面图标 start*/
+.default-icon- {
+}
+
+/*我里面图标 end*/

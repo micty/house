@@ -1,0 +1,70 @@
+﻿
+<div id="div-panel-product-list" class="panel-product-list">
+
+    <!--添加search类，切入选商品样式-->
+    <div id="div-product-list-header"  class="homepage-header">
+        <p id="p-product-list-title">
+            <!--<span>{name}</span>-->
+        </p>
+        <p>
+            <span data-cmd="client" class="chose-client">选客户</span>
+            <span data-cmd="search" class="search-icon">搜商品</span>
+
+        </p>
+        <div id="div-product-list-search" class="search-bar">
+            <input id="txt-product-list" type="text" placeholder="输入商品名称/代码/规格/助记码" />
+            <span id="btn-product-list-clear" class="delete"></span>
+            <span id="btn-product-list-search" class="sure">确定</span>
+        </div>
+    </div>
+
+
+    <div class="category">
+        <ul id="ul-product-list-tabs-0" class="big-categ">
+            <!--<li>{name}</li>-->
+        </ul>
+        <ul id="ul-product-list-tabs-1" class="small-categ">
+            <!--<li>{name}</li>-->
+        </ul>
+    </div>
+
+    <div id="div-product-list-main" class="main">
+        <ul id="ul-product-list">
+            <!--
+            <li>
+                <img src="{img}" />
+                <p>{name}</p>
+                <p class="money">￥{price}</p>
+                <p class="count">库存{count}{unit}</p>
+                <span data-cmd="cart" data-index="{index}"></span>
+            </li>
+            -->
+        </ul>
+    </div>
+
+
+    <div id="div-product-list-cart" class="goods-pop" style="display: none;">
+        <div class="content">
+            <div id="div-product-list-infos" class="goods">
+            <!--
+                <img src="{cover}" />
+                <p>{name}</p>
+                <p class="money">￥{price}</p>
+                <p class="count">库存{count}{unit}</p>
+            -->
+            </div>
+            <div class="goods-style">
+                <span> 颜色 </span>
+                <ul id="ul-product-list-colors">
+                    <!--<li>{name}</li>-->
+                </ul>
+            </div>
+            <div class="count-li">
+                <span class="name"> 数量选择 </span>
+                <p><span class="count">-</span><span class="num">1</span><span class="count">+</span></p>
+            </div>
+            <button>确定</button>
+        </div>
+    </div>
+
+</div>

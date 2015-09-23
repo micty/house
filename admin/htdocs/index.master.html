@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>禅城房博会-后台管理系统</title>
+   
+    <link href="f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="f/kisp/kisp.debug.css" rel="stylesheet" />
+
+    <!--grunt.css.begin-->
+    <script>
+        [
+            'style/less/global.less',
+            'style/less/index.less',
+            'modules/**/*.less',
+        ]
+    </script>
+    <!--grunt.css.end-->
+</head>
+
+
+<body>
+    <div class="side-bar">
+        <div class="banner"><span class="title"></span>禅城房博会管理</div>
+        <div class="menu-group">
+        </div>
+        <ul id="ul-sidebar" class="menus">
+            <!--
+            <li data-index="{index}" draggable="true">
+                <i class="icons" style="background-image: url(style/img/{icon});"></i>
+                {name}
+            </li>
+            -->
+        </ul>
+        <div class="menus-more" style="display: none;">
+            <ul id="ul-sidebar-menus">
+                <!--
+                <li data-index="{index}">{name}</li>
+                -->
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="header container">
+            <span class="search-box">
+                <i class="icon-search"></i>
+                <input placeholder="搜索" />
+            </span>
+            <ul class="user-info">
+                <li id="li-user-infos" class="user-setting">
+                    <span id="span-user-name">
+                        <!--
+                        {name}
+                        -->
+                    </span>
+                    <i class="icon-dropdown"></i>
+                    <div id="div-user-list" class="setting-more" style="display:none;">
+                        <div class="box">
+                            <ul>
+                                <li>修改密码</li>
+                                <li>注销退出</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <i class="icon-msg"></i>
+                    <span id="span-message-count" class="msg">
+                        <!--
+                        {value}
+                        -->
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-panel">
+            <div class="container">
+
+                <div id="div-tips" class="msg-box" style="display: none;">
+                    <!--
+                    <div id="div-tips-content" class="msg-content {type}" >
+                        <div class="floatingBarsG">
+                            #--rotate.begin--#
+                            <div class="blockG rotateG_{order}"></div>
+                            #--rotate.end--#
+                        </div>
+                        <span title="{text}">{text}</span>
+                        <i class="icon-close"></i>
+                    </div>
+                    -->
+                </div>
+
+
+
+
+                <ol id="ul-page-tabs" class="tabs">
+                    <!--
+                     #--home.begin--#
+                     <li class="home {actived-class}" data-index="{index}" {draggable}>
+                         <i class="icon-home"></i>
+                     </li>
+                     #--home.end--#
+
+                     #--item.begin--#
+                     <li class="{actived-class}" data-index="{index}" {draggable} >
+                         {name}<i class="icon-close" title="关闭本页签" ></i>
+                     </li>
+                     #--item.end--#
+                     -->
+                </ol>
+
+
+
+                <div id="div-page-list" class="tab-more">
+                    <i class="tab-dropdown" title="所有页签列表"></i>
+                    <ul id="ul-page-list" class="tab-more-content" style="display: none;">
+                        <!--
+                        <li data-index="{index}" style="{item-display}" class="{on}"{draggable} >
+                            {name}<i class="icon-close" title="{title}" style="{icon-display}"></i>
+                        </li>
+                        -->
+
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="container">
+            <div id="div-iframes" class="iframes">
+                <!--
+                <iframe id="{id}" data-sn="{sn}" data-index="{index}" data-type="page" frameborder="0">
+                </iframe>
+                -->
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div style="display:none;">
+        <!--公共控件用到的各种模板，请不要删除-->
+        <!--Samples.SimplePager--!
+            <ul id="{ul-id}" class="page-label">
+                <li class="left-btn {first-disabled-class}" data-button="previous">
+                    <a href="javascript:"><i></i></a>
+                </li>
+                <li>
+                    <input id="{txt-id}" value="{current}/{count}" />
+                </li>
+                <li class="right-btn {final-disabled-class}" data-button="next" >
+                    <a href="javascript:"><i></i></a>
+                </li>
+            </ul>
+        --Samples.SimplePager-->
+        <!--Samples.Pager--!
+            <ul id="{ul-id}" class="pagination footer">
+                <li class="buttons">
+                    <ul>
+                        <li class="LR-button {first-disabled-class}" data-button="previous" title="上一页">
+                            <i class="left-btn"></i>
+                        </li>
+
+                        #--item.begin--#
+                        <li class="item {active}" {data-no}>{no}</li>
+                        #--item.end--#
+
+                        #--more.begin--#
+                        <li class="item more"></li>
+                        #--more.end--#
+
+                        <li class="LR-button {final-disabled-class}"  data-button="next" title="下一页">
+                            <i class="right-btn"></i>
+                        </li>
+                    </ul>
+                </li>
+                <li class="page-count">
+                    共<span>{count}</span>页
+                </li>
+                <li class="page-jump">
+                    <span>到第</span>
+                    <input id="{txt-id}" type="text" class="page-number" value="{toNo}" {txt-disabled}/><span>页</span>
+                    <a href="javascript:" class="jump-button {jump-disabled-class}" data-button="to">确定</a>
+                </li>
+            </ul>
+        --Samples.Pager-->
+        <!--Samples.Login--!
+            <ul>
+                <li class="input-panel">
+                    <span class="icon-user"></span>
+                    <input data-field="user" type="text" placeholder="账号/邮箱/用户名" value="{user}"/>
+                </li>
+                <li class="input-panel">
+                    <span class="icon-lock"></span>
+                    <input data-field="password" type="password" placeholder="密码" />
+                </li>
+                <li class="warm-text">
+                    <span data-field="msg" style="display:none;">*账号或密码错误</span>
+                </li>
+            </ul>
+        --Samples.Login-->
+        <!--Samples.Loading--!
+            <p>
+                <i class="icon-refresh icon-spin"></i>
+                {text}
+            </p>
+        --Samples.Loading-->
+
+
+
+
+    </div>
+   
+
+    <script src="f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="f/miniquery/miniquery.debug.js"></script>
+    <script src="f/kisp/kisp.debug.js"></script>
+    <script src="f/kerp/kerp.debug.js"></script>
+
+    <script src="config.js"></script>
+
+    <!--grunt.js.begin-->
+    <script>
+        [
+            'lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--grunt.js.end-->
+
+</body>
+</html>

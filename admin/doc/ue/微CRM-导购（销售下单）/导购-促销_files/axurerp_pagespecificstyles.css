@@ -1,0 +1,989 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../导购-促销_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:7px;
+    top:6px;
+    width:320px;
+    height:621px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:627px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:302px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../导购-促销_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:7px;
+    top:6px;
+    width:320px;
+    height:40px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:46px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:316px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4 {
+    position:absolute;
+    left:166px;
+    top:312px;
+    width:142px;
+    height:64px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u5 {
+    position:absolute;
+    left:145px;
+    top:456px;
+    width:175px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../导购-促销_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:12px;
+    top:50px;
+    width:224px;
+    height:35px;
+}
+
+#u6_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:230px;
+    height:41px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:220px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../导购-促销_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:193px;
+    top:50px;
+    width:43px;
+    height:35px;
+}
+
+#u8_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:43px;
+    height:35px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:39px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../导购-促销_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:268px;
+    top:50px;
+    width:54px;
+    height:35px;
+}
+
+#u10_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:60px;
+    height:41px;
+}
+
+.u11 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12_line {
+    background-image: url('../导购-促销_files/u12_line.png');
+}
+
+.u12_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:320px;
+    height:3px;
+}
+
+.u12 {
+    position:absolute;
+    left:7px;
+    top:88px;
+    width:320px;
+    height:10px;
+    
+}
+
+.u13_line {
+    background-image: url('../导购-促销_files/u13_line.png');
+}
+
+.u13_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:314px;
+    height:3px;
+}
+
+.u13 {
+    position:absolute;
+    left:13px;
+    top:269px;
+    width:314px;
+    height:10px;
+    
+}
+
+.u14_line {
+    background-image: url('../导购-促销_files/u14_line.png');
+}
+
+.u14_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:314px;
+    height:3px;
+}
+
+.u14 {
+    position:absolute;
+    left:10px;
+    top:419px;
+    width:314px;
+    height:10px;
+    
+}
+
+.u15 {
+    position:absolute;
+    left:13px;
+    top:282px;
+    width:311px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u16 {
+    position:absolute;
+    left:284px;
+    top:400px;
+    width:30px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17 {
+    position:absolute;
+    left:284px;
+    top:547px;
+    width:30px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18 {
+    position:absolute;
+    left:17px;
+    top:434px;
+    width:309px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19_line {
+    background-image: url('../导购-促销_files/u19_line.png');
+}
+
+.u19_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:314px;
+    height:3px;
+}
+
+.u19 {
+    position:absolute;
+    left:10px;
+    top:573px;
+    width:314px;
+    height:10px;
+    
+}
+
+.u20 {
+    position:absolute;
+    left:223px;
+    top:547px;
+    width:34px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_normal {
+    background-image: url('../导购-促销_files/u21_normal.png');
+}
+
+.u21_container {
+    position:absolute;
+    left:287px;
+    top:60px;
+    width:16px;
+    height:16px;
+}
+
+#u21_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:16px;
+    height:16px;
+}
+
+.u22 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:12px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u23_normal {
+    background-image: url('../导购-促销_files/u23_normal.png');
+}
+
+.u23_container {
+    position:absolute;
+    left:15px;
+    top:583px;
+    width:85px;
+    height:40px;
+}
+
+#u23_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:85px;
+    height:40px;
+}
+
+.u24 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:81px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_line {
+    background-image: url('../导购-促销_files/u25_line.png');
+}
+
+.u25_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:32px;
+}
+
+.u25 {
+    position:absolute;
+    left:97px;
+    top:587px;
+    width:10px;
+    height:32px;
+    
+}
+
+.u26_normal {
+    background-image: url('../导购-促销_files/u26_normal.png');
+}
+
+.u26_container {
+    position:absolute;
+    left:119px;
+    top:594px;
+    width:19px;
+    height:19px;
+}
+
+#u26_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:19px;
+    height:19px;
+}
+
+.u27 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:15px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u28_normal {
+    background-image: url('../导购-促销_files/u28_normal.png');
+}
+
+.u28_container {
+    position:absolute;
+    left:223px;
+    top:591px;
+    width:19px;
+    height:19px;
+}
+
+#u28_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:19px;
+    height:19px;
+}
+
+.u29 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:15px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u30_line {
+    background-image: url('../导购-促销_files/u30_line.png');
+}
+
+.u30_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:32px;
+}
+
+.u30 {
+    position:absolute;
+    left:208px;
+    top:587px;
+    width:10px;
+    height:32px;
+    
+}
+
+.u31 {
+    position:absolute;
+    left:148px;
+    top:594px;
+    width:37px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u32 {
+    position:absolute;
+    left:252px;
+    top:591px;
+    width:55px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u33 {
+    position:absolute;
+    left:56px;
+    top:106px;
+    width:54px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u34 {
+    position:absolute;
+    left:239px;
+    top:106px;
+    width:44px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u35_line {
+    background-image: url('../导购-促销_files/u35_line.png');
+}
+
+.u35_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:317px;
+    height:3px;
+}
+
+.u35 {
+    position:absolute;
+    left:7px;
+    top:125px;
+    width:317px;
+    height:10px;
+    
+}
+
+.u36_line {
+    background-image: url('../导购-促销_files/u36_line.png');
+}
+
+.u36_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:42px;
+    height:3px;
+}
+
+.u36 {
+    position:absolute;
+    left:230px;
+    top:125px;
+    width:42px;
+    height:10px;
+    
+}
+
+.u37 {
+    position:absolute;
+    left:17px;
+    top:136px;
+    width:309px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u38 {
+    position:absolute;
+    left:147px;
+    top:170px;
+    width:171px;
+    height:64px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u39 {
+    position:absolute;
+    left:284px;
+    top:251px;
+    width:30px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u40 {
+    position:absolute;
+    left:214px;
+    top:251px;
+    width:37px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u41_normal {
+    background-image: url('../导购-促销_files/u41_normal.png');
+}
+
+.u41_container {
+    position:absolute;
+    left:15px;
+    top:456px;
+    width:120px;
+    height:107px;
+}
+
+#u41_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:120px;
+    height:107px;
+}
+
+.u42 {
+    position:absolute;
+    left:2px;
+    top:46px;
+    width:116px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u43 {
+    position:absolute;
+    left:145px;
+    top:482px;
+    width:169px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u44_normal {
+    background-image: url('../导购-促销_files/u44_normal.png');
+}
+
+.u44_container {
+    position:absolute;
+    left:15px;
+    top:310px;
+    width:120px;
+    height:109px;
+}
+
+#u44_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:120px;
+    height:109px;
+}
+
+.u45 {
+    position:absolute;
+    left:2px;
+    top:46px;
+    width:116px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u46_container {
+    position:absolute;
+    left:17px;
+    top:158px;
+    width:120px;
+    height:109px;
+}
+
+#u46_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:120px;
+    height:109px;
+}
+
+.u47 {
+    position:absolute;
+    left:2px;
+    top:46px;
+    width:116px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u48 {
+    position:absolute;
+    left:7px;
+    top:272px;
+    width:318px;
+    height:163px;
+    overflow:hidden;
+}
+
+#pd0u48 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:318px;
+    height:163px;
+    
+}
+
+.u49_normal {
+    background-image: url('../导购-促销_files/u49_normal.png');
+}
+
+.u49_container {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:311px;
+    height:148px;
+}
+
+#u49_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:317px;
+    height:154px;
+}
+
+.u50 {
+    position:absolute;
+    left:2px;
+    top:66px;
+    width:307px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u51 {
+    position:absolute;
+    left:10px;
+    top:23px;
+    width:148px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u52_normal {
+    background-image: url('../导购-促销_files/u52_normal.png');
+}
+
+.u52_container {
+    position:absolute;
+    left:56px;
+    top:48px;
+    width:59px;
+    height:58px;
+}
+
+#u52_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:59px;
+    height:58px;
+}
+
+.u53 {
+    position:absolute;
+    left:2px;
+    top:21px;
+    width:55px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u54_normal {
+    background-image: url('../导购-促销_files/u54_normal.png');
+}
+
+.u54_container {
+    position:absolute;
+    left:175px;
+    top:48px;
+    width:59px;
+    height:58px;
+}
+
+#u54_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:59px;
+    height:58px;
+}
+
+.u55 {
+    position:absolute;
+    left:2px;
+    top:21px;
+    width:55px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u56_line {
+    background-image: url('../导购-促销_files/u56_line.png');
+}
+
+.u56_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:311px;
+    height:3px;
+}
+
+.u56 {
+    position:absolute;
+    left:0px;
+    top:114px;
+    width:311px;
+    height:10px;
+    
+}
+
+.u57 {
+    position:absolute;
+    left:142px;
+    top:130px;
+    width:51px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

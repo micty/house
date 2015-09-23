@@ -1,0 +1,328 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../客户-购买促销包商品_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:3px;
+    top:3px;
+    width:320px;
+    height:514px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:520px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:249px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../客户-购买促销包商品_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:3px;
+    top:3px;
+    width:320px;
+    height:52px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:58px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:18px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../客户-购买促销包商品_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:20px;
+    top:16px;
+    width:35px;
+    height:25px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:35px;
+    height:25px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:31px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../客户-购买促销包商品_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:5px;
+    top:104px;
+    width:318px;
+    height:413px;
+}
+
+#u6_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:318px;
+    height:413px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:198px;
+    width:314px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../客户-购买促销包商品_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:5px;
+    top:55px;
+    width:318px;
+    height:39px;
+}
+
+#u8_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:318px;
+    height:39px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:314px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u10 {
+    position:absolute;
+    left:5px;
+    top:55px;
+    width:319px;
+    height:463px;
+    overflow:hidden;
+}
+
+#pd0u10 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:319px;
+    height:463px;
+    
+}
+
+.u11_normal {
+    background-image: url('../客户-购买促销包商品_files/u11_normal.png');
+}
+
+.u11_container {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:312px;
+    height:458px;
+}
+
+#u11_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:318px;
+    height:464px;
+}
+
+.u12 {
+    position:absolute;
+    left:2px;
+    top:221px;
+    width:308px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13_normal {
+    background-image: url('../客户-购买促销包商品_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:312px;
+    height:147px;
+}
+
+#u13_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:312px;
+    height:147px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:66px;
+    width:308px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u15 {
+    position:absolute;
+    left:86px;
+    top:165px;
+    width:160px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u16_normal {
+    background-image: url('../客户-购买促销包商品_files/u16_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:9px;
+    top:230px;
+    width:298px;
+    height:163px;
+}
+
+#u16_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:298px;
+    height:163px;
+}
+
+.u17 {
+    position:absolute;
+    left:2px;
+    top:74px;
+    width:294px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

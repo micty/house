@@ -1,0 +1,174 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../微信扫一扫_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:321px;
+    height:512px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:327px;
+    height:518px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:248px;
+    width:317px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../微信扫一扫_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:321px;
+    height:510px;
+}
+
+#u2_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:321px;
+    height:510px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:247px;
+    width:317px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u4 {
+    position:absolute;
+    left:0px;
+    top:3px;
+    width:324px;
+    height:511px;
+    overflow:hidden;
+}
+
+#pd0u4 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:324px;
+    height:511px;
+    
+}
+
+.u5_normal {
+    background-image: url('../微信扫一扫_files/u5_normal.png');
+}
+
+.u5_container {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:318px;
+    height:506px;
+}
+
+#u5_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:324px;
+    height:512px;
+}
+
+.u6 {
+    position:absolute;
+    left:2px;
+    top:245px;
+    width:314px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u7_container {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:317px;
+    height:505px;
+}
+
+#u7_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:317px;
+    height:505px;
+}
+
+.u8 {
+    position:absolute;
+    left:2px;
+    top:244px;
+    width:313px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
