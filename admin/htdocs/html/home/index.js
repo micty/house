@@ -9,10 +9,7 @@ KISP.launch(function (require, module) {
 
     var Iframe = KERP.require('Iframe');
 
-    //检查登录 
-    if (!KERP.Login.check(true)) {
-        return;
-    }
+
 
     var Container = module.require('Container');
     var Todo = module.require('Todo');

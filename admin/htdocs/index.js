@@ -18,6 +18,12 @@ KISP.launch(function (require, module) {
     var UserInfos = module.require('UserInfos');
 
 
+    KERP.Login.login({
+        user: 'test',
+        password: '123',
+
+    });
+
     //重写
     $.Object.overwrite(KERP.require('Tips'), Tips);
 

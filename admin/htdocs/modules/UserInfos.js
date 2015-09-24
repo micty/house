@@ -13,7 +13,11 @@ define('/UserInfos', function (require, module, exports) {
 
 
     var panel = document.getElementById('li-user-infos');
-    var user = KERP.Login.get();
+
+    var user = {
+        'name': 'test',
+        messageCount: 0,
+    };
 
 
     function render() {
@@ -45,19 +49,7 @@ define('/UserInfos', function (require, module, exports) {
             $(btn).addClass('disabled');
 
 
-            KERP.Login.logout(function (user, data, json) { //成功
-
-                location.href = 'login.html';
-
-            }, function (code, msg, json) { //失败
-
-                reset();
-                alert(msg);
-
-            }, function () { //错误
-                reset();
-                alert('网络错误，注销失败，请稍候再试');
-            });
+           
         });
 
     }
