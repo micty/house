@@ -1427,7 +1427,7 @@ define('Seajs', function (require, exports, module) {
 
 
         //先加载 seajs 库
-        var url = Url.format('{~}lib/seajs/seajs.mod.{@}.js');
+        var url = Url.format('{~}f/seajs/seajs.mod.{@}.js');
 
         $.require('Script').load({
             url: url,

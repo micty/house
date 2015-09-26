@@ -1,0 +1,30 @@
+.panel-header {
+  height: 500px;
+}
+.panel-header .tabs {
+  list-style: none;
+  margin: 10px 0px;
+  padding: 0;
+  text-align: center;
+  position: absolute;
+  top: 400px;
+}
+.panel-header .tabs:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.panel-header .tabs li {
+  margin: 0px 0px 0px -4px;
+  display: inline-block;
+  padding: 0px 10px;
+  background: red;
+  /*position: absolute;*/
+}
+.panel-header .tabs li a {
+  text-decoration: none;
+  color: #fff;
+}
+.panel-header .tabs li:last-child {
+  border: none;
+}

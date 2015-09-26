@@ -1,0 +1,21 @@
+body {
+  font-size: 1.0em;
+  margin: 0;
+  background: #ffffff;
+  font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  background: url(../img/bg.jpg) no-repeat;
+  background-size: 100%;
+}
+textarea,
+input[type="text"] {
+  font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+.container {
+  width: 960px;
+  margin: 0px auto 50px auto;
+}
+.container .header {
+  height: 500px;
+  /*border: solid 1px #ddd;*/
+}

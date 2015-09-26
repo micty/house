@@ -1,0 +1,55 @@
+.panel-happy {
+  margin-top: 10px;
+}
+.panel-happy .banner {
+  padding: 10px 10px;
+  background: #0D265C;
+  /* height: 50px; */
+  margin-bottom: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 40px;
+}
+.panel-happy ul {
+  list-style: none;
+}
+.panel-happy .main {
+  border: solid 1px #ddd;
+  border-top: none;
+  padding: 15px 10px;
+  text-align: center;
+}
+.panel-happy .main:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.panel-happy .main ul {
+  margin: 0px;
+  padding: 0px;
+}
+.panel-happy .main li {
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.panel-happy .main li img {
+  width: 130px;
+}
+.panel-happy .main .left {
+  float: left;
+}
+.panel-happy .main .detail {
+  width: 650px;
+  display: inline-block;
+  margin: 0px 0px;
+}
+.panel-happy .main .detail img {
+  max-width: 100%;
+}
+.panel-happy .main .detail p {
+  margin: 5px 0px;
+  font-size: 15px;
+}
+.panel-happy .main .right {
+  float: right;
+}

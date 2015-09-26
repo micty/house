@@ -5,7 +5,8 @@ var __Sidebar__ = [
     {
         name: '报名管理',
         icon: 'icon_order_normal.png',
-        url: 'html/home/index.html',
+        url: 'html/signup/index.html',
+        autoOpen: true,
     },
 
     {

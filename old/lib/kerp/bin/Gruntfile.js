@@ -129,10 +129,22 @@ module.exports = function (grunt) {
         })
     });
 
+    Tasks.add('copy', 'kerp-1', {
+        files: Paths.pair({
+            src: '<%=dir.build%>',
+            dest: '../../../../admin/htdocs/f/kerp',
+            files: [
+                'kerp.debug.js',
+                'kerp.min.js',
+                'kerp.min.js.map',
+            ]
+        })
+    });
+
     Tasks.add('copy', 'kerp-2', {
         files: Paths.pair({
             src: '<%=dir.build%>',
-            dest: '../../../demo/htdocs/f/kerp',
+            dest: '../../../../demo/htdocs/f/kerp',
             files: [
                 'kerp.debug.js',
                 'kerp.min.js',

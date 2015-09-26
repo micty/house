@@ -15,8 +15,8 @@ define('/MenuData', function (require, module, exports) {
         name: '首页',
         isHome: true,
         id: $.String.random(5),
-        //url: 'html/home/index.html',
-        url: 'html/test/index.html',
+        url: 'html/home/index.html',
+        //url: 'html/test/index.html',
     };
 
 

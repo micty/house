@@ -7,6 +7,9 @@
             //字符串中的 {~} 表示站头的根地址；{@} 表示使用的文件版本 debug 或 min
             url: '{~}f/seajs/seajs.mod.{@}.js',
         },
+        'Tabs': {
+            eventName: 'click',
+        },
     });
 
 

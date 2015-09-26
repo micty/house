@@ -41,9 +41,6 @@
 
         //后台接口
         API: {
-            //后台接口的基础地址
-            //url: 'http://172.19.113.112:8080/eshoperp/',  //内网
-            url: 'http://172.20.131.250:8080/eshoperp/',    //外网
             codes: {
                 success: 200,
             },
@@ -72,7 +69,7 @@
 
         //动态加载模块的默认配置 (for seajs)
         Seajs: {
-            base: '{~}f/',
+            base: '{~}f/seajs/',
             debug: true,
             alias: {
                 juery: 'jquery/jquery.js',

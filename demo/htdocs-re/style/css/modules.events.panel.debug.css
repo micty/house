@@ -1,0 +1,133 @@
+.panel-events {
+  height: 240px;
+  /*border: solid 1px #ddd;
+    margin: 5px 0px;*/
+}
+.panel-events .photos {
+  width: 300px;
+  height: 100%;
+  background-color: #eee;
+  display: inline-block;
+}
+.panel-events .photos img {
+  max-height: 240px;
+  max-width: 300px;
+}
+.panel-events .photos ul {
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.39);
+  margin: 0;
+  position: relative;
+  top: -10px;
+  display: -webkit-box;
+  -webkit-box-pack: end;
+}
+.panel-events .photos ul:after {
+  content: '';
+  display: inline-block;
+  clear: both;
+}
+.panel-events .photos li {
+  padding: 0px 6px;
+  background: black;
+  color: #fff;
+  margin: 0px 4px;
+  font-size: 12px;
+  list-style: none;
+  cursor: pointer;
+  border: solid 1px black;
+}
+.panel-events .photos li.on {
+  background: red;
+}
+.panel-events .news {
+  width: 360px;
+  display: inline-block;
+  font-size: 14px;
+  /* margin: 0px 0px; */
+  padding: 0px 10px;
+  /* position: absolute; */
+  border: solid 1px #ddd;
+  height: 238px;
+  overflow: hidden;
+  background-color: #fff;
+}
+.panel-events .news .title {
+  margin: 0px;
+  border-bottom: solid 1px #ddd;
+}
+.panel-events .news .title a {
+  color: #cc2e2f;
+  cursor: auto;
+  font-family: 黑体;
+  font-size: 20px;
+  font-weight: normal;
+  height: auto;
+  line-height: 38px;
+  text-align: center;
+  text-decoration: none;
+  width: auto;
+  zoom: 1;
+}
+.panel-events .news .title a:hover {
+  text-decoration: underline;
+}
+.panel-events .news ul {
+  margin: 10px 0px 0px 0px;
+  padding: 0px;
+  list-style-position: inside;
+}
+.panel-events .news li {
+  padding: 2px 0px;
+}
+.panel-events .news li a {
+  text-decoration: none;
+  color: #000;
+}
+.panel-events .news li a:hover {
+  text-decoration: underline;
+}
+.panel-events .schedule {
+  width: 266px;
+  display: inline-block;
+  /* margin: 0px 6px; */
+  padding: 0px 0px;
+  /* position: absolute; */
+  border: solid 1px #ddd;
+  height: 238px;
+  overflow: hidden;
+  background-color: #fff;
+  font-size: 14px;
+  border-top: none;
+}
+.panel-events .schedule .title {
+  margin: 0px;
+  border-bottom: solid 1px #ddd;
+  background: #185e9a;
+  color: #fff;
+  padding: 10px 10px;
+}
+.panel-events .schedule .title a {
+  color: #cc2e2f;
+  cursor: auto;
+  font-family: 黑体;
+  font-size: 20px;
+  font-weight: normal;
+  height: auto;
+  line-height: 38px;
+  text-align: center;
+  text-decoration: none;
+  width: auto;
+  zoom: 1;
+}
+.panel-events .schedule .title a:hover {
+  text-decoration: underline;
+}
+.panel-events .schedule ul {
+  margin: 10px 0px 0px 0px;
+  padding: 0px 10px;
+  list-style-position: inside;
+}
+.panel-events .schedule li {
+  padding: 1px 0px;
+}
