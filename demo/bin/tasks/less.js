@@ -1,6 +1,11 @@
 ﻿
 
-module.exports = function (grunt, Tasks) {
+module.exports = function () {
+
+    var grunt = require('grunt');
+
+    var Grunter = require('../lib/Grunter.js');
+    var Tasks = Grunter.require('Tasks');
 
     var $ = require('../lib/MiniQuery');
     var Path = require('path');

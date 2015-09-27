@@ -12,9 +12,14 @@ var __Sidebar__ = [
     {
         name: '新闻列表',
         icon: 'icon_res_normal.png',
-        url: 'html/home/index.html',
+        url: 'html/news/list/index.html',
     },
-    
+    {
+        name: '新闻发布',
+        icon: 'icon_res_normal.png',
+        url: 'html/news/add/index.html',
+        autoOpen: true,
+    },
     {
         name: '设置',
         icon: 'icon_setting_normal.png',

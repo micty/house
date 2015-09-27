@@ -10,6 +10,7 @@
     <!--grunt.css.begin-->
     <script>
         [
+            'lib/**/*.less',
             'style/less/index.less',
             'modules/**/*.less'
         ]
@@ -23,17 +24,21 @@
 
     <div class="container">
 
-
         <link rel="grunt" href="modules/header/panel.html" />
+
+        <div id="div-view-master" style="display: none;">
+            
+            <link rel="grunt" href="modules/master/events/panel.html" />
+            <link rel="grunt" href="modules/master/area/panel.html" />
+            <link rel="grunt" href="modules/master/town/panel.html" />
+            <link rel="grunt" href="modules/master/happy/panel.html" />
+            <link rel="grunt" href="modules/master/recommend/panel.html" />
+        </div>
+
+
+        <link rel="grunt" href="modules/news/detail/panel.html" />
         <link rel="grunt" href="modules/news/list/panel.html" />
         <link rel="grunt" href="modules/contact/panel.html" />
-    
-        <link rel="grunt" href="modules/events/panel.html" />
-        <link rel="grunt" href="modules/area/panel.html" />
-        <link rel="grunt" href="modules/town/panel.html" />
-        <link rel="grunt" href="modules/happy/panel.html" />
-        <link rel="grunt" href="modules/recommend/panel.html" />
-
 
     </div>
 

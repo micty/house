@@ -18,7 +18,7 @@ define('/API', function (require, module, exports) {
 
 
         var api = KISP.create('API', 'GetSignupList', {
-            proxy: 'api/signup/GetSignupList.js',
+            proxy: 'api/GetSignupList.js',
         });
 
 

@@ -3,85 +3,77 @@
 .panel-news-list {
     margin-bottom: 20px;
 
-    .title {
-        padding: 5px 20px;
-        margin: 0px;
-        background-color: #4C70B1;
-        color: #fff;
-        font-weight: bold;
-        border-radius: 5px 5px 0px 0px;
-        font-size: 15px;
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
     }
 
+    .main {
+        float: right;
+        width: 765px;
 
-    .news {
-        font-size: 14px;
-        border: solid 1px #ddd;
-        background-color: #fff;
-        min-height: 500px;
-        padding: 5px 0px 20px 0px;
-
-        ul {
-            margin: 10px 0px 0px 0px;
-            padding: 0px 0px;
-            width: 49%;
-            list-style: none;
+        .header {
+            height: initial;
+            margin: 0px;
+            padding: 7px 9px;
+            background-color: #5276B3;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 5px 5px 0px 0px;
         }
 
 
-        li {
-            padding: 5px 10px;
+        .body {
+            border: solid 1px #ddd;
+            padding: 10px 10px;
+            min-height: 500px;
 
-            &:before {
-                content: '';
-                display: inline-block;
-                background: #4C70B1;
-                width: 4px;
-                height: 4px;
-                border-radius: 100%;
-                margin-right: 10px;
-                position: relative;
-                top: -3px;
+            ul {
+                margin: 10px 0px 0px 0px;
+                padding: 0px 0px;
+                list-style: none;
             }
 
-            a {
-                text-decoration: none;
-                color: #000;
 
-                &:hover {
-                    text-decoration: underline;
-                    /*color: #017BC8;*/
-                    color: red;
-                }
+            li {
+                padding: 5px 10px;
 
-                span {
-                    float: right;
-                    color: #B9B9B9;
-                    font-size: 12px;
-                }
-
-                &:after {
+                &:before {
                     content: '';
-                    display: block;
-                    clear: both;
+                    display: inline-block;
+                    background: #4C70B1;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 100%;
+                    margin-right: 10px;
+                    position: relative;
+                    top: -3px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #000;
+
+                    &:hover {
+                        text-decoration: underline;
+                        /*color: #017BC8;*/
+                        color: red;
+                    }
+
+                    span {
+                        float: right;
+                        color: #B9B9B9;
+                        font-size: 12px;
+                    }
+
+                    &:after {
+                        content: '';
+                        display: block;
+                        clear: both;
+                    }
                 }
             }
-        }
-
-        .left {
-            float: left;
-            border-right: solid 1px #ddd;
-            width: 50%;
-        }
-
-        .right {
-            float: right;
-        }
-
-        &:after {
-            content: '';
-            display: block;
-            clear: both;
         }
     }
 }

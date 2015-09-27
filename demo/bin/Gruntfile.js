@@ -4,6 +4,7 @@
 module.exports = function (grunt) {
 
 
+
     'use strict';
 
 
@@ -19,19 +20,24 @@ module.exports = function (grunt) {
     });
 
     Tasks.load();
-    
+
 
     //在命令行调用 grunt 时，会直接执行该任务。
     Tasks.register('default');
-    
+
 
     //在命令行调用 grunt watch 时，会直接执行该任务。
-    require('./tasks/watch-html.js')(grunt, Tasks);
-    require('./tasks/watch-less.js')(grunt, Tasks);
-    require('./tasks/watch-js.js')(grunt, Tasks);
+    var pages = [
+       
+    ];
 
-    require('./tasks/clean.js')(grunt, Tasks);
-    require('./tasks/less.js')(grunt, Tasks);
+    require('./tasks/watch-html.js')(pages);
+    require('./tasks/watch-less.js')(pages);
+    require('./tasks/watch-js.js')(pages);
+
+
+    require('./tasks/clean.js')();
+    require('./tasks/less.js')();
 
     //清空 css 目录里的所有 css 文件
     grunt.task.run('clean:css');
@@ -39,11 +45,19 @@ module.exports = function (grunt) {
 
     //立即编译所有 html
     grunt.task.run('copy:index-html');
-    grunt.task.run('copy:card-detail-html');
+
+    pages.forEach(function (item, index) {
+        var name = 'HTML$' + item;
+        grunt.task.run('copy:' + name);
+
+    });
+
+
 
 
     //立即编译所有 less
     grunt.task.run('less:debug');
+
     
 
 

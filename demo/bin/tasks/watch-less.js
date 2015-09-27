@@ -1,6 +1,10 @@
 ﻿
 
-module.exports = function (grunt, Tasks) {
+module.exports = function (pages) {
+
+    var grunt = require('grunt');
+    var Grunter = require('../lib/Grunter.js');
+    var Tasks = Grunter.require('Tasks');
 
     var Path = require('path');
     var pkg = grunt.file.readJSON('package.json');
@@ -79,18 +83,40 @@ module.exports = function (grunt, Tasks) {
         }
     });
 
-    //其他页面的，一个个的写
-    Tasks.add('watch', 'card-detail-less', {
-        files: [
-            '<%=dir.htdocs%>html/card-detail/**/*.less',
-        ],
-        tasks: [
-            'copy:card-detail-html', //这里用到 watch-html.js 中的任务
-        ],
-        options: {
-            spawn: false,
-            event: ['added', 'deleted', 'renamed'], //监听事件
-        }
+    
+
+    pages.forEach(function (item, index) {
+
+        var name = 'LESS$' + item;
+
+        Tasks.add('watch', name, {
+            files: [
+                '<%=dir.htdocs%>' + item + '/**/*.less',
+            ],
+            tasks: [
+                'copy:HTML$' + item, //这里用到 watch-html.js 中的任务
+            ],
+            options: {
+                spawn: false,
+                event: ['added', 'deleted', 'renamed'], //监听事件
+            }
+        });
+
     });
+
+
+    ////其他页面的，一个个的写
+    //Tasks.add('watch', 'card-detail-less', {
+    //    files: [
+    //        '<%=dir.htdocs%>html/card-detail/**/*.less',
+    //    ],
+    //    tasks: [
+    //        'copy:card-detail-html', //这里用到 watch-html.js 中的任务
+    //    ],
+    //    options: {
+    //        spawn: false,
+    //        event: ['added', 'deleted', 'renamed'], //监听事件
+    //    }
+    //});
 
 };
