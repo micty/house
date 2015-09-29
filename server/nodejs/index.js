@@ -28,21 +28,58 @@ app.use(bodyParser.urlencoded({
 //app.use(express.static('../../demo/htdocs'));
 
 
-var fs = require('fs');
-
-
-app.post('/Paper/Add', function (req, res) {
-
+function allow(res) {
     res.set({
         'Access-Control-Allow-Origin': '*',
     });
+}
+    
+var Paper = require('./modules/Paper');
+
+app.post('/Paper.add', function (req, res) {
+
+    allow(res);
+    Paper.add(req.body, res);
+
+});
+
+app.post('/Paper.update', function (req, res) {
+
+    allow(res);
+
+    Paper.update(req.body, res);
+
+});
 
 
-    var Paper = require('./modules/Paper');
-    Paper.add(req, res);
+
+app.get('/Paper.get', function (req, res) {
+
+    allow(res);
+    var query = req.query;
+    Paper.get(query.type, query.id, res);
+
+});
+
+app.get('/Paper.remove', function (req, res) {
+
+    allow(res);
+    var query = req.query;
+    Paper.remove(query.type, query.id, res);
+
+});
+
+
+
+app.get('/Paper.list', function (req, res) {
+
+    allow(res);
+    var query = req.query;
+    Paper.list(query.type, res);
 
 
 });
+
 
 
 

@@ -144,7 +144,9 @@ KISP.launch(function (require, module) {
 
     Iframe.on('open', function (group, index, data) {
 
+
         MenuData.getItem(group, index, function (item) {
+
 
             if (!item) {
                 return;
@@ -152,10 +154,12 @@ KISP.launch(function (require, module) {
 
             var query = data.query;
             if (query) {
+                var Url = MiniQuery.require('Url');
+
                 //item.url = $.Url.addQueryString(item.url, query);
                 //不能直接修改原对象的 url，否则可能会影响到原来的 url
                 item = $.Object.extend({}, item, {
-                    url: $.Url.addQueryString(item.url, query)
+                    url: Url.addQueryString(item.url, query),
                 });
             }
 

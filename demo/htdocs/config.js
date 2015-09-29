@@ -10,6 +10,9 @@
         'Tabs': {
             eventName: 'click',
         },
+        'API': {
+            url: 'http://localhost:3000/',
+        },
     });
 
 

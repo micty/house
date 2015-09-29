@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,13 +9,7 @@
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
 
     <!--grunt.css.begin-->
-    <script>
-        [
-            '../../../style/less/global.less',
-            'index.less',
-            'modules/**/*.less',
-        ]
-    </script>
+    <link href="../../../style/css/html.paper.list.index.debug.css?c5" rel="stylesheet" />
     <!--grunt.css.end-->
 
 
@@ -33,14 +27,13 @@
             </tr>
 
             #--row.begin--#
-            <tr>
+            <tr data-index="{index}">
                 <td>{no}</td>
                 <td>{title}</td>
                 <td>{datetime}</td>
                 <td class="operate">
-                    <span data-cmd="edit">编辑</span>
-                    <span data-cmd="remove">删除</span>
-                    <span data-cmd="hide">隐藏</span>
+                    <span data-index="{index}" data-cmd="edit">编辑</span>
+                    <span data-index="{index}" data-cmd="remove">删除</span>
                 </td>
             </tr>
             #--row.end--#
@@ -57,13 +50,9 @@
 
 
     <!--grunt.js.begin-->
-    <script>
-        [
-            '../../../lib/**/*.js',
-            'modules/**/*.js',
-            'index.js',
-        ]
-    </script>
+    <script src="modules/API.js?3d"></script>
+    <script src="modules/List.js?3d"></script>
+    <script src="index.js?3d"></script>
     <!--grunt.js.end-->
 
 

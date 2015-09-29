@@ -17,10 +17,12 @@ define('/Message', function (require, module, exports) {
         var p = Url.getQueryString(window) || {};
 
 
-        var newsId = p.newsId;
-        if (newsId) {
+        var type = p.type;
+        var id = p.id;
 
-            panel.fire('news', [newsId]);
+        if (type && id) {
+
+            panel.fire('news', [type, id]);
             return;
         }
 

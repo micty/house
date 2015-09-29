@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>新闻发布</title>
+    <title>文章发布</title>
 
 
 
@@ -12,22 +12,25 @@
     <link href="../../../style/css/style.less.global.debug.css" rel="stylesheet" />
     
     <!--grunt.css.begin-->
-    <link href="../../../style/css/html.news.add.index.debug.css?b1" rel="stylesheet" />
+    <link href="../../../style/css/html.paper.add.index.debug.css?31" rel="stylesheet" />
     <!--grunt.css.end-->
 
 
 </head>
 <body class="iframe">
 
-    <div class="header">
-        <input id="txt-title" type="text" placeholder="新闻标题" />
-    </div>
+    <div class="main">
 
-    <div id="editor" style="width: 100%; height: 400px;">
-    </div>
+        <div class="header">
+            <input id="txt-title" type="text" placeholder="文章标题" />
+        </div>
 
-    <div class="footer">
-        <button id="btn-submit">立即发表</button>
+        <div id="editor" style=" width: 100%; height: 400px;">
+        </div>
+
+        <div id="div-footer" class="footer">
+            <!--<button>立即发布{type}</button>-->
+        </div>
     </div>
 
     <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
@@ -42,8 +45,11 @@
     <script src="../../../f/ueditor/ueditor.all.js"></script>
 
     <!--grunt.js.begin-->
-    <script src="modules/API.js?eb"></script>
-    <script src="index.js?eb"></script>
+    <script src="modules/API.js?12"></script>
+    <script src="modules/Content.js?12"></script>
+    <script src="modules/Footer.js?12"></script>
+    <script src="modules/Title.js?12"></script>
+    <script src="index.js?12"></script>
     <!--grunt.js.end-->
 
 

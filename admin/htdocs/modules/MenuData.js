@@ -70,7 +70,8 @@ define('/MenuData', function (require, module, exports) {
             load(function (list) {
 
                 var group = list[no];
-                var item = group ? group.items[index] : null;
+                //var item = group ? group.items[index] : null;
+                var item = group;
                 fn(item);
 
             });

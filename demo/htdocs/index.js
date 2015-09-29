@@ -58,7 +58,7 @@ KISP.launch(function (require, module) {
         },
 
         'news': function () {
-            Nav.to('NewsList');
+            Nav.to('NewsList', 'news');
         },
 
         'contact': function () {
@@ -88,8 +88,8 @@ KISP.launch(function (require, module) {
             Nav.to('Master');
         },
 
-        'news': function (id) {
-            Nav.to('NewsDetail', id);
+        'news': function (type, id) {
+            Nav.to('NewsDetail', type, id);
         },
         
     });

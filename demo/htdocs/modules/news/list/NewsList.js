@@ -8,13 +8,14 @@ define('/NewsList', function (require, module) {
 
 
     var API = module.require('API');
+    var Header = module.require('Header');
     var List = module.require('List');
 
 
     var view = KISP.create('Panel', '#div-view-news-list');
 
     var loading = null;
-
+    var currentType = '';
 
     view.on('init', function () {
 
@@ -46,16 +47,18 @@ define('/NewsList', function (require, module) {
 
 
 
-    view.on('render', function () {
+    view.on('render', function (type) {
 
-        if (view.rendered()) {
+        if (type == currentType && view.rendered() ) {
             return;
         }
 
- 
+        currentType = type;
 
         loading.show();
-        API.get();
+
+        Header.render(type);
+        API.get(type);
        
     });
 

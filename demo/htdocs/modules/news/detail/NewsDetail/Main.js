@@ -17,7 +17,10 @@ define('/NewsDetail/Main', function (require, module) {
 
 
     panel.on('render', function (data) {
- 
+        
+        panel.fill({
+            'content': data.content,
+        });
         
     });
 

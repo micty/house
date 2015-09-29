@@ -23,7 +23,16 @@ define('/NewsList/List', function (require, module) {
         
         list = data;
 
-        panel.fill(list);
+        panel.fill(list, function (item, index) {
+
+            return {
+                'index': index,
+                'type': item.type,
+                'title': item.title,
+                'id': item.id,
+                'date': item.date,
+            };
+        });
 
     });
 

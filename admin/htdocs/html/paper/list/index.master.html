@@ -2,18 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>新闻发布</title>
-
-
+    <title>新闻列表</title>
 
 
     <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
-    <link href="../../../style/css/style.less.global.debug.css" rel="stylesheet" />
-    
+
     <!--grunt.css.begin-->
     <script>
         [
+            '../../../style/less/global.less',
             'index.less',
             'modules/**/*.less',
         ]
@@ -23,16 +21,31 @@
 
 </head>
 <body class="iframe">
+    
+    <div id="div-list" class="list">
+        <!--
+        <table cellspacing="0" cellpadding="0">
+            <tr class="header">
+                <th>序号</th>
+                <th>标题</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
 
-    <div class="header">
-        <input id="txt-title" type="text" placeholder="新闻标题" />
-    </div>
-
-    <div id="editor" style="width: 100%; height: 400px;">
-    </div>
-
-    <div class="footer">
-        <button id="btn-submit">立即发表</button>
+            #--row.begin--#
+            <tr data-index="{index}">
+                <td>{no}</td>
+                <td>{title}</td>
+                <td>{datetime}</td>
+                <td class="operate">
+                    <span data-index="{index}" data-cmd="edit">编辑</span>
+                    <span data-index="{index}" data-cmd="remove">删除</span>
+                </td>
+            </tr>
+            #--row.end--#
+            
+        </table>
+        -->
     </div>
 
     <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
@@ -41,10 +54,6 @@
     <script src="../../../f/kerp/kerp.debug.js"></script>
     <script src="../../../config.js"></script>
 
-
-
-    <script src="../../../f/ueditor/ueditor.config.js"></script>
-    <script src="../../../f/ueditor/ueditor.all.js"></script>
 
     <!--grunt.js.begin-->
     <script>
@@ -55,7 +64,6 @@
         ]
     </script>
     <!--grunt.js.end-->
-
 
 
 

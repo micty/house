@@ -28,8 +28,8 @@ module.exports = function (grunt) {
     //在命令行调用 grunt watch 时，会直接执行该任务。
     var pages = [
         'html/signup',
-        'html/news/list',
-        'html/news/add',
+        'html/paper/list',
+        'html/paper/add',
     ];
 
     require('./tasks/watch-html.js')(pages);

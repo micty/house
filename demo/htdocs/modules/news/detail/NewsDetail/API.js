@@ -14,11 +14,11 @@ define('/NewsDetail/API', function (require, module, exports) {
 
 
     //获取数据
-    function get() {
+    function get(type, id) {
 
 
-        var api = KISP.create('API', 'GetNewsDetail', {
-            proxy: 'api/GetNewsDetail.js',
+        var api = KISP.create('API', 'Paper.get', {
+            //proxy: 'api/GetNewsDetail.js',
         });
 
 
@@ -31,7 +31,11 @@ define('/NewsDetail/API', function (require, module, exports) {
             'success': function (data, json, xhr) {
 
 
-                emitter.fire('success', [data]);
+                emitter.fire('success', [{
+                    'datetime': data.datetime,
+                    'title': decodeURIComponent(data.title),
+                    'content': decodeURIComponent(data.content),
+                }]);
 
             },
 
@@ -52,7 +56,10 @@ define('/NewsDetail/API', function (require, module, exports) {
             },
         });
 
-        api.get();
+        api.get({
+            'type': type,
+            'id': id,
+        });
 
 
     }

@@ -19,7 +19,7 @@ define('/NewsDetail/Header', function (require, module) {
     });
 
 
-    panel.on('render', function (list) {
+    panel.on('render', function (data) {
 
 
        

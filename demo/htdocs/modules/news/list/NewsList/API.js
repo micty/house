@@ -14,11 +14,11 @@ define('/NewsList/API', function (require, module, exports) {
 
 
     //获取数据
-    function get() {
+    function get(type) {
 
 
-        var api = KISP.create('API', 'GetNewsList', {
-            proxy: 'api/GetNewsList.js',
+        var api = KISP.create('API', 'Paper.list', {
+            //proxy: 'api/GetNewsList.js',
         });
 
 
@@ -30,8 +30,17 @@ define('/NewsList/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
+                var list = $.Array.keep(data, function (item, index) {
 
-                emitter.fire('success', [data]);
+                    return $.Object.extend({}, item, {
+                        'type': type,
+                        'title': decodeURIComponent(item.title),
+                        'date': item.datetime.split(' ')[0],
+                    });
+
+                });
+
+                emitter.fire('success', [list]);
 
             },
 
@@ -52,7 +61,9 @@ define('/NewsList/API', function (require, module, exports) {
             },
         });
 
-        api.get();
+        api.get({
+            'type': type,
+        });
 
 
     }
