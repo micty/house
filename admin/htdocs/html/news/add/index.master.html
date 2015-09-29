@@ -9,11 +9,11 @@
 
     <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
-
+    <link href="../../../style/css/style.less.global.debug.css" rel="stylesheet" />
+    
     <!--grunt.css.begin-->
     <script>
         [
-            '../../../style/less/global.less',
             'index.less',
             'modules/**/*.less',
         ]
@@ -25,7 +25,7 @@
 <body class="iframe">
 
     <div class="header">
-        <input type="text" placeholder="新闻标题" />
+        <input id="txt-title" type="text" placeholder="新闻标题" />
     </div>
 
     <div id="editor" style="width: 100%; height: 400px;">

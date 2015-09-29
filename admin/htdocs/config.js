@@ -23,6 +23,10 @@
         'Seajs': {
             url: '{~}f/seajs/seajs.mod.{@}.js',
         },
+
+        'API': {
+            url: 'http://localhost:3000/',
+        },
     });
 
 

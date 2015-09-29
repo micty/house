@@ -1,0 +1,13 @@
+{
+  "name": "house",
+  "version": "1.0.0",
+  "description": "house-server",
+  "main": "index.js",
+ 
+  "author": "micty",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  }
+}
