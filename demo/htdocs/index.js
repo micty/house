@@ -53,12 +53,19 @@ KISP.launch(function (require, module) {
             Nav.to('Master', 'happy');
         },
 
+        'keypoint': function () {
+            Nav.to('Master', 'keypoint');
+        },
+
         'recommend': function () {
             Nav.to('Master', 'recommend');
         },
 
         'news': function () {
             Nav.to('NewsList', 'news');
+        },
+        'policy': function () {
+            Nav.to('NewsList', 'policy');
         },
 
         'contact': function () {
@@ -73,6 +80,15 @@ KISP.launch(function (require, module) {
     var Master = module.require('Master');
     Master.on({
         'render': function () {
+
+            var Events = module.require('Events');
+            Events.render();
+
+            var Keypoint = module.require('Keypoint');
+            Keypoint.render();
+
+            var Town = module.require('Town');
+            Town.render();
 
             var Recommend = module.require('Recommend');
             Recommend.render();

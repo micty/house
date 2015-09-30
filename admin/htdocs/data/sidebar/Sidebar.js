@@ -15,6 +15,18 @@ var __Sidebar__ = [
         autoOpen: true,
     },
     {
+        name: '政策列表',
+        icon: 'icon_res_normal.png',
+        url: 'html/paper/list/index.html?type=policy',
+        autoOpen: true,
+    },
+    {
+        name: '楼盘列表',
+        icon: 'icon_res_normal.png',
+        url: 'html/paper/list/index.html?type=house',
+        autoOpen: true,
+    },
+    {
         name: '新闻发布',
         icon: 'icon_res_normal.png',
         url: 'html/paper/add/index.html?type=news',

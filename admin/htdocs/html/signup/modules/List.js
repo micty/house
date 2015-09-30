@@ -29,11 +29,12 @@ define('/List', function (require, module) {
                     fn: function (item, index) {
                         return {
                             data: {
+                                'index': index,
                                 'no': index + 1,
                                 'name': item.name,
                                 'phone': item.phone,
                                 'datetime': item.datetime,
-                                'remark': item.remark,
+                                'intent': item.intent,
 
                             },
                         };
@@ -47,9 +48,17 @@ define('/List', function (require, module) {
 
     panel.on('render', function (data) {
 
-        
+
         list = data;
-        template.fill(list);
+
+        //二级模板填充所需要的数据格式
+        template.fill([
+            {
+                items: list,
+            },
+        ]);
+
+        panel.$.toggleClass('nodata', list.length == 0);
 
     });
 

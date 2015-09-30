@@ -2,6 +2,23 @@
 
 .list {
 
+    &.nodata {
+        text-align: center;
+        font-size: 34px;
+        border: solid 1px #F00;
+        padding: 40px 0px;
+        background-color: #FFF7DF;
+        border-radius: 5px;
+
+        &:after {
+            content: '暂无数据';
+        }
+
+        table {
+            display: none;
+        }
+    }
+
     table {
         width: 100%;
         width: 100%;
@@ -15,8 +32,8 @@
         border: solid 1px #5392CC;
         border-left: none;
         border-top: none;
-        text-align: center;
-        padding: 2px 2px;
+        text-align: left;
+        padding: 5px 5px;
         font-size: 14px;
     }
 

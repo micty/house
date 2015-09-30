@@ -7,6 +7,7 @@ define('/Recommend', function (require, module) {
     var KISP = require('KISP');
 
     var API = module.require('API');
+    var Footer = module.require('Footer');
     var List = module.require('List');
     var Tabs = module.require('Tabs');
 
@@ -16,17 +17,24 @@ define('/Recommend', function (require, module) {
 
     panel.on('init', function () {
 
-        API.on({
-
-            'success': function (list) {
+        API.on('success', {
+            'get': function (list) {
                 Tabs.render(list);
-               
+                Footer.render();
             },
         });
 
         Tabs.on({
             'change': function (item) {
                 List.render(item.items);
+            },
+        });
+
+
+        Footer.on({
+            'submit': function (data) {
+
+                API.post(data);
             },
         });
 

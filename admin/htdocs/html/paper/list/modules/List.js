@@ -14,6 +14,7 @@ define('/List', function (require, module) {
 
     panel.on('init', function () {
 
+        var baseUrl = KISP.data('demo').url;
 
         template = KISP.create('Template', '#div-list', {
        
@@ -33,6 +34,9 @@ define('/List', function (require, module) {
                                 'no': index + 1,
                                 'title': item.title,
                                 'datetime': item.datetime,
+                                'id': item.id,
+                                'type': item.type,
+                                'url': baseUrl,
                             },
                         };
                     },

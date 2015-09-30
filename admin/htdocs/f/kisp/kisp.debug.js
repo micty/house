@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: house 
 * version: 3.0.0
-* build: 2015-09-23 17:33:00
+* build: 2015-09-30 09:45:32
 * files: 61(59)
 *    partial/house/begin.js
 *    core/Module.js
@@ -2198,6 +2198,7 @@ define('Seajs', function (require, module, exports) {
 define('Alert', function (require, module, exports) {
 
     var $ = require('$');
+    var Config = require('Config');
 
 
     //根据文本来计算高度，大概值，并不要求很准确
@@ -2221,6 +2222,8 @@ define('Alert', function (require, module, exports) {
     * 创建一个 alert 对话框。
     */
     function create(text, text1, textN, fn) {
+
+        config = Config.clone(module.id);
 
         //重载 alert(obj); 以方便程序员调试查看 json 对象。
         if (typeof text == 'object') {
@@ -2255,15 +2258,19 @@ define('Alert', function (require, module, exports) {
         var Dialog = require('Dialog');
 
         var dialog = new Dialog({
-            'text': text,
-            'buttons': [{ text: '确定', fn: fn, }],
-            'volatile': false,
-            'mask': true,
-            'autoClosed': true,
-            'width': '80%',
-            'z-index': 99999,
             'cssClass': 'Alert',
-            'height': getHeight(text),
+            'text': text,
+            'buttons': [{
+                text: config.button,
+                fn: fn,
+            }],
+
+            'volatile': config.volatile,
+            'mask': config.mask,
+            'autoClosed': config.autoClosed,
+            'width': config.width,
+            'z-index': config['z-index'],
+            'height': config.height ? config.height : getHeight(text),
         });
 
         return dialog;
@@ -2382,12 +2389,18 @@ define('Dialog', function (require, module, exports) {
             $(meta.div).css(p);
         });
 
+        
     }
 
 
     //实例方法
     Dialog.prototype = /**@lends Dialog#*/ {
         constructor: Dialog,
+
+        /**
+        * $(container) 的快捷方式。
+        */
+        $: null,
 
         /**
         * 显示本组件。
@@ -2533,7 +2546,7 @@ define('Dialog', function (require, module, exports) {
 
             this.remove();
             emitter.destroy();
-            scroller.destroy();
+            scroller && scroller.destroy(); //在 PC 端为 null
 
             mapper.remove(this);
         },
@@ -2714,6 +2727,10 @@ define('Dialog/Renderer', function (require, module, exports) {
         
 
         var div = document.getElementById(id);
+
+        //暴露一个 jQuery 对象给外面使用。 但为了安全起见，内部不使用这个对象。
+        dialog.$ = $(div);
+
         return div;
 
     }
@@ -2794,6 +2811,7 @@ define('Dialog/Style', function (require, module, exports) {
             'height',
             'width',
             'z-index',
+            'position',
         ]);
 
         var width = style.width;
@@ -3331,6 +3349,7 @@ define('Loading/Style', function (require, module, exports) {
             'top',
             'width',
             'z-index',
+            'position',
         ]);
 
         ////优先使用 bottom 而非 top
@@ -3719,6 +3738,7 @@ define('Mask/Style', function (require, module, exports) {
             'bottom',
             'background',
             'z-index',
+            'position',
         ]);
 
 
@@ -4149,6 +4169,7 @@ define('Toast/Style', function (require, module, exports) {
             'top',
             'width',
             'z-index',
+            'position',
         ]);
 
 
@@ -6477,7 +6498,7 @@ define('defaults', /**@lends defaults*/ {
         /**
         * 内容区是否可滚动。
         */
-        scrollable: true,
+        scrollable: false,
 
         autoClosed: true,
 
@@ -6493,9 +6514,12 @@ define('defaults', /**@lends defaults*/ {
         sample: 'iOS',
         cssClass: '',
         eventName: 'click',
-        width: '80%',
-        height: '50%',
+        width: 400,
+        height: 160,
         buttons: [],
+
+        //PC 端的用 fixed定位
+        'position': 'fixed',
     },
 
     /**
@@ -6537,6 +6561,19 @@ define('defaults', /**@lends defaults*/ {
         'top': '50%',
         'width': 120,
         'z-index': 1024,
+
+        //PC 端的用 fixed定位
+        'position': 'fixed',
+    },
+
+    'Alert': {
+
+        'button': '确定',
+        'volatile': false,
+        'mask': true,
+        'autoClosed': true,
+        'width': 450,
+        'z-index': 99999,
     },
 
     /**
@@ -6566,6 +6603,8 @@ define('defaults', /**@lends defaults*/ {
         'opacity': 0.5,
         'background': '#000',
         'z-index': 1024,
+        //PC 端的用 fixed定位
+        'position': 'fixed',
     },
 
     'Tabs': {
@@ -6610,6 +6649,9 @@ define('defaults', /**@lends defaults*/ {
         icon: 'check',
         duration: 0, // 0 表示一直显示。
         //默认样式
+
+        //PC 端的用 fixed定位
+        'position': 'fixed',
         
     },
 

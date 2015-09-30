@@ -29,6 +29,13 @@
         },
     });
 
+    KISP.data({
+        'demo': {
+            //在 paper/list 用到
+            url: '../../../../../demo/htdocs/index.html',
+        },
+    });
+
 
 
 

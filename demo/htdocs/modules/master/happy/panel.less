@@ -5,24 +5,67 @@
 
 
     .banner {
-        padding: 10px 10px;
         background: #0D265C;
-        /* height: 50px; */
         margin-bottom: 5px;
-        color: #fff;
+        color: rgba(255, 255, 255, 0);
         text-align: center;
         font-size: 40px;
+        background: url('../img/banner-happy.jpg') no-repeat;
+        height: 55px;
+        line-height: 55px;
     }
 
-    ul {
-        list-style: none;
-    }
 
     .main {
         border: solid 1px #ddd;
         border-top: none;
         padding: 15px 10px;
-        text-align: center;
+
+        .photos {
+            float: left;
+            width: 590px;
+            margin-top: -24px;
+
+            .title {
+                position: relative;
+                top: 24px;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: #fff;
+                font-size: 12px;
+                padding: 5px 10px;
+                /* float: left; */
+                /* display: none; */
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            .pager {
+                padding: 0;
+                background-color: rgba(0, 0, 0, 0.39);
+                margin: 0;
+                position: relative;
+                top: -22px;
+                display: -webkit-box;
+                -webkit-box-pack: end;
+
+                li {
+                    padding: 0px 6px;
+                    background: black;
+                    color: #fff;
+                    margin: 0px 4px;
+                    font-size: 12px;
+                    list-style: none;
+                    cursor: pointer;
+                    border: solid 1px black;
+
+                    &.on {
+                        background: red;
+                    }
+                }
+            }
+        }
 
         &:after {
             content: '';
@@ -30,41 +73,41 @@
             clear: both;
         }
 
-        ul {
+
+
+
+        .sidebar {
+            list-style: none;
+            padding: 0px 0px;
             margin: 0px;
-            padding: 0px;
-        }
-
-        li {
-            margin-bottom: 6px;
-            cursor: pointer;
-
-            img {
-                width: 130px;
-            }
-        }
-
-        .left {
-            float: left;
-        }
-
-        .detail {
-            width: 650px;
-            display: inline-block;
-            margin: 0px 0px;
-
-            img {
-                max-width: 100%;
-            }
-
-            p {
-                margin: 5px 0px;
-                font-size: 15px;
-            }
-        }
-
-        .right {
+            text-align: center;
             float: right;
+            width: 34%;
+
+            li {
+                margin: 1px 0px 9px 0px;
+                padding: 5px 0px;
+                border: solid 1px #ddd;
+            }
+
+            img {
+                border: solid 1px #ddd;
+            }
+
+            div {
+                font-size: 12px;
+                width: 65%;
+                display: inline-block;
+                /*position: relative;*/
+                /*top: -13px;*/
+                /* color: #006ba8; */
+                text-align: left;
+
+                p {
+                    text-indent: 22px;
+                    margin: 0;
+                }
+            }
         }
     }
 }

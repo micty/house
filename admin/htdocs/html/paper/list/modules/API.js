@@ -39,6 +39,7 @@ define('/API', function (require, module, exports) {
 
                 var list = $.Array.keep(data, function (item, index) {
                     item.title = decodeURIComponent(item.title);
+                    item.type = type;
                     return item;
                 });
 

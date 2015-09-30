@@ -1,0 +1,19 @@
+
+{
+    "code": 200,
+    "msg": "",
+    "data": [
+        {
+            "url": "style/img/keypoint-01.jpg"
+        },
+        {
+            "url": "style/img/keypoint-02.jpg"
+        },
+        {
+            "url": "style/img/keypoint-03.jpg"
+        },
+        {
+            "url": "style/img/keypoint-04.jpg"
+        }
+    ]
+}

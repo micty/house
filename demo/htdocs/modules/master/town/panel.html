@@ -1,55 +1,67 @@
-﻿<div class="panel-town">
+﻿<div id="div-panel-town" class="panel-town">
     <div class="banner">镇街建设</div>
     <div class="main">
-        <ul class="timeline" style="padding-left: 500px;">
-            <li>祖庙街道</li>
-            <li class="on">张槎街道</li>
-            <li>石湾街道</li>
-            <li>南庄镇</li>
-        </ul>
-        <ul class="show">
-            <li>
-                <div class="cover">
-                    <img src="style/img/town-1.jpg" />
-                </div>
+        <div class="photos">
+            <img src="style/img/town-map.jpg" usemap="#map" />
+            <map name="map">
+                <area shape="rect" coords="147,223,214,322" href="javascript:" alt="南庄">
+                <area shape="rect" coords="390,169,451,250" href="javascript:" alt="石湾">
+                <area shape="rect" coords="435,63,495,137" href="javascript:" alt="祖庙">
+                <area shape="rect" coords="260,60,315,140" href="javascript:" alt="张槎">
+            </map>
+        </div>
 
-                <div class="desc">
-                    <p class="title">祖庙街道</p>
-                    <p class="content">祖庙街道位于佛山市禅城区东北部，东至桂澜路，南沿季华路，西以佛山大道为界，北抵汾江河北岸，辖区面积21.5平方公里，人口约60万，下辖64个行政村(居)，是佛山市委、市政府驻地，辖区集中了绝大部分佛山市级文化、教育、医疗和社会福利机构，现为佛山市政治、经济、商业、文化中心...<a href="#">[详细]</a></p>
-                </div>
-            </li>
-            <li>
-                <div class="cover">
-                    <img src="style/img/town-2.jpg" />
-                </div>
-
-                <div class="desc">
-                    <p class="title">张槎街道</p>
-                    <p class="content">张槎街道位于佛山市禅城区中西部，是广佛经济商圈的重要组成部分，交通便捷，人杰地灵，总面积26.5平方公里，辖15个村委会和6个居委会，常住人口8万多人，外来人口20多万人。张槎有着较为典型的岭南水乡气息，拥有东平河、汾江河、王借岗自然风景区等，人居环境和经商环境良好...<a href="#">[详细]</a></p>
-                </div>
-            </li>
-            <li>
-                <div class="cover">
-                    <img src="style/img/town-3.jpg" />
-                </div>
-
-                <div class="desc">
-                    <p class="title">石湾街道</p>
-                    <p class="content">石湾镇街道位于禅城区东南部，北江支流东平河北岸，东邻南海区，南望顺德区，是佛山市中心城区的重要组成部分，是禅城区委、区政府所在地。辖区面积26.62平方公里，下辖12个行政村、24个社区居委会，常住人口约30万人。石湾辖区交通路网发达，季华路、魁奇路、佛山大道等主干道...<a href="#">[详细]</a></p>
-                </div>
-            </li>
-            <li>
-                <div class="cover">
-                    <img src="style/img/town-4.jpg" />
-                </div>
-
-                <div class="desc">
-                    <p class="title">南庄镇</p>
-                    <p class="content">南庄镇位于佛山市禅城区西部，是佛山市中心城区的重要组成部分。全镇面积76.7平方公里；辖18个村委会、2个居委会；户籍人口约8万人，外来人口约6万人；拥有国家级生态村1个，省宜居示范村庄2个，市级生态村18个。南庄镇地处珠三角冲积平原，自古以“桑基鱼塘”著称，河网交错...<a href="#">[详细]</a></p>
-                </div>
-            </li>
-
-        </ul>
+        <div class="sidebar" data-name="南庄">
+            <img src="style/img/town-01.jpg" />
+            <div>
+                <p class="title">水乡南庄 绿色家园</p>
+                <p>
+                    -----这里，是佛山城市与制造业基地的连接点，禅西城市新区。 <br />
+                    -----这里，是佛山产业创业的沃土，世界级的陶瓷商贸中心。<br />
+                    -----这里，按城市中心标准布局生产生活配套，结合生态环境打造宜居家园<br />
+                    -----这里，保留着岭南水乡的古老风貌，古风古韵值得细品。<br />
+                </p>
+            </div>
+        </div>
+        <div class="sidebar" data-name="石湾" style="display:none;">
+            <img src="style/img/town-02.jpg" />
+            <div>
+                <p class="title">“熟地”石湾</p>
+                <p>
+                    -----这里，三大片区遇见不同的惊喜<br />
+                    -----东部奇槎：广州南站桥头堡、禅城中关村<br />
+                    -----中部片区：商居中心、配套成熟<br />
+                    -----石湾西片区：南国陶都、文创基地<br />
+                </p>
+            </div>
+        </div>
+        <div class="sidebar" data-name="祖庙" style="display:none;">
+            <img src="style/img/town-03.jpg" />
+            <div>
+                <p class="title">中心祖庙 老城新姿</p>
+                <p>
+                    -----这里，是佛山城市中心，广佛同城中心板块<br />
+                    -----这里，名企总部云集，商贸服务业中心<br />
+                    -----这里，教育、医疗等优质资源集中，居住环境成熟<br />
+                    -----这里，城市管理有序，佛山历史文化的“客厅”<br />
+                </p>
+            </div>
+        </div>
+        <div class="sidebar" data-name="张槎" style="display:none;">
+            <img src="style/img/town-04.jpg" />
+            <div>
+                <p class="title">创业张槎 产业新城</p>
+                <p>
+                    -----这里，是都市里的高新区，佛山制造业升级和服务的主战场<br />
+                    -----这里，便利地与广州对接，创新创业资源汇聚<br />
+                    -----这里，村居公园化，服务入社区<br />
+                    -----这里，人居与产业、城市共进，畅想新未来<br />
+                </p>
+            </div>
+        </div>
+    
+        
     </div>
+
 
 </div>

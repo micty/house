@@ -25,6 +25,7 @@ define('/Recommend/List', function (require, module) {
                     data: {
                         'name': item.name,
                         'cover': item.cover,
+                        'href': item.href || 'javascript:',
                     },
 
                     list: item.items,

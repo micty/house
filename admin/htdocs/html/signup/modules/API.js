@@ -12,20 +12,35 @@ define('/API', function (require, module, exports) {
     var emitter = new Emitter();
 
 
+  
+    var loading = null;
+
 
     //获取数据
     function get() {
 
+        loading = loading || KISP.create('Loading', {
+            background: 'none',
+            color: '#000',
+            text: '加载中...',
+            top: 10,
+            height: 22,
+            cssClass: 'same-line',
+        });
 
-        var api = KISP.create('API', 'GetSignupList', {
-            proxy: 'api/GetSignupList.js',
+        loading.show();
+
+
+
+        var api = KISP.create('API', 'Signup.list', {
+            //proxy: 'api/GetSignupList.js',
         });
 
 
         api.on({
 
             'response': function () {
-                emitter.fire('response');
+                loading.hide();
             },
 
             'success': function (data, json, xhr) {
@@ -44,7 +59,7 @@ define('/API', function (require, module, exports) {
 
             'error': function (code, msg, json, xhr) {
                 if (!json) { // http 协议连接错误
-                    msg = '网络繁忙，请稍候再试';
+                    msg = '获取数据错误: 网络繁忙，请稍候再试';
                 }
 
                 KISP.alert(msg);

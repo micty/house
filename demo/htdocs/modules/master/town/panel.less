@@ -5,30 +5,65 @@
 
 
     .banner {
-        padding: 10px 10px;
         background: #0D265C;
-        /* height: 50px; */
         margin-bottom: 5px;
-        color: #fff;
+        color: rgba(255, 255, 255, 0);
         text-align: center;
         font-size: 40px;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0px;
-        margin: 0px;
+        background: url('../img/banner-town.jpg') no-repeat;
+        height: 55px;
+        line-height: 55px;
     }
 
     .main {
         border: solid 1px #ddd;
         border-top: none;
-        padding: 40px 20px;
-    }
+        padding: 15px 10px;
 
+        .photos {
+            float: left;
+            width: 590px;
 
-    .timeline {
-        border-bottom: dashed 1px #EA960D;
+            .title {
+                position: relative;
+                top: 24px;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: #fff;
+                font-size: 12px;
+                padding: 5px 10px;
+                /* float: left; */
+                /* display: none; */
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            .pager {
+                padding: 0;
+                background-color: rgba(0, 0, 0, 0.39);
+                margin: 0;
+                position: relative;
+                top: -22px;
+                display: -webkit-box;
+                -webkit-box-pack: end;
+
+                li {
+                    padding: 0px 6px;
+                    background: black;
+                    color: #fff;
+                    margin: 0px 4px;
+                    font-size: 12px;
+                    list-style: none;
+                    cursor: pointer;
+                    border: solid 1px black;
+
+                    &.on {
+                        background: red;
+                    }
+                }
+            }
+        }
 
         &:after {
             content: '';
@@ -36,99 +71,39 @@
             clear: both;
         }
 
-        li {
-            float: left;
-            background: #000;
-            color: #fff;
-            margin: 0px 5px 7px 5px;
-            padding: 5px 0px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 85px;
+
+        .sidebar {
+            list-style: none;
+            padding: 0px 0px;
+            margin: 0px;
             text-align: center;
+            float: right;
+            width: 34%;
 
-            &.on {
-                background: #EA960D;
-
-                &:before {
-                    content: '';
-                    display: inline-block;
-                    /* height: 8px; */
-                    /* background-color: #FE086E; */
-                    /* width: 8px; */
-                    position: relative;
-                    top: 24px;
-                    left: 40%;
-                    /* border-width: 8px; */
-                    border: solid 8px rgba(255, 0, 0, 0);
-                    border-top-color: #EA960D;
-                    border-left-color: rgba(0, 0, 255, 0);
-                    border-right-color: rgba(0, 128, 0, 0);
-                    border-bottom-color: rgba(0, 0, 0, 0);
-                }
+            li {
+                margin: 1px 0px 9px 0px;
+                padding: 5px 0px;
+                border: solid 1px #ddd;
             }
-
-            &:after {
-                content: '';
-                display: inline-block;
-                height: 8px;
-                background-color: #EA960D;
-                width: 8px;
-                position: relative;
-                top: 30px;
-                left: -40%;
-            }
-        }
-    }
-
-
-
-
-
-    .show {
-        list-style: none;
-        margin-top: 30px;
-
-        li {
-            background: #F9FBFD;
-
-            &:after {
-                content: '';
-                display: block;
-                clear: both;
-            }
-        }
-
-
-
-        .cover {
-            width: 31%;
-            float: left;
 
             img {
-                max-width: 100%;
-            }
-        }
-
-        .desc {
-            width: 65%;
-            float: right;
-
-            .title {
-                color: #0c4e82;
-                margin: 0px;
-                font-size: 48px;
+                border: solid 1px #ddd;
             }
 
-            .content {
-                font-size: 14px;
+            div {
+                text-align: left;
 
-                a {
-                    color: #0c4e82;
-                    text-decoration: none;
+                .title {
+                    font-size: 18px;
                     font-weight: bold;
-                    letter-spacing: 1px;
+                    text-align: center;
+                    margin: 2px 0px 8px 0px;
+                }
+
+                p {
+                    /*text-indent: 22px;*/
+                    margin: 0;
+                    font-size: 14px;
                 }
             }
         }
