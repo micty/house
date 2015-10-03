@@ -1,0 +1,31 @@
+.panel-sidebar {
+  width: 130px;
+  text-align: center;
+  display: inline-block;
+  float: left;
+  font-size: 14px;
+}
+.panel-sidebar div {
+  border-bottom: solid 1px #ddd;
+  padding: 7px 2px;
+  background-color: #4C70B1;
+  color: #fff;
+  border-radius: 5px 5px 0px 0px;
+}
+.panel-sidebar ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  border: solid 1px #ddd;
+  border-top: none;
+  border-bottom: none;
+}
+.panel-sidebar li {
+  padding: 8px 2px;
+  border-bottom: solid 1px #ddd;
+  cursor: pointer;
+}
+.panel-sidebar li:hover {
+  background: rgba(238, 238, 238, 0.8);
+  color: red;
+}

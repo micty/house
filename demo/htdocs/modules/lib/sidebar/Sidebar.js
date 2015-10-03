@@ -1,6 +1,6 @@
 ﻿
 
-define('Sidebar', function (require, module) {
+define('/Sidebar', function (require, module) {
 
 
     var $ = require('$');
@@ -8,7 +8,8 @@ define('Sidebar', function (require, module) {
 
 
 
-    var panel = KISP.create('Panel', '#div-panel-sidebar');
+    //这里不能用 id，因为它是共用的，会产生多个。
+    var panel = KISP.create('Panel', '[data-id="panel-sidebar"]');
 
 
     panel.on('init', function () {

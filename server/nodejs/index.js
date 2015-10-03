@@ -114,3 +114,137 @@ app.get('/EventsPhoto.list', function (req, res) {
 
 });
 
+
+
+//焦点资讯模块
+var EventsNews = require('./modules/EventsNews');
+app.get('/EventsNews.list', function (req, res) {
+
+    allow(res);
+    EventsNews.list(res);
+
+});
+
+app.post('/EventsNews.add', function (req, res) {
+
+    allow(res);
+    EventsNews.add(req.body, res);
+});
+
+
+app.post('/EventsNews.update', function (req, res) {
+
+    allow(res);
+    EventsNews.update(req.body, res);
+
+});
+
+
+app.get('/EventsNews.remove', function (req, res) {
+
+    allow(res);
+    EventsNews.remove(req.query.id, res);
+
+});
+
+
+
+
+//焦点图片模块
+var EventsPhoto = require('./modules/EventsPhoto');
+app.get('/EventsPhoto.list', function (req, res) {
+
+    allow(res);
+    EventsPhoto.list(res);
+
+});
+
+app.post('/EventsPhoto.add', function (req, res) {
+
+    allow(res);
+    EventsPhoto.add(req.body, res);
+});
+
+
+app.post('/EventsPhoto.update', function (req, res) {
+
+    allow(res);
+    EventsPhoto.update(req.body, res);
+
+});
+
+
+app.get('/EventsPhoto.remove', function (req, res) {
+
+    allow(res);
+    EventsPhoto.remove(req.query.id, res);
+
+});
+
+
+
+
+//焦点图片模块
+var Recommend = require('./modules/Recommend');
+app.get('/Recommend.list', function (req, res) {
+
+    allow(res);
+    Recommend.list(res);
+
+});
+
+app.post('/Recommend.add', function (req, res) {
+
+    allow(res);
+    Recommend.add(req.body, res);
+});
+
+
+app.post('/Recommend.update', function (req, res) {
+
+    allow(res);
+    Recommend.update(req.body, res);
+
+});
+
+
+app.get('/Recommend.remove', function (req, res) {
+
+    allow(res);
+    Recommend.remove(req.query.id, res);
+
+});
+
+
+
+
+
+//登录
+app.post('/login', function (req, res) {
+
+
+    allow(res);
+
+    var data = req.body;
+    //password = 'ccfbh@2015';
+
+    if (data.user == 'administrator' &&
+        data.password == 'f679caa51cd04655e6574cbb4aa47f42') {
+
+        res.send({
+            code: 200,
+            msg: 'ok',
+            data: {
+                name: 'administrator',
+                messageCount: 0,
+            },
+        });
+    }
+    else {
+        res.send({
+            code: 201,
+            msg: '用户名或密码错误',
+        });
+    }
+
+});

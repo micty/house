@@ -43,7 +43,8 @@ KISP.launch(function (require, module) {
         'edit': function (item, index) {
             var KERP = require('KERP');
             var Iframe = KERP.require('Iframe');
-            Iframe.open(2, 0, {
+ 
+            Iframe.open('add', type, {
                 query: {
                     'type': type,
                     'id': item.id,

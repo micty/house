@@ -27,6 +27,9 @@
         'API': {
             url: 'http://localhost:3000/',
         },
+        'Alert': {
+            //mask: 0,
+        },
     });
 
     KISP.data({
@@ -39,90 +42,7 @@
 
 
 
-    /**
-    * 字符串中的 {~} 表示站头的根地址；{@} 表示使用的文件版本 debug 或 min
-    *
-    */
-    KERP.config({
-
-        // Web 站点的根地址
-        Url: {
-            'default': $('script[src*="config.js"]').get(0).src.split('config.js')[0],
-        },
-
-        //后台接口
-        API: {
-            codes: {
-                success: 200,
-            },
-        },
-
-
-        //代理到本地网站根目录下的文件。 
-        //不指定时则请求后台的真实数据。
-        //格式为 接口名称: 本地代理的处理文件名
-        Proxy: {
-
-            'portal/login': [ //当指定为一个数组时，则起作用的是最后一个
-                'api/portal/login-action.js',
-            ],
-        },
-
-        //简易分页器
-        SimplePager: {
-            container: '#div-pager-simple',
-            current: 1,
-            size: 10,
-            hideIfLessThen: 0,
-        },
-
-
-
-        //动态加载模块的默认配置 (for seajs)
-        Seajs: {
-            base: '{~}f/seajs/',
-            debug: true,
-            alias: {
-                juery: 'jquery/jquery.js',
-                dialog: 'art-dialog/dialog.all.{@}.js?r=' + Math.random(),
-            }
-        },
-
-        Loading: {
-            text: '数据加载中...',
-        },
-
-
-        //弹出对话框默认配置 (artDialog)
-        Dialog: {
-            cssUri: '{~}lib/art-dialog/dialog.all.{@}.css#',
-            backdropOpacity: 0.2,       //遮罩层不透明度(越小越透明)
-            backdropBackground: '#000', //遮罩层背景色
-            quickClose: false,          //是否支持快捷关闭(点击遮罩层自动关闭)
-            fixed: true,                //是否固定定位
-            draggable: true,            //是否可拖动 (by micty)
-            zIndex: 1024,               // 对话框叠加高度值(重要：此值不能超过浏览器最大限制)
-        },
-
-
-        Login: {
-            api: 'portal/login',
-            actions: {
-                login: 'login',
-                logout: 'logout',
-            },
-
-            files: {
-                master: 'master.html',
-                login: 'login.html',
-            },
-        },
-
-       
-
-    });
-
-
+    
 
 
     KISP.require('Module').define('KERP', function () {

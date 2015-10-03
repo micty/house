@@ -27,7 +27,7 @@
         <ul id="ul-sidebar" class="menus">
             <!--
             <li data-index="{index}" draggable="true">
-                <i class="icons" style="background-image: url(style/img/{icon});"></i>
+                <i class="icons" ></i>
                 {name}
             </li>
             -->
@@ -48,31 +48,28 @@
                 <i class="icon-search"></i>
                 <input placeholder="搜索" />
             </span>
-            <ul class="user-info">
+            <ul id="ul-panel-user-infos" class="user-info">
+                <!--
                 <li id="li-user-infos" class="user-setting">
-                    <span id="span-user-name">
-                        <!--
+                    <span>
                         {name}
-                        -->
                     </span>
                     <i class="icon-dropdown"></i>
-                    <div id="div-user-list" class="setting-more" style="display:none;">
+                    <div data-id="menus" class="setting-more" style="display:none;">
                         <div class="box">
                             <ul>
-                                <li>修改密码</li>
-                                <li>注销退出</li>
+                                <li data-cmd="logout">注销退出</li>
                             </ul>
                         </div>
                     </div>
                 </li>
                 <li>
                     <i class="icon-msg"></i>
-                    <span id="span-message-count" class="msg">
-                        <!--
-                        {value}
-                        -->
+                    <span class="msg">
+                        {message-count}
                     </span>
                 </li>
+                -->
             </ul>
         </div>
         <div class="tab-panel">
@@ -228,7 +225,7 @@
     <script>
         [
             'lib/**/*.js',
-            'modules/**/*.js',
+            'modules/index/**/*.js',
             'index.js',
         ]
     </script>

@@ -10,9 +10,9 @@ define('/NewsList/Header', function (require, module) {
     var panel = KISP.create('Panel', '#div-news-list-header');
 
     var type$name = {
-        'news': '新闻',
-        'policy': '政策',
-        'house': '楼盘',
+        'news': '新闻资讯',
+        'policy': '政策法规',
+        'house': '楼盘房源',
     };
 
     panel.on('init', function () {

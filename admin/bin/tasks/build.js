@@ -19,6 +19,15 @@ module.exports = function (grunt, level) {
 
     var files = [
         'index.html',
+        'login.html',
+        'html/events/news/index.html',
+        'html/events/photo/index.html',
+        'html/home/index.html',
+        'html/paper/add/index.html',
+        'html/paper/list/index.html',
+        'html/recommend/index.html',
+        'html/signup/index.html',
+        'html/welcome/index.html',
     ];
 
 

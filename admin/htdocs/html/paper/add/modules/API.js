@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="API.js" />
+
 
 define('/API', function (require, module, exports) {
 
@@ -15,7 +16,7 @@ define('/API', function (require, module, exports) {
 
 
 
-    //获取数据
+
     function post(data) {
 
 

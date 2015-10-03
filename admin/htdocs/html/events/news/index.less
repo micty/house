@@ -1,0 +1,112 @@
+﻿
+.header {
+    text-align: right;
+    margin-bottom: 10px;
+    button {
+        background-color: #EA960D;
+        border: none;
+        color: #fff;
+        padding: 8px 40px;
+        font-size: 14px;
+        border-radius: 5px;
+        /* font-family: "Microsoft YaHei"; */
+        cursor: pointer;
+        outline: none;
+
+        &:active {
+            background: #FFA513;
+        }
+    }
+}
+
+
+.dialog-add {
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        margin: 5px 0px;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 2px 5px;
+    }
+
+    textarea {
+        height: 60px;
+        padding-right: 7px;
+    }
+}
+
+
+.list {
+
+    &.nodata {
+        text-align: center;
+        font-size: 34px;
+        border: solid 1px #F00;
+        padding: 40px 0px;
+        background-color: #FFF7DF;
+        border-radius: 5px;
+
+        &:after {
+            content: '暂无数据';
+        }
+
+        table {
+            display: none;
+        }
+    }
+
+    table {
+        width: 100%;
+        width: 100%;
+        border: solid 1px #5392CC;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    th,
+    td {
+        border: solid 1px #5392CC;
+        border-left: none;
+        border-top: none;
+        text-align: left;
+        padding: 5px 5px;
+        font-size: 14px;
+    }
+
+    tr.header {
+        background: #4767A2;
+        color: #fff;
+
+        &:hover {
+            background: #4767A2;
+        }
+    }
+
+    tr:hover {
+        background: #FFF6E9;
+    }
+
+    .operate {
+        span {
+            color: blue;
+            cursor: pointer;
+            font-size: 12px;
+
+            &:hover {
+                color: red;
+            }
+        }
+    }
+}

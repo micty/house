@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: house 
 * version: 3.0.0
-* build: 2015-09-30 09:45:32
+* build: 2015-10-03 16:17:32
 * files: 61(59)
 *    partial/house/begin.js
 *    core/Module.js
@@ -6358,6 +6358,9 @@ Module.expose({
     //core
     '$': true,
     'MiniQuery': true,
+
+    //crypto
+    'MD5': true,
 
     //excore
     'DOM': true,

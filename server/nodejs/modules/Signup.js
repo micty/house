@@ -160,6 +160,8 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
+                list.reverse(); //倒序一下
+
                 res.send({
                     code: 200,
                     msg: 'ok',

@@ -35,6 +35,7 @@ module.exports = function (grunt, level) {
         //拷贝其他目录和文件
         copy: [
             '<%=dir.style%>**',
+            '<%=dir.htdocs%>api/**',
             '<%=dir.htdocs%>data/**',
             '<%=dir.htdocs%>f/**',
 

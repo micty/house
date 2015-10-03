@@ -38,7 +38,7 @@ KISP.launch(function (require, module) {
     Header.on({
 
         'home': function () {
-            Nav.to('Master', 'home');
+            Nav.to('Master', 'events'); //这里是 events 不是 home
         },
 
         'area': function () {
@@ -77,6 +77,60 @@ KISP.launch(function (require, module) {
     });
 
 
+    var Sidebar = module.require('Sidebar');
+    Sidebar.render();
+
+    Sidebar.on({
+
+        'home': function () {
+            Nav.to('Master', 'events'); //这里是 events 不是 home
+            scrollTo(0, 520);
+        },
+
+        'area': function () {
+            Nav.to('Master', 'area');
+        },
+
+        'town': function () {
+            Nav.to('Master', 'town');
+        },
+
+        'happy': function () {
+            Nav.to('Master', 'happy');
+        },
+
+        'keypoint': function () {
+            Nav.to('Master', 'keypoint');
+        },
+
+        'recommend': function () {
+            Nav.to('Master', 'recommend');
+        },
+
+        'news': function () {
+            Nav.to('NewsList', 'news');
+        },
+        'policy': function () {
+            Nav.to('NewsList', 'policy');
+        },
+
+        'contact': function () {
+            Nav.to('Contact');
+        },
+
+
+    });
+
+    var Aside = module.require('Aside');
+    Aside.on({
+        'recommend': function () {
+            Nav.to('Master', 'recommend');
+        },
+    });
+
+    Aside.render();
+
+
     var Master = module.require('Master');
     Master.on({
         'render': function () {
@@ -89,6 +143,9 @@ KISP.launch(function (require, module) {
 
             var Town = module.require('Town');
             Town.render();
+
+            var Happy = module.require('Happy');
+            Happy.render();
 
             var Recommend = module.require('Recommend');
             Recommend.render();
@@ -105,6 +162,7 @@ KISP.launch(function (require, module) {
         },
 
         'news': function (type, id) {
+
             Nav.to('NewsDetail', type, id);
         },
         

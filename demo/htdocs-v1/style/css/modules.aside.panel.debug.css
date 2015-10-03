@@ -1,0 +1,26 @@
+.panel-aside {
+  background-color: #236EC3;
+  /*height: 500px;*/
+  width: 96px;
+  position: fixed;
+  bottom: 27px;
+  right: 5px;
+  border-radius: 5px;
+}
+.panel-aside ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0px 10px 13px;
+}
+.panel-aside li {
+  margin-bottom: 10px;
+}
+.panel-aside li:last-child {
+  margin-bottom: 0px;
+}
+.panel-aside li p {
+  color: #fff;
+  margin: 0px;
+  padding: 0px;
+  font-size: 12px;
+}

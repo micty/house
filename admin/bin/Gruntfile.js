@@ -30,6 +30,9 @@ module.exports = function (grunt) {
         'html/signup',
         'html/paper/list',
         'html/paper/add',
+        'html/events/news',
+        'html/events/photo',
+        'html/recommend',
     ];
 
     require('./tasks/watch-html.js')(pages);

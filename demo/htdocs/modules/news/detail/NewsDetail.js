@@ -11,7 +11,6 @@ define('/NewsDetail', function (require, module) {
     var Main = module.require('Main');
     var Header = module.require('Header');
 
-    var Sidebar = require('Sidebar');
 
 
     var view = KISP.create('Panel', '#div-view-news-detail');
@@ -28,6 +27,8 @@ define('/NewsDetail', function (require, module) {
                     'datetime': data.datetime,
                     'content': data.content,
                 });
+
+                scrollTo(0, 520);
                
             },
         });
@@ -37,9 +38,8 @@ define('/NewsDetail', function (require, module) {
 
     view.on('render', function (type, id) {
 
-       
+        Header.render(type);
         API.get(type, id);
-        Sidebar.render();
     });
 
 

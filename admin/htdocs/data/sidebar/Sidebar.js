@@ -3,51 +3,49 @@
 var __Sidebar__ = [
 
     {
-        name: '报名管理',
-        icon: 'icon_order_normal.png',
-        url: 'html/signup/index.html',
-    },
-
-    {
-        name: '新闻列表',
-        icon: 'icon_res_normal.png',
-        url: 'html/paper/list/index.html?type=news',
-        autoOpen: true,
+        name: '焦点图片管理',
+        url: 'html/events/photo/index.html',
     },
     {
-        name: '政策列表',
-        icon: 'icon_res_normal.png',
-        url: 'html/paper/list/index.html?type=policy',
-        autoOpen: true,
-    },
-    {
-        name: '楼盘列表',
-        icon: 'icon_res_normal.png',
-        url: 'html/paper/list/index.html?type=house',
-        autoOpen: true,
-    },
-    {
-        name: '新闻发布',
-        icon: 'icon_res_normal.png',
-        url: 'html/paper/add/index.html?type=news',
+        name: '焦点新闻管理',
+        url: 'html/events/news/index.html',
         //autoOpen: true,
     },
     {
-        name: '政策发布',
-        icon: 'icon_res_normal.png',
+        name: '楼盘推荐管理',
+        url: 'html/recommend/index.html',
+    },
+    {
+        name: '报名管理',
+        url: 'html/signup/index.html',
+    },
+    {
+        name: '新闻资讯管理',
+        url: 'html/paper/list/index.html?type=news',
+    },
+    {
+        name: '政策法规管理',
+        url: 'html/paper/list/index.html?type=policy',
+    },
+    {
+        name: '楼盘资讯管理',
+        url: 'html/paper/list/index.html?type=house',
+    },
+    {
+        name: '新闻资讯发布',
+        url: 'html/paper/add/index.html?type=news',
+        cmd: ['add', 'news'],
+    },
+    {
+        name: '政策法规发布',
         url: 'html/paper/add/index.html?type=policy',
+        cmd: ['add', 'policy'],
     },
     {
-        name: '楼盘发布',
-        icon: 'icon_res_normal.png',
+        name: '楼盘资讯发布',
         url: 'html/paper/add/index.html?type=house',
+        cmd: ['add', 'house'],
     },
-    {
-        name: '设置',
-        icon: 'icon_setting_normal.png',
-        url: 'html/home/index.html',
 
-        
-    },
-   
+
 ];

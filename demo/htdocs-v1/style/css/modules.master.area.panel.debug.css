@@ -1,0 +1,68 @@
+.panel-area {
+  margin-top: 10px;
+}
+.panel-area .banner {
+  background: #0D265C;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-size: 40px;
+  background: url('../img/banner-area.jpg') no-repeat;
+  height: 55px;
+  line-height: 55px;
+}
+.panel-area ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+.panel-area li:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.panel-area .main {
+  list-style: none;
+  padding: 10px 10px;
+  margin: 0px;
+  text-align: center;
+  border: solid 1px #ddd;
+}
+.panel-area .main li {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+.panel-area .main img {
+  display: block;
+  border: solid 1px #ddd;
+}
+.panel-area .main div {
+  font-size: 12px;
+  color: #F36B25;
+  margin-top: 5px;
+}
+.panel-area .sub {
+  list-style: none;
+  padding: 10px 10px;
+  margin: 0px;
+  text-align: center;
+}
+.panel-area .sub li {
+  display: inline-block;
+  margin: 0px;
+  padding: 15px 0px;
+  width: 24%;
+  border: solid 1px #ddd;
+}
+.panel-area .sub img {
+  border: solid 1px #ddd;
+}
+.panel-area .sub span {
+  font-size: 12px;
+  width: 49%;
+  display: inline-block;
+  position: relative;
+  top: -13px;
+  color: #006ba8;
+}

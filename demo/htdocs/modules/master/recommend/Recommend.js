@@ -44,6 +44,9 @@ define('/Recommend', function (require, module) {
 
     panel.on('render', function () {
 
+        if (panel.rendered()) {
+            return;
+        }
        
         API.get();
     });
