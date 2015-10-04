@@ -11,26 +11,20 @@
             eventName: 'click',
         },
         'API': {
-            url: 'http://localhost:3000/',
+            //对外正式地址
+            url: 'http://120.24.89.223:3000/',
         },
     });
 
 
-    //业务端模块的默认配置
-    KISP.data({
-
-    });
-
-    
-
-
-
+    /**grunt.debug.begin*/
     //开发模式下使用。 使用 grunt 工具构建页面后，本区域的代码会给去掉。
 
-    /**grunt.debug.begin*/
-
-
     KISP.config({
+        'API': {
+            //内部地址
+            url: 'http://localhost:3000/',
+        },
         'Proxy': {
             delay: {
                 min: 500,
@@ -45,10 +39,6 @@
     window.$ = KISP.require('$');
 
     /**grunt.debug.end*/
-
-
-
-   
 
 
 })(KISP);

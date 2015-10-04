@@ -259,6 +259,12 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
+                list.sort(function (a, b) {
+                    a = a.priority || 0;
+                    b = b.priority || 0;
+                    return a - b;
+                });
+
                 res.send({
                     code: 200,
                     msg: '',

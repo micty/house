@@ -13,12 +13,11 @@ KISP.proxy(function () {
         "data": [
             {
                 src: "style/img/keypoint-01.jpg",
-                href: 'http://fs.house.sina.com.cn/news/2015-09-30/16596054912318306045443.shtml',
+                href: '#',
             },
             {
                 src: "style/img/keypoint-02.jpg",
-                href: '#',
-
+                href: 'http://fs.house.sina.com.cn/news/2015-09-30/16596054912318306045443.shtml',
             },
             {
                 src: "style/img/keypoint-03.jpg",
@@ -27,6 +26,11 @@ KISP.proxy(function () {
             },
             {
                 src: "style/img/keypoint-04.jpg",
+                href: '#',
+
+            },
+            {
+                src: "style/img/keypoint-05.jpg",
                 href: '#',
 
             },

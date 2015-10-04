@@ -34,7 +34,9 @@
 
         // 服务器统一请求接口路径
         //, serverUrl: URL + "net/controller.ashx"
-        , serverUrl: "http://localhost/ueditor/controller.ashx"
+        //, serverUrl: "http://localhost/ueditor/controller.ashx"
+        //, serverUrl: "http://120.24.89.223/ueditor/controller.ashx"
+        , serverUrl: location.origin + '/ueditor/controller.ashx'
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         , toolbars: [[

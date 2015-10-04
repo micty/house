@@ -25,7 +25,9 @@
         },
 
         'API': {
-            url: 'http://localhost:3000/',
+            //对外正式地址
+            //url: 'http://localhost:3000/',
+            url: 'http://120.24.89.223:3000/',
         },
         'Alert': {
             //mask: 0,
@@ -35,7 +37,7 @@
     KISP.data({
         'demo': {
             //在 paper/list 用到
-            url: '../../../../../demo/htdocs/index.html',
+            url: '../../../../../index.html',
         },
     });
 
@@ -52,28 +54,10 @@
 
     /**grunt.debug.begin*/ //------------------------------------------------------------------------>
 
-
     // 开发过程中用到的配置，正式发布后可去掉
     KISP.config({  // KISP 内部模块所需要的默认配置
-
-        'Proxy': {
-            delay: {
-                min: 500,
-                max: 1500
-            },
-        },
-    });
-
-
-
-    //调试模式下使用。
-    //使用 grunt 工具构建页面后，本区域的代码会给去掉。
-
-
-    // 开发过程中用到的配置，发布后可去掉
-    KISP.config({  // KISP 内部模块所需要的默认配置
-
         'API': {
+            url: 'http://localhost:3000/',
             //在开发阶段，为了防止后台过快的返回数据而显示让某些需要显示
             //"数据加载中"的效果不明显， 这里强行加上一个随机延迟时间，
             //以模拟真实的慢速网络， 发布后，应该去掉该配置。
@@ -82,8 +66,22 @@
                 max: 1200,
             },
         },
-
+        'Proxy': {
+            delay: {
+                min: 500,
+                max: 1500
+            },
+        },
     });
+
+    KISP.data({
+        'demo': {
+            //在 paper/list 用到
+            url: '../../../../../demo/htdocs/index.html',
+        },
+    });
+
+
 
     //开发阶段，把 define 变成全局变量
     window.define = KISP.require('Module').define;

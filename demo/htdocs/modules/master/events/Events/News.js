@@ -12,16 +12,16 @@ define('/Events/News', function (require, module) {
     var list = [];
     var api = null;
     var type = 'news';
-    var loading = null;
+    //var loading = null;
     var maxCount = 9; //最多显示条数
 
 
     panel.on('init', function () {
 
       
-        loading = KISP.create('Loading', {
-            text:'新闻列表加载中...',
-        });
+        //loading = KISP.create('Loading', {
+        //    text:'新闻列表加载中...',
+        //});
 
 
 
@@ -29,7 +29,7 @@ define('/Events/News', function (require, module) {
 
         api.on({
             'response': function () {
-                loading.hide();
+                //loading.hide();
             },
 
             'fail': function (code, msg, json, xhr) {
@@ -73,7 +73,7 @@ define('/Events/News', function (require, module) {
 
     panel.on('render', function () {
        
-        loading.show();
+        //loading.show();
 
 
         api.get();
