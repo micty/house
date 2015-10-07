@@ -18,9 +18,9 @@ KISP.launch(function (require, module) {
     var name = '';
 
     var type$name = {
-        'news': '新闻',
-        'policy': '政策',
-        'house': '楼盘',
+        'news': '新闻资讯',
+        'policy': '政策法规',
+        'house': '楼盘资讯',
     };
 
 

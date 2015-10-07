@@ -187,6 +187,9 @@ define('/Dialog', function (require, module) {
             $.find('[data-name="href"]').val(item.href);
             $.find('[data-name="priority"]').val(item.priority);
 
+            dialog.$.find('img').attr('src', item.src);
+            
+
             var fields = item.fields;
             KISP.require('$').Array.each(fields, function (item, index) {
 

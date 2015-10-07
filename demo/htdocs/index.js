@@ -84,7 +84,6 @@ KISP.launch(function (require, module) {
 
         'home': function () {
             Nav.to('Master', 'events'); //这里是 events 不是 home
-            scrollTo(0, 520);
         },
 
         'area': function () {
