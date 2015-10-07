@@ -1,0 +1,26 @@
+[
+    {
+        "id": "8BB787997C22",
+        "src": "/ueditor/upload/image/20151002/6357942260574463077108341.jpg",
+        "href": "?type=news&id=4E9FBD51A156#NewsDetail-2F82912F",
+        "priority": 1
+    },
+    {
+        "id": "874AA2CF1890",
+        "src": "/ueditor/upload/image/20151002/6357942260576363175635759.jpg",
+        "href": "?type=news&id=6CBEAE6D0A83#NewsDetail-CD735209",
+        "priority": 2
+    },
+    {
+        "id": "4609C2372AAD",
+        "src": "/ueditor/upload/image/20151002/6357942260578263287392421.jpg",
+        "href": "?type=news&id=57F09A7308B2#NewsDetail-4DE0563E",
+        "priority": 3
+    },
+    {
+        "id": "E31C3D4F72F2",
+        "src": "/ueditor/upload/image/20151002/6357942260573363003879096.jpg",
+        "href": "?type=news&id=3F79256C1275#NewsDetail-031A30BD",
+        "priority": 0
+    }
+]
