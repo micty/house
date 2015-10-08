@@ -13,25 +13,25 @@ KISP.proxy(function () {
         "data": [
             {
                 src: "style/img/keypoint-01.jpg",
-                href: '#',
+                href: '?type=news&id=FD115C02AC48',
             },
             {
                 src: "style/img/keypoint-02.jpg",
-                href: 'http://fs.house.sina.com.cn/news/2015-09-30/16596054912318306045443.shtml',
+                href: '?type=news&id=2F7DF11A300E',
             },
             {
                 src: "style/img/keypoint-03.jpg",
-                href: '#',
+                href: '?type=news&id=ABD6EE6F0724',
 
             },
             {
                 src: "style/img/keypoint-04.jpg",
-                href: '#',
+                href: '?type=news&id=8679D24678A3',
 
             },
             {
                 src: "style/img/keypoint-05.jpg",
-                href: '#',
+                href: '?type=news&id=083E380556AB',
 
             },
 
