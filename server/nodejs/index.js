@@ -226,7 +226,7 @@ app.post('/login', function (req, res) {
     allow(res);
 
     var data = req.body;
-    //password = 'ccfbh@2015';
+
 
     if (data.user == 'administrator' &&
         data.password == 'f679caa51cd04655e6574cbb4aa47f42') {
