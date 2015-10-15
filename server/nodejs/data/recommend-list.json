@@ -444,26 +444,26 @@
     {
         "id": "5A6D31AFA307",
         "belong": "石湾",
-        "name": "时代年华",
-        "src": "/ueditor/upload/image/20151012/6358026589196643729664516.jpg",
-        "href": "?type=house&id=10A9230CBE37",
-        "priority": 19,
+        "name": "保利天玺",
+        "src": "/ueditor/upload/image/20151015/6358053118389238403376871.jpg",
+        "href": "?type=house&id=74C37A2CC4D5#NewsDetail-F37824DE",
+        "priority": 34,
         "fields": [
             {
                 "name": "位置",
-                "value": "港口路与华新路交界"
+                "value": "绿景二路11号"
             },
             {
                 "name": "户型",
-                "value": "84-98平米三房带装修"
+                "value": "洋房208-280平米"
             },
             {
                 "name": "价格",
-                "value": "均价9388-11000元/平米"
+                "value": "均价约10000-12000元/平米"
             },
             {
                 "name": "电话",
-                "value": "63817888"
+                "value": "83830888"
             }
         ]
     },
@@ -810,7 +810,7 @@
         "belong": "祖庙",
         "name": "时代云图",
         "src": "/ueditor/upload/image/20151012/6358027072483473226841414.jpg",
-        "href": "?type=news&id=1D2056946A41#NewsDetail-67224D95",
+        "href": "?type=house&id=A4B718633218#NewsDetail-980A664E",
         "priority": 11,
         "fields": [
             {
@@ -828,6 +828,110 @@
             {
                 "name": "电话",
                 "value": "82061888"
+            }
+        ]
+    },
+    {
+        "id": "671C3260665D",
+        "belong": "祖庙",
+        "name": "东海银湾",
+        "src": "/ueditor/upload/image/20151015/6358053097554631651759936.jpg",
+        "href": "?type=house&id=3CCC43DA90D3#NewsDetail-B3F5A45D",
+        "priority": 12,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "桂澜南路3号（石肯桥南侧）"
+            },
+            {
+                "name": "户型",
+                "value": "洋房87-170平，公寓38平"
+            },
+            {
+                "name": "价格",
+                "value": "均价约12000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82802288"
+            }
+        ]
+    },
+    {
+        "id": "DC32A13C3251",
+        "belong": "石湾",
+        "name": "佛山时代年华",
+        "src": "/ueditor/upload/image/20151012/6358026589196643729664516.jpg",
+        "href": "?type=house&id=10A9230CBE37#NewsDetail-05CA7EF1",
+        "priority": 19,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "港口路与华新路交界（西北角）"
+            },
+            {
+                "name": "户型",
+                "value": "84-98平米带装修"
+            },
+            {
+                "name": "价格",
+                "value": "9388-11000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "63817888"
+            }
+        ]
+    },
+    {
+        "id": "122451B6D613",
+        "belong": "祖庙",
+        "name": "岭南天地",
+        "src": "/ueditor/upload/image/20151015/6358053460758952468430151.jpg",
+        "href": "?type=house&id=006966A0B584#NewsDetail-1314E742",
+        "priority": 35,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "祖庙东华里片区人民路南"
+            },
+            {
+                "name": "户型",
+                "value": "270-400平米"
+            },
+            {
+                "name": "价格",
+                "value": "均价35000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82308888/82309999"
+            }
+        ]
+    },
+    {
+        "id": "924BAD9E5FA6",
+        "belong": "祖庙",
+        "name": "岭南天地御苑",
+        "src": "/ueditor/upload/image/20151015/6358053461430537571011325.jpg",
+        "href": "?type=house&id=006966A0B584#NewsDetail-9BCECE2D",
+        "priority": 36,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "福贤路与兆祥路交汇处"
+            },
+            {
+                "name": "户型",
+                "value": "140-280平米带装修"
+            },
+            {
+                "name": "价格",
+                "value": "均价约15000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82309999"
             }
         ]
     }

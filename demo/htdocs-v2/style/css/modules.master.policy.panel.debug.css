@@ -1,0 +1,56 @@
+.panel-policy {
+  margin-top: 10px;
+}
+.panel-policy .banner {
+  background: #0D265C;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-size: 40px;
+  background: url('../img/banner-policy.jpg') no-repeat;
+  height: 55px;
+  line-height: 55px;
+}
+.panel-policy .sub {
+  list-style: none;
+  padding: 10px 10px;
+  margin: 0px;
+  text-align: center;
+}
+.panel-policy .sub:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.panel-policy .sub li {
+  margin: 0px;
+  padding: 10px 10px;
+  border: solid 1px #ddd;
+  float: left;
+}
+.panel-policy .sub img {
+  border: solid 1px #ddd;
+}
+.panel-policy .sub span {
+  font-size: 12px;
+  width: 49%;
+  display: inline-block;
+  position: relative;
+  top: -13px;
+  color: #006ba8;
+}
+.panel-policy .sub .desc {
+  width: 586px;
+  font-size: 12px;
+  /* height: 95px; */
+  margin-left: 10px;
+}
+.panel-policy .sub .desc p {
+  margin: 7px 0px;
+  text-align: left;
+  text-indent: 22px;
+  color: #006ba8;
+}
+.panel-policy .sub .desc a {
+  color: #006ba8;
+}

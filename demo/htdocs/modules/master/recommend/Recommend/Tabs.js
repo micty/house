@@ -53,7 +53,11 @@ define('/Recommend/Tabs', function (require, module) {
 
 
 
-    return panel.wrap();
+    return panel.wrap({
+        active: function (index) {
+            tabs.active(index);
+        },
+    });
 
 
 

@@ -28,7 +28,7 @@ define('/NewsDetail', function (require, module) {
                     'content': data.content,
                 });
 
-                scrollTo(0, 520);
+                scrollTo(0, 360);
                
             },
         });

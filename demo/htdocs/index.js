@@ -129,6 +129,16 @@ KISP.launch(function (require, module) {
 
     Aside.render();
 
+    var Houses = module.require('Houses');
+    Houses.on('click', function (index) {
+
+        Nav.to('Master', 'recommend');
+        var Recommend = module.require('Recommend');
+        Recommend.active(index);
+    });
+
+
+
 
     var Master = module.require('Master');
     Master.on({
@@ -137,14 +147,14 @@ KISP.launch(function (require, module) {
             var Events = module.require('Events');
             Events.render();
 
+            var Houses = module.require('Houses');
+            Houses.render();
+
             var Keypoint = module.require('Keypoint');
             Keypoint.render();
 
             var Town = module.require('Town');
             Town.render();
-
-            var Happy = module.require('Happy');
-            Happy.render();
 
             var Recommend = module.require('Recommend');
             Recommend.render();

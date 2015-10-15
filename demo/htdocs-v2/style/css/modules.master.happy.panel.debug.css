@@ -1,0 +1,92 @@
+.panel-happy {
+  margin-top: 10px;
+}
+.panel-happy .banner {
+  background: #0D265C;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-size: 40px;
+  background: url('../img/banner-happy.jpg') no-repeat;
+  height: 55px;
+  line-height: 55px;
+}
+.panel-happy .main {
+  border: solid 1px #ddd;
+  border-top: none;
+  padding: 15px 10px;
+}
+.panel-happy .main .photos {
+  float: left;
+  width: 590px;
+  margin-top: -24px;
+}
+.panel-happy .main .photos .title {
+  position: relative;
+  top: 24px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  /* float: left; */
+  /* display: none; */
+}
+.panel-happy .main .photos img {
+  max-width: 100%;
+}
+.panel-happy .main .photos .pager {
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.39);
+  margin: 0;
+  position: relative;
+  top: -22px;
+  display: -webkit-box;
+  -webkit-box-pack: end;
+}
+.panel-happy .main .photos .pager li {
+  padding: 0px 6px;
+  background: black;
+  color: #fff;
+  margin: 0px 4px;
+  font-size: 12px;
+  list-style: none;
+  cursor: pointer;
+  border: solid 1px black;
+}
+.panel-happy .main .photos .pager li.on {
+  background: red;
+}
+.panel-happy .main:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.panel-happy .main .sidebar {
+  list-style: none;
+  padding: 0px 0px;
+  margin: 0px;
+  text-align: center;
+  float: right;
+  width: 34%;
+}
+.panel-happy .main .sidebar li {
+  margin: 1px 0px 9px 0px;
+  padding: 5px 0px;
+  border: solid 1px #ddd;
+}
+.panel-happy .main .sidebar img {
+  border: solid 1px #ddd;
+}
+.panel-happy .main .sidebar div {
+  font-size: 12px;
+  width: 65%;
+  display: inline-block;
+  /*position: relative;*/
+  /*top: -13px;*/
+  /* color: #006ba8; */
+  text-align: left;
+}
+.panel-happy .main .sidebar div p {
+  text-indent: 22px;
+  margin: 0;
+}
