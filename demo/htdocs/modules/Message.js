@@ -18,11 +18,11 @@ define('/Message', function (require, module, exports) {
 
 
         var type = p.type;
-        var id = p.id;
 
-        if (type && id) {
+        if (type) {
 
-            panel.fire('news', [type, id]);
+            panel.fire(type, [p.id]);
+
             return;
         }
 

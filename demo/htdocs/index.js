@@ -3,7 +3,8 @@
 KISP.launch(function (require, module) {
 
    
-    var Nav = require(module, 'Nav');
+    var $ = require('$');
+    var Nav = module.require('Nav');
 
 
     //后退时触发
@@ -73,6 +74,13 @@ KISP.launch(function (require, module) {
             Nav.to('Contact');
         },
 
+        'show': function () {
+            $(document.body).removeClass('no-bg');
+        },
+
+        'hide': function () {
+            $(document.body).addClass('no-bg');
+        },
         
     });
 
@@ -167,12 +175,24 @@ KISP.launch(function (require, module) {
     var Message = require(module, 'Message');
     Message.on({
         'master': function () {
+            Header.show();
             Nav.to('Master');
         },
 
-        'news': function (type, id) {
+        'news': function (id) {
+            Header.show();
+            Nav.to('NewsDetail', 'news', id);
+        },
 
-            Nav.to('NewsDetail', type, id);
+        'policy': function (id) {
+            Header.show();
+            Nav.to('NewsDetail', 'policy', id);
+        },
+
+        'green': function () {
+            Header.hide();
+            var Green = module.require('Green');
+            Green.render();
         },
         
     });

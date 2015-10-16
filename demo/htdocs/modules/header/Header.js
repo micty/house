@@ -34,6 +34,14 @@ define('/Header', function (require, module) {
     });
 
 
+    panel.on('show', function () {
+        panel.fire('show');
+    });
+
+    panel.on('hide', function () {
+        panel.fire('hide');
+    });
+
 
     return panel.wrap();
 
