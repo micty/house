@@ -1,27 +1,27 @@
 [
     {
         "id": "F5AEE8E87C14",
-        "title": "2015年佛山(禅城)互联网房博会即将揭幕",
+        "title": "2015佛山(禅城)O2O房博会10月23日揭幕",
         "url": "?type=news&id=38A6D31A98EB",
         "priority": 0
     },
     {
         "id": "717E99EFE7DE",
-        "title": "【规划】佛山“强中心”之心 祖庙老城换新颜底气足",
-        "url": "?type=news&id=4E9FBD51A156#NewsDetail-14AF4A53",
-        "priority": 1
+        "title": "【交通】禅城全面开展交通轨道建设 促进广佛一体化",
+        "url": "?type=news&id=9EE44BD80C0F#NewsDetail-DB9289B8",
+        "priority": 3
     },
     {
         "id": "5F87A5DD7460",
         "title": "【经济】佛山\"内功\"修炼秘诀 内生增长能力全国第四",
         "url": "?type=news&id=6CBEAE6D0A83#NewsDetail-A241EC9B",
-        "priority": 2
+        "priority": 1
     },
     {
         "id": "A10F9F27F60D",
-        "title": "【文化】佛山重点保护20处历史文化街区 你走过了没",
+        "title": "【文化】千年文化积淀 禅城传承武术与民间艺术精粹",
         "url": "?type=news&id=1B57D6C58F4A#NewsDetail-4DDDC841",
-        "priority": 3
+        "priority": 2
     },
     {
         "id": "B58AA07C1AF6",
@@ -33,13 +33,13 @@
         "id": "BCC85FEA7FD3",
         "title": "【楼市】广佛同城房价未同步 佛山楼价仍是广州一半",
         "url": "?type=news&id=3F79256C1275#NewsDetail-E0927A8A",
-        "priority": 5
+        "priority": 6
     },
     {
         "id": "F97CBBA5620A",
-        "title": "【交通】佛山将要打通20条断头路 市长鲁毅带队督查",
-        "url": "?type=news&id=1FCF2221B6CA#NewsDetail-E54D1FB1",
-        "priority": 6
+        "title": "【医疗】禅城区医疗资源丰富 三级医疗体系网络完善",
+        "url": "?type=news&id=40566EF5C8CA#NewsDetail-9839AFEB",
+        "priority": 5
     },
     {
         "id": "521CDC0C151F",
@@ -50,7 +50,7 @@
     {
         "id": "BBAAE4961DFF",
         "title": "【政策】成为新佛山人并不难 盘点入户佛山五大方式",
-        "url": "?type=news&id=6E1E86C773A3",
+        "url": "?type=news&id=6E1E86C773A3#NewsDetail-26926026",
         "priority": 8
     }
 ]
