@@ -9,6 +9,48 @@
         clear: both;
     }
 
+    /**隐藏侧边栏*/
+    &.no-sidebar {
+        .panel-sidebar {
+            display: none;
+        }
+        .main {
+            width: 100%;
+        }
+    }
+
+    /**隐藏标题栏*/
+    &.no-head {
+        .main {
+            .head {
+                display: none;
+            }
+        }
+    }
+
+    /**隐藏标题*/
+    &.no-title {
+        .main {
+            .body {
+                .title {
+                     display: none;
+                }
+            }
+        }
+    }
+
+    /**隐藏子标题*/
+    &.no-sub {
+        .main {
+            .body {
+                .sub {
+                     display: none;
+                }
+            }
+        }
+    }
+
+
 
     .main {
         float: right;

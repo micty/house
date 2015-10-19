@@ -16,12 +16,12 @@ define('/Message', function (require, module, exports) {
 
         var p = Url.getQueryString(window) || {};
 
-
+        
         var type = p.type;
 
         if (type) {
 
-            panel.fire(type, [p.id]);
+            panel.fire(type, [p.id, p]);
 
             return;
         }

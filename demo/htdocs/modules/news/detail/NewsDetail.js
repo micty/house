@@ -29,6 +29,7 @@ define('/NewsDetail', function (require, module) {
                 });
 
                 scrollTo(0, 360);
+
                
             },
         });
@@ -36,11 +37,59 @@ define('/NewsDetail', function (require, module) {
     });
 
 
-    view.on('render', function (type, id) {
+    view.on('render', function (type, id, options) {
 
         Header.render(type);
         API.get(type, id);
+        
+        showParts(options);
+
+       
+
     });
+
+
+    //显示/隐藏指定的部分
+    function showParts(options) {
+
+        //默认显示全部
+        var defaults = {
+            sidebar: true,
+            head: true,
+            title: true,
+            sub: true,
+        };
+
+        var keys = ['sidebar', 'head', 'title', 'sub', ];
+
+        if (options) {
+            var isPure = options.mode == 0; //全部隐藏
+
+            $.Array.each(keys, function (key, index) {
+                if (isPure) {
+                    options[key] = false;
+                    return;
+                }
+
+                var value = options[key];
+                if (value === '0' || value === 'false') {
+                    options[key] = false;
+                }
+                else {
+                    options[key] = true;
+                }
+            });
+        }
+
+        options = $.Object.extend({}, defaults, options);
+
+
+
+        view.$.toggleClass('no-sidebar', !options.sidebar);
+        view.$.toggleClass('no-head', !options.head);
+        view.$.toggleClass('no-title', !options.title);
+        view.$.toggleClass('no-sub', !options.sub);
+    }
 
 
 

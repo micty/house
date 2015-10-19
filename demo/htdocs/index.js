@@ -178,18 +178,18 @@ KISP.launch(function (require, module) {
             Nav.to('Master');
         },
 
-        'news': function (id) {
+        'news': function (id, options) {
             Header.show();
-            Nav.to('NewsDetail', 'news', id);
+            Nav.to('NewsDetail', 'news', id, options);
         },
 
-        'policy': function (id) {
+        'policy': function (id, options) {
             Header.show();
-            Nav.to('NewsDetail', 'policy', id);
+            Nav.to('NewsDetail', 'policy', id, options);
         },
 
-        'house': function (id) {
-            Nav.to('NewsDetail', 'house', id);
+        'house': function (id, options) {
+            Nav.to('NewsDetail', 'house', id, options);
         },
 
         'green': function () {
