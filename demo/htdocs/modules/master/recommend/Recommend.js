@@ -31,14 +31,7 @@ define('/Recommend', function (require, module) {
         });
 
 
-        Footer.on({
-            'submit': function (data) {
-
-                API.post(data);
-            },
-        });
-
-
+       
     });
 
 

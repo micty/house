@@ -68,9 +68,9 @@ KISP.launch(function (require, module) {
         'policy': function () {
             Nav.to('NewsList', 'policy');
         },
+       
 
         'contact': function () {
-
             Nav.to('Contact');
         },
 
@@ -189,6 +189,10 @@ KISP.launch(function (require, module) {
             Nav.to('NewsDetail', 'policy', id);
         },
 
+        'house': function (id) {
+            Nav.to('NewsDetail', 'house', id);
+        },
+
         'green': function () {
             Header.hide();
             var Green = module.require('Green');
@@ -200,6 +204,10 @@ KISP.launch(function (require, module) {
 
     Message.render();
 
+    window.showSignup = function () {
+        var Signup = require('Signup');
+        Signup.show();
+    };
 
 });
 
