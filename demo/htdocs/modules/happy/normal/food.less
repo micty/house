@@ -1,0 +1,139 @@
+﻿
+
+.panel-food-detail {
+    background-image: url('../img/food.jpg');
+    background-repeat: no-repeat;
+    height: 1051px;
+
+    .banner {
+        height: 171px;
+    }
+
+    .main {
+       
+        margin-top: 32px;
+        margin-left: 9px;
+        margin-right: 10px;
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+
+        .left,
+        .right {
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(211, 210, 208, 0.3);
+                }
+            }
+        }
+
+
+        .top {
+            height: 416px;
+
+            &:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+
+            .right {
+                width: 404px;
+                margin-right: 28px;
+
+                li {
+                    padding: 12px 0px;
+                    margin-bottom: 3px;
+
+
+
+                    &:last-child {
+                        padding: 24px 0px;
+                    }
+                }
+            }
+
+            .summary {
+                height: 198px;
+                overflow: hidden;
+                padding: 25px 10px;
+                box-sizing: border-box;
+                font-size: 14px;
+                line-height: 24px;
+
+                p {
+                    text-indent: 28px;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                }
+            }
+        }
+
+        .bottom {
+            &:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+
+            .left {
+
+
+                .list {
+                    width: 164px;
+                    display: inline-block;
+                    padding-top: 10px;
+                    box-sizing: border-box;
+                    height: 417px;
+
+                    li {
+                        padding: 11px 0px;
+                        margin-bottom: 5px;
+
+                        &:hover {
+                            background-color: rgba(211, 210, 208, 0.3);
+                        }
+                    }
+                }
+
+                .content {
+                    width: 340px;
+                    height: 418px;
+                    display: inline-block;
+                    overflow: hidden;
+                    font-size: 14px;
+                    line-height: 24px;
+                    padding: 12px;
+                    box-sizing: border-box;
+
+                    .title {
+                        font-weight: bold;
+                        font-size: 16px;
+                    }
+
+
+                    p {
+                        text-indent: 28px;
+                        margin-top: 0px;
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
