@@ -9,6 +9,7 @@ define('/Recommend/Tabs', function (require, module) {
 
     var panel = KISP.create('Panel');
     var tabs = null;
+    var list = [];
 
     panel.on('init', function () {
 
@@ -17,7 +18,7 @@ define('/Recommend/Tabs', function (require, module) {
         tabs = KISP.create('Tabs', {
             container: ul,
             activedClass: 'on',
-            //repeated: true, //允许重复激活相同的项，否则再次进来时会无反应
+            repeated: true, //允许重复激活相同的项，否则再次进来时会无反应
 
             change: function (item, index) {
                 panel.fire('change', [item]);
@@ -35,9 +36,10 @@ define('/Recommend/Tabs', function (require, module) {
     });
 
 
-    panel.on('render', function (list) {
+    panel.on('render', function (groups) {
 
-        
+        list = groups;
+
         tabs.render(list, function (item, index) {
             return {
                 'index': index,
@@ -54,7 +56,17 @@ define('/Recommend/Tabs', function (require, module) {
 
 
     return panel.wrap({
-        active: function (index) {
+
+        active: function (item) {
+
+            var index = $.Array.findIndex(list, function (obj, index) {
+                return obj.name == item.name;
+            });
+
+            if (index < 0) { //安全起见
+                index = 0;
+            }
+
             tabs.active(index);
         },
     });

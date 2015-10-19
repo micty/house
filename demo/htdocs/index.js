@@ -138,11 +138,10 @@ KISP.launch(function (require, module) {
     Aside.render();
 
     var Houses = module.require('Houses');
-    Houses.on('click', function (index) {
-
+    Houses.on('click', function (item) {
         Nav.to('Master', 'recommend');
         var Recommend = module.require('Recommend');
-        Recommend.active(index);
+        Recommend.active(item);
     });
 
 

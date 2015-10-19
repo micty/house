@@ -7,24 +7,26 @@ define('/Houses', function (require, module) {
     var KISP = require('KISP');
 
 
+    var List = module.require('List');
+
 
     var panel = KISP.create('Panel', '#div-panel-houses');
 
 
     panel.on('init', function () {
 
-        $('#ul-houses-list>li').each(function (index) {
-            var li = this;
-
-            $(li).on('click', function () {
-                panel.fire('click', [index]);
-            });
+        List.on({
+            'click': function (item, index) {
+                panel.fire('click', [item, index]);
+            },
         });
-
     });
 
 
+
     panel.on('render', function () {
+
+        List.render();
 
     });
 

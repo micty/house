@@ -14,7 +14,6 @@ define('/Recommend', function (require, module) {
 
     var panel = KISP.create('Panel', '#div-panel-recommend');
 
-
     panel.on('init', function () {
 
         API.on('success', {
@@ -47,8 +46,8 @@ define('/Recommend', function (require, module) {
 
 
     return panel.wrap({
-        active: function (index) {
-            Tabs.active(index);
+        active: function (item) {
+            Tabs.active(item);
         },
     });
 
