@@ -1,7 +1,7 @@
 ﻿
 
-.panel-green-detail {
-    background-image: url('../img/green.jpg');
+.panel-traffic-detail {
+    background-image: url('../img/traffic.jpg');
     background-repeat: no-repeat;
     height: 1051px;
 
@@ -35,11 +35,9 @@
             }
 
             li {
-                cursor: pointer;
+               
 
-                &:hover {
-                    background-color: rgba(211, 210, 208, 0.3);
-                }
+               
             }
         }
 
@@ -97,37 +95,43 @@
             }
 
             .left {
-
+                width: 504px;
 
                 .list {
-                    width: 164px;
-                    display: inline-block;
-                    padding-top: 10px;
+                    /* width: 164px; */
+                    /* display: inline-block; */
+                    padding-top: 17px;
                     box-sizing: border-box;
-                    height: 417px;
-
+                    /* height: 417px; */
+                    /* background-color: rgba(255, 0, 0, 0.57); */
                     li {
                         padding: 11px 0px;
                         margin-bottom: 5px;
+                         cursor: pointer;
                         /* border: solid 1px red; */
                         /*background-color: rgba(211, 210, 208, 0);*/
                         /*background-color: rgba(255, 0, 0, 0.22);*/
-
                         &:hover {
                             background-color: rgba(211, 210, 208, 0.3);
+                        }
+
+                        &.on {
+                            background-color: rgba(211, 210, 208, 0.54);
                         }
                     }
                 }
 
                 .content {
-                    width: 340px;
-                    height: 418px;
-                    display: inline-block;
+                    /* width: 340px; */
+                    /* height: 418px; */
+                    /* display: inline-block; */
                     overflow: hidden;
                     font-size: 14px;
                     line-height: 24px;
                     padding: 12px;
                     box-sizing: border-box;
+                    /* background-color: rgba(0, 0, 255, 0.36); */
+                    margin-top: 33px;
 
                     .title {
                         font-weight: bold;

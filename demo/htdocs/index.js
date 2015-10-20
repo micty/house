@@ -198,10 +198,10 @@ KISP.launch(function (require, module) {
             Normal.render('green');
         },
 
-        'food': function () {
+        'traffic': function () {
             Header.hide();
             var Normal = module.require('Normal');
-            Normal.render('food');
+            Normal.render('traffic');
         },
         
     });
