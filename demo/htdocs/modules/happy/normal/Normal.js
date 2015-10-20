@@ -30,6 +30,9 @@ define('/Normal', function (require, module) {
 
     });
 
+    view.on('before-render', function () {
+        view.fire('before-render');
+    });
 
     view.on('render', function (type) {
 

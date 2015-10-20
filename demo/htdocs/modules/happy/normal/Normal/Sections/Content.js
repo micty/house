@@ -18,11 +18,16 @@ define('/Normal/Sections/Content', function (require, module) {
             names: ['p'],
 
             fn: function (group, no) {
+
+                var url = group.url;
+
                 return {
                     list: group.items,
 
                     data: {
                         'title': group.title,
+                        'url': url,
+                        'more-display': url ? '' : 'display: none;',
                     },
 
                     fn: function (item, index) {

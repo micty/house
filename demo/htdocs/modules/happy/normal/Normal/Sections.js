@@ -26,6 +26,10 @@ define('/Normal/Sections', function (require, module) {
 
     panel.on('render', function (list) {
 
+        if (list.length == 0) {
+            return;
+        }
+
         Tabs.render(list);
         
     });

@@ -1,7 +1,7 @@
 ﻿
 
-.panel-food-detail {
-    background-image: url('../img/food.jpg');
+.panel-education-detail {
+    background-image: url('../img/education.jpg');
     background-repeat: no-repeat;
     height: 1051px;
 
@@ -35,7 +35,6 @@
             margin-bottom: 5px;
         }
 
-
         .top {
             height: 416px;
 
@@ -59,19 +58,18 @@
             }
 
             .summary {
-                height: 275px;
                 overflow: hidden;
-                padding: 25px 10px 25px 10px;
+                padding: 25px 10px;
                 box-sizing: border-box;
                 font-size: 15px;
                 line-height: 24px;
-                margin-top: 120px;
+                margin-top: 213px;
             }
 
             .more {
                 position: absolute;
-                top: 590px;
-                margin-left: 388px;
+                top: 700px;
+                margin-left: 367px;
                 font-size: 12px;
 
                 a {
@@ -80,9 +78,8 @@
             }
         }
 
-
-
         .bottom {
+
             &:after {
                 content: '';
                 display: block;
@@ -90,12 +87,11 @@
             }
 
             .left {
+                width: 504px;
+
                 .list {
-                    width: 196px;
-                    display: inline-block;
-                    padding-top: 13px;
+                    padding-top: 17px;
                     box-sizing: border-box;
-                    height: 417px;
 
                     li {
                         padding: 11px 0px;
@@ -105,33 +101,24 @@
                         &:hover {
                             background-color: rgba(211, 210, 208, 0.3);
                         }
+
+                        &.on {
+                            background-color: rgba(211, 210, 208, 0.54);
+                        }
                     }
                 }
 
                 .content {
-                    width: 310px;
-                    height: 418px;
-                    display: inline-block;
                     overflow: hidden;
                     font-size: 15px;
                     line-height: 24px;
                     padding: 12px;
                     box-sizing: border-box;
+                    margin-top: 33px;
 
                     .title {
                         font-weight: bold;
-                        font-size: 18px;
-                        margin-bottom: 15px;
-                    }
-
-                    .more {
-                        text-align: right;
-                        padding-right: 5px;
-                        font-size: 12px;
-
-                        a {
-                            color: #E77014;
-                        }
+                        font-size: 16px;
                     }
                 }
             }

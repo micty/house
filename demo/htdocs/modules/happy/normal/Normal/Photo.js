@@ -18,7 +18,11 @@ define('/Normal/Photo', function (require, module) {
     panel.on('render', function (list) {
 
         var index = 0;
-        var max = list.length;
+        var len = list.length;
+
+        if (len == 0) {
+            return;
+        }
 
         var img = document.getElementById('img-normal-photo');
 
@@ -27,7 +31,7 @@ define('/Normal/Photo', function (require, module) {
             img.src = item;
 
             index++;
-            if (index == max) {
+            if (index == len) {
                 index = 0;
             }
 

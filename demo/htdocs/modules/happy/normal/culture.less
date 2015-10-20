@@ -10,7 +10,6 @@
     }
 
     .main {
-       
         margin-top: 32px;
         margin-left: 9px;
         margin-right: 10px;
@@ -24,22 +23,16 @@
         }
 
 
-        .left,
-        .right {
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-            ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-
-            li {
-                cursor: pointer;
-
-                &:hover {
-                    background-color: rgba(211, 210, 208, 0.3);
-                }
-            }
+        p {
+            text-indent: 28px;
+            margin-top: 0px;
+            margin-bottom: 5px;
         }
 
 
@@ -53,14 +46,11 @@
             }
 
             .right {
-                width: 404px;
-                margin-right: 28px;
+                width: 426px;
 
                 li {
                     padding: 12px 0px;
                     margin-bottom: 3px;
-
-
 
                     &:last-child {
                         padding: 24px 0px;
@@ -69,20 +59,28 @@
             }
 
             .summary {
-                height: 198px;
+                height: 200px;
                 overflow: hidden;
-                padding: 25px 10px;
+                padding: 25px 10px 25px 10px;
                 box-sizing: border-box;
-                font-size: 14px;
+                font-size: 15px;
                 line-height: 24px;
+                margin-top: 210px;
+            }
 
-                p {
-                    text-indent: 28px;
-                    margin-top: 0px;
-                    margin-bottom: 0px;
+            .more {
+                position: absolute;
+                top: 590px;
+                margin-left: 388px;
+                font-size: 12px;
+
+                a {
+                    color: #E77014;
                 }
             }
         }
+
+
 
         .bottom {
             &:after {
@@ -92,18 +90,17 @@
             }
 
             .left {
-
-
                 .list {
-                    width: 164px;
+                    width: 105px;
                     display: inline-block;
-                    padding-top: 10px;
+                    padding-top: 13px;
                     box-sizing: border-box;
                     height: 417px;
 
                     li {
                         padding: 11px 0px;
                         margin-bottom: 5px;
+                        cursor: pointer;
 
                         &:hover {
                             background-color: rgba(211, 210, 208, 0.3);
@@ -112,25 +109,29 @@
                 }
 
                 .content {
-                    width: 340px;
+                    width: 400px;
                     height: 418px;
                     display: inline-block;
                     overflow: hidden;
-                    font-size: 14px;
+                    font-size: 15px;
                     line-height: 24px;
                     padding: 12px;
                     box-sizing: border-box;
 
                     .title {
                         font-weight: bold;
-                        font-size: 16px;
+                        font-size: 18px;
+                        margin-bottom: 15px;
                     }
 
+                    .more {
+                        text-align: right;
+                        padding-right: 5px;
+                        font-size: 12px;
 
-                    p {
-                        text-indent: 28px;
-                        margin-top: 0px;
-                        margin-bottom: 0px;
+                        a {
+                            color: #E77014;
+                        }
                     }
                 }
             }

@@ -170,6 +170,10 @@ KISP.launch(function (require, module) {
     });
 
 
+    var Normal = module.require('Normal');
+    Normal.on('before-render', function () {
+        Header.hide();
+    });
 
     var Message = require(module, 'Message');
     Message.on({
@@ -193,17 +197,23 @@ KISP.launch(function (require, module) {
         },
 
         'green': function () {
-            Header.hide();
-            var Normal = module.require('Normal');
             Normal.render('green');
         },
-
         'traffic': function () {
-            Header.hide();
-            var Normal = module.require('Normal');
             Normal.render('traffic');
         },
-        
+        'food': function () {
+            Normal.render('food');
+        },
+        'culture': function () {
+            Normal.render('culture');
+        },
+        'medical': function () {
+            Normal.render('medical');
+        },
+        'education': function () {
+            Normal.render('education');
+        },
     });
 
 
