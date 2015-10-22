@@ -1,11 +1,8 @@
 ﻿
-
 KISP.launch(function (require, module) {
-
    
     var $ = require('$');
     var Nav = module.require('Nav');
-
 
     //后退时触发
     Nav.on('back', function (current, target) {
@@ -37,51 +34,33 @@ KISP.launch(function (require, module) {
     Header.render();
 
     Header.on({
-
         'home': function () {
             Nav.to('Master', 'events'); //这里是 events 不是 home
         },
-
         'area': function () {
             Nav.to('Master', 'area');
         },
-
         'town': function () {
             Nav.to('Master', 'town');
         },
-
         'happy': function () {
             Nav.to('Master', 'happy');
         },
-
         'keypoint': function () {
             Nav.to('Master', 'keypoint');
         },
-
         'recommend': function () {
             Nav.to('Master', 'recommend');
         },
-
         'news': function () {
             Nav.to('NewsList', 'news');
         },
         'policy': function () {
             Nav.to('NewsList', 'policy');
         },
-       
-
         'contact': function () {
             Nav.to('Contact');
         },
-
-        'show': function () {
-            $(document.body).removeClass('no-bg');
-        },
-
-        'hide': function () {
-            $(document.body).addClass('no-bg');
-        },
-        
     });
 
 
@@ -145,6 +124,13 @@ KISP.launch(function (require, module) {
     });
 
 
+    var Policy = module.require('Policy');
+    Policy.on({
+        'list': function () {
+            Nav.to('NewsList', 'policy');
+        },
+    });
+
 
 
     var Master = module.require('Master');
@@ -166,8 +152,11 @@ KISP.launch(function (require, module) {
             var Recommend = module.require('Recommend');
             Recommend.render();
 
+            Policy.render();
+
         },
     });
+
 
 
     var Normal = module.require('Normal');
@@ -182,43 +171,21 @@ KISP.launch(function (require, module) {
             Nav.to('Master');
         },
 
-        'news': function (id, options) {
+        'paper': function (type, id, options) {
             Header.show();
-            Nav.to('NewsDetail', 'news', id, options);
+            Nav.to('NewsDetail', type, id, options);
         },
 
-        'policy': function (id, options) {
-            Header.show();
-            Nav.to('NewsDetail', 'policy', id, options);
+        'happy': function (name) {
+            Normal.render(name);
         },
 
-        'house': function (id, options) {
-            Nav.to('NewsDetail', 'house', id, options);
-        },
-
-        'green': function () {
-            Normal.render('green');
-        },
-        'traffic': function () {
-            Normal.render('traffic');
-        },
-        'food': function () {
-            Normal.render('food');
-        },
-        'culture': function () {
-            Normal.render('culture');
-        },
-        'medical': function () {
-            Normal.render('medical');
-        },
-        'education': function () {
-            Normal.render('education');
-        },
     });
 
 
     Message.render();
 
+    //给新闻详情页快捷调用弹出报名窗口
     window.showSignup = function () {
         var Signup = require('Signup');
         Signup.show();

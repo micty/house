@@ -10,8 +10,9 @@ define('/UserInfos', function (require, module, exports) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
-    var SessionStorage = MiniQuery.require('SessionStorage');
     var Template = KISP.require('Template');
+    var SessionStorage = require('SessionStorage');
+
 
     var panel = document.getElementById('li-user-infos');
 

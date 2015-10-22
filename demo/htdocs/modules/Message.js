@@ -15,20 +15,28 @@ define('/Message', function (require, module, exports) {
     panel.on('render', function () {
 
         var p = Url.getQueryString(window) || {};
-
-        
         var type = p.type;
 
-        if (type) {
 
-            panel.fire(type, [p.id, p]);
+        switch (type) {
+            case 'happy':
+                panel.fire('happy', [p.name]);
+                break;
 
-            return;
+
+            case 'news':
+            case 'policy':
+            case 'house':
+
+                panel.fire('paper', [type, p.id, p]);
+                break;
+
+            default:
+                panel.fire('master');
+
         }
 
 
-
-        panel.fire('master');
 
 
     });

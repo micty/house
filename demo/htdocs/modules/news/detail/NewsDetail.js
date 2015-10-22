@@ -8,8 +8,9 @@ define('/NewsDetail', function (require, module) {
     var Template = KISP.require('Template');
 
     var API = module.require('API');
-    var Main = module.require('Main');
     var Header = module.require('Header');
+    var Main = module.require('Main');
+    var Mode = module.require('Mode');
 
 
 
@@ -43,7 +44,6 @@ define('/NewsDetail', function (require, module) {
         API.get(type, id);
         
         showParts(options);
-
        
 
     });
@@ -52,38 +52,8 @@ define('/NewsDetail', function (require, module) {
     //显示/隐藏指定的部分
     function showParts(options) {
 
-        //默认显示全部
-        var defaults = {
-            sidebar: true,
-            head: true,
-            title: true,
-            sub: true,
-        };
-
-        var keys = ['sidebar', 'head', 'title', 'sub', ];
-
-        if (options) {
-            var isPure = options.mode == 0; //全部隐藏
-
-            $.Array.each(keys, function (key, index) {
-                if (isPure) {
-                    options[key] = false;
-                    return;
-                }
-
-                var value = options[key];
-                if (value === '0' || value === 'false') {
-                    options[key] = false;
-                }
-                else {
-                    options[key] = true;
-                }
-            });
-        }
-
-        options = $.Object.extend({}, defaults, options);
-
-
+        var mode = options.mode;
+        options = Mode.get(mode === undefined ?  options : mode);
 
         view.$.toggleClass('no-sidebar', !options.sidebar);
         view.$.toggleClass('no-head', !options.head);

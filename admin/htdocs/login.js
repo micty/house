@@ -7,14 +7,16 @@ KISP.launch(function (require, module) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
-    var SessionStorage = MiniQuery.require('SessionStorage');
+ 
     var MD5 = KISP.require('MD5');
 
-    var loading = null;
-    var toast = null;
+    
+
+    var LocalStorage = require('LocalStorage');
+    var SessionStorage = require('SessionStorage');
 
 
-    $('#btn-login').on('click', function () {
+    function login() {
 
         SessionStorage.remove('user');
 
@@ -36,6 +38,17 @@ KISP.launch(function (require, module) {
             'user': user,
             'password': password,
         });
+    }
+
+    $('#btn-login').on('click', function () {
+        login();
+    });
+
+
+    $(document).on('keyup', function (event) {
+        if (event.keyCode == 13) { //回车键
+            login();
+        }
 
     });
 
@@ -44,13 +57,16 @@ KISP.launch(function (require, module) {
 
     function post(data) {
 
-        loading = loading || KISP.create('Loading');
-        loading.show('登录中...');
-
-
         var api = KISP.create('API', 'login');
 
+        var loading = null;
+
         api.on({
+
+            'request': function () {
+                loading = KISP.create('Loading');
+                loading.show('登录中...');
+            },
 
             'response': function () {
                 loading.hide();
@@ -58,7 +74,11 @@ KISP.launch(function (require, module) {
 
             'success': function (data, json, xhr) {
 
-                toast = toast || KISP.create('Toast', {
+                SessionStorage.set('user', data);
+                LocalStorage.set('user', data);
+
+
+                var toast = KISP.create('Toast', {
                     text: '登录成功',
                     duration: 1500,
                     mask: 0,
@@ -68,7 +88,8 @@ KISP.launch(function (require, module) {
 
                 setTimeout(function () {
                     
-                    SessionStorage.set('user', data);
+                    
+
                     location.href = 'index.html';
 
                 }, 1500);
@@ -94,6 +115,21 @@ KISP.launch(function (require, module) {
         });
 
     }
+
+
+    var user = LocalStorage.get('user');
+    var txtUser = document.getElementById('txt-user');
+    var txtPassword = document.getElementById('txt-password');
+
+    if (user) {
+        txtUser.value = user.name;
+        txtPassword.focus();
+    }
+    else {
+        txtUser.focus();
+    }
+
+
 
 });
 

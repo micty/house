@@ -1,7 +1,4 @@
 
-
-//确定内容后需要修改 href 字段
-
 KISP.proxy(function () {
 
     var $ = KISP.require('$');
@@ -21,7 +18,7 @@ KISP.proxy(function () {
             ],
 
             summary: {
-                url: '?type=news&id=9EE44BD80C0F',
+                url: '?type=news&mode=1&id=9EE44BD80C0F',
                 items: [
                     '优越的交通区位和区域大通道的加快建设，使佛山充分接受广州的辐射和带动，形成与广州错位发展、共同构建“广佛都市区”和区域一体化的发展格局。佛山市轨道建设的进程暂且优先于其他同类城市，今后仍将持续地发展轨道公共交通的优势。',
                 ],

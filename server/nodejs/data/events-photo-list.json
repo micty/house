@@ -3,24 +3,24 @@
         "id": "8BB787997C22",
         "src": "/ueditor/upload/image/20151012/6358025573505130613362176.jpg",
         "href": "?type=news&id=26220108A58E#NewsDetail-A9801296",
-        "priority": 0
-    },
-    {
-        "id": "874AA2CF1890",
-        "src": "/ueditor/upload/image/20151002/6357942260576363175635759.jpg",
-        "href": "?type=news&id=6CBEAE6D0A83",
-        "priority": 2
-    },
-    {
-        "id": "4609C2372AAD",
-        "src": "/ueditor/upload/image/20151002/6357942260578263287392421.jpg",
-        "href": "?type=news&id=57F09A7308B2",
         "priority": 3
     },
     {
-        "id": "E31C3D4F72F2",
-        "src": "/ueditor/upload/image/20151002/6357942260573363003879096.jpg",
-        "href": "?type=news&id=3F79256C1275",
+        "id": "874AA2CF1890",
+        "src": "/ueditor/upload/image/20151022/6358112288725846148372605.jpg",
+        "href": "http://fs.house.sina.com.cn/video/2015-10-22/14296062847016646790796.shtml",
         "priority": 1
+    },
+    {
+        "id": "4609C2372AAD",
+        "src": "/ueditor/upload/image/20151022/6358110851806905579330444.jpg",
+        "href": "?type=news&id=38A6D31A98EB#NewsDetail-1884E224",
+        "priority": 0
+    },
+    {
+        "id": "E31C3D4F72F2",
+        "src": "/ueditor/upload/image/20151022/6358112483573078529908975.jpg",
+        "href": "http://fs.house.sina.com.cn/video/2015-10-22/13436062835325045361797.shtml",
+        "priority": 2
     }
 ]
