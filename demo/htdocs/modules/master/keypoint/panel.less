@@ -20,25 +20,20 @@
         /*border: solid 1px #ddd;*/
         text-align: center;
         padding: 10px 0px 0px 0px;
+        position: relative;
+
 
         img {
         }
 
         ul {
             padding: 0;
-            background-color: rgba(0, 0, 0, 0.39);
             margin: 0;
-            position: relative;
-            top: -25px;
-            right: -6px;
-            display: -webkit-box;
-            -webkit-box-pack: end;
-            width: 98%;
-            /*&:after {
-                content: '';
-                display: inline-block;
-                clear: both;
-            }*/
+            position: absolute;
+            right: 6px;
+            bottom: 8px;
+            text-align: right;
+            width: 100%;
         }
 
         li {
@@ -51,6 +46,7 @@
             cursor: pointer;
             border: solid 1px black;
             border-radius: 50%;
+            display: inline-block;
 
             &.on {
                 background: #EC6C3F;

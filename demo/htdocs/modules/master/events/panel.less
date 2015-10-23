@@ -8,6 +8,8 @@
         height: 100%;
         background-color: #eee;
         display: inline-block;
+        position: relative;
+        vertical-align: top;
 
         img {
             max-height: 240px;
@@ -18,12 +20,11 @@
             padding: 0;
             background-color: rgba(0, 0, 0, 0.39);
             margin: 0;
-            position: relative;
-            top: -10px;
-            display: -webkit-box;
-            display: -ms-flexbox;
-
-            -webkit-box-pack: end;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            text-align: right;
+            
 
             &:after {
                 content: '';
@@ -33,7 +34,7 @@
         }
 
         li {
-            padding: 0px 6px;
+            padding: 1px 6px;
             background: black;
             color: #fff;
             margin: 0px 4px;
@@ -42,6 +43,7 @@
             cursor: pointer;
             border: solid 1px black;
             border-radius: 50%;
+            display: inline-block;
 
             &.on {
                 background: #EC6C3F;
