@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: house 
 * version: 3.0.0
-* build: 2015-10-19 10:26:43
+* build: 2015-10-23 17:43:55
 * files: 61(59)
 *    partial/house/begin.js
 *    core/Module.js
@@ -2364,7 +2364,7 @@ define('Dialog', function (require, module, exports) {
             'visible': false,                   //记录当前组件是否已显示
             'volatile': config.volatile,
             'zIndex': config['z-index'],        //生成透明层时要用到
-
+            'data': {},                         //供 this.data() 方法使用
         };
 
         mapper.set(this, meta);
@@ -2575,6 +2575,44 @@ define('Dialog', function (require, module, exports) {
                 return;
             }
         },
+
+        /**
+        * 获取或设置自定义数据。 
+        * 已重载 data()、 data(key)、data(obj)、data(key, value)。
+        * 在跨函数中传递数据时会比较方便。
+        * @param {string|Object} key 要获取或设置的数据的名称(键)。
+            当指定为一个纯对象 {} 时，则表示批量设置。
+            当指定为字符串或可以转为字符串的类型时，则表示获取指定名称的数据。
+        * @param value 要设置的数据的值。 只有显式提供该参数，才表示设置。
+        * @return 返回获取到的或设置进来的值。
+        */
+        data: function (key, value) {
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            var len = arguments.length;
+            if (len == 0) { //获取全部
+                return data;
+            }
+
+            //重载 data(obj); 批量设置
+            if ($.Object.isPlain(key)) {
+                $.Object.extend(data, key);
+                return key;
+            }
+
+            //get(key)
+            if (len == 1) {
+                return data[key];
+            }
+
+            //set(key, value)
+            data[key] = value;
+            return value;
+
+        },
+
+
     };
 
     return Dialog;
@@ -6428,7 +6466,12 @@ define('defaults', /**@lends defaults*/ {
     */
     'Url': {
         //注意：这里取当前页的路径作为根地址，只适用于页面在根目录的情况。
-        root: location.origin + location.pathname.split('/').slice(0, -1).join('/') + '/',
+        //root: location.origin + location.pathname.split('/').slice(0, -1).join('/') + '/',
+
+        //IE10及以下 location.origin 不存在
+        root: location.protocol + '//' +  location.host + 
+                location.pathname.split('/').slice(0, -1).join('/') + '/',
+
         replacer: {
             root: '~',
             edition: '@'
@@ -6749,8 +6792,13 @@ define('defaults', /**@lends defaults*/ {
     global.KISP = KISP;
 
 
-    delete global['$'];
-    delete global['MiniQuery'];
+    //delete global['$'];
+    //delete global['MiniQuery'];
+
+    //IE8 下好像不能 delete
+    global.$ = undefined;
+    global.MiniQuery = undefined;
+
 
 })(Module.require);
 

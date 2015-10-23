@@ -193,3 +193,18 @@ KISP.launch(function (require, module) {
 
 });
 
+
+(function (console) {
+    if (!console) {
+        return;
+    }
+
+    console.log(
+        '本网站由%c邓良太%c独立开发完成\n' +
+        '联系电话：13760187469\n' +
+        'QQ：366387469\n' +
+        '职位：Web前端开发工程师\n' +
+        'GitHub：https://github.com/micty',
+            'color:blue', 'color:black');
+
+})(window.console);
