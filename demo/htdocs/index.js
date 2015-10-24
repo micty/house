@@ -35,7 +35,7 @@ KISP.launch(function (require, module) {
 
     Header.on({
         'home': function () {
-            Nav.to('Master', 'events'); //这里是 events 不是 home
+            Nav.to('Master', 'header'); //这里是 header 不是 home
         },
         'area': function () {
             Nav.to('Master', 'area');
@@ -70,7 +70,7 @@ KISP.launch(function (require, module) {
     Sidebar.on({
 
         'home': function () {
-            Nav.to('Master', 'events'); //这里是 events 不是 home
+            Nav.to('Master', 'header'); //这里是 header 不是 home
         },
 
         'area': function () {
@@ -200,8 +200,7 @@ KISP.launch(function (require, module) {
     }
 
     console.log(
-        '本网站由%c邓良太%c独立开发完成\n' +
-        '联系电话：13760187469\n' +
+        '本网站由%c邓良太%c独立完成开发\n' +
         'QQ：366387469\n' +
         '职位：Web前端开发工程师\n' +
         'GitHub：https://github.com/micty',

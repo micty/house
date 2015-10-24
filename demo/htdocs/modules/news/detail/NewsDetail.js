@@ -29,7 +29,7 @@ define('/NewsDetail', function (require, module) {
                     'content': data.content,
                 });
 
-                scrollTo(0, 360);
+                scrollTo(0, 369);
 
                
             },
