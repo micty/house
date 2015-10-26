@@ -429,11 +429,11 @@
             },
             {
                 "name": "户型",
-                "value": "31-57平米公寓带装修"
+                "value": "主打80-155平米洋房"
             },
             {
                 "name": "价格",
-                "value": "均价约9500元/平米"
+                "value": "均价8400-8500元/平米"
             },
             {
                 "name": "电话",
@@ -678,7 +678,7 @@
     {
         "id": "9DE5FA474F58",
         "belong": "张槎",
-        "name": "绿地未来城",
+        "name": "绿地未来商业中心",
         "src": "/ueditor/upload/image/20151018/6358079762203900453792331.jpg",
         "href": "?type=house&id=83BD98303B8A#NewsDetail-E6D75149",
         "priority": 28,
@@ -704,7 +704,7 @@
     {
         "id": "929E87710E7F",
         "belong": "祖庙",
-        "name": "绿地未来商业中心",
+        "name": "佛山绿地中心",
         "src": "/ueditor/upload/image/20151019/6358086428462529093213370.jpg",
         "href": "?type=house&id=A81763C745DC#NewsDetail-7B2F3E54",
         "priority": 26,
@@ -750,6 +750,32 @@
             {
                 "name": "电话",
                 "value": "83788883"
+            }
+        ]
+    },
+    {
+        "id": "E13E3146C116",
+        "belong": "南庄",
+        "name": "龙光水悦龙湾",
+        "src": "/ueditor/upload/image/20151024/6358131750483199625945064.jpg",
+        "href": "?type=house&id=DF80B445C704#NewsDetail-911C4D89",
+        "priority": 30,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "南庄大道与禅港路交汇处"
+            },
+            {
+                "name": "户型",
+                "value": "89-130平米"
+            },
+            {
+                "name": "价格",
+                "value": "均价6500元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "83786888"
             }
         ]
     }
