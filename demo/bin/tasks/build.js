@@ -90,49 +90,59 @@ module.exports = function (grunt, level) {
 
     }
 
-    ////把 config.js 内嵌到 html 页面中，并删除它。
-    //if (level >= 12) {
+    //把 config.js 内嵌到 html 页面中，并删除它。
+    if (level >= 12) {
         
-    //    var list = Pather.pair(dest, dest, files);
-    //    var filename = Pather.format(configJsPath);
-    //    var js = '';
+        var list = Pather.pair(dest, dest, files);
+        var filename = Pather.format(configJsPath);
+        var js = '';
 
-    //    Tasks.run('copy', $.String.random(), {
-    //        files: list,
-    //        options: {
-    //            process: function (html) {
+        Tasks.run('copy', $.String.random(), {
+            files: list,
+            options: {
+                process: function (html) {
 
-    //                if (!js) {
-    //                    js = grunt.file.read(filename);
-    //                }
+                    if (!js) {
+                        js = grunt.file.read(filename);
+                    }
 
-    //                //提取出 script 标签
-    //                var reg = /<script[^>]*?>[\s\S]*?<\/script>/gi;
-    //                var tags = html.match(reg);
+                    //提取出 script 标签
+                    var reg = /<script[^>]*?>[\s\S]*?<\/script>/gi;
+                    var tags = html.match(reg);
 
-    //                //找到含有 config.js 的 script 标签
-    //                var item = $.Array.findItem(tags, function (item, index) {
-    //                    return item.indexOf('config.js') > 0;
-    //                });
+                    //找到含有 config.js 的 script 标签
+                    var item = $.Array.findItem(tags, function (item, index) {
+                        return item.indexOf('config.js') > 0;
+                    });
 
-    //                if (item) {
-    //                    html = html.replace(item, '<script>' + js + '</script>');
-    //                }
+                    if (item) {
+                        html = html.replace(item, '<script>' + js + '</script>');
+                    }
 
-    //                return html;
-    //            },
-    //        },
-    //    });
+                    return html;
+                },
+            },
+        });
 
-    //    Tasks.run('clean', $.String.random(), {
-    //        src: filename,
-    //        options: {
-    //            force: true //允许删除当前工作目录外的其他文件
-    //        },
-    //    });
+        Tasks.run('clean', $.String.random(), {
+            src: filename,
+            options: {
+                force: true //允许删除当前工作目录外的其他文件
+            },
+        });
 
-    //}
+    }
 
+    //压缩 api 目录的 js
+    if (level >= 14) {
+        Tasks.run('uglify', 'api', {
+            expand: true,
+            cwd: dest + 'api',
+            src: '**/*.js',
+            dest: dest + 'api',
+        });
+
+    }
     
     
 

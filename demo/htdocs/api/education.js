@@ -1,10 +1,8 @@
 
-
-
+!!0
 KISP.proxy(function () {
 
     var $ = KISP.require('$');
-
 
  
     return {
@@ -33,4 +31,4 @@ KISP.proxy(function () {
         },
     };
 
-});
+});//
