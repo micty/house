@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: house 
 * version: 3.0.0
-* build: 2015-10-23 17:43:55
+* build: 2015-10-27 17:49:10
 * files: 61(59)
 *    partial/house/begin.js
 *    core/Module.js
@@ -6468,7 +6468,7 @@ define('defaults', /**@lends defaults*/ {
         //注意：这里取当前页的路径作为根地址，只适用于页面在根目录的情况。
         //root: location.origin + location.pathname.split('/').slice(0, -1).join('/') + '/',
 
-        //IE10及以下 location.origin 不存在
+        //IE10 及以下 location.origin 不存在
         root: location.protocol + '//' +  location.host + 
                 location.pathname.split('/').slice(0, -1).join('/') + '/',
 
