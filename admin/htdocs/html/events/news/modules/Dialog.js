@@ -51,12 +51,12 @@ define('/Dialog', function (require, module) {
         });
 
 
-        dialog.on('click', 'button', 'cancel', function () {
+        dialog.on('button', 'cancel', function () {
             dialog.hide();
         });
 
 
-        dialog.on('click', 'button', 'ok', function () {
+        dialog.on('button', 'ok', function () {
             
             var $ = dialog.$;
 

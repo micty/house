@@ -12,8 +12,20 @@ define('/List', function (require, module) {
     var template = null;
  
 
+    function checkFull(url) {
+        if (!url || typeof url != 'string') {
+            return false;
+        }
+
+        url = url.toLowerCase();
+
+        return url.indexOf('http://') == 0 || url.indexOf('https://') == 0;
+    }
+
+
     panel.on('init', function () {
 
+        var baseUrl = KISP.data('demo').url;
 
         template = KISP.create('Template', '#div-list', {
        
@@ -28,6 +40,10 @@ define('/List', function (require, module) {
 
                     fn: function (item, index) {
 
+                        var url = item.href;
+                        var isFull = checkFull(url);
+
+
                         var src = item.src;
 
                         return {
@@ -36,6 +52,7 @@ define('/List', function (require, module) {
                                 'index': index,
                                 'src': item.src,
                                 'id': item.id,
+                                'full-url': isFull ? url : baseUrl + url,
                                 'href': item.href,
                                 'priority': item.priority,
                             },

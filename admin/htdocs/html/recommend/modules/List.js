@@ -12,22 +12,36 @@ define('/List', function (require, module) {
     var template = null;
  
 
+    function checkFull(url) {
+        if (!url || typeof url != 'string') {
+            return false;
+        }
+
+        url = url.toLowerCase();
+
+        return url.indexOf('http://') == 0 || url.indexOf('https://') == 0;
+    }
 
     panel.on('init', function () {
 
-
+        var baseUrl = KISP.data('demo').url;
+        baseUrl = baseUrl.slice(3); //去掉一个 '../'
 
         template = KISP.create('Template', '#ul-items', {
             names: ['field'],
             
             fn: function (item, index) {
 
+                var url = item.href;
+                var isFull = checkFull(url);
+
                 return {
                     data: {
                         'index': index,
                         'name': item.name,
                         'src': item.src,
-                        'href': item.href || 'javascript:',
+                        'href': isFull ? url :
+                            url ? baseUrl + url : 'javascript:',
                     },
 
                     list: item.fields,

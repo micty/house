@@ -16,6 +16,7 @@ KISP.launch(function (require, module) {
     var Tabs = module.require('Tabs');
 
 
+    var mask = null;
 
 
     Tabs.on({
@@ -52,7 +53,14 @@ KISP.launch(function (require, module) {
 
     List.on({
         'remove': function (item, index) {
-            var ok = confirm('您确认要删除 【' + item.name + '】 吗？');
+           
+
+            mask = mask || top.KISP.create('Mask');
+            mask.show();
+
+            var ok = confirm('【' + item.name + '】\n\n 确认要删除吗？');
+            mask.hide();
+
             if (!ok) {
                 return;
             }

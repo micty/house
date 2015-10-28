@@ -14,8 +14,7 @@ KISP.launch(function (require, module) {
     var Dialog = module.require('Dialog');
     var List = module.require('List');
 
-    var type = '';
-
+    var mask = null;
 
     API.on('success', {
 
@@ -34,7 +33,13 @@ KISP.launch(function (require, module) {
 
     List.on({
         'remove': function (item, index) {
-            var ok = confirm('您确认要删除 【' + item.src + '】 吗？');
+
+            mask = mask || top.KISP.create('Mask');
+            mask.show();
+
+            var ok = confirm('【' + item.src + '】\n\n 确认要删除吗？');
+            mask.hide();
+
             if (!ok) {
                 return;
             }

@@ -8,14 +8,25 @@ KISP.launch(function (require, module) {
     var KISP = require('KISP');
     var Url = MiniQuery.require('Url');
 
-    
+    var KERP = require('KERP');
+    var Iframe = KERP.require('Iframe');
 
     var API = module.require('API');
+    var Header = module.require('Header');
     var List = module.require('List');
 
-    var type = '';
+    var type = Url.getQueryString(window, 'type');
     var currentIndex = -1;
+    var mask = null;
 
+
+    Header.on('add', function () {
+        Iframe.open('add', type, {
+            query: {
+                'type': type,
+            },
+        });
+    });
 
     API.on('success', {
 
@@ -31,7 +42,13 @@ KISP.launch(function (require, module) {
 
     List.on({
         'remove': function (item, index) {
-            var ok = confirm('您确认要删除 【' + item.title + '】 吗？');
+
+            mask = mask || top.KISP.create('Mask');
+            mask.show();
+
+            var ok = confirm('【' + item.title + '】\n\n 确认要删除吗？');
+            mask.hide();
+
             if (!ok) {
                 return;
             }
@@ -41,8 +58,6 @@ KISP.launch(function (require, module) {
         },
 
         'edit': function (item, index) {
-            var KERP = require('KERP');
-            var Iframe = KERP.require('Iframe');
  
             Iframe.open('add', type, {
                 query: {
@@ -54,8 +69,8 @@ KISP.launch(function (require, module) {
     });
     
 
-    type = Url.getQueryString(window, 'type');
+  
     API.get(type);
-
+    Header.render();
     
 });

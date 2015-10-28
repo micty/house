@@ -20,7 +20,7 @@ define('/API', function (require, module, exports) {
     //获取数据
     function get(type) {
 
-        loading = loading || KISP.create('Loading', {
+        loading = loading || top.KISP.create('Loading', {
             
         });
 

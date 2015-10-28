@@ -29,6 +29,11 @@ KISP.launch(function (require, module) {
         'post': function (data, json) {
             Title.clear();
             Content.clear();
+
+            var KERP = require('KERP');
+            var Iframe = KERP.require('Iframe');
+
+            Iframe.open('list', type);
         },
 
         'get': function (data) {
@@ -46,13 +51,13 @@ KISP.launch(function (require, module) {
 
         var title = Title.get();
         if (!title) {
-            alert('请输入标题');
+            top.KISP.alert('请输入标题');
             return;
         }
 
         var content = Content.get();
         if (!content) {
-            alert('请输入内容');
+            top.KISP.alert('请输入内容');
             return;
         }
 

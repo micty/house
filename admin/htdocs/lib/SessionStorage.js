@@ -15,7 +15,6 @@ define('SessionStorage', function (require, module, exports) {
     
     function set(key, value) {
 
-        debugger;
         all[key] = value;
 
         SessionStorage.set(skey, all);

@@ -6,14 +6,24 @@ define('/List', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
 
-
     var panel = KISP.create('Panel', '#div-list');
     var list = [];
     var template = null;
  
+   
+    function checkFull(url) {
+        if (!url || typeof url != 'string') {
+            return false;
+        }
+
+        url = url.toLowerCase();
+
+        return url.indexOf('http://') == 0 || url.indexOf('https://') == 0;
+    }
 
     panel.on('init', function () {
 
+        var baseUrl = KISP.data('demo').url;
 
         template = KISP.create('Template', '#div-list', {
        
@@ -27,13 +37,18 @@ define('/List', function (require, module) {
                     list: item.items,
 
                     fn: function (item, index) {
+
+                        var url = item.url;
+                        var isFull = checkFull(url);
+
                         return {
                             data: {
                                 'no': index + 1,
                                 'index': index,
                                 'title': item.title,
                                 'id': item.id,
-                                'url': item.url,
+                                'url': url,
+                                'full-url': isFull ? url : baseUrl + url,
                                 'priority': item.priority,
                             },
                         };

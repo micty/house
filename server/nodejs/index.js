@@ -3,6 +3,17 @@ var express = require('express');
 var app = express();
 
 
+var bodyParser = require('body-parser');
+
+//app.use(bodyParser.urlencoded({
+//    extended: false,
+//}));
+
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+
+
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
@@ -15,15 +26,6 @@ var server = app.listen(3000, function () {
     console.log('server listening at http://localhost:%s/', port);
 });
 
-
-var bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({
-    extended: false,
-}));
-
-//app.use(bodyParser.json({ limit: '50mb' }));
-//app.use(bodyParser.urlencoded({ limit: '50mb'}));
 
 
 
@@ -41,7 +43,7 @@ function allow(res) {
 //文章模块
 var Paper = require('./modules/Paper');
 
-app.post('/Paper.add', function (req, res) {
+app.post('/Paper.add',function (req, res) {
     allow(res);
     Paper.add(req.body, res);
 });
@@ -187,7 +189,7 @@ app.get('/EventsPhoto.remove', function (req, res) {
 
 
 
-//焦点图片模块
+
 var Recommend = require('./modules/Recommend');
 app.get('/Recommend.list', function (req, res) {
 

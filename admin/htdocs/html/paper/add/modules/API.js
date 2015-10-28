@@ -20,7 +20,7 @@ define('/API', function (require, module, exports) {
     function post(data) {
 
 
-        loading = loading || KISP.create('Loading', {
+        loading = loading || top.KISP.create('Loading', {
             mask: 0,
             
         });
@@ -41,7 +41,7 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                toast = toast || KISP.create('Toast', {
+                toast = toast || top.KISP.create('Toast', {
                     text: '提交成功',
                     duration: 1500,
                     mask: 0,

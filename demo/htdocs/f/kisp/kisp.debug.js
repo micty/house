@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: house 
 * version: 3.0.0
-* build: 2015-10-27 17:49:10
+* build: 2015-10-28 21:35:19
 * files: 61(59)
 *    partial/house/begin.js
 *    core/Module.js
@@ -6792,12 +6792,12 @@ define('defaults', /**@lends defaults*/ {
     global.KISP = KISP;
 
 
-    //delete global['$'];
-    //delete global['MiniQuery'];
+    delete global['$'];
+    delete global['MiniQuery'];
 
-    //IE8 下好像不能 delete
-    global.$ = undefined;
-    global.MiniQuery = undefined;
+    ////IE8 下好像不能 delete
+    //global.$ = undefined;
+    //global.MiniQuery = undefined;
 
 
 })(Module.require);
