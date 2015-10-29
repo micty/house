@@ -44,7 +44,10 @@
         border: solid 1px #5392CC;
         border-right: none;
         border-bottom: none;
+        font-family: 'Microsoft YaHei';
+        font-size: 14px;
     }
+
 
     th,
     td {
@@ -53,8 +56,19 @@
         border-top: none;
         text-align: left;
         padding: 5px 5px;
-        font-size: 14px;
+        
+
+        a {
+            color: black;
+            text-decoration: none;
+
+            &:hover {
+                color: red;
+                text-decoration: underline;
+            }
+        }
     }
+
 
     tr.header {
         background: #4767A2;
@@ -75,8 +89,17 @@
             cursor: pointer;
             font-size: 12px;
 
+
             &:hover {
+                text-decoration: underline;
+            }
+
+            &.remove {
                 color: red;
+            }
+
+            i {
+                margin: 0px 4px;
             }
         }
     }
