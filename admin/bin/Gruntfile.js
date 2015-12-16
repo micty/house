@@ -33,6 +33,9 @@ module.exports = function (grunt) {
         'html/events/news',
         'html/events/photo',
         'html/recommend',
+
+        'html/activity-signup',
+        'html/activity-recommend',
     ];
 
     require('./tasks/watch-html.js')(pages);

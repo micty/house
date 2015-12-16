@@ -1,27 +1,9 @@
 [
     {
-        "id": "F5AEE8E87C14",
-        "title": "两星期卖了近两百套 禅城房博会成效喜人",
-        "url": "?type=news&id=EB1A9FC7F0BA#NewsDetail-29CB03C6",
-        "priority": 0
-    },
-    {
-        "id": "717E99EFE7DE",
-        "title": "【交通】佛山七条地铁无缝连接广州 30分钟直通南站",
-        "url": "?type=news&id=246B33BD8315#NewsDetail-B5580056",
-        "priority": 3
-    },
-    {
         "id": "5F87A5DD7460",
         "title": "【访谈】禅城区国土局:禅城房价呈稳中略有微涨趋势",
         "url": "?type=news&id=7C6D098DD328#NewsDetail-0E12410D",
         "priority": 5
-    },
-    {
-        "id": "A10F9F27F60D",
-        "title": "【房贷】贷款买房十年来最抵 30万贷款居然悭六万几",
-        "url": "?type=news&id=AFAC4C36E6CE#NewsDetail-AA66BAC4",
-        "priority": 2
     },
     {
         "id": "B58AA07C1AF6",
@@ -36,12 +18,6 @@
         "priority": 7
     },
     {
-        "id": "F97CBBA5620A",
-        "title": "【医疗】禅城区医疗资源丰富 三级医疗体系网络完善",
-        "url": "?type=news&id=40566EF5C8CA#NewsDetail-9839AFEB",
-        "priority": 8
-    },
-    {
         "id": "521CDC0C151F",
         "title": "【沙龙】广佛同城仍被看好 禅城楼市将迎20年黄金期",
         "url": "?type=news&id=072536D7F02E#NewsDetail-0EFBCF6B",
@@ -51,6 +27,54 @@
         "id": "BBAAE4961DFF",
         "title": "【政策】全面二孩政策袭来！学位房走俏 四房变刚需",
         "url": "?type=news&id=508C73F00845#NewsDetail-77814298",
+        "priority": 6
+    },
+    {
+        "id": "DBDE2BB3CE30",
+        "title": "【新闻】双11限时抢购 11套特惠房笋到你唔信",
+        "url": "http://fschanfang.com/index.html?type=house&id=C81FC812499E#NewsDetail-B97E9C23",
+        "priority": 4
+    },
+    {
+        "id": "2BB5D7630EFE",
+        "title": "【房贷】媒体：房贷利息将出优惠政策 ",
+        "url": "http://fschanfang.com/index.html?type=news&id=F59FAA027EA2#NewsDetail-2DEB9D45",
+        "priority": 5
+    },
+    {
+        "id": "027FA39EA5E9",
+        "title": "【新闻】楼市去库存关键在供需双向发力",
+        "url": "http://fschanfang.com/index.html?type=news&id=4EE908C171B7#NewsDetail-9C407BBE",
+        "priority": 4
+    },
+    {
+        "id": "CF6BB9AA6356",
+        "title": "【新闻】佛山前11个月卖地278亿 广佛交界贡献超五成",
+        "url": "http://fschanfang.com/index.html?type=news&id=DE5A7F30184A#NewsDetail-9CBF5457",
+        "priority": 4
+    },
+    {
+        "id": "6CB074D8C2F2",
+        "title": "【新闻】岭南天地获全球首个LEED认证",
+        "url": "http://fschanfang.com/index.html?type=news&id=1DA19F11C298#NewsDetail-BAF7AE95",
+        "priority": 4
+    },
+    {
+        "id": "150D744EEAD0",
+        "title": "【资讯】楼市去库存持久战：财政金融税费等政策将出",
+        "url": "http://fschanfang.com/index.html?type=news&id=86A01B842E00#NewsDetail-0D455DB6",
+        "priority": 3
+    },
+    {
+        "id": "4771C3BBFAA2",
+        "title": "【新闻】禅城房价稳健发展2016还要涨区长喊你来买房",
+        "url": "http://fschanfang.com/index.html?type=news&id=7441033043F1#NewsDetail-DDCBDC3F",
+        "priority": 2
+    },
+    {
+        "id": "C3D055680C00",
+        "title": "【咨讯】截止12月14日，房博会参展房源已销售544套！",
+        "url": "http://fschanfang.com/index.html?type=news&id=B7A3AFDC6303#NewsDetail-CDDCD2B2",
         "priority": 1
     }
 ]

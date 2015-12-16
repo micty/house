@@ -26,8 +26,9 @@
 
         'API': {
             //对外正式地址
-            //url: 'http://localhost:3000/',
-            url: 'http://120.24.89.223:3000/',
+            //url: 'http://120.24.89.223:3000/',
+            url: 'http://localhost:3000/',
+            
         },
         'Alert': {
             //mask: 0,

@@ -1,6 +1,16 @@
 ﻿
 
 var __Sidebar__ = [
+    {
+        icon: 'gavel',
+        name: '活动楼盘管理',
+        url: 'html/activity-recommend/index.html',
+    },
+    {
+        icon: 'user',
+        name: '活动报名管理',
+        url: 'html/activity-signup/index.html',
+    },
 
     {
         icon: 'image',
@@ -18,11 +28,13 @@ var __Sidebar__ = [
         name: '楼盘推荐管理',
         url: 'html/recommend/index.html',
     },
+   
     {
         icon: 'user-plus',
         name: '报名管理',
         url: 'html/signup/index.html',
     },
+    
     {
         icon: 'newspaper-o',
         name: '新闻资讯管理',

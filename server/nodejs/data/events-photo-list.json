@@ -3,24 +3,24 @@
         "id": "8BB787997C22",
         "src": "/ueditor/upload/image/20151028/6358162881106800293134339.jpg",
         "href": "?type=news&id=072536D7F02E#NewsDetail-3D3D2071",
-        "priority": 0
+        "priority": 2
     },
     {
         "id": "874AA2CF1890",
-        "src": "/ueditor/upload/image/20151022/6358112288725846148372605.jpg",
-        "href": "http://fs.house.sina.com.cn/video/2015-10-22/14296062847016646790796.shtml",
-        "priority": 2
+        "src": "/ueditor/upload/image/20151110/6358277160628332597516936.jpg",
+        "href": "?type=news&id=5285A092D1F5#NewsDetail-0159CF4F",
+        "priority": 0
     },
     {
         "id": "4609C2372AAD",
         "src": "/ueditor/upload/image/20151023/6358121105687526822169648.jpg",
         "href": "?type=news&id=91D0B58AAA39#NewsDetail-25506DA6",
-        "priority": 1
+        "priority": 3
     },
     {
         "id": "E31C3D4F72F2",
-        "src": "/ueditor/upload/image/20151022/6358112483573078529908975.jpg",
-        "href": "http://fs.house.sina.com.cn/video/2015-10-22/13436062835325045361797.shtml",
-        "priority": 3
+        "src": "/ueditor/upload/image/20151110/6358277166976130171679122.jpg",
+        "href": "?type=news&id=EB1A9FC7F0BA#NewsDetail-6C03D6C9",
+        "priority": 1
     }
 ]

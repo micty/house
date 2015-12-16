@@ -17,8 +17,12 @@ define('/Houses', function (require, module) {
 
         List.on({
             'click': function (item, index) {
-                panel.fire('click', [item, index]);
+                panel.fire('item', [item, index]);
             },
+        });
+
+        panel.$.on('click', '[data-cmd="activity"]', function (event) {
+            panel.fire('activity');
         });
     });
 

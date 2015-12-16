@@ -86,8 +86,6 @@ define('Signup', function (require, module) {
                 'intent': intent,
             };
 
-
-
             API.post(data);
 
             dialog.hide();
@@ -101,7 +99,6 @@ define('Signup', function (require, module) {
     panel.on('render', function () {
 
         dialog.show();
-
 
     });
 

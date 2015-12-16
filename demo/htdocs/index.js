@@ -117,10 +117,15 @@ KISP.launch(function (require, module) {
     Aside.render();
 
     var Houses = module.require('Houses');
-    Houses.on('click', function (item) {
-        Nav.to('Master', 'recommend');
-        var Recommend = module.require('Recommend');
-        Recommend.active(item);
+    Houses.on({
+        'activity': function () {
+            Nav.to('ActivityRecommend');
+        },
+        'item': function (item) {
+            Nav.to('Master', 'recommend');
+            var Recommend = module.require('Recommend');
+            Recommend.active(item);
+        },
     });
 
 
@@ -191,6 +196,11 @@ KISP.launch(function (require, module) {
         Signup.show();
     };
 
+    //给新闻详情页快捷调用弹出活动报名窗口
+    window.showActivitySignup = function () {
+        var ActivitySignup = require('ActivitySignup');
+        ActivitySignup.show();
+    };
 });
 
 
