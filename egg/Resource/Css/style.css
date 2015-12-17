@@ -49,11 +49,11 @@ body {
 
 .main {
     position: absolute;
-    top: 50%;
+    bottom: 0;
     left: 50%;
     /* width: 100%; */
-    margin-left: -420px;
-    margin-top: -150px;
+    margin-left: -508px;
+    margin-bottom: 10px;
 }
 
 
@@ -81,8 +81,8 @@ body {
         display: block;
         position: relative;
         cursor: pointer;
-        width: 280px;
-        height: 300px;
+        width: 339px;
+        height: 435px;
     }
 
 
@@ -202,7 +202,7 @@ body {
     .canvas-tool .beat-egg-container {
         position: absolute;
         /* width: 100%; */
-        top: 310px;
+        top: 100px;
         left: 50%;
         margin-left: -20px;
     }

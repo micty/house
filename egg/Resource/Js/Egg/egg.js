@@ -1,4 +1,6 @@
-function Egg( ctx, x, y ) {
+
+
+function Egg(ctx, x, y) {
     var _this = this;
     var eggRes, egg2_2Res, gashRes, giftRes;
     eggRes = getRes( 'egg' );

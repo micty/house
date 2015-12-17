@@ -1,4 +1,9 @@
-function Prize( ctx, x, y ) {
+
+
+
+
+
+function Prize(ctx, x, y) {
     var _this = this, prizeRes, egg2_1Res, measure, x1, y1, x2, y2, fontSize = 100, giftRes, gs2Res;
     prizeRes = getRes('prize'+ eggI);
     egg2_1Res = getRes('egg2_1');
@@ -88,19 +93,22 @@ function Prize( ctx, x, y ) {
         // 奖品文字描述
         ctx.scale(1, 1);
         ctx.save();
-        ctx.font = fontSize+"px Microsoft YaHei";
-        measure = ctx.measureText( prizeRes['name'] );
+        ctx.font = fontSize + "px Microsoft YaHei";
+        measure = ctx.measureText(prizeRes['name']);
+
         x1 = ( _this.stageW - measure['width'] ) / 2;
         y1 = this.textY;
         x2 = x1 + measure['width'];
         y2 = y1 + fontSize * 2 / 3;
 
 
-        var gradient= ctx.createLinearGradient( x1, y1, x1, y2 );
+        var gradient = ctx.createLinearGradient(x1, y1-30, x1, y2-30);
+
         gradient.addColorStop( 0, '#F9EDCD' );
         gradient.addColorStop( 0.25, '#E08045' )
         gradient.addColorStop( 0.5, '#E08045' );
-        gradient.addColorStop( 1.0, '#E08045' );
+        gradient.addColorStop(1.0, '#E08045');
+
         // 用渐变填色
         ctx.fillStyle = gradient;
         ctx.textAlign = 'center';
@@ -109,7 +117,7 @@ function Prize( ctx, x, y ) {
         ctx.shadowOffsetX = 3;
         ctx.shadowOffsetY = 3;
         ctx.shadowBlur = 10;
-        ctx.fillText( prizeRes['name'], this.textX, this.textY );
+        ctx.fillText( prizeRes['name'], this.textX, this.textY-30 );
         ctx.restore();
 
 
@@ -117,7 +125,10 @@ function Prize( ctx, x, y ) {
         ctx.drawImage( gs2Res['image'], this.gs2X, this.gs2Y, gs2Res['width'], gs2Res['height'] );
 
         // 奖品图像
-        ctx.drawImage( prizeRes['image'], this.x, this.y, prizeRes['width'], prizeRes['height'] );
+        //ctx.drawImage(prizeRes['image'], this.x, this.y, prizeRes['width'], prizeRes['height']);
+        ctx.drawImage(prizeRes['image'],
+            document.body.clientWidth / 2 - 250,
+            this.textY + 50, 500, 200);
 
         this.drawPrizeEgg();
     }

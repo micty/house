@@ -1,4 +1,6 @@
-function Beat( ctx ) {
+
+
+function Beat(ctx) {
     var _this = this, res;
     res = getRes('beat');
 

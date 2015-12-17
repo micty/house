@@ -1,4 +1,5 @@
-function Stage( ctx ) {
+function Stage(ctx) {
+
     var _this = this;
     var bgRes = getRes('stage_bg');
     var coinRes = getRes('coin');
@@ -111,7 +112,7 @@ function Stage( ctx ) {
     };
 
     this.update = function() {
-        this.rotationAngle += 0.5;
+        this.rotationAngle += 0.4;
         this.rotationAngle = this.rotationAngle % 360;
     };
 }
