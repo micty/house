@@ -5,6 +5,13 @@
 - 示意专题: http://fs.house.sina.com.cn/zhuanti/ccfbhcsb2015/
 - 示意专题: http://fs.house.sina.com.cn/zhuanti/fsccfbh2015/
 
+###砸金蛋：
+- http://gd.189.cn/ecssact/gzLoginCj/index.jsp
+- http://www.asp300.com/SoftView/11/SoftView_58074.html
+- http://www.lanrenmaku.com/HTML5/2015_0208_1408.html
+- http://www.lanrenmaku.com/view/code91/
+
+
 ##1、网站基本需求
 > 楼市“金九银十”已经到来，为了推介禅城区城市建设亮点和优越生活环境，展示“强中心”城市面貌，吸引周边居民在禅城区投资置业，禅城区将在近期举办2015年“网上房博会”，为了配合本次房博会的开展，特别建设专属网站，网站具有独立域名和管理后台，建成后将成为房博会信息发布，区域配套介绍，房源信息和优惠展示，购房者信息收集为一体的网络平台。网站建成后将利用各大媒体和政府发布平台进行传播，让更多购房者能够更加清晰了解禅城区域的发展和项目的优势，帮助购房者成功置业禅城。
 
