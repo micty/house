@@ -104,19 +104,20 @@ app.post('/ActivitySignup.add', function (req, res) {
     ActivitySignup.add(req.body, res);
 });
 
-
 app.get('/ActivitySignup.remove', function (req, res) {
     allow(res);
     ActivitySignup.remove(req.query.id, res);
-
 });
 
 app.get('/ActivitySignup.list', function (req, res) {
     allow(res);
     ActivitySignup.list(res);
-
 });
 
+app.get('/ActivitySignup.check', function (req, res) {
+    allow(res);
+    ActivitySignup.check(req.query.phone, res);
+});
 
 
 

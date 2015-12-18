@@ -31,6 +31,57 @@ function emptyError(name, res) {
 
 module.exports = {
 
+
+    /**
+    * 
+    */
+    check: function (phone, res) {
+
+        if (!phone) {
+            emptyError('phone', res);
+            return;
+        }
+
+        var path = getPath();
+        if (!fs.existsSync(path)) {
+            res.send({
+                code: 201,
+                msg: '不存在文件列表',
+            });
+            return;
+        }
+
+        fs.readFile(path, 'utf8', function (err, data) {
+
+            if (err) {
+                res.send({
+                    code: 201,
+                    msg: err,
+                });
+                return;
+            }
+
+            try {
+                var list = JSON.parse(data);
+                var item = $.Array.findItem(list, function (item, index) {
+                    return item.phone == phone;
+                });
+
+                res.send({
+                    code: 200,
+                    msg: 'ok',
+                    data: item,
+                });
+            }
+            catch (ex) {
+                res.send({
+                    code: 201,
+                    msg: ex.message,
+                });
+            }
+        });
+    },
+
     /**
     * 添加
     */
