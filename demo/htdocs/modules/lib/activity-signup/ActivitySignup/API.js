@@ -5,22 +5,23 @@ define('ActivitySignup/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
-
+    var SessionStorage = MiniQuery.require('SessionStorage');
     var Emitter = MiniQuery.require('Emitter');
     var emitter = new Emitter();
 
 
-    var loading2 = null;
-    var toast2 = null;
+    var loading = null;
+    var toast = null;
+    var dialog = null;
 
     function post(data) {
 
-        loading2 = KISP.create('Loading', {
+        loading = KISP.create('Loading', {
             text: '提交中...',
             mask: 0.35,
         });
 
-        loading2.show();
+        loading.show();
 
 
         var api = KISP.create('API', 'ActivitySignup.add', {
@@ -30,20 +31,37 @@ define('ActivitySignup/API', function (require, module, exports) {
 
         api.on({
             'response': function () {
-                loading2.hide();
+                loading.hide();
             },
 
-            'success': function (data, json, xhr) {
+            'success': function (obj, json, xhr) {
 
-                toast2 = toast2 || KISP.create('Toast', {
-                    text: '提交成功',
-                    duration: 1500,
-                    mask: 0.35,
+                var html = $('#div-dialog-acitivity-signup-success').html();
+                html = $.String.between(html, '<!--', '-->');
+
+                dialog = dialog || KISP.create('Dialog', {
+                    text: html,
+                    height: 320,
+                    width: 340,
+                    buttons: [
+                        {
+                            text: '立即前往抽奖',
+                            fn: function () {
+                                var key = $.String.random(64);
+                                var phone = dialog.data('phone');
+                                SessionStorage.set(key, phone);
+                                var url = 'html/egg/index.html?key=' + key;
+                                window.open(url);
+                            },
+                        },
+                    ],
+                   
                 });
 
-                toast2.show();
+                dialog.data('phone', data.phone);
+                dialog.show();
 
-                emitter.fire('success', 'post', [data]);
+                
 
             },
 

@@ -70,6 +70,7 @@ define('/Sidebar', function (require, module, exports) {
                 'index': index,
                 'name': item.name,
                 'icon': item.icon,
+                'class': item.border ? 'group' : '',
             };
 
         });

@@ -19,3 +19,9 @@
 /old/lib/kerp/bin/node_modules
 /old/lib/kerp/build
 
+
+/prize/bin/node_modules
+/prize/build
+/prize/htdocs/index.html
+/prize/htdocs/style/css
+

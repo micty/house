@@ -38,6 +38,7 @@ module.exports = function (grunt, level) {
             '<%=dir.htdocs%>api/**',
             '<%=dir.htdocs%>data/**',
             '<%=dir.htdocs%>f/**',
+            '<%=dir.htdocs%>html/**',
 
             '!<%=dir.css%>**', //这个目录不需要拷贝，因为在别的地方会重新生成
 

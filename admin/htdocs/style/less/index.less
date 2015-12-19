@@ -68,18 +68,32 @@ body {
         margin: 0 5px;
 
 
-        .hover {
-            background: #ADBDDB;
-            color: #000;
-        }
+
 
         li {
             line-height: 44px;
             cursor: pointer;
-            border-radius: 5px;
+
+
+            div {
+                border-radius: 5px;
+            }
+
+            &.hover div {
+                background: #ADBDDB;
+                color: #000;
+            }
 
             &:nth-child(odd) {
                 /*background: #5C8DBA;*/
+            }
+
+            &.group::after {
+                content: '';
+                display: block;
+                border-bottom: solid 1px rgb(176, 189, 199);
+                margin-bottom: 4px;
+                margin-top: 4px;
             }
         }
 

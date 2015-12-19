@@ -2,16 +2,21 @@
 
 var __Sidebar__ = [
     {
-        icon: 'gavel',
+        icon: 'star',
         name: '活动楼盘管理',
-        url: 'html/activity-recommend/index.html',
+        url: 'html/activity/recommend/index.html',
     },
     {
-        icon: 'user',
+        icon: 'street-view',
         name: '活动报名管理',
-        url: 'html/activity-signup/index.html',
+        url: 'html/activity/signup/index.html',
     },
-
+    {
+        icon: 'gavel',
+        name: '活动中奖管理',
+        url: 'html/activity/prize/index.html',
+        border: true,
+    },
     {
         icon: 'image',
         name: '焦点图片管理',
@@ -22,6 +27,8 @@ var __Sidebar__ = [
         name: '焦点新闻管理',
         url: 'html/events/news/index.html',
         //autoOpen: true,
+        border: true,
+
     },
     {
         icon: 'university',
@@ -33,6 +40,8 @@ var __Sidebar__ = [
         icon: 'user-plus',
         name: '报名管理',
         url: 'html/signup/index.html',
+        border: true,
+
     },
     
     {
@@ -52,6 +61,8 @@ var __Sidebar__ = [
         name: '楼盘资讯管理',
         url: 'html/paper/list/index.html?type=house',
         cmd: ['list', 'house'],
+        border: true,
+
     },
     {
         icon: 'plus',

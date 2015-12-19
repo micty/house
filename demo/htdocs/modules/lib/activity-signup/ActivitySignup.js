@@ -93,7 +93,15 @@ define('ActivitySignup', function (require, module) {
         });
 
 
+        API.on('success', function () {
+
+            
+        });
+
+
     });
+
+    
 
 
     panel.on('render', function () {

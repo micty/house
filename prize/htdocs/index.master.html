@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>禅城房博会</title>
+    <meta name="keywords" content="禅城 房博会 开幕 专供 房源 优惠 抢购">
+    <meta name="description" content="“幸福家园”2015佛山(禅城)O2O房博会(以下简称‘禅城房博会’)在禅城彩管厂地块盛大开幕，此次禅城房博会首创线上线下同展模式，云集了禅城30多家房地产商、近千套特价房源，旨在通过展会形式为市民打造一个便捷购房的平台，同时也让更多人了解禅城宜商宜居的城市价值。">
+    <link href="f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="f/kisp/kisp.debug.css" rel="stylesheet" />
+    <!--grunt.css.begin-->
+    <script>
+        [
+            'style/less/reset.less',
+            'style/less/style.less',
+        ]
+    </script>
+    <!--grunt.css.end-->
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9fddb164a1d40f89c735dcd087264d38";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <!--[if lte IE 10]>
+    <script type="text/javascript">
+        alert('您的 IE 版本过低，为了能更好的体验和使用本网站，推荐您使用最新的主流浏览器: 谷歌 Chrome 或 (IE11)!');
+        location.href = 'http://rj.baidu.com/soft/detail/14744.html?ald';
+    </script>
+    <![endif]-->
+
+
+</head>
+<body>
+    <div id="canvas-box" class="canvas-box">
+        <canvas id="canvas" width="1200" height="600"></canvas>
+        <div class="canvas-tool clearfix" id="canvas-tool">
+            <a href="javascript:;" class="cancel btn" id="cancel-btn">取消</a>
+            <a href="javascript:;" class="close btn hidden" id="close-btn">关闭</a>
+            <div class="beat-egg-container">
+                <a href="javascript:;" class="beat-egg btn" id="beat-egg-btn">砸蛋</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="main" id="main">
+        <div class="container">
+            <div id="egg-container" class="egg-container">
+                <ul class="clearfix"></ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/x-jquery-tmpl" id="eggTmpl">
+        <li class="prize-egg-li {{if complete}} complete {{/if}} {{if !success}} fail {{/if}}">
+            <a class="prize-egg-a">
+                <div class="egg2_2"></div>
+                <div class="egg_gift">
+                    <img src="{{= img}}" />
+                </div>
+                <div class="egg2_1"></div>
+                <i>{{= i}}</i>
+            </a>
+        </li>
+    </script>
+
+    <script src="f/jquery/jquery-1.11.1.debug.js"></script>
+    <script src="f/miniquery/miniquery.debug.js"></script>
+    <script src="f/kisp/kisp.debug.js"></script>
+    <script src="f/util.js"></script>
+    <script src="f/jquery.tmpl.js"></script>
+    <script src="config.js"></script>
+
+
+
+    <!--grunt.js.begin-->
+    <script>
+        [
+            'lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--grunt.js.end-->
+</body>
+</html>

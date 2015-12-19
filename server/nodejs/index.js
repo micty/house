@@ -114,10 +114,25 @@ app.get('/ActivitySignup.list', function (req, res) {
     ActivitySignup.list(res);
 });
 
-app.get('/ActivitySignup.check', function (req, res) {
+
+//活动奖品模块
+var ActivityPrize = require('./modules/ActivityPrize');
+
+app.post('/ActivityPrize.add', function (req, res) {
     allow(res);
-    ActivitySignup.check(req.query.phone, res);
+    ActivityPrize.add(req.body, res);
 });
+
+app.get('/ActivityPrize.list', function (req, res) {
+    allow(res);
+    ActivityPrize.list(res);
+});
+
+app.get('/ActivityPrize.get', function (req, res) {
+    allow(res);
+    ActivityPrize.get(req.query.phone, res);
+});
+
 
 
 

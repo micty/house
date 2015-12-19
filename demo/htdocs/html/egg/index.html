@@ -1,0 +1,77 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-type" Content="text/html;charset=utf-8" />
+    <title>砸金蛋 - 佛山禅城房博会</title>
+    <link href="../../f/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../f/kisp/kisp.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="Resource/Css/reset.css" />
+    <link rel="stylesheet" href="Resource/Css/style.css" />
+</head>
+<body>
+    <div id="canvas-box" class="canvas-box">
+        <canvas id="canvas" width="1200" height="600"></canvas>
+        <div class="canvas-tool clearfix" id="canvas-tool">
+            <a href="javascript:;" class="cancel btn" id="cancel-btn">取消</a>
+            <a href="javascript:;" class="close btn hidden" id="close-btn">关闭</a>
+            <div class="beat-egg-container">
+                <a href="javascript:;" class="beat-egg btn" id="beat-egg-btn">砸蛋</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="rules">
+        <h1>砸金蛋规则</h1>
+        <h2>活动对象：报名成功用户</h2>
+        <h2>活动时间：2015年12月24日-2016年1月22日</h2>
+        <h2>活动规则：</h2>
+        <h3>1、所有参与用户都有3次机会砸金蛋</h3>
+        <h3>2、每个手机号码只能参与活动1次</h3>
+        <h2>奖品领取：</h2>
+        <h3>1、网友用自己手机将自己中奖的“购房优惠券”拍照或者打印出来</h3>
+        <h3>2、活动时间内到相应售楼部凭购房优惠券和报名手机号码获得相应购房优惠</h3>
+        <h3>3、购房优惠券只能自己持有不能转给他人</h3>
+        <h3>4、活动最终解释权归禅城区国土城建和水务局所有</h3>
+    </div>
+
+    <div class="main" id="main">
+        <div class="container">
+            <div id="egg-container" class="egg-container">
+                <ul class="clearfix"></ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/x-jquery-tmpl" id="eggTmpl">
+    <li class="prize-egg-li {{if complete}} complete {{/if}} {{if !success}} fail {{/if}}">
+        <a class="prize-egg-a">
+            <div class="egg2_2"></div>
+            <div class="egg_gift">
+                <img src="{{= img}}" />
+                <img class="ray" src="Resource/Images/beta/gift.png" />
+            </div>
+            <div class="egg2_1"></div>
+            <i>{{= i}}</i>
+        </a>
+    </li>
+    </script>
+    <script src="../../f/jquery/jquery-1.11.1.min.js"></script>
+    <script src="../../f/miniquery/miniquery.min.js"></script>
+    <script src="../../f/kisp/kisp.min.js"></script>
+    <script src="../../config.js"></script>
+    <script>
+        var $ = KISP.require('$');
+    </script>
+    <script src="Resource/Js/prizeGroup.js"></script>
+    <script src="Resource/Js/jquery.tmpl.js"></script>
+    <script src="Resource/Js/util.js"></script>
+    <script src="Resource/Js/Egg/beat.js"></script>
+    <script src="Resource/Js/Egg/prize.js"></script>
+    <script src="Resource/Js/Egg/egg.js"></script>
+    <script src="Resource/Js/Egg/stage.js"></script>
+    <script src="Resource/Js/game.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>

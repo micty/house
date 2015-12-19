@@ -20,6 +20,10 @@ module.exports = function (grunt, level) {
     var files = [
         'index.html',
         'login.html',
+        'html/activity/prize/index.html',
+        'html/activity/recommend/index.html',
+        'html/activity/signup/index.html',
+
         'html/events/news/index.html',
         'html/events/photo/index.html',
         'html/home/index.html',
