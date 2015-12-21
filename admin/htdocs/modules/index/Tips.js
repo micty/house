@@ -9,8 +9,6 @@ define('/Tips', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-    var KERP = require('KERP');
-
 
     var div = document.getElementById('div-tips');
     var currentId = null;
