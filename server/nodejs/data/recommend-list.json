@@ -442,32 +442,6 @@
         ]
     },
     {
-        "id": "0799CFF9BB37",
-        "belong": "石湾",
-        "name": "兆阳御花园",
-        "src": "/ueditor/upload/image/20151012/6358026267186149471545990.jpg",
-        "href": "?type=house&id=FA9BCE9AAB4A#NewsDetail-36B96D39",
-        "priority": 28,
-        "fields": [
-            {
-                "name": "位置",
-                "value": "华远东路65号"
-            },
-            {
-                "name": "户型",
-                "value": "150-203平米"
-            },
-            {
-                "name": "价格",
-                "value": "均价12000-13000元/平"
-            },
-            {
-                "name": "电话",
-                "value": "83838383"
-            }
-        ]
-    },
-    {
         "id": "B05448EFB8D8",
         "belong": "张槎",
         "name": "领地.海纳珑庭",
