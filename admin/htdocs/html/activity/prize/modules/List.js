@@ -31,7 +31,9 @@ define('/List', function (require, module) {
                             data: {
                                 'index': index,
                                 'no': index + 1,
+                                'name': item.name,
                                 'phone': item.phone,
+                                'intent': item.intent,
                                 'datetime': item.datetime,
                                 'prize': item.prize,
 

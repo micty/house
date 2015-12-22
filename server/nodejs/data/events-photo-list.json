@@ -9,7 +9,7 @@
         "id": "874AA2CF1890",
         "src": "/ueditor/upload/image/20151110/6358277160628332597516936.jpg",
         "href": "?type=news&id=5285A092D1F5#NewsDetail-0159CF4F",
-        "priority": 0
+        "priority": 2
     },
     {
         "id": "4609C2372AAD",
@@ -21,6 +21,12 @@
         "id": "E31C3D4F72F2",
         "src": "/ueditor/upload/image/20151110/6358277166976130171679122.jpg",
         "href": "?type=news&id=EB1A9FC7F0BA#NewsDetail-6C03D6C9",
-        "priority": 1
+        "priority": 2
+    },
+    {
+        "id": "93B16074E05D",
+        "src": "/ueditor/upload/image/20151222/6358637570283206156914996.jpg",
+        "href": "http://fschanfang.com/index.html?type=news&id=7441033043F1#NewsDetail-65ACBD60",
+        "priority": "1"
     }
 ]

@@ -103,7 +103,9 @@ module.exports = {
 
         var item = {
             'id': $.String.random(),
+            'name': data.name,
             'phone': data.phone,
+            'intent': data.intent,
             'prize': data.prize,
             'datetime': getDateTime(),
         };

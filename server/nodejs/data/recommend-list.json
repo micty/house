@@ -4,8 +4,8 @@
         "belong": "祖庙",
         "name": "万科广场",
         "src": "/ueditor/upload/image/20151012/6358026547743128085273271.jpg",
-        "href": "?type=house&id=A8DCF075A021#NewsDetail-A12F0FCE",
-        "priority": 10,
+        "href": "?type=house&id=A8DCF075A021&mode=1",
+        "priority": 43,
         "fields": [
             {
                 "name": "位置",
@@ -30,8 +30,8 @@
         "belong": "祖庙",
         "name": "星星广场",
         "src": "/ueditor/upload/image/20151012/6358026634883297471253297.jpg",
-        "href": "?type=house&id=E48EA581C981",
-        "priority": 2,
+        "href": "?type=house&id=E48EA581C981&mode=1",
+        "priority": 44,
         "fields": [
             {
                 "name": "位置",
@@ -56,8 +56,8 @@
         "belong": "祖庙",
         "name": "富力广场",
         "src": "/ueditor/upload/image/20151113/6358301691040760867926993.jpg",
-        "href": "?type=house&id=8CE956530883#NewsDetail-0A71A722",
-        "priority": 17,
+        "href": "?type=house&id=8CE956530883&mode=1",
+        "priority": 40,
         "fields": [
             {
                 "name": "位置",
@@ -82,8 +82,8 @@
         "belong": "祖庙",
         "name": "瑞安·岭南天地（尚苑）",
         "src": "/ueditor/upload/image/20151012/6358026634878610005267390.jpg",
-        "href": "?type=house&id=315B5619D63C#NewsDetail-7E569A9A",
-        "priority": 7,
+        "href": "?type=house&id=315B5619D63C&mode=1",
+        "priority": 42,
         "fields": [
             {
                 "name": "位置",
@@ -108,8 +108,8 @@
         "belong": "祖庙",
         "name": "东建·普君新城（华府）",
         "src": "/ueditor/upload/image/20151012/6358026634881539557024052.jpg",
-        "href": "?type=house&id=57C04CFCEC61#NewsDetail-792EC04E",
-        "priority": 19,
+        "href": "?type=house&id=57C04CFCEC61&mode=1",
+        "priority": 39,
         "fields": [
             {
                 "name": "位置",
@@ -134,8 +134,8 @@
         "belong": "祖庙",
         "name": "越秀·岭南隽庭",
         "src": "/ueditor/upload/image/20151012/6358026634885152584482543.jpg",
-        "href": "?type=house&id=206D2D8B8583#NewsDetail-EEA80911",
-        "priority": 4,
+        "href": "?type=house&id=206D2D8B8583&mode=1",
+        "priority": 45,
         "fields": [
             {
                 "name": "位置",
@@ -160,8 +160,8 @@
         "belong": "祖庙",
         "name": "粤晖富居",
         "src": "/ueditor/upload/image/20151012/6358026634887203743009960.jpg",
-        "href": "?type=house&id=15A113D1CAE4#NewsDetail-87054B70",
-        "priority": 14,
+        "href": "?type=house&id=15A113D1CAE4&mode=1",
+        "priority": 49,
         "fields": [
             {
                 "name": "位置",
@@ -186,8 +186,8 @@
         "belong": "祖庙",
         "name": "华强广场",
         "src": "/ueditor/upload/image/20151012/6358026634888668616239205.jpg",
-        "href": "?type=house&id=D90786424BB1#NewsDetail-1E8974D6",
-        "priority": 6,
+        "href": "?type=house&id=D90786424BB1&mode=1",
+        "priority": 47,
         "fields": [
             {
                 "name": "位置",
@@ -195,11 +195,11 @@
             },
             {
                 "name": "户型",
-                "value": "公寓43-56平，洋房52-90平"
+                "value": "74-81平米"
             },
             {
                 "name": "价格",
-                "value": "9500-10000元/平米"
+                "value": "10000-12000元/平米"
             },
             {
                 "name": "电话",
@@ -212,8 +212,8 @@
         "belong": "南庄",
         "name": "绿岛湖颐号花园",
         "src": "/ueditor/upload/image/20151012/6358026531407175461679337.jpg",
-        "href": "?type=house&id=96FA681B41C7#NewsDetail-792E318D",
-        "priority": 20,
+        "href": "?type=house&id=96FA681B41C7&mode=1",
+        "priority": 36,
         "fields": [
             {
                 "name": "位置",
@@ -238,8 +238,8 @@
         "belong": "南庄",
         "name": "港宏世家",
         "src": "/ueditor/upload/image/20151012/6358026660859560701031543.jpg",
-        "href": "?type=house&id=7CB1876A772E#NewsDetail-9C0F5D6B",
-        "priority": 18,
+        "href": "?type=house&id=7CB1876A772E&mode=1",
+        "priority": 35,
         "fields": [
             {
                 "name": "位置",
@@ -264,8 +264,8 @@
         "belong": "南庄",
         "name": "汇银·新港湾花园",
         "src": "/ueditor/upload/image/20151012/6358026548503094276481212.jpg",
-        "href": "?type=house&id=47E8EEC831E4#NewsDetail-850DE98E",
-        "priority": 15,
+        "href": "?type=house&id=47E8EEC831E4&mode=1",
+        "priority": 34,
         "fields": [
             {
                 "name": "位置",
@@ -290,8 +290,8 @@
         "belong": "南庄",
         "name": "万科城",
         "src": "/ueditor/upload/image/20151012/6358026660865225119246696.jpg",
-        "href": "?type=house&id=1395ECC2213C#NewsDetail-A9D85A2C",
-        "priority": 11,
+        "href": "?type=house&id=1395ECC2213C&mode=1",
+        "priority": 32,
         "fields": [
             {
                 "name": "位置",
@@ -316,8 +316,8 @@
         "belong": "南庄",
         "name": "涟岸花园",
         "src": "/ueditor/upload/image/20151012/6358026660861709172788206.jpg",
-        "href": "?type=house&id=472791AD6F6A#NewsDetail-04C53F9A",
-        "priority": 13,
+        "href": "?type=house&id=472791AD6F6A&mode=1",
+        "priority": 33,
         "fields": [
             {
                 "name": "位置",
@@ -342,8 +342,8 @@
         "belong": "南庄",
         "name": "绿岛明珠花园",
         "src": "/ueditor/upload/image/20151012/6358026660863760316017451.jpg",
-        "href": "?type=house&id=0EF87F4B6276#NewsDetail-5077E915",
-        "priority": 21,
+        "href": "?type=house&id=0EF87F4B6276&mode=1",
+        "priority": 37,
         "fields": [
             {
                 "name": "位置",
@@ -369,7 +369,7 @@
         "name": "新鸿基·泷景花园",
         "src": "/ueditor/upload/image/20151012/6358026436596934073628688.jpg",
         "href": "?type=house&id=46C86E4E6955#NewsDetail-61B7DB85",
-        "priority": 9,
+        "priority": 50,
         "fields": [
             {
                 "name": "位置",
@@ -394,8 +394,8 @@
         "belong": "石湾",
         "name": "雄盛王府广场",
         "src": "/ueditor/upload/image/20151012/6358026383813750024777465.jpg",
-        "href": "?type=house&id=321E010B1554#NewsDetail-19A70639",
-        "priority": 5,
+        "href": "?type=house&id=321E010B1554&mode=1",
+        "priority": 27,
         "fields": [
             {
                 "name": "位置",
@@ -420,8 +420,8 @@
         "belong": "石湾",
         "name": "盛南新都",
         "src": "/ueditor/upload/image/20151012/6358026684151821234172827.jpg",
-        "href": "?type=house&id=CE938EB8678B#NewsDetail-4080F593",
-        "priority": 8,
+        "href": "?type=house&id=CE938EB8678B&mode=1",
+        "priority": 26,
         "fields": [
             {
                 "name": "位置",
@@ -447,7 +447,7 @@
         "name": "兆阳御花园",
         "src": "/ueditor/upload/image/20151012/6358026267186149471545990.jpg",
         "href": "?type=house&id=FA9BCE9AAB4A#NewsDetail-36B96D39",
-        "priority": 23,
+        "priority": 28,
         "fields": [
             {
                 "name": "位置",
@@ -473,7 +473,7 @@
         "name": "领地.海纳珑庭",
         "src": "/ueditor/upload/image/20151012/6358026298298396723499638.jpg",
         "href": "?type=house&id=7EC8E42B943C#NewsDetail-817D746A",
-        "priority": 12,
+        "priority": 21,
         "fields": [
             {
                 "name": "位置",
@@ -499,7 +499,7 @@
         "name": "海湾城市嘉园",
         "src": "/ueditor/upload/image/20151012/6358026297476809095176722.jpg",
         "href": "?type=house&id=E94CCAF4A3F8#NewsDetail-5F975C09",
-        "priority": 16,
+        "priority": 20,
         "fields": [
             {
                 "name": "位置",
@@ -551,7 +551,7 @@
         "name": "智慧新城·悦海湾花园",
         "src": "/ueditor/upload/image/20151010/6358008723061610629424199.jpg",
         "href": "http://fschanfang.com/index.html?type=house&id=FED5A30A8E18#NewsDetail-C5351E6C",
-        "priority": 1,
+        "priority": 23,
         "fields": [
             {
                 "name": "位置",
@@ -576,8 +576,8 @@
         "belong": "祖庙",
         "name": "时代云图雅苑",
         "src": "/ueditor/upload/image/20151012/6358027072483473226841414.jpg",
-        "href": "?type=house&id=A4B718633218#NewsDetail-980A664E",
-        "priority": 25,
+        "href": "?type=house&id=A4B718633218&mode=1",
+        "priority": 46,
         "fields": [
             {
                 "name": "位置",
@@ -602,8 +602,8 @@
         "belong": "祖庙",
         "name": "长信·东海银湾豪园",
         "src": "/ueditor/upload/image/20151015/6358053097554631651759936.jpg",
-        "href": "?type=house&id=3CCC43DA90D3#NewsDetail-B3F5A45D",
-        "priority": 19,
+        "href": "?type=house&id=3CCC43DA90D3&mode=1",
+        "priority": 41,
         "fields": [
             {
                 "name": "位置",
@@ -629,7 +629,7 @@
         "name": "时代花样华庭",
         "src": "/ueditor/upload/image/20151012/6358026589196643729664516.jpg",
         "href": "?type=house&id=10A9230CBE37#NewsDetail-05CA7EF1",
-        "priority": 24,
+        "priority": 29,
         "fields": [
             {
                 "name": "位置",
@@ -655,7 +655,7 @@
         "name": "保利天玺花园",
         "src": "/ueditor/upload/image/20151018/6358079762082025155264209.jpg",
         "href": "?type=house&id=74C37A2CC4D5",
-        "priority": 27,
+        "priority": 30,
         "fields": [
             {
                 "name": "位置",
@@ -681,7 +681,7 @@
         "name": "绿地未来商业中心",
         "src": "/ueditor/upload/image/20151018/6358079762203900453792331.jpg",
         "href": "?type=house&id=83BD98303B8A#NewsDetail-E6D75149",
-        "priority": 28,
+        "priority": 24,
         "fields": [
             {
                 "name": "位置",
@@ -706,8 +706,8 @@
         "belong": "祖庙",
         "name": "佛山绿地中心",
         "src": "/ueditor/upload/image/20151019/6358086428462529093213370.jpg",
-        "href": "?type=house&id=A81763C745DC#NewsDetail-7B2F3E54",
-        "priority": 26,
+        "href": "?type=house&id=A81763C745DC&mode=1",
+        "priority": 48,
         "fields": [
             {
                 "name": "位置",
@@ -733,7 +733,7 @@
         "name": "龙光天湖华府",
         "src": "/ueditor/upload/image/20151021/6358104967570242111777933.jpg",
         "href": "?type=house&id=E077F8483A16#NewsDetail-CF63411B",
-        "priority": 29,
+        "priority": 31,
         "fields": [
             {
                 "name": "位置",
@@ -758,8 +758,8 @@
         "belong": "南庄",
         "name": "龙光水悦龙湾",
         "src": "/ueditor/upload/image/20151024/6358131750483199625945064.jpg",
-        "href": "?type=house&id=DF80B445C704#NewsDetail-911C4D89",
-        "priority": 30,
+        "href": "?type=house&id=DF80B445C704&mode=1",
+        "priority": 38,
         "fields": [
             {
                 "name": "位置",
@@ -776,6 +776,448 @@
             {
                 "name": "电话",
                 "value": "83786888"
+            }
+        ]
+    },
+    {
+        "id": "0FEF7BB10511",
+        "belong": "张槎",
+        "name": "百业苑",
+        "src": "/ueditor/upload/image/20151221/6358631480490104573553257.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=95F9B3DA38E1#NewsDetail-058939AE",
+        "priority": 1,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "张槎聚边工业路与兴业路交界"
+            },
+            {
+                "name": "户型",
+                "value": "81-109平米"
+            },
+            {
+                "name": "价格",
+                "value": "均价约7500元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "66829888"
+            }
+        ]
+    },
+    {
+        "id": "C077CD0C4C4E",
+        "belong": "张槎",
+        "name": "联诚智博丽海花园",
+        "src": "/ueditor/upload/image/20151221/6358631704766806339192678.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=80D2CFA92CCE#NewsDetail-EB2E9162",
+        "priority": 2,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "佛山市禅城区季华三路南侧"
+            },
+            {
+                "name": "户型",
+                "value": "88-90平米"
+            },
+            {
+                "name": "价格",
+                "value": "均价约8500元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "88035666"
+            }
+        ]
+    },
+    {
+        "id": "B2AAD131E7B9",
+        "belong": "张槎",
+        "name": "卓远广场",
+        "src": "/ueditor/upload/image/20151221/6358631723191758731415424.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=30F64DE372B7#NewsDetail-EF4EF5CE",
+        "priority": 3,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区季华三路61号"
+            },
+            {
+                "name": "户型",
+                "value": "主打91平米"
+            },
+            {
+                "name": "价格",
+                "value": "8500-11000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82269999"
+            }
+        ]
+    },
+    {
+        "id": "9E18C0B4EE87",
+        "belong": "张槎",
+        "name": "卓远云峰",
+        "src": "/ueditor/upload/image/20151221/6358631739346856618235342.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=E086F9837A71#NewsDetail-2E3D75B2",
+        "priority": 4,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区玉带路41号"
+            },
+            {
+                "name": "户型",
+                "value": "79-111平米"
+            },
+            {
+                "name": "价格",
+                "value": "均价约7500元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82229666"
+            }
+        ]
+    },
+    {
+        "id": "0AE9B55EB07A",
+        "belong": "张槎",
+        "name": "珠江罗马新都",
+        "src": "/ueditor/upload/image/20151221/6358631775554001461819143.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=EC83FD3A6E81#NewsDetail-3D0473D0",
+        "priority": 5,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区轻工三路11号"
+            },
+            {
+                "name": "户型",
+                "value": "89-190平米"
+            },
+            {
+                "name": "价格",
+                "value": "8500-9000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82022588"
+            }
+        ]
+    },
+    {
+        "id": "6B3B3F1C9284",
+        "belong": "张槎",
+        "name": "御璟上院",
+        "src": "/ueditor/upload/image/20151222/6358637592622587691596565.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=8D31C28BF81F#NewsDetail-33ED253E",
+        "priority": 6,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "轻工路与槎湾路交汇处西南角"
+            },
+            {
+                "name": "户型",
+                "value": "139-142平米"
+            },
+            {
+                "name": "价格",
+                "value": "95万/套起"
+            },
+            {
+                "name": "电话",
+                "value": "82500333"
+            }
+        ]
+    },
+    {
+        "id": "8EC06FD6F92A",
+        "belong": "石湾",
+        "name": "碧桂园城市花园",
+        "src": "/ueditor/upload/image/20151221/6358631510690025068549291.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=3156F107C7F0#NewsDetail-9123BA55",
+        "priority": 7,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区岭南大道北129号"
+            },
+            {
+                "name": "户型",
+                "value": "主打43-85平米公寓"
+            },
+            {
+                "name": "价格",
+                "value": "公寓一口价51万/套起"
+            },
+            {
+                "name": "电话",
+                "value": "83319999"
+            }
+        ]
+    },
+    {
+        "id": "11FE7073FA38",
+        "belong": "石湾",
+        "name": "华福国际公馆",
+        "src": "/ueditor/upload/image/20151221/6358631542982471552903514.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=0F27AA66A2E0#NewsDetail-A66CF23B",
+        "priority": 9,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区深村大道2号"
+            },
+            {
+                "name": "户型",
+                "value": "87-147平米"
+            },
+            {
+                "name": "价格",
+                "value": "均价9500-11000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "83311388"
+            }
+        ]
+    },
+    {
+        "id": "F358999A85E9",
+        "belong": "石湾",
+        "name": "龙光君悦华府",
+        "src": "/ueditor/upload/image/20151221/6358631580859559378086354.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=59509E1D6751#NewsDetail-0E446D27",
+        "priority": 13,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "魁奇一路南侧，港口路东侧"
+            },
+            {
+                "name": "户型",
+                "value": "296-584平米商铺"
+            },
+            {
+                "name": "价格",
+                "value": "263万/套起"
+            },
+            {
+                "name": "电话",
+                "value": "83071888"
+            }
+        ]
+    },
+    {
+        "id": "A3C80BCC0E1A",
+        "belong": "石湾",
+        "name": "凯德城脉",
+        "src": "/ueditor/upload/image/20151221/6358631607635493851456242.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=40D0D292C913#NewsDetail-6D645148",
+        "priority": 11,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区魁奇路与华远东路交汇处"
+            },
+            {
+                "name": "户型",
+                "value": "41-147平米公寓"
+            },
+            {
+                "name": "价格",
+                "value": "毛坯8500元/平米起"
+            },
+            {
+                "name": "电话",
+                "value": "83030188"
+            }
+        ]
+    },
+    {
+        "id": "15652E705DE1",
+        "belong": "石湾",
+        "name": "星海岸城市花园",
+        "src": "/ueditor/upload/image/20151221/6358631643277680402578236.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=4369A440E026#NewsDetail-61410CE5",
+        "priority": 12,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城港口路26号 "
+            },
+            {
+                "name": "户型",
+                "value": "180-247平米"
+            },
+            {
+                "name": "价格",
+                "value": "均价约11000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "83932888"
+            }
+        ]
+    },
+    {
+        "id": "F019E6CCC0DC",
+        "belong": "石湾",
+        "name": "沿海馨庭",
+        "src": "/ueditor/upload/image/20151221/6358631662764145699109558.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=9E1FA96AA2D9#NewsDetail-C8CA3571",
+        "priority": 10,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区港口路16号"
+            },
+            {
+                "name": "户型",
+                "value": "90-123平米"
+            },
+            {
+                "name": "价格",
+                "value": "8800-11000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82803666"
+            }
+        ]
+    },
+    {
+        "id": "C8AF054EEB33",
+        "belong": "石湾",
+        "name": "兆阳御花园",
+        "src": "/ueditor/upload/image/20151222/6358637576768895811293164.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=FA9BCE9AAB4A#NewsDetail-5DDD8C25",
+        "priority": 8,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区华远东路65号"
+            },
+            {
+                "name": "户型",
+                "value": "94-235平米"
+            },
+            {
+                "name": "价格",
+                "value": "12000-13000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "83838383"
+            }
+        ]
+    },
+    {
+        "id": "B8EFE09B7967",
+        "belong": "南庄",
+        "name": "汇博国际广场",
+        "src": "/ueditor/upload/image/20151221/6358631562288826507619442.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=346BFED98B62#NewsDetail-1B4EC784",
+        "priority": 14,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区南庄镇镇紫洞南路108号"
+            },
+            {
+                "name": "户型",
+                "value": "42-89平米"
+            },
+            {
+                "name": "价格",
+                "value": "7000-8000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82562888，82012666"
+            }
+        ]
+    },
+    {
+        "id": "75A51AB93A22",
+        "belong": "祖庙",
+        "name": "天丰花园",
+        "src": "/ueditor/upload/image/20151221/6358631628197003047338416.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=F356498C0D45#NewsDetail-3F6F9A55",
+        "priority": 15,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "南海大道与季华路交汇处"
+            },
+            {
+                "name": "户型",
+                "value": "70-127平米"
+            },
+            {
+                "name": "价格",
+                "value": "9000-9500元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82003222"
+            }
+        ]
+    },
+    {
+        "id": "7860FE19F029",
+        "belong": "祖庙",
+        "name": "逸彩美寓",
+        "src": "/ueditor/upload/image/20151221/6358631680398066587212355.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=EE87CC675D37#NewsDetail-09A732FE",
+        "priority": 16,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "祖庙路与普澜路的交汇处"
+            },
+            {
+                "name": "户型",
+                "value": "76-158平米"
+            },
+            {
+                "name": "价格",
+                "value": "61万/套起"
+            },
+            {
+                "name": "电话",
+                "value": "82281118"
+            }
+        ]
+    },
+    {
+        "id": "283B6AA7DB5D",
+        "belong": "祖庙",
+        "name": "华强广场",
+        "src": "/ueditor/upload/image/20151221/6358631761005152489768074.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=D90786424BB1#NewsDetail-B9182FA8",
+        "priority": 17,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "汾江中路与高基街交汇处"
+            },
+            {
+                "name": "户型",
+                "value": "74-81平米"
+            },
+            {
+                "name": "价格",
+                "value": "10000-12000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "82259999"
             }
         ]
     }

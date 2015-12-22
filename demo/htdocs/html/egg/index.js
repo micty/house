@@ -5,6 +5,7 @@ KISP.launch(function (require, module) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var Url = MiniQuery.require('Url');
+
     var key = Url.getQueryString(window, 'key');
     if (!key) {
         KISP.alert('请先报名再来抽奖!', function () {
@@ -13,26 +14,39 @@ KISP.launch(function (require, module) {
         return;
     }
 
+
     var SessionStorage = MiniQuery.require('SessionStorage');
-    var phone = SessionStorage.get(key);
-    if (!phone) {
+    var user = SessionStorage.get(key);
+    if (!user) {
         KISP.alert('请先报名再来抽奖!', function () {
             window.close();
         });
         return;
     }
 
-
+    var loading = null;
 
     var API = KISP.require('API');
     var api = new API('ActivityPrize.get');
 
     api.on({
+        'request': function () {
+            loading = KISP.create('Loading', {
+                text: '身份验证中...',
+                mask: 0.4,
+            });
+            loading.show();
+        },
+        'response': function () {
+            loading.hide();
+        },
         'fail': function (msg, data, json) {
-            KISP.alert(msg);
+            KISP.alert(msg, function () {
+                window.close();
+            });
         },
         'error': function () {
-            KISP.alert('验证身份失败，请稍候再试!');
+            KISP.alert('身份验证失败，请稍候刷新再试!');
         },
     });
 
@@ -71,13 +85,8 @@ KISP.launch(function (require, module) {
                             }
                         }
                         // 资源加载完成，开始游戏
-                        game = new Game(canvas, {
-                            'phone': phone,
-                            'key': key,
-                        });
-
+                        game = new Game(canvas, key);
                         game.createGameScene(prize);
-                        console.log('ResourceCurrentCount=' + ResourceCurrentCount);
                     }
                 }
             }
@@ -88,7 +97,7 @@ KISP.launch(function (require, module) {
 
 
     api.get({
-        'phone': phone,
+        'phone': user.phone,
     });
 
 

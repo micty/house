@@ -82,7 +82,7 @@ function getRes(name) {
 
 
 // 游戏主体部分
-function Game(canvas, config) {
+function Game(canvas, key) {
     var _this = this;
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
@@ -253,7 +253,13 @@ function Game(canvas, config) {
                     prizeGroup[eggI]['complete'] = true;
                     prizeObj = null;
 
+
+
                     if (prizeRes.success) {
+
+                        var MiniQuery = KISP.require('MiniQuery');
+                        var SessionStorage = MiniQuery.require('SessionStorage');
+                        var user = SessionStorage.get(key);
 
                         var API = KISP.require('API');
                         var api = new API('ActivityPrize.add');
@@ -267,14 +273,14 @@ function Game(canvas, config) {
                             },
                             //抽奖完成
                             'success': function () {
-                                var MiniQuery = KISP.require('MiniQuery');
-                                var SessionStorage = MiniQuery.require('SessionStorage');
-                                SessionStorage.remove(config.key);
+                                SessionStorage.remove(key);
                             },
                         });
 
                         api.post({
-                            'phone': config.phone,
+                            'name': user.name,
+                            'phone': user.phone,
+                            'intent': user.intent,
                             'prize': prizeRes.name,
                         });
                     }

@@ -20,6 +20,7 @@ define('/ActivityRecommend', function (require, module) {
             'get': function (list) {
                 Tabs.render(list);
                 Footer.render();
+                scrollTo(0, 415);
             },
         });
 

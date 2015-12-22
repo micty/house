@@ -48,8 +48,10 @@ define('ActivitySignup/API', function (require, module, exports) {
                             text: '立即前往抽奖',
                             fn: function () {
                                 var key = $.String.random(64);
-                                var phone = dialog.data('phone');
-                                SessionStorage.set(key, phone);
+                                var data = dialog.data('data');
+
+                                SessionStorage.set(key, data);
+
                                 var url = 'html/egg/index.html?key=' + key;
                                 window.open(url);
                             },
@@ -58,7 +60,7 @@ define('ActivitySignup/API', function (require, module, exports) {
                    
                 });
 
-                dialog.data('phone', data.phone);
+                dialog.data('data', data);
                 dialog.show();
 
                 

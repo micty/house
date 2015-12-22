@@ -73,8 +73,14 @@
     },
     {
         "id": "C3D055680C00",
-        "title": "【咨讯】截止12月14日，房博会参展房源已销售544套！",
+        "title": "【资讯】房博会参展房源已销售544套！",
         "url": "http://fschanfang.com/index.html?type=news&id=B7A3AFDC6303#NewsDetail-CDDCD2B2",
+        "priority": 1
+    },
+    {
+        "id": "2C1579C2EA5B",
+        "title": "【资讯】房博会16大楼盘推清盘大优惠！",
+        "url": "http://fschanfang.com/index.html?type=news&id=E297D7ECDE6A#NewsDetail-62C3C39B",
         "priority": 1
     }
 ]
