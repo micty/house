@@ -113,7 +113,7 @@
         "fields": [
             {
                 "name": "位置",
-                "value": "禅城区魁奇一路南侧，港口路东侧"
+                "value": "魁奇一路南侧，港口路东侧"
             },
             {
                 "name": "户型",
@@ -339,27 +339,27 @@
     },
     {
         "id": "447F47C440B7",
-        "belong": "祖庙",
-        "name": "华强广场",
-        "src": "/ueditor/upload/image/20151221/6358631761005152489768074.jpg",
-        "href": "?type=house&id=D90786424BB1#NewsDetail-B9182FA8",
-        "priority": 17,
+        "belong": "石湾",
+        "name": "丽湾华府",
+        "src": "/ueditor/upload/image/20151225/6358663891560578135658556.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=1023C38C1189#NewsDetail-3732742F",
+        "priority": 18,
         "fields": [
             {
                 "name": "位置",
-                "value": "汾江中路与高基街交汇处"
+                "value": "禅城区港口路17号之一"
             },
             {
                 "name": "户型",
-                "value": "74-81平米"
+                "value": "90-118平米"
             },
             {
                 "name": "价格",
-                "value": "10000-12000元/平米"
+                "value": "9800-10000元/平米"
             },
             {
                 "name": "电话",
-                "value": "82259999"
+                "value": "83810666"
             }
         ]
     },

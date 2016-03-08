@@ -2,7 +2,7 @@
 * MiniQuery - MiniQuery JavaScript Library
 * for: default 
 * version: 3.4.3
-* build: 2015-10-26 17:24:29
+* build: 2015-12-29 15:40:58
 * files: 28(26)
 *    partial/default/begin.js
 *    compatible/Date.js
@@ -4534,6 +4534,9 @@ define('core/String', function (require, module, exports) {
             var len0 = str.length;
             var len1 = dest.length;
             var delta = len0 - len1;
+            if (delta < 0) {
+                return false;
+            }
 
             if (ignoreCase) {
                 var src = str.substring(delta, len0);

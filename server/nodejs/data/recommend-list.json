@@ -182,32 +182,6 @@
         ]
     },
     {
-        "id": "9FE9563BC00B",
-        "belong": "祖庙",
-        "name": "华强广场",
-        "src": "/ueditor/upload/image/20151012/6358026634888668616239205.jpg",
-        "href": "?type=house&id=D90786424BB1&mode=1",
-        "priority": 47,
-        "fields": [
-            {
-                "name": "位置",
-                "value": "高基街与汾江中路交界处"
-            },
-            {
-                "name": "户型",
-                "value": "74-81平米"
-            },
-            {
-                "name": "价格",
-                "value": "10000-12000元/平米"
-            },
-            {
-                "name": "电话",
-                "value": "82259999"
-            }
-        ]
-    },
-    {
         "id": "581B7E44545D",
         "belong": "南庄",
         "name": "绿岛湖颐号花园",
@@ -524,7 +498,7 @@
         "belong": "张槎",
         "name": "智慧新城·悦海湾花园",
         "src": "/ueditor/upload/image/20151010/6358008723061610629424199.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=FED5A30A8E18#NewsDetail-C5351E6C",
+        "href": "?type=house&id=FED5A30A8E18#NewsDetail-C5351E6C",
         "priority": 23,
         "fields": [
             {
@@ -758,7 +732,7 @@
         "belong": "张槎",
         "name": "百业苑",
         "src": "/ueditor/upload/image/20151221/6358631480490104573553257.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=95F9B3DA38E1#NewsDetail-058939AE",
+        "href": "?type=house&id=95F9B3DA38E1#NewsDetail-058939AE",
         "priority": 1,
         "fields": [
             {
@@ -784,7 +758,7 @@
         "belong": "张槎",
         "name": "联诚智博丽海花园",
         "src": "/ueditor/upload/image/20151221/6358631704766806339192678.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=80D2CFA92CCE#NewsDetail-EB2E9162",
+        "href": "?type=house&id=80D2CFA92CCE#NewsDetail-EB2E9162",
         "priority": 2,
         "fields": [
             {
@@ -810,7 +784,7 @@
         "belong": "张槎",
         "name": "卓远广场",
         "src": "/ueditor/upload/image/20151221/6358631723191758731415424.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=30F64DE372B7#NewsDetail-EF4EF5CE",
+        "href": "?type=house&id=30F64DE372B7#NewsDetail-EF4EF5CE",
         "priority": 3,
         "fields": [
             {
@@ -836,7 +810,7 @@
         "belong": "张槎",
         "name": "卓远云峰",
         "src": "/ueditor/upload/image/20151221/6358631739346856618235342.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=E086F9837A71#NewsDetail-2E3D75B2",
+        "href": "?type=house&id=E086F9837A71#NewsDetail-2E3D75B2",
         "priority": 4,
         "fields": [
             {
@@ -862,7 +836,7 @@
         "belong": "张槎",
         "name": "珠江罗马新都",
         "src": "/ueditor/upload/image/20151221/6358631775554001461819143.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=EC83FD3A6E81#NewsDetail-3D0473D0",
+        "href": "?type=house&id=EC83FD3A6E81#NewsDetail-3D0473D0",
         "priority": 5,
         "fields": [
             {
@@ -888,7 +862,7 @@
         "belong": "张槎",
         "name": "御璟上院",
         "src": "/ueditor/upload/image/20151222/6358637592622587691596565.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=8D31C28BF81F#NewsDetail-33ED253E",
+        "href": "?type=house&id=8D31C28BF81F#NewsDetail-33ED253E",
         "priority": 6,
         "fields": [
             {
@@ -914,7 +888,7 @@
         "belong": "石湾",
         "name": "碧桂园城市花园",
         "src": "/ueditor/upload/image/20151221/6358631510690025068549291.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=3156F107C7F0#NewsDetail-9123BA55",
+        "href": "?type=house&id=3156F107C7F0#NewsDetail-9123BA55",
         "priority": 7,
         "fields": [
             {
@@ -940,7 +914,7 @@
         "belong": "石湾",
         "name": "华福国际公馆",
         "src": "/ueditor/upload/image/20151221/6358631542982471552903514.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=0F27AA66A2E0#NewsDetail-A66CF23B",
+        "href": "?type=house&id=0F27AA66A2E0#NewsDetail-A66CF23B",
         "priority": 9,
         "fields": [
             {
@@ -966,7 +940,7 @@
         "belong": "石湾",
         "name": "龙光君悦华府",
         "src": "/ueditor/upload/image/20151221/6358631580859559378086354.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=59509E1D6751#NewsDetail-0E446D27",
+        "href": "?type=house&id=59509E1D6751#NewsDetail-0E446D27",
         "priority": 13,
         "fields": [
             {
@@ -992,7 +966,7 @@
         "belong": "石湾",
         "name": "凯德城脉",
         "src": "/ueditor/upload/image/20151221/6358631607635493851456242.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=40D0D292C913#NewsDetail-6D645148",
+        "href": "?type=house&id=40D0D292C913#NewsDetail-6D645148",
         "priority": 11,
         "fields": [
             {
@@ -1018,7 +992,7 @@
         "belong": "石湾",
         "name": "星海岸城市花园",
         "src": "/ueditor/upload/image/20151221/6358631643277680402578236.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=4369A440E026#NewsDetail-61410CE5",
+        "href": "?type=house&id=4369A440E026#NewsDetail-61410CE5",
         "priority": 12,
         "fields": [
             {
@@ -1044,7 +1018,7 @@
         "belong": "石湾",
         "name": "沿海馨庭",
         "src": "/ueditor/upload/image/20151221/6358631662764145699109558.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=9E1FA96AA2D9#NewsDetail-C8CA3571",
+        "href": "?type=house&id=9E1FA96AA2D9#NewsDetail-C8CA3571",
         "priority": 10,
         "fields": [
             {
@@ -1070,7 +1044,7 @@
         "belong": "石湾",
         "name": "兆阳御花园",
         "src": "/ueditor/upload/image/20151222/6358637576768895811293164.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=FA9BCE9AAB4A#NewsDetail-5DDD8C25",
+        "href": "?type=house&id=FA9BCE9AAB4A#NewsDetail-5DDD8C25",
         "priority": 8,
         "fields": [
             {
@@ -1096,7 +1070,7 @@
         "belong": "南庄",
         "name": "汇博国际广场",
         "src": "/ueditor/upload/image/20151221/6358631562288826507619442.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=346BFED98B62#NewsDetail-1B4EC784",
+        "href": "?type=house&id=346BFED98B62#NewsDetail-1B4EC784",
         "priority": 14,
         "fields": [
             {
@@ -1122,7 +1096,7 @@
         "belong": "祖庙",
         "name": "天丰花园",
         "src": "/ueditor/upload/image/20151221/6358631628197003047338416.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=F356498C0D45#NewsDetail-3F6F9A55",
+        "href": "?type=house&id=F356498C0D45#NewsDetail-3F6F9A55",
         "priority": 15,
         "fields": [
             {
@@ -1148,7 +1122,7 @@
         "belong": "祖庙",
         "name": "逸彩美寓",
         "src": "/ueditor/upload/image/20151221/6358631680398066587212355.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=EE87CC675D37#NewsDetail-09A732FE",
+        "href": "?type=house&id=EE87CC675D37#NewsDetail-09A732FE",
         "priority": 16,
         "fields": [
             {
@@ -1174,7 +1148,7 @@
         "belong": "祖庙",
         "name": "华强广场",
         "src": "/ueditor/upload/image/20151221/6358631761005152489768074.jpg",
-        "href": "http://fschanfang.com/index.html?type=house&id=D90786424BB1#NewsDetail-B9182FA8",
+        "href": "?type=house&id=D90786424BB1#NewsDetail-B9182FA8",
         "priority": 17,
         "fields": [
             {
@@ -1192,6 +1166,32 @@
             {
                 "name": "电话",
                 "value": "82259999"
+            }
+        ]
+    },
+    {
+        "id": "0D6DC88F56C5",
+        "belong": "石湾",
+        "name": "丽湾华府",
+        "src": "/ueditor/upload/image/20151225/6358663891560578135658556.jpg",
+        "href": "http://fschanfang.com/index.html?type=house&id=1023C38C1189#NewsDetail-3732742F",
+        "priority": 18,
+        "fields": [
+            {
+                "name": "位置",
+                "value": "禅城区港口路17号之一"
+            },
+            {
+                "name": "户型",
+                "value": "90-118平米"
+            },
+            {
+                "name": "价格",
+                "value": "9800-10000元/平米"
+            },
+            {
+                "name": "电话",
+                "value": "83810666"
             }
         ]
     }

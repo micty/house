@@ -32,55 +32,67 @@
     {
         "id": "DBDE2BB3CE30",
         "title": "【新闻】双11限时抢购 11套特惠房笋到你唔信",
-        "url": "http://fschanfang.com/index.html?type=house&id=C81FC812499E#NewsDetail-B97E9C23",
+        "url": "?type=house&id=C81FC812499E#NewsDetail-B97E9C23",
         "priority": 4
     },
     {
         "id": "2BB5D7630EFE",
         "title": "【房贷】媒体：房贷利息将出优惠政策 ",
-        "url": "http://fschanfang.com/index.html?type=news&id=F59FAA027EA2#NewsDetail-2DEB9D45",
+        "url": "?type=news&id=F59FAA027EA2#NewsDetail-2DEB9D45",
         "priority": 5
     },
     {
         "id": "027FA39EA5E9",
         "title": "【新闻】楼市去库存关键在供需双向发力",
-        "url": "http://fschanfang.com/index.html?type=news&id=4EE908C171B7#NewsDetail-9C407BBE",
+        "url": "?type=news&id=4EE908C171B7#NewsDetail-9C407BBE",
         "priority": 4
     },
     {
         "id": "CF6BB9AA6356",
         "title": "【新闻】佛山前11个月卖地278亿 广佛交界贡献超五成",
-        "url": "http://fschanfang.com/index.html?type=news&id=DE5A7F30184A#NewsDetail-9CBF5457",
+        "url": "?type=news&id=DE5A7F30184A#NewsDetail-9CBF5457",
         "priority": 4
     },
     {
         "id": "6CB074D8C2F2",
         "title": "【新闻】岭南天地获全球首个LEED认证",
-        "url": "http://fschanfang.com/index.html?type=news&id=1DA19F11C298#NewsDetail-BAF7AE95",
+        "url": "?type=news&id=1DA19F11C298#NewsDetail-BAF7AE95",
         "priority": 4
     },
     {
         "id": "150D744EEAD0",
         "title": "【资讯】楼市去库存持久战：财政金融税费等政策将出",
-        "url": "http://fschanfang.com/index.html?type=news&id=86A01B842E00#NewsDetail-0D455DB6",
+        "url": "?type=news&id=86A01B842E00#NewsDetail-0D455DB6",
         "priority": 3
     },
     {
         "id": "4771C3BBFAA2",
         "title": "【新闻】禅城房价稳健发展2016还要涨区长喊你来买房",
-        "url": "http://fschanfang.com/index.html?type=news&id=7441033043F1#NewsDetail-DDCBDC3F",
+        "url": "?type=news&id=7441033043F1#NewsDetail-DDCBDC3F",
         "priority": 2
     },
     {
         "id": "C3D055680C00",
-        "title": "【资讯】房博会参展房源已销售544套！",
-        "url": "http://fschanfang.com/index.html?type=news&id=B7A3AFDC6303#NewsDetail-CDDCD2B2",
+        "title": "【资讯】房博会参展房源已销售950套！",
+        "url": "?type=news&id=B7A3AFDC6303#NewsDetail-CDDCD2B2",
         "priority": 1
     },
     {
         "id": "2C1579C2EA5B",
         "title": "【资讯】房博会16大楼盘推清盘大优惠！",
-        "url": "http://fschanfang.com/index.html?type=news&id=E297D7ECDE6A#NewsDetail-62C3C39B",
+        "url": "?type=news&id=E297D7ECDE6A#NewsDetail-62C3C39B",
         "priority": 1
+    },
+    {
+        "id": "77F49E358C61",
+        "title": "【聚焦】12月楼价破9字头创新高 1分钟回顾佛山13年房价走势",
+        "url": "http://fschanfang.com/index.html?type=news&id=A0D03452257B#NewsDetail-B5A4A2BD",
+        "priority": "2"
+    },
+    {
+        "id": "ABC91CB482BA",
+        "title": "【资讯】2015年禅城楼市成交量大涨5成 售价持稳",
+        "url": "http://fschanfang.com/index.html?type=news&id=B0C544429D21#NewsDetail-2E7EF8E6",
+        "priority": 2
     }
 ]

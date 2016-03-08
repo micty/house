@@ -26,7 +26,7 @@
     {
         "id": "93B16074E05D",
         "src": "/ueditor/upload/image/20151222/6358637570283206156914996.jpg",
-        "href": "http://fschanfang.com/index.html?type=news&id=7441033043F1#NewsDetail-65ACBD60",
-        "priority": "1"
+        "href": "?type=news&id=7441033043F1",
+        "priority": 1
     }
 ]
