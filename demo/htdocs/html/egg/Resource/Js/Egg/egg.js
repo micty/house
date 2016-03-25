@@ -54,11 +54,19 @@ function Egg(ctx, x, y) {
                 ctx.drawImage( eggRes['image'], this.x, this.y, eggRes['width'], eggRes['height'] );
                 ctx.save();
 
-                ctx.translate(  this.gashX + gashRes['width'] * this.xPer, this.gashY + gashRes['height'] * this.yPer );
+                ctx.translate(this.gashX + gashRes['width'] * this.xPer,
+                    this.gashY + gashRes['height'] * this.yPer);
+
                 ctx.scale( this.gashScale, this.gashScale );
 
-                ctx.drawImage( gashRes['image'], -gashRes['width'] * this.xPer, -gashRes['height'] * this.yPer, gashRes['width'], gashRes['height']);
-                ctx.translate(  -( this.gashX + gashRes['width'] * this.xPer), -(this.gashY + gashRes['height'] * this.yPer) );
+                ctx.drawImage(gashRes['image'],
+                    -gashRes['width'] * this.xPer,
+                    -gashRes['height'] * this.yPer,
+                    gashRes['width'], gashRes['height']);
+
+                ctx.translate(-(this.gashX + gashRes['width'] * this.xPer),
+                    -(this.gashY + gashRes['height'] * this.yPer));
+
                 ctx.restore();
                 ctx.drawImage( giftRes['image'], this.giftX, this.giftY, giftRes['width'], giftRes['height'] );
                 break;

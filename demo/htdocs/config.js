@@ -17,8 +17,8 @@
     });
 
 
-    /**grunt.debug.begin*/
-    //开发模式下使用。 使用 grunt 工具构建页面后，本区域的代码会给去掉。
+    /**weber.debug.begin*/
+    //开发模式下使用。 使用 weber 工具构建页面后，本区域的代码会给去掉。
 
     KISP.config({
         'API': {
@@ -38,7 +38,7 @@
     window.define = KISP.require('Module').define;
     window.$ = KISP.require('$');
 
-    /**grunt.debug.end*/
+    /**weber.debug.end*/
 
 
 })(KISP);
