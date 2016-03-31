@@ -6,12 +6,11 @@ define('/MenuData', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
-    var Url = KISP.require('Url');
+    var Script = MiniQuery.require('Script');
 
-    var list = [];
-    var ready = false;
+    var list = null;
 
-    var homeItem = {
+    var home = {
         name: '首页',
         isHome: true,
         id: $.String.random(5),
@@ -21,47 +20,40 @@ define('/MenuData', function (require, module, exports) {
 
 
 
+
     //加载数据。
     //这里采用异步方式，方便以后从服务器端加载。
     function load(fn) {
 
-        if (ready) {
+        if (list) {
             fn && fn(list);
             return;
         }
 
+        var url = 'data/sidebar/Sidebar.js';
 
-        var base = Url.root() + 'data/sidebar/';
+        Script.load(url, function () {
 
-        $.require('Script').load({
-            url: [
-                base + 'Sidebar.js',
-            ],
+            list = window['__Sidebar__'] || [];
 
-            onload: function () {
+            $.Array.each(list, function (item, no) {
 
-                list = window['__Sidebar__'];
+                var index = 0; //这里去掉了二维分组，相当于每个组只有一项
 
-
-                $.Array.each(list, function (item, no) {
-
-                    var index = 0; //这里去掉了二维分组，相当于每个组只有一项
-
-                    $.Object.extend(item, {
-                        'id': no + '-' + index,
-                        'group': no,
-                        'index': index
-                    });
-
+                $.Object.extend(item, {
+                    'id': no + '-' + index,
+                    'group': no,
+                    'index': index
                 });
 
-                ready = true;
-                fn(list);
-            }
+            });
+
+            fn && fn(list);
         });
-
-
+        
     }
+
+
 
     function getItem(no, index, fn) {
 
@@ -95,14 +87,17 @@ define('/MenuData', function (require, module, exports) {
 
 
     //找出设置了 autoOpen: true 的项
-    function getAutoOpens(data) {
+    function getAutoOpens() {
 
-        data = data || list;
-
-        return $.Array.grep(data, function (item, index) {
-
+        var items = $.Array.grep(list, function (item, index) {
             return !!item.autoOpen;
         });
+
+
+        
+
+        //首页要无条件打开。
+        return [home].concat(items);
 
     }
 
@@ -111,11 +106,6 @@ define('/MenuData', function (require, module, exports) {
     return {
 
         load: load,
-
-        getHomeItem: function () {
-            return homeItem;
-        },
-
         getItem: getItem,
         getAutoOpens: getAutoOpens,
     };

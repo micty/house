@@ -8,7 +8,6 @@ define('/Iframes', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-    var KERP = require('KERP');
 
     var Url = MiniQuery.require('Url');
 
@@ -253,13 +252,12 @@ define('/Iframes', function (require, module, exports) {
 
     function render() {
 
-        tabs = KERP.Tabs.create({
+        var Tabs = require('Tabs');
+
+        tabs = new Tabs({
             container: div,
             selector: '>iframe',
             activedClass: 'actived',
-            change: function (index) {
-
-            }
         });
 
 

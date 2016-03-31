@@ -30,9 +30,7 @@ KISP.launch(function (require, module) {
             Title.clear();
             Content.clear();
 
-            var KERP = require('KERP');
-            var Iframe = KERP.require('Iframe');
-
+            var Iframe = require('Iframe');
             Iframe.open('list', type);
         },
 

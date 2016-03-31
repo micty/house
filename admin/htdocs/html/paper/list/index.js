@@ -8,8 +8,7 @@ KISP.launch(function (require, module) {
     var KISP = require('KISP');
     var Url = MiniQuery.require('Url');
 
-    var KERP = require('KERP');
-    var Iframe = KERP.require('Iframe');
+    var Iframe = require('Iframe');
 
     var API = module.require('API');
     var Header = module.require('Header');

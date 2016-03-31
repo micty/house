@@ -1,13 +1,11 @@
 ﻿
-
-
 KISP.launch(function (require, module) {
+
+    top.require = require; //给 Iframe 模块使用，用于加载 IframeManager
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-    var KERP = require('KERP');
-
-    var Iframe = KERP.require('Iframe');
+    var IframeManager = require('IframeManager');
 
     var MenuData = module.require('MenuData');
     var Sidebar = module.require('Sidebar');
@@ -30,6 +28,7 @@ KISP.launch(function (require, module) {
     Sidebar.on({
         //鼠标移进 Sidebar.item 时
         'click': function (item) {
+
             PageTabs.add(item); //安静模式，不触发事件
             PageList.add(item); //安静模式，不触发事件
             Iframes.add(item);  //会触发 active 事件
@@ -54,13 +53,13 @@ KISP.launch(function (require, module) {
             PageList.dragdrop(srcIndex, destIndex);
         },
         'before-close': function (item) {
-            return Iframe.fire('before-close', item);
+            return IframeManager.fire('before-close', item);
         },
         'cancel-close': function (item) {
-            return Iframe.fire('cancel-close', item);
+            return IframeManager.fire('cancel-close', item);
         },
         'close': function (item) {
-            return Iframe.fire('close', item);
+            return IframeManager.fire('close', item);
         },
 
     });
@@ -85,13 +84,13 @@ KISP.launch(function (require, module) {
             PageTabs.dragdrop(srcIndex, destIndex);
         },
         'before-close': function (item) {
-            return Iframe.fire('before-close', item);
+            return IframeManager.fire('before-close', item);
         },
         'cancel-close': function (item) {
-            return Iframe.fire('cancel-close', item);
+            return IframeManager.fire('cancel-close', item);
         },
         'close': function (item) {
-            return Iframe.fire('close', item);
+            return IframeManager.fire('close', item);
         },
     });
 
@@ -101,47 +100,23 @@ KISP.launch(function (require, module) {
         'active': function (item) {
             Sidebar.active(item);
             Tips.active(item);
-            Iframe.fire(item.id, 'active', [item]);
-
+            IframeManager.fire(item.id, 'active', [item]);
         },
 
         'non-active': function (item) {
-            Iframe.fire(item.id, 'non-active', [item]);
+            IframeManager.fire(item.id, 'non-active', [item]);
         },
 
         'load': function (item) {
 
-        }
+        },
     });
 
 
-    //加载菜单数据
-    MenuData.load(function (data) {
-
-        //debugger;
-
-        Sidebar.render(data);
-
-        //要自动打开的页面，请给菜单项设置 autoOpen: true 即可
-        var home = MenuData.getHomeItem();
-        var items = MenuData.getAutoOpens(data);
-
-        items = [home].concat(items);
-
-        $.Array.each(items, function (item, index) {
-
-            PageTabs.add(item);
-            PageList.add(item);
-            Iframes.add(item);
-
-        });
+  
 
 
-    });
-
-
-    Iframe.on('open', function (group, index, data) {
-
+    IframeManager.on('open', function (group, index, data) {
 
         MenuData.getItem(group, index, function (item) {
 
@@ -174,6 +149,23 @@ KISP.launch(function (require, module) {
     Iframes.render();
     UserInfos.render();
 
+
+    //加载菜单数据
+    MenuData.load(function (data) {
+
+        Sidebar.render(data);
+
+        //要自动打开的页面，请给菜单项设置 `autoOpen: true` 即可。
+        var items = MenuData.getAutoOpens();
+
+        $.Array.each(items, function (item, index) {
+            PageTabs.add(item);
+            PageList.add(item);
+            Iframes.add(item);
+        });
+
+
+    });
 
 });
 

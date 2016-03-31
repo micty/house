@@ -1,6 +1,4 @@
 ﻿
-
-
 /**
 * 页签模块
 */
@@ -8,39 +6,37 @@ define('/PageTabs', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-    var KERP = require('KERP');
 
     var Emitter = MiniQuery.require('Emitter');
     var emitter = new Emitter();
-
-    var home = document.getElementById('div-tab-home');
     var ul = document.getElementById('ul-page-tabs');
 
-    var samples = $.String.getTemplates(ul.innerHTML, [
-
-        { //这个节点是辅助用的
-            begin: '<!--',
-            end: '-->'
-        },
-        {
-            name: 'home',
-            begin: '#--home.begin--#',
-            end: '#--home.end--#'
-        },
-        {
-            name: 'item',
-            begin: '#--item.begin--#',
-            end: '#--item.end--#',
-            //优化模板，为了让生成的 html 在 DOM 查看器中更美观
-            fn: function (s) { 
-                return s.replace(/\n/g, '')     //去掉空行
-                    .replace(/\s{2,}/g, ' ');   //把多个空格合成一个
-            }
-        },
-    ]);
 
     var tabs = null;
     var list = [];
+
+    var samples = $.String.getTemplates(ul.innerHTML, [
+       { //这个节点是辅助用的
+           begin: '<!--',
+           end: '-->'
+       },
+       {
+           name: 'home',
+           begin: '#--home.begin--#',
+           end: '#--home.end--#'
+       },
+       {
+           name: 'item',
+           begin: '#--item.begin--#',
+           end: '#--item.end--#',
+
+           //优化模板，为了让生成的 html 在 DOM 查看器中更美观
+           fn: function (s) {
+               return s.replace(/\n/g, '')     //去掉空行
+                   .replace(/\s{2,}/g, ' ');   //把多个空格合成一个
+           }
+       },
+    ]);
 
 
     function lastIndex() {
@@ -60,9 +56,10 @@ define('/PageTabs', function (require, module, exports) {
         var index = findIndexById(item.id);
 
         if (index >= 0) { //已存在
-            active(index, true); //则激活，不重复添加
+            active(index, true); //激活，不重复添加
             return;
         }
+
 
         list.push(item);
         fill();
@@ -143,7 +140,9 @@ define('/PageTabs', function (require, module, exports) {
 
     function bindEvents() {
 
-        tabs = KERP.Tabs.create({
+        var Tabs = require('Tabs');
+
+        tabs = new Tabs({
             container: ul,
             selector: '>li',
             current: 0,
@@ -168,9 +167,9 @@ define('/PageTabs', function (require, module, exports) {
             }
 
             var item = list[index];
+            var values = emitter.fire('before-close', [item]);
 
             //事件处理程序最后一个返回值为 false 时
-            var values = emitter.fire('before-close', [item]);
             if (values && values[values.length - 1] === false) {
                 emitter.fire('cancel-close', [item]); //触发事件
                 return; //取消关闭

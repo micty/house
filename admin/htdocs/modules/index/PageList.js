@@ -9,7 +9,10 @@ define('/PageList', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-    var KERP = require('KERP');
+    var KISP = require('KISP');
+    var Template = KISP.require('Template');
+
+    var Multitask = require('Multitask');
 
     var Emitter = MiniQuery.require('Emitter');
     var emitter = new Emitter();
@@ -47,7 +50,7 @@ define('/PageList', function (require, module, exports) {
 
         var maxIndex = lastIndex();
 
-        KERP.Template.fill(ul, list, function (item, index) {
+        Template.fill(ul, list, function (item, index) {
             
             return {
                 name: item.name,
@@ -240,7 +243,7 @@ define('/PageList', function (require, module, exports) {
             return item < endIndex ? fnTask : hide;
         });
 
-        KERP.require('Multitask').serial(tasks); //串行执行任务队列
+        Multitask.serial(tasks); //串行执行任务队列
 
     }
 
