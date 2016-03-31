@@ -8,7 +8,7 @@ KISP.launch(function (require, module) {
     var KISP = require('KISP');
     var Url = MiniQuery.require('Url');
 
-    var Iframe = require('Iframe');
+    var Bridge = require('Bridge');
 
     var API = module.require('API');
     var Header = module.require('Header');
@@ -20,10 +20,8 @@ KISP.launch(function (require, module) {
 
 
     Header.on('add', function () {
-        Iframe.open('add', type, {
-            query: {
-                'type': type,
-            },
+        Bridge.open(['add', type], {
+            'type': type,
         });
     });
 
@@ -58,11 +56,9 @@ KISP.launch(function (require, module) {
 
         'edit': function (item, index) {
  
-            Iframe.open('add', type, {
-                query: {
-                    'type': type,
-                    'id': item.id,
-                },
+            Bridge.open(['add', type], {
+                'type': type,
+                'id': item.id,
             });
         },
     });

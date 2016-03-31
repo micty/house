@@ -7,6 +7,8 @@ KISP.launch(function (require, module) {
     var KISP = require('KISP');
     var Url = MiniQuery.require('Url');
    
+    var Bridge = require('Bridge');
+
     var API = module.require('API');
     var Content = module.require('Content');
     var Footer = module.require('Footer');
@@ -29,9 +31,7 @@ KISP.launch(function (require, module) {
         'post': function (data, json) {
             Title.clear();
             Content.clear();
-
-            var Iframe = require('Iframe');
-            Iframe.open('list', type);
+            Bridge.open(['list', type]);
         },
 
         'get': function (data) {

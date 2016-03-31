@@ -54,34 +54,20 @@ define('/MenuData', function (require, module, exports) {
     }
 
 
+    //异步方式
+    function getItem(id, fn) {
 
-    function getItem(no, index, fn) {
+     
+        load(function (list) {
 
-        if (fn) { //异步方式
-
-            load(function (list) {
-
-                var item = null;
-
-                if (typeof no == 'string') { // 把 [no, index] 看成字符串的 cmd 命令去查找
-
-                    item = $.Array.findItem(list, function (item, i) {
-
-                        var cmd = item.cmd;
-                        return (cmd instanceof Array) && cmd[0] == no && cmd[1] == index;
-                    });
-                }
-                else {
-                    item = list[no];
-                }
-
-                fn(item);
-
+            var item = $.Array.findItem(list, function (item, i) {
+                var cmd = item.cmd || [];
+                return cmd.join('-') == id.join('-');
             });
 
-            return;
+            fn(item);
 
-        }
+        });
 
     }
 

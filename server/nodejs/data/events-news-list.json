@@ -75,13 +75,13 @@
         "id": "C3D055680C00",
         "title": "【资讯】房博会参展房源已销售950套！",
         "url": "?type=news&id=B7A3AFDC6303#NewsDetail-CDDCD2B2",
-        "priority": 1
+        "priority": 2
     },
     {
         "id": "2C1579C2EA5B",
         "title": "【资讯】房博会16大楼盘推清盘大优惠！",
         "url": "?type=news&id=E297D7ECDE6A#NewsDetail-62C3C39B",
-        "priority": 1
+        "priority": 2
     },
     {
         "id": "77F49E358C61",
@@ -94,5 +94,17 @@
         "title": "【资讯】2015年禅城楼市成交量大涨5成 售价持稳",
         "url": "http://fschanfang.com/index.html?type=news&id=B0C544429D21#NewsDetail-2E7EF8E6",
         "priority": 2
+    },
+    {
+        "id": "A5E963E3D2CB",
+        "title": "【资讯】佛山拟有房即可入户！",
+        "url": "http://fschanfang.com/index.html?type=news&id=5B58DAF83C27#NewsDetail-D9266152",
+        "priority": 1
+    },
+    {
+        "id": "26AACDCD8C4A",
+        "title": "【资讯】地铁3号线力争今年下半年动工！",
+        "url": "http://fschanfang.com/index.html?type=news&id=BE8E446C6537#NewsDetail-DDF0DF7E",
+        "priority": 1
     }
 ]

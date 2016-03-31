@@ -8,16 +8,13 @@ define('/Iframes', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-
     var Url = MiniQuery.require('Url');
-
     var Emitter = MiniQuery.require('Emitter');
-    var emitter = new Emitter();
 
+    var emitter = new Emitter();
     var div = document.getElementById('div-iframes');
     var sample = $.String.between(div.innerHTML, '<!--', '-->');
     var list = [];
-
     var prefix = 'iframe-' + $.String.random(4) + '-'; //iframe.id 中的随机前缀串，防止 id 意外冲突
     var tabs = null;
 
@@ -161,7 +158,6 @@ define('/Iframes', function (require, module, exports) {
 
         //填充
         var html = $.String.format(sample, {
-            'sn': item.id, //
             'id': getIframeId(item),
             'index': lastIndex(),
         });
@@ -229,7 +225,7 @@ define('/Iframes', function (require, module, exports) {
         emitter.fire('active', [list[index]]);
 
         if (activedIndex > -1) { //之前给激活的项，现在要灭掉(非激活)
-            emitter.fire('non-active', [list[activedIndex]]);
+            emitter.fire('disactive', [list[activedIndex]]);
         }
     }
 

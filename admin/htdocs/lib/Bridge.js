@@ -1,85 +1,30 @@
 
-define('Bridge', function (require, exports, module) {
+define('Bridge', function (require, module) {
+
+    //确保 iframe 和 top 指向同一个 Bridge
+    if (window !== top) {
+        return top.require(module.id);
+    }
+
+
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var Emitter = MiniQuery.require('Emitter');
     var emitter = new Emitter();
 
-    var sn$data = {};
+   
 
-
-    function getData(sn) {
-        return sn$data[sn];
+    function open(cmd, query, data) {
+        emitter.fire('open', [cmd, query, data]);
     }
 
-    function setData(sn, data) {
-        sn$data[sn] = data;
-    }
-
-    function removeData(sn) {
-        delete sn$data[sn];
-    }
-
-    function open(no, index, data) {
-
-        var sn = no + '-' + index;
-        sn$data[sn] = data;
-
-        emitter.fire('open', [no, index, data]);
-    }
-
-    
-
-
-    function fire(sn, name, args) {
-        
-        //重载 fire(name, item)
-        if (typeof name == 'object') { 
-            var item = name;
-            name = sn;
-            sn = item.id;
-            args = [item];
-        }
-
-
-        var iframe = top.KISP.require('$')('iframe[data-sn="' + sn + '"]').get(0);
-        if (!iframe) {
-            throw new Error('不存在 sn 为 ' + sn + ' 的 iframe 页面');
-        }
-
-        var KERP = iframe.contentWindow.KERP;
-        if (KERP) { // iframe 已加载完成
-            var values = KERP.require('Iframe').fire(name, args);
-            return values ? values[values.length - 1] : undefined;
-        }
-
-
-        //尚未加载完成
-        $(iframe).one('load', function () {
-
-            var KERP = iframe.contentWindow.KERP;
-            if (!KERP) { //可能没有引入 kerp.js
-                return;
-            }
-
-            KERP.require('Iframe').fire(name, args);
-
-        });
-
-    }
 
 
     return {
-        open: open,
-        getData: getData,
-        setData: setData,
-        removeData: removeData,
-        on: emitter.on.bind(emitter),
-
-        fire: fire,
-
-        sn$data: sn$data, //for test
+        'open': open,
+        'on': emitter.on.bind(emitter),
+        'fire': emitter.fire.bind(emitter), //仅供主控台调用
     };
 
 

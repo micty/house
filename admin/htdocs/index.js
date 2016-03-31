@@ -1,11 +1,12 @@
 ﻿
 KISP.launch(function (require, module) {
 
-    top.require = require; //给 Iframe 模块使用，用于加载 IframeManager
+    top.require = require;
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-    var IframeManager = require('IframeManager');
+
+    var Bridge = require('Bridge');
 
     var MenuData = module.require('MenuData');
     var Sidebar = module.require('Sidebar');
@@ -21,7 +22,7 @@ KISP.launch(function (require, module) {
             location.href = 'login.html';
         },
     });
- 
+
 
 
     //侧边栏
@@ -53,13 +54,13 @@ KISP.launch(function (require, module) {
             PageList.dragdrop(srcIndex, destIndex);
         },
         'before-close': function (item) {
-            return IframeManager.fire('before-close', item);
+           
         },
         'cancel-close': function (item) {
-            return IframeManager.fire('cancel-close', item);
+
         },
         'close': function (item) {
-            return IframeManager.fire('close', item);
+
         },
 
     });
@@ -84,13 +85,13 @@ KISP.launch(function (require, module) {
             PageTabs.dragdrop(srcIndex, destIndex);
         },
         'before-close': function (item) {
-            return IframeManager.fire('before-close', item);
+            return Bridge.fire('before-close', [item]);
         },
         'cancel-close': function (item) {
-            return IframeManager.fire('cancel-close', item);
+
         },
         'close': function (item) {
-            return IframeManager.fire('close', item);
+
         },
     });
 
@@ -100,11 +101,11 @@ KISP.launch(function (require, module) {
         'active': function (item) {
             Sidebar.active(item);
             Tips.active(item);
-            IframeManager.fire(item.id, 'active', [item]);
+
         },
 
-        'non-active': function (item) {
-            IframeManager.fire(item.id, 'non-active', [item]);
+        'disactive': function (item) {
+
         },
 
         'load': function (item) {
@@ -113,26 +114,25 @@ KISP.launch(function (require, module) {
     });
 
 
-  
 
 
-    IframeManager.on('open', function (group, index, data) {
 
-        MenuData.getItem(group, index, function (item) {
+    Bridge.on('open', function (id, query, data) {
 
+        MenuData.getItem(id, function (item) {
 
             if (!item) {
                 return;
             }
-
-            var query = data ? data.query : null;
+         
             if (query) {
                 var Url = MiniQuery.require('Url');
 
-                //item.url = $.Url.addQueryString(item.url, query);
                 //不能直接修改原对象的 url，否则可能会影响到原来的 url
+                //item.url = $.Url.addQueryString(item.url, query);
+
                 item = $.Object.extend({}, item, {
-                    url: Url.addQueryString(item.url, query),
+                    'url': Url.addQueryString(item.url, query),
                 });
             }
 
