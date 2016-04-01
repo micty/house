@@ -8,9 +8,18 @@ KISP.launch(function (require, module) {
     var KISP = require('KISP');
 
     
-
+    var Bridge = require('Bridge');
     var API = module.require('API');
     var List = module.require('List');
+
+
+
+    Bridge.on({
+        'before-close': function () {
+            console.log('signup');
+            debugger;
+        },
+    });
 
 
 

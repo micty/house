@@ -159,6 +159,7 @@ define('/Iframes', function (require, module, exports) {
         //填充
         var html = $.String.format(sample, {
             'id': getIframeId(item),
+            'sn': item.id,
             'index': lastIndex(),
         });
 

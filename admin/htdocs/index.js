@@ -54,7 +54,8 @@ KISP.launch(function (require, module) {
             PageList.dragdrop(srcIndex, destIndex);
         },
         'before-close': function (item) {
-           
+            console.log(item);
+            Bridge.fire('before-close', item);
         },
         'cancel-close': function (item) {
 
@@ -112,7 +113,6 @@ KISP.launch(function (require, module) {
 
         },
     });
-
 
 
 

@@ -1,8 +1,8 @@
 /*
 * MiniQuery - MiniQuery JavaScript Library
 * for: default 
-* version: 3.4.3
-* build: 2015-12-29 15:40:58
+* version: 3.4.4
+* build: 2016-04-01 11:39:51
 * files: 28(26)
 *    partial/default/begin.js
 *    compatible/Date.js
@@ -5641,15 +5641,15 @@ define('Mapper', function (require, module, exports) {
                 return value;
             }
 
-            //引用类型: object|function
+            //引用类型: object 或 function
 
-            var key$list = all[type];
-            key = getString(key); //这里确保 key 一定是一个 string
-            var list = key$list[key];
+            var skey$list = all[type];
+            var skey = getString(key); //这里确保 skey 一定是一个 string
+            var list = skey$list[skey];
 
             //未存在对应字符串的列表，则创建并添加
             if (!list) {
-                key$list[key] = [[key, value]];
+                skey$list[skey] = [[key, value]];
                 return value;
             }
 
@@ -5714,8 +5714,8 @@ define('Mapper', function (require, module, exports) {
 
             //引用类型: object|function
             //通过 key 映射到一个二维数组，每个二维数组项为 [key, value]
-            key = getString(key);
-            var list = all[type][key];
+            var skey = getString(key);
+            var list = all[type][skey];
 
             if (!list) {
                 return;
@@ -5727,7 +5727,9 @@ define('Mapper', function (require, module, exports) {
                 return pair[0] === key;
             });
 
-            return pair ? pair[1] : undefined;
+            if (pair) {
+                return pair[1];
+            }
 
         },
 
@@ -5777,9 +5779,9 @@ define('Mapper', function (require, module, exports) {
             }
 
             //引用类型: object|function
-            var key$list = all[type];
-            key = getString(key);
-            var list = key$list[key];
+            var skey$list = all[type];
+            var skey = getString(key);
+            var list = skey$list[skey];
 
             if (!list) {
                 return;
@@ -5787,7 +5789,7 @@ define('Mapper', function (require, module, exports) {
 
             //已存在对应字符串的列表
             //移除 key 的项
-            key$list[key] = $Array.grep(list, function (pair, index) {
+            skey$list[skey] = $Array.grep(list, function (pair, index) {
                 return pair[0] !== key;
             });
 
