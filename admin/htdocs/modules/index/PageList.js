@@ -210,9 +210,8 @@ define('/PageList', function (require, module, exports) {
         var item = list[index];
 
         //事件处理程序最后一个返回值为 false 时
-        var values = emitter.fire('before-close', [item]);
+        var values = emitter.fire('close', [item]);
         if (values && values[values.length - 1] === false) {
-            emitter.fire('cancel-close', [item]); //触发事件
             return; //取消关闭
         }
 
@@ -221,7 +220,6 @@ define('/PageList', function (require, module, exports) {
             fn && fn();
         });
 
-        emitter.fire('close', [item]); //
     }
 
 

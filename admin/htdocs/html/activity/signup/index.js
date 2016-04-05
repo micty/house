@@ -15,9 +15,10 @@ KISP.launch(function (require, module) {
 
 
     Bridge.on({
-        'before-close': function () {
-            console.log('signup');
-            debugger;
+        'close': function () {
+            //console.log('signup');
+            //var ok = confirm('确认要关闭该页吗？');
+            //return ok;
         },
     });
 

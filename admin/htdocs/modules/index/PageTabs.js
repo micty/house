@@ -167,11 +167,10 @@ define('/PageTabs', function (require, module, exports) {
             }
 
             var item = list[index];
-            var values = emitter.fire('before-close', [item]);
+            var values = emitter.fire('close', [item]);
 
             //事件处理程序最后一个返回值为 false 时
             if (values && values[values.length - 1] === false) {
-                emitter.fire('cancel-close', [item]); //触发事件
                 return; //取消关闭
             }
 
@@ -184,7 +183,6 @@ define('/PageTabs', function (require, module, exports) {
             });
 
             event.stopPropagation();
-            emitter.fire('close', [item]); //
 
         });
 

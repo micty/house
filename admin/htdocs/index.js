@@ -53,15 +53,8 @@ KISP.launch(function (require, module) {
         'dragdrop': function (srcIndex, destIndex) {
             PageList.dragdrop(srcIndex, destIndex);
         },
-        'before-close': function (item) {
-            console.log(item);
-            Bridge.fire('before-close', item);
-        },
-        'cancel-close': function (item) {
-
-        },
         'close': function (item) {
-
+            return Bridge.fire('close', item); //广播通知 iframe 页面。
         },
 
     });
@@ -85,14 +78,8 @@ KISP.launch(function (require, module) {
         'dragdrop': function (srcIndex, destIndex) {
             PageTabs.dragdrop(srcIndex, destIndex);
         },
-        'before-close': function (item) {
-            return Bridge.fire('before-close', [item]);
-        },
-        'cancel-close': function (item) {
-
-        },
         'close': function (item) {
-
+            return Bridge.fire('close', item);
         },
     });
 

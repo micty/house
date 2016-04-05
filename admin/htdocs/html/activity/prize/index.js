@@ -14,9 +14,8 @@ KISP.launch(function (require, module) {
     var List = module.require('List');
 
     Bridge.on({
-        'before-close': function () {
-            console.log('prize');
-            debugger;
+        'close': function () {
+
         },
     });
 
