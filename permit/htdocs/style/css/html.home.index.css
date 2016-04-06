@@ -1,0 +1,15 @@
+.panel .header {
+    height: initial;
+    margin: 0px;
+    padding: 7px 9px;
+    /* background-color: #5276B3; */
+    background-color: #4767A2;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 5px 5px 0px 0px;
+    font-weight: bold;
+}
+.panel .list li {
+    padding: 8px 5px;
+    border-bottom: solid 1px #5392CC;
+}
