@@ -1,33 +1,40 @@
 /*
 * KISP - KISP JavaScript Library
 * name: house 
-* version: 3.0.0
-* build: 2015-10-28 21:35:19
-* files: 61(59)
-*    partial/house/begin.js
+* version: 3.2.0
+* build: 2016-04-06 17:38:30
+* files: 82(80)
+*    partial/pc/begin.js
 *    core/Module.js
 *    core/$.js
 *    core/MiniQuery.js
 *    core/KISP.js
 *    crypto/MD5.js
 *    excore/Config.js
+*    excore/Defaults.js
 *    excore/Config/Url.js
-*    excore/DOM.js
 *    excore/Edition.js
 *    excore/File.js
 *    excore/Fn.js
 *    excore/JSON.js
+*    excore/LocalStorage.js
 *    excore/Mapper.js
 *    excore/Module.js
 *    excore/RandomId.js
+*    excore/SessionStorage.js
 *    excore/Style.js
 *    excore/Url.js
 *    api/API.js
 *    api/API/Ajax.js
 *    api/Proxy.js
-*    third-party/seajs/Seajs.js
+*    api/Proxy/Url.js
+*    ui/App.js
+*    ui/App/Nav.js
+*    ui/App/Transition.js
 *    ui/dialog/Alert.js
+*    ui/dialog/Alert/Dialog.js
 *    ui/dialog/Alert/Sample.html
+*    ui/dialog/Confirm.js
 *    ui/dialog/Dialog.js
 *    ui/dialog/Dialog/Sample/iOS.html
 *    ui/dialog/Dialog/Renderer.js
@@ -35,7 +42,6 @@
 *    ui/dialog/Dialog/Style.js
 *    ui/dialog/Loading.js
 *    ui/dialog/Loading/Sample/iOS.html
-*    ui/dialog/Loading/Sample/spinner.html
 *    ui/dialog/Loading/Presettings.js
 *    ui/dialog/Loading/Sample.js
 *    ui/dialog/Loading/Style.js
@@ -48,13 +54,7 @@
 *    ui/dialog/Toast/Sample.js
 *    ui/dialog/Toast/Style.js
 *    ui/Navigator.js
-*    ui/NoData.js
-*    ui/NoData/Renderer.js
-*    ui/NoData/Sample.html
-*    ui/NoData/Style.js
 *    ui/Panel.js
-*    ui/Scroller/pull.js
-*    ui/Scroller.js
 *    ui/Tabs.js
 *    ui/Tabs/Helper.js
 *    ui/Template.js
@@ -62,9 +62,30 @@
 *    ui/Template/Simple.js
 *    ui/Template/Static.js
 *    ui/View.js
-*    partial/house/expose.js
-*    partial/house/defaults.js
-*    partial/house/end.js
+*    defaults/api/API.js
+*    defaults/api/Proxy.js
+*    defaults/excore/LocalStorage.js
+*    defaults/excore/Module.js
+*    defaults/excore/SessionStorage.js
+*    defaults/excore/Url.js
+*    defaults/ui/Alert.js
+*    defaults/ui/App.js
+*    defaults/ui/Dialog.js
+*    defaults/ui/Loading.js
+*    defaults/ui/Mask.js
+*    defaults/ui/Panel.js
+*    defaults/ui/Tabs.js
+*    defaults/ui/Template.js
+*    defaults/ui/Toast.js
+*    defaults/ui/View.js
+*    partial/pc/config/ui/Alert.js
+*    partial/pc/config/ui/Dialog.js
+*    partial/pc/config/ui/Loading.js
+*    partial/pc/config/ui/Mask.js
+*    partial/pc/config/ui/Tabs.js
+*    partial/pc/config/ui/Toast.js
+*    partial/pc/expose.js
+*    partial/pc/end.js
 */
 ;( function (
     global, 
@@ -154,12 +175,23 @@ var require = Module.require;
 
 
 
+/**
+* jQuery 框架命名空间。
+* 该命名空间会融合 MiniQuery 的成员，因此大多数情况它既表示 jQuery，又表示 MiniQuery。
+* @namespace
+* @name $
+*/
 define('$', function (require, module, exports) {
     MiniQuery.use('jQuery');
     return jQuery;
     //return $;
 });
 
+/**
+* MiniQuery 框架命名空间
+* @namespace
+* @name MiniQuery
+*/
 define('MiniQuery', function (require, module,  exports) {
     return MiniQuery;
 });
@@ -172,7 +204,6 @@ define('MiniQuery', function (require, module,  exports) {
 define('KISP', function (require, module, exports) {
 
     var cfg = null; //for data
-    var dlg = null; //for alert
 
     module.exports = exports = /**@lends KISP*/ {
 
@@ -184,10 +215,11 @@ define('KISP', function (require, module, exports) {
         /**
         * 版本号。 (由 grunt 自动插入)
         */
-        version: '3.0.0', //由 grunt 自动插入
+        version: '3.2.0', //由 grunt 自动插入
 
         /**
         * 文件列表。 (由 grunt 自动插入)
+        * 
         */
         files: [], //由 grunt 自动插入
 
@@ -231,7 +263,6 @@ define('KISP', function (require, module, exports) {
 
         /**
         * 加载 KISP 框架内公开的模块，并创建它的一个实例。
-        * @function
         * @param {string} id 模块的名称(id)
         * @param {Object} config 要创建实例时的配置参数。
         * @return {Object} 返回该模块所创建的实例。
@@ -274,21 +305,22 @@ define('KISP', function (require, module, exports) {
 
         /**
         * 获取或 设置 KISP 内部模块的默认配置。
-        * 相当于 Config.get(name) 或　Config.set(name, value)  的别名。
         * @function
         * @example
         *   KISP.config({});    
         */
         config: function (name, value) {
 
-            var Config = require('Config');
+            var Defaults = require('Defaults');
+            var len = arguments.length;
 
-            if (typeof name == 'string' && arguments.length == 1) { //get(name)
-                return Config.get(name);
+            //get(name)
+            if (typeof name == 'string' && len == 1) { 
+                return Defaults.get(name);
             }
 
             //set
-            Config.set(name, value);
+            Defaults.set(name, value);
 
         },
 
@@ -329,54 +361,45 @@ define('KISP', function (require, module, exports) {
         */
         alert: function (text, text1, textN, fn) {
 
-            if (dlg) {
-                dlg.destroy();
-            }
+            var args = [].slice.call(arguments, 0);
 
             var Alert = require('Alert');
-
-            var args = [].slice.call(arguments, 0);
-            dlg = Alert.create.apply(null, args);
-
-            dlg.show();
+            Alert.show.apply(null, args);
            
         },
 
         /**
+        * 弹出简单的 confirm 虚拟窗口。
+        * @param {string} text 要显示的消息文本。
+        * @param {function} fn 点击“确定”按钮后执行的回调函数。
+        */
+        confirm: function (text, fn) {
+            var Confirm = require('Confirm');
+            Confirm.show(text, fn);
+        },
+
+        /**
         * 初始化执行环境，并启动应用程序。
-        * 该方法会预先定义一些公共模块，然后定义一个指定的(或匿名)模块并启动它。
-        * 已重载 launch(factory);
-        * @param {string} name 启动模块的名称。 若不指定，则默认为空字符串。
+        * 该方法会预先定义一些公共模块，然后定义一个匿名模块并启动它。
         * @param {function} factory 工厂函数，即启动函数。
         */
-        launch: function (name, factory) {
+        launch: function (factory) {
 
-            if (typeof name == 'function') { //重载 launch(factory)
-                factory = name;
-                name = '';
+            var App = require('App');
+            var app = new App('');
+
+            var Config = require('Config');
+            var config = Config.clone('App');
+
+            var type = config.type;
+            if (type == 'standard') {
+                app.render(factory);
+            }
+            else {
+                app.launch(factory);
             }
 
-            var Module = require('Module');
-            var $ = require('jquery-plugin/touch') || require('$'); //
 
-            var MiniQuery = require('MiniQuery');
-
-            var define = Module.define;
-
-            define('$', function () {
-                return $;
-            });
-
-            define('MiniQuery', function () {
-                return MiniQuery;
-            });
-
-            define('KISP', function () {
-                return exports;
-            });
-
-            define(name, factory);
-            Module.require(name); //启动
         },
 
 
@@ -545,16 +568,14 @@ define('MD5', function (require, module,  exports) {
 
 /**
 * 配置工具类。
-* @namespace
+* @class
 * @name Config
 */
 define('Config', function (require, module,  exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-
     var Mapper = MiniQuery.require('Mapper');
-
     var mapper = new Mapper();
 
 
@@ -566,8 +587,8 @@ define('Config', function (require, module,  exports) {
         Mapper.setGuid(this);
 
         var meta = {
-            name$config: {},
-            name$formatted: {},
+            'name$config': {},
+            'name$formatted': {},
         };
 
         mapper.set(this, meta);
@@ -650,7 +671,8 @@ define('Config', function (require, module,  exports) {
                 return config;
             }
 
-            if (name == 'Url') { //这个模块特殊，不用也不能转换，不然会构成 require 死循环。
+            //这个模块特殊，不用也不能转换，否则会构成 require 死循环。
+            if (name == 'Url') { 
                 return config;
             }
 
@@ -658,7 +680,7 @@ define('Config', function (require, module,  exports) {
 
             if (!formatted) { //该模块的配置对象里尚未格式化 url，
 
-                var Url = require(module, 'Url');
+                var Url = module.require('Url');
                 config = Url.format(config);
                 name$config[name] = config; //回写
                 name$formatted[name] = true;
@@ -687,16 +709,92 @@ define('Config', function (require, module,  exports) {
     };
 
 
-    var cfg = new Config();
+    var Defaults = require('Defaults');
 
     //静态方法
     return $.Object.extend(Config, /**@lends Config*/{
 
-        get: cfg.get.bind(cfg),
-        set: cfg.set.bind(cfg),
-        clone: cfg.clone.bind(cfg),
+        'get': Defaults.get,
+        'set': Defaults.set,
+        'clone': Defaults.clone,
 
     });
+});
+
+
+/**
+* KISP 内部模块使用的默认配置管理器。
+* @namespace
+* @name Defaults
+*/
+define('Defaults', function (require, module, exports) {
+
+    var $ = require('$');
+
+    var cfg = null;
+    var name$used = {}; // { 模块名: 已经使用了默认配置 }
+
+
+
+    //使用默认配置
+    function use(name) {
+        if (name$used[name]) {
+            return;
+        }
+
+        if (!cfg) {
+            var Config = require('Config');
+            cfg = new Config();
+        }
+
+        var defaults = require(name + '.defaults');
+        var config = require(name + '.config');
+        var obj = $.Object.extend({}, defaults, config);
+
+        cfg.set(name, obj);
+
+        name$used[name] = true;
+    }
+
+
+
+
+    module.exports = exports = /**@lends Defaults*/ {
+
+        set: function (name, config) {
+            if (typeof name == 'object') { //批量设置: set({...})
+                $.Object.each(name, function (name, config) {
+                    use(name);
+                    cfg.set(name, config);
+                });
+            }
+            else { //单个设置 set(name, config)
+                use(name);
+                cfg.set(name, config);
+            }
+        },
+
+        get: function (name) {
+            if (typeof name == 'object') { // 重载 get(module)
+                name = name.id;
+            }
+
+            use(name);
+            return cfg.get(name);
+        },
+
+
+        clone: function (name, target, target1, targetN) {
+
+            var config = exports.get(name);
+
+            var args = [].slice.call(arguments, 1);
+            args = [{}, config].concat(args);
+
+            return $.Object.extendDeeply.apply(null, args);
+        },
+
+    };
 
 });
 
@@ -757,79 +855,6 @@ define('Config/Url', function (require, module,  exports) {
 
 
 /**
-* DOM 工具类
-* @class
-* @name DOM
-*/
-define('DOM', function (require, module,  exports) {
-
-    var $ = require('$');
-    var MiniQuery = require('MiniQuery');
-    var Mapper = MiniQuery.require('Mapper');
-
-    var Config = require('Config');
-
-    var mapper = new Mapper();
-
-
-
-    function DOM(config) {
-
-        //重载 DOM(suffix)
-        if (typeof config != 'object') {
-            config = {
-                'suffix': config
-            };
-        }
-
-        Mapper.setGuid(this);
-
-        config = Config.clone(module.id, config);
-
-        var meta = {
-            'prefix': config.prefix,
-            'suffix': config.suffix,
-            'seperator': config.seperator,
-        };
-
-        mapper.set(this, meta);
-
-    }
-
-    DOM.prototype = /**@lends DOM#*/ {
-        constructor: DOM,
-
-        get: function (id) {
-            id = this.getId(id);
-            return document.getElementById(id);
-        },
-
-        getId: function (id) {
-
-            var meta = mapper.get(this);
-            var prefix = meta.prefix;
-            var suffix = meta.suffix;
-            var seperator = meta.seperator;
-
-            prefix = prefix ? prefix + seperator : '';
-            suffix = suffix ? seperator + suffix : '';
-
-            return prefix + id + suffix;
-
-        },
-
-
-    };
-
-    return DOM;
-
-   
-});
-
-
-
-
-/**
 * 版本工具类
 * @namespace
 * @name Edition
@@ -871,6 +896,26 @@ define('Edition', function (require, module, exports) {
 * @name File
 */
 define('File', function (require, module,  exports) {
+
+    /**
+    * 获取指定文件名称的后缀名。
+    * @param {string} file 要检测的文件名。
+    * @return {string} 返回后缀名，以 "." 开始。
+    */
+    function ext(file) {
+
+        if (!file || typeof file != 'string') {
+            return '';
+        }
+
+        var a = file.split('.');
+        if (a.length < 2) {
+            return '';
+        }
+
+        var ext = a.slice(-1)[0]; //取最后一项
+        return '.' + ext;
+    }
 
 
     /**
@@ -927,6 +972,7 @@ define('File', function (require, module,  exports) {
 
 
     return /**@lends File*/ {
+        ext: ext,
         is: is,
         isJs: isJs,
         isCss: isCss,
@@ -1031,6 +1077,224 @@ define('JSON', function (require, module,  exports) {
 
 
 
+/**
+* 本地存储工具类
+* @class
+* @name LocalStorage
+*/
+define('LocalStorage', function (require, module, exports) {
+
+    var $ = require('$');
+    var MiniQuery = require('MiniQuery');
+    var Storage = MiniQuery.require('LocalStorage');
+    var Mapper = MiniQuery.require('Mapper');
+
+    var Config = require('Config');
+
+    var mapper = new Mapper();
+    var skey = 'KISP.LocalStorage.B81138B047FC';
+    var all = Storage.get(skey) || {}; //针对全部应用的
+
+
+
+    function LocalStorage(id, config) {
+
+        Mapper.setGuid(this);
+
+        config = Config.clone(module.id, config);
+
+        var name = config.name;
+        if (!name) {
+            throw new Error('请先配置 name 字段');
+        }
+
+        var app = all[name];
+
+        if (!app) { //针对该应用的首次分配
+            app = all[name] = {};
+        }
+
+        var meta = {
+            'id': id,
+            'data': app[id],
+            'app': app,
+        };
+
+        mapper.set(this, meta);
+
+    }
+
+
+
+    LocalStorage.prototype = {
+        constructor: LocalStorage,
+
+        /**
+        * 设置一对键值。
+        * 已重载 set(obj) 批量设置的情况。
+        * @param {string} key 要进行设置的键名称。
+        * @param value 要进行设置的值，可以是任何类型。
+        */
+        set: function (key, value) {
+
+            var meta = mapper.get(this);
+            var data = meta.data;
+            var app = meta.app;
+            var id = meta.id;
+
+            //针对该实例的首次分配，或者因为调用了 clear() 而给清空了
+            if (!data) {
+                data = app[id] = meta.data = {};
+            }
+
+            if (typeof key == 'object') { //重载 set({...}); 批量设置的情况
+                $.Object.extend(data, key);
+            }
+            else { //单个设置
+                data[key] = value;
+            }
+
+            Storage.set(skey, all); //保存全部
+
+        },
+
+        /**
+        * 根据给定的键获取关联的值。
+        * 已重载 get() 获取全部的情况。
+        * @param {string} [key] 要进行获取的键名称。
+        * @return 返回该键所关联的值。
+        */
+        get: function (key) {
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            if (!data) {
+                return;
+            }
+
+            //重载 get(); 获取全部的情况
+            if (arguments.length == 0) {
+                return data;
+            }
+
+            return data[key];
+        },
+
+        /**
+        * 移除给定的键所关联的项。
+        * @param {string} key 要进行移除的键名称。
+        */
+        remove: function (key) {
+
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            if (!data) {
+                return;
+            }
+
+            delete data[key];
+
+            Storage.set(skey, all); //保存全部
+
+        },
+
+        /**
+        * 清空所有项。
+        */
+        clear: function () {
+            var meta = mapper.get(this);
+            var id = meta.id;
+            var app = meta.app;
+
+            delete app[id];
+            meta.data = null;
+
+            Storage.set(skey, all); //保存全部
+        },
+
+        /**
+        * 对每一项进行迭代，并调用传入的回调函数。
+        * @param {function} fn 迭代调用的回调函数。
+            该函数会接收到两个参数: 
+            key: 当前键的名称。
+            value: 当前键所关联的值。
+        */
+        each: function (fn) {
+
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            if (!data || !fn) {
+                return;
+            }
+
+            for (var key in data) {
+                fn(key, data[key]);
+            }
+        },
+
+        /**
+        * 获取所有的项的总个数。
+        */
+        length: function () {
+            return this.keys().length;
+        },
+
+        /**
+        * 获取所有的项的键数组。
+        */
+        keys: function () {
+
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            if (!data) {
+                return [];
+            }
+
+            if (typeof Object.keys == 'function') {
+                return Object.keys(data);
+            }
+
+            var a = [];
+            for (var key in data) {
+                a.push(key);
+            }
+
+            return a;
+        },
+
+        /**
+        * 获取所有的项的键数组指定中的项。
+        * @param {number} index 键所对应的索引值。
+        */
+        key: function key(index) {
+            return this.keys()[index];
+        },
+
+        /**
+        * 获取所有的项的总个数。
+        */
+        length: function () {
+            return this.keys().length;
+        },
+
+    };
+
+
+    return LocalStorage;
+
+
+
+
+});
+
+
+
+
+
+
 
 /**
 * 针对有继承关系的类提供同一个的 mapper 实例容器。
@@ -1079,6 +1343,15 @@ define('Mapper', function (require, module, exports) {
             var id = module.id;
             id = id + '-' + $.String.random();
             Mapper.setGuid(obj, id);
+        },
+
+        /**
+        * 根据给定的键移除一对映射关系。
+        * 注意：根据映射关系的键查找所关联的值时，对键使用的是全等比较，即区分数据类型。
+        * @param key 映射关系的键，可以是任何类型。
+        */
+        remove: function (key) {
+            mapper.remove(key);
         },
 
     };
@@ -1163,6 +1436,224 @@ define('RandomId', function (require, module, exports) {
     };
 
 });
+
+
+
+/**
+* 会话存储工具类
+* @class
+* @name SessionStorage
+*/
+define('SessionStorage', function (require, module, exports) {
+
+    var $ = require('$');
+    var MiniQuery = require('MiniQuery');
+    var Storage = MiniQuery.require('SessionStorage');
+    var Mapper = MiniQuery.require('Mapper');
+
+    var Config = require('Config');
+
+    var mapper = new Mapper();
+    var skey = 'KISP.SessionStorage.B81138B047FC';
+    var all = Storage.get(skey) || {}; //针对全部应用的
+
+
+
+    function SessionStorage(id, config) {
+
+        Mapper.setGuid(this);
+
+        config = Config.clone(module.id, config);
+
+        var name = config.name;
+        if (!name) {
+            throw new Error('请先配置 name 字段');
+        }
+
+        var app = all[name];
+
+        if (!app) { //针对该应用的首次分配
+            app = all[name] = {};
+        }
+
+        var meta = {
+            'id': id,
+            'data': app[id],
+            'app': app,
+        };
+
+        mapper.set(this, meta);
+
+    }
+
+
+
+    SessionStorage.prototype = {
+        constructor: SessionStorage,
+
+        /**
+        * 设置一对键值。
+        * 已重载 set(obj) 批量设置的情况。
+        * @param {string} key 要进行设置的键名称。
+        * @param value 要进行设置的值，可以是任何类型。
+        */
+        set: function (key, value) {
+
+            var meta = mapper.get(this);
+            var data = meta.data;
+            var app = meta.app;
+            var id = meta.id;
+
+            //针对该实例的首次分配，或者因为调用了 clear() 而给清空了
+            if (!data) {
+                data = app[id] = meta.data = {};
+            }
+
+            if (typeof key == 'object') { //重载 set({...}); 批量设置的情况
+                $.Object.extend(data, key);
+            }
+            else { //单个设置
+                data[key] = value;
+            }
+
+            Storage.set(skey, all); //保存全部
+
+        },
+
+        /**
+        * 根据给定的键获取关联的值。
+        * 已重载 get() 获取全部的情况。
+        * @param {string} [key] 要进行获取的键名称。
+        * @return 返回该键所关联的值。
+        */
+        get: function (key) {
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            if (!data) {
+                return;
+            }
+
+            //重载 get(); 获取全部的情况
+            if (arguments.length == 0) {
+                return data;
+            }
+
+            return data[key];
+        },
+
+        /**
+        * 移除给定的键所关联的项。
+        * @param {string} key 要进行移除的键名称。
+        */
+        remove: function (key) {
+
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            if (!data) {
+                return;
+            }
+
+            delete data[key];
+
+            Storage.set(skey, all); //保存全部
+
+        },
+
+        /**
+        * 清空所有项。
+        */
+        clear: function () {
+            var meta = mapper.get(this);
+            var id = meta.id;
+            var app = meta.app;
+
+            delete app[id];
+            meta.data = null;
+
+            Storage.set(skey, all); //保存全部
+        },
+
+        /**
+        * 对每一项进行迭代，并调用传入的回调函数。
+        * @param {function} fn 迭代调用的回调函数。
+            该函数会接收到两个参数: 
+            key: 当前键的名称。
+            value: 当前键所关联的值。
+        */
+        each: function (fn) {
+
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            if (!data || !fn) {
+                return;
+            }
+
+            for (var key in data) {
+                fn(key, data[key]);
+            }
+        },
+
+        /**
+        * 获取所有的项的总个数。
+        */
+        length: function () {
+            return this.keys().length;
+        },
+
+        /**
+        * 获取所有的项的键数组。
+        */
+        keys: function () {
+
+            var meta = mapper.get(this);
+            var data = meta.data;
+
+            if (!data) {
+                return [];
+            }
+
+            if (typeof Object.keys == 'function') {
+                return Object.keys(data);
+            }
+
+            var a = [];
+            for (var key in data) {
+                a.push(key);
+            }
+
+            return a;
+        },
+
+        /**
+        * 获取所有的项的键数组指定中的项。
+        * @param {number} index 键所对应的索引值。
+        */
+        key: function key(index) {
+            return this.keys()[index];
+        },
+
+        /**
+        * 获取所有的项的总个数。
+        */
+        length: function () {
+            return this.keys().length;
+        },
+
+    };
+
+
+    return SessionStorage;
+
+
+
+
+});
+
+
+
 
 
 
@@ -1373,11 +1864,13 @@ define('Style', function (require, module,  exports) {
 define('Url', function (require, module, exports) {
 
     var $ = require('$');
-    var Config = require('Config');
+    var root = '';  //网站的根地址。
+    
 
 
     function getBasic() {
 
+        var Config = require('Config');
         var defaults = Config.get(module.id); //默认配置
         var obj = {};
 
@@ -1410,12 +1903,24 @@ define('Url', function (require, module, exports) {
         * 获取当前 Web 站点的根地址。
         */
         root: function () {
-            var defaults = Config.get(module.id); //默认配置
-            return defaults.root;
+            if (!root) {
+                var Config = require('Config');
+                var defaults = Config.get(module.id); //默认配置
+                root = defaults.root;
+
+                if (typeof root == 'function') {
+                    root = root();
+                }
+
+            }
+
+            return root;
+           
         },
 
         /**
-        * 检查给定的 url 是否为完整的 url，即是否以 'http://' 或 'https://' 开头。
+        * 检查给定的 url 是否为完整的 url。
+        * 即是否以 'http://' 或 'https://' 开头。
         * @param {string} url 要检查的 url。
         */
         checkFull: function (url) {
@@ -1480,6 +1985,12 @@ define('API', function (require, module, exports) {
     */
     function API(name, config) {
 
+        ////重载 API(config);
+        //if (typeof config == 'object') {
+        //    config = name;
+        //    name = '';
+        //}
+
         name = name || '';
         config = Config.clone(module.id, config);
 
@@ -1488,11 +1999,17 @@ define('API', function (require, module, exports) {
         var successCode = config.successCode;
 
         var proxy = config.proxy;
-        if (typeof proxy == 'object') { // proxy: { ... }
-            proxy = proxy[name];
+        if (proxy && typeof proxy == 'object') { // proxy: { ... }，批量的情况
+            proxy = proxy[name]; //找到属于当前 API 的这个
+        }
+
+        //支持简写，代理的文件名跟 API 的名称一致。
+        if (proxy === true) {
+            proxy = name + '.js';
         }
 
 
+        
 
         //发起 ajax 请求所需要的配置对象。
         var ajax = {
@@ -1500,81 +2017,88 @@ define('API', function (require, module, exports) {
             'data': config.data,
             'query': config.query,
 
-            'url': config.url || '',
-            'ext': config.ext || '',
+            'url': config.url,
+            'prefix': config.prefix,
+            'ext': config.ext,
             'random': config.random,
 
             'successCode': successCode,
             'field': config.field,
             'proxy': proxy,
             'serialize': config.serialize,
+            'timeout': config.timeout,
 
             success: function (data, json, xhr) { //成功
-                meta.fireEvent('success', [data, json, xhr]);
+                fireEvent('success', [data, json, xhr]);
             },
 
             fail: function (code, msg, json, xhr) { //失败
-                meta.fireEvent('fail', [code, msg, json, xhr]);
+                fireEvent('fail', [code, msg, json, xhr]);
             },
 
             error: function (xhr) { //错误
-                meta.fireEvent('error', [xhr]);
+                if (meta.aborted) { //避免因手动调用了 abort() 而导致触发 error 事件。
+                    meta.aborted = false; //归位
+                    return;
+                }
+
+                fireEvent('error', [xhr]);
+            },
+
+            ontimeout: function (xhr) { //超时，自定义的
+                fireEvent('timeout', [xhr]);
             },
         };
 
-
-        var delay = config.delay;
 
         var meta = {
             'ajax': ajax,
             'status': '',
             'args': [],
             'emitter': emitter,
-
-            fireEvent: function (status, args, emitter) {
-
-                status = meta.status = status || meta.status;
-                args = meta.args = args || meta.args;
-                emitter = emitter || meta.emitter;
-
-                Fn.delay(delay, function () {
-
-                    emitter.fire('response', args); //最先触发
-
-                    //进一步触发具体 code 对应的事件
-                    if (status == 'success') {
-                        emitter.fire('code', successCode, args);
-                    }
-                    else if (status == 'fail') {
-                        emitter.fire('code', args[0], args);
-                    }
-
-                    var xhr = args.slice(-1)[0]; //args[args.length - 1]
-                    if (xhr) { //在 Proxy 的响应中 xhr 为 null
-                        emitter.fire('status', xhr.status, args);
-                    }
-
-                    emitter.fire(status, args); //触发命名的分类事件，如 success、fail、error
-                    emitter.fire('done', args); //触发总事件
-                });
-            },
+            'xhr': null,            //缓存创建出来的 xhr 对象。
+            'aborted': false,       //指示是否已调用了 abort()。
+            'fireEvent': fireEvent, 
         };
 
         mapper.set(this, meta);
 
 
-        //预绑定事件
-        var events = $.Object.filter(config, [
-            'done',
-            'success',
-            'fail',
-            'error',
-            'code',
-            'status',
-        ]);
+        //内部共用函数
+        function fireEvent(status, args, emitter) {
 
-        this.on(events);
+            status = meta.status = status || meta.status;
+            args = meta.args = args || meta.args;
+            emitter = emitter || meta.emitter;
+
+            Fn.delay(config.delay, function () {
+
+                meta.xhr = null; //请求已完成，针对 abort() 方法。
+
+                emitter.fire('response', args); //最先触发
+
+                //进一步触发具体 code 对应的事件
+                if (status == 'success') {
+                    emitter.fire('code', successCode, args);
+                }
+                else if (status == 'fail') {
+                    emitter.fire('code', args[0], args);
+                }
+
+                var xhr = args.slice(-1)[0]; //args[args.length - 1]
+                if (xhr) { //在 Proxy 的响应中 xhr 为 null
+                    emitter.fire('status', xhr.status, args);
+                }
+
+                emitter.fire(status, args); //触发命名的分类事件，如 success|fail|error|timeout
+                emitter.fire('done', args); //触发总事件
+            });
+        }
+
+     
     }
+
+
 
     //实例方法
     API.prototype = /**@lends API#*/ {
@@ -1595,15 +2119,22 @@ define('API', function (require, module, exports) {
             var meta = mapper.get(this);
             var emitter = meta.emitter;
 
+            meta.aborted = false; //归位
+
             var obj = $.Object.extend({}, meta.ajax);
             if (data) {
                 obj.data = data;
             }
 
-            emitter.fire('request', ['get', obj.data]); //这里用 obj.data
+            data = obj.data;  //这里用 obj.data
+           
+            emitter.fire('request', 'get', [data]);
+            emitter.fire('request', ['get', data]); 
 
-            var Ajax = require(module, 'Ajax');
-            Ajax.get(obj);
+            
+
+            var Ajax = module.require('Ajax');
+            meta.xhr = Ajax.get(obj);
 
             return this;
         },
@@ -1622,72 +2153,42 @@ define('API', function (require, module, exports) {
             var emitter = meta.emitter;
             var ajax = meta.ajax;
 
+            meta.aborted = false; //归位
+
             var obj = $.Object.extend({}, ajax, {
                 'data': data || ajax.data,
                 'query': query || ajax.query,
             });
 
-            emitter.fire('request', ['post', obj.data, obj.query]);
+            data = obj.data;    //这里用 obj.data
+            query = obj.query;  //这里用 obj.query
 
-            var Ajax = require(module, 'Ajax');
-            Ajax.post(obj);
+            emitter.fire('request', 'post', [data, query]);
+            emitter.fire('request', ['post', data, query]);
+
+            var Ajax = module.require('Ajax');
+            meta.xhr = Ajax.post(obj);
 
             return this;
 
         },
 
         /**
-        * 请求完成时触发。
-        * 不管请求完成后是成功、失败、错误，都会触发，会最先触发此类事件。
-        * @param {function} fn 回调函数。
-        * @return {API} 返回当前 API 的实例 this，因此进一步可用于链式调用。
+        * 取消当前已发起但未完成的请求。
+        * 只有已发起了请求但未完成，才会执行取消操作，并会触发 abort 事件。
         */
-        done: function (fn) {
-            this.on('done', fn);
-            return this;
-        },
+        abort: function () {
+            var meta = mapper.get(this);
+            var xhr = meta.xhr;
+            if (!xhr) {
+                return;
+            }
 
-        /**
-        * 请求成功时触发。
-        * 成功是指网络请求成功，且后台业务返回的数据包中的 code == successCode 的情形。
-        * @param {function} fn 回调函数。
-        */
-        success: function (fn) {
-            this.on('success', fn);
-            return this;
+            meta.aborted = true;        //先设置状态
+            xhr.abort();                //会触发 ajax.error 事件。
+            meta.emitter.fire('abort'); //
         },
-
-        /**
-        * 请求失败时触发。
-        * 失败是指网络请求成功，但后台业务返回的数据包中的 code != successCode 的情形。
-        * @param {function} fn 回调函数。
-        * @return {API} 返回当前 API 的实例 this，因此进一步可用于链式调用。
-        */
-        fail: function (fn) {
-            this.on('fail', fn);
-            return this;
-        },
-
-        /**
-        * 请求错误时触发。
-        * 错误是指网络请求不成功，如网络无法连接、404错误等。
-        * @param {function} fn 回调函数。
-        * @return {API} 返回当前 API 的实例 this，因此进一步可用于链式调用。
-        */
-        error: function (fn) {
-            this.on('error', fn);
-            return this;
-        },
-
-        status: function (status, fn) {
-            var args = [].slice.call(arguments, 0);
-            this.on.apply(this, ['status'].concat(args));
-        },
-
-        code: function (code, fn) {
-            var args = [].slice.call(arguments, 0);
-            this.on.apply(this, ['code'].concat(args));
-        },
+        
 
         /**
         * 绑定事件。
@@ -1765,35 +2266,14 @@ define('API/Ajax', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
 
-
-
-    ////不用到
-    //var config = {
-
-    //    name: '',
-    //    url: '',
-    //    ext: '',
-
-    //    data: {},
-    //    query: {},
-    //    successCode: 200,
-    //    field: {
-    //        code: 'code',
-    //        msg: 'msg',
-    //        data: 'data',
-    //    },
-
-    //    success: function (data, json, xhr) { },
-    //    fail: function (code, msg, json, xhr) { },
-    //    error: function (xhr) { },
-    //};
-
-
+    //[XMLHttpRequest 增强功能](https://technet.microsoft.com/zh-cn/office/hh673569)
+    //[XMLHttpRequest2 新技巧](http://www.html5rocks.com/zh/tutorials/file/xhr2/)
+    //[XMLHttpRequest Level 2 使用指南](http://kb.cnblogs.com/page/157047/)
 
     /**
     * 发起 ajax 网络请求(核心方法)。
     * @param {string} method 网络请求的方式：'get' 或 'post'。
-    * @param {Object} config 配置对象。
+    * @param {Object} config 配置对象。 其中：
     * @param {string} config.name 后台接口的名称，会用在 url 中。
     * @param {Object} [config.url] 请求的 url 地址。
     * @param {Object} [config.ext] 要用在 url 中的后缀。
@@ -1809,6 +2289,7 @@ define('API/Ajax', function (require, module, exports) {
     * @param {function} [config.fail] 请失败时的回调。
     * @param {function} [config.error] 请错误时的回调。
     * @return {XMLHTTPRequest} 返回 xhr 对象。
+        如果使用的是代理，则返回 null。
     */
     function request(method, config) {
 
@@ -1816,11 +2297,17 @@ define('API/Ajax', function (require, module, exports) {
         if (proxy) { //使用了代理
             var Proxy = require('Proxy');
             Proxy.request(proxy, config);
-            return;
+            return null;
         }
 
+        //完整的 url
+        var url = [
+            config.url,
+            config.prefix,
+            config.name,
+            config.ext,
+        ].join('');
 
-        var url = [config.url, config.name, config.ext].join(''); //完整的 url
 
         var data = config.data || null; // null 可能会在 xhr.send(data) 里用到
         if (data) {
@@ -1861,15 +2348,37 @@ define('API/Ajax', function (require, module, exports) {
         }
 
 
+      
+
+        //同时启动超时器和发起请求，让它们去竞争。
+       
+        var isTimeout = false; //指示是否已超时
+        var tid = null;
+        var timeout = config.timeout || 0;
+
+        if (timeout > 0) {
+            tid = setTimeout(function () {
+                isTimeout = true;
+                xhr.abort(); //取消当前响应，关闭连接并且结束任何未决的网络活动。
+
+                var fn = config.ontimeout;
+                fn && fn(xhr);
+
+            }, timeout);
+        }
+
 
         var xhr = new XMLHttpRequest();
         xhr.open(method, url, true);
 
         xhr.onreadystatechange = function () {
 
-            if (xhr.readyState != 4) {
+            if (isTimeout || xhr.readyState != 4) {
                 return;
             }
+
+
+            clearTimeout(tid);
 
             var successCode = config.successCode;
             var fnError = config.error;
@@ -1908,33 +2417,29 @@ define('API/Ajax', function (require, module, exports) {
 
         xhr.send(data);
 
+
         return xhr;
     }
 
 
 
 
-    function get(config) {
-        return request('get', config);
-    }
-
-
-    function post(config) {
-        return request('post', config);
-    }
-
-
 
 
     return /**@lends Ajax*/ {
-        get: get,
-        post: post,
+
+        get: function (config) {
+            return request('get', config);
+        },
+
+        post: function (config) {
+            return request('post', config);
+        },
     };
 
     
 
 });
-
 
 
 
@@ -1950,7 +2455,9 @@ define('Proxy', function (require, module,  exports) {
     var Config = require('Config');
     var Fn = require('Fn');
     
-    var url$config = {}; // {请求地址: 请求的配置对象}   
+    var current = null;     //当前请求到的代理文件的响应结果 factory
+
+
 
     //模拟一个网络的随机延迟时间去执行一个回调函数
     function delay(fn) {
@@ -1963,41 +2470,31 @@ define('Proxy', function (require, module,  exports) {
 
     }
 
-    /**
-    * 根据指定的模块获取对应的请求配置对象。
-    */
-    function getConfig(module) {
 
-        var url = module['uri']; // module.uri
-        var obj = url$config[url];
-        delete url$config[url]; //已获取使用了，没必要保留了
-
-        return obj;
-    }
-
-    function getUrl(file) {
-        var Url = require('Url');
-        var $Url = MiniQuery.require('Url');
-
-        var url = Url.checkFull(file) ? file : Url.root() + file;
-        url = $Url.randomQueryString(url); //增加随机查询字符串，确保拿到最新的
-
-        return url;
-    }
 
 
     /**
     * 加载指定的 js 代理文件。
+    * 注意：加载完 js 代理文件后，会先执行 js 代理文件的逻辑，再触发 onload 事件。
+    * 经过试验发现，并发加载多个 js 文件，也会严格地按上述顺序对应的进行。
     */
     function loadJs(file, config) {
 
-        var url = getUrl(file);
-        url$config[url] = config; //把本次请求的参数保存下来
+        var Url = module.require('Url');
+        var url = Url.get(file);
 
-        var Seajs = require('Seajs');
+        var Script = MiniQuery.require('Script');
+        Script.load(url, function () {
 
-        Seajs.use(url, function (json) {
-            done(json, config);
+            var factory = current;
+            current = null;
+
+            if (typeof factory == 'function') {
+                factory = factory(config.data, config);
+            }
+
+            done(factory, config);
+
         });
     }
 
@@ -2006,7 +2503,8 @@ define('Proxy', function (require, module,  exports) {
     */
     function loadJson(file, config) {
 
-        var url = getUrl(file);
+        var Url = module.require('Url');
+        var url = Url.get(file);
 
         var xhr = new XMLHttpRequest();
         xhr.open('get', url, true);
@@ -2031,6 +2529,7 @@ define('Proxy', function (require, module,  exports) {
     }
 
 
+    //加载完成后，根据状态分发事件。
     function done(json, config) {
         if (!json) {
             delay(config.error);
@@ -2039,7 +2538,6 @@ define('Proxy', function (require, module,  exports) {
 
         var successCode = config.successCode;
         var field = config.field;
-
         var code = json[field.code];
 
         if (code == successCode) { // 成功
@@ -2053,16 +2551,17 @@ define('Proxy', function (require, module,  exports) {
     }
 
 
+
+
     module.exports = exports = /**@lends Proxy*/ {
 
         /**
         * 发起代理请求。
         * @param {string} file 代理响应的文件地址。
         * @param {Object} config 配置对象。
-        * @return {boolean} 返回一个布尔值，指示该后台接口是否启用了代理映射。
         */
         request: function (file, config) {
-
+     
             var File = require('File');
 
             if (File.isJs(file)) { // 映射的响应是一个 js 文件
@@ -2076,114 +2575,435 @@ define('Proxy', function (require, module,  exports) {
             }
 
             throw new Error('不支持参数 file 的文件类型: ' + file);
-
         },
 
         /**
         * 响应代理请求。
         * 可以生成很复杂的动态数据，并根据提交的参数进行处理，具有真正模拟后台逻辑的能力。
-        * 该方法仅用在代理响应文件中。
-        * 已重载 response({})、response(fn)、和 response('', {}) 的情况。
-        * @param {string} action 响应的分支名称。
-        * @param {Object} fns 响应的分支逻辑。
+        * 该方法仅用在代理响应文件中，且在调用之前必须先调用 request 方法。
+        * 已重载 response(json)的情况。
+        * @param {function|Object} factory 响应的处理函数或 json 对象。
+        *   当传进来的 factory 为处理函数时，该函数会接收到两个参数：factory(data, config)。 其中：
+        *   data 为发起 get 或 post 请求时最终的 data 字段；
+        *   config 为发起 get 或 post 请求时全部的配置字段。
         */
-        response: function (action, fns) {
+        response: function (factory) {
 
-            var Seajs = require('Seajs');
+            //var type = typeof factory;
+            //var isValid = type == 'function' || type == 'object' && factory;
 
-            //这里注意，CMD 规范的参数顺序是 (require, exports, module)，而我的设计搞错了。
-            Seajs.define(function (require, exports, module) {
-
-                if ($.Object.isPlain(action)) { // response({})
-                    return action;
-                }
-
-                var config = getConfig(module);
-                var data = config.data;
-
-                var fn = typeof action == 'function' ? action   // response(fn)
-                    : fns[data[action]];                        // response('', {})
-
-                if (!fn) {
-                    return {};
-                }
-
-                return fn(data, config) || {};
-            });
+            //if (!isValid) {
+            //    throw new Error('参数 factory 只能是函数或非空对象');
+            //}
+                
+            current = factory;
         },
 
     };
 });
 
-
-
 /**
-* 动态加载模块类。
-* 对 seajs 的进一步封装，以适合本项目的使用。
-* @namespace
-* @name Seajs
+*
 */
-define('Seajs', function (require, module, exports) {
+define('Proxy/Url', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
-
     var Config = require('Config');
+    var $Url = MiniQuery.require('Url');
+    var Url = require('Url');
 
-    var seajs = window['seajs'];
 
+    function get(url) {
 
-    function ready(fn) {
+        //绝对地址
+        if (Url.checkFull(url)) {
+            return url;
+        }
+            
 
-        if (seajs) {
-            fn && fn(seajs);
-            return;
+        //相对地址
+
+        var defaults = Config.get(module.parent.id); //默认配置
+        var base = defaults.base;
+
+        if (Url.checkFull(base)) {
+            return base + url;
         }
 
 
-        //先加载 seajs 库
-        var defaults = Config.get(module.id); //默认配置
-        var url = defaults.url;
+        var root = Url.root();
+        if (url.slice(0, 1) != '/') {
+            root = root + base;
+        }
 
-        var Script = MiniQuery.require('Script');
-        Script.load({
-            url: url,
-            id: 'seajsnode', //提供 id，提高性能。 详见 https://github.com/seajs/seajs/issues/260
-
-            onload: function () {
-                seajs = window['seajs'];
-                seajs.config(defaults);
-
-                fn && fn(seajs);
-            },
-        });
-
+        return root + url;
     }
-    
 
-    module.exports = exports = /**@lends Seajs*/ {
 
-        use: function () {
 
-            var args = [].slice.call(arguments, 0);
 
-            ready(function (seajs) {
-                seajs.use.apply(seajs, args);
-            });
 
-        },
+    return {
+        get: function (url) {
+            url = get(url);
 
-        define: function () {
-
-            var args = [].slice.call(arguments, 0);
-
-            ready(function (seajs) {
-                seajs.Module.define.apply(seajs, args);
-            });
+            //增加随机查询字符串，确保拿到最新的
+            return $Url.randomQueryString(url); 
         },
     };
 
 
+});
+
+
+/**
+* App 启动类
+* @class
+* @name App
+*/
+define('App', function (require, module, exports) {
+    var $ = require('$');
+    var MiniQuery = require('MiniQuery');
+
+    var Mapper = MiniQuery.require('Mapper');
+    var Config = require('Config');
+
+
+    var mapper = new Mapper();
+
+
+    /**
+    * 构造器。
+    * @constructor
+    */
+    function App(name, config) {
+
+        Mapper.setGuid(this);
+
+        config = Config.clone(module.id, config);
+
+        var meta = {
+            'name': name,
+            'mask': config.mask,
+            //'predefined': [],
+            'animation': config.animation,
+        };
+
+        mapper.set(this, meta);
+
+
+    }
+
+
+
+    App.prototype = /**@lends App#*/ {
+        constructor: App,
+
+        /**
+        * 初始化执行环境，并启动应用程序。
+        * 该方法会预先定义一些公共模块，然后定义一个指定的(或匿名)模块并启动它。
+        * @param {function} factory 工厂函数，即启动函数。
+        */
+        launch: function (factory) {
+
+            var $ = require('jquery-plugin/touch') || require('$'); //
+            var MiniQuery = require('MiniQuery');
+            var KISP = require('KISP');
+            var Module = require('Module');
+
+            var define = Module.define;
+
+            define('$', function () {
+                return $;
+            });
+
+            define('MiniQuery', function () {
+                return MiniQuery;
+            });
+
+            define('KISP', function () {
+                return KISP;
+            });
+
+            var meta = mapper.get(this);
+            var name = meta.name;
+
+            define(name, factory);
+            Module.require(name); //启动
+        },
+       
+        /**
+        * 初始化执行环境，创建导航管理器和相应的 UI 组件，并启动应用程序。
+        * @param {function} factory 工厂函数，即启动函数。
+        */
+        render: function (fn) {
+            var meta = mapper.get(this);
+            var Nav = module.require('Nav');
+            
+
+            //不使用动画
+            if (!meta.animation) { 
+                this.launch(function (require, module) {
+                    var nav = Nav.create(meta.mask);
+
+                    //后退时触发
+                    nav.on('back', function (current, target) {
+                        document.activeElement.blur(); // 关闭输入法
+                        current = module.require(current);
+                        target = module.require(target);
+                        current.hide();
+                        target.show();
+                    });
+
+                    //跳转到目标视图之前触发，先隐藏当前视图
+                    nav.on('before-to', function (current, target) {
+                        current = module.require(current);
+                        current.hide();
+                    });
+
+                    //统一绑定视图跳转动作，在调用 nav.to(...) 时会给触发
+                    nav.on('to', function (name, arg0, arg1, argN) {
+                        var args = [].slice.call(arguments, 1);
+                        var M = module.require(name);
+                        M.render.apply(M, args);
+                    });
+
+                    fn && fn(require, module, nav);
+                });
+
+                return;
+            }
+
+
+
+            //使用动画
+            var Mask = require('Mask');
+            var Transition = module.require('Transition');
+
+            this.launch(function (require, module) {
+
+                var name$bound = {}; //记录目标视图是否已绑定了 transitionend 事件。
+                var eventName = Transition.getEventName();
+                var nav = Nav.create();
+
+                var mask = new Mask();
+                mask.render();
+
+
+                //后退时触发
+                nav.on('back', function (current, target) {
+                    document.activeElement.blur(); // 关闭输入法
+
+                    target = module.require(target);
+                    target.show(); //这里要触发 show 事件
+
+                    current = module.require(current);
+                    current.$.removeClass('Forward').addClass('Back');
+
+                    target.$.css({ 'z-index': 1, });
+                    current.$.css({ 'z-index': 3, });
+
+                    mask.$.removeClass('BeforeForward Forward Back');
+                    mask.$.addClass('BeforeBack');
+                    mask.$.show();
+
+
+                    //防止时间竞争
+                    setTimeout(function () {
+                        mask.$.addClass('Back');
+                    }, 50);
+
+                });
+
+
+                //跳转到目标视图之前触发
+                nav.on('before-to', function (current, target) {
+                    var name = target;
+
+                    current = module.require(current);
+                    target = module.require(target);
+
+                    current.$.css({ 'z-index': 1, });
+                    target.$.css({ 'z-index': 3, });
+
+
+                    
+                    target.$.addClass('BeforeForward');
+                    target.$.removeClass('Back');
+                    target.$.show();
+
+                    mask.$.removeClass('Back BeforeBack Forward')
+                    mask.$.addClass('BeforeForward');
+                    mask.$.show();
+
+                    //防止时间竞争
+                    setTimeout(function () {
+                        mask.$.addClass('Forward');
+                        target.$.addClass('Forward');
+                    }, 50);
+
+                    // css 动画结束后执行
+                    var bound = name$bound[name];
+                    if (!bound) { //首次绑定
+
+                        target.$.on(eventName, function () {
+                            if (target.$.hasClass('Forward')) { //前进
+                                current.hide(); //要触发 hide 事件
+                            }
+                            else if (target.$.hasClass('Back')) { //后退
+                                target.hide(); //要触发 hide 事件
+                            }
+                            mask.$.hide();
+                        });
+
+                        name$bound[name] = true;
+                    }
+                });
+
+
+                //统一绑定视图跳转动作，在调用 nav.to(...) 时会给触发
+                nav.on('to', function (name, arg0, arg1, argN) {
+                    var args = [].slice.call(arguments, 1);
+                    var target = module.require(name);
+                    target.render.apply(target, args);
+                });
+
+                fn && fn(require, module, nav);
+
+            });
+
+        },
+
+     
+
+    };
+
+
+    return App;
+
+});
+
+
+
+define('App/Nav', function (require, module, exports) {
+    var $ = require('$');
+
+   
+    function create(config) {
+
+        var Navigator = require('Navigator');
+
+        var nav = new Navigator({
+            hash: function (current) {
+                //为了让 url 中的 hash 可读性更好，有助于快速定位到相应的模块。
+                return [current, $.String.random(8)].join('-');
+            },
+        });
+
+
+        if (config) {
+            var Mask = require('Mask');
+
+            var mask = new Mask({
+                opacity: config.opacity,
+                duration: config.duration,
+                'z-index': config['z-index'],
+            });
+
+            mask.render(); //提前渲染但不显示，避免在视图切换时来不及创建 DOM 节点。
+
+            function showMask() {
+                mask.show();
+            }
+
+            //避免上一个视图的点透
+            nav.on({
+                'before-to': showMask,
+                'back': showMask,
+            });
+
+        }
+
+
+        //重写 nav.to 方法
+        var to = nav.to;
+
+        /**
+        * 跳转(或延迟跳转)到指定的视图，并传递一些参数。
+        */
+        nav.to = function (delay, name, arg0, argN) {
+
+            var args = [].slice.call(arguments);
+
+            //重载 to(name, arg0, argN)
+            if (typeof delay == 'string') {
+                name = delay;
+                delay = false;
+            }
+            else {
+                args = args.slice(1);
+            }
+
+            if (delay) {
+                setTimeout(function () {
+                    to.apply(nav, args);
+                }, delay);
+            }
+            else {
+                to.apply(nav, args);
+            }
+        };
+
+        return nav;
+    }
+
+
+    return {
+        create: create,
+    };
+
+
+
+});
+
+
+
+define('App/Transition', function (require, module, exports) {
+    var $ = require('$');
+
+
+    var p$eventName = {
+        'transition': 'transitionend',
+        'OTransition': 'oTransitionEnd',
+        'MozTransition': 'transitionend',
+        'WebkitTransition': 'webkitTransitionEnd'
+    };
+
+    var eventName = '';
+
+    function getEventName() {
+
+        if (eventName) {
+            return eventName;
+        }
+
+
+        var el = document.createElement('div');
+
+        for (var p in p$eventName) {
+
+            if (el.style[p] !== undefined) {
+                eventName = p$eventName[p];
+                return eventName;
+            }
+        }
+    }
+
+
+    return {
+        getEventName: getEventName,
+    };
 
 
 });
@@ -2198,42 +3018,22 @@ define('Seajs', function (require, module, exports) {
 define('Alert', function (require, module, exports) {
 
     var $ = require('$');
-    var Config = require('Config');
-
-
-    //根据文本来计算高度，大概值，并不要求很准确
-    function getHeight(text) {
-
-        var len = $.String.getByteLength(text);
-        var h = Math.max(len, 125);
-        var max = document.documentElement.clientHeight;
-
-        if (h >= max * 0.8) {
-            h = '80%';
-        }
-
-        return h;
-    }
-
+    var Dialog = module.require('Dialog');
 
 
 
     /**
-    * 创建一个 alert 对话框。
+    * 显示一个 alert 对话框。 
+    * 支持多次调用，会将多次调用加进队列，在显示完上一次后进行下一次的显示。
     */
-    function create(text, text1, textN, fn) {
+    function show(text, text1, textN, fn) {
 
-        config = Config.clone(module.id);
-
-        //重载 alert(obj); 以方便程序员调试查看 json 对象。
+        //重载 get(obj); 以方便程序员调试查看 json 对象。
         if (typeof text == 'object') {
-            var Sample = require(module, 'Sample');
-
-            text = $.String.format(Sample, {
-                'text': JSON.stringify(text, null, 4),
-            });
+            var Sample = module.require('Sample');
+            text = JSON.stringify(text, null, 4);
+            text = $.String.format(Sample, { 'text': text, });
         }
-
 
         var args = [].slice.call(arguments, 1);
 
@@ -2255,22 +3055,80 @@ define('Alert', function (require, module, exports) {
 
 
 
-        var Dialog = require('Dialog');
+        Dialog.add(text, fn);
+    }
 
+
+
+
+    return {
+        show: show,
+    };
+
+});
+
+
+
+define('Alert/Dialog', function (require, module, exports) {
+
+    var $ = require('$');
+    var Config = require('Config');
+
+    var dialog = null;
+    var visible = false;
+    var list = [];
+
+
+    //创建对话框
+    function create() {
+        
+        var config = Config.clone('Alert');
+
+        var Dialog = require('Dialog');
         var dialog = new Dialog({
             'cssClass': 'Alert',
-            'text': text,
-            'buttons': [{
-                text: config.button,
-                fn: fn,
-            }],
-
             'volatile': config.volatile,
             'mask': config.mask,
             'autoClosed': config.autoClosed,
             'width': config.width,
             'z-index': config['z-index'],
-            'height': config.height ? config.height : getHeight(text),
+            'buttons': [
+               {
+                   name: 'ok',
+                   text: config.button,
+               },
+            ],
+        });
+
+
+        dialog.on('button', 'ok', function () {
+            var fn = dialog.data('fn');
+            fn && fn();
+        });
+
+
+        dialog.on({
+            'show': function () {
+                visible = true;
+            },
+
+            'hide': function () {
+                visible = false;
+                var obj = list.shift();
+                if (obj) {
+                    render(obj.text, obj.fn);
+                }
+            },
+        });
+
+        //响应回车键
+        $(document).on('keyup', function (event) {
+            if (event.keyCode == 13) { //
+                dialog.hide();
+
+                var fn = dialog.data('fn');
+                fn && fn();
+            }
         });
 
         return dialog;
@@ -2278,9 +3136,62 @@ define('Alert', function (require, module, exports) {
     }
 
 
+    
+
+    //根据文本来计算高度，大概值，并不要求很准确
+    function getHeight(text) {
+
+        text = String(text);
+        var len = $.String.getByteLength(text);
+        var h = Math.max(len, 125);
+        var max = document.documentElement.clientHeight;
+
+        if (h >= max * 0.8) {
+            h = '80%';
+        }
+
+        return h;
+    }
+
+
+    function render(text, fn) {
+
+        var height = getHeight(text);
+
+        dialog = dialog || create();
+       
+        dialog.data('fn', fn);
+        dialog.set('text', text);
+        dialog.set('height', height);
+
+        dialog.show();
+
+    }
+
+
+    function add(text, fn) {
+
+        //首次显示，或之前显示的已经给隐藏了，立即显示出来。
+        if (!visible) {
+            render(text, fn);
+            return;
+        }
+
+        //已经是显示的，加到队列里进行排队。
+        list.push({
+            'text': text,
+            'fn': fn,
+        });
+    }
+
+
+    //add(0, function () { });
+    //add(1, function () { });
+    //add(2, function () { });
+
 
     return {
-        create: create,
+        add: add,
     };
 
 });
@@ -2291,9 +3202,64 @@ define('Alert', function (require, module, exports) {
 * 由 grunt 生成，来源: ui/dialog/Alert/Sample.html
 */
 define('Alert/Sample', [
-    '<pre class="json">{text}</pre>',
+    '<pre class="JSON">{text}</pre>',
 ].join('\n'));
 
+/**
+* 简单的 confirm 虚拟对话框。
+* @namespace
+* @name Confirm
+*/
+define('Confirm', function (require, module, exports) {
+
+    var dialog = null;
+
+    function create() {
+
+        if (dialog) {
+            return dialog;
+        }
+
+        var Dialog = require('Dialog');
+
+        dialog = new Dialog({
+            autoClose: true,
+            height: 140,
+            'z-index': 99999,
+            buttons: [
+                { text: '取消', },
+                { text: '确定', name: 'ok', color: 'red', },
+            ],
+        });
+
+        dialog.on('button', 'ok', function () {
+            var fn = dialog.data('fn');
+            fn && fn();
+        });
+
+        return dialog;
+    }
+
+
+    function show(text, fn) {
+
+        dialog = create();
+
+        //有闭包的作用影响，这里要把回调函数 fn 保存起来
+        dialog.data('fn', fn);
+        dialog.set('text', text);
+        dialog.show();
+
+    }
+
+
+    return {
+        show: show,
+    };
+
+
+
+});
 
 /**
 * 对话框组件
@@ -2304,18 +3270,18 @@ define('Dialog', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
 
-    var Mapper = MiniQuery.require('Mapper');
+
     var Emitter = MiniQuery.require('Emitter');
 
     var Config = require('Config');
     var RandomId = require('RandomId');
 
     //子模块
-    var Sample = require(module, 'Sample');
-    var Style = require(module, 'Style');
-    var Renderer = require(module, 'Renderer');
+    var Sample = module.require('Sample');
+    var Style = module.require('Style');
+    var Renderer = module.require('Renderer');
 
-    var mapper = new Mapper();
+    var mapper = require('Mapper');
 
 
     /**
@@ -2324,7 +3290,8 @@ define('Dialog', function (require, module, exports) {
     */
     function Dialog(config) {
 
-        Mapper.setGuid(this);
+
+        mapper.setGuid(this, module); //设置 guid, 提高 mapper 查找效率。
 
         config = Config.clone(module.id, config);
 
@@ -2349,6 +3316,7 @@ define('Dialog', function (require, module, exports) {
             'div': null,
             'scrollable': config.scrollable,
             'scroller': null,
+            'scrollerConfig': config['scroller'],
             'eventName': eventName,
             'title': config.title,
             'text': config.text,
@@ -2365,6 +3333,7 @@ define('Dialog', function (require, module, exports) {
             'volatile': config.volatile,
             'zIndex': config['z-index'],        //生成透明层时要用到
             'data': {},                         //供 this.data() 方法使用
+            
         };
 
         mapper.set(this, meta);
@@ -2408,60 +3377,70 @@ define('Dialog', function (require, module, exports) {
         $: null,
 
         /**
+        * 渲染本组件。
+        * 该方法会创建 DOM 节点，并且绑定事件，但没有调用 show()。
+        */
+        render: function () {
+            var meta = mapper.get(this);
+            var div = meta.div;
+
+            //已经渲染过了
+            if (div) {
+                return;
+            }
+
+            div = meta.div = Renderer.render(meta, this);
+            $(div).hide(); //先隐藏
+
+            var Mask = require('Mask');
+            var zIndex = meta.zIndex;
+
+            meta.masker = new Mask({
+                'z-index': zIndex - 1,
+            });
+
+            if (meta.volatile) {
+                var self = this;
+                meta.masker.on('click', function () {
+                    self.hide();
+                });
+            }
+
+            //防止点透
+            meta.layer = new Mask({
+                opacity: 0,
+                'z-index': zIndex + 1,
+            });
+        },
+
+        /**
         * 显示本组件。
         */
         show: function (mask) {
             var meta = mapper.get(this);
-            var div = meta.div;
+            this.render();
 
-            if (!div) {
-                div = meta.div = Renderer.render(meta, this);
-            }
-
-            var zIndex = meta.zIndex;
 
             var Mask = require('Mask');
             mask = Mask.filter(meta.mask, mask);
-            var masker = meta.masker;
 
             //指定了启用 mask 层
             if (mask) {
-                if (!masker) {
-                    masker = new Mask({
-                        'z-index': zIndex - 1,
-                    });
-
-                    meta.masker = masker;
-                    if (meta.volatile) {
-                        var self = this;
-                        masker.on('click', function () {
-                            self.hide();
-                        });
-                    }
-                }
-                masker.show(mask);
+                meta.masker.show(mask);
             }
             else {
-                if (masker) { //之前已经创建了，并且可能是显示的。
-                    masker.hide();
-                }
+                masker.hide();
             }
 
-            //防止点透
-            var layer = meta.layer;
-            if (!layer) {
-                layer = meta.layer = new Mask({
-                    opacity: 0,
-                    'z-index': zIndex + 1,
-                });
-            }
+            meta.layer.show({ duration: 200 });
 
-            layer.show({ duration: 200 });
+            //这个不能放在 setTimeout 里，因为外面可能已经调用了 set('height') 等改变了
+            $(meta.div).css(meta.style);
+
 
             //这里要用异步稍微延迟一下，不然会跟 layer 的 show 几乎是同时的
             setTimeout(function () {
-                var style = meta.style;
-                $(div).css(style).show();
+                $(meta.div).show();
             }, 0);
 
             //下面的两行不要放在上面的 setTimeout 里，
@@ -2525,7 +3504,7 @@ define('Dialog', function (require, module, exports) {
 
             $(div).off();
 
-            document.body.removeChild(div);
+            div.parentNode.removeChild(div);
             meta.emitter.fire('remove');
 
         },
@@ -2546,6 +3525,10 @@ define('Dialog', function (require, module, exports) {
         */
         destroy: function () {
             var meta = mapper.get(this);
+            if (!meta) {
+                throw new Error('该实例已给销毁，无法再次调用 destroy 方法。');
+            }
+
             var emitter = meta.emitter;
             var scroller = meta.scroller;
 
@@ -2558,22 +3541,40 @@ define('Dialog', function (require, module, exports) {
 
         /**
         * 设置指定的属性。
-        * 目前支持 'text' 字段。
+        * @param {string} name 要设置的属性的名称。 目前支持的字段有： 
+            'text',
+            'height',
+            'width',
+        * @param value 要设置的属性的值，可以是任何类型。
         */
         set: function (name, value) {
 
             var meta = mapper.get(this);
             var scroller = meta.scroller;
 
-            if (name == 'text') {
-                $('#' + meta.contentId).html(value);
-                
-                if (scroller) {
-                    scroller.refresh();
-                }
+            this.render();
 
-                return;
+            switch (name) {
+                case 'text':
+                    $('#' + meta.contentId).html(value);
+                    scroller && scroller.refresh(200);
+                    break;
+
+                case 'height':
+                case 'width':
+                    var obj = {};
+                    obj[name] = value;
+                    obj = Style.get(obj);
+                    $.Object.extend(meta.style, obj); //回写，避免调用 show 时又给重置
+                    $(meta.div).css(obj);
+                    scroller && scroller.refresh(300);
+                    break;
+
+                default:
+                    throw new Error('目前不支持设置属性: ' + name);
             }
+
+
         },
 
         /**
@@ -2627,17 +3628,24 @@ define('Dialog', function (require, module, exports) {
 define('Dialog/Sample/iOS', [
     '#--div.begin--#',
     '<div id="{id}" class="KISP Dialog {cssClass}" style="{style}">',
-    '    <header class="{no-header}" style="{header-style}">',
+    '',
+    '    #--header.begin--#',
+    '    <header style="{style}">',
     '        {title}',
     '    </header>',
-    '    <article id="{article-id}" class="buttons-{buttons-count} {no-header}">',
+    '    #--header.end--#',
+    '',
+    '    <article id="{article-id}" class="{no-header} {no-footer}">',
     '        <div id="{content-id}">{text}</div>',
     '    </article>',
-    '    <footer id="{footer-id}" class="buttons-{buttons-count}">',
+    '',
+    '    #--footer.begin--#',
+    '    <footer id="{id}" class="buttons-{count}">',
     '        #--button.begin--#',
     '        <span data-index="{index}" style="{style}">{text}</span>',
     '        #--button.end--#',
     '    </footer>',
+    '    #--footer.end--#',
     '</div>',
     '#--div.end--#',
 ].join('\n'));
@@ -2681,75 +3689,132 @@ define('Dialog/Renderer', function (require, module, exports) {
         var articleId = meta.articleId;
         var footerId = meta.footerId;
         var style = meta.style;
-
         var samples = meta.samples;
 
 
-        var height = parseInt(style.height);
-        var textHeight = height - 44 * 2 - 2;
+
         var title = meta.title;
 
         //标准化成一个 object
         if (title && typeof title != 'object') {
             title = { 'text': title || '', };
         }
+ 
 
         var html = $.String.format(samples['div'], {
             'id': id,
             'article-id': articleId,
             'content-id': meta.contentId,
-            'footer-id': footerId,
-
             'cssClass': meta.cssClass,
             'style': Style.stringify(style),
-
-            'title': title ? title.text : '',
             'text': meta.text,
-            'no-header': title ? '' : 'no-header', //针对无标题时
-            'header-style': getStyle(title),
+            'text-height': parseInt(style.height) - 44 * 2 - 2,
+            'no-header': title ? '' : 'no-header',              //针对无标题时
+            'no-footer': buttons.length > 0 ? '' : 'no-footer', //针对无按钮时
 
-            'buttons-count': buttons.length,
-            'text-height': textHeight,
-
-            'buttons': $.Array.keep(buttons, function (item, index) {
-
-                if (typeof item == 'string') {
-                    buttons[index] = item = {
-                        'text': item,
-                    };
+            'header': (function (title) {
+                if (!title) {
+                    return '';
                 }
 
-                return $.String.format(samples['button'], {
-                    'index': index,
-                    'text': item.text,
-                    'style': getStyle(item),
+                return $.String.format(samples['header'], {
+                    'style': getStyle(title),
+                    'title': title.text,
                 });
 
-            }).join(''),
+            })(title),
+
+            'footer': (function (buttons) {
+                var count = buttons.length;
+                if (!count) {
+                    return '';
+                }
+
+                return $.String.format(samples['footer'], {
+                    'id': footerId,
+                    'count': count,
+                    'buttons': $.Array.keep(buttons, function (item, index) {
+
+                        if (typeof item == 'string') {
+                            buttons[index] = item = {
+                                'text': item,
+                            };
+                        }
+
+                        return $.String.format(samples['button'], {
+                            'index': index,
+                            'text': item.text,
+                            'style': getStyle(item),
+                        });
+
+                    }).join(''),
+                });
+
+            })(buttons),
         });
 
+
         $(document.body).prepend(html);
+
+
+
+        var eventName = meta.eventName;
+
+        var article = $('#' + articleId);
+
+        if (eventName == 'touch') {
+            article.touch(function () {
+                emitter.fire('touch-main');
+            });
+        }
+        else {
+            article.on(eventName, function () {
+                emitter.fire(eventName + '-main');
+            });
+        }
 
         //指定了可滚动
         if (meta.scrollable) {
             var Scroller = require('Scroller');
-            var scroller = meta.scroller = new Scroller('#' + articleId);
+            var scroller = new Scroller(article.get(0), meta.scrollerConfig);
+            meta.scroller = scroller;
         }
+
+
 
         //底部按钮组
         var footer = $('#' + footerId);
-        if (!footer.hasClass('buttons-0')) { //有按钮时才绑定
+        if (buttons.length > 0) { //有按钮时才绑定
 
-            footer.on('click', '[data-index]', function (event) {
+            if (eventName == 'touch') { //移动端的，特殊处理
+                footer.touch('[data-index]', fn, 'pressed');
+            }
+            else { // PC 端
+                footer.on(eventName, '[data-index]', fn);
+
+                footer.on('mousedown', '[data-index]', function (event) {
+                    var button = this;
+                    $(button).addClass('pressed');
+                });
+
+
+                footer.on('mouseup mouseout', '[data-index]', function (event) {
+
+                    var button = this;
+                    $(button).removeClass('pressed');
+                });
+            }
+
+            function fn(event) {
                 var button = this;
                 var index = +button.getAttribute('data-index');
                 var item = buttons[index];
                 var name = item.name || String(index);
-                var eventName = meta.eventName;
+
 
                 //这两个已废弃，建议使用 #2
-                emitter.fire(eventName, 'button', name, [item, index]);
-                emitter.fire(eventName, 'button', [item, index]);
+                emitter.fire('click', 'button', name, [item, index]);
+                emitter.fire('click', 'button', [item, index]);
 
                 //#2 建议使用
                 emitter.fire('button', name, [item, index]);
@@ -2765,7 +3830,7 @@ define('Dialog/Renderer', function (require, module, exports) {
                     dialog.hide();
                 }
 
-            });
+            }
         }
         
 
@@ -2807,6 +3872,20 @@ define('Dialog/Sample', function (require, module, exports) {
                 name: 'div',
                 begin: '#--div.begin--#',
                 end: '#--div.end--#',
+                fn: trim,
+            },
+            {
+                name: 'header',
+                begin: '#--header.begin--#',
+                end: '#--header.end--#',
+                outer: '{header}',
+                fn: trim,
+            },
+            {
+                name: 'footer',
+                begin: '#--footer.begin--#',
+                end: '#--footer.end--#',
+                outer: '{footer}',
                 fn: trim,
             },
             {
@@ -2859,11 +3938,9 @@ define('Dialog/Style', function (require, module, exports) {
 
 
 
-    function get(config, item1, itemN) {
+    function get(config) {
 
-        var list = [].slice.call(arguments);
-
-        var style = Style.filter(list, [
+        var style = Style.filter(config, [
             'background',
             'border',
             'border-radius',
@@ -2873,30 +3950,41 @@ define('Dialog/Style', function (require, module, exports) {
             'position',
         ]);
 
-        var width = style.width;
-        if (typeof width != 'number') {
-            var maxWidth = document.documentElement.clientWidth;
-            if (Style.checkUnit(width, '%')) {
-                style.width = Style.parsePercent(width, maxWidth);
-            }
-            else if (!width) {
-                style.width = maxWidth * 0.8 + 'px';
+        if ('width' in style) {
+            var width = style.width;
+
+            if (typeof width != 'number') {
+                var maxWidth = document.documentElement.clientWidth;
+                if (Style.checkUnit(width, '%')) {
+                    style.width = Style.parsePercent(width, maxWidth);
+                }
+                else if (!width) {
+                    style.width = maxWidth * 0.8 + 'px';
+                }
             }
         }
+
+
+        if ('height' in style) {
+            var height = style.height;
+
+            if (typeof height != 'number') {
+                var maxHeight = document.documentElement.clientHeight;
+                if (Style.checkUnit(height, '%')) {
+                    style.height = Style.parsePercent(height, maxHeight);
+                }
+                else if (!height) {
+                    style.height = maxHeight * 0.8 + 'px';
+                }
+            }
+        }
+
+       
         
 
-        var height = style.height;
-        if (typeof height != 'number') {
-            var maxHeight = document.documentElement.clientHeight;
-            if (Style.checkUnit(height, '%')) {
-                style.height = Style.parsePercent(height, maxHeight);
-            }
-            else if (!height) {
-                style.height = maxHeight * 0.8 + 'px';
-            }
-        }
+        
 
-        //根据宽度计算 margin-left 和 margin-top，使用居中
+        //根据宽度计算 margin-left 和 margin-top，使其居中
 
         var v = getMargin(style.width);
         if (v) {
@@ -2943,9 +4031,9 @@ define('Loading', function (require, module, exports) {
     var RandomId = require('RandomId');
 
     //子模块
-    var Sample = require(module, 'Sample');
-    var Style = require(module, 'Style');
-    var Presettings = require(module, 'Presettings');
+    var Sample = module.require('Sample');
+    var Style = module.require('Style');
+    var Presettings = module.require('Presettings');
 
     var mapper = new Mapper();
 
@@ -3008,17 +4096,26 @@ define('Loading', function (require, module, exports) {
 
         var text = config.text;
         if (!text && text !== 0) { // 0 除外
-            cssClass += ' no-text'; //注意，前面要有个空格
+            cssClass += ' NoText'; //注意，前面要有个空格
         }
+
+        //向后兼容。
+        cssClass = $.Array.keep(cssClass.split(' '), function (item, index) {
+            if (item == 'same-line') {
+                console.warn('类名 "same-line" 已过时，请使用 "SameLine"');
+                return 'SameLine';
+            }
+
+            return item;
+        }).join(' ');
+
 
         var prefix = config.prefix;
         var suffix = config.suffix;
 
         var meta = {
-
             'id': RandomId.get(prefix, suffix),
             'textId': RandomId.get(prefix, 'text-', suffix),
-
             'container': config.container,
             'prepend': config.prepend,
             'div': null,
@@ -3030,6 +4127,7 @@ define('Loading', function (require, module, exports) {
             'style': Style.get(config),
             'showTime': 0, //开始显示时的时间点
             'cssClass': cssClass,
+            'append': config.append,
         };
 
         mapper.set(this, meta);
@@ -3042,8 +4140,16 @@ define('Loading', function (require, module, exports) {
         constructor: Loading,
 
         /**
-       * 显示本组件。
+       * 渲染本组件。
+       * 该方法会创建 DOM 节点，并且绑定事件，但没有调用 show()。
        */
+        render: function () {
+            
+        },
+
+        /**
+        * 显示本组件。
+        */
         show: function (text, config) {
 
 
@@ -3081,7 +4187,9 @@ define('Loading', function (require, module, exports) {
             //指定了启用 mask 层
             if (mask) {
                 if (!masker) {
-                    masker = meta.masker = new Mask();
+                    masker = meta.masker = new Mask({
+                        'container': meta.container,
+                    });
                 }
 
                 masker.show(mask);
@@ -3224,53 +4332,21 @@ define('Loading', function (require, module, exports) {
 */
 define('Loading/Sample/iOS', [
     '<div id="{id}" class="KISP Loading-iOS {cssClass}" style="{style}">',
-    '    <div class="floatingBarsG">',
-    '        <div class="blockG rotateG_0"></div>',
-    '        <div class="blockG rotateG_1"></div>',
-    '        <div class="blockG rotateG_2"></div>',
-    '        <div class="blockG rotateG_3"></div>',
-    '        <div class="blockG rotateG_4"></div>',
-    '        <div class="blockG rotateG_5"></div>',
-    '        <div class="blockG rotateG_6"></div>',
-    '        <div class="blockG rotateG_7"></div>',
-    '        <div class="blockG rotateG_8"></div>',
-    '        <div class="blockG rotateG_9"></div>',
-    '        <div class="blockG rotateG_10"></div>',
-    '        <div class="blockG rotateG_11"></div>',
+    '    <div class="Main">',
+    '        <div class="Item-0"></div>',
+    '        <div class="Item-1"></div>',
+    '        <div class="Item-2"></div>',
+    '        <div class="Item-3"></div>',
+    '        <div class="Item-4"></div>',
+    '        <div class="Item-5"></div>',
+    '        <div class="Item-6"></div>',
+    '        <div class="Item-7"></div>',
+    '        <div class="Item-8"></div>',
+    '        <div class="Item-9"></div>',
+    '        <div class="Item-10"></div>',
+    '        <div class="Item-11"></div>',
     '    </div>',
-    '    <span id="{text-id}" class="text">{text}</span>',
-    '</div>',
-].join('\n'));
-
-/*
-* Loading/Sample/spinner
-* 由 grunt 生成，来源: ui/dialog/Loading/Sample/spinner.html
-*/
-define('Loading/Sample/spinner', [
-    '<div id="{id}" class="KISP Loading-spinner {cssClass}" style="{style}">',
-    '    <div class="rotater">',
-    '        <div class="group group-1">',
-    '            <div class="item-1"></div>',
-    '            <div class="item-2"></div>',
-    '            <div class="item-3"></div>',
-    '            <div class="item-4"></div>',
-    '        </div>',
-    '        <div class="group group-2">',
-    '            <div class="item-1"></div>',
-    '            <div class="item-2"></div>',
-    '            <div class="item-3"></div>',
-    '            <div class="item-4"></div>',
-    '        </div>',
-    '        <div class="group group-3">',
-    '            <div class="item-1"></div>',
-    '            <div class="item-2"></div>',
-    '            <div class="item-3"></div>',
-    '            <div class="item-4"></div>',
-    '        </div>',
-    '    </div>',
-    '    <div id="{text-id}" class="text">',
-    '        {text}',
-    '    </div>',
+    '    <span id="{text-id}" class="Text">{text}</span>',
     '</div>',
 ].join('\n'));
 
@@ -3297,7 +4373,7 @@ define('Loading/Presettings', {
 
     'scroller.pulldown': {
         sample: 'iOS',
-        cssClass: 'same-line',
+        cssClass: 'SameLine',
         text: '加载中...',
         background: 'none',
         color: '#000',
@@ -3314,7 +4390,7 @@ define('Loading/Presettings', {
 
     'scroller.pullup': {
         sample: 'iOS',
-        cssClass: 'same-line',
+        cssClass: 'SameLine',
         text: '加载中...',
         background: 'none',
         color: '#000',
@@ -3461,8 +4537,8 @@ define('Mask', function (require, module, exports) {
     var Config = require('Config');
     var RandomId = require('RandomId');
 
-    var Sample = require(module, 'Sample');
-    var Style = require(module, 'Style');
+    var Sample = module.require('Sample');
+    var Style = module.require('Style');
 
 
     var mapper = new Mapper();
@@ -3485,17 +4561,16 @@ define('Mask', function (require, module, exports) {
 
         var meta = {
             'id': RandomId.get(prefix, suffix),
-
-            'div': null,
+            'div': null, //jQuery 包装对象
             'sample': Sample,
             'volatile': config.volatile,
             'emitter': emitter,
-            'hasBind': false, //是否已绑定事件
             'style': Style.get(config),
             'showTime': 0, //开始显示时的时间点
             'container': config.container,
             'duration': config.duration,
             'append': config.append,
+            'eventName': config.eventName,
         };
 
         mapper.set(this, meta);
@@ -3507,69 +4582,77 @@ define('Mask', function (require, module, exports) {
         constructor: Mask,
 
         /**
+        * $(div) 的快捷方式。
+        */
+        $: null,
+
+        /**
         * 渲染本组件。
         * 该方法会创建 DOM 节点，并且绑定事件，但没有调用 show()。
         */
         render: function () {
-
             var meta = mapper.get(this);
 
-            var div = meta.div;
-            if (div) {
-                return div;
+            //已经渲染过了
+            if (meta.div) {
+                return;
             }
 
+            //首次渲染
             var id = meta.id;
             var sample = meta.sample;
+            var eventName = meta.eventName;
+
             var html = $.String.format(sample, {
                 'id': id,
             });
 
 
-            var container = meta.container;
+            var container = $(meta.container);
             if (meta.append) {
-                $(container).append(html);
+                container.append(html);
             }
             else {
-                $(container).prepend(html);
-
+                container.prepend(html);
             }
 
+            var div = meta.div = $('#' + id);
 
-            div = meta.div = document.getElementById(id);
+            //暴露一个 jQuery 对象给外面使用。 但为了安全起见，内部不使用这个对象。
+            this.$ = div;
 
             var style = Style.get(meta.style);
-            $(div).css(style);
+            div.css(style);
 
-            $(div).on('click', function () {
-                meta.emitter.fire('click');
-            });
+     
+
+            if (meta.volatile) { //指定了易消失，即点击 mask 层就隐藏
+
+                var self = this;
+
+                var fn = function () {
+                    self.hide();
+
+                    //先备份原来的 opacity
+                    var opacity = div.css('opacity');
+
+                    //显示一个完全透明的层 200ms，防止点透
+                    self.show({ opacity: 0 });
+
+                    setTimeout(function () {
+                        div.css('opacity', opacity).hide();
+                    }, 200);
+                };
 
 
-            if (!meta.hasBind) {
-                meta.hasBind = true;
-
-                if (meta.volatile) { //指定了易消失，即点击 mask 层就隐藏
-
-                    var self = this;
-
-                    $(div).on('click', function () {
-                        self.hide();
-
-                        //先备份原来的 opacity
-                        var opacity = $(div).css('opacity');
-
-                        //显示一个完全透明的层 200ms，防止点透
-                        self.show({ opacity: 0, duration: 200 });
-
-                        setTimeout(function () {
-                            $(div).css('opacity', opacity);
-                        }, 200);
-                    });
+                if (eventName == 'touch') {
+                    div.touch(fn);
+                }
+                else {
+                    div.on(eventName, fn);
                 }
             }
 
-            return div;
 
         },
 
@@ -3578,7 +4661,8 @@ define('Mask', function (require, module, exports) {
         */
         show: function (config) {
 
-            if (typeof config == 'number') { //重载 show(duration);
+            //重载 show(duration);
+            if (typeof config == 'number') { 
                 config = { 'duration': config, };
             }
 
@@ -3588,7 +4672,7 @@ define('Mask', function (require, module, exports) {
 
             this.render();
 
-            var div = $(meta.div);
+            var div = meta.div;
 
             if (config) {
                 var style = Style.get(meta.style, config);
@@ -3648,7 +4732,7 @@ define('Mask', function (require, module, exports) {
 
             function hide() {
                 meta.showTime = 0;
-                $(div).hide();
+                div.hide();
                 meta.emitter.fire('hide');
             }
 
@@ -3668,11 +4752,11 @@ define('Mask', function (require, module, exports) {
 
             //reset
             meta.div = null;
-            meta.hasBind = false;
 
-            $(div).off();
+            div.off();
 
-            document.body.removeChild(div);
+            div = div.get(0); //拆除 jQuery 包装。
+            div.parentNode.removeChild(div);
             meta.emitter.fire('remove');
 
         },
@@ -3831,9 +4915,9 @@ define('Toast', function (require, module, exports) {
     var RandomId = require('RandomId');
 
     //子模块
-    var Renderer = require(module, 'Renderer');
-    var Sample = require(module, 'Sample');
-    var Style = require(module, 'Style');
+    var Renderer = module.require('Renderer');
+    var Sample = module.require('Sample');
+    var Style = module.require('Style');
 
     var mapper = new Mapper();
 
@@ -3858,14 +4942,14 @@ define('Toast', function (require, module, exports) {
 
         var text = config.text;
         if (!text && text !== 0) { // 0 除外
-            cssClass += ' no-text'; //注意，前面要有个空格
+            cssClass += ' NoText'; //注意，前面要有个空格
         }
         else {
-            cssClass += ' has-text';
+            cssClass += ' HasText';
         }
 
         var icon = config.icon;
-        cssClass += icon ? ' has-icon' : ' no-icon';
+        cssClass += icon ? ' HasIcon' : ' NoIcon';
 
         var prefix = config.prefix;
         var suffix = config.suffix;
@@ -3949,14 +5033,14 @@ define('Toast', function (require, module, exports) {
             if (text !== undefined && text != meta.text) {
                 $('#' + meta.textId).html(text);
                 meta.text = text;
-                $(div).removeClass('no-text').addClass('has-text');
+                $(div).removeClass('NoText').addClass('HasText');
             }
 
 
             if ('icon' in config) {
                 var icon = config.icon;
                 if (icon) {
-                    $(div).removeClass('no-icon').addClass('has-icon');
+                    $(div).removeClass('NoIcon').addClass('HasIcon');
 
                     if (icon != meta.icon) {
                         $('#' + meta.iconId).removeClass('fa-' + meta.icon).addClass('fa-' + icon);
@@ -3964,7 +5048,7 @@ define('Toast', function (require, module, exports) {
                     }
                 }
                 else {
-                    $(div).removeClass('has-icon').addClass('no-icon');
+                    $(div).removeClass('HasIcon').addClass('NoIcon');
                 }
             }
 
@@ -4098,7 +5182,7 @@ define('Toast/Sample/font-awesome', [
     '    <div>',
     '        <i id="{icon-id}" class="fa fa-{icon}"></i>',
     '    </div>',
-    '    <span id="{text-id}" class="text">{text}</span>',
+    '    <span id="{text-id}" class="Text">{text}</span>',
     '</div>',
 ].join('\n'));
 
@@ -4505,316 +5589,6 @@ define('Navigator', function (require, module,  exports) {
 
 
 
-
-/**
-* 无数据提示面板控件。
-* @class
-* @name NoData
-*/
-define('NoData', function (require, module, exports) {
-
-    var $ = require('$');
-    var MiniQuery = require('MiniQuery');
-    var IScroll = require('IScroll');
-
-    var Mapper = MiniQuery.require('Mapper');
-    var Emitter = MiniQuery.require('Emitter');
-
-    var RandomId = require('RandomId');
-    var Config = require('Config');
-
-    var Renderer = require(module, 'Renderer');
-    var Sample = require(module, 'Sample');
-    var Style = require(module, 'Style');
-
-    var mapper = new Mapper();
-
-
-
-    /**
-    * 构造函数。
-    */
-    function NoData(container, config) {
-
-        //重载 NoData(config)
-        if ($.Object.isPlain(container)) {
-            config = container;
-        }
-        else {
-            config.container = container;
-        }
-
-
-        Mapper.setGuid(this);
-        config = Config.clone(module.id, config);
-
-
-        var cssClass = config.cssClass;
-        if (cssClass instanceof Array) {
-            cssClass = cssClass.join(' ');
-        }
-
-        var prefix = config.prefix;
-        var suffix = config.suffix;
-
-        var meta = {
-            'div': null,
-            'top': config.top,
-            'bottom': config.bottom,
-            'icon': config.icon,
-            'text': config.text,
-            'emitter': new Emitter(this),
-            'container': config.container,
-            'append': config.append,
-
-            'id': RandomId.get(prefix, suffix),
-            'textId': RandomId.get(prefix, 'text-', suffix),
-            'text': config.text,
-            'cssClass': cssClass,
-            'sample': Sample,
-            'style': Style.get(config),
-            'scrollable': config.scrollable,
-            'pulldown': config.pulldown,
-            'visible': false, //组件当前是否可见
-        };
-
-        mapper.set(this, meta);
-
-    }
-
-
-    //实例方法
-    NoData.prototype = /**@lends NoData#*/ {
-        constructor: NoData,
-
-        show: function (text) {
-
-            var meta = mapper.get(this);
-            var div = meta.div;
-
-            if (!div) { //首次 render
-                div = Renderer.render(meta, { 'text': text, });
-            }
-            else {
-                $('#' + meta.textId).html(text || meta.text);
-            }
-
-            meta.visible = true;
-            $(div).show();
-            meta.emitter.fire('show');
-
-        },
-
-        hide: function () {
-
-            var meta = mapper.get(this);
-            var div = meta.div;
-
-            if (!div) {
-                return;
-            }
-
-            meta.visible = false;
-            $(div).hide();
-            meta.emitter.fire('hide');
-        },
-
-        toggle: function (needShow) {
-
-            //重载 toggle( [] )，方便直接传入一个数据列表数组
-            if (needShow instanceof Array) {
-                needShow = needShow.length == 0;
-            }
-
-            var meta = mapper.get(this);
-            var visible = meta.visible;
-
-            if (arguments.length == 0) { //重载 toggle()
-                if (visible) {
-                    this.hide();
-                }
-                else {
-                    this.show();
-                }
-            }
-            else {
-                if (visible && !needShow) {
-                    this.hide();
-                }
-                else if(!visible && needShow) {
-                    this.show();
-                }
-            }
-
-        },
-
-
-        /**
-        * 监听事件。
-        */
-        on: function (name, fn) {
-
-            var meta = mapper.get(this);
-            var emitter = meta.emitter;
-            var scroller = meta.scroller;
-
-            var args = [].slice.call(arguments, 0);
-            emitter.on.apply(emitter, args);
-
-        },
-
-
-        /**
-        * 销毁本实例对象。
-        */
-        destroy: function () {
-            var meta = mapper.get(this);
-            var scroller = meta.scroller;
-            scroller.destroy();
-
-            var emitter = meta.emitter;
-            emitter.destroy();
-
-            mapper.remove(this);
-        },
-
-        
-
-
-
-    };
-
-
-    return NoData;
-
-
-});
-
-
-
-
-/**
-*
-*/
-define('NoData/Renderer', function (require, module, exports) {
-
-
-    var $ = require('$');
-    var Style = require('Style');
-
-
-    function render(meta, data) {
-
-
-        var id = meta.id;
-        var sample = meta.sample;
-        var style = meta.style;
-
-        var text = data.text || meta.text;
-
-        var html = $.String.format(sample, {
-            'id': id,
-            'text-id': meta.textId,
-            'text': text,
-            'style': Style.stringify(style),
-            'cssClass': meta.cssClass,
-        });
-
-        var container = meta.container;
-
-        if (meta.append) {
-            $(container).append(html);
-        }
-        else {
-            $(container).prepend(html);
-
-        }
-
-
-        var div = document.getElementById(id);
-        meta.div = div;
-
-        if (meta.scrollable) {
-
-            var Scroller = require('Scroller');
-
-            var scroller = new Scroller(div, {
-                'top': meta.top,
-                'bottom': meta.bottom,
-            });
-
-            var pulldown = meta.pulldown;
-            if (pulldown) {
-                scroller.pulldown(pulldown);
-            }
-        }
-
-        return div;
-
-    }
-
-
-    return {
-
-        render: render,
-    };
-
-});
-
-
-/*
-* NoData/Sample
-* 由 grunt 生成，来源: ui/NoData/Sample.html
-*/
-define('NoData/Sample', [
-    '<div id="{id}" class="KISP NoData {cssClass}" style="{style}">',
-    '    <ul>',
-    '        <li class="icon"></li>',
-    '        <li id="{text-id}" class="text">{text}</li>',
-    '    </ul>',
-    '</div>',
-    '',
-    '',
-].join('\n'));
-
-
-/**
-*/
-define('NoData/Style', function (require, module, exports) {
-    var $ = require('$');
-    var Style = require('Style');
-    
-
-
-
-
-    function get(item0, item1, itemN) {
-
-        var list = [].slice.call(arguments);
-
-        var style = Style.filter(list, [
-            'background',
-            'bottom',
-            'color',
-            'font-size',
-            'top',
-            'z-index',
-        ]);
-
-
-        return style;
-
-    }
-
-
-    return {
-        get: get,
-    };
-
-
-});
-
-
 /**
 * 面板组件
 * @class
@@ -4858,6 +5632,7 @@ define('Panel', function (require, module, exports) {
             'showAfterRender': config.showAfterRender,
             'cssClass': config.cssClass,
             'visible': false,
+            'byRender': false, //记录 show 事件是否由 render() 触发的。
         };
 
         mapper.set(this, meta);
@@ -4891,7 +5666,11 @@ define('Panel', function (require, module, exports) {
             container.show.apply(container, args);
 
             meta.visible = true;
-            emitter.fire('show');
+
+            var byRender = meta.byRender;
+            meta.byRender = false; //重置
+
+            emitter.fire('show', [byRender]);
 
         },
 
@@ -4980,6 +5759,7 @@ define('Panel', function (require, module, exports) {
             meta.rendered = true;
 
             if (meta.showAfterRender) {
+                meta.byRender = true;
                 this.show();
             }
 
@@ -5119,513 +5899,6 @@ define('Panel', function (require, module, exports) {
 
 
 /**
-* 监听下拉或上拉动作。
-*/
-define('Scroller/pull', function (require, module,  exports) {
-
-    var $ = require('$');
-
-
-    return function (meta) {
-
-        //state 采用 3 bit 来表示 2-1-0，最多只有一个位为 1， 因此有 000、001、010、100 四种情况。
-        //即对应的值为 0、1、2、4，采用与操作即可判断第几位为 1，这样可提高 scroll 中函数的性能。
-        var state = 0;
-
-        var isUp = false;
-        var name = 'pulldown';
-        var min = 0;
-        var max = 0;
-
-        var emitter = meta.emitter;
-        var scroller = meta.scroller;
-
-        scroller.on('scrollStart', function () {
-            state = 0;
-
-            var directionY = this.directionY;
-            var distY = this.distY;
-
-            //当 directionY 为 0 时，判断 distY; 
-            //否则直接判断 directionY，1: 下拉;  -1: 下拉
-            isUp = directionY == 0 ? distY < 0 : directionY > 0;
-
-            name = isUp ? 'pullup' : 'pulldown';
-            this.isWaitingForManualReset = false;
-
-            //根据拉动的方向，重新设置正确的环境变量
-            if (isUp) {
-                // 上拉时 maxScrollY 可能发生了变化，比如上拉加载更多，
-                // 填充了更多的数据，需要重新计算
-                var maxScrollY = scroller.maxScrollY; //负值
-                var pullup = meta.pullup;
-                min = pullup.min - maxScrollY; //正值
-                max = pullup.max - maxScrollY; //正值
-            }
-            else {
-                var pulldown = meta.pulldown;
-                min = pulldown.min; //正值
-                max = pulldown.max; //正值
-            }
-            
-        });
-
-
-        //该事件会给频繁触发，要注意性能控制
-        scroller.on('scroll', function () {
-
-            var y = this.y;
-
-            if (isUp) {
-                y = -y; //取成正值，容易理解
-            }
-
-            if (y < min) {  //( , min)
-                if ((state & 1) == 0) {     // xx0
-                    state = 1;              // 001
-                    emitter.fire(name, 'start');
-                }
-            }
-            else if (min <= y && y < max) { //[min, max]
-                if ((state & 2) == 0) {     // x0x
-                    state = 2;              // 010
-                    emitter.fire(name, 'enter');
-                }
-            }
-            else if (y >= max) { // [max, )
-                if ((state & 4) == 0) {     // 0xx
-                    state = 4;              // 100
-                    emitter.fire(name, 'reach');
-                }
-            }
-        });
-
-        scroller.on('beforeScrollEnd', function () {
-
-            if ((state & 4) == 4) { // 1xx
-                this.isWaitingForManualReset = true;
-                emitter.fire(name, 'release');
-            }
-            else {
-                emitter.fire(name, 'start');
-            }
-        });
-
-    };
-
-
-});
-
-
-
-
-/**
-* 移动端滚动器。
-* 对 iScroll 组件的进一步封装。
-* @class
-* @name Scroller
-*/
-define('Scroller', function (require, module,  exports) {
-
-    var $ = require('$');
-    var MiniQuery = require('MiniQuery');
-    var IScroll = require('IScroll');
-
-    var Mapper = MiniQuery.require('Mapper');
-    var Emitter = MiniQuery.require('Emitter');
-
-    var Config = require('Config');
-    var Style = require('Style');
-
-    var mapper = new Mapper();
-
-
-    //阻止原生的 touchmove 事件
-    document.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-    }, false);
-
-
-    /**
-    * 滚动器构造函数。
-    */
-    function Scroller(el, config) {
-
-        //重载 Scroller(config)
-        if ($.Object.isPlain(el)) {
-            config = el;
-            el = config.el;
-        }
-
-
-        Mapper.setGuid(this);
-
-        config = Config.clone(module.id, config);
-
-        //过滤出 iScroll 的所用到的字段
-        var obj = $.Object.filter(config, [
-            'scrollbars',
-            'shrinkScrollbars',
-            'preventDefault',
-            'probeType',
-        ]);
-        
-        var scroller = new IScroll(el, obj);
-
-
-        var style = Style.filter(config, [
-            'top',
-            'left',
-            'right',
-            'bottom',
-            'width',
-        ]);
-
-        $(el).addClass('KISP Scroller').css(style);
-
-
-        var emitter = new Emitter(this);
-
-        //jQuery 包装后的滚动条的数组。
-        var indicators = $.Array.keep(scroller.indicators, function (item, index) {
-            item = $(item.indicator);
-            item.hide();
-            return item;
-        });
-
-
-        var meta = {
-            'emitter': emitter,
-            'scroller': scroller,
-            'enabled': config.enabled,
-            'indicators': indicators,
-            'pulldown': {},
-            'pullup': {},
-            'hasBindPull': false, //是否已绑定 pull 中要用到的事件
-            'el': el,
-
-        };
-
-        mapper.set(this, meta);
-
-        
-        //判断是否有滚动条。
-        function hasScrollBar() {
-            var hasX = scroller.hasHorizontalScroll;
-            var hasY = scroller.hasVerticalScroll;
-            var len = indicators.length;
-
-            return (len == 1 && (hasX || hasY)) ||
-                (len == 2 && (hasX && hasY));
-        }
-
-
-        scroller.on('scroll', function () {
-            if (!this.hasVerticalScroll) {
-                this._translate(0, (this.distY * 0.5) >> 0);
-            }
-        });
-
-        var timeoutId = null;
-        var isScrolling = false;
-
-        //按下并开始滚动时触发
-        scroller.on('scrollStart', function () {
-            isScrolling = true;
-            clearTimeout(timeoutId);
-            if (!hasScrollBar()) {
-                return;
-            }
-
-            $.Array.each(indicators, function (item, index) {
-                item.css('opacity', 1); // for zepto
-                item.show();
-            });
-        });
-
-        scroller.on('scrollEnd', function () {
-            isScrolling = false;
-
-            //当第一个 scrollEnd 中的 fadeOut 还没执行完就又开始第二个 beforeScrollStart 时，
-            //就会有时间先后的竞争关系。 这会导致第二个 beforeScrollStart 中的 show 失效
-            timeoutId = setTimeout(function () {
-                if (!hasScrollBar()) {
-                    return;
-                }
-
-                $.Array.each(indicators, function (item, index) {
-                    //在 zepto 中没有 fadeOut 方法，因此是补充实现的
-                    item.fadeOut('fast', function () {
-                        if (isScrolling) {
-                            item.css('opacity', 1); // for zepto
-                            item.show();
-                        }
-                    });
-                });
-            }, 100);
-        });
-
-
-
-        if (!config.enabled) {
-            this.disable();
-        }
-    }
-
-
-    //实例方法
-    Scroller.prototype = /**@lends Scroller#*/ {
-        constructor: Scroller,
-
-        /**
-        * 监听事件。
-        */
-        on: function (name, fn) {
-
-            var meta = mapper.get(this);
-            var emitter = meta.emitter;
-            var scroller = meta.scroller;
-
-            var args = [].slice.call(arguments, 0);
-            emitter.on.apply(emitter, args);
-
-        },
-
-        /**
-        * 刷新。
-        */
-        refresh: function (delay) {
-
-            var meta = mapper.get(this);
-            var scroller = meta.scroller;
-            var indicators = meta.indicators;
-            var args = [].slice.call(arguments, 1);
-
-            var Fn = require('Fn');
-
-            Fn.delay(delay, function () {
-                scroller.refresh.apply(scroller, args);
-
-                //隐藏全部滚动条
-                $.Array.each(indicators, function (item, index) {
-                    item.hide();
-                });
-            });
-            
-
-        },
-
-        /**
-        * 重置。
-        */
-        reset: function () {
-            var meta = mapper.get(this);
-            var scroller = meta.scroller;
-            scroller.isWaitingForManualReset = false;
-            scroller.resetPosition(scroller.options.bounceTime);
-        },
-
-        /**
-        * 监控下拉动作。
-        * 已重载 pulldown(min, max)。
-        * @param {Object} config 配置对象。
-        * @param {number} config.min 开始时的 y 值。
-        * @param {number} config.max 结束时的 y 值。
-        * @param {function} config.start 开始下拉时的回调。
-        * @param {function} config.enter 进入下拉区间时的回调。
-        * @param {function} config.reach 到达最大值时的回调。
-        * @param {function} config.release 释放时的回调。
-        */
-        pulldown: function (config) {
-            var meta = mapper.get(this);
-
-            if (typeof config == 'number') { //重载 pulldown(min, max)
-                config = {
-                    min: config,
-                    max: arguments[1]
-                };
-            }
-
-            meta.pulldown = config;
-
-            if (!meta.hasBindPull) {
-                var pull = require(module, 'pull');
-                pull(meta);
-                meta.hasBindPull = true;
-            }
-
-        },
-
-
-        /**
-        * 监控上拉动作。
-        已重载 pullup(min, max)。
-        * @param {Object} config 配置对象。
-        * @param {number} config.min 开始时的 y 值。
-        * @param {number} config.max 结束时的 y 值。
-        * @param {function} config.start 开始上拉时的回调。
-        * @param {function} config.enter 进入上拉区间时的回调。
-        * @param {function} config.reach 到达最大值时的回调。
-        * @param {function} config.release 释放时的回调。
-        */
-        pullup: function (config) {
-
-            var meta = mapper.get(this);
-
-            if (typeof config == 'number') { //重载 pullup(min, max)
-                config = {
-                    min: config,
-                    max: arguments[1]
-                };
-            }
-
-            meta.pullup = config;
-
-            if (!meta.hasBindPull) {
-                var pull = require(module, 'pull');
-                pull(meta);
-                meta.hasBindPull = true;
-            }
-        },
-
-        /**
-        * 滚动到距离顶部的指定位置。
-        * @param {number} y 相对于顶部的距离。
-        */
-        to: function (y) {
-
-            var meta = mapper.get(this);
-            var scroller = meta.scroller;
-            var options = scroller.options;
-
-            scroller.scrollTo(0, y, options.bounceTime, options.bounceEasing);
-        },
-
-        /**
-        * 滚动到距离底部的指定位置。
-        * @param {number} y 相对于底部的距离。
-        */
-        toBottom: function (y) {
-
-            var meta = mapper.get(this);
-            var scroller = meta.scroller;
-            var options = scroller.options;
-            var maxScrollY = scroller.maxScrollY;
-
-            y = maxScrollY - y;
-
-            scroller.scrollTo(0, y, options.bounceTime, options.bounceEasing);
-        },
-
-        /**
-        * 启用本组件。
-        */
-        enable: function () {
-            var meta = mapper.get(this);
-            meta.enabled = true;
-
-            var scroller = meta.scroller;
-            scroller.enable();
-        },
-
-        /**
-        * 禁用本组件。
-        */
-        disable: function () {
-            var meta = mapper.get(this);
-            meta.enabled = false;
-
-            var scroller = meta.scroller;
-            scroller.disable();
-        },
-
-        /**
-        * 切换启用或禁用。
-        * @param {boolean} [needEnabled] 显示指定是否启用。 
-            如果不指定则根据组件的当前状态进行切换。
-        */
-        toggleEnable: function (needEnabled) {
-            var meta = mapper.get(this);
-            var enabled = meta.enabled;
-
-            if (arguments.length == 0) { //重载 toggleEnable()
-
-                if (enabled) {
-                    this.disable();
-                }
-                else {
-                    this.enable();
-                }
-
-            }
-            else { //toggleEnable(needEnabled)
-
-                if (enabled && !needEnabled) {
-                    this.disable();
-                }
-                else if (!enabled && needEnabled) {
-                    this.enable();
-                }
-            }
-        },
-
-
-        /**
-        * 销毁本实例对象。
-        */
-        destroy: function () {
-            var meta = mapper.get(this);
-
-            var scroller = meta.scroller;
-            scroller.destroy();
-
-            var emitter = meta.emitter;
-            emitter.destroy();
-
-            mapper.remove(this);
-        },
-
-        /**
-        * 获取原生 scroller 实例的属性值。
-        * @param {string} key 要获取的属性名称。
-        * @return 返回原生 scroller 实例指定的属性值。
-        */
-        get: function (key) {
-
-            var meta = mapper.get(this);
-            var scroller = meta.scroller;
-
-            return scroller[key];
-        },
-
-        /**
-        * 调用原生 scroller 实例的方法(call 方式)。
-        * @param {string} name 要调用的方法名称。
-        * @param arg0 要传递的第一个参数。
-        * @param arg1 要传递的第二个参数。
-        */
-        invoke: function (name, arg0, arg1) {
-
-            var meta = mapper.get(this);
-            var scroller = meta.scroller;
-            var args = [].slice.call(arguments, 1);
-
-            return scroller[name].apply(scroller, args);
-        },
-
-
-    };
-
-
-    return Scroller;
-
-
-});
-
-
-
-
-/**
 * 页签列表控件
 * @class
 * @name Tabs
@@ -5641,7 +5914,7 @@ define('Tabs', function (require, module, exports) {
     var RandomId = require('RandomId');
 
     //子模块
-    var Helper = require(module, 'Helper');
+    var Helper = module.require('Helper');
 
     var mapper = new Mapper();
 
@@ -6001,9 +6274,9 @@ define('Template', function (require, module, exports) {
 
     var Config = require('Config');
 
-    var Multiple = require(module, 'Multiple');
-    var Simple = require(module, 'Simple');
-    var Static = require(module, 'Static');
+    var Multiple = module.require('Multiple');
+    var Simple = module.require('Simple');
+    var Static = module.require('Static');
 
     var mapper = new Mapper();
     
@@ -6369,15 +6642,9 @@ define('Template/Static', function (require, module, exports) {
 * @name View
 */
 define('View', function (require, module, exports) {
-    var $ = require('$');
-    var MiniQuery = require('MiniQuery');
 
-    var Mapper = MiniQuery.require('Mapper');
-    var Emitter = MiniQuery.require('Emitter');
 
     var Config = require('Config');
-
-    var mapper = new Mapper();
 
     /**
     * 构造器。
@@ -6385,23 +6652,18 @@ define('View', function (require, module, exports) {
     */
     function View(container, config) {
 
-        var cssClass = ' KISP View';
-
-        if (config) {
-            if (!config.cssClass) {
-                config.cssClass = cssClass;
-            }
-            else {
-                config.cssClass += cssClass;
-            }
-        }
-        else {
-            config = { cssClass: cssClass };
-        }
-
+        config = Config.clone(module.id, config);
 
         var Panel = require('Panel');
         var panel = new Panel(container, config);
+
+        panel.$.addClass('KISP View');
+
+        var background = config.background;
+        if (background) {
+            panel.$.css('background', background);
+        }
+
         return panel;
 
     }
@@ -6412,6 +6674,731 @@ define('View', function (require, module, exports) {
 });
 
 
+/**
+* API 模块的默认配置
+* @name API.defaults
+*/
+define('API.defaults', /**@lends API.defaults*/ {
+    /**
+    * 成功的状态码。 
+    * 只有状态码为该值是才表示成功，其它的均表示失败。
+    */
+    successCode: 200,
+
+    /**
+    * 字段映射。
+    */
+    field: {
+        /**
+        * 状态码。
+        */
+        code: 'code',
+        /**
+        * 消息。
+        */
+        msg: 'msg',
+        /**
+        * 主体数据。
+        */
+        data: 'data',
+    },
+
+    /**
+    * 代理配置。
+    */
+    proxy: null,
+
+    /**
+    * 随机延迟时间，更真实模拟实际网络环境。
+    * 可指定为 false，或如 { min: 500, max: 2000 } 的格式。
+    */
+    delay: false,
+
+    /**
+    * 在 url 中增加一个随机 key，以解决缓存问题。
+    * 当指定为 false 时，则禁用。
+    */
+    random: true,
+
+    /**
+    * API 接口 Url 的主体部分。
+    */
+    url: '',
+
+    /**
+    * API 接口 Url 的前缀部分。
+    */
+    prefix: '',
+
+    /**
+    * API 接口 Url 的后缀部分。
+    * 针对那些如 '.do'、'.aspx' 等有后缀名的接口比较实用。
+    */
+    ext: '',
+
+    /**
+    * 要发送的数据。 可选的。
+    * 当发送方式为 get 时，该数据将会给序列化成查询字符串并附加到 url 查询参数中。
+    * 当发送方式为 post 时，会用在表单中。
+    */
+    data: null,
+
+    /**
+    * 要发送的查询参数，仅当发送方式为 post 时有效 (可选的)。
+    * 当发送方式为 post 时，该数据将会给序列化成查询字符串并附加到 url 查询参数中。
+    */
+    query: null,
+
+    /**
+    * 请求超时的最大值(毫秒)。
+    * 0 表示由浏览器控制，代码层面不控制。
+    */
+    timeout: 0,
+
+
+    /**
+    * 把请求时的 data 中的第一级子对象进行序列化的方法。
+    * @param {string} key 要进行处理的子对象的键。
+    * @param {Object} value 要进行处理的子对象的值对象。
+    * @return {string} 返回该子对象序列化的字符串。
+    */
+    serialize: function (key, value) {
+        var $ = require('$');
+        var json = $.Object.toJson(value);
+        return encodeURIComponent(json);
+    },
+
+});
+
+
+/**
+* Proxy 模块的默认配置
+* @name Proxy.defaults
+*/
+define('Proxy.defaults', /**@lends Proxy.defaults*/ {
+    /**
+    * 加载代理响应文件的起始位置(或目录)。
+    */
+    base: '',
+
+    /**
+    * 为模拟真实网络环境而随机延迟的时间。
+    * 格式为 { min: 500, max: 3000 }。
+    * 当指定为 false 时，则禁用延迟。
+    */
+    delay: {
+        /**
+        * 随机延迟的最小毫秒数。
+        */
+        min: 500,
+        /**
+        * 随机延迟的最大毫秒数。
+        */
+        max: 3000
+    },
+});
+
+
+/**
+* LocalStorage 模块的默认配置
+* @name LocalStorage.defaults
+*/
+define('LocalStorage.defaults', /**@lends LocalStorage.defaults*/ {
+    /**
+    * 应用的名称。
+    * 设定后即可创建与获取在该名称下的本地存储，从而避免跟其它应用的冲突。
+    */
+    name: '',
+});
+
+
+/**
+* Module 模块的默认配置
+* @name Module.defaults
+*/
+define('Module.defaults', /**@lends Module.defaults*/ {
+    seperator: '/',     //私有模块的分隔符
+    crossover: false,   //不允许跨级调用
+    repeated: false,    //不允许重复定义同名的模块
+});
+
+
+/**
+* SessionStorage 模块的默认配置
+* @name SessionStorage.defaults
+*/
+define('SessionStorage.defaults', /**@lends SessionStorage.defaults*/ {
+    /**
+    * 应用的名称。
+    * 设定后即可创建与获取在该名称下的本地存储，从而避免跟其它应用的冲突。
+    */
+    name: '',
+});
+
+
+/**
+* Url 模块的默认配置。
+* 字符串中的 {~} 表示站头的根地址；{@} 表示使用的文件版本 debug 或 min。
+* @name Url.defaults
+*/
+define('Url.defaults', /**@lends Url.defaults*/ {
+
+    //注意：这里取当前页的路径作为根地址，只适用于当前页面在根目录的情况。
+    //IE10 及以下 location.origin 不存在
+    root: location.protocol + '//' + location.host +
+            location.pathname.split('/').slice(0, -1).join('/') + '/',
+
+    replacer: {
+        root: '~',
+        edition: '@'
+    },
+
+});
+
+
+/**
+* Alert 模块的默认配置
+* @name Alert.defaults
+*/
+define('Alert.defaults', /**@lends Alert.defaults*/ {
+    button: '确定',
+    volatile: false,
+    mask: true,
+    autoClosed: true,
+    width: '80%',
+    'z-index': 99999,
+
+});
+
+
+/**
+* App 模块的默认配置
+* @name App.defaults
+*/
+define('App.defaults', /**@lends App.defaults*/ {
+    mask: {
+        opacity: 0,
+        duration: 500,
+        'z-index': 99999,
+    },
+
+    type: 'simple', //只做最基础的初始化，向后兼容
+
+});
+
+
+/**
+* Dialog 模块的默认配置
+* @name Dialog.defaults
+*/
+define('Dialog.defaults', /**@lends Dialog.defaults*/ {
+
+    /**
+    * 生成的 id 的前缀。
+    */
+    prefix: 'KISP-Dialog-',
+
+    /**
+    * 生成的 id 的随机后缀的长度。
+    */
+    suffix: 4,
+
+    /**
+    * 是否启用 mask 层。
+    */
+    mask: true,
+
+    /**
+    * 内容区是否可滚动。
+    */
+    scrollable: true,
+
+    /**
+    * 针对滚动器的配置。
+    */
+    scroller: { },
+
+    /**
+    * 点击按钮后是否自动关闭组件。
+    * 可取值为: true|false，默认为 true，即自动关闭。
+    */
+    autoClosed: true,
+
+    /**
+    * 指定是否易消失，即点击 mask 层就是否隐藏/移除。
+    * 可取值为: true|false，默认为不易消失。
+    */
+    volatile: false,
+
+    /**
+    * 组件的标题文本。
+    */
+    title: '',
+
+    /**
+    * 组件的内容文本。
+    */
+    text: '',
+
+    /**
+    * 组件的 css 样式 z-index 值。
+    */
+    'z-index': 1024,
+
+    /**
+    * 组件用到的 html 模板。
+    * 默认为 'iOS'。 业务层不需要关注该字段。
+    */
+    sample: 'iOS',
+
+    /**
+    * 组件用到的 css 类名。
+    */
+    cssClass: '',
+
+    /**
+    * 点击按钮时需要用到的事件名。
+    * 针对移动端的是虚拟事件 'touch'。
+    */
+    eventName: 'touch',
+
+    /**
+    * 组件宽度。
+    * 可以指定为百分比的字符串，或指定具体的数值（单位为像素），
+    */
+    width: '80%',
+
+    /**
+    * 组件高度。
+    * 可以指定为百分比的字符串，或指定具体的数值（单位为像素），
+    */
+    height: '50%',
+
+    /**
+    * 按钮数组。
+    */
+    buttons: [],
+
+
+});
+
+
+/**
+* Loading 模块的默认配置
+* @name Loading.defaults
+*/
+define('Loading.defaults', /**@lends Loading.defaults*/ {
+    
+    /**
+    * 生成的 id 的前缀。
+    */
+    prefix: 'KISP-Loading-',
+
+    /**
+    * 生成的 id 的随机后缀的长度。
+    */
+    suffix: 4,
+
+    /**
+    * 加载中时要显示的文本。
+    */
+    text: '处理中...',
+
+    /**
+    * 是否启用 mask 层。
+    */
+    mask: false,
+
+    /**
+    * 组件用到的 html 模板。
+    * 默认为 'iOS'。 业务层不需要关注该字段。
+    */
+    sample: 'iOS',
+
+    /**
+    * 组件用到的 css 类名。
+    */
+    cssClass: '',
+
+    /**
+    * 组件添加到的容器。
+    * 默认为 document.body。
+    */
+    container: document.body,
+
+    /**
+    * 把组件添加到容器的方式，是否使用追加的方式。
+    * 默认用 prepend 的方式。
+    */
+    append: false,
+
+    //默认样式
+    'background': 'rgba(0, 0, 0, 0.7)',
+    'border-radius': 10,
+    'bottom': 'initial',
+    'color': '#fff',
+    'font-size': '15px',
+    'height': 102,
+    'left': '50%',
+    'right': 'initial',
+    'top': '50%',
+    'width': 120,
+
+    /**
+    * 组件的 css 样式 z-index 值。
+    */
+    'z-index': 1024,
+});
+
+
+/**
+* Mask 模块的默认配置
+* @name Mask.defaults
+*/
+define('Mask.defaults', /**@lends Mask.defaults*/ {
+    
+    /**
+    * 生成的 id 的前缀。
+    */
+    prefix: 'KISP-Mask-',
+
+    /**
+    * 生成的 id 的随机后缀的长度。
+    */
+    suffix: 4,
+
+    /**
+    * 指定是否易消失，即点击 mask 层就是否隐藏/移除。
+    * 可取值为: true|false|"hide"|"remove"，默认为 false，即不易消失。
+    */
+    volatile: false,
+
+    /**
+    * 组件添加到的容器。
+    * 默认为 document.body。
+    */
+    container: document.body,
+
+    /**
+    * 把组件添加到容器的方式，是否使用追加的方式。
+    * 默认用 prepend 的方式。
+    */
+    append: false,
+
+    /**
+    * 点击时需要用到的事件名。
+    * 针对移动端的是虚拟事件 'touch'。
+    */
+    eventName: 'touch',
+
+    /**
+    * 组件的 css 样式 z-index 值。
+    */
+    'top': 0,
+
+    /**
+    * 组件的 css 样式 bottom 值。
+    */
+    'bottom': 0,
+
+    /**
+    * 组件的 css 样式 opacity 值。
+    */
+    'opacity': 0.5,
+
+    /**
+    * 组件的 css 样式 background 值。
+    */
+    'background': '#000',
+
+    /**
+    * 组件的 css 样式 z-index 值。
+    */
+    'z-index': 1024,
+});
+
+
+/**
+* Panel 模块的默认配置
+* @name Panel.defaults
+*/
+define('Panel.defaults', /**@lends Panel.defaults*/ {
+
+    /**
+    * 是否在组件 render 后自动调用 show() 方法以进行显示。
+    */
+    showAfterRender: true,
+
+    /**
+    * 组件用到的 css 类名。
+    */
+    cssClass: '',
+
+});
+
+
+/**
+* Tabs 模块的默认配置
+* @name Tabs.defaults
+*/
+define('Tabs.defaults', /**@lends Tabs.defaults*/ {
+    
+    /**
+    * 创建实例后首先给激的项。
+    */
+    current: null,
+
+    /**
+    * 要监听的事件名。
+    * 当指定为 'touch' 时，会调用 $(container).touch()进行绑定。 
+    */
+    eventName: 'touch',
+
+    /**
+    * 压下去时的样式的 css 类名。
+    * 当 eventName = 'touch' 时有效。
+    */
+    pressedClass: '',
+
+    /**
+    * 项目给激活时的样式的 css 类名。
+    */
+    activedClass: '',
+
+    /**
+    * 取得项目列表所需要用到的 jQuery 选择器。
+    * 默认取直接子节点。
+    */
+    selector: '>*',
+
+    /**
+    * 是否允许重复激活相同的项。
+    * 当指定为 true 时，方响应已给激活的项目的重新点击。
+    */
+    repeated: false,
+
+    /**
+    * 字段映射。
+    */
+    field: {
+        /**
+        * 从 DOM 元素中取得项目列表中指定项的 index 的自定义字段名。 
+        */
+        index: 'data-index',
+
+        /**
+        * 当触发 change 事件时，需要同时触发对应的 item 上指定的事件名。
+        * 例如当指定为 'name' 时，则在触发 change 事件时，会同时 item['name'] 对应的事件。 
+        */
+        event: '',
+    },
+});
+
+
+/**
+* Template 模块的默认配置
+* @name Template.defaults
+*/
+define('Template.defaults', /**@lends Template.defaults*/ {
+
+    /**
+    * 模板最外层的标记。
+    */
+    root: {
+        /**
+        * 模板最外层的起始标记。
+        */
+        begin: '<!--',
+
+        /**
+        * 模板最外层的结束标记。
+        */
+        end: '-->',
+    },
+
+    /**
+    * 子模板的标记。
+    */
+    item: {
+        /**
+        * 子模板的起始标记。
+        */
+        begin: '#--{name}.begin--#',
+
+        /**
+        * 子模板的结束标记。
+        */
+        end: '#--{name}.end--#',
+    },
+
+    /**
+    * 生成子模板的随机占位串的长度。
+    * 业务层不需要关注该属性。
+    */
+    outer: 64,
+
+});
+
+
+/**
+* Toast 模块的默认配置
+* @name Toast.defaults
+*/
+define('Toast.defaults', /**@lends Toast.defaults*/ {
+    
+    /**
+    * 生成的 id 的前缀。
+    */
+    prefix: 'KISP-Toast-',
+
+    /**
+    * 生成的 id 的随机后缀的长度。
+    */
+    suffix: 4,
+
+    /**
+    * 提示文本。
+    */
+    text: '',
+
+    /**
+    * 组件添加到的容器。
+    * 默认为 document.body。
+    */
+    container: document.body,
+
+    /**
+    * 把组件添加到容器的方式，是否使用追加的方式。
+    * 默认用 prepend 的方式。
+    */
+    append: false,
+
+    /**
+    * 是否启用 mask 层。
+    */
+    mask: false,
+
+    /**
+    * 组件用到的 html 模板。
+    * 业务层不需要关注该字段。
+    */
+    sample: 'font-awesome',
+
+    /**
+    * 组件用到的 css 类名。
+    */
+    cssClass: '',
+
+    /**
+    * 用到的 font-awsome 的图标。
+    */
+    icon: 'check',
+
+    /**
+    * 显示的持续时间(毫秒)。
+    * 0 表示一直显示。
+    */
+    duration: 0,
+
+    //默认样式
+});
+
+
+/**
+* View 模块的默认配置
+* @name View.defaults
+*/
+define('View.defaults', /**@lends View.defaults*/ {
+    background: false, //禁用背景色。
+});
+
+
+/**
+* Alert 模块的默认配置
+* @name Alert.config
+*/
+define('Alert.config', /**@lends Alert.config*/ {
+
+    width: 450,
+
+});
+
+
+/**
+* Dialog 模块的默认配置
+* @name Dialog.config
+*/
+define('Dialog.config', /**@lends Dialog.config*/ {
+    /**
+    * 内容区是否可滚动。
+    * PC 端用不可滚动。
+    */
+    scrollable: false,
+
+    /**
+    * 针对滚动器的配置。
+    * PC 端。
+    */
+    scroller: null,
+
+    /**
+    * 点击按钮时需要用到的事件名。
+    * PC 端。
+    */
+    eventName: 'click',
+
+    //PC 端的用 fixed定位。
+    position: 'fixed',
+});
+
+
+/**
+* Loading 模块的默认配置
+* @name Loading.config
+*/
+define('Loading.config', /**@lends Loading.config*/ {
+
+    //PC 端的用 fixed定位
+    'position': 'fixed',
+});
+
+
+/**
+* Mask 模块的默认配置
+* @name Mask.config
+*/
+define('Mask.config', /**@lends Mask.config*/ {
+    
+    //PC 端的用 fixed定位
+    'position': 'fixed',
+});
+
+
+/**
+* Tabs 模块的默认配置
+* @name Tabs.config
+*/
+define('Tabs.config', /**@lends Tabs.config*/ {
+    
+    /**
+    * 要监听的事件名。
+    * PC 端要用这个。
+    */
+    eventName: 'click',
+   
+});
+
+
+/**
+* Toast 模块的默认配置
+* @name Toast.config
+*/
+define('Toast.config', /**@lends Toast.config*/ {
+    //PC 端的用 fixed定位
+    'position': 'fixed',
+});
+
+
 
 
 //设置对外暴露的模块
@@ -6419,31 +7406,53 @@ Module.expose({
 
     //api
     'API': true,
-    'Proxy': true,
+    //'CloudAPI': true,
+    //'Proxy': true, //私有模块
+    'SSH.API': true,
+    //'SSH': true,
 
+    ////cloud-home
+    //'CloudHome.API': true,
+    //'CloudHome': true,
+    //'CloudHome.Title': true,
+
+    //'ImageReader': true,
+
+    ////wechat
+    //'WeChat': true,
 
     //core
     '$': true,
     'MiniQuery': true,
+    //'IScroll': true, //test
 
     //crypto
     'MD5': true,
 
     //excore
-    'DOM': true,
+    //'DOM': true,
     'Edition': true,
+    'LocalStorage': true,
     'Mapper': true,
     'Module': true,
+    'SessionStorage': true,
     'Style': true,
     'Url': true,
 
+    ////jquery-plugin
+    //'jquery-plugin/touch': true,
+
     //ui
     'Dialog': true,
+    //'ImageSlider': true,
+    //'ImageViewer': true,
     'Loading': true,
     'Mask': true,
     'Navigator': true,
     'NoData': true,
+    //'NumberPad': true,
     'Panel': true,
+    //'Scroller': true,
     'Tabs': true,
     'Template': true,
     'Toast': true,
@@ -6453,342 +7462,11 @@ Module.expose({
 
 
 
-/**
-* KISP 框架的默认配置
-* @namespace
-* @name defaults
-*/
-define('defaults', /**@lends defaults*/ {
-
-    /**
-    * Url 模块的默认配置。
-    * 字符串中的 {~} 表示站头的根地址；{@} 表示使用的文件版本 debug 或 min
-    */
-    'Url': {
-        //注意：这里取当前页的路径作为根地址，只适用于页面在根目录的情况。
-        //root: location.origin + location.pathname.split('/').slice(0, -1).join('/') + '/',
-
-        //IE10 及以下 location.origin 不存在
-        root: location.protocol + '//' +  location.host + 
-                location.pathname.split('/').slice(0, -1).join('/') + '/',
-
-        replacer: {
-            root: '~',
-            edition: '@'
-        },
-    },
-
-    'Module': {
-        seperator: '/',     //私有模块的分隔符
-        crossover: false,   //不允许跨级调用
-        repeated: false,    //不允许重复定义同名的模块
-    },
-
-    /**
-    * API 模块的默认配置
-    */
-    'API': {
-        successCode: 200,
-        field: {
-            code: 'code',
-            msg: 'msg',
-            data: 'data',
-        },
-
-        /**
-        * 随机延迟时间，更真实模块实际网络
-        */
-        delay: false, //格式为 { min: 500, max: 2000 }
-
-        /**
-        * 在 url 中增加一个随机 key，以解决缓存问题。
-        */
-        random: true,
-
-        /**
-        * 把请求时的 data 中的第一级子对象进行序列化的方法。
-        * @param {string} key 要进行处理的子对象的键。
-        * @param {Object} value 要进行处理的子对象的值对象。
-        * @return {string} 返回该子对象序列化的字符串。
-        */
-        serialize: function (key, value) {
-            var $ = require('$');
-            var json = $.Object.toJson(value);
-            return encodeURIComponent(json);
-        },
-    },
-
-    /**
-    * Proxy 模块的默认配置
-    */
-    'Proxy': {
-        delay: {
-            min: 500,
-            max: 3000
-        },
-    },
-
-    /**
-    * Template 模块的默认配置
-    */
-    'Template': {
-       
-        root: {
-            begin: '<!--',
-            end: '-->',
-        },
-
-        item: {
-            begin: '#--{name}.begin--#',
-            end: '#--{name}.end--#',
-        },
-
-        outer: 64,
-    },
-
-    'DOM': {
-        prefix: '',
-        suffix: '',
-        seperator: '-',
-    },
-
-    
-    'Dialog': {
-
-        /**
-        * 生成的 id 的前缀。
-        */
-        prefix: 'KISP-Dialog-',
-
-        /**
-        * 生成的 id 的随机后缀的长度。
-        */
-        suffix: 4,
-
-        /**
-        * 是否启用 mask 层。
-        */
-        mask: true,
-
-        /**
-        * 内容区是否可滚动。
-        */
-        scrollable: false,
-
-        autoClosed: true,
-
-        /**
-        * 指定是否易消失，即点击 mask 层就是否隐藏/移除。
-        * 可取值为: true|false，默认为不易消失。
-        */
-        volatile: false,
-        title: '',
-        text: '',
-        'z-index': 1024,
-
-        sample: 'iOS',
-        cssClass: '',
-        eventName: 'click',
-        width: 400,
-        height: 160,
-        buttons: [],
-
-        //PC 端的用 fixed定位
-        'position': 'fixed',
-    },
-
-    /**
-    * 遮罩层模块的默认配置。
-    */
-    'Loading': {
-        /**
-        * 生成的 id 的前缀。
-        */
-        prefix: 'KISP-Loading-',
-
-        /**
-        * 生成的 id 的随机后缀的长度。
-        */
-        suffix: 4,
-
-        text: '处理中...',
-
-        /**
-        * 是否启用 mask 层。
-        */
-        mask: false,
-
-
-        sample: 'iOS',
-        cssClass: '',
-        container: document.body,
-        append: false,
-
-        //默认样式
-        'background': 'rgba(0, 0, 0, 0.7)',
-        'border-radius': 10,
-        'bottom': 'initial',
-        'color': '#fff',
-        'font-size': '15px',
-        'height': 102,
-        'left': '50%',
-        'right': 'initial',
-        'top': '50%',
-        'width': 120,
-        'z-index': 1024,
-
-        //PC 端的用 fixed定位
-        'position': 'fixed',
-    },
-
-    'Alert': {
-
-        'button': '确定',
-        'volatile': false,
-        'mask': true,
-        'autoClosed': true,
-        'width': 450,
-        'z-index': 99999,
-    },
-
-    /**
-    * 遮罩层模块的默认配置。
-    */
-    'Mask': {
-        /**
-        * 生成的 id 的前缀。
-        */
-        prefix: 'KISP-Mask-',
-        
-        /**
-        * 生成的 id 的随机后缀的长度。
-        */
-        suffix: 4,
-
-        /**
-        * 指定是否易消失，即点击 mask 层就是否隐藏/移除。
-        * 可取值为: true|false|"hide"|"remove"，默认为 false，即不易消失。
-        */
-        volatile: false,
-        container: document.body,
-        append: false,
-
-        'top': 0,
-        'bottom': 0,
-        'opacity': 0.5,
-        'background': '#000',
-        'z-index': 1024,
-        //PC 端的用 fixed定位
-        'position': 'fixed',
-    },
-
-    'Tabs': {
-        current: null,
-        eventName: 'touch', //当指定为 'touch' 时，会调用 $(container).touch()进行绑定。 
-        pressedClass: '',   //仅当 eventName = 'touch' 时有效。
-        activedClass: '',
-        selector: '>*', //取直接子节点
-        repeated: false, //是否允许重复激活相同的项。
-        field: {
-            index: 'data-index',
-            event: '',
-        },
-    },
-
-    /**
-    * 遮罩层模块的默认配置。
-    */
-    'Toast': {
-        /**
-        * 生成的 id 的前缀。
-        */
-        prefix: 'KISP-Toast-',
-
-        /**
-        * 生成的 id 的随机后缀的长度。
-        */
-        suffix: 4,
-        text: '',
-
-        container: document.body,
-        append: false,
-
-        /**
-        * 是否启用 mask 层。
-        */
-        mask: false,
-
-        sample: 'font-awesome',
-        cssClass: '',
-
-        icon: 'check',
-        duration: 0, // 0 表示一直显示。
-        //默认样式
-
-        //PC 端的用 fixed定位
-        'position': 'fixed',
-        
-    },
-
-    'Panel': {
-        showAfterRender: true,
-        cssClass: '',
-    },
-
-
-    
-    'NoData': {
-        /**
-        * 生成的 id 的前缀。
-        */
-        prefix: 'KISP-NoData-',
-
-        /**
-        * 生成的 id 的随机后缀的长度。
-        */
-        suffix: 4,
-
-        text: '暂无数据',
-
-
-        cssClass: '',
-        container: document.body,
-        append: false,
-
-
-        scrollable: true,
-        pulldown: null,
-
-        ////默认样式
-        //'bottom': 0,
-        //'top': 0,
-        //'z-index': 1024,
-    },
-
-
-    'Seajs': {
-        url: '', // seajs.js 文件所在的 url，具体应用时请指定。
-    },
-
-
-    'ImageReader': {
-
-        loading: '读取中...',
-    },
-
-   
-
-});
-
-
-
 
 (function(require){
 
+   
     var KISP = require('KISP');
-    var defaults = require('defaults');
-
-    KISP.config(defaults);
     global.KISP = KISP;
 
 

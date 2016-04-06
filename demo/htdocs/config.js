@@ -3,9 +3,15 @@
 
     // KISP 内部模块所需要的默认配置
     KISP.config({
-        'Seajs': {
-            //字符串中的 {~} 表示站头的根地址；{@} 表示使用的文件版本 debug 或 min
-            url: '{~}f/seajs/seajs.mod.{@}.js',
+        'Url': {
+            //注意：这里取 `config.js` 路径作为根地址，
+            //只适用于构建后引用 `config.js` 的 script 标签不会给删掉的情况。
+            root: function () {
+                var $ = KISP.require('$');
+                var script = $('script[src*="config.js"]').get(0);
+                var href = script.getAttribute('src');
+                return script.src.split(href)[0];
+            },
         },
         'Tabs': {
             eventName: 'click',
