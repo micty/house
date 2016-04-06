@@ -4,7 +4,7 @@
 
 /admin/bin/node_modules
 /admin/build
-/admin/htdocs/index.html
+/admin/htdocs/**/index.html
 /admin/htdocs/style/css
 
 
