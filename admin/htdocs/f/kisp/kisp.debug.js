@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: house 
 * version: 3.2.0
-* build: 2016-04-06 17:38:30
+* build: 2016-04-07 14:55:26
 * files: 82(80)
 *    partial/pc/begin.js
 *    core/Module.js

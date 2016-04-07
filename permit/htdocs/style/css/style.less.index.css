@@ -21,10 +21,10 @@ body {
     position: fixed;
     height: 100%;
     width: 150px;
-    background: #4B6FB0;
+    background: #65C1F4;
 }
 .side-bar .banner {
-    background: #5392CC;
+    background: #52A7E0;
     color: #fff;
     text-align: center;
     line-height: 55px;
@@ -55,7 +55,7 @@ body {
     border-radius: 5px;
 }
 .side-bar .menus li.hover div {
-    background: #ADBDDB;
+    background: #D0EBFF;
     color: #000;
 }
 .side-bar .menus li:nth-child(odd) {
@@ -64,7 +64,7 @@ body {
 .side-bar .menus li.group::after {
     content: '';
     display: block;
-    border-bottom: solid 1px #b0bdc7;
+    border-bottom: solid 1px #fff;
     margin-bottom: 4px;
     margin-top: 4px;
 }
@@ -247,7 +247,7 @@ body {
 }
 .content .tab-panel {
     /*background: #f0f2f3;*/
-    border-bottom: solid 1px #5392CC;
+    border-bottom: solid 1px #52A7E0;
 }
 .content .tab-panel:after,
 .content .tab-panel:before {
@@ -308,7 +308,7 @@ body {
     vertical-align: sub;
 }
 .content .tab-panel .tabs .hover {
-    background: #5392CC;
+    background: #52A7E0;
     color: #fff;
 }
 .content .tab-panel .tabs .hover .icon-home {
@@ -370,7 +370,7 @@ body {
 }
 .content .tab-panel .tab-more .tab-more-content .on {
     /*background: darken(#fff, 10%);*/
-    background: #5392CC;
+    background: #52A7E0;
     color: #fff;
 }
 .content .tab-panel .tab-more-show .tab-dropdown {

@@ -2,7 +2,7 @@
 * weber - web develop tool
 * name: default 
 * version: 1.2.0
-* build: 2016-04-07 14:42:35
+* build: 2016-04-07 15:16:12
 * files: 50(48)
 *    partial/default/begin.js
 *    core/Module.js
@@ -5917,6 +5917,14 @@ define('Less', function (require, module, exports) {
             compress: compress,     // Minify CSS output
 
         }, function (error, output) {
+
+            if (error) {
+                console.log('less 编译错误:'.bgRed, error.message.bgRed);
+                console.log('所在文件: '.bgMagenta, src.bgMagenta);
+
+                console.log(error);
+                throw error;
+            }
 
             var css = output.css;
 
