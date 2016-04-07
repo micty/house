@@ -33,8 +33,10 @@
     {
         icon: 'plus',
         name: '土地出让发布',
-        url: 'html/paper/add/index.html?type=news',
+        url: 'html/add-1/index.html?type=news',
         cmd: ['add', 'news'],
+        autoOpen: true,
+
     },
     {
         icon: 'plus-square',

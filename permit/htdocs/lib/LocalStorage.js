@@ -7,7 +7,7 @@ define('LocalStorage', function (require, module, exports) {
 
     var LocalStorage = MiniQuery.require('LocalStorage');
 
-    var skey = 'House-fs-1874645fa466412ede2888b28503b529';
+    var skey = 'permit-5ED1A2BC804DC930';
 
     var all = LocalStorage.get(skey) || {};
 

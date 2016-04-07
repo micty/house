@@ -7,7 +7,7 @@ define('SessionStorage', function (require, module, exports) {
 
     var SessionStorage = MiniQuery.require('SessionStorage');
 
-    var skey = 'House-fs-1874645fa466412ede2888b28503b529';
+    var skey = 'permit-5ED1A2BC804DC930';
     
 
     var all = SessionStorage.get(skey) || {};

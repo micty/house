@@ -16,6 +16,7 @@ KISP.launch(function (require, module) {
     var SessionStorage = require('SessionStorage');
 
 
+
     function login() {
 
         SessionStorage.remove('user');
