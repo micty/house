@@ -4,14 +4,19 @@
 
 /admin/bin/node_modules
 /admin/build
-/admin/htdocs/**/index.html
 /admin/htdocs/style/css
-
+/admin/htdocs/**/index.html
 
 /demo/bin/node_modules
 /demo/build
-/demo/htdocs/index.html
 /demo/htdocs/style/css
+/demo/htdocs/**/index.html
+
+
+/permit/bin/node_modules
+/permit/build
+/permit/htdocs/style/css
+/permit/htdocs/**/index.html
 
 
 /old/bin/node_modules
