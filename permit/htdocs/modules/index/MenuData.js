@@ -14,8 +14,9 @@ define('/MenuData', function (require, module, exports) {
         name: '首页',
         isHome: true,
         id: $.String.random(5),
-        //url: 'html/home/index.html',
-        url: 'html/welcome/index.html',
+        //id: '0-0',
+        url: 'html/home/index.html',
+        //url: 'html/welcome/index.html',
     };
 
 
@@ -57,6 +58,19 @@ define('/MenuData', function (require, module, exports) {
     //异步方式
     function getItem(id, fn) {
 
+        //传入的是一个菜单项。
+        if ($.Object.isPlain(id)) {
+            var item = id;
+
+            //传入的是一个在 Sidebar 里没有对应项的菜单项，
+            //即自定义的菜单项，增加一个 id。
+            if (!item.id) { 
+                item.id = $.String.random();
+            }
+
+            fn && fn(item);
+            return;
+        }
      
         load(function (list) {
 

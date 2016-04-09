@@ -21,10 +21,10 @@ KISP.launch(function (require, module) {
 
         SessionStorage.remove('user');
 
-        var user = $('#txt-user').val();
+        var name = $('#txt-name').val();
         var password = $('#txt-password').val();
 
-        if (!user) {
+        if (!name) {
             KISP.alert('请输入用户名');
             return;
         }
@@ -36,7 +36,7 @@ KISP.launch(function (require, module) {
 
 
         post({
-            'user': user,
+            'name': name,
             'password': password,
         });
     }
@@ -58,7 +58,7 @@ KISP.launch(function (require, module) {
 
     function post(data) {
 
-        var api = KISP.create('API', 'login');
+        var api = KISP.create('API', 'Login.login');
 
         var loading = null;
 
@@ -110,7 +110,7 @@ KISP.launch(function (require, module) {
         var password = MD5.encrypt(data.password);
 
         api.post({
-            'user': data.user, 
+            'name': data.name,
             'password': password,
         });
 
@@ -118,11 +118,12 @@ KISP.launch(function (require, module) {
 
 
     var user = LocalStorage.get('user');
-    var txtUser = document.getElementById('txt-user');
+    //debugger;
+    var txtName = document.getElementById('txt-name');
     var txtPassword = document.getElementById('txt-password');
 
     if (user) {
-        txtUser.value = user.name;
+        txtName.value = user.name;
         txtPassword.focus();
     }
     else {

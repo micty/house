@@ -15,6 +15,10 @@ define('Bridge', function (require, module) {
                 Bridge.open(cmd, query, data);
             },
 
+            'close': function () {
+                Bridge.close(window);
+            },
+
         };
     }
 
@@ -78,6 +82,23 @@ define('Bridge', function (require, module) {
 
         'open': function (cmd, query, data) {
             emitter.fire('open', [cmd, query, data]);
+        },
+
+        'close': function (win) {
+            //根据 iframe 的 window 对象找到对应的 iframe。
+            var iframes = $('iframe').toArray();
+
+            var iframe = $.Array.findItem(iframes, function (iframe, index) {
+                return iframe.contentWindow === win;
+            });
+
+            if (!iframe) {
+                return;
+            }
+
+            var sn = iframe.getAttribute('data-sn'); //这个就是对应的菜单项的 id。
+
+            emitter.fire('close', [sn]);
         },
 
         'on': emitter.on.bind(emitter),

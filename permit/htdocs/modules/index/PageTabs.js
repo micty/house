@@ -82,6 +82,8 @@ define('/PageTabs', function (require, module, exports) {
         fill();
         tabs.remove(index); //让 tabs 设置到正确的状态
 
+        active(index-1);
+
         if (!quiet) {
             emitter.fire('remove', [item]);
 
@@ -179,6 +181,7 @@ define('/PageTabs', function (require, module, exports) {
                 width: 0
             }, function () {
                 $(li).hide();
+   
                 remove(index);
             });
 
@@ -262,14 +265,18 @@ define('/PageTabs', function (require, module, exports) {
         add: add,
 
 
-        //对外暴露的是安静模式，不触发事件
-        remove: function (item) {
-            var index = findIndexById(item.id);
+        //只有外面指定第二个参数为 true 时才触发事件。 
+        remove: function (item, fireEvent) {
+
+            var id = typeof item == 'string' ? item : item.id;
+
+            var index = findIndexById(id);
             if (index < 0) {
                 return;
             }
 
-            remove(index, true);
+            var quiet = !fireEvent;
+            remove(index, quiet);
         },
 
         //对外暴露的是安静模式，不触发事件

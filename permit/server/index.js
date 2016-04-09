@@ -15,9 +15,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-
-
-
 var server = app.listen(3001, function () {
     var host = server.address().address;
     var port = server.address().port;
@@ -34,55 +31,36 @@ function allow(res) {
     
 
 
-app.get('/', function (req, res) {
- 
+app.all('/*', function (req, res, next) {
+    allow(res);
+    next();
 });
 
 
 
-//登录
-app.post('/login', function (req, res) {
+
+//登录模块
+var Login = require('./modules/Login');
+app.post('/Login.login', function (req, res) {
+    Login.login(res, req.body);
+});
 
 
-    var name$user = {
-        'admin1': {
-            text: '国土局管理员',
-            level: 1,
-            password: '47bce5c74f589f4867dbd57e9ca9f808', //aaa
-        },
-        'admin2': {
-            text: '规划局管理员',
-            level: 2,
-            password: '08f8e0260c64418510cefb2b06eee5cd', //bbb
-        },
-    };
+//土地出让模块
+var Land = require('./modules/Land');
 
-    allow(res);
-
-    var data = req.body;
-    var name = data.user;
-    var password = data.password;
-
-
-    var user = name$user[name];
-    if (user && user.password == password) {
-        res.send({
-            code: 200,
-            msg: 'ok',
-            data: {
-                'name': name,
-                'text': user.text,
-                'level': user.level,
-            },
-        });
-    }
-    else {
-        res.send({
-            code: 201,
-            msg: '用户名或密码错误',
-        });
-    }
-
-
-   
+app.get('/Land.get', function (req, res) {
+    Land.get(res, req.query.id);
+});
+app.post('/Land.add', function (req, res) {
+    Land.add(res, req.body);
+});
+app.post('/Land.update', function (req, res) {
+    Land.update(res, req.body);
+});
+app.get('/Land.remove', function (req, res) {
+    Land.remove(res, req.query.id);
+});
+app.get('/Land.list', function (req, res) {
+    Land.list(res);
 });

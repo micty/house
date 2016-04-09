@@ -160,7 +160,6 @@ define('Tabs', function (require, exports, module) {
             if (index < activedIndex) { //移除的是当前激活项之前的，则重新设置激活状态即可
                 activedIndex--;
             }
-
             this.active(activedIndex, false);
 
         },

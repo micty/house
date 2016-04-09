@@ -107,7 +107,6 @@ KISP.launch(function (require, module) {
     Bridge.on('open', function (id, query, data) {
 
         MenuData.getItem(id, function (item) {
-
             if (!item) {
                 return;
             }
@@ -127,6 +126,11 @@ KISP.launch(function (require, module) {
             PageList.add(item); //安静模式，不触发事件
             Iframes.add(item, true); //强制刷新
         });
+    });
+
+
+    Bridge.on('close', function (id) {
+        PageTabs.remove(id, true); //触发事件
     });
 
 

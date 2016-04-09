@@ -52,7 +52,7 @@ define('/UserInfos', function (require, module, exports) {
 
         panel.fill({
             'name': user.name,
-            'text': user.text,
+            'alias': user.alias,
             'message-count': user.messageCount || 0,
         });
     });

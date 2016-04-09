@@ -1,56 +1,70 @@
 ﻿var __Sidebar__ = [
-    {
-        icon: 'star',
-        name: '首页',
-        url: 'html/home/index.html',
-        autoOpen: true,
-    },
+    //{
+    //    icon: 'star',
+    //    name: '首页',
+    //    url: 'html/home/index.html',
+    //    autoOpen: true,
+    //},
+
     {
         icon: 'bars',
         name: '土地出让列表',
-        url: 'html/list/1/index.html?type=news',
-        autoOpen: true,
+        url: 'html/land/list/index.html',
+        //autoOpen: true,
+        cmd: ['land', 'list'],
     },
     {
         icon: 'bars',
         name: '规划许可列表',
-        url: 'html/list/1/index.html?type=policy',
-        autoOpen: true,
+        url: 'html/plan/list/index.html',
+        //autoOpen: true,
+        cmd: ['plan', 'list'],
     },
     {
         icon: 'bars',
         name: '施工许可列表',
-        url: 'html/list/1/index.html?type=house',
-        autoOpen: true,
+        url: 'html/construct/list/index.html',
+        //autoOpen: true,
+        cmd: ['construct', 'list'],
     },
     {
         icon: 'bars',
         name: '预售许可列表',
-        url: 'html/list/1/index.html?type=news',
-        autoOpen: true,
+        url: 'html/sale/list/index.html',
+        //autoOpen: true,
+        cmd: ['sale', 'list'],
         border: true,
     },
+
+
     {
         icon: 'plus',
         name: '土地出让发布',
-        url: 'html/add-1/index.html?type=news',
-        cmd: ['add', 'news'],
-        autoOpen: true,
-
+        url: 'html/land/add/index.html',
+        cmd: ['land', 'add'],
+        //autoOpen: true,
     },
     {
-        icon: 'plus-square',
+        icon: 'plus',
         name: '规划许可发布',
-        url: 'html/paper/add/index.html?type=policy',
-        cmd: ['add', 'policy'],
+        url: 'html/plan/add/index.html',
+        cmd: ['plan', 'add'],
     },
     {
-        icon: 'plus-circle',
+        icon: 'plus',
         name: '施工许可发布',
-        url: 'html/paper/add/index.html?type=house',
-        cmd: ['add', 'house'],
+        url: 'html/construct/add/index',
+        cmd: ['construct', 'add'],
+    },
+    {
+        icon: 'plus',
+        name: '预售许可发布',
+        url: 'html/sale/add/index',
+        cmd: ['sale', 'add'],
         border: true,
     },
+
+
     {
         icon: 'bar-chart',
         name: '统计报表',

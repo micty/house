@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>新闻列表</title>
+
+
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
+    <style>
+        .iframe {
+            overflow: hidden;
+        }
+    </style>
+    <!--weber.css.begin-->
+    <script>
+        [
+            '../../../style/less/global.less',
+            'index.less',
+            'modules/**/*.less',
+        ]
+    </script>
+    <!--weber.css.end-->
+
+
+</head>
+<body class="iframe">
+    <div id="div-header" class="header">
+        <button>添加</button>
+    </div>
+    <div id="div-list" class="list">
+        <!--
+        <table cellspacing="0" cellpadding="0">
+            <tr class="header">
+                <th>序号</th>
+                <th>项目名称</th>
+                <th>土地编号</th>
+                <th>提交时间</th>
+                <th style="{operate-display}">操作</th>
+            </tr>
+
+            #--row.begin--#
+            <tr data-index="{index}">
+                <td>{no}</td>
+                <td><a href="javascript:" data-index="{index}" data-cmd="detail" >{project}<a/></td>
+                <td>{code}</td>
+                <td>{datetime}</td>
+                <td class="operate" style="{operate-display}">
+                    <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                    <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                </td>
+            </tr>
+            #--row.end--#
+            
+        </table>
+        -->
+    </div>
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js"></script>
+    <script src="../../../f/kisp/kisp.debug.js"></script>
+    <script src="../../../config.js"></script>
+
+
+    <!--weber.js.begin-->
+    <script>
+        [
+            '../../../lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--weber.js.end-->
+
+
+
+</body>
+</html>

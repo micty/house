@@ -80,9 +80,15 @@ define('/Iframes', function (require, module, exports) {
 
         function setHeight(iframe) {
 
+            var doc = iframe.contentDocument;
+            if (!doc) { //说明可能 iframe 对应的页面已给关闭了。
+                clearInterval(iid);
+                return;
+            }
+
             current = iframe;
 
-            var body = iframe.contentDocument.body;
+            var body = doc.body;
             if (!body) { //IE 下未加载完的为 null
                 return;
             }
