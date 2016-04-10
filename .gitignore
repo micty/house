@@ -19,6 +19,10 @@
 /permit/htdocs/**/index.html
 
 
+/permit/server/node_modules
+
+
+
 /old/bin/node_modules
 /old/build
 /old/lib/kerp/bin/node_modules

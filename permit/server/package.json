@@ -9,6 +9,7 @@
   "dependencies": {
     "body-parser": "^1.14.1",
     "express-session": "",
+    "cookie-parser": "",
     "express": "^4.13.3"
   }
 }
