@@ -1,0 +1,111 @@
+﻿
+
+.view-master .panel-town {
+    margin-top: 10px;
+
+
+    .banner {
+        background: #0D265C;
+        margin-bottom: 5px;
+        color: rgba(255, 255, 255, 0);
+        text-align: center;
+        font-size: 40px;
+        background: url('../img/nav-town.png') no-repeat;
+        background-size: 100%;
+        height: 44px;
+    }
+
+    .main {
+        border: solid 1px #ddd;
+        border-top: none;
+        padding: 15px 10px;
+
+        .photos {
+            float: left;
+            width: 590px;
+
+            .title {
+                position: relative;
+                top: 24px;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: #fff;
+                font-size: 12px;
+                padding: 5px 10px;
+                /* float: left; */
+                /* display: none; */
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            .pager {
+                padding: 0;
+                background-color: rgba(0, 0, 0, 0.39);
+                margin: 0;
+                position: relative;
+                top: -22px;
+                display: -webkit-box;
+                -webkit-box-pack: end;
+
+                li {
+                    padding: 0px 6px;
+                    background: black;
+                    color: #fff;
+                    margin: 0px 4px;
+                    font-size: 12px;
+                    list-style: none;
+                    cursor: pointer;
+                    border: solid 1px black;
+
+                    &.on {
+                        background: red;
+                    }
+                }
+            }
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+
+        .sidebar {
+            list-style: none;
+            padding: 0px 0px;
+            margin: 0px;
+            text-align: center;
+            float: right;
+            width: 34%;
+
+            li {
+                margin: 1px 0px 9px 0px;
+                padding: 5px 0px;
+                border: solid 1px #ddd;
+            }
+
+            img {
+                border: solid 1px #ddd;
+            }
+
+            div {
+                text-align: left;
+
+                .title {
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-align: center;
+                    margin: 2px 0px 8px 0px;
+                }
+
+                p {
+                    /*text-indent: 22px;*/
+                    margin: 0;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

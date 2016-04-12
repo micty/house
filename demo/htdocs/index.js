@@ -1,33 +1,7 @@
 ﻿
-KISP.launch(function (require, module) {
+KISP.launch(function (require, module, nav) {
    
     var $ = require('$');
-    var Nav = module.require('Nav');
-
-    //后退时触发
-    Nav.on('back', function (current, target) {
-        document.activeElement.blur(); // 关闭输入法
-        current = require(module, current);
-        target = require(module, target);
-        current.hide();
-        target.show();
-    });
-
-
-    //跳转到目标视图之前触发，先隐藏当前视图
-    Nav.on('before-to', function (current, target) {
-        current = require(module, current);
-        current.hide();
-    });
-
-    //统一绑定视图跳转动作，在调用 Nav.to(...) 时会给触发
-    Nav.on('to', function (name, arg0, arg1, argN) {
-        var M = require(module, name);
-        var args = [].slice.call(arguments, 1);
-        M.render.apply(M, args);
-    });
-
-
 
 
     var Header = module.require('Header');
@@ -35,31 +9,32 @@ KISP.launch(function (require, module) {
 
     Header.on({
         'home': function () {
-            Nav.to('Master', 'header'); //这里是 header 不是 home
+            nav.to('Master', 'header'); //这里是 header 不是 home
         },
         'area': function () {
-            Nav.to('Master', 'area');
+            nav.to('Master', 'area');
         },
         'town': function () {
-            Nav.to('Master', 'town');
+            nav.to('Master', 'town');
         },
         'happy': function () {
-            Nav.to('Master', 'happy');
+            nav.to('Master', 'happy');
         },
         'keypoint': function () {
-            Nav.to('Master', 'keypoint');
+            nav.to('Master', 'keypoint');
         },
         'recommend': function () {
-            Nav.to('Master', 'recommend');
+            //nav.to('Master', 'recommend');
+            nav.to('HouseDetail');
         },
         'news': function () {
-            Nav.to('NewsList', 'news');
+            nav.to('NewsList', 'news');
         },
         'policy': function () {
-            Nav.to('NewsList', 'policy');
+            nav.to('NewsList', 'policy');
         },
         'contact': function () {
-            Nav.to('Contact');
+            nav.to('Contact');
         },
     });
 
@@ -70,38 +45,38 @@ KISP.launch(function (require, module) {
     Sidebar.on({
 
         'home': function () {
-            Nav.to('Master', 'header'); //这里是 header 不是 home
+            nav.to('Master', 'header'); //这里是 header 不是 home
         },
 
         'area': function () {
-            Nav.to('Master', 'area');
+            nav.to('Master', 'area');
         },
 
         'town': function () {
-            Nav.to('Master', 'town');
+            nav.to('Master', 'town');
         },
 
         'happy': function () {
-            Nav.to('Master', 'happy');
+            nav.to('Master', 'happy');
         },
 
         'keypoint': function () {
-            Nav.to('Master', 'keypoint');
+            nav.to('Master', 'keypoint');
         },
 
         'recommend': function () {
-            Nav.to('Master', 'recommend');
+            nav.to('Master', 'recommend');
         },
 
         'news': function () {
-            Nav.to('NewsList', 'news');
+            nav.to('NewsList', 'news');
         },
         'policy': function () {
-            Nav.to('NewsList', 'policy');
+            nav.to('NewsList', 'policy');
         },
 
         'contact': function () {
-            Nav.to('Contact');
+            nav.to('Contact');
         },
 
 
@@ -110,7 +85,7 @@ KISP.launch(function (require, module) {
     var Aside = module.require('Aside');
     Aside.on({
         'recommend': function () {
-            Nav.to('Master', 'recommend');
+            nav.to('Master', 'recommend');
         },
     });
 
@@ -119,10 +94,10 @@ KISP.launch(function (require, module) {
     var Houses = module.require('Houses');
     Houses.on({
         'activity': function () {
-            Nav.to('ActivityRecommend');
+            nav.to('ActivityRecommend');
         },
         'item': function (item) {
-            Nav.to('Master', 'recommend');
+            nav.to('Master', 'recommend');
             var Recommend = module.require('Recommend');
             Recommend.active(item);
         },
@@ -132,7 +107,7 @@ KISP.launch(function (require, module) {
     var Policy = module.require('Policy');
     Policy.on({
         'list': function () {
-            Nav.to('NewsList', 'policy');
+            nav.to('NewsList', 'policy');
         },
     });
 
@@ -169,16 +144,16 @@ KISP.launch(function (require, module) {
         Header.hide();
     });
 
-    var Message = require(module, 'Message');
-    Message.on({
+    var Router = require(module, 'Router');
+    Router.on({
         'master': function () {
             Header.show();
-            Nav.to('Master');
+            nav.to('Master');
         },
 
         'paper': function (type, id, options) {
             Header.show();
-            Nav.to('NewsDetail', type, id, options);
+            nav.to('NewsDetail', type, id, options);
         },
 
         'happy': function (name) {
@@ -188,7 +163,7 @@ KISP.launch(function (require, module) {
     });
 
 
-    Message.render();
+    Router.render();
 
     //给新闻详情页快捷调用弹出报名窗口
     window.showSignup = function () {
