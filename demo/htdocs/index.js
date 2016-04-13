@@ -24,8 +24,7 @@ KISP.launch(function (require, module, nav) {
             nav.to('Master', 'keypoint');
         },
         'recommend': function () {
-            //nav.to('Master', 'recommend');
-            nav.to('HouseDetail');
+            nav.to('Master', 'recommend');
         },
         'news': function () {
             nav.to('NewsList', 'news');
@@ -148,7 +147,10 @@ KISP.launch(function (require, module, nav) {
     Router.on({
         'master': function () {
             Header.show();
-            nav.to('Master');
+            //nav.to('Master');
+
+            nav.to('HouseDetail');
+
         },
 
         'paper': function (type, id, options) {
