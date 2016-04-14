@@ -100,6 +100,84 @@
             width: 51%;
             position: relative;
 
+
+            &:hover {
+                .prev,
+                .next {
+                    display: inline-block;
+                }
+            }
+
+            .prev,
+            .next {
+                /*display: inline-block;*/
+                display: none;
+                background: #6B7F86;
+                padding: 43px 16px;
+                position: absolute;
+                top: 50%;
+                margin-top: -62px;
+                cursor: pointer;
+            }
+
+            .prev {
+                left: 0px;
+
+
+
+                &:before {
+                    content: '';
+                    display: block;
+                    border: solid 20px #fff;
+                    border-top: solid 30px rgba(255, 0, 0, 0);
+                    border-left: solid 20px rgba(255, 0, 0, 0);
+                    border-bottom: solid 30px rgba(255, 0, 0, 0);
+                    position: absolute;
+                    left: -16px;
+                    top: 14px;
+                }
+
+                &:after {
+                    content: '';
+                    display: block;
+                    border: solid 20px #6B7F86;
+                    border-top: solid 30px rgba(255, 0, 0, 0);
+                    border-left: solid 20px rgba(255, 0, 0, 0);
+                    border-bottom: solid 30px rgba(255, 0, 0, 0);
+                    position: absolute;
+                    left: -12px;
+                    top: 14px;
+                }
+            }
+
+            .next {
+                right: 0px;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    border: solid 20px #fff;
+                    border-top: solid 30px rgba(255, 0, 0, 0);
+                    border-right: solid 20px rgba(255, 0, 0, 0);
+                    border-bottom: solid 30px rgba(255, 0, 0, 0);
+                    position: absolute;
+                    right: -16px;
+                    top: 14px;
+                }
+
+                &:after {
+                    content: '';
+                    display: block;
+                    border: solid 20px #6B7F86;
+                    border-top: solid 30px rgba(255, 0, 0, 0);
+                    border-right: solid 20px rgba(255, 0, 0, 0);
+                    border-bottom: solid 30px rgba(255, 0, 0, 0);
+                    position: absolute;
+                    right: -12px;
+                    top: 14px;
+                }
+            }
+
             img {
                 max-width: 100%;
                 max-height: 340px;
@@ -163,6 +241,88 @@
         }
     }
 
+    .photo {
+
+        .main {
+            li {
+                float: left;
+            }
+
+            .prev,
+            .next {
+                width: 4%;
+                height: 570px;
+                /*background: red;*/
+                background-repeat: no-repeat;
+                background-position-y: 246px;
+                cursor: pointer;
+            }
+
+            .prev {
+                background-image: url(../img/btn-prev.jpg);
+                background-position-x: 0px;
+            }
+
+            .next {
+                background-image: url(../img/btn-next.jpg);
+                background-position-x: 12px;
+            }
+
+            .image {
+                width: 92%;
+                background: #272727;
+                text-align: center;
+                position: relative;
+
+                p {
+                    color: #fff;
+                    background: rgba(0, 0, 0, 0.5);
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    height: 50px;
+                    line-height: 50px;
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .list {
+            margin: 0 34px;
+
+            li {
+                float: left;
+                padding: 0px;
+                margin-right: 5px;
+                height: 82px;
+                margin-top: 4px;
+                cursor: pointer;
+
+                &.on {
+                    border: solid 4px #EF7642;
+                    margin-top: 0;
+                }
+
+                &:first-child {
+                    margin-left: 6px;
+                }
+
+                img {
+                    width: 110px;
+                    height: 82px;
+                }
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+        }
+    }
+
 
     .panel {
         h2 {
@@ -184,7 +344,7 @@
                 border: solid 1px #C5C5C5;
                 border-right: none;
                 border-bottom: none;
-                
+
 
                 td {
                     border: solid 1px #C5C5C5;
