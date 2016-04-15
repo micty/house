@@ -1,8 +1,8 @@
 /*
 * KISP - KISP JavaScript Library
 * name: house 
-* version: 3.2.0
-* build: 2016-04-07 14:55:26
+* version: 3.3.0
+* build: 2016-04-15 15:45:36
 * files: 82(80)
 *    partial/pc/begin.js
 *    core/Module.js
@@ -215,7 +215,7 @@ define('KISP', function (require, module, exports) {
         /**
         * 版本号。 (由 grunt 自动插入)
         */
-        version: '3.2.0', //由 grunt 自动插入
+        version: '3.3.0', //由 grunt 自动插入
 
         /**
         * 文件列表。 (由 grunt 自动插入)
@@ -1865,7 +1865,8 @@ define('Url', function (require, module, exports) {
 
     var $ = require('$');
     var root = '';  //网站的根地址。
-    
+    var url = '';   //kisp.debug.js 或 kisp.min.js 文件所在的地址。
+    var dir = '';   //kisp.debug.js 或 kisp.min.js 文件所在的目录。
 
 
     function getBasic() {
@@ -1952,6 +1953,51 @@ define('Url', function (require, module, exports) {
 
 
             return $.String.format(url, data);
+        },
+
+
+        /**
+        * 获取 kisp 框架文件所对应的 url 地址。
+        */
+        get: function () {
+
+            if (url) {
+                return url;
+            }
+
+
+            var Config = require('Config');
+            var defaults = Config.get(module.id); //默认配置
+            var id = defaults.id;
+            var script = null;
+
+            if (id) {
+                script = document.getElementById(id);
+            }
+
+            if (!script) {
+                var Edition = require('Edition');
+                var type = Edition.get();
+                var file = $.String.format('script[src*="kisp.{0}.js"]', type);
+                script = $(file).get(0);
+            }
+
+            url = script.src;
+            return url;
+
+        },
+
+        /**
+        * 获取 kisp 框架文件所对应的 url 地址目录。
+        */
+        dir: function () {
+            if (dir) {
+                return dir;
+            }
+
+            var url = exports.get();
+            dir = url.split('/').slice(0, -1).join('/') + '/';
+            return dir;
         },
 
         
@@ -5944,6 +5990,7 @@ define('Tabs', function (require, module, exports) {
             'activedClass': config.activedClass,
             'pressedClass': config.pressedClass,
             'repeated': config.repeated,
+            'looped': config.looped,
 
             'eventName': config.eventName,
             'list': [],
@@ -6100,6 +6147,52 @@ define('Tabs', function (require, module, exports) {
             emitter.fire('change', args);
 
 
+        },
+
+        /**
+        * 激活前一项。
+        * @param {boolean} [quiet=false] 是否使用安静模式。 
+            当指定为 true 时，则不会触发事件，这在某种场景下会用到。
+            否则会触发事件(默认情况)。
+        */
+        previous: function (qiuet) {
+            var meta = mapper.get(this);
+            var list = meta.list;
+            var looped = meta.looped;
+            var index = meta.activedIndex;
+
+            if (index == 0) {
+                if (!looped) {
+                    return;
+                }
+
+                index = list.length;
+            }
+          
+            this.active(index - 1, qiuet);
+        },
+
+        /**
+        * 激活后一项。
+        * @param {boolean} [quiet=false] 是否使用安静模式。 
+            当指定为 true 时，则不会触发事件，这在某种场景下会用到。
+            否则会触发事件(默认情况)。
+        */
+        next: function (qiuet) {
+            var meta = mapper.get(this);
+            var list = meta.list;
+            var looped = meta.looped;
+            var index = meta.activedIndex;
+
+            if (index == list.length - 1) {
+                if (!looped) {
+                    return;
+                }
+
+                index = -1;
+            }
+
+            this.active(index + 1, qiuet);
         },
 
         /**
@@ -6316,6 +6409,11 @@ define('Template', function (require, module, exports) {
                 fn = list;
                 list = null;
             }
+            else if (!(list instanceof Array)) { //重载 fill({})
+                list = [list];
+            }
+
+
 
             var meta = mapper.get(this);
 
@@ -6853,6 +6951,8 @@ define('Url.defaults', /**@lends Url.defaults*/ {
         edition: '@'
     },
 
+    id: 'kisp-script',
+
 });
 
 
@@ -7092,6 +7192,12 @@ define('Mask.defaults', /**@lends Mask.defaults*/ {
     eventName: 'touch',
 
     /**
+    * 需要持续显示的毫秒数。
+    * 指定为 0 或不指定则表示一直显示。
+    */
+    duration: 0,
+
+    /**
     * 组件的 css 样式 z-index 值。
     */
     'top': 0,
@@ -7176,6 +7282,13 @@ define('Tabs.defaults', /**@lends Tabs.defaults*/ {
     * 当指定为 true 时，方响应已给激活的项目的重新点击。
     */
     repeated: false,
+
+    /**
+    * 当调用 previous()、next() 激前/后一项时，是否启用循环模式。
+    * 如果启用了循环模式时，则当达到第一项或最后一项时，则会从尾或头开始。
+    */
+    looped: false,
+
 
     /**
     * 字段映射。
@@ -7369,7 +7482,7 @@ define('Loading.config', /**@lends Loading.config*/ {
 */
 define('Mask.config', /**@lends Mask.config*/ {
     
-    //PC 端的用 fixed定位
+    //PC 端的用 fixed 定位。
     'position': 'fixed',
 });
 
