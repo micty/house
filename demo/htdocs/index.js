@@ -147,10 +147,7 @@ KISP.launch(function (require, module, nav) {
     Router.on({
         'master': function () {
             Header.show();
-            //nav.to('Master');
-
-            nav.to('HouseDetail');
-
+            nav.to('Master');
         },
 
         'paper': function (type, id, options) {
@@ -162,6 +159,10 @@ KISP.launch(function (require, module, nav) {
             Normal.render(name);
         },
 
+        'house2': function (id) {
+            nav.to('HouseDetail', id);
+
+        },
     });
 
 

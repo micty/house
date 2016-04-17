@@ -10,7 +10,8 @@
                 var $ = KISP.require('$');
                 var script = $('script[src*="config.js"]').get(0);
                 var href = script.getAttribute('src');
-                return script.src.split(href)[0];
+                var url = script.src.split('/').slice(0, -1).join('/');
+                return url + '/';
             },
         },
         'Tabs': {
@@ -33,7 +34,7 @@
     KISP.config({
         'API': {
             //内部地址
-            //url: 'http://localhost:3000/',
+            url: 'http://localhost:3000/',
         },
         'Proxy': {
             delay: {

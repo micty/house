@@ -1,0 +1,20 @@
+[
+    {
+        "id": "22F65DBB6446",
+        "name": "越秀可逸新势力11",
+        "address": "轻工路与槎湾路交汇处西南角",
+        "type": "72-120 平方米 二至四房",
+        "price": 14000,
+        "phone": "0668-89563214",
+        "cover": "http://fschanfang.com/ueditor/upload/image/20151221/6358629458846919437145796.jpg"
+    },
+    {
+        "id": "C57E053E6D83",
+        "name": "test",
+        "address": "ddd",
+        "type": "aaa",
+        "price": 5000,
+        "phone": "ggg",
+        "cover": "http://fschanfang.com/ueditor/upload/image/20151221/6358630941463242932244866.jpg"
+    }
+]

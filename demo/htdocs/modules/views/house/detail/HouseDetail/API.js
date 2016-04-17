@@ -15,8 +15,8 @@ define('/HouseDetail/API', function (require, module, exports) {
     function get(id) {
 
 
-        var api = KISP.create('API', 'HouseDetail.get', {
-            proxy: 'api/HouseDetail.js',
+        var api = KISP.create('API', 'House2.get', {
+            //proxy: 'api/HouseDetail.js',
         });
 
 
@@ -73,6 +73,7 @@ define('/HouseDetail/API', function (require, module, exports) {
                     'albums': albums,
                 });
 
+                console.log(data);
 
                 emitter.fire('success', [data]);
             },

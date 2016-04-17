@@ -19,6 +19,10 @@ define('/Router', function (require, module, exports) {
 
 
         switch (type) {
+            case 'house2':
+                panel.fire('house2', [p.id]);
+                break;
+
             case 'happy':
                 panel.fire('happy', [p.name]);
                 break;
@@ -30,6 +34,7 @@ define('/Router', function (require, module, exports) {
 
                 panel.fire('paper', [type, p.id, p]);
                 break;
+
 
             default:
                 panel.fire('master');

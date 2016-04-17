@@ -18,13 +18,11 @@
                 var $ = KISP.require('$');
                 var script = $('script[src*="config.js"]').get(0);
                 var href = script.getAttribute('src');
-                return script.src.split(href)[0];
+                var url = script.src.split('/').slice(0, -1).join('/');
+                return url + '/';
             },
         },
 
-        'Seajs': {
-            url: '{~}f/seajs/seajs.mod.{@}.js',
-        },
 
         'API': {
             //对外正式地址
@@ -40,6 +38,9 @@
         'demo': {
             //在 paper/list 用到
             url: '../../../../../index.html',
+
+            //在 house/add 用到
+            map: '../../../../../html/map/index.html',
         },
      
     });
@@ -55,7 +56,7 @@
     // 开发过程中用到的配置，正式发布后可去掉
     KISP.config({  // KISP 内部模块所需要的默认配置
         'API': {
-            //url: 'http://localhost:3000/',
+            url: 'http://localhost:3000/',
 
             //在开发阶段，为了防止后台过快的返回数据而显示让某些需要显示
             //"数据加载中"的效果不明显， 这里强行加上一个随机延迟时间，
@@ -77,6 +78,9 @@
         'demo': {
             //在 paper/list 用到
             url: '../../../../../demo/htdocs/index.html',
+
+            //在 house/add 用到
+            map: '../../../../../demo/htdocs/html/map/index.html',
         },
     });
 

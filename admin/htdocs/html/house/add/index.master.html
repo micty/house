@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>发布楼盘</title>
+
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
+    <style>
+        .iframe {
+            overflow: hidden;
+        }
+    </style>
+
+    <!--weber.css.begin-->
+    <script>
+        [
+            '../../../style/less/global.less',
+            'index.less',
+            'modules/**/*.less',
+        ]
+    </script>
+    <!--weber.css.end-->
+
+
+</head>
+<body class="iframe">
+    <div class="header">
+        楼盘发布
+    </div>
+    <div class="main">
+        <link rel="html" href="modules/base/panel.html" />
+        <link rel="html" href="modules/photo/panel.html" />
+        <div class="editor">
+            <div class="name">优惠房源</div>
+            <div id="div-editor" style=" width: 100%; height: 400px;"></div>
+        </div>
+        <link rel="html" href="modules/map/panel.html" />
+        <div id="div-footer" class="footer">
+            <button>立即发布</button>
+        </div>
+    </div>
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js"></script>
+    <script src="../../../f/kisp/kisp.debug.js"></script>
+    <script src="../../../config.js"></script>
+
+    <script src="../../../f/ueditor/ueditor.config.js"></script>
+    <script src="../../../f/ueditor/ueditor.all.min.js"></script>
+
+    <!--weber.js.begin-->
+    <script>
+        [
+            '../../../lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--weber.js.end-->
+
+
+
+
+</body>
+</html>

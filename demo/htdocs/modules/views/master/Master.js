@@ -32,7 +32,7 @@ define('/Master', function (require, module) {
 
     view.on('after-render', function (name) {
         if (name) {
-            var p = $('.panel-' + name).offset();
+            var p = $('[data-panel="' + name +'"]').offset();
             scrollTo(0, p.top);
         }
 

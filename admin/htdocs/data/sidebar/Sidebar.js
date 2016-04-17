@@ -1,4 +1,5 @@
 ﻿var __Sidebar__ = [
+
     {
         icon: 'star',
         name: '活动楼盘管理',
@@ -76,5 +77,23 @@
         name: '楼盘资讯发布',
         url: 'html/paper/add/index.html?type=house',
         cmd: ['add', 'house'],
+        border: true,
+
+    },
+    {
+        icon: 'bars',
+        name: '楼盘管理',
+        url: 'html/house/list/index.html',
+        cmd: ['list', 'house2'],
+        autoOpen: true,
+
+    },
+    {
+        icon: 'plus',
+        name: '楼盘发布',
+        url: 'html/house/add/index.html',
+        cmd: ['add', 'house2'],
+        //autoOpen: true,
+
     },
 ];

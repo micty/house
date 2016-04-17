@@ -22,7 +22,7 @@ define('/NewsList', function (require, module) {
         loading = KISP.create('Loading', {
             text: '加载中...',
             background: 'none',
-            cssClass: 'same-line',
+            cssClass: 'SameLine',
             container: '#div-news-list-body',
             top: 600,
             color: '#000',

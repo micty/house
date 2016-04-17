@@ -95,7 +95,7 @@
         .left {
             width: 51%;
             position: relative;
-
+            text-align: center;
 
             &:hover {
                 .prev,
@@ -280,6 +280,11 @@
                 text-align: center;
                 position: relative;
 
+                img {
+                    max-width: 818px;
+                    height: 570px;
+                }
+
                 p {
                     color: #fff;
                     background: rgba(0, 0, 0, 0.5);
@@ -305,10 +310,10 @@
                 height: 82px;
                 margin-top: 4px;
                 cursor: pointer;
+                border: solid 4px #fff;
 
                 &.on {
-                    border: solid 4px #EF7642;
-                    margin-top: 0;
+                    border-color: #EF7642;
                 }
 
                 &:first-child {
@@ -372,6 +377,15 @@
                 i {
                     display: inline;
                 }
+            }
+        }
+
+        &.map {
+            iframe {
+                width: 100%;
+                height: 500px;
+                border: solid 1px #ccc;
+                /*box-sizing: border-box;*/
             }
         }
     }

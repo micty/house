@@ -23,17 +23,17 @@
     </div>
 
     <div id="div-house-detail-summary" class="summary">
-        <div id="div-house-detail-summary-albums" class="left">
+        <div data-id="albums" class="left">
             <span class="prev" data-cmd="prev"></span>
-            <img />
+            <img data-id="photo" />
             <span class="next" data-cmd="next"></span>
-            <ul>
+            <ul data-id="tabs">
                 <!--
                 <li>{name}</li>
                 -->
             </ul>
         </div>
-        <div id="div-house-detail-summary-fields" class="right">
+        <div data-id="fields" class="right">
             <!--
             <ul class="tag">
                 <li>在售价格:<span class="value"><span class="number">{price}</span>元/平方米</span></li>
@@ -51,559 +51,64 @@
     </div>
 
     <div id="div-house-detail-photo" class="photo">
-        <h3>越秀可逸新势力 效果图</h3>
+        <h3></h3>
         <ul class="main">
-            <li class="prev"></li>
-            <li class="image">
-                <img src="style/img/h1.jpg" />
-                <p>越秀岭南隽庭位于岭南大道及同济路交汇处，交通网络较为发达。</p>
+            <li data-cmd="prev" class="prev"></li>
+            <li data-id="photo" class="image">
+                <!--
+                <a href="{src}" title="点击在新窗口查看原图" target="_blank">
+                    <img src="{src}" />
+                </a>
+                <p>{desc}</p>
+                -->
             </li>
-            <li class="next"></li>
+            <li data-cmd="next" class="next"></li>
         </ul>
-        <ul class="list">
-            <li><img src="style/img/town-01.jpg" /></li>
-            <li><img src="style/img/town-1.jpg" /></li>
-            <li class="on"><img src="style/img/town-02.jpg" /></li>
-            <li><img src="style/img/town-2.jpg" /></li>
-            <li><img src="style/img/town-03.jpg" /></li>
-            <li><img src="style/img/town-3.jpg" /></li>
-            <li><img src="style/img/town-04.jpg" /></li>
+        <ul data-id="list" class="list">
+            <!--
+            <li><img src="{url}" /></li>
+            -->
         </ul>
     </div>
-    <div class="panel">
-        <h2>楼盘简介</h2>
-        <div class="content">
-            <p>
-                越秀岭南隽庭位于岭南大道及同济路交汇处，交通网络较为发达。同时，项目为佛山首个现代岭南叠水园林、约250m2无边际泳池、架空层泛会所、岭南风情商业街、休闲会所、商业中心。内部规划约1.7万㎡甲级写字楼、13万㎡现代岭南风情名宅、4.7万㎡精装国际公寓、3万㎡岭南风情商业，是禅城中心区内集高尚住宅、精品公寓、商业街区、写字楼为一体的大型岭南文化风情综合社区。
-            </p>
-        </div>
-    </div>
-    <div class="panel news">
-        <h2>最新动态</h2>
-        <div class="content">
-            <p>
-                项目预计10月中旬将推售平层公寓产品，面积涵盖31-80平米，31层高，4梯20户设计，吹风价12000元/平米。是禅城中心区内集高尚住宅、精品公寓、商业街区、写字楼为一体的大型岭南文化风情综合社区。
-                <a href="#">详细 <i class="icon fa fa-angle-double-right"></i></a>
-            </p>
-        </div>
-    </div>
 
-    <div class="panel">
-        <h2>优惠房源</h2>
-        <div class="content">
-            <p>
-                项目预计10月中旬将推售平层公寓产品，面积涵盖31-80平米，31层高，4梯20户设计，吹风价12000元/平米。
-            </p>
-            <table cellspacing="0">
-                <colgroup>
-                    <col width="72">
-                    <col width="72">
-                    <col width="72">
-                    <col width="72">
-                    <col width="72">
-                    <col width="89">
-                    <col width="81">
-                    <col width="72">
-                    <col width="86">
-                    <col width="85">
-                    <col width="72">
-                </colgroup>
-                <tbody>
-                    <tr height="21" class="firstRow">
-                        <td class="et3" colspan="11" x:str="" height="15" width="633" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            越秀岭南隽庭优惠房源信息（更新时间：2016年1月7日）
-                        </td>
-                    </tr>
-                    <tr height="34">
-                        <td class="et4" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            序号
-                        </td>
-                        <td class="et5" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            单元号
-                        </td>
-                        <td class="et5" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            建筑面积（㎡）
-                        </td>
-                        <td class="et5" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            套内面积（㎡）
-                        </td>
-                        <td class="et5" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            房屋用途
-                        </td>
-                        <td class="et5" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            户型
-                        </td>
-                        <td class="et5" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            备案价
-                            <br>
-                            （元）
-                        </td>
-                        <td class="et5" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            原价
-                            <br>
-                            （元）
-                        </td>
-                        <td class="et11" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            优惠价
-                            <br>
-                            （元）
-                        </td>
-                        <td class="et12" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            优惠率
-                        </td>
-                        <td class="et13" x:str="" height="25" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            销售状态
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et4" x:num="1" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1
-                        </td>
-                        <td class="et7" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            1座1601
-                        </td>
-                        <td class="et5" x:num="90.84" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            90.84
-                        </td>
-                        <td class="et5" x:num="64.69" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            64.69
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            住宅
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            三房两厅一卫
-                        </td>
-                        <td class="et5" x:num="1250388" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1250388
-                        </td>
-                        <td class="et5" x:num="1250388" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1250388
-                        </td>
-                        <td class="et11" x:num="1177171" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1177171
-                        </td>
-                        <td class="et15" x:num="0.941444575603733" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            94%
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            可售
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et4" x:num="2" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            2
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1座2701
-                        </td>
-                        <td class="et5" x:num="90.84" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            90.84
-                        </td>
-                        <td class="et5" x:num="64.69" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            64.69
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            住宅
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            三房两厅一卫
-                        </td>
-                        <td class="et5" x:num="1271055" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1271055
-                        </td>
-                        <td class="et5" x:num="1271055" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1271055
-                        </td>
-                        <td class="et11" x:num="1196544" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1196544
-                        </td>
-                        <td class="et15" x:num="0.941378618549158" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            94%
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            可售
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et9" x:num="3" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                3
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                1座2102
-                            </span>
-                        </td>
-                        <td class="et10" x:num="81.11" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                81.11
-                            </span>
-                        </td>
-                        <td class="et10" x:num="64.69" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                64.69
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                住宅
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                两房两厅一卫
-                            </span>
-                        </td>
-                        <td class="et10" x:num="932363" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                932363
-                            </span>
-                        </td>
-                        <td class="et10" x:num="932363" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                932363
-                            </span>
-                        </td>
-                        <td class="et17" x:num="884103" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                884103
-                            </span>
-                        </td>
-                        <td class="et18" x:num="0.948239044234917" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                95%
-                            </span>
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                已售
-                            </span>
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et9" x:num="4" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                4
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                1座503
-                            </span>
-                        </td>
-                        <td class="et10" x:num="81.11" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                81.11
-                            </span>
-                        </td>
-                        <td class="et10" x:num="64.69" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                64.69
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                住宅
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                两房两厅一卫
-                            </span>
-                        </td>
-                        <td class="et10" x:num="956370" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                956370
-                            </span>
-                        </td>
-                        <td class="et10" x:num="956370" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                956370
-                            </span>
-                        </td>
-                        <td class="et17" x:num="901556" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                901556
-                            </span>
-                        </td>
-                        <td class="et18" x:num="0.942685362359756" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                94%
-                            </span>
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                已售
-                            </span>
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et9" x:num="5" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                5
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                1座605
-                            </span>
-                        </td>
-                        <td class="et10" x:num="91.25" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                91.25
-                            </span>
-                        </td>
-                        <td class="et10" x:num="72.78" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                72.78
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                住宅
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                三房两厅一卫
-                            </span>
-                        </td>
-                        <td class="et10" x:num="1287591" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                1287591
-                            </span>
-                        </td>
-                        <td class="et10" x:num="1287591" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                1287591
-                            </span>
-                        </td>
-                        <td class="et17" x:num="1212045" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                1212045
-                            </span>
-                        </td>
-                        <td class="et18" x:num="0.941327642085103" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                94%
-                            </span>
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                已售
-                            </span>
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et4" x:num="6" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            6
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1座1006
-                        </td>
-                        <td class="et5" x:num="92.19" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            92.19
-                        </td>
-                        <td class="et5" x:num="73.53" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            73.53
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            住宅
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            三房两厅一卫
-                        </td>
-                        <td class="et5" x:num="1253960" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1253960
-                        </td>
-                        <td class="et5" x:num="1253960" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1253960
-                        </td>
-                        <td class="et11" x:num="1180519" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1180519
-                        </td>
-                        <td class="et15" x:num="0.94143274107627" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            94%
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            可售
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et4" x:num="7" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            7
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1座2806
-                        </td>
-                        <td class="et5" x:num="92.19" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            92.19
-                        </td>
-                        <td class="et5" x:num="73.53" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            73.53
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            住宅
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            三房两厅一卫
-                        </td>
-                        <td class="et5" x:num="1312907" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1312907
-                        </td>
-                        <td class="et5" x:num="1312907" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1312907
-                        </td>
-                        <td class="et11" x:num="1235776" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1235776
-                        </td>
-                        <td class="et15" x:num="0.941251741364773" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            94%
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            可售
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et4" x:num="8" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            8
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            2座2704
-                        </td>
-                        <td class="et5" x:num="90.89" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            90.89
-                        </td>
-                        <td class="et5" x:num="72.78" 0000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            72.78
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            住宅
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            三房两厅一卫
-                        </td>
-                        <td class="et5" x:num="1301447" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1301447
-                        </td>
-                        <td class="et5" x:num="1301447" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1301447
-                        </td>
-                        <td class="et11" x:num="1235897" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1235897
-                        </td>
-                        <td class="et15" x:num="0.949632985438516" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            95%
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            可售
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et4" x:num="9" 00000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            9
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            8座701
-                        </td>
-                        <td class="et5" x:num="162.41" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            162.41
-                        </td>
-                        <td class="et5" x:num="124.53" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            124.53
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            住宅
-                        </td>
-                        <td class="et5" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            四房两厅两卫
-                        </td>
-                        <td class="et5" x:num="1987846" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1987846
-                        </td>
-                        <td class="et5" x:num="1987846" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1987846
-                        </td>
-                        <td class="et11" x:num="1822620" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            1822620
-                        </td>
-                        <td class="et15" x:num="0.916881891253145" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            92%
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            可售
-                        </td>
-                    </tr>
-                    <tr height="19">
-                        <td class="et9" x:num="10" 0000000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-left-width: 0.5pt; border-left-color: rgb(0, 0, 0); border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                10
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                8座1601
-                            </span>
-                        </td>
-                        <td class="et10" x:num="162.41" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                162.41
-                            </span>
-                        </td>
-                        <td class="et10" x:num="124.53" 000000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                124.53
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                住宅
-                            </span>
-                        </td>
-                        <td class="et10" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                四房两厅两卫
-                            </span>
-                        </td>
-                        <td class="et10" x:num="2075419" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                2075419
-                            </span>
-                        </td>
-                        <td class="et10" x:num="2075419" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-right-width: 0.5pt; border-right-color: rgb(0, 0, 0); border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                2075419
-                            </span>
-                        </td>
-                        <td class="et17" x:num="1905774" 00000000="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-bottom-width: 0.5pt; border-bottom-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                1905774
-                            </span>
-                        </td>
-                        <td class="et18" x:num="0.918259879089475" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                92%
-                            </span>
-                        </td>
-                        <td class="et3" x:str="" height="14" width="36" style="font-size: 10.5pt; text-align: center; vertical-align: middle; white-space: normal; border-width: 0.5pt; border-color: rgb(0, 0, 0);">
-                            <span style="text-decoration: line-through;">
-                                已售
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 
-    <div class="panel">
-        <h2>楼盘地图</h2>
-        <div class="content">
+    <div id="div-house-detail-content">
+        <!--
+        <div class="panel">
+            <h2>楼盘简介</h2>
+            <div class="content">
+                <p>
+                    {brief}
+                </p>
+            </div>
+        </div>
+        <div class="panel news">
+            <h2>最新动态</h2>
+            <div class="content">
+                <p>
+                    {news.text}
+                    <a href="{news.url}" target="_blank">详细 <i class="icon fa fa-angle-double-right"></i></a>
+                </p>
+            </div>
         </div>
 
-      
+        <div class="panel">
+            <h2>优惠房源</h2>
+            <div class="content">
+                {content}
+            </div>
+        </div>
+
+        <div class="panel map">
+            <h2>楼盘地图</h2>
+            <div class="content">
+                <iframe src="html/map/index.html?{map}" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        -->
     </div>
+
+
 
 </div>

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>楼盘推荐管理</title>
+
+
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
+    <style>
+        .iframe {
+            overflow: hidden;
+        }
+    </style>
+
+    <!--weber.css.begin-->
+    <script>
+        [
+            '../../../style/less/global.less',
+            'index.less',
+            'modules/**/*.less',
+        ]
+    </script>
+    <!--weber.css.end-->
+
+
+</head>
+<body class="iframe">
+    
+    <div id="div-header" class="header">
+        <button>添加</button>
+    </div>
+
+
+    <div class="main">
+        <ul id="ul-tabs" class="timeline">
+            <!--<li data-index="{index}">{name}</li>-->
+        </ul>
+
+        <ul id="ul-items" class="list">
+            <!--
+            <li class="item">
+                <a href="{href}" target="_blank"><img src="{cover}" /></a>
+                <h3>{name}</h3>
+                <ul class="fields">
+                    <li><span class="name">位置：</span><span class="value">{address}</span></li>
+                    <li><span class="name">户型：</span><span class="value">{type}</span></li>
+                    <li><span class="name">价格：</span><span class="value">{price}元/平方米</span></li>
+                    <li><span class="name">电话：</span><span class="value">{phone}</span></li>
+                </ul>
+                <button data-cmd="edit" data-index="{index}">编辑</button>
+                <button data-cmd="remove" data-index="{index}" class="delete">删除</button>
+            </li>
+        -->
+        </ul>
+
+    </div>
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js"></script>
+    <script src="../../../f/kisp/kisp.debug.js"></script>
+    <script src="../../../config.js"></script>
+
+
+    <!--weber.js.begin-->
+    <script>
+        [
+            '../../../lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--weber.js.end-->
+
+
+
+</body>
+</html>
