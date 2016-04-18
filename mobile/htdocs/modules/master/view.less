@@ -3,7 +3,90 @@
 .view-master {
 
 
-    header {
+    .banner {
         background: url(../img/banner.jpg);
+        height: 2.5rem;
+        background-size: 100%;
+    }
+
+    .menus {
+        list-style: none;
+        margin-left: 1px;
+
+        li {
+            float: left;
+            border: solid 1px #ccc;
+            /*padding: 30px 46px;*/
+            /*padding: 0.30rem 0.46rem;*/
+            border-right: none;
+            border-bottom: none;
+            height: 0.6rem;
+            width: 0.92rem;
+            line-height: 0.6rem;
+            text-align: center;
+            font-size: 0.16rem;
+
+            &:nth-child(4),
+            &:nth-child(8) {
+                border-right: solid 1px #ccc;
+            }
+
+            &:nth-child(5),
+            &:nth-child(6),
+            &:nth-child(7),
+            &:nth-child(8) {
+                border-bottom: solid 1px #ccc;
+            }
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+
+    .ads {
+        margin-top: 0.04rem;
+
+        li {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .bar {
+        background: url(../img/house-bar.jpg);
+        height: 0.21rem;
+        background-size: 100%;
+    }
+
+    .houses {
+        h1 {
+            font-size: 0.2rem;
+            text-align: center;
+            color: red;
+            margin: 10px 0px;
+            font-weight: normal;
+        }
+
+        p.count {
+            text-align: center;
+            margin: 10px 0px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .content {
+            margin: 0px 35px;
+            font-size: 14px;
+
+            h2 {
+                font-size: 15px;
+            }
+        }
     }
 }
