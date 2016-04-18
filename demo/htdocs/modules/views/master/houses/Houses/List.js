@@ -9,12 +9,21 @@ define('/Houses/List', function (require, module) {
 
     var panel = KISP.create('Panel', '#ul-houses-list');
 
+    //var list = [
+    //    { name: '全部', src: 'style/img/houses-0.png', },
+    //    { name: '祖庙', src: 'style/img/houses-1.png', },
+    //    { name: '张槎', src: 'style/img/houses-2.png', },
+    //    { name: '南庄', src: 'style/img/houses-3.png', },
+    //    { name: '石湾', src: 'style/img/houses-4.png', },
+    //];
+
+
     var list = [
-        { name: '全部', src: 'style/img/houses-0.png', },
-        { name: '祖庙', src: 'style/img/houses-1.png', },
-        { name: '张槎', src: 'style/img/houses-2.png', },
-        { name: '南庄', src: 'style/img/houses-3.png', },
-        { name: '石湾', src: 'style/img/houses-4.png', },
+        { name: '全部', src: 'style/img/houses-0.jpg', },
+        { name: '祖庙', src: 'style/img/houses-1.jpg', },
+        { name: '张槎', src: 'style/img/houses-2.jpg', },
+        { name: '南庄', src: 'style/img/houses-3.jpg', },
+        { name: '石湾', src: 'style/img/houses-4.jpg', },
     ];
 
 
