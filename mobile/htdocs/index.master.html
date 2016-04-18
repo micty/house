@@ -1,0 +1,57 @@
+﻿
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>禅城房博会</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link href="f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="f/kisp/kisp.debug.css" rel="stylesheet" />
+
+    <!--weber.css.begin-->
+    <script>
+        [
+            'style/less/index.less',
+            'modules/**/*.less'
+        ]
+    </script>
+    <!--weber.css.end-->
+
+</head>
+<body>
+    <div id="div-pulldown" class="pulldown" style="display: none;">下拉刷新</div>
+    <div id="div-pullup" class="pullup" style="display: none;">上拉加载更多</div>
+
+
+    <!--weber.html.begin-->
+    <script>
+        [
+            'modules/**/view.html',
+        ]
+    </script>
+    <!--weber.html.end-->
+
+
+    <script src="f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="f/iscroll/iscroll-probe.mod.debug.js"></script>
+    <script src="f/miniquery/miniquery.debug.js"></script>
+    <script src="f/kisp/kisp.debug.js"></script>
+    <script src="config.js"></script>
+
+    <!--weber.js.begin-->
+    <script>
+        [
+            'lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--weber.js.end-->
+
+</body>
+</html>

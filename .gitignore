@@ -19,6 +19,12 @@
 /permit/htdocs/**/index.html
 
 
+/mobile/bin/node_modules
+/mobile/build
+/mobile/htdocs/style/css
+/mobile/htdocs/**/index.html
+
+
 /permit/server/node_modules
 
 
