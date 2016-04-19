@@ -11,8 +11,16 @@
 
         scroller = new Scroller(view.$.get(0));
         
+        view.$.touch({
+            '#ul-master-houses>li': function () {
+                view.fire('houses', []);
 
+            },
 
+            '[data-cmd="news"]': function () {
+                view.fire('news', []);
+            },
+        });
     });
 
     view.on('render', function (index) {

@@ -13,9 +13,34 @@ KISP.launch(function (require, module, nav) {
     resize();
    
 
-    //nav.to('Master');
-    nav.to('HouseList');
 
+    var HouseList = module.require('HouseList');
+    HouseList.on({
+        'detail': function (item) {
+            nav.to('HouseDetail');
+        },
+    });
+
+    var NewsList = module.require('NewsList');
+    NewsList.on({
+        'detail': function (item) {
+            nav.to('NewsDetail');
+        },
+    });
+
+
+    var Master = module.require('Master');
+    Master.on({
+        'news': function (item) {
+            nav.to('NewsList');
+
+        },
+        'houses': function (item) {
+            nav.to('HouseList');
+        },
+    });
+
+    nav.to('Master');
 
   
    

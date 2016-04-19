@@ -10,8 +10,13 @@
     view.on('init', function () {
 
         scroller = new Scroller(view.$.get(0));
-        
 
+        view.$.touch({
+            '#ul-house-list>li': function () {
+
+                view.fire('detail', []);
+            },
+        });
 
     });
 
