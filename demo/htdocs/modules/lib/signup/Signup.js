@@ -61,6 +61,7 @@ define('Signup', function (require, module) {
                 KISP.alert('请输入姓名');
                 return;
             }
+
             var phone = $.find('[data-name="phone"]').val();
             if (!phone) {
                 KISP.alert('请输入手机号');
@@ -78,6 +79,8 @@ define('Signup', function (require, module) {
                 KISP.alert('请输入意向楼盘');
                 return;
             }
+
+
 
 
             var data = {

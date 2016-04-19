@@ -16,22 +16,14 @@ define('/API', function (require, module, exports) {
 
     function format(all) {
 
-        var name$list = {};
+        var belong$list = {};
 
         $.Array.each(all, function (item, index) {
 
-            var price = item.price;
-
-            var name =
-                price == 0 ? '价格待定楼盘' :
-                price < 8000 ? '8千元/平米以下楼盘' :
-                price <= 10000 ? '8千-1万元/平米楼盘' :
-                price <= 12000 ? '1-1.2万元/平米楼盘' :
-                price > 12000 ? '1.2万元/平米以上楼盘' : '未知分类';
-
-            var list = name$list[name];
+            var belong = item.belong;
+            var list = belong$list[belong];
             if (!list) {
-                list = name$list[name] = [];
+                list = belong$list[belong] = [];
             }
 
             list.push(item);
@@ -40,11 +32,27 @@ define('/API', function (require, module, exports) {
 
         var groups = [];
 
-        $.Object.each(name$list, function (area, list) {
-
+        $.Object.each(belong$list, function (belong, list) {
             groups.push({
-                'name': area,
+                'name': belong,
                 'items': list,
+            });
+        });
+
+        //按这个数组中的顺序对 groups 进行排序。
+        var belongs = [
+            '价格待定楼盘',
+            '8000元/平米以下楼盘',
+            '8000-10000元/平米楼盘',
+            '10000-12000元/平米楼盘',
+            '12000元/平米以上楼盘',
+        ];
+
+
+        groups = $.Array.map(belongs, function (belong) {
+
+            return $.Array.findItem(groups, function (group) {
+                return group.name == belong;
             });
         });
 
@@ -52,6 +60,7 @@ define('/API', function (require, module, exports) {
         return groups;
 
     }
+
 
     //获取数据
     function get() {
@@ -76,6 +85,8 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
+
+                //data = [data[0], data[0], data[0], data[0], data[0], data[0], data[0], ];
 
                 var list = format(data);
                 emitter.fire('success', 'get', [list]);

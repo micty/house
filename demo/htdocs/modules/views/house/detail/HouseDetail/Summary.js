@@ -40,13 +40,18 @@ define('/HouseDetail/Summary', function (require, module) {
             tabs.next();
         });
 
+        panel.$.on('click', '[data-cmd="signup"]', function () {
+            panel.fire('signup');
+        });
+
+
+      
     });
 
 
 
 
     panel.on('render', function (data) {
-
 
         tabs.render(data.albums);
         tabs.active(0);

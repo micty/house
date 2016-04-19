@@ -31,6 +31,11 @@ define('/HouseDetail', function (require, module) {
             'change': function (album) {
                 Photo.render(album, current);
             },
+
+            'signup': function () {
+                var Signup = require('Signup');
+                Signup.show();
+            },
         });
 
     });

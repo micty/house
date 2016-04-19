@@ -103,12 +103,7 @@ define('/Base', function (require, module, exports) {
                 return;
             }
 
-            price = Number(price);
-            if (isNaN(price) || price < 0) {
-                top.KISP.alert('【在售价格】必须为大于等于 0 的数字');
-                return;
-            }
-
+           
             //if (!data['type']) {
             //    top.KISP.alert('【主力户型】不能为空');
             //    return;

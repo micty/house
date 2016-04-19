@@ -13,7 +13,8 @@ KISP.launch(function (require, module, nav) {
     resize();
    
 
-    nav.to('Master');
+    //nav.to('Master');
+    nav.to('HouseList');
 
 
   

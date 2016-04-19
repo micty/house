@@ -29,7 +29,7 @@
             animation: true,
         },
         'View': {
-            background: '#fff',
+            background: '#EFEFF4',
         },
         'Proxy': {
             base: 'api/',

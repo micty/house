@@ -99,8 +99,6 @@ module.exports = {
     
         data = $.Object.extend(data, {
             'id': id,
-            'price': Number(data.price) || 0,
-            'count': Number(data.count) || 0,
             'datetime': getDateTime(),
 
         });
@@ -138,6 +136,7 @@ module.exports = {
                 'price': data.price,
                 'phone': data.phone,
                 'cover': data.cover,
+                'belong': data.belong,
             });
 
             list = JSON.stringify(list, null, 4);
@@ -183,8 +182,6 @@ module.exports = {
         var path = getPath(id);
 
         data = $.Object.extend(data, {
-            'price': Number(data.price) || 0,
-            'count': Number(data.count) || 0,
             'datetime': getDateTime(),
         });
 
@@ -211,6 +208,7 @@ module.exports = {
                 'price': data.price,
                 'phone': data.phone,
                 'cover': data.cover,
+                'belong': data.belong,
             };
 
             var list;
