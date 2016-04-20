@@ -63,8 +63,8 @@
     KISP.config({
         'API': {
             //内部地址
-            //url: 'http://localhost:3000/',
-            url: 'http://172.20.131.111:3000/',
+            url: 'http://localhost:3000/',
+            //url: 'http://172.20.131.111:3000/',
 
             
         },
