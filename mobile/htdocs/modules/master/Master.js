@@ -30,7 +30,7 @@
         API.on('success', function (data) {
            
             Houses.render(data);
-            scroller.refresh(200);
+            scroller.refresh(500);
 
         });
         

@@ -10,7 +10,7 @@
 /demo/bin/node_modules
 /demo/build
 /demo/htdocs/style/css
-/demo/htdocs/**/index.html
+
 
 
 /permit/bin/node_modules

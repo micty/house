@@ -31,6 +31,7 @@ define('/HouseDetail/Photo', function (require, module) {
             Template.fill(liPhoto, {
                 'src': item.url,
                 'desc': item.desc,
+                'no-desc': item.desc ? '' : 'no-desc',
             });
             
         });

@@ -10,7 +10,8 @@ module.exports = {
     * 构建完成后需要删除的文件或目录。
     */
     clean: [
-        'api/',
+        '!api/',         //这个不要删除
+
         'modules/',
         'lib/',
         'partial/',
