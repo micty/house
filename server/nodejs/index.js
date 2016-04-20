@@ -227,6 +227,14 @@ app.get('/House2.remove', function (req, res) {
 });
 
 
+//楼盘分类模块
+var HouseCatalog = require('./modules/HouseCatalog');
+app.get('/HouseCatalog.list', function (req, res) {
+    HouseCatalog.list(res);
+});
+
+
+
 
 //登录
 app.post('/login', function (req, res) {

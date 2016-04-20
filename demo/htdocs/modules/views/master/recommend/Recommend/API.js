@@ -15,6 +15,46 @@ define('/Recommend/API', function (require, module, exports) {
 
 
 
+    //function format(all) {
+
+    //    var belong$list = {};
+
+    //    $.Array.each(all, function (item, index) {
+
+    //        var belong = item.belong;
+    //        var list = belong$list[belong];
+    //        if (!list) {
+    //            list = belong$list[belong] = [];
+    //        }
+
+    //        list.push(item);
+
+    //    });
+
+    //    var groups = [];
+
+    //    $.Object.each(belong$list, function (belong, list) {
+
+    //        list.sort(function (a, b) {
+    //            a = a.prioriy || 0;
+    //            b = b.prioriy || 0;
+
+    //            return a - b;
+    //        });
+
+    //        groups.push({
+    //            'name': belong,
+    //            'items': list,
+    //        });
+    //    });
+
+
+    //    return groups;
+
+    //}
+
+
+
     function format(all) {
 
         var belong$list = {};
@@ -34,17 +74,26 @@ define('/Recommend/API', function (require, module, exports) {
         var groups = [];
 
         $.Object.each(belong$list, function (belong, list) {
-
-            list.sort(function (a, b) {
-                a = a.prioriy || 0;
-                b = b.prioriy || 0;
-
-                return a - b;
-            });
-
             groups.push({
                 'name': belong,
                 'items': list,
+            });
+        });
+
+        //按这个数组中的顺序对 groups 进行排序。
+        var belongs = [
+            '价格待定楼盘',
+            '8000元/平米以下楼盘',
+            '8000-10000元/平米楼盘',
+            '10000-12000元/平米楼盘',
+            '12000元/平米以上楼盘',
+        ];
+
+
+        groups = $.Array.map(belongs, function (belong) {
+
+            return $.Array.findItem(groups, function (group) {
+                return group.name == belong;
             });
         });
 
@@ -58,7 +107,11 @@ define('/Recommend/API', function (require, module, exports) {
     function get() {
 
 
-        var api = KISP.create('API', 'Recommend.list', {
+        //var api = KISP.create('API', 'Recommend.list', {
+        //    //proxy: 'api/GetRecommedList.js',
+        //});
+
+        var api = KISP.create('API', 'House2.list', {
             //proxy: 'api/GetRecommedList.js',
         });
 
@@ -88,17 +141,11 @@ define('/Recommend/API', function (require, module, exports) {
 
 
             'fail': function (code, msg, json, xhr) {
-
                 KISP.alert('获取数据失败: {0} ({1})', msg, code);
-
             },
 
             'error': function (code, msg, json, xhr) {
-                if (!json) { // http 协议连接错误
-                    msg = '网络繁忙，请稍候再试';
-                }
-
-                KISP.alert(msg);
+                KISP.alert('网络繁忙，请稍候再试');
             },
         });
 

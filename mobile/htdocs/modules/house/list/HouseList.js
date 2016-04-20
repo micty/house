@@ -2,46 +2,36 @@
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
-    var Scroller = require('Scroller');
+
+    var Header = module.require('Header');
+    var List = module.require('List');
 
     var view = KISP.create('View', '#div-view-house-list');
-    var scroller = null;
+
 
     view.on('init', function () {
 
-        scroller = new Scroller(view.$.get(0));
-
-        view.$.touch({
-            '#ul-house-list>li': function () {
-
-                view.fire('detail', []);
+       
+        List.on({
+            'item': function (item) {
+                view.fire('detail', [item]);
             },
         });
 
     });
 
-    view.on('render', function (index) {
-
-        scroller.refresh(200);
+    view.on('render', function (data) {
 
 
-    });
 
-    view.on('show', function (byRender) {
 
+        Header.render(data);
+        List.render(data.list);
 
 
     });
 
-
-    view.on('hide', function () {
-
-    });
-
-
-    view.on('refresh', function () {
-     
-    });
+  
 
 
     return view.wrap();

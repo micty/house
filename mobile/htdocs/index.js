@@ -17,14 +17,16 @@ KISP.launch(function (require, module, nav) {
     var HouseList = module.require('HouseList');
     HouseList.on({
         'detail': function (item) {
-            nav.to('HouseDetail');
+            nav.to('HouseDetail', item);
         },
     });
+
+
 
     var NewsList = module.require('NewsList');
     NewsList.on({
         'detail': function (item) {
-            nav.to('NewsDetail');
+            nav.to('NewsDetail', item);
         },
     });
 
@@ -36,7 +38,7 @@ KISP.launch(function (require, module, nav) {
 
         },
         'houses': function (item) {
-            nav.to('HouseList');
+            nav.to('HouseList', item);
         },
     });
 

@@ -22,12 +22,6 @@ define('/Recommend/Tabs', function (require, module) {
 
             change: function (item, index) {
                 panel.fire('change', [item]);
-
-                var left = 430 - index * 78;
-                
-                $(ul).animate({
-                    'padding-left': left,
-                });
             },
         });
 

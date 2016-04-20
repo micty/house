@@ -3,6 +3,10 @@
 
     //业务端模块的默认配置
     KISP.data({
+        'demo': {
+            //在 house/detail 用到
+            map: '../html/map/index.html',
+        },
 
     });
 
@@ -48,10 +52,21 @@
 
     /**grunt.debug.begin*/
 
+    KISP.data({
+        'demo': {
+            //在 house/detail 用到
+            map: '../../demo/htdocs/html/map/index.html',
+        },
+    });
+
+
     KISP.config({
         'API': {
             //内部地址
-            url: 'http://localhost:3000/',
+            //url: 'http://localhost:3000/',
+            url: 'http://172.20.131.111:3000/',
+
+            
         },
 
         'Proxy': {

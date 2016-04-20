@@ -34,7 +34,7 @@
     KISP.config({
         'API': {
             //内部地址
-            url: 'http://localhost:3000/',
+            //url: 'http://localhost:3000/',
         },
         'Proxy': {
             delay: {

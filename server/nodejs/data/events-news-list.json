@@ -1,110 +1,56 @@
 [
     {
         "id": "5F87A5DD7460",
-        "title": "【访谈】禅城区国土局:禅城房价呈稳中略有微涨趋势",
-        "url": "?type=news&id=7C6D098DD328#NewsDetail-0E12410D",
+        "title": "【地铁】未来5年 禅城将探索“轨道+物业”发展模式",
+        "url": "?type=news&id=5EA80664F743#NewsDetail-8DE9F000",
         "priority": 5
-    },
-    {
-        "id": "B58AA07C1AF6",
-        "title": "【闭幕】禅城房博会线下展厅闭幕 线上展厅持续开放",
-        "url": "?type=news&id=22D879049F10#NewsDetail-6C2D7A41",
-        "priority": 4
-    },
-    {
-        "id": "BCC85FEA7FD3",
-        "title": "【楼市】广佛同城房价未同步 佛山楼价仍是广州一半",
-        "url": "?type=news&id=3F79256C1275#NewsDetail-E0927A8A",
-        "priority": 7
-    },
-    {
-        "id": "521CDC0C151F",
-        "title": "【沙龙】广佛同城仍被看好 禅城楼市将迎20年黄金期",
-        "url": "?type=news&id=072536D7F02E#NewsDetail-0EFBCF6B",
-        "priority": 6
-    },
-    {
-        "id": "BBAAE4961DFF",
-        "title": "【政策】全面二孩政策袭来！学位房走俏 四房变刚需",
-        "url": "?type=news&id=508C73F00845#NewsDetail-77814298",
-        "priority": 6
-    },
-    {
-        "id": "DBDE2BB3CE30",
-        "title": "【新闻】双11限时抢购 11套特惠房笋到你唔信",
-        "url": "?type=house&id=C81FC812499E#NewsDetail-B97E9C23",
-        "priority": 4
-    },
-    {
-        "id": "2BB5D7630EFE",
-        "title": "【房贷】媒体：房贷利息将出优惠政策 ",
-        "url": "?type=news&id=F59FAA027EA2#NewsDetail-2DEB9D45",
-        "priority": 5
-    },
-    {
-        "id": "027FA39EA5E9",
-        "title": "【新闻】楼市去库存关键在供需双向发力",
-        "url": "?type=news&id=4EE908C171B7#NewsDetail-9C407BBE",
-        "priority": 4
     },
     {
         "id": "CF6BB9AA6356",
-        "title": "【新闻】佛山前11个月卖地278亿 广佛交界贡献超五成",
-        "url": "?type=news&id=DE5A7F30184A#NewsDetail-9CBF5457",
-        "priority": 4
-    },
-    {
-        "id": "6CB074D8C2F2",
-        "title": "【新闻】岭南天地获全球首个LEED认证",
-        "url": "?type=news&id=1DA19F11C298#NewsDetail-BAF7AE95",
+        "title": "【置业】佛山公积金万用宝典 你想知道的都在这里",
+        "url": "?type=news&id=5913C3BABB3B#NewsDetail-A691097A",
         "priority": 4
     },
     {
         "id": "150D744EEAD0",
-        "title": "【资讯】楼市去库存持久战：财政金融税费等政策将出",
-        "url": "?type=news&id=86A01B842E00#NewsDetail-0D455DB6",
-        "priority": 3
-    },
-    {
-        "id": "4771C3BBFAA2",
-        "title": "【新闻】禅城房价稳健发展2016还要涨区长喊你来买房",
-        "url": "?type=news&id=7441033043F1#NewsDetail-DDCBDC3F",
-        "priority": 2
+        "title": "【入户】佛山拟降门槛:购房就可入户 取消计生审核",
+        "url": "?type=policy&id=AA3B0F8C60CE#NewsDetail-47CF5285",
+        "priority": 6
     },
     {
         "id": "C3D055680C00",
-        "title": "【资讯】房博会参展房源已销售950套！",
-        "url": "?type=news&id=B7A3AFDC6303#NewsDetail-CDDCD2B2",
-        "priority": 2
+        "title": "【城建】2016禅城“多点开花” 产城新格局锋芒渐露",
+        "url": "?type=news&id=1C21A403EA65#NewsDetail-8C9252DF",
+        "priority": 7
     },
     {
         "id": "2C1579C2EA5B",
-        "title": "【资讯】房博会16大楼盘推清盘大优惠！",
-        "url": "?type=news&id=E297D7ECDE6A#NewsDetail-62C3C39B",
-        "priority": 2
-    },
-    {
-        "id": "77F49E358C61",
-        "title": "【聚焦】12月楼价破9字头创新高 1分钟回顾佛山13年房价走势",
-        "url": "http://fschanfang.com/index.html?type=news&id=A0D03452257B#NewsDetail-B5A4A2BD",
-        "priority": "2"
-    },
-    {
-        "id": "ABC91CB482BA",
-        "title": "【资讯】2015年禅城楼市成交量大涨5成 售价持稳",
-        "url": "http://fschanfang.com/index.html?type=news&id=B0C544429D21#NewsDetail-2E7EF8E6",
-        "priority": 2
+        "title": "【房价】禅城成交均价已破万 中心楼盘单价近1万5",
+        "url": "?type=news&id=AB539E23AEAA#NewsDetail-F7090EF1",
+        "priority": 3
     },
     {
         "id": "A5E963E3D2CB",
-        "title": "【资讯】佛山拟有房即可入户！",
-        "url": "http://fschanfang.com/index.html?type=news&id=5B58DAF83C27#NewsDetail-D9266152",
+        "title": "【板块】“双地铁”时代来临 置业禅城五大热门板块",
+        "url": "?type=news&id=83E274E34573#NewsDetail-762F6515",
         "priority": 1
     },
     {
         "id": "26AACDCD8C4A",
-        "title": "【资讯】地铁3号线力争今年下半年动工！",
-        "url": "http://fschanfang.com/index.html?type=news&id=BE8E446C6537#NewsDetail-DDF0DF7E",
-        "priority": 1
+        "title": "【楼市】广佛同城提速 交界处广州客疯狂扫楼六成",
+        "url": "?type=news&id=7DFF69F5E8F9#NewsDetail-DF23F506",
+        "priority": 2
+    },
+    {
+        "id": "F212767C466C",
+        "title": "2016佛山(禅城)第二届网上房博会即将开幕",
+        "url": "?type=news&id=F423E7980727#NewsDetail-F263FADE",
+        "priority": 0
+    },
+    {
+        "id": "C909553CCCFE",
+        "title": "【房企】百强房企35家佛山签到 融创金茂加盟禅城",
+        "url": "?type=news&id=CB0C4B0ED6C9#NewsDetail-49BE567C",
+        "priority": 8
     }
 ]

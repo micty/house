@@ -4,6 +4,10 @@
     var KISP = require('KISP');
     var Scroller = require('Scroller');
 
+    var API = module.require('API');
+    var Houses = module.require('Houses');
+
+
     var view = KISP.create('View', '#div-view-master');
     var scroller = null;
 
@@ -12,39 +16,34 @@
         scroller = new Scroller(view.$.get(0));
         
         view.$.touch({
-            '#ul-master-houses>li': function () {
-                view.fire('houses', []);
-
-            },
-
             '[data-cmd="news"]': function () {
                 view.fire('news', []);
             },
         });
+
+        Houses.on({
+            'item': function (item) {
+                view.fire('houses', [item]);
+            },
+        });
+
+        API.on('success', function (data) {
+           
+            Houses.render(data);
+            scroller.refresh(200);
+
+        });
+        
     });
+
 
     view.on('render', function (index) {
 
-        scroller.refresh(200);
+        API.get();
 
 
     });
 
-    view.on('show', function (byRender) {
-
-
-
-    });
-
-
-    view.on('hide', function () {
-
-    });
-
-
-    view.on('refresh', function () {
-     
-    });
 
 
     return view.wrap();

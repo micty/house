@@ -1,29 +1,30 @@
 ﻿
 <div id="div-view-house-detail" class="view-house-detail" style="display: none;">
     <div class="main">
-
-   
-        <div class="header">
-            <img class="cover" src="style/img/house-01.jpg" />
-            <p class="price">均价：14000元/平米</p>
+        <div id="div-house-detail-header" class="header">
+            <!--
+            <img class="cover" src="{cover}" />
+            <p class="price">价格：{price}</p>
             <div class="content">
                 <ul class="left">
-                    <li class="title">佛山万科城</li>
-                    <li>位置：佛山市禅城区同济东路</li>
-                    <li>户型：72-120 平方米 二至四房</li>
+                    <li class="title">{name}</li>
+                    <li>位置：{address}</li>
+                    <li>户型：{type}</li>
                 </ul>
                 <div class="right">
                     <img src="style/img/phone.png" />
-                    <p>0755-8953038</p>
+                    <p>{phone}</p>
                 </div>
             </div>
+            -->
         </div>
         <div id="div-house-detail-content">
+            <!--
             <div class="panel">
                 <h2>楼盘简介</h2>
                 <div class="content">
                     <p>
-                        岭南天地，150万㎡城央文化华宅，城央中心大城，地段为王！傲居5A级文化旅游地祖庙景区内，集旅游、文化、住宅、商业商务、餐饮娱乐于一体。保留8条历史街巷，22处历史文物，千年回忆在此延续，唯一并不可复制。1分钟达祖庙/普君北路站、30分钟达广佛各区、90分钟达港澳各地。沿用佛山特有“西商东住”的概念，运用低碳环保的绿色设计，一站式生活配套，港式星级服务为您创造美好生活！
+                        {brief}
                     </p>
                 </div>
             </div>
@@ -31,8 +32,8 @@
                 <h2>最新动态</h2>
                 <div class="content">
                     <p>
-                        岭南天地在售尚苑、御苑和璟轩别墅三大组团，洋房面积主打110-270平米，别墅面积主打190-400平米，售价约13000-15000元/平米。
-                        <a href="http://fschanfang.com/index.html?type=house&amp;id=E54015D43B1B#NewsDetail-5ADF5632" target="_blank">详细 <i class="icon fa fa-angle-double-right"></i></a>
+                        {news.text}
+                        <a href="{news.url}" target="_blank">详细 <i class="icon fa fa-angle-double-right"></i></a>
                     </p>
                 </div>
             </div>
@@ -40,17 +41,18 @@
             <div class="panel">
                 <h2>优惠房源</h2>
                 <div class="content">
-                    <p style="widows: auto; text-align: center;"><span style="text-align: center; widows: 1;">岭南天地优惠房源信息（更新时间：2016年4月18日）</span></p><p><br></p><table cellpadding="0" cellspacing="0" width="721"><colgroup><col width="72" style="width:72px"><col width="65" style=";width:65px"><col width="63" style=";width:63px"><col width="114" style=";width:115px"><col width="121" style=";width:121px"><col width="122" style=";width:123px"><col width="90" style=";width:91px"><col width="72" style="width:72px"></colgroup><tbody><tr height="36" style=";height:36px" class="firstRow"><td height="36" width="72">序号</td><td width="65" style="border-left-style: none;">座号</td><td width="63" style="border-left-style: none;">单元号</td><td width="115" style="border-left-style: none;">建筑面积（m<span style=""><sup>2</sup></span><span style="">）</span></td><td width="121" style="border-left-style: none;">套内面积（m<span style=""><sup>2</sup></span><span style="">）</span></td><td width="123" style="border-left-style: none;">分摊面积（m<span style=""><sup>2</sup></span><span style="">）</span></td><td width="91" style="border-left-style: none;">房屋用途</td><td width="72" style="">户型</td></tr><tr height="32" style=";height:32px"><td height="32" style="border-top-style: none;">1</td><td style="border-top:none;border-left:none">T1-02</td><td style="border-top:none;border-left:none">302</td><td style="border-top:none;border-left:none">121.75</td><td style="border-top:none;border-left:none">93.89</td><td style="border-top:none;border-left:none">27.86</td><td style="border-top:none;border-left:none">住宅</td><td style="border-top:none">3房2厅</td></tr><tr height="32" style=";height:32px"><td height="32" style="border-top-style: none;">2</td><td style="border-top:none;border-left:none">T1-02</td><td style="border-top:none;border-left:none">402</td><td style="border-top:none;border-left:none">121.75</td><td style="border-top:none;border-left:none">93.89</td><td style="border-top:none;border-left:none">27.86</td><td style="border-top:none;border-left:none">住宅</td><td style="border-top:none">3房2厅</td></tr><tr height="30" style=";height:31px"><td height="31" style="border-top-style: none;">3</td><td style="border-top:none;border-left:none">T1-05</td><td style="border-top:none;border-left:none">305</td><td style="border-top:none;border-left:none">121.75</td><td style="border-top:none;border-left:none">93.89</td><td style="border-top:none;border-left:none">27.86</td><td style="border-top:none;border-left:none">住宅</td><td style="border-top:none">3房2厅</td></tr><tr height="32" style=";height:32px"><td height="32" style="border-top-style: none;">4</td><td style="border-top:none;border-left:none">T1-05</td><td style="border-top:none;border-left:none">405</td><td style="border-top:none;border-left:none">121.75</td><td style="border-top:none;border-left:none">93.89</td><td style="border-top:none;border-left:none">27.86</td><td style="border-top:none;border-left:none">住宅</td><td style="border-top:none">3房2厅</td></tr><tr height="29" style=";height:29px"><td height="29" style="border-top-style: none;">5</td><td style="border-top:none;border-left:none">T2-01</td><td style="border-top:none;border-left:none">201</td><td style="border-top:none;border-left:none">128.95</td><td style="border-top:none;border-left:none">99.39</td><td style="border-top:none;border-left:none">29.56</td><td style="border-top:none;border-left:none">住宅</td><td style="border-top:none">3房2厅</td></tr><tr height="32" style=";height:32px"><td height="32" style="border-top-style: none;">6</td><td style="border-top:none;border-left:none">T2-01</td><td style="border-top:none;border-left:none">301</td><td style="border-top:none;border-left:none">128.95</td><td style="border-top:none;border-left:none">99.39</td><td style="border-top:none;border-left:none">29.56</td><td style="border-top:none;border-left:none">住宅</td><td style="border-top:none">3房2厅</td></tr><tr height="33" style=";height:33px"><td height="33" style="border-top-style: none;">7</td><td style="border-top:none;border-left:none">T2-01</td><td style="border-top:none;border-left:none">401</td><td style="border-top:none;border-left:none">128.95</td><td style="border-top:none;border-left:none">99.39</td><td style="border-top:none;border-left:none">29.56</td><td style="border-top:none;border-left:none">住宅</td><td style="border-top:none">3房2厅</td></tr><tr height="32" style=";height:32px"><td height="32" style="border-top-style: none;">8</td><td style="border-top:none;border-left:none">T2-02</td><td style="border-top:none;border-left:none">202</td><td style="border-top:none;border-left:none">152.52</td><td style="border-top:none;border-left:none">117.56</td><td style="border-top:none;border-left:none">34.96</td><td style="border-top:none;border-left:none">住宅</td><td style="border-top:none">3房2厅</td></tr></tbody></table><p></p><p><br></p>
+                    {content}
                 </div>
             </div>
 
             <div class="panel map">
                 <h2>楼盘地图</h2>
                 <div class="content">
-                    <iframe src="../../demo/htdocs/html/map/index.html?x=113.115377&amp;y=23.029901&amp;title=%E5%B2%AD%E5%8D%97%E5%A4%A9%E5%9C%B0&amp;content=0757-82308888" frameborder="0"></iframe>
+                    <iframe src="{iframe}" frameborder="0"></iframe>
                 </div>
             </div>
 
+            -->
         </div>
         
 

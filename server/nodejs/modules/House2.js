@@ -327,8 +327,23 @@ module.exports = {
     list: function (res) {
 
         var path = getPath();
+        var existed = fs.existsSync(path);
 
-        if (!fs.existsSync(path)) {
+        //重载 list()。 仅内部其它模块调用。
+        if (!res) {
+            if (!existed) {
+                return;
+            }
+
+            var data = fs.readFileSync(path, 'utf8');
+            var list = JSON.parse(data);
+            return list;
+        }
+
+
+
+
+        if (!existed) {
             res.send({
                 code: 200,
                 msg: 'empty',
@@ -368,7 +383,8 @@ module.exports = {
 
         });
 
-    }
+    },
+
 
 
 };
