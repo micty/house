@@ -27,20 +27,30 @@
                 'content': data.content,
             });
 
+            //解析 innerHTML 需要时间，这里需要延迟一下
             scroller.refresh(200);
-            scroller.refresh(500);
-            scroller.refresh(1000);
+
+            //要重新绑定 img，因为 img 是动态创建的，
+            //并且加载后滚动区高度发生了变化，要刷新滚动器
+            view.$.find('img').on('load', function () {
+                scroller.refresh(200);
+            });
+
 
         });
 
     });
 
-    view.on('render', function (item) {
+    view.on('render', function (data) {
+
+        API.get(data);
 
 
-        API.get('86A01B842E00');
+    });
 
 
+    view.on('before-render', function () {
+        view.$.find('img').off('load');
     });
 
   

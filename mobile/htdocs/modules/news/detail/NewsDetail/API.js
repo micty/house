@@ -9,11 +9,11 @@ define('/NewsDetail/API', function (require, module, exports) {
     var Emitter = MiniQuery.require('Emitter');
 
     var emitter = new Emitter();
-
+    var loading = null;
 
 
     //获取数据
-    function get(id) {
+    function get(data) {
 
 
         var api = KISP.create('API', 'Paper.get', {
@@ -23,12 +23,20 @@ define('/NewsDetail/API', function (require, module, exports) {
 
         api.on({
 
+            'request': function () {
+                loading = loading || KISP.create('Loading', {
+                    text: '加载中...',
+                    container: '#div-view-news-detail',
+                });
+                loading.show();
+            },
+
+
             'response': function () {
-                
+                loading.hide();
             },
 
             'success': function (data, json, xhr) {
-
 
                 emitter.fire('success', [{
                     'datetime': data.datetime,
@@ -37,7 +45,6 @@ define('/NewsDetail/API', function (require, module, exports) {
                 }]);
 
             },
-
 
 
             'fail': function (code, msg, json, xhr) {
@@ -49,10 +56,7 @@ define('/NewsDetail/API', function (require, module, exports) {
             },
         });
 
-        api.get({
-            'type': 'news',
-            'id': id,
-        });
+        api.get(data);
 
 
     }

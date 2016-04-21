@@ -17,7 +17,7 @@ define('/HouseList/List', function (require, module, exports) {
     panel.on('init', function () {
 
         scroller = new Scroller(ul.parentNode, {
-            top: '1.12rem',
+            top: '0.97rem',
         });
         
 
@@ -30,6 +30,10 @@ define('/HouseList/List', function (require, module, exports) {
 
                 panel.fire('item', [item, index]);
 
+            },
+
+            '[data-cmd="phone"]': function (event) {
+                event.stopPropagation();
             },
         });
     });
@@ -54,11 +58,28 @@ define('/HouseList/List', function (require, module, exports) {
         });
 
 
+        //解析 innerHTML 需要时间，这里需要延迟一下
         scroller.refresh(200);
+
+        //要重新绑定 img，因为 img 是动态创建的，
+        //并且加载后滚动区高度发生了变化，要刷新滚动器
+        panel.$.find('img').on('load', function () {
+            scroller.refresh(200);
+        });
 
 
     });
 
+
+    panel.on('before-render', function () {
+        panel.$.find('img').off('load');
+    });
+
+    panel.on('show', function (byRender) {
+        if (!byRender) { //说明是后退导致的。
+            scroller.refresh(200);
+        }
+    });
 
     return panel.wrap();
 

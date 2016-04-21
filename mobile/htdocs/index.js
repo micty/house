@@ -28,15 +28,27 @@ KISP.launch(function (require, module, nav) {
         'detail': function (item) {
             nav.to('NewsDetail', item);
         },
+        'url': function (url) {
+            location.href = url;
+        },
     });
 
 
     var Master = module.require('Master');
     Master.on({
-        'news': function (item) {
-            nav.to('NewsList');
-
+        'news': {
+            'list': function () {
+                nav.to('NewsList');
+            },
+            'detail': function (item) {
+                nav.to('NewsDetail', item);
+            },
         },
+
+        'url': function (url) {
+            location.href = url;
+        },
+
         'houses': function (item) {
             nav.to('HouseList', item);
         },

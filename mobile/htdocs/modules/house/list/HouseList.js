@@ -31,6 +31,13 @@
 
     });
 
+
+    view.on('show', function (byRender) {
+        if (!byRender) { //说明是后退导致的
+            List.show(); //强行触发 show 事件，以让 scroller 刷新。
+        }
+    });
+
   
 
 

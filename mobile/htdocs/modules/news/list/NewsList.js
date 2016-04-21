@@ -5,7 +5,7 @@
     var Scroller = require('Scroller');
 
     var API = module.require('API');
-    var Header = module.require('Header');
+    var Ads = module.require('Ads');
     var List = module.require('List');
 
 
@@ -19,11 +19,22 @@
         scroller = new Scroller('#div-news-list-main', {
             top: '0.35rem',
         });
+
+
+        Ads.on({
+            'detail': function (data) {
+                view.fire('detail', [data]);
+            },
+
+            'url': function (url) {
+                view.fire('url', [url]);
+            },
+        });
         
 
         API.on('success', function(data){
         
-            Header.render(data.ads);
+            Ads.render(data.ads);
             List.render(data.list);
 
             scroller.refresh(200);
@@ -45,6 +56,11 @@
 
     });
 
+    view.on('show', function (byRender) {
+        if (!byRender) { //说明是后退导致的
+            scroller.refresh(200);
+        }
+    });
     
 
     return view.wrap();

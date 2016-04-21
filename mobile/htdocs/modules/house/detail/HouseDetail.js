@@ -14,6 +14,7 @@ define('/HouseDetail', function (require, module) {
     //var Summary = module.require('Summary');
     //var Photo = module.require('Photo');
     var Content = module.require('Content');
+    var Footer = module.require('Footer');
 
     var view = KISP.create('View', '#div-view-house-detail');
     var current = null; //当前楼盘的数据。
@@ -22,7 +23,9 @@ define('/HouseDetail', function (require, module) {
 
     view.on('init', function () {
 
-        scroller = new Scroller(view.$.get(0));
+        scroller = new Scroller('#div-house-detail-main', {
+            bottom: '0.42rem',
+        });
 
        
         API.on({
@@ -32,21 +35,19 @@ define('/HouseDetail', function (require, module) {
                 Header.render(data);
                 //Summary.render(data);
                 Content.render(data);
+                Footer.render();
 
-                scroller.refresh(300);
+                //解析 innerHTML 需要时间，这里需要延迟一下
+                scroller.refresh(200);
+
+                //要重新绑定 img，因为 img 是动态创建的，
+                //并且加载后滚动区高度发生了变化，要刷新滚动器
+                view.$.find('img, iframe').on('load', function () {
+                    scroller.refresh(200);
+                });
+
             },
         });
-
-        //Summary.on({
-        //    'change': function (album) {
-        //        Photo.render(album, current);
-        //    },
-
-        //    'signup': function () {
-        //        var Signup = require('Signup');
-        //        Signup.show();
-        //    },
-        //});
 
     });
 
@@ -60,6 +61,10 @@ define('/HouseDetail', function (require, module) {
   
     });
 
+
+    view.on('before-render', function () {
+        view.$.find('img, iframe').off('load');
+    });
 
 
     return view.wrap();

@@ -5,7 +5,7 @@
     KISP.data({
         'demo': {
             //在 house/detail 用到
-            map: '../html/map/index.html',
+            map: '../html/map/index.html?height=300',
         },
 
     });
@@ -55,7 +55,7 @@
     KISP.data({
         'demo': {
             //在 house/detail 用到
-            map: '../../demo/htdocs/html/map/index.html',
+            map: '../../demo/htdocs/html/map/index.html?height=300',
         },
     });
 

@@ -20,7 +20,8 @@ KISP.proxy(function () {
             },
             {
                 src: "style/img/keypoint-103.jpg",
-                href: '?type=news&id=AEEA9C8D98AC',
+                //href: '?type=news&id=AEEA9C8D98AC',
+                href: '?type=news&id=F423E7980727',
 
             },
             {

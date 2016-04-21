@@ -2,18 +2,15 @@
 <div id="div-view-master" class="view-master" style="display: none;">
     <div class="main">
         <header class="banner"></header>
-        <ul class="menus">
-            <li>地铁</li>
-            <li>入户</li>
-            <li>学位</li>
-            <li>娱乐</li>
-            <li>版块</li>
-            <li>公积金</li>
-            <li>文化</li>
-            <li data-cmd="news">动态</li>
+        <ul id="ul-master-menus" class="menus">
+            <!--<li data-index="{index}">{text}</li>-->
         </ul>
-        <ul class="ads">
-            <li><img src="style/img/ad-01.png" /></li>
+        <ul id="ul-master-ads" class="ads">
+            <!--
+            <li data-index="{index}">
+                <img src="{src}" />
+            </li>
+            -->
         </ul>
         <header class="bar"></header>
 
@@ -22,8 +19,11 @@
             <li data-index="{index}" class="item">
                 <h1>{belong}</h1>
                 <p class="count">{count}个项目</p>
-                <img src="style/img/house-01.jpg" />
-                <p class="desc">均价：{price}</p>
+            
+                <div class="cover">
+                    <img src="{cover}" />
+                    <p class="desc">{price}</p>
+                </div>
                 <div class="content">
                     <ul class="left">
                         <li class="title">{name}</li>
@@ -32,7 +32,7 @@
                     </ul>
                     <div class="right">
                         <img src="style/img/phone.png" />
-                        <p>{phone}</p>
+                        <p><a data-cmd="phone" href="tel:{phone}">{phone}</a></p>
                     </div>
                 </div>
             </li>

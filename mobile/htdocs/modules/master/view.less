@@ -7,7 +7,7 @@
     }
 
     .banner {
-        background: url(../img/banner.png);
+        background: url(../img/banner-02.png);
         height: 1.96rem;
         background-size: 100%;
     }
@@ -131,58 +131,67 @@
             color: #909090;
         }
 
-        img {
-            width: 100%;
-        }
 
         .item {
-            position: relative;
             background: #fff;
             border-bottom: 1px solid #d4d5de;
             margin-bottom: 10px;
 
-            .desc {
-                position: absolute;
-                bottom: 1.30rem;
-                background: rgba(0, 0, 0, 0.5);
-                color: #fff;
-                padding: 0.05rem 0.10rem 0.05rem 0.30rem;
-            }
-        }
-
-
-
-        .content {
-            font-size: 0.14rem;
-            margin: 0.10rem 0.20rem 0.20rem 0.20rem;
-
-            .left {
-                float: left;
-
-                li {
-                    margin: 0.05rem 0px;
-                }
-
-                .title {
-                    font-size: 0.16rem;
-                    font-weight: bold;
-                }
-            }
-
-            .right {
-                float: right;
-                margin-top: 0.36rem;
-                text-align: center;
+            .cover {
+                position: relative;
 
                 img {
-                    width: 0.14rem;
+                    width: 100%;
+                }
+
+                .desc {
+                    position: absolute;
+                    bottom: 0.05rem;
+                    background: rgba(0, 0, 0, 0.5);
+                    color: #fff;
+                    padding: 0.05rem 0.10rem 0.05rem 0.10rem;
                 }
             }
 
-            &:after {
-                content: '';
-                display: block;
-                clear: both;
+            .content {
+                font-size: 0.14rem;
+                margin: 0.0rem 0.10rem 0.20rem 0.10rem;
+
+                .left {
+                    float: left;
+                    max-width: 65%;
+
+                    li {
+                        margin: 0.05rem 0px;
+                    }
+
+                    .title {
+                        font-size: 0.20rem;
+                        color: #FF9800;
+                    }
+                }
+
+                .right {
+                    float: right;
+                    margin-top: 0.3rem;
+                    text-align: center;
+                    max-width: 35%;
+
+                    img {
+                        width: 0.20rem;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: #2196F3;
+                    }
+                }
+
+                &:after {
+                    content: '';
+                    display: block;
+                    clear: both;
+                }
             }
         }
     }

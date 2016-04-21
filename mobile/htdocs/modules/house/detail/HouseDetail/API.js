@@ -25,6 +25,7 @@ define('/HouseDetail/API', function (require, module, exports) {
             'request': function () {
                 loading = loading || KISP.create('Loading', {
                     text: '加载中...',
+                    container: '#div-view-house-detail',
                 });
                 loading.show();
             },

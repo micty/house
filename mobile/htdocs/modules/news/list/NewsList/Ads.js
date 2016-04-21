@@ -1,27 +1,30 @@
 ﻿
-define('/NewsList/List', function (require, module, exports) {
+define('/NewsList/Ads', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
+    var panel = KISP.create('Panel', '#ul-news-list-ads');
 
-
-
-    var ul = document.getElementById('ul-news-list-items');
-    var panel = KISP.create('Panel', ul);
     var list = [];
-
 
     panel.on('init', function () {
 
         panel.$.touch({
-            'li[data-index]': function () {
-                
+            '[data-index]': function () {
+
                 var index = +this.getAttribute('data-index');
                 var item = list[index];
+                var cmd = item.cmd;
 
-                panel.fire('item', [item, index]);
+                if (cmd) {
+                    panel.fire(cmd, [item.data]);
+                }
+                else {
+                    panel.fire('url', [item.url]);
+                }
+
 
             },
         });
@@ -31,20 +34,16 @@ define('/NewsList/List', function (require, module, exports) {
 
     panel.on('render', function (data) {
 
-    
         list = data;
+
 
         panel.fill(list, function (item, index) {
 
             return {
                 'index': index,
                 'cover': item.cover,
-                'title': item.title,
-                'desc': item.desc,
             };
         });
-
-
 
     });
 

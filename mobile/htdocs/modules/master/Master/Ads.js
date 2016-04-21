@@ -1,53 +1,52 @@
 ﻿
-define('/NewsList/List', function (require, module, exports) {
+define('/Master/Ads', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
+    var panel = KISP.create('Panel', '#ul-master-ads');
 
 
+    var list = [
+        {
+            src: 'style/img/ad-828.png',
+            type: 'news',
+            id: '073007BAD193',
+        },
+    ];
 
-    var ul = document.getElementById('ul-news-list-items');
-    var panel = KISP.create('Panel', ul);
-    var list = [];
 
 
     panel.on('init', function () {
 
+        
         panel.$.touch({
-            'li[data-index]': function () {
-                
+            '[data-index]': function () {
+
                 var index = +this.getAttribute('data-index');
                 var item = list[index];
-
-                panel.fire('item', [item, index]);
-
+                
+                panel.fire('item', [item]);
             },
         });
     });
 
-
-
     panel.on('render', function (data) {
 
-    
-        list = data;
+        //list = data;
 
         panel.fill(list, function (item, index) {
 
             return {
                 'index': index,
-                'cover': item.cover,
-                'title': item.title,
-                'desc': item.desc,
+                'src': item.src,
             };
         });
 
-
-
     });
 
+   
 
     return panel.wrap();
 

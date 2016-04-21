@@ -25,6 +25,7 @@ define('/NewsList/API', function (require, module, exports) {
             'request': function () {
                 loading = loading || KISP.create('Loading', {
                     text: '加载中...',
+                    container: '#div-view-news-list',
                 });
                 loading.show();
             },
