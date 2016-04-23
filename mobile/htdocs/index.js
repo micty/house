@@ -4,13 +4,36 @@
 */
 KISP.launch(function (require, module, nav) {
 
-    var $ = require('$');
-    function resize() {
-        document.documentElement.style.fontSize = (document.body.clientWidth / 3.75) + 'px';
+    
+
+    function init() {
+ 
+        var dpr = window.devicePixelRatio;
+        var scale = 1 / dpr;
+        var scale = 1;
+        var content = 'initial-scale=' + scale + ', user-scalable=yes';
+
+        var meta = document.createElement('meta');
+        meta.setAttribute('name', 'viewport');
+        meta.setAttribute('content', content);
+
+        document.head.appendChild(meta);
+
+
+        function resize() {
+            var size = document.body.clientWidth / 3.75;
+            document.documentElement.style.fontSize = size + 'px';
+        }
+
+        window.addEventListener('resize', resize, false);
+
+        resize();
+
     }
 
-    $(window).on('resize', resize);
-    resize();
+    init();
+
+
    
 
 

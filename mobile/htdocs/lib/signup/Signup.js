@@ -31,7 +31,7 @@ define('Signup', function (require, module) {
                 { text: '取消', name: 'cancel', color: 'red', },
                 { text: '确定', name: 'ok', },
             ],
-            height: 215,
+            height: 220,
             //width: 380,
             autoClosed: false,
             cssClass: 'dialog-signup',

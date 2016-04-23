@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>楼盘推荐管理</title>
+
+
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
+    <style>
+        .iframe {
+            overflow: hidden;
+        }
+    </style>
+
+    <!--weber.css.begin-->
+    <script>
+        [
+            '../../../style/less/global.less',
+            'index.less',
+            'modules/**/*.less',
+        ]
+    </script>
+    <!--weber.css.end-->
+
+
+</head>
+<body class="iframe">
+    <div class="main">
+       
+        <ul id="ul-items" class="list">
+            <!--
+            <li class="item">
+                 <h1>{belong}</h1>
+                <a href="{href}" target="_blank">
+                    <img src="{cover}" />
+                </a>
+                <h3>{name}</h3>
+                <ul class="fields">
+                    <li><span class="name">位置：</span><span class="value">{address}</span></li>
+                    <li><span class="name">户型：</span><span class="value">{type}</span></li>
+                    <li><span class="name">价格：</span><span class="value">{price}</span></li>
+                    <li><span class="name">电话：</span><span class="value">{phone}</span></li>
+                </ul>
+                <button data-cmd="edit" data-index="{index}"><i class="icon fa fa-edit"></i>编辑</button>
+            </li>
+        -->
+        </ul>
+
+        <!--dialog
+        <h1>{belong}</h1>
+        <ul>
+            <li class="name">
+                <span>楼盘名称</span><input data-name="name" type="text" placeholder="楼盘名称" value="{name}"/>
+            </li>
+            <li>
+                <span>位置</span><input data-name="address" type="text" placeholder="位置" value="{address}"/>
+            </li>
+            <li>
+                <span>户型</span><input data-name="type" type="text" placeholder="户型" value="{type}"/>
+            </li>
+             <li>
+                <span>价格</span><input data-name="price" type="text" placeholder="价格" value="{price}"/>
+            </li>
+             <li>
+                <span>电话</span><input data-name="phone" type="text" placeholder="电话" value="{phone}"/>
+            </li>
+            <li class="cover">
+                <span>封面地址</span><input data-name="cover" type="text" placeholder="封面地址" value="{cover}"/>
+            </li>
+            <li>
+                <img data-name="photo" src="{cover}" />
+            </li>
+        </ul>
+        dialog-->
+
+
+    </div>
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js"></script>
+    <script src="../../../f/kisp/kisp.debug.js"></script>
+    <script src="../../../config.js"></script>
+
+
+    <!--weber.js.begin-->
+    <script>
+        [
+            '../../../lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--weber.js.end-->
+
+
+
+</body>
+</html>

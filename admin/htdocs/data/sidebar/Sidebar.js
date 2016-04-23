@@ -85,7 +85,7 @@
         name: '楼盘管理',
         url: 'html/house/list/index.html',
         cmd: ['list', 'house2'],
-        autoOpen: true,
+        //autoOpen: true,
 
     },
     {
@@ -94,6 +94,15 @@
         url: 'html/house/add/index.html',
         cmd: ['add', 'house2'],
         //autoOpen: true,
+
+    },
+
+    {
+        icon: 'bars',
+        name: '楼盘类目管理',
+        url: 'html/house/catalog/index.html',
+        cmd: ['catalog', 'house2'],
+        autoOpen: true,
 
     },
 ];
