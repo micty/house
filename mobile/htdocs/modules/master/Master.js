@@ -33,8 +33,12 @@
         });
 
         Ads.on({
-            'item': function (item) {
-                view.fire('news', 'detail', [item]);
+            'detail': function (data) {
+                view.fire('news', 'detail', [data]);
+            },
+
+            'url': function (url) {
+                view.fire('url', [url]);
             },
         });
 
@@ -51,9 +55,10 @@
 
         API.on('success', function (data) {
            
-            Menus.render();
-            Ads.render();
-            Houses.render(data);
+            Menus.render(data.menus);
+            Ads.render(data.ads);
+            Houses.render(data.houses);
+
 
 
             //解析 innerHTML 需要时间，这里需要延迟一下

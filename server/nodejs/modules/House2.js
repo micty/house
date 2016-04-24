@@ -329,7 +329,7 @@ module.exports = {
         var path = getPath();
         var existed = fs.existsSync(path);
 
-        //重载 list()。 仅内部其它模块调用。
+        //重载 list()，供内部其它模块调用。
         if (!res) {
             if (!existed) {
                 return;
@@ -341,8 +341,7 @@ module.exports = {
         }
 
 
-
-
+        //重载 list(rest)，供 http 请求调用。
         if (!existed) {
             res.send({
                 code: 200,

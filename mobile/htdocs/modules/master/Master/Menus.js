@@ -8,54 +8,7 @@ define('/Master/Menus', function (require, module, exports) {
     var panel = KISP.create('Panel', '#ul-master-menus');
 
 
-    var list = [
-        {
-            text: '地铁',
-            url: ' http://topic.leju.com/mview/m/aDK88888K.html?&source=weixin_wx10',
-        },
-        {
-            text: '入户',
-            cmd: ['news', 'detail'],
-            data: {
-                type: 'policy',
-                id: 'AA3B0F8C60CE',
-            },
-        },
-        {
-            text: '学位',
-            url: ' http://topic.leju.com/mview/m/7dK88888K.html?&source=weixin_wx10',
-        },
-        {
-            text: '娱乐',
-            url: 'http://topic.leju.com/mview/m/jDK88888K.html?&source=weixin_wx10',
-        },
-        {
-            text: '版块',
-            url: ' http://topic.leju.com/mview/m/gTK88888K.html?&source=weixin_wx10',
-        },
-        {
-            text: '公积金',
-            cmd: ['news', 'detail'],
-            data: {
-                type: 'news',
-                id: '5913C3BABB3B',
-            },
-        },
-        {
-            text: '文化',
-            cmd: ['news', 'detail'],
-            data: {
-                type: 'news',
-                id: '1B57D6C58F4A',
-            },
-        },
-        {
-            text: '动态',
-            cmd: ['news', 'list'],
-        },
-
-    ];
-
+    var list = [];
 
 
     panel.on('init', function () {
@@ -81,7 +34,7 @@ define('/Master/Menus', function (require, module, exports) {
 
     panel.on('render', function (data) {
 
-        //list = data;
+        list = data;
 
         panel.fill(list, function (item, index) {
 

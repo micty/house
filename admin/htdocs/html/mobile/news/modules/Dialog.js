@@ -20,19 +20,29 @@ define('/Dialog', function (require, module, exports) {
 
         dialog = KISP.create('Dialog', {
 
-            title: '编辑楼盘类目',
+            title: '编辑移动端动态资讯',
             text: '',
             buttons: [
                 { text: '取消', name: 'cancel', color: 'red', },
                 { text: '确定', name: 'ok', },
             ],
-            height: 668,
-            width: 600,
+            height: 400,
+            width: 550,
             autoClosed: false,
             cssClass: 'dialog-add',
         });
 
         dialog.on('show', function () {
+
+            var title = current ? '编辑移动端动态资讯' : '添加移动动态资讯';
+            dialog.$.find('header').html(title);
+
+            //新建
+            if (!current) {
+                var src = KISP.require('Url').root() + 'style/img/no-pic.png';
+                dialog.$.find('img').attr('src', src);
+            }
+
 
             //让它出现在可视范围内。
             var div = dialog.$.get(0);
@@ -49,11 +59,12 @@ define('/Dialog', function (require, module, exports) {
 
             var $ = dialog.$;
 
-            var name = $.find('[data-name="name"]').val();
-            if (!name) {
-                top.KISP.alert('请输入楼盘名称');
-                return;
-            }
+            //var title = $.find('[data-name="title"]').val();
+            //if (!title) {
+            //    top.KISP.alert('请输入标题');
+            //    return;
+            //}
+
 
             var cover = $.find('[data-name="cover"]').val();
             if (!cover) {
@@ -62,14 +73,11 @@ define('/Dialog', function (require, module, exports) {
             }
 
             var data = {
-                'id': current.id,
-                'belong': current.belong,
-                'name': name,
+                'id': current ? current.id : '',
                 'cover': cover,
-                'address': $.find('[data-name="address"]').val(),
-                'type': $.find('[data-name="type"]').val(),
-                'price': $.find('[data-name="price"]').val(),
-                'phone': $.find('[data-name="phone"]').val(),
+                'title': title,
+                'desc': $.find('[data-name="desc"]').val(),
+                'url': $.find('[data-name="url"]').val(),
             };
 
 
@@ -104,7 +112,14 @@ define('/Dialog', function (require, module, exports) {
     panel.on('render', function (data) {
 
         current = data;
-        var html = $.String.format(sample, data);
+
+
+        var html = $.String.format(sample, data || {
+            'title': '',
+            'desc': '',
+            'url': '',
+            'cover': '',
+        });
 
         dialog.set('text', html);
         dialog.show();

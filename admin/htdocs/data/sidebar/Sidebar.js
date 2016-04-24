@@ -35,6 +35,7 @@
         name: '楼盘推荐管理',
         url: 'html/recommend/index.html',
     },
+
     {
         icon: 'user-plus',
         name: '报名管理',
@@ -78,10 +79,9 @@
         url: 'html/paper/add/index.html?type=house',
         cmd: ['add', 'house'],
         border: true,
-
     },
     {
-        icon: 'bars',
+        icon: 'university',
         name: '楼盘管理',
         url: 'html/house/list/index.html',
         cmd: ['list', 'house2'],
@@ -102,7 +102,19 @@
         name: '楼盘类目管理',
         url: 'html/house/catalog/index.html',
         cmd: ['catalog', 'house2'],
-        autoOpen: true,
+        //autoOpen: true,
 
+    },
+    {
+        icon: 'image',
+        name: '焦点图片管理',
+        url: 'html/mobile/ads/index.html',
+        //autoOpen: true,
+    },
+    {
+        icon: 'rss',
+        name: '动态资讯管理',
+        url: 'html/mobile/news/index.html',
+        autoOpen: true,
     },
 ];

@@ -21,7 +21,14 @@ define('/NewsList/List', function (require, module, exports) {
                 var index = +this.getAttribute('data-index');
                 var item = list[index];
 
-                panel.fire('item', [item, index]);
+                var url = item.url;
+
+                if (url) {
+                    panel.fire('url', [item.url]);
+                }
+                else {
+                    panel.fire('detail', [item]);
+                }
 
             },
         });

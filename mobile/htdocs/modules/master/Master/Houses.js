@@ -11,7 +11,6 @@ define('/Master/Houses', function (require, module, exports) {
 
     panel.on('init', function () {
 
-        
         panel.$.touch({
             '[data-index]': function () {
 
@@ -21,7 +20,6 @@ define('/Master/Houses', function (require, module, exports) {
                 panel.fire('item', [item, index]);
 
             },
-
 
             '[data-cmd="phone"]': function (event) {
                 event.stopPropagation();
@@ -49,23 +47,6 @@ define('/Master/Houses', function (require, module, exports) {
         });
 
     });
-
-    panel.on('show', function () {
-
-
-
-    });
-
-
-    panel.on('hide', function () {
-
-    });
-
-
-    panel.on('refresh', function () {
-     
-    });
-
 
 
     return panel.wrap();

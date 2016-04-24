@@ -16,16 +16,14 @@ define('/NewsList/Ads', function (require, module, exports) {
 
                 var index = +this.getAttribute('data-index');
                 var item = list[index];
-                var cmd = item.cmd;
+                var url = item.url;
 
-                if (cmd) {
-                    panel.fire(cmd, [item.data]);
-                }
-                else {
+                if (url) {
                     panel.fire('url', [item.url]);
                 }
-
-
+                else {
+                    panel.fire('detail', [item]);
+                }
             },
         });
     });

@@ -6,6 +6,7 @@ define('/NewsList/API', function (require, module, exports) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
+    var Url = MiniQuery.require('Url');
     var Emitter = MiniQuery.require('Emitter');
     var emitter = new Emitter();
     var loading = null;
@@ -15,8 +16,8 @@ define('/NewsList/API', function (require, module, exports) {
     function get() {
 
 
-        var api = KISP.create('API', 'News.list', {
-            proxy: 'NewsList.js',
+        var api = KISP.create('API', 'Mobile.News.list', {
+            //proxy: 'NewsList.js',
         });
 
 
@@ -35,8 +36,30 @@ define('/NewsList/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
+
+
+                var list = $.Array.keep(data, function (item) {
+
+                    var url = item.url;
+                    var qs = Url.getQueryString(url) || {};
+                    var type = qs.type;
+                    var id = qs.id;
+
+                    if (type && id) {
+                        delete item.url;
+                        item.type = type;
+                        item.id = id;
+                    }
+                    
+                    return item;
+
+                });
                 
-                emitter.fire('success', [data]);
+
+                emitter.fire('success', [{
+                    'ads': list.slice(0, 2),
+                    'list': list.slice(2),
+                }]);
             },
 
             'fail': function (code, msg, json, xhr) {

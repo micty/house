@@ -2,9 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>楼盘推荐管理</title>
-
-
+    <title>移动端动态新闻管理</title>
     <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
     <style>
@@ -26,45 +24,45 @@
 
 </head>
 <body class="iframe">
+
+    <div id="div-header" class="header">
+        <button><i class="icon fa fa-plus"></i>添加</button>
+    </div>
     <div class="main">
        
         <ul id="ul-items" class="list">
             <!--
             <li class="item">
-                <h1>{belong}</h1>
-                <img src="{cover}" />
-                <h3>{name}</h3>
-                <ul class="fields">
-                    <li><span class="name">位置：</span><span class="value">{address}</span></li>
-                    <li><span class="name">户型：</span><span class="value">{type}</span></li>
-                    <li><span class="name">价格：</span><span class="value">{price}</span></li>
-                    <li><span class="name">电话：</span><span class="value">{phone}</span></li>
-                </ul>
-                <button data-cmd="edit" data-index="{index}"><i class="icon fa fa-edit"></i>编辑</button>
+                <span class="order">{order}</span>
+                <a href="{url}" target="_blank">
+                    <img src="{cover}" />
+                </a>
+                <div class="fields">
+                    <p class="title">{title}</p>
+                    <p class="desc">{desc}</p>
+                    <p class="url">{url}</p>
+                    <p>
+                        <button data-cmd="edit" data-index="{index}"><i class="icon fa fa-edit"></i>编辑</button>
+                        <button data-cmd="remove" data-index="{index}" class="delete"><i class="icon fa fa-remove"></i>删除</button>
+                    </p>
+                </div>
             </li>
         -->
         </ul>
 
         <!--dialog
-        <h1>{belong}</h1>
         <ul>
             <li class="name">
-                <span>楼盘名称</span><input data-name="name" type="text" placeholder="楼盘名称" value="{name}"/>
+                <span>标题</span><input data-name="title" type="text" placeholder="标题" value="{title}"/>
             </li>
             <li>
-                <span>位置</span><input data-name="address" type="text" placeholder="位置" value="{address}"/>
+                <span>简介</span><input data-name="desc" type="text" placeholder="简介" value="{desc}"/>
             </li>
             <li>
-                <span>户型</span><input data-name="type" type="text" placeholder="户型" value="{type}"/>
+                <span>链接</span><input data-name="url" type="text" placeholder="链接" value="{url}"/>
             </li>
-             <li>
-                <span>价格</span><input data-name="price" type="text" placeholder="价格" value="{price}"/>
-            </li>
-             <li>
-                <span>电话</span><input data-name="phone" type="text" placeholder="电话" value="{phone}"/>
-            </li>
-            <li class="cover">
-                <span>封面图片</span><input data-name="cover" type="text" placeholder="封面图片" value="{cover}"/>
+            <li class="src">
+                <span>封面</span><input data-name="cover" type="text" placeholder="封面" value="{cover}"/>
             </li>
             <li>
                 <img data-name="photo" src="{cover}" />

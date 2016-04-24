@@ -31,6 +31,16 @@
             },
         });
         
+        List.on({
+            'detail': function (data) {
+                view.fire('detail', [data]);
+            },
+
+            'url': function (url) {
+                view.fire('url', [url]);
+            },
+        });
+
 
         API.on('success', function(data){
         
@@ -39,11 +49,6 @@
 
             scroller.refresh(200);
 
-        });
-
-
-        List.on('item', function (item) {
-            view.fire('detail', [item]);
         });
 
 

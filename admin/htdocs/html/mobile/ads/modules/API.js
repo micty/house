@@ -15,7 +15,7 @@ define('/API', function (require, module, exports) {
     //获取数据
     function get() {
 
-        var api = KISP.create('API', 'HouseCatalog.list', {
+        var api = KISP.create('API', 'Mobile.Ads.list', {
             //proxy: 'api/GetRecommedList.js',
         });
 
@@ -35,7 +35,6 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
-   
                 emitter.fire('success', 'get', [data]);
             },
 
@@ -57,7 +56,6 @@ define('/API', function (require, module, exports) {
 
 
 
-
     function post(data) {
 
 
@@ -65,7 +63,7 @@ define('/API', function (require, module, exports) {
         var name = id ? 'update' : 'add';
         var action = id ? '更新' : '添加';
 
-        var api = KISP.create('API', 'HouseCatalog.' + name);
+        var api = KISP.create('API', 'Mobile.Ads.' + name);
 
 
         api.on({
@@ -119,10 +117,64 @@ define('/API', function (require, module, exports) {
 
 
 
+
+    function remove(id) {
+
+        var api = KISP.create('API', 'Mobile.Ads.remove');
+
+
+        api.on({
+
+            'request': function () {
+                loading = loading || KISP.create('Loading', {
+
+                });
+
+                loading.show('删除中...');
+            },
+
+            'response': function () {
+                loading.hide();
+            },
+
+            'success': function (data, json, xhr) {
+
+                toast = toast || KISP.create('Toast', {
+                    duration: 1500,
+                    mask: 0,
+                });
+
+                toast.show('删除成功');
+
+                setTimeout(function () {
+                    emitter.fire('success', 'remove', [data]);
+                }, 1500);
+
+            },
+
+
+
+            'fail': function (code, msg, json, xhr) {
+                KISP.alert('删除数据失败: {0} ({1})', msg, code);
+            },
+
+            'error': function (code, msg, json, xhr) {
+                KISP.alert('网络繁忙，请稍候再试');
+            },
+        });
+
+        api.get({
+            'id': id,
+        });
+
+    }
+
+
+
     return {
         get: get,
         post: post,
-
+        remove: remove,
         on: emitter.on.bind(emitter),
     };
 

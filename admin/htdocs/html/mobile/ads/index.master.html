@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>移动端广告图管理</title>
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
+    <style>
+        .iframe {
+            overflow: hidden;
+        }
+    </style>
+
+    <!--weber.css.begin-->
+    <script>
+        [
+            '../../../style/less/global.less',
+            'index.less',
+            'modules/**/*.less',
+        ]
+    </script>
+    <!--weber.css.end-->
+
+
+</head>
+<body class="iframe">
+
+    <div id="div-header" class="header">
+        <button><i class="icon fa fa-plus"></i>添加</button>
+    </div>
+    <div class="main">
+       
+        <ul id="ul-items" class="list">
+            <!--
+            <li class="item">
+                <a href="{url}" target="_blank">
+                    <img src="{src}" />
+                </a>
+                <button data-cmd="edit" data-index="{index}"><i class="icon fa fa-edit"></i>编辑</button>
+                <button data-cmd="remove" data-index="{index}" class="delete"><i class="icon fa fa-remove"></i>删除</button>
+            </li>
+        -->
+        </ul>
+
+        <!--dialog
+        <ul>
+            <li class="src">
+                <span>图片</span><input data-name="src" type="text" placeholder="图片" value="{src}"/>
+            </li>
+             <li>
+                <span>链接</span><input data-name="url" type="text" placeholder="链接" value="{url}"/>
+            </li>
+            <li>
+                <img data-name="photo" src="{src}" />
+            </li>
+        </ul>
+        dialog-->
+
+
+    </div>
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js"></script>
+    <script src="../../../f/kisp/kisp.debug.js"></script>
+    <script src="../../../config.js"></script>
+
+
+    <!--weber.js.begin-->
+    <script>
+        [
+            '../../../lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--weber.js.end-->
+
+
+
+</body>
+</html>

@@ -36,7 +36,7 @@ var server = app.listen(3000, function () {
 //文章模块
 var Paper = require('./modules/Paper');
 
-app.post('/Paper.add',function (req, res) {
+app.post('/Paper.add', function (req, res) {
     Paper.add(req.body, res);
 });
 
@@ -193,7 +193,7 @@ app.post('/ActivityRecommend.add', function (req, res) {
 });
 
 app.post('/ActivityRecommend.update', function (req, res) {
-    
+
     ActivityRecommend.update(req.body, res);
 });
 
@@ -227,13 +227,62 @@ app.get('/House2.remove', function (req, res) {
 });
 
 
-//楼盘分类模块
+//管理端: 楼盘分类模块
 var HouseCatalog = require('./modules/HouseCatalog');
 app.get('/HouseCatalog.list', function (req, res) {
     HouseCatalog.list(res);
 });
 
+app.post('/HouseCatalog.update', function (req, res) {
+    HouseCatalog.update(res, req.body);
+});
 
+
+//管理端: 移动端广告图模块
+var MobileAds = require('./modules/Mobile.Ads');
+app.get('/Mobile.Ads.list', function (req, res) {
+    MobileAds.list(res);
+});
+
+app.post('/Mobile.Ads.update', function (req, res) {
+    MobileAds.update(res, req.body);
+});
+
+app.post('/Mobile.Ads.add', function (req, res) {
+    MobileAds.add(res, req.body);
+});
+
+app.get('/Mobile.Ads.remove', function (req, res) {
+    MobileAds.remove(res, req.query.id);
+});
+
+
+
+
+//移动端动态新闻模块
+var MobileNews = require('./modules/Mobile.News');
+app.get('/Mobile.News.list', function (req, res) {
+    MobileNews.list(res);
+});
+
+app.post('/Mobile.News.update', function (req, res) {
+    MobileNews.update(res, req.body);
+});
+
+app.post('/Mobile.News.add', function (req, res) {
+    MobileNews.add(res, req.body);
+});
+
+app.get('/Mobile.News.remove', function (req, res) {
+    MobileNews.remove(res, req.query.id);
+});
+
+
+//移动端首页模块
+var MobileMaster = require('./modules/Mobile.Master');
+app.get('/Mobile.Master.get', function (req, res) {
+    MobileMaster.get(res);
+});
 
 
 //登录
