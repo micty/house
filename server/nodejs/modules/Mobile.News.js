@@ -25,12 +25,6 @@ module.exports = {
     */
     add: function (res, data) {
 
-        var title = data.title;
-        if (!title) {
-            emptyError('title', res);
-            return;
-        }
-
         var cover = data.cover;
         if (!cover) {
             emptyError('cover', res);
@@ -52,8 +46,8 @@ module.exports = {
 
             list.push({
                 'id': id,
-                'title': title,
                 'cover': cover,
+                'title': data.title,
                 'desc': data.desc,
                 'url': data.url,
             });
@@ -99,12 +93,6 @@ module.exports = {
             return;
         }
 
-        var title = data.title;
-        if (!title) {
-            emptyError('title', res);
-            return;
-        }
-
         var cover = data.cover;
         if (!cover) {
             emptyError('cover', res);
@@ -141,7 +129,7 @@ module.exports = {
 
             $.Object.extend(item, {
                 'cover': cover,
-                'title': title,
+                'title': data.title,
                 'desc': data.desc,
                 'url': data.url,
             });

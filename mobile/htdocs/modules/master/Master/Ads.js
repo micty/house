@@ -5,16 +5,21 @@ define('/Master/Ads', function (require, module, exports) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
-    var panel = KISP.create('Panel', '#ul-master-ads');
+    var Slider = window.iSlider;
+
+
+    var panel = KISP.create('Panel', '#div-master-ads-slider');
+    var slider = null;
     var list = [];
+    var currentIndex = 0;
 
 
     panel.on('init', function () {
 
         panel.$.touch({
-            '[data-index]': function () {
+            '.islider-active': function () {
 
-                var index = +this.getAttribute('data-index');
+                var index = currentIndex;
                 var item = list[index];
                 var url = item.url;
 
@@ -26,19 +31,38 @@ define('/Master/Ads', function (require, module, exports) {
                 }
             },
         });
+
+
+        slider = new Slider({
+            dom: panel.$.get(0),
+            data: [{}],             //初始时必须至少有一项。
+            animateTime: 800,       // ms
+            plugins: ['dot', ],
+        });
+
+        slider.on('slide', function (event) {
+            event.cancelBubble = true;
+        });
+
+        slider.on('slideChange', function (index, el) {
+            currentIndex = index;
+        });
+
     });
+
 
     panel.on('render', function (data) {
 
         list = data;
 
-        panel.fill(list, function (item, index) {
-
+        var items = $.Array.keep(list, function (item) {
             return {
-                'index': index,
-                'src': item.src,
+                'content': item.src,
             };
         });
+
+        slider.loadData(items);
+        
 
     });
 

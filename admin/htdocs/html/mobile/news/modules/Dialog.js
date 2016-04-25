@@ -59,12 +59,6 @@ define('/Dialog', function (require, module, exports) {
 
             var $ = dialog.$;
 
-            //var title = $.find('[data-name="title"]').val();
-            //if (!title) {
-            //    top.KISP.alert('请输入标题');
-            //    return;
-            //}
-
 
             var cover = $.find('[data-name="cover"]').val();
             if (!cover) {
@@ -75,7 +69,7 @@ define('/Dialog', function (require, module, exports) {
             var data = {
                 'id': current ? current.id : '',
                 'cover': cover,
-                'title': title,
+                'title': $.find('[data-name="title"]').val(),
                 'desc': $.find('[data-name="desc"]').val(),
                 'url': $.find('[data-name="url"]').val(),
             };
