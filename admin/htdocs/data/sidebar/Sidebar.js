@@ -1,23 +1,25 @@
 ﻿var __Sidebar__ = [
 
-    {
-        icon: 'star',
-        name: '活动楼盘管理',
-        url: 'html/activity/recommend/index.html',
-        //autoOpen: true,
-    },
-    {
-        icon: 'street-view',
-        name: '活动报名管理',
-        url: 'html/activity/signup/index.html',
-    },
-    {
-        icon: 'gavel',
-        name: '活动中奖管理',
-        url: 'html/activity/prize/index.html',
-        border: true,
-        //autoOpen: true,
-    },
+    //{
+    //    icon: 'star',
+    //    name: '活动楼盘管理',
+    //    url: 'html/activity/recommend/index.html',
+    //    //autoOpen: true,
+    //},
+    //{
+    //    icon: 'street-view',
+    //    name: '活动报名管理',
+    //    url: 'html/activity/signup/index.html',
+    //},
+    //{
+    //    icon: 'gavel',
+    //    name: '活动中奖管理',
+    //    url: 'html/activity/prize/index.html',
+    //    border: true,
+    //    //autoOpen: true,
+    //},
+
+
     {
         icon: 'image',
         name: '焦点图片管理',
@@ -30,11 +32,12 @@
         //autoOpen: true,
         border: true,
     },
-    {
-        icon: 'university',
-        name: '楼盘推荐管理',
-        url: 'html/recommend/index.html',
-    },
+
+    //{
+    //    icon: 'university',
+    //    name: '楼盘推荐管理',
+    //    url: 'html/recommend/index.html',
+    //},
 
     {
         icon: 'user-plus',
@@ -61,6 +64,7 @@
         cmd: ['list', 'house'],
         border: true,
     },
+
     {
         icon: 'plus',
         name: '新闻资讯发布',
@@ -80,6 +84,9 @@
         cmd: ['add', 'house'],
         border: true,
     },
+
+
+
     {
         icon: 'university',
         name: '楼盘管理',
@@ -115,6 +122,6 @@
         icon: 'rss',
         name: '动态资讯管理',
         url: 'html/mobile/news/index.html',
-        autoOpen: true,
+        //autoOpen: true,
     },
 ];
