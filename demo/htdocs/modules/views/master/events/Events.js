@@ -7,7 +7,9 @@ define('/Events', function (require, module) {
     var KISP = require('KISP');
 
 
+    var API = module.require('API');
     var News = module.require('News');
+    var Notice = module.require('Notice');
     var Photos = module.require('Photos');
 
     var panel = KISP.create('Panel');
@@ -26,6 +28,7 @@ define('/Events', function (require, module) {
     panel.on('render', function () {
         News.render();
         Photos.render();
+        Notice.render();
        
     });
 

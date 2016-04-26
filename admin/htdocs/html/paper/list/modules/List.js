@@ -41,7 +41,7 @@ define('/List', function (require, module) {
                         };
                     },
                 };
-            }
+            },
         });
 
 
