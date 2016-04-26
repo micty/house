@@ -77,10 +77,75 @@ KISP.launch(function (require, module, nav) {
         },
     });
 
+
     nav.to('Master');
 
-  
+
+
+    
+
+
+    //var $ = require('$');
+    //var startX = 0;
+    //var lastX = 0;
+    //var translateX = 0;
+    //var clientWidth = document.body.clientWidth;
+    //var hasBind = false;
+
+    //$('#div-view-news-list').on('touchstart', function (event) {
+
+    //    $('#div-view-master').show();
+
+    //    var view = this;
+    //    view.style.webkitTransition = 'none';
+
+    //    var touch = event.originalEvent.touches[0];
+    //    startX = touch.pageX;
+        
+    //});
+
+    //$('#div-view-news-list').on('touchmove', function (event) {
+
+    //    var view = this;
+    //    var touch = event.originalEvent.touches[0];
+    //    var dx = touch.pageX - startX;
+
+    //    translateX = lastX + dx;
+    //    view.style.webkitTransform = 'translateX(' + translateX + 'px)';
+
+    //});
+
    
+    //$('#div-view-news-list').on('touchend', function (event) {
+        
+    //    var view = this;
+
+    //    if (!hasBind) {
+    //        $(view).on('transitionend', function () {
+    //            $('#div-view-master').toggle(translateX > 0);
+    //        });
+
+    //        hasBind = translateX;
+    //    }
+
+    //    view.style.webkitTransition = '-webkit-transform 0.7s';
+
+
+    //    if (translateX > clientWidth / 3) {
+    //        translateX = clientWidth;
+    //    }
+    //    else {
+    //        translateX = 0;
+    //    }
+
+    //    view.style.webkitTransform = 'translateX(' + translateX + 'px)';
+
+
+    //    lastX = translateX;
+
+    //});
+
+
 
 });
 
