@@ -53,6 +53,13 @@
         view.$.find('img').off('load');
     });
 
+
+    view.on('hide', function () {
+        $('#div-news-detail-body').html('');
+        scroller.to(0); //避免下次进来还停留在上一次的位置。
+
+    });
+
   
 
     return view.wrap();
