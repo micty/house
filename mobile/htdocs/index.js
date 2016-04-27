@@ -44,6 +44,12 @@ KISP.launch(function (require, module, nav) {
         },
     });
 
+    var HouseDetail = module.require('HouseDetail');
+    HouseDetail.on('news', {
+        'detail': function (item) {
+            nav.to('NewsDetail', item);
+        },
+    });
 
 
     var NewsList = module.require('NewsList');

@@ -49,6 +49,14 @@ define('/HouseDetail', function (require, module) {
             },
         });
 
+        Content.on({
+            'news': {
+                'detail': function (item) {
+                    view.fire('news', 'detail', [item]);
+                },
+            },
+        });
+
     });
 
 

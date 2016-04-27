@@ -13,7 +13,7 @@ define('/NewsDetail/API', function (require, module, exports) {
 
 
     //获取数据
-    function get(data) {
+    function get(type, id) {
 
 
         var api = KISP.create('API', 'Paper.get', {
@@ -56,7 +56,10 @@ define('/NewsDetail/API', function (require, module, exports) {
             },
         });
 
-        api.get(data);
+        api.get({
+            'type': type,
+            'id': id,
+        });
 
 
     }

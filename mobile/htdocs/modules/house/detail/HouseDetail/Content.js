@@ -14,7 +14,23 @@ define('/HouseDetail/Content', function (require, module) {
 
     panel.on('init', function () {
 
-        
+        panel.$.touch({
+
+            '[data-cmd="news-url"]': function (event) {
+                var a = this;
+                var href = a.href;
+                var qs = Url.getQueryString(href) || {};
+                var type = qs.type;
+                var id = qs.id;
+
+                if (type && id) {
+                    panel.fire('news', 'detail', [qs]);
+                    event.preventDefault();
+                    return;
+                }
+
+            },
+        });
 
     });
 

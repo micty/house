@@ -41,9 +41,16 @@
 
     });
 
-    view.on('render', function (data) {
+    view.on('render', function (type, id) {
 
-        API.get(data);
+        //重载 render({})
+        if (typeof type == 'object') {
+            var obj = type;
+            type = obj.type;
+            id = obj.id;
+        }
+
+        API.get(type, id);
 
 
     });
