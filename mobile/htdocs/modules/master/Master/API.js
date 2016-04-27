@@ -66,6 +66,8 @@ define('/Master/API', function (require, module, exports) {
                     return item;
                 });
 
+                //把价格待定项移动最后
+                catalogs = catalogs.slice(1).concat(catalogs[0]);
 
                 emitter.fire('success', [{
                     'ads': ads,
