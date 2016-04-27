@@ -41,6 +41,8 @@ define('/Master/Menus', function (require, module, exports) {
             return {
                 'index': index,
                 'text': item.text,
+                'icon': item.icon,
+                'width': item.width / 200,
             };
         });
 

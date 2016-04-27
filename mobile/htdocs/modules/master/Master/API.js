@@ -77,39 +77,76 @@ define('/Master/API', function (require, module, exports) {
                     'menus': [
                         {
                             text: '地铁',
-                            url: ' http://topic.leju.com/mview/m/aDK88888K.html?&source=weixin_wx10',
+                            url: ' http://topic.leju.com/mview/m/aDK88888K.html',
+                            icon: 'style/img/menu-item-01.png',
+                            width: 52,
                         },
                         {
                             text: '入户',
                             url: 'http://topic.leju.com/mview/m/5uK88888K.html',
+                            icon: 'style/img/menu-item-02.png',
+                            width: 56,
                         },
                         {
                             text: '学位',
-                            url: ' http://topic.leju.com/mview/m/7dK88888K.html?&source=weixin_wx10',
+                            url: ' http://topic.leju.com/mview/m/7dK88888K.html',
+                            icon: 'style/img/menu-item-03.png',
+                            width: 96,
                         },
                         {
-                            text: '娱乐',
-                            url: 'http://topic.leju.com/mview/m/jDK88888K.html?&source=weixin_wx10',
+                            text: '购物',
+                            url: 'http://topic.leju.com/mview/m/jDK88888K.html',
+                            icon: 'style/img/menu-item-04.png',
+                            width: 85,
                         },
                         {
                             text: '版块',
-                            url: ' http://topic.leju.com/mview/m/gTK88888K.html?&source=weixin_wx10',
+                            url: ' http://topic.leju.com/mview/m/gTK88888K.html',
+                            icon: 'style/img/menu-item-05.png',
+                            width: 72,
                         },
                         {
                             text: '公积金',
-                            cmd: ['news', 'detail'],
-                            data: {
-                                type: 'news',
-                                id: '5913C3BABB3B',
-                            },
+                            url: 'http://topic.leju.com/mview/m/4uK88888K.html',
+                            icon: 'style/img/menu-item-06.png',
+                            width: 100,
                         },
                         {
                             text: '文化',
                             url: 'http://topic.leju.com/mview/m/EuK88888K.html',
+                            icon: 'style/img/menu-item-07.png',
+                            width: 72,
                         },
                         {
                             text: '动态',
                             cmd: ['news', 'list'],
+                            icon: 'style/img/menu-item-08.png',
+                            width: 70,
+                        },
+                        {
+                            text: '美食',
+                            url: 'http://topic.leju.com/mview/m/SDK88888K.html',
+                            icon: 'style/img/menu-item-09.png',
+                            width: 82,
+                        },
+                        {
+                            text: '医疗',
+                            url: 'http://topic.leju.com/mview/m/4xK88888K.html',
+                            icon: 'style/img/menu-item-10.png',
+                            width: 68,
+                        },
+                        {
+                            text: '体育',
+                            url: 'http://topic.leju.com/mview/m/UxK88888K.html',
+                            icon: 'style/img/menu-item-11.png',
+                            width: 70,
+
+                        },
+                        {
+                            text: '旅游',
+                            url: 'http://topic.leju.com/mview/m/nDK88888K.html',
+                            icon: 'style/img/menu-item-12.png',
+                            width: 52,
                         },
                     ],
 
