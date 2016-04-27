@@ -1,9 +1,9 @@
 /*
 * KISP - KISP JavaScript Library
 * name: default 
-* version: 3.3.0
-* build: 2016-04-14 16:33:55
-* files: 125(123)
+* version: 3.4.0
+* build: 2016-04-27 11:42:43
+* files: 126(124)
 *    partial/default/begin.js
 *    core/Module.js
 *    core/$.js
@@ -114,6 +114,7 @@
 *    defaults/ui/Alert.js
 *    defaults/ui/App.js
 *    defaults/ui/CityPicker.js
+*    defaults/ui/Confirm.js
 *    defaults/ui/Dialog.js
 *    defaults/ui/ImageSlider.js
 *    defaults/ui/ImageViewer.js
@@ -279,7 +280,7 @@ define('KISP', function (require, module, exports) {
         /**
         * 版本号。 (由 grunt 自动插入)
         */
-        version: '3.3.0', //由 grunt 自动插入
+        version: '3.4.0', //由 grunt 自动插入
 
         /**
         * 文件列表。 (由 grunt 自动插入)
@@ -894,7 +895,7 @@ define('Config/Url', function (require, module,  exports) {
                     }
 
                     if (typeof item == 'object') {
-                        return formatUrl(item); //递归
+                        return format(item); //递归
                     }
 
                     return item;
@@ -5697,7 +5698,7 @@ define('Alert/Sample', [
 ].join('\n'));
 
 /**
-* 简单的 confirm 虚拟对话框。
+* 简单的 confirm 弹出层对话框。
 * @namespace
 * @name Confirm
 */
@@ -5711,17 +5712,12 @@ define('Confirm', function (require, module, exports) {
             return dialog;
         }
 
+        var Config = require('Config');
         var Dialog = require('Dialog');
 
-        dialog = new Dialog({
-            autoClose: true,
-            height: 140,
-            'z-index': 99999,
-            buttons: [
-                { text: '取消', },
-                { text: '确定', name: 'ok', color: 'red', },
-            ],
-        });
+        var config = Config.clone(module.id);
+
+        dialog = new Dialog(config);
 
         dialog.on('button', 'ok', function () {
             var fn = dialog.data('fn');
@@ -9281,7 +9277,8 @@ define('Panel', function (require, module, exports) {
             'showAfterRender': config.showAfterRender,
             'cssClass': config.cssClass,
             'visible': false,
-            'byRender': false, //记录 show 事件是否由 render() 触发的。
+            'byRender': false,  //记录 show 事件是否由 render() 触发的。
+            'template': null,   //复杂模板填充的 Template 实例。
         };
 
         mapper.set(this, meta);
@@ -9365,20 +9362,53 @@ define('Panel', function (require, module, exports) {
             }
         },
 
-
-
         /**
-        * 对本组件进行简单的模板填充。
+        * 设置复杂模板填充的规则，为模板填充进行预处理。
+        * 已重载 template(config);
+        * @param {Array} names 子级模板的标记的名称数组。 
+        *   如在 #--item.begin--# 和 #--item.end--# 构成一个子级模板，则标记名称为 item。 
+        * @param {function} 模板填充时的处理函数。
         */
-        fill: function (data, fn) {
+        template: function (names, fn) {
 
+            //重载 template({});
+            var config = $.Object.isPlain(names) ? names : {
+                'names': names,
+                'fn': fn,
+            };
+            
             var Template = require('Template');
 
             var meta = mapper.get(this);
             var container = meta.container;
-            var emitter = meta.emitter;
 
-            Template.fill(container, data, fn);
+            meta.template = new Template(container, config);
+
+        },
+
+
+        /**
+        * 对本组件进行简单或复杂的模板填充。
+        * 在进行复杂模板填充之前，需要至少先调用一次 this.template() 方法以设置填充规则。
+        * 否则当成是简单模板填充。
+        * @param {Object|Array} 要填充的数据，可以是对象或数组。
+        * @param {function} [fn] 当要填充的数据是一个数组时，需要进行迭代转换的处理函数。
+        *   调用该函数，可以把一个数组转换成一个新的数组。
+        */
+        fill: function (data, fn) {
+
+            var meta = mapper.get(this);
+            var emitter = meta.emitter;
+            var template = meta.template;
+
+            if (template) { //复杂模板
+                template.fill(data, fn);
+            }
+            else { //简单模板
+                var Template = require('Template');
+                Template.fill(meta.container, data, fn);
+            }
+
 
             emitter.fire('fill', [data]);
         },
@@ -10102,6 +10132,7 @@ define('Tabs', function (require, module, exports) {
             'activedClass': config.activedClass,
             'pressedClass': config.pressedClass,
             'repeated': config.repeated,
+            'looped': config.looped,
 
             'eventName': config.eventName,
             'list': [],
@@ -10258,6 +10289,52 @@ define('Tabs', function (require, module, exports) {
             emitter.fire('change', args);
 
 
+        },
+
+        /**
+        * 激活前一项。
+        * @param {boolean} [quiet=false] 是否使用安静模式。 
+            当指定为 true 时，则不会触发事件，这在某种场景下会用到。
+            否则会触发事件(默认情况)。
+        */
+        previous: function (qiuet) {
+            var meta = mapper.get(this);
+            var list = meta.list;
+            var looped = meta.looped;
+            var index = meta.activedIndex;
+
+            if (index == 0) {
+                if (!looped) {
+                    return;
+                }
+
+                index = list.length;
+            }
+          
+            this.active(index - 1, qiuet);
+        },
+
+        /**
+        * 激活后一项。
+        * @param {boolean} [quiet=false] 是否使用安静模式。 
+            当指定为 true 时，则不会触发事件，这在某种场景下会用到。
+            否则会触发事件(默认情况)。
+        */
+        next: function (qiuet) {
+            var meta = mapper.get(this);
+            var list = meta.list;
+            var looped = meta.looped;
+            var index = meta.activedIndex;
+
+            if (index == list.length - 1) {
+                if (!looped) {
+                    return;
+                }
+
+                index = -1;
+            }
+
+            this.active(index + 1, qiuet);
         },
 
         /**
@@ -10474,6 +10551,11 @@ define('Template', function (require, module, exports) {
                 fn = list;
                 list = null;
             }
+            else if (!(list instanceof Array)) { //重载 fill({})
+                list = [list];
+            }
+
+
 
             var meta = mapper.get(this);
 
@@ -10613,7 +10695,7 @@ define('Template/Multiple', function (require, module, exports) {
     }
 
     return {
-        getHTML: getHTML,
+        'getHTML': getHTML,
     };
 
 
@@ -10726,11 +10808,15 @@ define('Template/Static', function (require, module, exports) {
         var sample = get(node);
 
         if (data instanceof Array) {
+
             node.innerHTML = $.Array.keep(data, function (item, index) {
+
                 if (fn) {
                     item = fn(item, index);
                 }
+
                 return format(sample, item);
+
             }).join('');
         }
         else {
@@ -11693,6 +11779,29 @@ define('CityPicker.defaults', /**@lends CityPicker.defaults*/ {
 
 
 /**
+* Confirm 模块的默认配置
+* @name Confirm.defaults
+*/
+define('Confirm.defaults', /**@lends Confirm.defaults*/ {
+
+    /**
+    * 组件高度。
+    * 可以指定为百分比的字符串，或指定具体的数值（单位为像素），
+    */
+    height: 140,
+
+    autoClose: true,
+    'z-index': 99999,
+    buttons: [
+        { text: '取消', },
+        { text: '确定', name: 'ok', color: 'red', },
+    ],
+
+
+});
+
+
+/**
 * Dialog 模块的默认配置
 * @name Dialog.defaults
 */
@@ -11966,6 +12075,12 @@ define('Mask.defaults', /**@lends Mask.defaults*/ {
     eventName: 'touch',
 
     /**
+    * 需要持续显示的毫秒数。
+    * 指定为 0 或不指定则表示一直显示。
+    */
+    duration: 0,
+
+    /**
     * 组件的 css 样式 z-index 值。
     */
     'top': 0,
@@ -12218,6 +12333,13 @@ define('Tabs.defaults', /**@lends Tabs.defaults*/ {
     * 当指定为 true 时，方响应已给激活的项目的重新点击。
     */
     repeated: false,
+
+    /**
+    * 当调用 previous()、next() 激前/后一项时，是否启用循环模式。
+    * 如果启用了循环模式时，则当达到第一项或最后一项时，则会从尾或头开始。
+    */
+    looped: false,
+
 
     /**
     * 字段映射。

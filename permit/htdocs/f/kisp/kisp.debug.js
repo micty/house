@@ -2,8 +2,8 @@
 * KISP - KISP JavaScript Library
 * name: house 
 * version: 3.4.0
-* build: 2016-04-26 11:46:00
-* files: 82(80)
+* build: 2016-04-27 11:43:11
+* files: 84(82)
 *    partial/pc/begin.js
 *    core/Module.js
 *    core/$.js
@@ -70,6 +70,7 @@
 *    defaults/excore/Url.js
 *    defaults/ui/Alert.js
 *    defaults/ui/App.js
+*    defaults/ui/Confirm.js
 *    defaults/ui/Dialog.js
 *    defaults/ui/Loading.js
 *    defaults/ui/Mask.js
@@ -79,6 +80,7 @@
 *    defaults/ui/Toast.js
 *    defaults/ui/View.js
 *    partial/pc/config/ui/Alert.js
+*    partial/pc/config/ui/Confirm.js
 *    partial/pc/config/ui/Dialog.js
 *    partial/pc/config/ui/Loading.js
 *    partial/pc/config/ui/Mask.js
@@ -830,7 +832,7 @@ define('Config/Url', function (require, module,  exports) {
                     }
 
                     if (typeof item == 'object') {
-                        return formatUrl(item); //递归
+                        return format(item); //递归
                     }
 
                     return item;
@@ -3252,7 +3254,7 @@ define('Alert/Sample', [
 ].join('\n'));
 
 /**
-* 简单的 confirm 虚拟对话框。
+* 简单的 confirm 弹出层对话框。
 * @namespace
 * @name Confirm
 */
@@ -3266,17 +3268,12 @@ define('Confirm', function (require, module, exports) {
             return dialog;
         }
 
+        var Config = require('Config');
         var Dialog = require('Dialog');
 
-        dialog = new Dialog({
-            autoClose: true,
-            height: 140,
-            'z-index': 99999,
-            buttons: [
-                { text: '取消', },
-                { text: '确定', name: 'ok', color: 'red', },
-            ],
-        });
+        var config = Config.clone(module.id);
+
+        dialog = new Dialog(config);
 
         dialog.on('button', 'ok', function () {
             var fn = dialog.data('fn');
@@ -7026,6 +7023,29 @@ define('App.defaults', /**@lends App.defaults*/ {
 
 
 /**
+* Confirm 模块的默认配置
+* @name Confirm.defaults
+*/
+define('Confirm.defaults', /**@lends Confirm.defaults*/ {
+
+    /**
+    * 组件高度。
+    * 可以指定为百分比的字符串，或指定具体的数值（单位为像素），
+    */
+    height: 140,
+
+    autoClose: true,
+    'z-index': 99999,
+    buttons: [
+        { text: '取消', },
+        { text: '确定', name: 'ok', color: 'red', },
+    ],
+
+
+});
+
+
+/**
 * Dialog 模块的默认配置
 * @name Dialog.defaults
 */
@@ -7476,6 +7496,27 @@ define('Alert.config', /**@lends Alert.config*/ {
 
 
 /**
+* Confirm 模块的默认配置
+* @name Confirm.config
+*/
+define('Confirm.config', /**@lends Confirm.config*/ {
+
+    /**
+    * 组件高度。
+    * 可以指定为百分比的字符串，或指定具体的数值（单位为像素），
+    */
+    height: 150,
+
+    /**
+    * 组件宽度。
+    * 可以指定为百分比的字符串，或指定具体的数值（单位为像素），
+    */
+    width: 400,
+
+});
+
+
+/**
 * Dialog 模块的默认配置
 * @name Dialog.config
 */
@@ -7500,6 +7541,8 @@ define('Dialog.config', /**@lends Dialog.config*/ {
 
     //PC 端的用 fixed定位。
     position: 'fixed',
+
+    width: 600,
 });
 
 
