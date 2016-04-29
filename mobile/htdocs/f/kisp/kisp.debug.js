@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: default 
 * version: 4.0.0
-* build: 2016-04-29 14:24:41
+* build: 2016-04-29 21:11:59
 * files: 126(124)
 *    partial/default/begin.js
 *    core/Module.js
@@ -5074,15 +5074,12 @@ define('App', function (require, module, exports) {
                     view$bind: {},
                     enabled: false,     //记录是否触发了滑动后退。
                     aborted: false,     //记录是否取消了滑动后退。
-                    currents: [],
+
                 };
 
 
                 //绑定滑动返回。 跳转到目标视图之前触发。
                 nav.on('before-to', function (current, target) {
-                    current = module.require(current);
-                    slide.currents.push(current);
-
                     if (slide.view$bind[target]) {
                         return;
                     }
@@ -5126,17 +5123,18 @@ define('App', function (require, module, exports) {
                                 return;
                             }
 
-                            var current = slide.currents.slice(-1)[0];
-
                             //不管向上滑还是向下滑，都取正值，以确保斜率为正。
                             var deltaY = Math.abs(touch.pageY - startY);
                             k = deltaY / deltaX; //斜率
-
 
                             if (!hasTranslated) {
                                 if (k > maxK) {
                                     return;
                                 }
+
+                                // -1 的为 target 即当前视图， -2 的才为当前视图的上一个视图。
+                                current = nav.get(-2); 
+                                current = module.require(current);
 
                                 current.$.css({ 'z-index': 1, });   //当前视图为 1
                                 //mask.$.css({ 'z-index': 2, });    //遮罩层的为 2，已在 css 里固定写死。
@@ -5171,7 +5169,6 @@ define('App', function (require, module, exports) {
 
                         },
                         'touchend': function (event) {
-
                             if (!hasTranslated) {
                                 return;
                             }
@@ -5182,7 +5179,6 @@ define('App', function (require, module, exports) {
                             //水平滑动距离小于指定值，或滑动斜率大于指定值，都中止。
                             var aborted = slide.aborted = deltaX < slideWidth || k > maxK;
                             var translateX = aborted ? 0 : '100%';
-                            var current = slide.currents.slice(-1)[0];
 
                             if (!aborted) { //滑动后退生效。
                                 nav.back();
@@ -5246,11 +5242,11 @@ define('App', function (require, module, exports) {
 
                     //首次绑定
                     view$bind[target] = true;
-                    current = module.require(current);
                     target = module.require(target);
 
                     // css 动画结束后执行
                     target.$.on(eventName, function () {
+
                         var animated = target.$.data('animated');
                         target.$.data('animated', true);    //恢复使用动画。
 
@@ -5258,11 +5254,11 @@ define('App', function (require, module, exports) {
                             return;
                         }
 
-                        var current = slide.currents.slice(-1)[0];
-
                         if (slide.enabled) { //说明是滑动后退触发的
                             if (slide.aborted) {
                                 target.$.addClass('Forward');
+                                current = nav.get(-2);
+                                current = module.require(current);
                                 current.hide(); //在滑动过程中已给显示出来了，这里要重新隐藏。
                                 current.$.css('transform', 'translateX(0)'); //为下次常规后退作准备。
                             }
@@ -5277,6 +5273,8 @@ define('App', function (require, module, exports) {
                         }
                         else { //常规后退触发的。
                             if (target.$.hasClass('Forward')) {     //前进
+                                current = nav.get(-2);
+                                current = module.require(current);
                                 current.hide();                     //要触发 hide 事件
                             }
                             else if (target.$.hasClass('Back')) {   //后退
@@ -5292,8 +5290,6 @@ define('App', function (require, module, exports) {
 
                 //后退时触发
                 nav.on('back', function (current, target) {
-
-                    slide.currents.pop();
 
                     if (slide.enabled) { //是由滑动导致的返回，忽略掉。
                         return;
@@ -8572,6 +8568,26 @@ define('Navigator', function (require, module,  exports) {
             return meta.statcks.length;
         },
 
+        /**
+        * 获取堆栈历史中指定索引值的视图。
+        * @param {Number} index 要获取的视图的索引值。
+        *   从 0 开始，如果指定为0或正数，则从左边开始获取。
+        *   如果指定为负数，则从右边开始获取。
+        *   因为当此视图为 -1，倒数第二个为 -2，依次类推。
+        */
+        get: function (index) {
+            var meta = mapper.get(this);
+            var statcks = meta.statcks;
+            var len = statcks.length;
+
+            console.log(statcks);
+
+            if (index < 0) {
+                index = index + len;
+            }
+
+            return statcks[index];
+        },
 
 
     };
