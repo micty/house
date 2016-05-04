@@ -7,9 +7,9 @@
     },
     {
         "id": "874AA2CF1890",
-        "src": "/ueditor/upload/image/20160418/6359660073947691699924222.jpg",
-        "href": "?type=policy&id=AA3B0F8C60CE#NewsDetail-C1AA673C",
-        "priority": 5
+        "src": "/ueditor/upload/image/20160503/6359789491279994335475058.jpg",
+        "href": "?type=news&id=B9C6EA639FBD#NewsDetail-61589F75",
+        "priority": 1
     },
     {
         "id": "4609C2372AAD",
@@ -21,12 +21,12 @@
         "id": "E31C3D4F72F2",
         "src": "/ueditor/upload/image/20160430/6359761995618174785464446.jpg",
         "href": "?type=news&id=1C0DA3589992#NewsDetail-B43DBE08",
-        "priority": 1
+        "priority": 2
     },
     {
         "id": "93B16074E05D",
         "src": "/ueditor/upload/image/20160421/6359685482237538062295398.jpg",
         "href": "?type=news&id=74CE33CFA852#NewsDetail-1A3BDA95",
-        "priority": 2
+        "priority": 5
     }
 ]

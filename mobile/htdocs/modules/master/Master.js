@@ -88,11 +88,11 @@
     });
 
 
-    view.on('show', function (byRender) {
-        if (!byRender) { //说明是后退导致的
-            scroller.refresh(200);
-        }
-    });
+    //view.on('show', function (byRender) {
+    //    if (!byRender) { //说明是后退导致的
+    //        scroller.refresh(200);
+    //    }
+    //});
 
     return view.wrap();
 

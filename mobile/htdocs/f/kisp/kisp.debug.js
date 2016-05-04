@@ -2,7 +2,7 @@
 * KISP - KISP JavaScript Library
 * name: default 
 * version: 4.0.0
-* build: 2016-05-03 16:51:14
+* build: 2016-05-04 14:17:36
 * files: 126(124)
 *    partial/default/begin.js
 *    core/Module.js
@@ -5076,7 +5076,6 @@ define('App', function (require, module, exports) {
                     view$bind: {},
                     enabled: false,     //记录是否触发了滑动后退。
                     aborted: false,     //记录是否取消了滑动后退。
-
                 };
 
 
@@ -5102,10 +5101,8 @@ define('App', function (require, module, exports) {
                         slideWidth = clientWidth * slideWidth;
                     }
 
-
                     target.$.on({
                         'touchstart': function (event) {
-
                             //复位。
                             k = 0;
                             deltaX = 0;
@@ -5120,7 +5117,6 @@ define('App', function (require, module, exports) {
                         'touchmove': function (event) {
                             var touch = event.originalEvent.touches[0];
                             deltaX = touch.pageX - startX;
-
                             if (deltaX <= 0) {   //向左滑，或滑动距离为零。
                                 return;
                             }
@@ -5164,10 +5160,11 @@ define('App', function (require, module, exports) {
                             //让遮罩层的透明度跟着变化。
                             var opacity = 0.4 * (1 - deltaX / clientWidth);
                             mask.$.css('opacity', opacity);
+
                             target.$.css('transform', 'translateX(' + deltaX + 'px)');
 
                             //让下面的那层视图 current 跟着左右移动，但移动的速度要比 target 慢。
-                            var x = clientWidth * (-0.75) + deltaX * 0.8;
+                            var x = clientWidth * (-0.75) + deltaX * 0.7;
                             x = Math.min(x, 0); //不能大于 0，否则左边就会给移过头而出现空白。
 
                             current.$.css('transform', 'translateX(' + x + 'px)');
@@ -5194,13 +5191,15 @@ define('App', function (require, module, exports) {
                             target.$.removeClass('Forward');
                             target.$.addClass('Shadow');
                             target.$.css({
-                                'transition': 'transform ' + time,  //恢复动画。
+                                'transition': 'transform ' + time,                  //恢复动画。
+                                '-webkit-transition': '-webkit-transform ' + time,  //兼容低版本的
                                 'transform': 'translateX(' + translateX + ')',
                             });
 
-                            current.$.data(animatedKey, false); //暂时关闭动画回调。
+                            current.$.data(animatedKey, false);                     //暂时关闭动画回调。
                             current.$.css({
-                                'transition': 'transform ' + time,  //恢复动画。
+                                'transition': 'transform ' + time,                  //恢复动画。
+                                '-webkit-transition': '-webkit-transform ' + time,  //兼容低版本的
                                 'transform': 'translateX(' + (aborted ? '-75%' : 0) + ')',
                             });
 
@@ -5256,6 +5255,9 @@ define('App', function (require, module, exports) {
                             return;
                         }
 
+
+                        mask.$.hide();  //动画结束后，隐藏遮罩层。
+
                         if (slide.enabled) { //说明是滑动后退触发的
                             current = nav.get(-2);
                             current = module.require(current);
@@ -5293,7 +5295,6 @@ define('App', function (require, module, exports) {
                             }
                         }
 
-                        mask.$.hide();  //动画结束后，隐藏遮罩层。
                     });
 
                 });
@@ -5336,8 +5337,8 @@ define('App', function (require, module, exports) {
 
                 });
 
-
                 mask.render();
+
                 factory && factory(require, module, nav);
 
             });
@@ -11980,7 +11981,7 @@ define('App.defaults', /**@lends App.defaults*/ {
     animated: true,
 
     slide: {
-        width: 0.20,    //向右滑动的距离超过该值并松开滑动后才会触发滑动后退。
+        width: 0.25,    //向右滑动的距离超过该值并松开滑动后才会触发滑动后退。
         k: 0.6,         //斜率
         time: 300,      //过渡时间，单位ms
     },
