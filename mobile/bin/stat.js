@@ -2,13 +2,13 @@
 
 //全局配置。
 var defaults = require('./config/config.js');
+var Weber = require('./f/weber');
+var WebSite = Weber.require('WebSite');
 
-var Weber = require('Weber');
+
 Weber.config(defaults);
 
-var WebSite = Weber.require('WebSite');
 var website = new WebSite();
-
 website.stat();
 
    

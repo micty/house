@@ -3,6 +3,7 @@
 * 打开本轻应用在 IIS 上所对应的 url。
 * 使用命令:
 *   node open
+*   node open localhost
 */
 
 var defaults = require('./config/config.js');
@@ -12,5 +13,8 @@ Weber.config(defaults);
 
 var WebSite = Weber.require('WebSite');
 var website = new WebSite();
-website.open();
+
+website.open({
+    'host': process.argv[2],
+});
 

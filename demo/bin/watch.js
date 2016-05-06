@@ -3,7 +3,9 @@
 * 使用命令:
 *   node watch
 *   node watch open
+*   node watch open localhost
 *   node watch qr
+*   node watch qr 450
 */
 
 var defaults = require('./config/config.js');
@@ -21,11 +23,15 @@ website.watch(function () {
 
     switch (action) {
         case 'open':
-            website.open();
+            website.open({
+                'host': args[3],
+            });
             break;
 
         case 'qr':
-            website.openQR();
+            website.openQR({
+                'width': args[3],
+            });
             break;
     }
 

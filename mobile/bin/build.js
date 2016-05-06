@@ -3,9 +3,14 @@
 * 使用命令:
 *   node build
 *   node build dist
+*   node build dist open
+*   node build dist open localhost
 *   node build open
+*   node build open localhost
 *   node build qr
+*   node build qr 450
 *   node build dist qr
+*   node build dist qr 450
 */
 
 var defaults = require('./config/config.js');
@@ -17,10 +22,12 @@ var WebSite = Weber.require('WebSite');
 var website = new WebSite();
 
 
-var level = process.argv[2] || 'dist';
-var action = process.argv[3];
+var args = process.argv;
+var level = args[2] || 'dist';
+var action = args[3];
 
 //node build open
+//node build qr
 if (level == 'open' || level == 'qr') {
     action = level;
     level = 'dist';
@@ -34,11 +41,17 @@ website.build(options, function () {
 
     switch (action) {
         case 'open':
-            website.open(dir);
+            website.open({
+                'dir': dir,
+                'host': args[4] || args[3],
+            });
             break;
 
         case 'qr':
-            website.openQR(dir);
+            website.openQR({
+                'dir': dir,
+                'width': args[4] || args[3],
+            });
             break;
     }
 
