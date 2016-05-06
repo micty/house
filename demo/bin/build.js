@@ -38,19 +38,23 @@ var options = require('./config/' + level);
 website.build(options, function () {
 
     var dir = options.dir;
+    var more = args[4] || args[3];
+    if (more == action) {
+        more = '';
+    }
 
     switch (action) {
         case 'open':
             website.open({
                 'dir': dir,
-                'host': args[4] || args[3],
+                'host': more,
             });
             break;
 
         case 'qr':
             website.openQR({
                 'dir': dir,
-                'width': args[4] || args[3],
+                'width': more,
             });
             break;
     }
