@@ -2,16 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>新闻列表</title>
-
-
+    <title></title>
     <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
-    <style>
-        .iframe {
-            overflow: hidden;
-        }
-    </style>
     <!--weber.css.begin-->
     <script>
         [
@@ -21,20 +14,23 @@
         ]
     </script>
     <!--weber.css.end-->
-
-
 </head>
 <body class="iframe">
     <div id="div-header" class="header">
-        <button>添加</button>
+        <button><i class="icon fa fa-plus"></i>添加</button>
     </div>
     <div id="div-list" class="list">
         <!--
         <table cellspacing="0" cellpadding="0">
             <tr class="header">
                 <th>序号</th>
-                <th>项目名称</th>
-                <th>土地编号</th>
+                <th>土地挂牌编号</th>
+   
+                <th>土地面积</th>
+       
+                <th>可建建筑面积</th>
+                <th>竞得人</th>
+                <th>成交价格</th>
                 <th>提交时间</th>
                 <th style="{operate-display}">操作</th>
             </tr>
@@ -42,8 +38,15 @@
             #--row.begin--#
             <tr data-index="{index}">
                 <td>{no}</td>
-                <td><a href="javascript:" data-index="{index}" data-cmd="detail" >{project}<a/></td>
-                <td>{code}</td>
+                <td>
+                    <a href="javascript:" data-index="{index}" data-cmd="detail">{number}<a/>
+                </td>
+  
+                <td>{size}</td>
+
+                <td>{buildSize}</td>
+                <td>{winner}</td>
+                <td>{price}</td>
                 <td>{datetime}</td>
                 <td class="operate" style="{operate-display}">
                     <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>

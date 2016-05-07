@@ -1,50 +1,42 @@
 ﻿
-
 define('/List', function (require, module) {
-
 
     var $ = require('$');
     var KISP = require('KISP');
     var SessionStorage = require('SessionStorage');
 
-
     var panel = KISP.create('Panel', '#div-list');
-    var list = [];
-    var template = null;
     var user = SessionStorage.get('user');
+    var list = [];
 
     panel.on('init', function () {
 
         var display = user.role == 'land' ? '' : 'display: none;';
 
-        template = KISP.create('Template', '#div-list', {
-       
-            names: ['row'],
 
-            fn: function (item, index) {
+        panel.template(['row'],  function (data, index) {
 
-                return {
-                    data: {
+            return {
+                data: {
+                    'operate-display': display,
+                },
+
+                list: data.list,
+
+                fn: function (item, index) {
+
+                    var data = $.Object.extend({}, item, {
+                        'index': index,
+                        'no': index + 1,
                         'operate-display': display,
-                    },
 
-                    list: item.items,
+                    });
 
-                    fn: function (item, index) {
-                        return {
-                            data: {
-                                'index': index,
-                                'no': index + 1,
-                                'project': item.project,
-                                'code': item.code,
-                                'datetime': item.datetime,
-                                'id': item.id,
-                                'operate-display': display,
-                            },
-                        };
-                    },
-                };
-            }
+                    return {
+                        'data': data,
+                    };
+                },
+            };
         });
 
 
@@ -56,6 +48,14 @@ define('/List', function (require, module) {
             var index = btn.getAttribute('data-index');
             var cmd = btn.getAttribute('data-cmd');
             var item = list[index];
+
+            if (cmd == 'remove') {
+                var msg = '确认要删除【' + item.number + '】';
+                KISP.confirm(msg, function () {
+                    panel.fire(cmd, [item, index]);
+                });
+                return;
+            }
      
             panel.fire(cmd, [item, index]);
 
@@ -70,11 +70,9 @@ define('/List', function (require, module) {
         list = data;
 
         //二级模板填充所需要的数据格式
-        template.fill([
-            {
-                items: list,
-            },
-        ]);
+        panel.fill({
+            'list': list,
+        });
 
         panel.$.toggleClass('nodata', list.length == 0);
 

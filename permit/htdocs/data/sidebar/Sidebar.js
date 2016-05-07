@@ -22,7 +22,7 @@
     },
     {
         icon: 'bars',
-        name: '施工许可列表',
+        name: '建设许可列表',
         url: 'html/construct/list/index.html',
         //autoOpen: true,
         cmd: ['construct', 'list'],
@@ -52,14 +52,14 @@
     },
     {
         icon: 'plus',
-        name: '施工许可发布',
-        url: 'html/construct/add/index',
+        name: '建设许可发布',
+        url: 'html/construct/add/index.html',
         cmd: ['construct', 'add'],
     },
     {
         icon: 'plus',
         name: '预售许可发布',
-        url: 'html/sale/add/index',
+        url: 'html/sale/add/index.html',
         cmd: ['sale', 'add'],
         border: true,
     },

@@ -2,26 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>报名管理</title>
-
-
-    <link href="../../f/font-awesome/css/font-awesome.debug.css?3F05" rel="stylesheet" />
+    <title></title>
+    <link href="../../f/font-awesome/css/font-awesome.debug.css?27BF" rel="stylesheet" />
     <link href="../../f/kisp/kisp.debug.css?A8A6" rel="stylesheet" />
-    <style>
-        .iframe {
-            overflow: hidden;
-        }
-    </style>
     <!--weber.css.begin-->
-    <link href="../../style/css/style.less.global.css?80FA" rel="stylesheet" />
+    <link href="../../style/css/style.less.global.css?6995" rel="stylesheet" />
     <link href="../../style/css/html.home.index.css?DBA5" rel="stylesheet" />
     <!--weber.css.end-->
     
-
-
 </head>
 <body class="iframe">
-    
     <div id="div-panel-land" class="panel">
         <div id="div-land-header" class="header">
             土地出让
@@ -35,83 +25,83 @@
             </li>
             -->
         </ul>
-
     </div>
 
     <div class="panel">
-        <div class="header">
+        <div id="div-plan-header" class="header">
             规划许可
-            <a href="#">更多<i class="icon fa fa-angle-double-right"></i></a>
+            <a href="javascript:">更多<i class="icon fa fa-angle-double-right"></i></a>
         </div>
-        <ul class="list">
+        <ul id="ul-plan-list" class="list">
+            <li class="loading">加载中...</li>
+            <!--
             <li>
-                <a href="#">你们期盼的地铁3号线有新消息啦，力争今年下半年动工</a><span>2016-03-25</span>
+                <a href="javascript:" data-index="{index}">{title}</a><span>{date}</span>
             </li>
-            <li>
-                <a href="#">佛山拟进一步放宽市外户口准入条件 有房即可入户</a><span>2016-03-22</span>
-            </li>
-            <li>
-                <a href="#">2015年禅城楼市成交量大涨5成 售价持稳</a><span>2016-03-22</span>
-            </li>
-            <li>
-                <a href="#">12月楼价破9字头创新高 1分钟回顾佛山13年房价走势</a><span>2016-03-22</span>
-            </li>
-            <li>
-                <a href="#">禅城房价稳健发展2016还要涨区长喊你来买房</a><span>2016-03-22</span>
-            </li>
+            -->
         </ul>
     </div>
 
     <div class="panel">
-        <div class="header">
-            施工许可
-            <a href="#">更多<i class="icon fa fa-angle-double-right"></i></a>
+        <div id="div-construct-header" class="header">
+            建设许可
+            <a href="javascript:">更多<i class="icon fa fa-angle-double-right"></i></a>
         </div>
-        <ul class="list">
+        <ul id="ul-construct-list" class="list">
+            <li class="loading">加载中...</li>
+            <!--
             <li>
-                <a href="#">你们期盼的地铁3号线有新消息啦，力争今年下半年动工</a><span>2016-03-25</span>
+                <a href="javascript:" data-index="{index}">{title}</a><span>{date}</span>
             </li>
-            <li>
-                <a href="#">佛山拟进一步放宽市外户口准入条件 有房即可入户</a><span>2016-03-22</span>
-            </li>
-            <li>
-                <a href="#">2015年禅城楼市成交量大涨5成 售价持稳</a><span>2016-03-22</span>
-            </li>
-            <li>
-                <a href="#">12月楼价破9字头创新高 1分钟回顾佛山13年房价走势</a><span>2016-03-22</span>
-            </li>
-            <li>
-                <a href="#">禅城房价稳健发展2016还要涨区长喊你来买房</a><span>2016-03-22</span>
-            </li>
+            -->
         </ul>
     </div>
 
     <div class="panel">
-        <div class="header">
+        <div id="div-sale-header" class="header">
             预售许可
-            <a href="#">更多<i class="icon fa fa-angle-double-right"></i></a>
+            <a href="javascript:">更多<i class="icon fa fa-angle-double-right"></i></a>
         </div>
-        <ul class="list nodata"></ul>
+        <ul id="ul-sale-list" class="list">
+            <li class="loading">加载中...</li>
+            <!--
+            <li>
+                <a href="javascript:" data-index="{index}">{title}</a><span>{date}</span>
+            </li>
+            -->
+        </ul>
     </div>
 
-    <script src="../../f/jquery/jquery-2.1.1.debug.js?7403"></script>
-    <script src="../../f/miniquery/miniquery.debug.js?4A11"></script>
+    <script src="../../f/jquery/jquery-2.1.1.debug.js?33E0"></script>
+    <script src="../../f/miniquery/miniquery.debug.js?7232"></script>
     <script src="../../f/kisp/kisp.debug.js?753F"></script>
-    <script src="../../config.js?659C"></script>
+    <script src="../../config.js?5D6D"></script>
 
 
     <!--weber.js.begin-->
-    <script src="../../lib/Bridge.js?C487"></script>
-    <script src="../../lib/LocalStorage.js?2879"></script>
-    <script src="../../lib/Multitask.js?4FB5"></script>
-    <script src="../../lib/SessionStorage.js?B24D"></script>
-    <script src="../../lib/Tabs.js?0F53"></script>
-    <script src="../../lib/Url.js?4345"></script>
-    <script src="modules/Land/API.js?BD23"></script>
-    <script src="modules/Land/Header.js?6463"></script>
-    <script src="modules/Land/List.js?730D"></script>
-    <script src="modules/Land.js?FC4D"></script>
-    <script src="index.js?2F03"></script>
+    <script src="../../lib/Bridge.js?095C"></script>
+    <script src="../../lib/LocalStorage.js?E6A6"></script>
+    <script src="../../lib/Multitask.js?FCCD"></script>
+    <script src="../../lib/SessionStorage.js?C73C"></script>
+    <script src="../../lib/Tabs.js?7EF4"></script>
+    <script src="../../lib/Url.js?E924"></script>
+    <script src="modules/Construct/API.js?82FD"></script>
+    <script src="modules/Construct/Header.js?6514"></script>
+    <script src="modules/Construct/List.js?24C0"></script>
+    <script src="modules/Construct.js?1C6E"></script>
+    <script src="modules/Land/API.js?1439"></script>
+    <script src="modules/Land/Header.js?D53A"></script>
+    <script src="modules/Land/List.js?831E"></script>
+    <script src="modules/Land.js?D334"></script>
+    <script src="modules/Plan/API.js?4154"></script>
+    <script src="modules/Plan/Header.js?E6F6"></script>
+    <script src="modules/Plan/List.js?0D53"></script>
+    <script src="modules/Plan.js?B80C"></script>
+    <script src="modules/Sale/API.js?EEFD"></script>
+    <script src="modules/Sale/Header.js?9C40"></script>
+    <script src="modules/Sale/List.js?1787"></script>
+    <script src="modules/Sale.js?34D3"></script>
+    <script src="index.js?0447"></script>
     <!--weber.js.end-->
 
 

@@ -12,19 +12,19 @@ KISP.launch(function (require, module) {
     
     var API = module.require('API');
     var Form = module.require('Form');
-    var Footer = module.require('Footer');
+    var Header = module.require('Header');
 
 
     API.on('success', {
         'get': function (data) {
             Form.render(data);
-            Footer.render();
+            Header.render();
         },
 
     });
 
 
-    Footer.on('submit', function () {
+    Header.on('submit', function () {
         Bridge.open(['land', 'add'], {
             'id': id,
         });

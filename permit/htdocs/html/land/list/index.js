@@ -41,12 +41,8 @@ KISP.launch(function (require, module) {
         },
 
         'remove': function (item, index) {
-
-            var msg = '确认要删除【' + item.project + '】';
-            KISP.confirm(msg, function () {
-                currentIndex = index;
-                API.remove(item.id);
-            });
+            currentIndex = index;
+            API.remove(item.id);
         },
 
         'edit': function (item, index) {

@@ -3,18 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>文章发布</title>
-
     <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
-    <style>
-        .iframe {
-            overflow: hidden;
-        }
-    </style>
 
     <!--weber.css.begin-->
     <script>
         [
+            '../../../style/less/global.less',
             'index.less',
             'modules/**/*.less',
         ]
@@ -28,83 +23,44 @@
         土地出让发布
     </div>
     <div class="main">
+        <div class="name">基本信息</div>
         <table id="table-form" class="form-table" border="0" cellpadding="0" cellspacing="0">
             <tbody>
                 <tr>
-                    <td colspan="3" class="name">项目名称</td>
-                    <td class="value"><input name="project" type="text" required/></td>
+                    <td class="name">土地挂牌编号</td>
+                    <td class="value"><input name="number" type="text" /></td>
                     <td class="tip">*<span>必填</span></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="name">土地编号</td>
-                    <td class="value"><input name="code" type="text" /></td>
-                    <td class="tip">*<span>必填</span></td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="name">区域镇街</td>
-                    <td class="value">
-                        <select name="area">
-                            <option>南庄镇</option>
-                            <option>石湾镇街道</option>
-                            <option>张槎街道</option>
-                            <option>祖庙街道</option>
-                        </select>
-                    </td>
-                    <td class="tip"><span></span></td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="name">开发商名称</td>
-                    <td class="value"><input name="developer" type="text" /></td>
-                    <td class="tip"><span></span></td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="name">土地位置</td>
+                    <td class="name">土地座落</td>
                     <td class="value"><input name="location" type="text" /></td>
                     <td class="tip"><span></span></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="name">土地规划用途</td>
-                    <td class="value">
-                        <select name="use">
-                            <option>商业</option>
-                            <option>住宅</option>
-                            <option>办公</option>
-                        </select>
-                    </td>
-                    <td class="tip"><span></span></td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="name">土地出让合同的可建面积</td>
+                    <td class="name">土地面积</td>
                     <td class="value"><input name="size" type="number" /></td>
                     <td class="tip">数字(平方米)<span></span></td>
                 </tr>
                 <tr>
-                    <td rowspan="3" class="big name">已办规划许可部分的面积</td>
-                    <td rowspan="2" class="name">已办预售证</td>
-                    <td class="name">已售</td>
-                    <td class="value"><input name="plan-presell-sell" type="number" /></td>
+                    <td class="name">土地用途</td>
+                    <td class="value"><input name="use" type="text" /></td>
+                    <td class="tip"><span></span></td>
+                </tr>
+                
+                <tr>
+                    <td class="name">可建建筑面积</td>
+                    <td class="value"><input name="buildSize" type="number" /></td>
                     <td class="tip">数字(平方米)<span></span></td>
                 </tr>
                 <tr>
-                    <td class="name">未售</td>
-                    <td class="value"><input name="plan-presell-unsell" type="number" /></td>
-                    <td class="tip">数字(平方米)<span></span></td>
+                    <td class="name">竞得人</td>
+                    <td class="value"><input name="winner" type="text" /></td>
+                    <td class="tip"><span></span></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="name">未办预售证</td>
-                    <td class="value"><input name="plan-unpresell" type="number" /></td>
-                    <td class="tip">数字(平方米)<span></span></td>
-                </tr>
-                <tr>
-                    <td rowspan="2" class="big name">未办规划许可的面积</td>
-                    <td colspan="2" class="name">已办理施工提前介</td>
-                    <td class="value"><input name="unplan-construct" type="number" /></td>
-                    <td class="tip">数字(平方米)<span></span></td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="name">未办理施工提前介</td>
-                    <td class="value"><input name="unplan-unconstruct" type="number" /></td>
-                    <td class="tip">数字(平方米)<span></span></td>
+                    <td class="name">成交价格</td>
+                    <td class="value"><input name="price" type="text" /></td>
+                    <td class="tip"><span></span></td>
                 </tr>
             </tbody>
         </table>

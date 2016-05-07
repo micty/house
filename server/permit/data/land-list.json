@@ -1,34 +1,13 @@
 [
     {
-        "id": "78D80C04947F",
-        "project": "AAAAA-12045",
-        "code": "856699412",
-        "area": "石湾镇街道",
-        "developer": "CCCCC",
-        "location": "DDDDD",
-        "use": "办公",
-        "size": "66666",
-        "plan-presell-sell": "55555",
-        "plan-presell-unsell": "44444",
-        "plan-unpresell": "33333",
-        "unplan-construct": "22222",
-        "unplan-unconstruct": "11111",
-        "datetime": "2016-04-08 22:22:29"
-    },
-    {
-        "id": "755968106CB4",
-        "project": "祖庙东华里改造项目",
-        "code": "佛禅(挂)2007-15",
-        "area": "祖庙街道",
-        "developer": "佛山益康置业有限公司等8家公司",
-        "location": "禅城区人民路南侧、祖庙路两侧",
-        "use": "办公",
-        "size": "150006.5",
-        "plan-presell-sell": "411011",
-        "plan-presell-unsell": "52201",
-        "plan-unpresell": "8520",
-        "unplan-construct": "7000",
-        "unplan-unconstruct": "6000",
-        "datetime": "2016-04-09 20:58:59"
+        "id": "6475E6C8F24B",
+        "number": "TD2015(CC)WG008",
+        "location": "佛山市禅城区科润路南北、佛山一环以东、东平水道以西",
+        "size": "205683.81",
+        "use": "二类居住用地，商业、商务、娱乐康体用地",
+        "buildSize": "800000",
+        "winner": "广州方荣房地产有限公司",
+        "price": "166742万",
+        "datetime": "2016-05-07 10:50:36"
     }
 ]

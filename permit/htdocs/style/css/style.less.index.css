@@ -192,12 +192,9 @@ body {
 }
 .content .header .user-info .user-setting .setting-more:after {
     content: "";
+    position: absolute;
     top: -12px;
     right: 11px;
-    position: absolute;
-    border: solid;
-    border-color: transparent transparent #ddd transparent;
-    border-width: 6px;
 }
 .content .header .user-info .user-setting .setting-more .box {
     position: absolute;
@@ -208,13 +205,10 @@ body {
 }
 .content .header .user-info .user-setting .setting-more .box:before {
     content: "";
+    position: absolute;
     right: 12px;
     top: -3px;
     z-index: 10;
-    position: absolute;
-    border: solid;
-    border-color: transparent transparent #fff transparent;
-    border-width: 5px;
 }
 .content .header .user-info .user-setting .setting-more .box ul {
     background: #fff;

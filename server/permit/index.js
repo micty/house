@@ -69,7 +69,6 @@ app.post('/Login.login', function (req, res) {
 
 //土地出让模块
 var Land = require('./modules/Land');
-
 app.get('/Land.get', function (req, res) {
     Land.get(res, req.query.id);
 });
@@ -84,4 +83,59 @@ app.get('/Land.remove', function (req, res) {
 });
 app.get('/Land.list', function (req, res) {
     Land.list(res);
+});
+
+//规划许可模块
+var Plan = require('./modules/Plan');
+app.get('/Plan.get', function (req, res) {
+    Plan.get(res, req.query.id);
+});
+app.post('/Plan.add', function (req, res) {
+    Plan.add(res, req.body);
+});
+app.post('/Plan.update', function (req, res) {
+    Plan.update(res, req.body);
+});
+app.get('/Plan.remove', function (req, res) {
+    Plan.remove(res, req.query.id);
+});
+app.get('/Plan.list', function (req, res) {
+    Plan.list(res);
+});
+
+
+//建设许可模块
+var Construct = require('./modules/Construct');
+app.get('/Construct.get', function (req, res) {
+    Construct.get(res, req.query.id);
+});
+app.post('/Construct.add', function (req, res) {
+    Construct.add(res, req.body);
+});
+app.post('/Construct.update', function (req, res) {
+    Construct.update(res, req.body);
+});
+app.get('/Construct.remove', function (req, res) {
+    Construct.remove(res, req.query.id);
+});
+app.get('/Construct.list', function (req, res) {
+    Construct.list(res);
+});
+
+//预售许可模块
+var Sale = require('./modules/Sale');
+app.get('/Sale.get', function (req, res) {
+    Sale.get(res, req.query.id);
+});
+app.post('/Sale.add', function (req, res) {
+    Sale.add(res, req.body);
+});
+app.post('/Sale.update', function (req, res) {
+    Sale.update(res, req.body);
+});
+app.get('/Sale.remove', function (req, res) {
+    Sale.remove(res, req.query.id);
+});
+app.get('/Sale.list', function (req, res) {
+    Sale.list(res);
 });
