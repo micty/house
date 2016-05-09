@@ -1,8 +1,8 @@
 /*
 * KISP - KISP JavaScript Library
 * name: default 
-* version: 4.0.1
-* build: 2016-05-06 16:46:16
+* version: 4.1.0
+* build: 2016-05-09 17:30:53
 * files: 126(124)
 *    partial/default/begin.js
 *    core/Module.js
@@ -280,7 +280,7 @@ define('KISP', function (require, module, exports) {
         /**
         * 版本号。 (由 grunt 自动插入)
         */
-        version: '4.0.1', //由 grunt 自动插入
+        version: '4.1.0', //由 grunt 自动插入
 
         /**
         * 文件列表。 (由 grunt 自动插入)
@@ -5021,6 +5021,8 @@ define('App', function (require, module, exports) {
         */
         normal: function (factory) {
 
+            var meta = mapper.get(this);
+
             this.init(function (require, module) {
 
                 
@@ -5054,6 +5056,7 @@ define('App', function (require, module, exports) {
         },
 
 
+
         /**
         * 使用动画版来启动应用。
         */
@@ -5061,16 +5064,22 @@ define('App', function (require, module, exports) {
 
             var Mask = require('Mask');
             var Transition = module.require('Transition');
-
-            var meta = mapper.get(this);
+            var self = this;
 
             this.init(function (require, module) {
+
+                var meta = mapper.get(self);
 
                 var view$bind = {}; //记录目标视图是否已绑定了 transitionend 事件。
                 var eventName = Transition.getEventName();
                 var mask = new Mask();
                 var nav = Nav.create();
                 var animatedKey = 'animated-' + $.String.random(); //增加个随机数，防止无意中冲突。
+                var direction = ''; //记录视图是前进还是后退。
+
+                var left = meta.slide.left;
+                var leftPercent = -left * 100 + '%';
+                var time = meta.slide.time / 1000 + 's';
 
                 var slide = {
                     view$bind: {},
@@ -5095,8 +5104,6 @@ define('App', function (require, module, exports) {
                     var hasTranslated = false;  //记录是否已发生了滑动变换。
 
                     var maskOpacity = meta.slide.mask;
-                    var left = meta.slide.left;
-                    var leftPercent = -left * 100 + '%';
 
                     var right = meta.slide.right;
                     if (right < 1) { //是小数，则当成百分比。
@@ -5131,31 +5138,25 @@ define('App', function (require, module, exports) {
                                     return;
                                 }
 
+                                hasTranslated = true;
+
                                 // -1 的为 target 即当前视图， -2 的才为当前视图的上一个视图。
                                 current = nav.get(-2);
                                 current = module.require(current);
 
                                 current.$.css({ 'z-index': 1, });   //当前视图为 1
-                                //mask.$.css({ 'z-index': 2, });    //遮罩层的为 2，已在 css 里固定写死。
+                                mask.$.css({ 'z-index': 2, });      //遮罩层的为 2
                                 target.$.css({ 'z-index': 3, });    //目标视图为 3
 
                                 target.$.css('transition', 'none'); //先关闭动画。
+                                current.$.css('transition', 'none');//先关闭动画。
+                                mask.$.css('transition', 'none');   //先关闭动画。
+
+                                target.$.addClass('Shadow');
+                                current.$.css('transform', 'translateX(' + leftPercent + ')');  //先隐藏到左边的位置。
 
                                 current.show(); //这里要触发 show 事件。
                                 mask.$.show();
-
-                                mask.$.css({
-                                    'z-index': 2,
-                                    'transition': 'none',   //关闭动画。
-                                });
-
-                                current.$.css({
-                                    'transition': 'none',               //先关闭动画。
-                                    'transform': 'translateX(' + leftPercent + ')', //先隐藏到左边的位置。
-                                });
-
-                                mask.$.removeClass('BeforeForward Forward BeforeBack Back');
-                                hasTranslated = true;
                             }
 
                             //让遮罩层的透明度跟着变化。
@@ -5182,15 +5183,12 @@ define('App', function (require, module, exports) {
                             //水平滑动距离小于指定值，中止。
                             var aborted = slide.aborted = deltaX < right;
                             var translateX = aborted ? 0 : '100%';
-                            var time = meta.slide.time / 1000 + 's';
 
                             mask.$.css({
                                 'opacity': aborted ? maskOpacity : 0,//如果滑动生效，则渐变到 0；否则恢复到滑动之前的。
                                 'transition': 'opacity ' + time,    //恢复动画。
                             });
 
-                            target.$.removeClass('Forward');
-                            target.$.addClass('Shadow');
                             target.$.css({
                                 'transition': 'transform ' + time,                  //恢复动画。
                                 '-webkit-transition': '-webkit-transform ' + time,  //兼容低版本的
@@ -5215,25 +5213,34 @@ define('App', function (require, module, exports) {
                     target = module.require(target);
 
                     current.$.css({ 'z-index': 1, });   //当前视图为 1
-                    //mask.$.css({ 'z-index': 2, });    //遮罩层的为 2，已在 css 里固定写死。
                     target.$.css({ 'z-index': 3, });    //目标视图为 3
 
-                    target.$.addClass('BeforeForward'); //先把目标视图移到最右端。
-                    target.$.removeClass('Back');
+                    target.$.css('transform', 'translateX(100%)'); //先把目标视图移到最右端。
                     target.$.show();
-
-                    mask.$.removeClass('BeforeBack Back Forward')
-                    mask.$.addClass('BeforeForward');   //先完全变透明
-                    mask.$.show();
 
                     //为了防止跟上面的产生时间竞争，这里延迟一定时间后再开始动画。
                     setTimeout(function () {
-                        mask.$.addClass('Forward');
-                        target.$.addClass('Forward');
+
+                        direction = 'forward';
+                        target.$.addClass('Shadow');
+                        target.$.css({
+                            'transform': 'translateX(0px)',
+                            'transition': 'transform ' + time,                  //恢复动画。
+                            '-webkit-transition': '-webkit-transform ' + time,  //兼容低版本的
+
+                        });
+
+                        current.$.css({
+                            'transform': 'translateX(' + leftPercent + ')',
+                            'transition': 'transform ' + time,                  //恢复动画。
+                            '-webkit-transition': '-webkit-transform ' + time,  //兼容低版本的
+                        });
+
                     }, 50);
 
-                });
 
+
+                });
 
 
                 //跳转到目标视图之前触发
@@ -5249,34 +5256,27 @@ define('App', function (require, module, exports) {
                     // css 动画结束后执行。 
                     //注意在上面的 current 和 target 都会触发相应的动画结束事件。
                     target.$.on(eventName, function () {
+                        //debugger;
+
                         var animated = target.$.data(animatedKey);
                         target.$.data(animatedKey, true); //恢复使用动画。
 
-                        if (animated === false) { //明确指定了不使用动画。 此时的 target 为上面的 current。
+                        //明确指定了不使用动画。 此时的 target 为上面的 current。
+                        if (animated === false) {
                             return;
                         }
 
-
-                        mask.$.hide();  //动画结束后，隐藏遮罩层。
-
                         if (slide.enabled) { //说明是滑动后退触发的
+
+                            mask.$.hide();  //动画结束后，隐藏遮罩层。
+
                             current = nav.get(-2);
                             current = module.require(current);
-
-                            //避免对下一次的常规后退产生影响。
-                            //因为这两个样式是在滑动后退时加进去的，在滑动后退动画结束后必须移除掉。
-                            var resets = {
-                                'transition': '',
-                                'transform': '',
-                            };
-                            current.$.css(resets);
-                            target.$.css(resets);
 
                             target.$.removeClass('Shadow');
                             slide.enabled = false;              //复位。
 
                             if (slide.aborted) { //滑动后退给取消。
-                                target.$.addClass('Forward');
                                 current.hide(); //在滑动过程中已给显示出来了，这里要重新隐藏。
                             }
                             else { //滑动后退生效了
@@ -5286,12 +5286,15 @@ define('App', function (require, module, exports) {
 
                         }
                         else { //常规后退触发的。
-                            if (target.$.hasClass('Forward')) {     //前进
+                            if (direction == 'forward') {     //前进
+                                direction = '';
                                 current = nav.get(-2);
                                 current = module.require(current);
                                 current.hide();                     //要触发 hide 事件
                             }
-                            else if (target.$.hasClass('Back')) {   //后退
+                            else if (direction == 'back') {   //后退
+                                direction = '';
+                                target.$.removeClass('Shadow');
                                 target.hide();                      //要触发 hide 事件
                             }
                         }
@@ -5303,29 +5306,42 @@ define('App', function (require, module, exports) {
 
                 //常规后退时触发，滑动后退不会触发。
                 nav.on('back', function (current, target) {
-
                     document.activeElement.blur(); // 关闭输入法
 
                     current = module.require(current);
                     target = module.require(target);
 
                     target.$.css({ 'z-index': 1, });    //目标视图为 1
-                    //mask.$.css({ 'z-index': 2, });    //遮罩层的为 2，已在 css 里固定写死。
                     current.$.css({ 'z-index': 3, });   //当前视图为 3
 
+                    target.$.css({
+                        'transform': 'translateX(' + leftPercent + ')',
+                        'transition': 'none',
+                    });
+
                     target.show();  //这里要触发 show 事件
+                    direction = 'back';
 
-                    current.$.removeClass('Forward');   //还有一个 BeforeForward 在里面，确保在最右边躲着。
-                    current.$.addClass('Back');         //立即添加动画
-
-                    //先把遮罩层恢复为半透明，并且关闭动画。
-                    mask.$.removeClass('BeforeForward Forward Back');
-                    mask.$.addClass('BeforeBack');
-                    mask.$.show();
 
                     //为了防止跟上面的产生时间竞争，这里延迟一定时间后再开始动画。
                     setTimeout(function () {
-                        mask.$.addClass('Back');    //让遮罩层动画变到完全透明。
+
+                        current.$.addClass('Shadow');
+
+                        current.$.data(animatedKey, true);  //这个也要有。
+                        current.$.css({
+                            'transition': 'transform ' + time,                  //恢复动画。
+                            '-webkit-transition': '-webkit-transform ' + time,  //兼容低版本的
+                            'transform': 'translateX(100%)',
+                        });
+
+                        target.$.data(animatedKey, false);
+                        target.$.css({
+                            'transition': 'transform ' + time,                  //恢复动画。
+                            '-webkit-transition': '-webkit-transform ' + time,  //兼容低版本的
+                            'transform': 'translateX(0px)',
+                        });
+
                     }, 50);
 
                 });
@@ -5490,6 +5506,7 @@ define('App/Transition', function (require, module, exports) {
 
     return {
         getEventName: getEventName,
+
     };
 
 
@@ -11985,7 +12002,7 @@ define('App.defaults', /**@lends App.defaults*/ {
         left: 0.75,     //下层视图隐藏在左边的宽度的百分比。
         right: 0.25,    //向右滑动的距离超过该值并松开滑动后才会触发滑动后退。
         k: 0.6,         //斜率
-        time: 300,      //过渡时间，单位ms
+        time: 300,      //动画时间，单位 ms
         mask: 0.4,      //遮罩层的不透明度。
     },
 });
