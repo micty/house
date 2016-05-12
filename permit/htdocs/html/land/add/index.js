@@ -61,6 +61,9 @@ KISP.launch(function (require, module) {
     if (id) { //说明是编辑的
         API.get(id);
     }
+    else {
+        Form.render();
+    }
 
 
 

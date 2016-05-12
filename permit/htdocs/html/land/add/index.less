@@ -45,6 +45,16 @@
         .value {
             padding: 0px;
             width: 70%;
+
+            span {
+                padding: 0px 7px 1px 7px;
+                background: #03A9F4;
+                font-size: 20px;
+                font-weight: bold;
+                color: #fff;
+                display: inline-block;
+                min-width: 50px;
+            }
         }
 
         .big {
@@ -82,6 +92,11 @@
 
             &:focus {
                 background: #edf7fc;
+            }
+
+            &.error {
+                background: #FF5722;
+                color: #fff;
             }
         }
 
@@ -123,6 +138,15 @@
                     margin-left: 5px;
                     font-size: 13px;
                     background: #eee;
+                }
+            }
+
+            &.title {
+                td {
+                    background: #4C4C4C;
+                    color: #fff;
+                    font-weight: bold;
+                    padding: 6px 5px;
                 }
             }
         }

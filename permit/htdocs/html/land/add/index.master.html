@@ -32,6 +32,18 @@
                     <td class="tip">*<span>必填</span></td>
                 </tr>
                 <tr>
+                    <td class="name">土地区域</td>
+                    <td class="value">
+                        <select name="town">
+                            <option>南庄</option>
+                            <option>石湾</option>
+                            <option>张槎</option>
+                            <option>祖庙</option>
+                        </select>
+                    </td>
+                    <td class="tip"><span></span></td>
+                </tr>
+                <tr>
                     <td class="name">土地座落</td>
                     <td class="value"><input name="location" type="text" /></td>
                     <td class="tip"><span></span></td>
@@ -39,18 +51,43 @@
                 <tr>
                     <td class="name">土地面积</td>
                     <td class="value"><input name="size" type="number" /></td>
-                    <td class="tip">数字(平方米)<span></span></td>
+                    <td class="tip">数字<span>(平方米)</span></td>
                 </tr>
                 <tr>
                     <td class="name">土地用途</td>
                     <td class="value"><input name="use" type="text" /></td>
                     <td class="tip"><span></span></td>
                 </tr>
-                
+                <tr class="title">
+                    <td colspan="3">可建建筑面积</td>
+                </tr>
                 <tr>
-                    <td class="name">可建建筑面积</td>
-                    <td class="value"><input name="buildSize" type="number" /></td>
-                    <td class="tip">数字(平方米)<span></span></td>
+                    <td class="name">商业</td>
+                    <td class="value"><input name="commerceSize" type="number" data-type="size" /></td>
+                    <td class="tip">数字<span>(平方米)</span></td>
+                </tr>
+                <tr>
+                    <td class="name">住宅</td>
+                    <td class="value"><input name="residenceSize" type="number" data-type="size" /></td>
+                    <td class="tip">数字<span>(平方米)</span></td>
+                </tr>
+                <tr>
+                    <td class="name">办公</td>
+                    <td class="value"><input name="officeSize" type="number" data-type="size" /></td>
+                    <td class="tip">数字<span>(平方米)</span></td>
+                </tr>
+                <tr>
+                    <td class="name">其它</td>
+                    <td class="value"><input name="otherSize" type="number" data-type="size" /></td>
+                    <td class="tip">数字<span>(平方米)</span></td>
+                </tr>
+                <tr>
+                    <td class="name">总面积</td>
+                    <td class="value"><span id="totalSize">0</span></td>
+                    <td class="tip"><span>(平方米)</span></td>
+                </tr>
+                <tr class="title">
+                    <td colspan="3">竞标信息</td>
                 </tr>
                 <tr>
                     <td class="name">竞得人</td>
@@ -59,7 +96,12 @@
                 </tr>
                 <tr>
                     <td class="name">成交价格</td>
-                    <td class="value"><input name="price" type="text" /></td>
+                    <td class="value"><input name="price" type="number" /></td>
+                    <td class="tip">数字<span>(万元)</span></td>
+                </tr>
+                <tr>
+                    <td class="name">竞得时间</td>
+                    <td class="value"><input name="date" type="text" /></td>
                     <td class="tip"><span></span></td>
                 </tr>
             </tbody>
