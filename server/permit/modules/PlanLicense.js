@@ -6,7 +6,7 @@ var Directory = require('../lib/Directory');
 
 
 function getPath() {
-    return './data/land-list.json';
+    return './data/plan-license-list.json';
 }
 
 function getDateTime() {
@@ -293,7 +293,7 @@ module.exports = {
     /**
     * 读取列表。
     */
-    list: function (res) {
+    list: function (res, planId) {
    
         var path = getPath();
         var existed = fs.existsSync(path);
@@ -306,6 +306,11 @@ module.exports = {
 
             var data = fs.readFileSync(path, 'utf8');
             var list = JSON.parse(data);
+
+            list = $.Array.grep(list, function (item) {
+                return item.planId == planId;
+            });
+
             return list;
         }
 
@@ -333,6 +338,10 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
+                list = $.Array.grep(list, function (item) {
+                    return item.planId == planId;
+                });
+
                 list.reverse(); //倒序一下
 
                 res.send({

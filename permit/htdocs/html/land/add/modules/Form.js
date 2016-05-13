@@ -5,54 +5,55 @@ define('/Form', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
-
    
+    var NumberField = require('NumberField');
+
     var panel = KISP.create('Panel', '#table-form');
 
 
+    function totalSize() {
+        var total = 0;
 
+        panel.$.find('[data-name="size"]').each(function () {
+            var txt = this;
+            var nf = new NumberField(txt);
+            var value = nf.get();
+            value = Number(value);
+
+            total += value;
+
+        });
+
+        panel.$.find('#totalSize').val(total);
+        new NumberField('#totalSize').update();
+    }
 
 
     panel.on('init', function () {
 
+        new NumberField('[data-type="number"]');
+        new NumberField('[data-type="price"]', {
+            currencySign: '¥',
+        });
 
-        panel.$.find('[data-type="size"]').on('focusout', function (event) {
-            var txt = this;
-            var value = Number(txt.value);
-
-            if (isNaN(value)) {
-                KISP.alert('请输入数字作为面积');
-                $(txt).addClass('error');
-                return;
-            }
-
-            if (value < 0) {
-                KISP.alert('请输入一个非负数作为面积');
-                $(txt).addClass('error');
-                return;
-            }
-
-        }).on('focus', function (event) {
-            var txt = this;
-
-            if ($(txt).hasClass('error')) {
-                $(txt).removeClass('error');
-            }
-
-        }).on('change', function (event) {
-
-            var total = 0;
-
-            panel.$.find('[data-type="size"]').each(function () {
-                var txt = this;
-                var value = Number(txt.value);
-                total += value;
-
-            });
-
-            panel.$.find('#totalSize').html(total);
+        panel.$.find('[data-name="size"]').on('change', function (event) {
+            totalSize();
         });
       
+    });
+
+
+    panel.on('init', function () {
+
+        var DateTimePicker = require('DateTimePicker');
+
+        var dtp = new DateTimePicker('[name="date"]', {
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            minView: 'month',
+            todayBtn: true,
+            todayHighlight: true
+        });
     });
 
 
@@ -71,6 +72,10 @@ define('/Form', function (require, module, exports) {
                 this.value = value;
 
             });
+
+            totalSize();
+            new NumberField('[data-type="number"]').update();
+            new NumberField('[data-type="price"]').update();
         }
 
         
@@ -86,8 +91,18 @@ define('/Form', function (require, module, exports) {
             };
 
             panel.$.find('[name]').each(function () {
+
                 var name = this.name;
                 var value = this.value;
+
+                var type = this.getAttribute('data-type');
+                if (type == 'number' || type == 'price') {
+                    var txt = this;
+                    var nf = new NumberField(txt);
+                    value = nf.get();
+                    value = Number(value);
+                }
+
                 data[name] = value;
             });
 

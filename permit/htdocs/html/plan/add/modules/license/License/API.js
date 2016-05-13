@@ -1,6 +1,6 @@
 ﻿
 
-define('/API', function (require, module, exports) {
+define('/License/API', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -13,9 +13,9 @@ define('/API', function (require, module, exports) {
 
 
     //获取数据
-    function get() {
+    function get(planId) {
 
-        var api = KISP.create('API', 'Plan.all', {
+        var api = KISP.create('API', 'PlanLicense.list', {
             
         });
 
@@ -24,7 +24,7 @@ define('/API', function (require, module, exports) {
 
             'request': function () {
 
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
 
@@ -36,44 +36,9 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
-
-                var list = data.list;
-                var lands = data.lands;
-
-                var landId$item = {};
-
-                list.forEach(function (item) {
-                    landId$item[item.landId] = item;
-                });
-
-                var todos = $.Array.grep(lands, function (land) {
-                    var item = landId$item[land.id];
-                    return !item;
-                });
-
-
-                var id$land = {};
-                lands.forEach(function (item) {
-                    id$land[item.id] = item;
-                });
-
-                var dones = $.Array.map(list, function (item) {
-
-                    var land = id$land[item.landId];
-                    if (!land) {
-                        return null;
-                    }
-
-                    return $.Object.extend({}, item, {
-                        'land': land,
-                    });
-
-                });
-
-                emitter.fire('success', 'get', [{
-                    'done': dones,
-                    'todo': todos,
-                }]);
+                var list = data;
+           
+                emitter.fire('success', 'get', [list]);
             },
 
             'fail': function (code, msg, json, xhr) {
@@ -85,7 +50,9 @@ define('/API', function (require, module, exports) {
             },
         });
 
-        api.get();
+        api.get({
+            'planId': planId,
+        });
 
 
     }
@@ -94,7 +61,7 @@ define('/API', function (require, module, exports) {
 
     function remove(id) {
 
-        var api = KISP.create('API', 'Plan.remove');
+        var api = KISP.create('API', 'PlanLicense.remove');
 
         api.on({
 
@@ -130,6 +97,7 @@ define('/API', function (require, module, exports) {
         });
 
     }
+
 
 
     return {

@@ -102,6 +102,29 @@ app.get('/Plan.remove', function (req, res) {
 app.get('/Plan.list', function (req, res) {
     Plan.list(res);
 });
+app.get('/Plan.all', function (req, res) {
+    Plan.all(res);
+});
+
+
+//规划许可证模块
+var PlanLicense = require('./modules/PlanLicense');
+app.get('/PlanLicense.get', function (req, res) {
+    PlanLicense.get(res, req.query.id);
+});
+app.post('/PlanLicense.add', function (req, res) {
+    PlanLicense.add(res, req.body);
+});
+app.post('/PlanLicense.update', function (req, res) {
+    PlanLicense.update(res, req.body);
+});
+app.get('/PlanLicense.remove', function (req, res) {
+    PlanLicense.remove(res, req.query.id);
+});
+app.get('/PlanLicense.list', function (req, res) {
+    PlanLicense.list(res, req.query.planId);
+});
+
 
 
 //建设许可模块

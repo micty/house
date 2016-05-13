@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>文章发布</title>
     <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../f/datetimepicker/datetimepicker.mod.debug.css" rel="stylesheet" />
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
 
     <!--weber.css.begin-->
@@ -15,6 +16,12 @@
         ]
     </script>
     <!--weber.css.end-->
+
+    <style>
+        .iframe{
+            min-height: 800px;
+        }
+    </style>
 
 
 </head>
@@ -50,7 +57,7 @@
                 </tr>
                 <tr>
                     <td class="name">土地面积</td>
-                    <td class="value"><input name="size" type="number" /></td>
+                    <td class="value"><input name="size" type="text" data-type="number"/></td>
                     <td class="tip">数字<span>(平方米)</span></td>
                 </tr>
                 <tr>
@@ -63,27 +70,27 @@
                 </tr>
                 <tr>
                     <td class="name">商业</td>
-                    <td class="value"><input name="commerceSize" type="number" data-type="size" /></td>
+                    <td class="value"><input name="commerceSize" type="text" data-type="number" data-name="size" /></td>
                     <td class="tip">数字<span>(平方米)</span></td>
                 </tr>
                 <tr>
                     <td class="name">住宅</td>
-                    <td class="value"><input name="residenceSize" type="number" data-type="size" /></td>
+                    <td class="value"><input name="residenceSize" type="text" data-type="number" data-name="size" /></td>
                     <td class="tip">数字<span>(平方米)</span></td>
                 </tr>
                 <tr>
                     <td class="name">办公</td>
-                    <td class="value"><input name="officeSize" type="number" data-type="size" /></td>
+                    <td class="value"><input name="officeSize" type="text" data-type="number" data-name="size" /></td>
                     <td class="tip">数字<span>(平方米)</span></td>
                 </tr>
                 <tr>
                     <td class="name">其它</td>
-                    <td class="value"><input name="otherSize" type="number" data-type="size" /></td>
+                    <td class="value"><input name="otherSize" type="text" data-type="number" data-name="size" /></td>
                     <td class="tip">数字<span>(平方米)</span></td>
                 </tr>
                 <tr>
                     <td class="name">总面积</td>
-                    <td class="value"><span id="totalSize">0</span></td>
+                    <td class="value"><input class="total" type="text" data-type="number" id="totalSize" value="0" readonly></td>
                     <td class="tip"><span>(平方米)</span></td>
                 </tr>
                 <tr class="title">
@@ -96,7 +103,7 @@
                 </tr>
                 <tr>
                     <td class="name">成交价格</td>
-                    <td class="value"><input name="price" type="number" /></td>
+                    <td class="value"><input name="price" type="text" data-type="price" /></td>
                     <td class="tip">数字<span>(万元)</span></td>
                 </tr>
                 <tr>
@@ -112,6 +119,8 @@
     </div>
     <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
     <script src="../../../f/miniquery/miniquery.debug.js"></script>
+    <script src="../../../f/autoNumeric/autoNumeric.debug.js"></script>
+    <script src="../../../f/datetimepicker/datetimepicker.mod.debug.js"></script>
     <script src="../../../f/kisp/kisp.debug.js"></script>
     <script src="../../../config.js"></script>
 

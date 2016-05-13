@@ -14,6 +14,9 @@ KISP.launch(function (require, module) {
     var API = module.require('API');
     var Form = module.require('Form');
     var Footer = module.require('Footer');
+    var License = module.require('License');
+
+
 
 
     API.on('success', {
@@ -33,7 +36,7 @@ KISP.launch(function (require, module) {
 
     Footer.on('submit', function () {
 
-        var data = Form.get(id);
+        var data = Form.get();
         if (!data) {
             return;
         }
@@ -59,7 +62,19 @@ KISP.launch(function (require, module) {
 
     if (id) { //说明是编辑的
         API.get(id);
+        License.render(id);
+        return;
     }
+
+    var landId = qs.landId;
+    if (!landId) {
+        KISP.alert('新增时必须指定 landId', function () {
+            Bridge.close();
+        });
+        return;
+    }
+
+    API.get(landId, true);
 
 
 

@@ -1,13 +1,34 @@
 [
     {
-        "id": "6475E6C8F24B",
+        "id": "270536532EED",
+        "number": "佛禅（挂）2010—010",
+        "town": "石湾",
+        "location": "禅城区玉带路16号",
+        "size": "25000",
+        "use": "商服用地（商业商务用地）；城镇住宅用地（二类居住用地）",
+        "commerceSize": "10000",
+        "residenceSize": "2000056",
+        "officeSize": "30000",
+        "otherSize": "50000",
+        "winner": "micty",
+        "price": "890003",
+        "date": "2016-05-10",
+        "datetime": "2016-05-13 14:20:28"
+    },
+    {
+        "id": "FCECF02ADEFC",
         "number": "TD2015(CC)WG008",
+        "town": "张槎",
         "location": "佛山市禅城区科润路南北、佛山一环以东、东平水道以西",
-        "size": "205683.81",
+        "size": "65000",
         "use": "二类居住用地，商业、商务、娱乐康体用地",
-        "buildSize": "800000",
-        "winner": "广州方荣房地产有限公司",
-        "price": "166742万",
-        "datetime": "2016-05-07 10:50:36"
+        "commerceSize": "6000",
+        "residenceSize": "9800",
+        "officeSize": "7800",
+        "otherSize": "3000",
+        "winner": "邓先生",
+        "price": "8000",
+        "date": "2016-05-07",
+        "datetime": "2016-05-13 17:00:09"
     }
 ]

@@ -68,10 +68,20 @@ module.exports = {
                     return;
                 }
 
+                var Land = require('./Land');
+                var lands = Land.list();
+                var land = $.Array.findItem(lands, function (land) {
+                    return land.id == item.landId;
+                });
+
+
                 res.send({
                     code: 200,
                     msg: 'ok',
-                    data: item,
+                    data: {
+                        'plan': item,
+                        'land': land,
+                    },
                 });
             }
             catch (ex) {
@@ -295,16 +305,29 @@ module.exports = {
     list: function (res) {
    
         var path = getPath();
+        var existed = fs.existsSync(path);
 
-        if (!fs.existsSync(path)) {
+        //重载 list()，供内部其它模块调用。
+        if (!res) {
+            if (!existed) {
+                return [];
+            }
+
+            var data = fs.readFileSync(path, 'utf8');
+            var list = JSON.parse(data);
+            return list;
+        }
+
+
+        //重载 list(res)，供 http 请求调用。
+        if (!existed) {
             res.send({
                 code: 200,
-                msg: '',
+                msg: 'empty',
                 data: [],
             });
             return;
         }
-
 
        
         fs.readFile(path, 'utf8', function (err, data) {
@@ -336,7 +359,39 @@ module.exports = {
 
         });
 
-    }
+    },
+
+
+    /**
+    * 获取待办和已办列表。
+    */
+    all: function (res) {
+
+        try {
+            var Land = require('./Land');
+            var lands = Land.list();
+            var list = module.exports.list();
+
+
+            res.send({
+                code: 200,
+                msg: '',
+                data: {
+                    'list': list,
+                    'lands': lands,
+                },
+            });
+
+        }
+        catch (ex) {
+            res.send({
+                code: 500,
+                msg: ex.message,
+            });
+        }
+
+    },
+
 
 
 };

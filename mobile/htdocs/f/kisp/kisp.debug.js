@@ -1,9 +1,9 @@
 /*
 * KISP - KISP JavaScript Library
 * name: default 
-* version: 4.1.0
-* build: 2016-05-10 10:11:03
-* files: 126(124)
+* version: 5.0.0
+* build: 2016-05-12 17:58:45
+* files: 128(126)
 *    partial/default/begin.js
 *    core/Module.js
 *    core/$.js
@@ -48,7 +48,9 @@
 *    third-party/wechat/WeChat/Signature.js
 *    third-party/wechat/WeChat.js
 *    ui/App.js
+*    ui/App/Module.js
 *    ui/App/Nav.js
+*    ui/App/Nav/Loader.js
 *    ui/App/Transition.js
 *    ui/CityPicker.js
 *    ui/dialog/Alert.js
@@ -280,7 +282,7 @@ define('KISP', function (require, module, exports) {
         /**
         * 版本号。 (由 grunt 自动插入)
         */
-        version: '4.1.0', //由 grunt 自动插入
+        version: '5.0.0', //由 grunt 自动插入
 
         /**
         * 文件列表。 (由 grunt 自动插入)
@@ -4947,14 +4949,15 @@ define('WeChat', function (require, module, exports) {
 define('App', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
+    var Config = require('Config');
+    var Mask = require('Mask');
+    var Nav = module.require('Nav');
+    var Transition = module.require('Transition');
+    var Module = module.require('Module');
 
     var Mapper = MiniQuery.require('Mapper');
-    var Config = require('Config');
-
-    var Nav = module.require('Nav');
 
     var mapper = new Mapper();
-
 
     /**
     * 构造器。
@@ -4968,7 +4971,6 @@ define('App', function (require, module, exports) {
 
         var meta = {
             'name': name,
-            'mask': config.mask,
             'animated': config.animated,
             'slide': config.slide,
         };
@@ -5016,64 +5018,26 @@ define('App', function (require, module, exports) {
             Module.require(name); //启动
         },
 
-        /**
-        * 使用普通版来启动应用。
-        */
-        normal: function (factory) {
-
-            var meta = mapper.get(this);
-
-            this.init(function (require, module) {
-
-                
-                var nav = Nav.create(meta.mask);
-
-                //后退时触发
-                nav.on('back', function (current, target) {
-                    document.activeElement.blur(); // 关闭输入法
-                    current = module.require(current);
-                    target = module.require(target);
-                    current.hide();
-                    target.show();
-                });
-
-                //跳转到目标视图之前触发，先隐藏当前视图
-                nav.on('before-to', function (current, target) {
-                    current = module.require(current);
-                    current.hide();
-                });
-
-                //统一绑定视图跳转动作，在调用 nav.to(...) 时会给触发
-                nav.on('to', function (name, arg0, arg1, argN) {
-                    var args = [].slice.call(arguments, 1);
-                    var M = module.require(name);
-                    M.render.apply(M, args);
-                });
-
-                factory && factory(require, module, nav);
-            });
-
-        },
-
 
 
         /**
-        * 使用动画版来启动应用。
+        * 初始化执行环境，创建导航管理器和相应的 UI 组件，并启动应用程序。
+        * @param {function} factory 工厂函数，即启动函数。
         */
-        animate: function (factory) {
-
-            var Mask = require('Mask');
-            var Transition = module.require('Transition');
+        launch: function (factory) {
+           
             var self = this;
 
             this.init(function (require, module) {
 
-                var meta = mapper.get(self);
+                Module.enhance(module);
 
-                var view$bind = {}; //记录目标视图是否已绑定了 transitionend 事件。
+                var meta = mapper.get(self);
                 var eventName = Transition.getEventName();
+                var view$bind = {}; //记录目标视图是否已绑定了 transitionend 事件。
                 var mask = new Mask();
-                var nav = Nav.create();
+                var nav = Nav.create(module);
+
                 var animatedKey = 'animated-' + $.String.random(); //增加个随机数，防止无意中冲突。
                 var direction = ''; //记录视图是前进还是后退。
 
@@ -5287,13 +5251,11 @@ define('App', function (require, module, exports) {
                         }
                         else { //常规后退触发的。
                             if (direction == 'forward') {     //前进
-                                direction = '';
                                 current = nav.get(-2);
                                 current = module.require(current);
                                 current.hide();                     //要触发 hide 事件
                             }
                             else if (direction == 'back') {   //后退
-                                direction = '';
                                 target.$.removeClass('Shadow');
                                 target.hide();                      //要触发 hide 事件
                             }
@@ -5320,12 +5282,13 @@ define('App', function (require, module, exports) {
                     });
 
                     target.show();  //这里要触发 show 事件
-                    direction = 'back';
+                    
 
 
                     //为了防止跟上面的产生时间竞争，这里延迟一定时间后再开始动画。
                     setTimeout(function () {
 
+                        direction = 'back';
                         current.$.addClass('Shadow');
 
                         current.$.data(animatedKey, true);  //这个也要有。
@@ -5361,23 +5324,6 @@ define('App', function (require, module, exports) {
             });
         },
 
-
-
-        /**
-        * 初始化执行环境，创建导航管理器和相应的 UI 组件，并启动应用程序。
-        * @param {function} factory 工厂函数，即启动函数。
-        */
-        launch: function (factory) {
-            var meta = mapper.get(this);
-           
-            if (meta.animated) {
-                this.animate(factory); //使用动画
-            }
-            else {
-                this.normal(factory);    //不使用动画
-            }
-        },
-
      
 
     };
@@ -5389,82 +5335,262 @@ define('App', function (require, module, exports) {
 
 
 
+define('App/Module', function (require, module, exports) {
+    var $ = require('$');
+    var MiniQuery = require('MiniQuery');
+    var Emitter = MiniQuery.require('Emitter');
+
+
+
+    function enhance(module) {
+
+        var emitter = new Emitter();
+        var require = module.require.bind(module);
+        var name$required = {};
+
+        $.Object.extend(module, {
+
+            'require': function (name) {
+
+                var M = require(name);
+
+                if (M && !name$required[name]) {
+                    name$required[name] = true;
+                    emitter.fire('require', name, [M]);
+                }
+
+
+                return M;
+            },
+
+            'on': emitter.on.bind(emitter),
+
+
+        });
+
+    }
+
+
+    return {
+        'enhance': enhance,
+    };
+
+
+
+});
+
+
+
 define('App/Nav', function (require, module, exports) {
     var $ = require('$');
+    var MiniQuery = require('MiniQuery');
+    var Navigator = require('Navigator');
 
-   
-    function create(config) {
+    var Loader = module.require('Loader');
 
-        var Navigator = require('Navigator');
+    var name$options = null;
+
+
+
+    function create(module) {
 
         var nav = new Navigator({
             hash: function (current) {
                 //为了让 url 中的 hash 可读性更好，有助于快速定位到相应的模块。
-                return [current, $.String.random(8)].join('-');
+                return current + '-' + $.String.random(4);
             },
         });
-
-
-        if (config) {
-            var Mask = require('Mask');
-
-            var mask = new Mask({
-                opacity: config.opacity,
-                duration: config.duration,
-                'z-index': config['z-index'],
-            });
-
-            mask.render(); //提前渲染但不显示，避免在视图切换时来不及创建 DOM 节点。
-
-            function showMask() {
-                mask.show();
-            }
-
-            //避免上一个视图的点透
-            nav.on({
-                'before-to': showMask,
-                'back': showMask,
-            });
-
-        }
 
 
         //重写 nav.to 方法
         var to = nav.to;
 
         /**
-        * 跳转(或延迟跳转)到指定的视图，并传递一些参数。
+        * 跳转到指定的视图，并传递一些参数。
         */
-        nav.to = function (delay, name, arg0, argN) {
+        nav.to = function (name, arg0, argN) {
 
             var args = [].slice.call(arguments);
 
-            //重载 to(name, arg0, argN)
-            if (typeof delay == 'string') {
-                name = delay;
-                delay = false;
-            }
-            else {
-                args = args.slice(1);
+            var M = module.require(name);
+            if (M) {
+                to.apply(nav, args);
+                return;
             }
 
-            if (delay) {
-                setTimeout(function () {
-                    to.apply(nav, args);
-                }, delay);
+            //
+            if (name$options) {
+                load(name, args);
+                return;
             }
-            else {
-                to.apply(nav, args);
+
+            //首次加载总的 json 文件。
+            if (name$options === null) {
+                $.ajax({
+                    type: 'get',
+                    url: 'package/all.json',
+                    dataType: 'json',
+                    error: function () {
+                        name$options = false;
+                    },
+                    success: function (json) {
+                        name$options = json;
+                        load(name, args);
+                    },
+                });
             }
         };
+
+
+
+
+
+        function load(name, args) {
+
+            var options = name$options[name];
+            if (!options) {
+                return;
+            }
+
+            
+            Loader.all(name, options, function () {
+
+                var M = module.require(name);
+                if (!M) {
+                    throw new Error('不存在名为 ' + name + ' 的视图');
+                }
+
+                to.apply(nav, args);
+            });
+        }
+
 
         return nav;
     }
 
 
+
+
     return {
-        create: create,
+        'create': create,
     };
+
+
+
+});
+
+
+
+define('App/Nav/Loader', function (require, module, exports) {
+    var $ = require('$');
+
+
+    function loadCss(url, fn) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+
+        link.onload = function () {
+            fn && fn();
+        };
+
+        link.onerror = function () {
+            throw new Error('css 文件加载失败: ' + url);
+        };
+
+        link.href = url;
+        document.head.appendChild(link);
+    }
+
+    function loadHtml(url, fn) {
+        $.ajax({
+            type: 'get',
+            url: url,
+            dataType: 'html',
+            error: function () {
+                throw new Error('html 文件加载失败: ' + url);
+            },
+            success: function (html) {
+                $('body').append(html);
+                fn && fn();
+            },
+        });
+    }
+
+    function loadJs(url, fn) {
+        $.ajax({
+            type: 'get',
+            url: url,
+            dataType: 'script',
+            error: function () {
+                throw new Error('js 文件加载失败: ' + url);
+            },
+            success: function (html) {
+                fn && fn();
+            },
+        });
+    }
+
+
+
+    function loadAll(name, options, fn) {
+
+        var tasks = ['css', 'html', 'js'];
+
+        tasks = $.Array.map(tasks, function (ext) {
+            var url = options[ext];
+            if (!url) {
+                return null;
+            }
+
+            if (url === true) {
+                url = $.String.format('package/{0}.{1}', name, ext);
+            }
+
+            return {
+                'url': url,
+                'load': loader[ext],
+                'ready': false,
+            };
+        });
+
+
+        $.Array.each(tasks, function (item) {
+            var url = item.url;
+            var load = item.load;
+
+            load(url, function () {
+                item.ready = true;
+                checkReady(tasks, fn);
+            });
+        });
+
+    }
+
+
+    function checkReady(list, fn) {
+        var len = list.length;
+
+        for (var i = 0; i < len; i++) {
+            var item = list[i];
+            if (!item.ready) {
+                return;
+            }
+        }
+
+        fn && fn();
+    }
+
+
+    var loader = {
+        'css': loadCss,
+        'html': loadHtml,
+        'js': loadJs,
+        'all': loadAll,
+    };
+
+
+
+    return loader;
 
 
 
@@ -8621,7 +8747,6 @@ define('Navigator', function (require, module,  exports) {
 
             return statcks[index];
         },
-
 
     };
 

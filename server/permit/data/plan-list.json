@@ -1,18 +1,11 @@
 [
     {
-        "id": "24DF366FD0AC",
+        "id": "5E4922B039CC",
+        "landId": "270536532EED",
         "project": "绿地未来商业中心",
-        "number": "佛禅（挂）2010—010",
-        "town": "南庄",
-        "developer": "广东兴发铝业有限公司",
-        "location": "南庄镇禅港路以西、季华路以北",
         "use": "商业服务业设施用地、兼容办公、文化娱乐用地",
-        "buildSize": "101768.16",
+        "developer": "佛山铂晟置业有限公司",
         "content": "暂无",
-        "totalSize": "90438.75",
-        "commerceSize": "17700.37",
-        "residenceSize": "0",
-        "officeSize": "72738.38",
-        "datetime": "2016-05-07 17:34:09"
+        "datetime": "2016-05-13 15:58:07"
     }
 ]

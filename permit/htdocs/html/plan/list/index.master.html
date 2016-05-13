@@ -19,38 +19,87 @@
     <div id="div-header" class="header">
         <button><i class="icon fa fa-plus"></i>添加</button>
     </div>
-    <div id="div-list" class="list">
-        <!--
-        <table cellspacing="0" cellpadding="0">
-            <tr class="header">
-                <th>序号</th>
-                <th>项目名称</th>
-                <th>土地编号</th>
-                <th>区域（镇街）</th>
-                <th>开发商名称</th>
-                <th>提交时间</th>
-                <th style="{operate-display}">操作</th>
-            </tr>
+    <div class="panel">
+        <div class="group">待办列表</div>
+        <div id="div-todo-list" class="list">
+            <!--
+            <table cellspacing="0" cellpadding="0">
+                <tr class="header">
+                    <th>序号</th>
+                    <th>土地挂牌编号</th>
+                    <th>土地区域</th>
+                    <th>土地座落</th>
+                    <th>土地面积</th>
+                    <th>商业面积</th>
+                    <th>办公面积</th>
+                    <th>住宅面积</th>
+                    <th>其它面积</th>
+                    <th>提交时间</th>
+                    <th style="{operate-display}">操作</th>
+                </tr>
 
-            #--row.begin--#
-            <tr data-index="{index}">
-                <td>{no}</td>
-                <td>
-                    <a href="javascript:" data-index="{index}" data-cmd="detail">{project}<a/>
-                </td>
-                <td>{number}</td>
-                <td>{town}</td>
-                <td>{developer}</td>
-                <td>{datetime}</td>
-                <td class="operate" style="{operate-display}">
-                    <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
-                    <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
-                </td>
-            </tr>
-            #--row.end--#
-            
-        </table>
-        -->
+                #--row.begin--#
+                <tr data-index="{index}">
+                    <td>{no}</td>
+                    <td>
+                        <a href="javascript:" data-index="{index}" data-cmd="detail">{number}<a/>
+                    </td>
+                    <td>{town}</td>
+                    <td>{location}</td>
+                    <td>{size}</td>
+                    <td>{commerceSize}</td>
+                    <td>{officeSize}</td>
+                    <td>{residenceSize}</td>
+                    <td>{otherSize}</td>
+                    <td>{datetime}</td>
+                    <td class="operate" style="{operate-display}">
+                        <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                    </td>
+                </tr>
+                #--row.end--#
+            </table>
+            -->
+        </div>
+    </div>
+    
+
+    <div class="panel">
+        <div class="group">已办列表</div>
+        <div id="div-done-list" class="list">
+            <!--
+            <table cellspacing="0" cellpadding="0">
+                <tr class="header">
+                    <th>序号</th>
+                    <th>土地挂牌编号</th>
+                    <th>土地区域</th>
+                    <th>土地座落</th>
+                    <th>项目名称</th>
+                    <th>开发商名称</th>
+                    <th>许可证数</th>
+                    <th style="{operate-display}">操作</th>
+                </tr>
+
+                #--row.begin--#
+                <tr data-index="{index}">
+                    <td>{no}</td>
+                    <td>{land.number}</td>
+                    <td>{land.town}</td>
+                    <td>{land.location}</td>
+                    <td>
+                        <a href="javascript:" data-index="{index}" data-cmd="detail">{project}<a/>
+                    </td>
+                    <td>{developer}</td>
+                    <td>{license}</td>
+                    <td class="operate" style="{operate-display}">
+                        <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                        <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                    </td>
+                </tr>
+                #--row.end--#
+
+            </table>
+            -->
+        </div>
     </div>
 
     <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>

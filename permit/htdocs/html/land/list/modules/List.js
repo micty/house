@@ -25,11 +25,16 @@ define('/List', function (require, module) {
 
                 fn: function (item, index) {
 
+
+                    var dt = item.datetime;
+                    dt = $.Date.parse(dt);
+                    dt = $.Date.format(dt, 'yyyy-MM-dd');
+
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
                         'operate-display': display,
-
+                        'datetime': dt,
                     });
 
                     return {

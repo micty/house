@@ -19,8 +19,8 @@ define('/API', function (require, module, exports) {
     function post(data) {
 
         var id = data.id;
-        var name = id ? 'update' : 'add';
-        var api = KISP.create('API', 'Plan.' + name);
+        var name = id ? 'Plan.update' : 'Plan.add';
+        var api = KISP.create('API', name);
 
         api.on({
 
@@ -75,21 +75,19 @@ define('/API', function (require, module, exports) {
 
 
 
-    function get(id) {
+    function get(id, isLand) {
 
 
-        var api = KISP.create('API', 'Plan.get');
+        var name = isLand ? 'Land.get' : 'Plan.get';
+        var api = KISP.create('API', name);
 
         api.on({
 
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('读取中...');
-
             },
 
             'response': function () {
@@ -97,11 +95,8 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
-
                 emitter.fire('success', 'get', [data]);
-
             },
-
 
             'fail': function (code, msg, json) {
                 alert('读取失败: {0}({1})', msg, code);

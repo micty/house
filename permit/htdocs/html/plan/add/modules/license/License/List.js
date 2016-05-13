@@ -1,20 +1,18 @@
 ﻿
-define('/List', function (require, module) {
+define('/License/List', function (require, module) {
 
     var $ = require('$');
     var KISP = require('KISP');
     var SessionStorage = require('SessionStorage');
 
-    var panel = KISP.create('Panel', '#div-list');
+    var panel = KISP.create('Panel', '#div-license-list');
     var user = SessionStorage.get('user');
     var list = [];
 
     panel.on('init', function () {
 
-        var display = user.role == 'plan' ? '' : 'display: none;';
+        var display = user.role == 'land' ? '' : 'display: none;';
 
-        //test
-        display = '';
 
         panel.template(['row'],  function (data, index) {
 
@@ -27,10 +25,16 @@ define('/List', function (require, module) {
 
                 fn: function (item, index) {
 
+
+                    var dt = item.datetime;
+                    dt = $.Date.parse(dt);
+                    dt = $.Date.format(dt, 'yyyy-MM-dd');
+
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
-                        'operate-display': display,
+                        'operate-display': '',
+                        'datetime': dt,
                     });
 
                     return {

@@ -1,7 +1,5 @@
 ﻿
-
 KISP.launch(function (require, module) {
-
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -12,7 +10,8 @@ KISP.launch(function (require, module) {
 
     var API = module.require('API');
     var Header = module.require('Header');
-    var List = module.require('List');
+    var Todo = module.require('Todo');
+    var Done = module.require('Done');
 
     var currentIndex = -1;
 
@@ -20,18 +19,35 @@ KISP.launch(function (require, module) {
         Bridge.open(['plan', 'add']);
     });
 
-    API.on('success', {
 
+    API.on('success', {
         'get': function (data) {
-            List.render(data);
+            Todo.render(data.todo);
+            Done.render(data.done);
         },
 
         'remove': function () {
-            List.remove(currentIndex);
+            Done.remove(currentIndex);
         },
     });
 
-    List.on({
+
+    Todo.on({
+        'detail': function (item, index) {
+            Bridge.open({
+                name: '土地出让详情',
+                url: 'html/land/detail/index.html?id=' + item.id,
+            });
+        },
+        'edit': function (item, index) {
+            Bridge.open(['plan', 'add'], {
+                'landId': item.id,
+            });
+        },
+    });
+
+
+    Done.on({
 
         'detail': function (item, index) {
             Bridge.open({
@@ -54,8 +70,8 @@ KISP.launch(function (require, module) {
     });
     
 
-  
-    API.get();
+   
     Header.render();
+    API.get();
     
 });

@@ -7,10 +7,8 @@ define('/Form', function (require, module, exports) {
     var KISP = require('KISP');
 
 
-    var panel = KISP.create('Panel', '#table-form');
-
-
-
+    var panel = KISP.create('Panel', '#div-form');
+    var current = null;
 
 
     panel.on('init', function () {
@@ -22,20 +20,32 @@ define('/Form', function (require, module, exports) {
 
     panel.on('render', function (data) {
 
-        if (data) {
-            panel.$.find('[name]').each(function () {
-                var name = this.name;
+        current = {};
 
-                if (!(name in data)) {
-                    return;
-                }
-
-                var value = data[name];
-                this.value = value;
-
-            });
+        //没有土地记录字段，说明是新增的。
+        //此时传进来的是一个土地记录。
+        if (!data.land) {
+            current.landId = data.id;
+            panel.fill(data);
+            return;
         }
 
+        //有土地 id，说明是编辑的。
+
+        current = data;
+        panel.fill(data.land);
+
+        var plan = data.plan;
+        panel.$.find('[name]').each(function () {
+            var name = this.name;
+
+            if (!(name in plan)) {
+                return;
+            }
+
+            var value = plan[name];
+            this.value = value;
+        });
 
 
     });
@@ -45,7 +55,8 @@ define('/Form', function (require, module, exports) {
         get: function (id) {
 
             var data = {
-                'id': id,
+                'id': current.id,
+                'landId': current.landId,
             };
 
             panel.$.find('[name]').each(function () {

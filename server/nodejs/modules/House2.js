@@ -341,7 +341,7 @@ module.exports = {
         }
 
 
-        //重载 list(rest)，供 http 请求调用。
+        //重载 list(res)，供 http 请求调用。
         if (!existed) {
             res.send({
                 code: 200,
