@@ -10,43 +10,8 @@ KISP.launch(function (require, module) {
 
     var Url = MiniQuery.require('Url');
 
-    
-    var API = module.require('API');
-    var Form = module.require('Form');
-    var Footer = module.require('Footer');
+    var Base = module.require('Base');
     var License = module.require('License');
-
-
-
-
-    API.on('success', {
-
-        'post': function (data, json) {
-            Bridge.open(['plan', 'list']);
-        },
-
-        'get': function (data) {
-            Form.render(data);
-        },
-
-    });
-
-
-
-
-    Footer.on('submit', function () {
-
-        var data = Form.get();
-        if (!data) {
-            return;
-        }
-
-        API.post(data);
-    });
-
-
-    Footer.render();
-
 
 
     var user = SessionStorage.get('user');
@@ -60,12 +25,28 @@ KISP.launch(function (require, module) {
     var qs = Url.getQueryString(window);
     var id = qs.id;
 
-    if (id) { //说明是编辑的
-        API.get(id);
+    License.on({
+        'change': function () {
+            Bridge.refresh(['plan', 'list']);
+        },
+    });
+
+    Base.on({
+        'change': function () {
+            Bridge.refresh(['plan', 'list']);
+        },
+    });
+
+
+
+    //说明是编辑的。
+    if (id) { 
+        Base.render(id);
         License.render(id);
         return;
     }
 
+    //说明是新增的。
     var landId = qs.landId;
     if (!landId) {
         KISP.alert('新增时必须指定 landId', function () {
@@ -74,8 +55,16 @@ KISP.launch(function (require, module) {
         return;
     }
 
-    API.get(landId, true);
+   
 
+    Base.on({
+        'save': function (item) {
+            License.render(item.id);
+        },
+    });
+
+    License.hide();
+    Base.render(landId, true);
 
 
 });

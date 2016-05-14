@@ -25,6 +25,16 @@ define('/List', function (require, module) {
 
                 fn: function (item, index) {
 
+                    var buildSize = 0;
+                    $.Array.each([
+                        'commerceSize',
+                        'residenceSize',
+                        'officeSize',
+                        'otherSize',
+                    ], function (key) {
+
+                        buildSize += Number(item[key]);
+                    });
 
                     var dt = item.datetime;
                     dt = $.Date.parse(dt);
@@ -35,6 +45,7 @@ define('/List', function (require, module) {
                         'no': index + 1,
                         'operate-display': display,
                         'datetime': dt,
+                        'buildSize': buildSize,
                     });
 
                     return {

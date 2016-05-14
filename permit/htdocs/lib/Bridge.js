@@ -19,6 +19,10 @@ define('Bridge', function (require, module) {
                 Bridge.close(window);
             },
 
+            'refresh': function (cmd) {
+                Bridge.refresh(cmd);
+            },
+
         };
     }
 
@@ -82,6 +86,10 @@ define('Bridge', function (require, module) {
 
         'open': function (cmd, query, data) {
             emitter.fire('open', [cmd, query, data]);
+        },
+
+        'refresh': function (cmd) {
+            emitter.fire('refresh', [cmd]);
         },
 
         'close': function (win) {

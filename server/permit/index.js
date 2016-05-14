@@ -144,6 +144,30 @@ app.get('/Construct.remove', function (req, res) {
 app.get('/Construct.list', function (req, res) {
     Construct.list(res);
 });
+app.get('/Construct.all', function (req, res) {
+    Construct.all(res);
+});
+
+
+//建设许可证模块
+var ConstructLicense = require('./modules/ConstructLicense');
+app.get('/ConstructLicense.get', function (req, res) {
+    ConstructLicense.get(res, req.query.id);
+});
+app.post('/ConstructLicense.add', function (req, res) {
+    ConstructLicense.add(res, req.body);
+});
+app.post('/ConstructLicense.update', function (req, res) {
+    ConstructLicense.update(res, req.body);
+});
+app.get('/ConstructLicense.remove', function (req, res) {
+    ConstructLicense.remove(res, req.query.id);
+});
+app.get('/ConstructLicense.list', function (req, res) {
+    ConstructLicense.list(res, req.query.constructId);
+});
+
+
 
 //预售许可模块
 var Sale = require('./modules/Sale');
@@ -161,4 +185,25 @@ app.get('/Sale.remove', function (req, res) {
 });
 app.get('/Sale.list', function (req, res) {
     Sale.list(res);
+});
+app.get('/Sale.all', function (req, res) {
+    Sale.all(res);
+});
+
+//预售许可证模块
+var SaleLicense = require('./modules/SaleLicense');
+app.get('/SaleLicense.get', function (req, res) {
+    SaleLicense.get(res, req.query.id);
+});
+app.post('/SaleLicense.add', function (req, res) {
+    SaleLicense.add(res, req.body);
+});
+app.post('/SaleLicense.update', function (req, res) {
+    SaleLicense.update(res, req.body);
+});
+app.get('/SaleLicense.remove', function (req, res) {
+    SaleLicense.remove(res, req.query.id);
+});
+app.get('/SaleLicense.list', function (req, res) {
+    SaleLicense.list(res, req.query.saleId);
 });

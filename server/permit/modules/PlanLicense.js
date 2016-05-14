@@ -89,6 +89,27 @@ module.exports = {
     */
     add: function (res, data) {
 
+        var planId = data.planId;
+        if (!planId) {
+            emptyError('planId', res);
+            return;
+        }
+
+        var Plan = require('./Plan');
+        var plans = Plan.list();
+        var plan = plans.find(function (item) {
+            return item.id == planId;
+        });
+        
+        if (!plan) {
+            res.send({
+                code: 404,
+                msg: '不存在 planId 为 ' + planId + ' 的规划记录。',
+            });
+            return;
+        }
+
+
         var path = getPath();
         var list = [];
 
@@ -106,10 +127,10 @@ module.exports = {
             });
 
             list.push(item);
-            list = JSON.stringify(list, null, 4);
 
+            var json = JSON.stringify(list, null, 4);
 
-            fs.writeFile(path, list, 'utf8', function (err) {
+            fs.writeFile(path, json, 'utf8', function (err) {
 
                 if (err) {
                     res.send({
@@ -119,10 +140,14 @@ module.exports = {
                     return;
                 }
 
+                list = list.filter(function (item) {
+                    return item.planId == planId;
+                });
+
                 res.send({
                     code: 200,
                     msg: '添加成功',
-                    data: item,
+                    data: list,
                 });
             });
         }
@@ -166,11 +191,11 @@ module.exports = {
 
             try {
                 var list = JSON.parse(content);
-                var index = $.Array.findIndex(list, function (item, index) {
+                var item = $.Array.findItem(list, function (item, index) {
                     return item.id == id;
                 });
 
-                if (index < 0) {
+                if (!item) {
                     res.send({
                         code: 201,
                         msg: '不存在该记录',
@@ -182,10 +207,11 @@ module.exports = {
                 var datetime = getDateTime();
                 data['datetime'] = datetime;
 
-                list[index] = data;
-                list = JSON.stringify(list, null, 4);
+                $.Object.extend(item, data);
 
-                fs.writeFile(path, list, 'utf8', function (err) {
+                var json = JSON.stringify(list, null, 4);
+
+                fs.writeFile(path, json, 'utf8', function (err) {
 
                     if (err) {
                         res.send({
@@ -195,9 +221,16 @@ module.exports = {
                         return;
                     }
 
+                    var planId = data.planId;
+
+                    list = list.filter(function (item) {
+                        return item.planId == planId;
+                    });
+
                     res.send({
                         code: 200,
                         msg: '更新成功',
+                        data: list,
                     });
                 });
 
@@ -257,7 +290,11 @@ module.exports = {
                     return;
                 }
 
+                var item = list[index];
                 list.splice(index, 1);
+
+
+
                 var json = JSON.stringify(list, null, 4);
 
                 fs.writeFile(path, json, 'utf8', function (err) {
@@ -269,6 +306,12 @@ module.exports = {
                         });
                         return;
                     }
+
+                    var planId = item.planId;
+
+                    list = list.filter(function (item) {
+                        return item.planId == planId;
+                    });
 
                     res.send({
                         code: 200,
@@ -287,6 +330,45 @@ module.exports = {
         });
     },
 
+    /**
+    * 按条件删除指定的记录。
+    */
+    removeBy: function (fn) {
+
+        var path = getPath();
+        var existed = fs.existsSync(path);
+        if (!existed) {
+            return;
+        }
+
+        try {
+            var data = fs.readFileSync(path, 'utf8');
+            var list = JSON.parse(data);
+
+            //过滤出指定 planId 的记录。
+            if (fn) {
+                var isFn = typeof fn == 'function';
+
+                list = list.filter(function (item, index) {
+                    if (isFn) {
+                        var removed = fn(item, index);
+                        return !removed;
+                    }
+
+                    //此时的 fn 当作 planId。
+                    return item.planId != fn;
+                    
+                });
+            }
+
+            var json = JSON.stringify(list, null, 4);
+            fs.writeFileSync(path, json, 'utf8');
+        }
+        catch (ex) {
+            return ex;
+        }
+
+    },
 
 
 
@@ -307,9 +389,13 @@ module.exports = {
             var data = fs.readFileSync(path, 'utf8');
             var list = JSON.parse(data);
 
-            list = $.Array.grep(list, function (item) {
-                return item.planId == planId;
-            });
+            //过滤出指定 planId 的记录。
+            if (planId) {
+                list = list.filter(function (item) {
+                    return item.planId == planId;
+                });
+            }
+            
 
             return list;
         }
@@ -338,15 +424,19 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
-                list = $.Array.grep(list, function (item) {
-                    return item.planId == planId;
-                });
+
+                //过滤出指定 planId 的记录。
+                if (planId) {
+                    list = list.filter(function (item) {
+                        return item.planId == planId;
+                    });
+                }
 
                 list.reverse(); //倒序一下
 
                 res.send({
                     code: 200,
-                    msg: '',
+                    msg: 'ok',
                     data: list,
                 });
             }

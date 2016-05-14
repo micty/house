@@ -56,9 +56,9 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-}
+    a:hover {
+        text-decoration: underline;
+    }
 
 sup {
     vertical-align: text-top;
@@ -92,4 +92,12 @@ table {
 
 .iframe {
     overflow: hidden;
+}
+
+
+input {
+    &[data-type="number"],
+    &[data-type="price"] {
+        font-size: 16px !important;
+    }
 }

@@ -43,25 +43,32 @@
         url: 'html/land/add/index.html',
         cmd: ['land', 'add'],
         //autoOpen: true,
+        display: false,
     },
     {
         icon: 'plus',
         name: '规划许可发布',
         url: 'html/plan/add/index.html',
         cmd: ['plan', 'add'],
+        display: false,
+
     },
     {
         icon: 'plus',
         name: '建设许可发布',
         url: 'html/construct/add/index.html',
         cmd: ['construct', 'add'],
+        display: false,
+
     },
     {
         icon: 'plus',
         name: '预售许可发布',
         url: 'html/sale/add/index.html',
         cmd: ['sale', 'add'],
+        display: false,
         border: true,
+
     },
 
 

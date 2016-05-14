@@ -102,35 +102,42 @@ KISP.launch(function (require, module) {
     });
 
 
+    Bridge.on({
+        'open': function (id, query, data) {
 
+            MenuData.getItem(id, function (item) {
+                if (!item) {
+                    return;
+                }
+                if (query) {
+                    var Url = MiniQuery.require('Url');
 
-    Bridge.on('open', function (id, query, data) {
+                    //不能直接修改原对象的 url，否则可能会影响到原来的 url
+                    //item.url = $.Url.addQueryString(item.url, query);
 
-        MenuData.getItem(id, function (item) {
-            if (!item) {
-                return;
-            }
-         
-            if (query) {
-                var Url = MiniQuery.require('Url');
+                    item = $.Object.extend({}, item, {
+                        'url': Url.addQueryString(item.url, query),
+                    });
+                }
 
-                //不能直接修改原对象的 url，否则可能会影响到原来的 url
-                //item.url = $.Url.addQueryString(item.url, query);
+                PageTabs.add(item); //安静模式，不触发事件
+                PageList.add(item); //安静模式，不触发事件
+                Iframes.add(item, true); //强制刷新
+            });
+        },
 
-                item = $.Object.extend({}, item, {
-                    'url': Url.addQueryString(item.url, query),
-                });
-            }
+        'close': function (id) {
+            PageTabs.remove(id, true); //触发事件
+        },
 
-            PageTabs.add(item); //安静模式，不触发事件
-            PageList.add(item); //安静模式，不触发事件
-            Iframes.add(item, true); //强制刷新
-        });
-    });
-
-
-    Bridge.on('close', function (id) {
-        PageTabs.remove(id, true); //触发事件
+        'refresh': function (id) {
+            MenuData.getItem(id, function (item) {
+                if (!item) {
+                    return;
+                }
+                Iframes.refresh(item);
+            });
+        },
     });
 
 

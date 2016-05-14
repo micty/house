@@ -24,7 +24,7 @@ define('/API', function (require, module, exports) {
 
             'request': function () {
 
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
 

@@ -1,6 +1,4 @@
-﻿/// <reference path="API.js" />
-
-
+﻿
 define('/API', function (require, module, exports) {
 
     var $ = require('$');
@@ -26,7 +24,7 @@ define('/API', function (require, module, exports) {
 
             'request': function () {
 
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
 
                 });
@@ -41,7 +39,7 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                toast = toast || top.KISP.create('Toast', {
+                toast = toast || KISP.create('Toast', {
                     text: '提交成功',
                     duration: 1500,
                     mask: 0,

@@ -33,7 +33,7 @@ define('/Done', function (require, module) {
                         'index': index,
                         'no': index + 1,
                         'operate-display': display,
-                        'license': 0,
+                        'license': item.licenses.length,
                         'land.number': land.number,
                         'land.town': land.town,
                         'land.location': land.location,
@@ -57,7 +57,9 @@ define('/Done', function (require, module) {
             var item = list[index];
 
             if (cmd == 'remove') {
-                var msg = '确认要删除【' + item.number + '】';
+                var msg = '确认要删除规划许可【' + item.project + '】<br />' +
+                    ' 同时也会删除其所拥有的许可证。';
+
                 KISP.confirm(msg, function () {
                     panel.fire(cmd, [item, index]);
                 });
@@ -87,17 +89,7 @@ define('/Done', function (require, module) {
 
 
 
-    return panel.wrap({
-
-        remove: function (index) {
-            panel.$.find('tr[data-index="' + index + '"]').slideUp(function () {
-
-                list.splice(index, 1);
-                panel.render(list);
-
-            });
-        },
-    });
+    return panel.wrap();
 
 
 });

@@ -78,3 +78,7 @@ table {
 .iframe {
     overflow: hidden;
 }
+input[data-type="number"],
+input[data-type="price"] {
+    font-size: 16px !important;
+}

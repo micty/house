@@ -1,0 +1,27 @@
+[
+    {
+        "id": "2097E38E3965",
+        "reportDate": "2016-03-21",
+        "number": "2015-000",
+        "project": "厂房",
+        "constructCompany": "佛山市禅城区合作经济联合社",
+        "operateCompany": "廉江市建筑工程总公司",
+        "supervisorCompany": "佛山市建辉监理有限公司",
+        "surveyCompany": "广东佛山地质工程勘察院",
+        "designCompany": "佛山市城匠建筑设计院有限公司",
+        "laborCompany": "佛山市红建建筑劳务有限公司",
+        "type": "土建",
+        "category": "工业建筑",
+        "upFloorCount": "10",
+        "downFloorCount": "0",
+        "size": "1000000",
+        "price": "2000000",
+        "address": "朗沙一路南侧",
+        "managerName": "邓良太",
+        "managerPhone": "13760187469",
+        "beginDate": "2016-09-30",
+        "endDate": "2020-10-12",
+        "progress": "天面",
+        "datetime": "2016-05-07 17:45:27"
+    }
+]

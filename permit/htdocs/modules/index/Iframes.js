@@ -138,6 +138,19 @@ define('/Iframes', function (require, module, exports) {
     })();
 
 
+    function refresh(item) {
+        var index = findIndexById(item);
+        if (index < 0) {
+            return;
+
+        }
+
+        var url = Url.randomQueryString(item.url); //增加一个随机 key，以确保缓存失效
+        var iframe = getIframe(item);
+        iframe.src = url;
+
+    }
+
     function add(item, forceRefresh) {
 
         var index = findIndexById(item);
@@ -276,6 +289,7 @@ define('/Iframes', function (require, module, exports) {
         add: add,
         remove: remove,
         active: active,
+        refresh: refresh,
         clear: clear,
         render: render,
         on: emitter.on.bind(emitter),

@@ -28,7 +28,7 @@ module.exports = {
     /**
     * 获取一条记录。
     */
-    get: function (res, id)  {
+    get: function (res, id) {
         if (!id) {
             emptyError('id', res);
             return;
@@ -68,10 +68,20 @@ module.exports = {
                     return;
                 }
 
+                var Land = require('./Land');
+                var lands = Land.list();
+                var land = $.Array.findItem(lands, function (land) {
+                    return land.id == item.landId;
+                });
+
+
                 res.send({
                     code: 200,
                     msg: 'ok',
-                    data: item,
+                    data: {
+                        'sale': item,
+                        'land': land,
+                    },
                 });
             }
             catch (ex) {
@@ -88,6 +98,13 @@ module.exports = {
     */
     add: function (res, data) {
 
+        var landId = data.landId;
+        if (!landId || landId === 'undefined') {
+            emptyError('landId', res);
+            return;
+        }
+
+
         var path = getPath();
         var list = [];
 
@@ -98,8 +115,20 @@ module.exports = {
                 list = JSON.parse(list);
             }
 
+            var item = list.find(function (item) {
+                return item.landId == landId;
+            });
 
-            var item = $.Object.extend(data, {
+            if (item) {
+                res.send({
+                    code: 201,
+                    msg: '已存在 landId 为' + landId + ' 的记录。',
+                });
+                return;
+            }
+
+
+            item = $.Object.extend(data, {
                 'id': $.String.random(),
                 'datetime': getDateTime(),
             });
@@ -269,13 +298,16 @@ module.exports = {
                         return;
                     }
 
+                    var SaleLicense = require('./SaleLicense');
+                    SaleLicense.removeBy(id);
+
                     res.send({
                         code: 200,
                         msg: '删除成功',
                         data: list,
                     });
                 });
-                
+
             }
             catch (ex) {
                 res.send({
@@ -293,20 +325,33 @@ module.exports = {
     * 读取列表。
     */
     list: function (res) {
-   
-        var path = getPath();
 
-        if (!fs.existsSync(path)) {
+        var path = getPath();
+        var existed = fs.existsSync(path);
+
+        //重载 list()，供内部其它模块调用。
+        if (!res) {
+            if (!existed) {
+                return [];
+            }
+
+            var data = fs.readFileSync(path, 'utf8');
+            var list = JSON.parse(data);
+            return list;
+        }
+
+
+        //重载 list(res)，供 http 请求调用。
+        if (!existed) {
             res.send({
                 code: 200,
-                msg: '',
+                msg: 'empty',
                 data: [],
             });
             return;
         }
 
 
-       
         fs.readFile(path, 'utf8', function (err, data) {
 
             if (err) {
@@ -336,7 +381,42 @@ module.exports = {
 
         });
 
-    }
+    },
+
+
+    /**
+    * 获取待办和已办列表。
+    */
+    all: function (res) {
+
+        try {
+            var Land = require('./Land');
+            var SaleLicense = require('./SaleLicense');
+
+            var lands = Land.list();
+            var list = module.exports.list();
+            var licenses = SaleLicense.list();
+
+            res.send({
+                code: 200,
+                msg: '',
+                data: {
+                    'list': list,
+                    'lands': lands,
+                    'licenses': licenses,
+                },
+            });
+
+        }
+        catch (ex) {
+            res.send({
+                code: 500,
+                msg: ex.message,
+            });
+        }
+
+    },
+
 
 
 };

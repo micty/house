@@ -9,25 +9,19 @@ KISP.launch(function (require, module) {
     var Bridge = require('Bridge');
 
     var API = module.require('API');
-    var Header = module.require('Header');
     var Todo = module.require('Todo');
     var Done = module.require('Done');
-
-    var currentIndex = -1;
-
-    Header.on('add', function () {
-        Bridge.open(['plan', 'add']);
-    });
 
 
     API.on('success', {
         'get': function (data) {
+         
             Todo.render(data.todo);
             Done.render(data.done);
         },
 
         'remove': function () {
-            Done.remove(currentIndex);
+            API.get();
         },
     });
 
@@ -49,6 +43,13 @@ KISP.launch(function (require, module) {
 
     Done.on({
 
+        'land.detail': function (item, index) {
+            Bridge.open({
+                name: '土地出让详情',
+                url: 'html/land/detail/index.html?id=' + item.landId,
+            });
+        },
+
         'detail': function (item, index) {
             Bridge.open({
                 name: '规划许可详情',
@@ -57,7 +58,6 @@ KISP.launch(function (require, module) {
         },
 
         'remove': function (item, index) {
-            currentIndex = index;
             API.remove(item.id);
         },
 
@@ -68,10 +68,8 @@ KISP.launch(function (require, module) {
             });
         },
     });
-    
-
    
-    Header.render();
+
     API.get();
     
 });

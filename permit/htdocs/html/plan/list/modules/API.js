@@ -10,21 +10,18 @@ define('/API', function (require, module, exports) {
 
     var emitter = new Emitter();
     var loading = null;
-
+    var toast = null;
 
     //获取数据
     function get() {
 
-        var api = KISP.create('API', 'Plan.all', {
-            
-        });
-
+        var api = KISP.create('API', 'Plan.all');
 
         api.on({
 
             'request': function () {
 
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
 
@@ -57,6 +54,8 @@ define('/API', function (require, module, exports) {
                     id$land[item.id] = item;
                 });
 
+
+
                 var dones = $.Array.map(list, function (item) {
 
                     var land = id$land[item.landId];
@@ -64,8 +63,15 @@ define('/API', function (require, module, exports) {
                         return null;
                     }
 
+                    var planId = item.id;
+
+                    var licenses = $.Array.grep(data.licenses, function (item) {
+                        return item.planId == planId;
+                    });
+
                     return $.Object.extend({}, item, {
                         'land': land,
+                        'licenses': licenses,
                     });
 
                 });
@@ -112,9 +118,20 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
+
+                toast = toast || KISP.create('Toast', {
+                    text: '删除成功',
+                    duration: 1500,
+                    mask: 0,
+                });
+
+                toast.show();
+
                 var list = data;
-                
-                emitter.fire('success', 'remove', [list]);
+                setTimeout(function () {
+                    emitter.fire('success', 'remove', [list]);
+
+                }, 1500);
             },
 
             'fail': function (code, msg, json, xhr) {

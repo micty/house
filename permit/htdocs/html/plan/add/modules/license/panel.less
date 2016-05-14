@@ -1,49 +1,52 @@
 
 
 .panel-license {
-    margin-top: 20px;
+    margin: auto;
+    max-width: 900px;
+
 
     >.header {
-        margin-bottom: 10px;
-        height: 40px;
-        background: #D8D8D8;
-        line-height: 40px;
-        /* text-align: center; */
-        padding: 0px 10px;
-        font-weight: bold;
 
-        button {
-            background-color: #8BC34A;
-            border: none;
-            color: #fff;
-            padding: 6px 25px;
-            font-size: 14px;
-            border-radius: 5px;
-            cursor: pointer;
-            outline: none;
-            float: right;
-            margin-top: 4px;
+        .toolbar {
+            position: relative;
 
-            i {
-                margin-right: 4px;
-            }
+            button {
+                i {
+                    margin-right: 4px;
+                }
 
-            &:active {
-                background: #628A35;
+                position: absolute;
+                right: 7px;
+                top: 3px;
+                background: #8BC34A;
+                border: none;
+                color: #fff;
+                padding: 0px 15px 0px 15px;
+                font-size: 13px;
+                border-radius: 3px;
+                cursor: pointer;
+                outline: none;
+                height: 26px;
+                line-height: 26px;
+                /* font-weight: bold; */
             }
         }
 
-        &:after {
-            content: '';
-            clear: both;
-            display: block;
+        .name {
+            background: #4C4C4C;
+            color: #fff;
+            text-align: left;
+            font-weight: bold;
+            padding: 6px 5px;
+            font-size: 14px;
+            border-bottom: solid 1px #9E9E9E;
         }
     }
+
 
     .list {
 
         &.nodata {
-     
             text-align: center;
             font-size: 18px;
             background-color: #f1f1f1;
@@ -123,6 +126,96 @@
 
                 i {
                     margin: 0px 4px;
+                }
+            }
+        }
+    }
+}
+
+
+.dialog-add {
+    margin-top: initial !important;
+
+    h1 {
+        font-size: 16px;
+        text-align: center;
+        color: #FFFFFF;
+        background: #FF5722;
+        padding: 4px 0px;
+        border-radius: 5px 5px 0px 0px;
+        margin-bottom: 2px;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+
+        li {
+            margin: 8px 0px;
+
+
+
+            span.name {
+                width: 60px;
+                font-size: 14px;
+                text-align: right;
+                display: inline-block;
+                margin-right: 6px;
+                font-weight: bold;
+            }
+
+            span.tip {
+                background: #eee;
+                font-size: 12px;
+                color: #FF5722;
+                width: 80px;
+                display: inline-block;
+                margin-left: 6px;
+                text-align: left;
+            }
+
+
+            img {
+                max-width: 414px;
+                max-height: 162px;
+            }
+
+
+            .total {
+                background: #d5d8db;
+                font-size: 20px;
+                font-weight: bold;
+                display: inline-block;
+                width: 336px;
+                border: none;
+            }
+
+            [data-type="number"] {
+                font-size: 18px;
+                padding: 0px 5px;
+                
+            }
+
+            input,
+            textarea {
+                width: 332px;
+                padding: 2px 5px;
+                font-size: 14px;
+            }
+
+            &.name {
+                input {
+                    font-size: 16px;
+                    color: #FF9800;
+                }
+            }
+
+            &.src {
+                input {
+                    color: #03A9F4;
+                    font-size: 13px;
                 }
             }
         }

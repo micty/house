@@ -98,6 +98,13 @@ module.exports = {
     */
     add: function (res, data) {
 
+        var landId = data.landId;
+        if (!landId || landId === 'undefined') {
+            emptyError('landId', res);
+            return;
+        }
+
+
         var path = getPath();
         var list = [];
 
@@ -108,8 +115,20 @@ module.exports = {
                 list = JSON.parse(list);
             }
 
+            var item = list.find(function (item) {
+                return item.landId == landId;
+            });
 
-            var item = $.Object.extend(data, {
+            if (item) {
+                res.send({
+                    code: 201,
+                    msg: '已存在 landId 为' + landId + ' 的记录。',
+                });
+                return;
+            }
+
+
+            item = $.Object.extend(data, {
                 'id': $.String.random(),
                 'datetime': getDateTime(),
             });
@@ -279,6 +298,9 @@ module.exports = {
                         return;
                     }
 
+                    var PlanLicense = require('./PlanLicense');
+                    PlanLicense.removeBy(id);
+
                     res.send({
                         code: 200,
                         msg: '删除成功',
@@ -369,9 +391,11 @@ module.exports = {
 
         try {
             var Land = require('./Land');
+            var PlanLicense = require('./PlanLicense');
+
             var lands = Land.list();
             var list = module.exports.list();
-
+            var licenses = PlanLicense.list();
 
             res.send({
                 code: 200,
@@ -379,6 +403,7 @@ module.exports = {
                 data: {
                     'list': list,
                     'lands': lands,
+                    'licenses': licenses,
                 },
             });
 

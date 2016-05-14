@@ -19,7 +19,11 @@ KISP.launch(function (require, module) {
     API.on('success', {
 
         'post': function (data, json) {
+            Bridge.close();
             Bridge.open(['land', 'list']);
+            Bridge.refresh(['plan', 'list']);
+            Bridge.refresh(['construct', 'list']);
+            Bridge.refresh(['sale', 'list']);
         },
 
         'get': function (data) {

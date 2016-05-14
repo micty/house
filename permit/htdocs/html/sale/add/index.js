@@ -10,40 +10,8 @@ KISP.launch(function (require, module) {
 
     var Url = MiniQuery.require('Url');
 
-    
-    var API = module.require('API');
-    var Form = module.require('Form');
-    var Footer = module.require('Footer');
-
-
-    API.on('success', {
-
-        'post': function (data, json) {
-            Bridge.open(['sale', 'list']);
-        },
-
-        'get': function (data) {
-            Form.render(data);
-        },
-
-    });
-
-
-
-
-    Footer.on('submit', function () {
-
-        var data = Form.get(id);
-        if (!data) {
-            return;
-        }
-
-        API.post(data);
-    });
-
-
-    Footer.render();
-
+    var Base = module.require('Base');
+    var License = module.require('License');
 
 
     var user = SessionStorage.get('user');
@@ -57,10 +25,64 @@ KISP.launch(function (require, module) {
     var qs = Url.getQueryString(window);
     var id = qs.id;
 
-    if (id) { //说明是编辑的
-        API.get(id);
+    License.on({
+        'change': function () {
+            Bridge.refresh(['sale', 'list']);
+        },
+        'add': function (saleId) {
+            Bridge.open({
+                name: '新增预售许可证',
+                url: 'html/sale/license/add/index.html?saleId=' + saleId,
+            });
+        },
+        'edit': function (id) {
+            Bridge.open({
+                name: '编辑预售许可证',
+                url: 'html/sale/license/add/index.html?id=' + id,
+            });
+        },
+        'detail': function (id) {
+            Bridge.open({
+                name: '预售许可证详情',
+                url: 'html/sale/license/detail/index.html?id=' + id,
+            });
+        },
+    });
+
+    Base.on({
+        'change': function () {
+            Bridge.refresh(['sale', 'list']);
+        },
+    });
+
+
+
+    //说明是编辑的。
+    if (id) { 
+        Base.render(id);
+        License.render(id);
+        return;
     }
 
+    //说明是新增的。
+    var landId = qs.landId;
+    if (!landId) {
+        KISP.alert('新增时必须指定 landId', function () {
+            Bridge.close();
+        });
+        return;
+    }
+
+   
+
+    Base.on({
+        'save': function (item) {
+            License.render(item.id);
+        },
+    });
+
+    License.hide();
+    Base.render(landId, true);
 
 
 });

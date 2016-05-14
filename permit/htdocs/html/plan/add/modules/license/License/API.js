@@ -10,15 +10,12 @@ define('/License/API', function (require, module, exports) {
 
     var emitter = new Emitter();
     var loading = null;
-
+    var toast = null;
 
     //获取数据
     function get(planId) {
 
-        var api = KISP.create('API', 'PlanLicense.list', {
-            
-        });
-
+        var api = KISP.create('API', 'PlanLicense.list');
 
         api.on({
 
@@ -57,6 +54,63 @@ define('/License/API', function (require, module, exports) {
 
     }
 
+
+
+    function post(data) {
+
+        var id = data.id;
+        var name = id ? 'update' : 'add';
+        var api = KISP.create('API', 'PlanLicense.' + name);
+
+        api.on({
+
+            'request': function () {
+
+                loading = loading || KISP.create('Loading', {
+                    mask: 0,
+
+                });
+
+                loading.show('提交中...');
+
+            },
+
+            'response': function () {
+                loading.hide();
+            },
+
+            'success': function (data, json, xhr) {
+
+                toast = toast || KISP.create('Toast', {
+                    text: '提交成功',
+                    duration: 1500,
+                    mask: 0,
+                });
+
+                toast.show();
+
+                setTimeout(function () {
+                    emitter.fire('success', 'post', [data]);
+
+                }, 1500);
+
+            },
+
+
+            'fail': function (code, msg, json) {
+                KISP.alert('提交失败: {0}({1})', msg, code);
+            },
+
+            'error': function () {
+                KISP.alert('提交错误: 网络繁忙，请稍候再试');
+            },
+        });
+
+
+        api.post(data);
+
+
+    }
 
 
     function remove(id) {
@@ -102,6 +156,7 @@ define('/License/API', function (require, module, exports) {
 
     return {
         get: get,
+        post: post,
         remove: remove,
         on: emitter.on.bind(emitter),
     };

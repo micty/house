@@ -10,21 +10,18 @@ define('/API', function (require, module, exports) {
 
     var emitter = new Emitter();
     var loading = null;
-
+    var toast = null;
 
     //获取数据
     function get() {
 
-        var api = KISP.create('API', 'Sale.list', {
-            
-        });
-
+        var api = KISP.create('API', 'Sale.all');
 
         api.on({
 
             'request': function () {
 
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
 
@@ -36,9 +33,53 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
-                var list = data;
-           
-                emitter.fire('success', 'get', [list]);
+
+                var list = data.list;
+                var lands = data.lands;
+
+                var landId$item = {};
+
+                list.forEach(function (item) {
+                    landId$item[item.landId] = item;
+                });
+
+                var todos = $.Array.grep(lands, function (land) {
+                    var item = landId$item[land.id];
+                    return !item;
+                });
+
+
+                var id$land = {};
+                lands.forEach(function (item) {
+                    id$land[item.id] = item;
+                });
+
+
+
+                var dones = $.Array.map(list, function (item) {
+
+                    var land = id$land[item.landId];
+                    if (!land) {
+                        return null;
+                    }
+
+                    var saleId = item.id;
+
+                    var licenses = $.Array.grep(data.licenses, function (item) {
+                        return item.saleId == saleId;
+                    });
+
+                    return $.Object.extend({}, item, {
+                        'land': land,
+                        'licenses': licenses,
+                    });
+
+                });
+
+                emitter.fire('success', 'get', [{
+                    'done': dones,
+                    'todo': todos,
+                }]);
             },
 
             'fail': function (code, msg, json, xhr) {
@@ -77,9 +118,20 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
+
+                toast = toast || KISP.create('Toast', {
+                    text: '删除成功',
+                    duration: 1500,
+                    mask: 0,
+                });
+
+                toast.show();
+
                 var list = data;
-                
-                emitter.fire('success', 'remove', [list]);
+                setTimeout(function () {
+                    emitter.fire('success', 'remove', [list]);
+
+                }, 1500);
             },
 
             'fail': function (code, msg, json, xhr) {
@@ -95,7 +147,6 @@ define('/API', function (require, module, exports) {
         });
 
     }
-
 
 
     return {

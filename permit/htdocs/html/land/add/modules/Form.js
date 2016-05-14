@@ -47,7 +47,7 @@ define('/Form', function (require, module, exports) {
 
         var DateTimePicker = require('DateTimePicker');
 
-        var dtp = new DateTimePicker('[name="date"]', {
+        var dtp = new DateTimePicker('[data-type="date"]', {
             format: 'yyyy-mm-dd',
             autoclose: true,
             minView: 'month',

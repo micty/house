@@ -28,6 +28,7 @@ KISP.launch(function (require, module) {
 
         'remove': function () {
             List.remove(currentIndex);
+            Bridge.refresh(['plan', 'list']);
         },
     });
 

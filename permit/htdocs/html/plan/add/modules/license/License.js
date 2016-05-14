@@ -10,20 +10,21 @@ define('/License', function (require, module) {
     var Bridge = require('Bridge');
 
     var API = module.require('API');
+    var Dialog = module.require('Dialog');
     var Header = module.require('Header');
     var List = module.require('List');
 
-    var currentIndex = -1;
 
-
+    var current = null;
     var panel = KISP.create('Panel', '#div-panel-license');
 
     panel.on('init', function () {
 
 
         Header.on('add', function () {
-            Bridge.open(['land', 'add']);
+            Dialog.render(current);
         });
+
 
         API.on('success', {
 
@@ -31,36 +32,41 @@ define('/License', function (require, module) {
                 List.render(data);
             },
 
-            'remove': function () {
-                List.remove(currentIndex);
+            'remove': function (data) {
+                List.render(data);
+                panel.fire('change');
+            },
+            'post': function (data) {
+                List.render(data);
+                panel.fire('change');
             },
         });
 
         List.on({
 
             'detail': function (item, index) {
-                Bridge.open({
-                    name: '土地出让详情',
-                    url: 'html/land/detail/index.html?id=' + item.id,
-                });
             },
 
             'remove': function (item, index) {
-                currentIndex = index;
                 API.remove(item.id);
             },
 
             'edit': function (item, index) {
-
-                Bridge.open(['land', 'add'], {
-                    'id': item.id,
-                });
+                Dialog.render(item);
             },
+        });
+
+        Dialog.on('submit', function (data) {
+            API.post(data);
         });
 
     });
 
     panel.on('render', function (planId) {
+
+        current = {
+            'planId': planId,
+        };
 
         API.get(planId);
         Header.render();
