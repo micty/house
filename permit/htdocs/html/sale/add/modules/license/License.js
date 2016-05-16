@@ -60,12 +60,20 @@ define('/License', function (require, module) {
 
     panel.on('render', function (saleId) {
 
+        //新增的初始状态，只作展示，不能添加。
+        if (!saleId) {
+            Header.render(false);
+            List.render([]);
+            return;
+        }
+
         current = {
             'saleId': saleId,
         };
 
         API.get(saleId);
-        Header.render();
+        Header.render(true);
+
     });
 
 

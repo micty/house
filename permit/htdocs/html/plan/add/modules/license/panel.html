@@ -1,7 +1,7 @@
 ﻿
 <div id="div-panel-license" class="panel-license">
 
-    <div id="div-license-header" class="header">
+    <div id="div-license-header" class="header noop">
         <div class="toolbar">
             <button data-cmd="edit"><i class="icon fa fa-edit"></i>添加</button>
         </div>
@@ -11,10 +11,9 @@
 
     <div id="div-license-list" class="list">
 
-        <link rel="html" href="License/demo.html" />
 
         <!--
-        <table cellspacing="0" cellpadding="0">
+        <table class="list-table" cellspacing="0" cellpadding="0">
             <tr class="header">
                 <th>序号</th>
                 <th>许可证</th>
@@ -31,7 +30,9 @@
             #--row.begin--#
             <tr data-index="{index}">
                 <td>{no}</td>
-                <td>{number}</td>
+                <td>
+                    <a href="javascript:" data-index="{index}" data-cmd="detail">{number}<a/>
+                </td>
                 <td>{date}</td>
                 <td>{buildSize}</td>
                 <td>{commerceSize}</td>
@@ -49,44 +50,5 @@
         -->
     </div>
 
-    <!--dialog
-    <ul>
-        <li class="name">
-            <span class="name">许可证</span>
-            <input type="text" name="number" value="{number}"/>
-            <span class="tip"></span>
-        </li>
-        <li>
-            <span class="name">许可时间</span>
-            <input type="text" data-type="date" name="date" value="{date}"/>
-            <span class="tip">日期(年-月-日)</span>
-        </li>
-        <li>
-            <span class="name">住宅面积</span>
-            <input type="text" data-type="number" data-name="size" name="residenceSize" value="{residenceSize}"/>
-            <span class="tip">数字(平方米)</span>
-        </li>
-        <li>
-            <span class="name">商业面积</span>
-            <input type="text" data-type="number" data-name="size" name="commerceSize" value="{commerceSize}"/>
-            <span class="tip">数字(平方米)</span>
-        </li>
-        <li>
-            <span class="name">办公面积</span>
-            <input type="text" data-type="number" data-name="size" name="officeSize" value="{officeSize}"/>
-            <span class="tip">数字(平方米)</span>
-        </li>
-        <li>
-            <span class="name">其它面积</span>
-            <input type="text" data-type="number" data-name="size" name="otherSize" value="{otherSize}"/>
-        <span class="tip">数字(平方米)</span>
-        </li>
-        <li>
-            <span class="name">总面积</span>
-            <input class="total" type="text" data-type="number" id="totalSize" value="0" readonly/>
-            <span class="tip">计算(平方米)</span>
-        </li>
-    </ul>
-    dialog-->
 
 </div>

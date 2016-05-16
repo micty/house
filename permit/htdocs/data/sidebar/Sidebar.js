@@ -7,29 +7,29 @@
     //},
 
     {
-        icon: 'bars',
-        name: '土地出让列表',
+        icon: 'cube',
+        name: '土地管理',
         url: 'html/land/list/index.html',
         //autoOpen: true,
         cmd: ['land', 'list'],
     },
     {
-        icon: 'bars',
-        name: '规划许可列表',
+        icon: 'th-large',
+        name: '规划管理',
         url: 'html/plan/list/index.html',
         //autoOpen: true,
         cmd: ['plan', 'list'],
     },
     {
-        icon: 'bars',
-        name: '建设许可列表',
+        icon: 'truck',
+        name: '建设管理',
         url: 'html/construct/list/index.html',
         //autoOpen: true,
         cmd: ['construct', 'list'],
     },
     {
-        icon: 'bars',
-        name: '预售许可列表',
+        icon: 'credit-card',
+        name: '预售管理',
         url: 'html/sale/list/index.html',
         //autoOpen: true,
         cmd: ['sale', 'list'],
@@ -70,6 +70,16 @@
         border: true,
 
     },
+
+
+    ////详情页
+    //{
+    //    icon: '',
+    //    name: '土地出让详情',
+    //    url: 'html/land/detail/index.html',
+    //    cmd: ['land', 'detail'],
+    //    display: false,
+    //},
 
 
     {

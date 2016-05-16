@@ -13,9 +13,9 @@ define('/License/API', function (require, module, exports) {
     var toast = null;
 
     //获取数据
-    function get(constructId) {
+    function get(saleId) {
 
-        var api = KISP.create('API', 'ConstructLicense.list');
+        var api = KISP.create('API', 'SaleLicense.list');
 
         api.on({
 
@@ -48,7 +48,7 @@ define('/License/API', function (require, module, exports) {
         });
 
         api.get({
-            'constructId': constructId,
+            'saleId': saleId,
         });
 
 
@@ -60,7 +60,7 @@ define('/License/API', function (require, module, exports) {
 
         var id = data.id;
         var name = id ? 'update' : 'add';
-        var api = KISP.create('API', 'ConstructLicense.' + name);
+        var api = KISP.create('API', 'SaleLicense.' + name);
 
         api.on({
 
@@ -115,7 +115,7 @@ define('/License/API', function (require, module, exports) {
 
     function remove(id) {
 
-        var api = KISP.create('API', 'ConstructLicense.remove');
+        var api = KISP.create('API', 'SaleLicense.remove');
 
         api.on({
 

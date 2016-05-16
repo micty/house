@@ -10,7 +10,6 @@ define('/License', function (require, module) {
     var Bridge = require('Bridge');
 
     var API = module.require('API');
-    var Dialog = module.require('Dialog');
     var Header = module.require('Header');
     var List = module.require('List');
 
@@ -22,7 +21,7 @@ define('/License', function (require, module) {
 
 
         Header.on('add', function () {
-            Dialog.render(current);
+            panel.fire('add', [current.planId]);
         });
 
 
@@ -45,6 +44,7 @@ define('/License', function (require, module) {
         List.on({
 
             'detail': function (item, index) {
+                panel.fire('detail', [item.id]);
             },
 
             'remove': function (item, index) {
@@ -52,29 +52,33 @@ define('/License', function (require, module) {
             },
 
             'edit': function (item, index) {
-                Dialog.render(item);
+                panel.fire('edit', [item.id]);
             },
-        });
-
-        Dialog.on('submit', function (data) {
-            API.post(data);
         });
 
     });
 
     panel.on('render', function (planId) {
 
+        //新增的初始状态，只作展示，不能添加。
+        if (!planId) {
+            Header.render(false);
+            List.render([]);
+            return;
+        }
+
         current = {
             'planId': planId,
         };
 
         API.get(planId);
-        Header.render();
+        Header.render(true);
+
     });
 
 
     return panel.wrap();
 
 
-    
+
 });

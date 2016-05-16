@@ -20,8 +20,6 @@ KISP.launch(function (require, module) {
 
 
 
-
-    //说明是编辑的。
     if (!id) {
         KISP.alert('缺少 id', function () {
             Bridge.close();
@@ -29,8 +27,19 @@ KISP.launch(function (require, module) {
         return;
     }
 
+
+    License.on({
+        'detail': function (id) {
+            Bridge.open({
+                name: '预售许可证详情',
+                url: 'html/sale/license/detail/index.html?id=' + id,
+            });
+        },
+    });
+
+
     Header.on('edit', function () {
-        Bridge.open(['construct', 'add'], {
+        Bridge.open(['sale', 'add'], {
             'id': id,
         });
     });

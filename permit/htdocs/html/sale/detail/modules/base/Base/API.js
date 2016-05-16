@@ -19,7 +19,7 @@ define('/Base/API', function (require, module, exports) {
     function post(data) {
 
         var id = data.id;
-        var name = id ? 'Construct.update' : 'Construct.add';
+        var name = id ? 'Sale.update' : 'Sale.add';
         var api = KISP.create('API', name);
 
         api.on({
@@ -78,7 +78,7 @@ define('/Base/API', function (require, module, exports) {
     function get(id, isLand) {
 
 
-        var name = isLand ? 'Land.get' : 'Construct.get';
+        var name = isLand ? 'Land.get' : 'Sale.get';
         var api = KISP.create('API', name);
 
         api.on({

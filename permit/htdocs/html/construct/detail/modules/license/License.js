@@ -36,6 +36,13 @@ define('/License', function (require, module) {
             },
         });
 
+        List.on({
+            'detail': function (item, index) {
+                panel.fire('detail', [item.id]);
+            },
+        });
+
+
 
     });
 

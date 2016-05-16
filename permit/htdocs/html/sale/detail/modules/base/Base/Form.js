@@ -35,15 +35,15 @@ define('/Base/Form', function (require, module, exports) {
         current = data;
         panel.fill(data.land);
 
-        var construct = data.construct;
+        var sale = data.sale;
         panel.$.find('[name]').each(function () {
             var name = this.name;
 
-            if (!(name in construct)) {
+            if (!(name in sale)) {
                 return;
             }
 
-            var value = construct[name];
+            var value = sale[name];
             this.value = value;
         });
 

@@ -53,6 +53,13 @@ KISP.launch(function (require, module) {
         'change': function () {
             Bridge.refresh(['construct', 'list']);
         },
+        'save': function (item) {
+            if (!id) {
+                id = item.id;
+                Base.render(id); //让新增之后变成编辑状态。
+                License.render(id);
+            }
+        },
     });
 
 
@@ -73,16 +80,9 @@ KISP.launch(function (require, module) {
         return;
     }
 
-   
 
-    Base.on({
-        'save': function (item) {
-            License.render(item.id);
-        },
-    });
-
-    License.hide();
     Base.render(landId, true);
+    License.render();
 
 
 });

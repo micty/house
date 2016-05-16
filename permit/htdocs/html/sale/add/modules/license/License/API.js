@@ -13,7 +13,7 @@ define('/License/API', function (require, module, exports) {
     var toast = null;
 
     //获取数据
-    function get(constructId) {
+    function get(saleId) {
 
         var api = KISP.create('API', 'SaleLicense.list');
 
@@ -48,7 +48,7 @@ define('/License/API', function (require, module, exports) {
         });
 
         api.get({
-            'constructId': constructId,
+            'saleId': saleId,
         });
 
 

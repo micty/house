@@ -23,9 +23,10 @@ define('/License/Header', function (require, module) {
 
 
 
-    panel.on('render', function () {
+    panel.on('render', function (showOperate) {
 
-        panel.$.find('button').toggle(user.role == 'land');
+        panel.$.toggleClass('noop', !showOperate);
+        
 
     });
 

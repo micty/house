@@ -2,7 +2,7 @@
 <div id="div-panel-license" class="panel-license">
 
     <div id="div-license-header" class="header">
-        <div class="name">规划许可证</div>
+        <div class="name">预售许可证</div>
     </div>
 
 
@@ -10,7 +10,7 @@
         <link rel="html" href="License/demo.html" />
 
         <!--
-        <table cellspacing="0" cellpadding="0">
+        <table class="list-table" cellspacing="0" cellpadding="0">
             <tr class="header">
                 <th>序号</th>
                 <th>许可证</th>
@@ -26,7 +26,9 @@
             #--row.begin--#
             <tr data-index="{index}">
                 <td>{no}</td>
-                <td>{number}</td>
+                <td>
+                    <a href="javascript:" data-index="{index}" data-cmd="detail">{number}<a/>
+                </td>
                 <td>{date}</td>
                 <td>{buildSize}</td>
                 <td>{commerceSize}</td>

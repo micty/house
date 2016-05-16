@@ -19,11 +19,9 @@ define('/Base', function (require, module) {
             'post': function (data, json) {
                 panel.fire('save', [data]);
                 panel.fire('change');
-
             },
 
             'get': function (data) {
-         
                 Form.render(data);
             },
 
@@ -36,6 +34,7 @@ define('/Base', function (require, module) {
                 return;
             }
 
+     
             API.post(data);
         });
 
@@ -43,7 +42,6 @@ define('/Base', function (require, module) {
 
 
     panel.on('render', function (id, isLand) {
-
         Header.render();
         API.get(id, isLand);
     });

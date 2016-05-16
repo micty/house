@@ -207,13 +207,15 @@ module.exports = {
                 }
 
 
-                var datetime = getDateTime();
-                data['datetime'] = datetime;
+                var item = $.Object.extend({}, data, {
+                    'datetime': getDateTime(),
+                });
 
-                list[index] = data;
-                list = JSON.stringify(list, null, 4);
+                list[index] = item;
 
-                fs.writeFile(path, list, 'utf8', function (err) {
+                var json = JSON.stringify(list, null, 4);
+
+                fs.writeFile(path, json, 'utf8', function (err) {
 
                     if (err) {
                         res.send({
@@ -226,6 +228,7 @@ module.exports = {
                     res.send({
                         code: 200,
                         msg: '更新成功',
+                        data: item,
                     });
                 });
 

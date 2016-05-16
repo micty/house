@@ -78,7 +78,134 @@ table {
 .iframe {
     overflow: hidden;
 }
-input[data-type="number"],
-input[data-type="price"] {
-    font-size: 16px !important;
+table.form-table {
+    border: solid 1px #9E9E9E;
+    border-bottom: none;
+    border-left: none;
+    width: 100%;
+    font-size: 14px;
+}
+table.form-table .name {
+    background: #f5f5f5;
+    text-align: right;
+    width: 70px;
+    font-weight: bold;
+}
+table.form-table .value {
+    width: 70%;
+    padding: 5px 7px;
+}
+table.form-table .value .total {
+    background: #e3e3e5;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 50px;
+}
+table.form-table .big {
+    width: 90px;
+    text-align: center;
+}
+table.form-table .tip {
+    background: #f5f5f5;
+    font-size: 12px;
+    color: #7c7c7d;
+    width: 150px;
+}
+table.form-table .tip span {
+    display: inline-block;
+    margin-left: 4px;
+}
+table.form-table input {
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+}
+table.form-table input[data-type="number"],
+table.form-table input[data-type="price"] {
+    font-size: 16px;
+}
+table.form-table select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 15px;
+    margin-left: -4px;
+}
+table.form-table textarea {
+    width: 100%;
+    height: 120px;
+    border: none;
+    padding: 5px;
+    display: -webkit-box;
+    box-sizing: border-box;
+    /*font-size: 16px;*/
+    line-height: 24px;
+}
+table.form-table tr.title td {
+    background: #4C4C4C;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 5px;
+}
+table.form-table td {
+    border: solid 1px #9E9E9E;
+    border-top: none;
+    border-right: none;
+    padding: 5px 5px;
+}
+table.list-table {
+    width: 100%;
+    border: solid 1px #95A5B9;
+    border-right: none;
+    border-bottom: none;
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+}
+table.list-table th,
+table.list-table td {
+    border: solid 1px #95A5B9;
+    border-left: none;
+    border-top: none;
+    text-align: left;
+    padding: 5px 5px;
+}
+table.list-table th a,
+table.list-table td a {
+    color: black;
+    text-decoration: none;
+}
+table.list-table th a:hover,
+table.list-table td a:hover {
+    color: red;
+    text-decoration: underline;
+}
+table.list-table tr.header {
+    background: #e3e3e5;
+}
+table.list-table tr.header:hover {
+    background: #e3e3e5;
+}
+table.list-table tr.header th:nth-child(1) {
+    width: 28px;
+}
+table.list-table tr:hover {
+    background: #FFF6E9;
+}
+table.list-table .operate {
+    width: 90px;
+}
+table.list-table .operate span {
+    color: blue;
+    cursor: pointer;
+    font-size: 12px;
+}
+table.list-table .operate span:hover {
+    text-decoration: underline;
+}
+table.list-table .operate span.remove {
+    color: red;
+}
+table.list-table .operate span i {
+    margin: 0px 4px;
 }

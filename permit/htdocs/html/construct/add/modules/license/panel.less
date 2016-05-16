@@ -6,6 +6,12 @@
 
 
     >.header {
+        /*隐藏操作按钮*/
+        &.noop {
+            .toolbar {
+                display: none;
+            }
+        }
 
         .toolbar {
             position: relative;
@@ -48,11 +54,12 @@
 
         &.nodata {
             text-align: center;
-            font-size: 18px;
             background-color: #f1f1f1;
             border-radius: 5px;
             line-height: 175px;
             border: solid 1px #D4D5DE;
+            color: #7c7c7d;
+            font-size: 16px;
 
             &:after {
                 content: '暂无数据';
@@ -62,162 +69,6 @@
                 display: none;
             }
         }
-
-        table {
-            width: 100%;
-            width: 100%;
-            border: solid 1px #95A5B9;
-            border-right: none;
-            border-bottom: none;
-            font-family: 'Microsoft YaHei';
-            font-size: 14px;
-        }
-
-
-        th,
-        td {
-            border: solid 1px #95A5B9;
-            border-left: none;
-            border-top: none;
-            text-align: left;
-            padding: 5px 5px;
-
-
-            a {
-                color: black;
-                text-decoration: none;
-
-                &:hover {
-                    color: red;
-                    text-decoration: underline;
-                }
-            }
-        }
-
-
-        tr.header {
-            background: #e3e3e5;
-
-            &:hover {
-                background: #e3e3e5;
-            }
-        }
-
-        tr:hover {
-            background: #FFF6E9;
-        }
-
-        .operate {
-            width: 90px;
-
-            span {
-                color: blue;
-                cursor: pointer;
-                font-size: 12px;
-
-
-                &:hover {
-                    text-decoration: underline;
-                }
-
-                &.remove {
-                    color: red;
-                }
-
-                i {
-                    margin: 0px 4px;
-                }
-            }
-        }
     }
 }
 
-
-.dialog-add {
-    margin-top: initial !important;
-
-    h1 {
-        font-size: 16px;
-        text-align: center;
-        color: #FFFFFF;
-        background: #FF5722;
-        padding: 4px 0px;
-        border-radius: 5px 5px 0px 0px;
-        margin-bottom: 2px;
-    }
-
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-
-
-        li {
-            margin: 8px 0px;
-
-
-
-            span.name {
-                width: 60px;
-                font-size: 14px;
-                text-align: right;
-                display: inline-block;
-                margin-right: 6px;
-                font-weight: bold;
-            }
-
-            span.tip {
-                background: #eee;
-                font-size: 12px;
-                color: #FF5722;
-                width: 80px;
-                display: inline-block;
-                margin-left: 6px;
-                text-align: left;
-            }
-
-
-            img {
-                max-width: 414px;
-                max-height: 162px;
-            }
-
-
-            .total {
-                background: #d5d8db;
-                font-size: 20px;
-                font-weight: bold;
-                display: inline-block;
-                width: 336px;
-                border: none;
-            }
-
-            [data-type="number"] {
-                font-size: 18px;
-                padding: 0px 5px;
-                
-            }
-
-            input,
-            textarea {
-                width: 332px;
-                padding: 2px 5px;
-                font-size: 14px;
-            }
-
-            &.name {
-                input {
-                    font-size: 16px;
-                    color: #FF9800;
-                }
-            }
-
-            &.src {
-                input {
-                    color: #03A9F4;
-                    font-size: 13px;
-                }
-            }
-        }
-    }
-}

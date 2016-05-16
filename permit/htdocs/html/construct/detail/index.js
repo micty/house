@@ -21,13 +21,22 @@ KISP.launch(function (require, module) {
 
 
 
-    //说明是编辑的。
     if (!id) {
         KISP.alert('缺少 id', function () {
             Bridge.close();
         });
         return;
     }
+
+
+    License.on({
+        'detail': function (id) {
+            Bridge.open({
+                name: '施工许可证详情',
+                url: 'html/construct/license/detail/index.html?id=' + id,
+            });
+        },
+    });
 
     Header.on('edit', function () {
         Bridge.open(['construct', 'add'], {

@@ -109,6 +109,7 @@ KISP.launch(function (require, module) {
                 if (!item) {
                     return;
                 }
+
                 if (query) {
                     var Url = MiniQuery.require('Url');
 
