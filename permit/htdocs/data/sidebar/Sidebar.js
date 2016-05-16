@@ -85,7 +85,7 @@
     {
         icon: 'bar-chart',
         name: '统计报表',
-        url: 'html/home/index.html',
+        url: 'html/stat/overview/index.html',
     },
     
 ];
