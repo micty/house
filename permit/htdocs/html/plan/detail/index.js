@@ -35,6 +35,17 @@ KISP.launch(function (require, module) {
         });
     });
 
+    License.on({
+        'detail': function (id) {
+            Bridge.open({
+                name: '规划许可证详情',
+                url: 'html/plan/license/detail/index.html?id=' + id,
+            });
+        },
+    });
+
+
+
     Header.render();
     Base.render(id);
     License.render(id);

@@ -91,8 +91,13 @@ define('/Base/Form', function (require, module, exports) {
             this.value = value;
         });
 
+        totalSize();
+        totalCell();
+
+
         NumberField.update('[data-type="number"]');
 
+  
 
     });
 

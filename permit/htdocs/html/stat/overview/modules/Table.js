@@ -28,7 +28,7 @@ define('/Table', function (require, module) {
 
                         fn: function (item, index) {
 
-                            var value = NumberField.get(item.value);
+                            var value = NumberField.get(item.value) || '';
                             value = value.split(',').join('<span class="sep">,</span>');
 
                             return {

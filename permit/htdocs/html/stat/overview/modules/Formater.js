@@ -206,10 +206,25 @@ define('/Formater', function (require, module, exports) {
         sales = getColumn(sales);
 
        
-        cols[0] = cols[0].concat(adjusts);
-        cols[1] = cols[1].concat(unplans);
-        cols[2] = cols[2].concat(befores);
-        cols[3] = cols[3].concat(sales);
+        cols[0] = cols[0].concat(adjusts, [
+            { text: '', value: '', },
+            { text: '可建面积合计', value: '', subGroup: true, },
+        ]);
+
+        cols[1] = cols[1].concat(unplans, [
+            { text: '', value: '', },
+            { text: '应办规划许可面积合计', value: '', subGroup: true, },
+        ]);
+
+        cols[2] = cols[2].concat(befores, [
+            { text: '未办施工许可', value: '', },
+            { text: '应办施工许可面积合计', value: '', subGroup: true, },
+        ]);
+
+        cols[3] = cols[3].concat(sales, [
+            { text: '', value: '', },
+            { text: '预售未售面积合计', value: '', subGroup: true, },
+        ]);
 
 
        
