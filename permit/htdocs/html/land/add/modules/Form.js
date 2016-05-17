@@ -25,14 +25,14 @@ define('/Form', function (require, module, exports) {
         });
 
         panel.$.find('#totalSize').val(total);
-        new NumberField('#totalSize').update();
+        NumberField.update('#totalSize');
     }
 
 
     panel.on('init', function () {
 
-        new NumberField('[data-type="number"]');
-        new NumberField('[data-type="price"]', {
+        NumberField.create('[data-type="number"]');
+        NumberField.create('[data-type="price"]', {
             currencySign: '¥',
         });
 
@@ -74,8 +74,9 @@ define('/Form', function (require, module, exports) {
             });
 
             totalSize();
-            new NumberField('[data-type="number"]').update();
-            new NumberField('[data-type="price"]').update();
+
+            NumberField.update('[data-type="number"]');
+            NumberField.update('[data-type="price"]');
         }
 
         

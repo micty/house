@@ -6,16 +6,60 @@ define('/Base/Form', function (require, module, exports) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
+    var NumberField = require('NumberField');
 
     var panel = KISP.create('Panel', '#div-base-form');
     var current = null;
 
 
+
+    function totalSize() {
+        var total = 0;
+
+        panel.$.find('[data-name="size"]').each(function () {
+            var txt = this;
+            var nf = new NumberField(txt);
+            var value = nf.get();
+            value = Number(value);
+
+            total += value;
+
+        });
+
+        panel.$.find('#totalSize').val(total);
+        NumberField.update('#totalSize');
+    }
+
+    function totalCell() {
+        var total = 0;
+
+        panel.$.find('[data-name="cell"]').each(function () {
+            var txt = this;
+            var nf = new NumberField(txt);
+            var value = nf.get();
+            value = Number(value);
+
+            total += value;
+
+        });
+
+        panel.$.find('#totalCell').val(total);
+        NumberField.update('#totalCell');
+    }
+
+
     panel.on('init', function () {
 
+        new NumberField('[data-type="number"]');
 
+        panel.$.on('change', '[data-name="size"]', function (event) {
+            totalSize();
+        });
+
+        panel.$.on('change', '[data-name="cell"]', function (event) {
+            totalCell();
+        });
     });
-
 
 
     panel.on('render', function (data) {
@@ -47,6 +91,8 @@ define('/Base/Form', function (require, module, exports) {
             this.value = value;
         });
 
+        NumberField.update('[data-type="number"]');
+
 
     });
 
@@ -64,6 +110,15 @@ define('/Base/Form', function (require, module, exports) {
             panel.$.find('[name]').each(function () {
                 var name = this.name;
                 var value = this.value;
+
+                var type = this.getAttribute('data-type');
+                if (type == 'number') {
+                    var txt = this;
+                    var nf = new NumberField(txt);
+                    value = nf.get();
+                    value = Number(value);
+                }
+
                 data[name] = value;
             });
 

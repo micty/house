@@ -97,7 +97,7 @@ define('/Form', function (require, module, exports) {
             totalSize();
             totalCell();
 
-            new NumberField('[data-type="number"]').update();
+            NumberField.update('[data-type="number"]');
         }
 
 

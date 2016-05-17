@@ -207,3 +207,11 @@ app.get('/SaleLicense.remove', function (req, res) {
 app.get('/SaleLicense.list', function (req, res) {
     SaleLicense.list(res, req.query.saleId);
 });
+
+
+
+//统计模块
+var Stat = require('./modules/Stat');
+app.get('/Stat.get', function (req, res) {
+    Stat.get(res);
+});

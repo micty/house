@@ -4,13 +4,29 @@
         "landId": "23CD5EA4DCF7",
         "project": "bbbbbbbbb",
         "location": "深圳",
-        "datetime": "2016-05-16 15:16:15"
+        "commerceSize": "1000",
+        "residenceSize": "2000",
+        "officeSize": "3000",
+        "otherSize": "4000",
+        "commerceCell": "4444",
+        "residenceCell": "3333",
+        "officeCell": "2222",
+        "otherCell": "1111",
+        "datetime": "2016-05-17 17:45:32"
     },
     {
         "id": "B9954A76837D",
         "landId": "BE6D1EFCB85A",
         "project": "aaaa",
         "location": "bbbbb",
-        "datetime": "2016-05-16 14:03:54"
+        "commerceSize": "1000",
+        "residenceSize": "2000",
+        "officeSize": "3000",
+        "otherSize": "4000",
+        "commerceCell": "4444000",
+        "residenceCell": "3333000",
+        "officeCell": "2222000",
+        "otherCell": "1111000",
+        "datetime": "2016-05-17 17:45:21"
     }
 ]

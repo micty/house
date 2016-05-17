@@ -177,8 +177,12 @@ define('NumberField', function (require, exports, module) {
 
 
 
+    var input = null;
+    var nf = null;
 
-
+    /**
+    * 静态方法。
+    */
     return $.Object.extend(NumberField, {
 
         config: function (obj) {
@@ -188,6 +192,39 @@ define('NumberField', function (require, exports, module) {
             }
             //set
             $.Object.extend(defaults, obj);
+        },
+
+        get: function (value, options) {
+
+            if (typeof value == 'number') {
+                if (!input) {
+                    input = document.createElement('input');
+                    input.type = 'text';
+
+                    options = $.Object.extend({
+                        min: '-9999999999999.99',   //允许的最小值，必须用字符串
+                        max: '9999999999999.99',    //允许的最大值，必须用字符串，且比 min 要大
+
+                    }, options);
+
+                    nf = new NumberField(input, options);
+                }
+
+
+                input.value = value;
+                nf.update();
+
+                return input.value;
+                
+            }
+        },
+
+        create: function (el, options) {
+            return new NumberField(el, options);
+        },
+
+        update: function (el, options) {
+            new NumberField(el).update(options);
         },
 
     });

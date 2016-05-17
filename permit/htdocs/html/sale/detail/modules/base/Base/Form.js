@@ -6,6 +6,7 @@ define('/Base/Form', function (require, module, exports) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
+    var NumberField = require('NumberField');
 
     var panel = KISP.create('Panel', '#div-base-form');
     var current = null;
@@ -18,35 +19,75 @@ define('/Base/Form', function (require, module, exports) {
 
 
 
+
+
+
     panel.on('render', function (data) {
 
-        current = {};
-
-        //没有土地记录字段，说明是新增的。
-        //此时传进来的是一个土地记录。
-        if (!data.land) {
-            current.land = { 'id': data.id, };
-            panel.fill(data);
-            return;
-        }
-
-        //有土地 id，说明是编辑的。
 
         current = data;
-        panel.fill(data.land);
 
+        var land = data.land;
         var sale = data.sale;
-        panel.$.find('[name]').each(function () {
-            var name = this.name;
 
-            if (!(name in sale)) {
-                return;
-            }
 
-            var value = sale[name];
-            this.value = value;
+        var obj = $.Object.extend({}, sale, {
+            'land.number': land.number,
+            'land.town': land.town,
         });
 
+
+
+        var totalSize = 0;
+
+        $.Array.each([
+            'commerceSize',
+            'residenceSize',
+            'officeSize',
+            'otherSize',
+
+        ], function (key) {
+
+            var value = sale[key];
+            value = Number(value);
+            
+            obj[key] = NumberField.get(value);
+
+            totalSize += value;
+
+        });
+
+
+        obj.totalSize = NumberField.get(totalSize);
+
+
+        var totalCell = 0;
+
+        $.Array.each([
+            'commerceCell',
+            'residenceCell',
+            'officeCell',
+            'otherCell',
+
+        ], function (key) {
+
+            var value = sale[key];
+            value = Number(value);
+
+            obj[key] = NumberField.get(value);
+
+            totalCell += value;
+
+        });
+
+
+        obj.totalCell = NumberField.get(totalCell);
+
+    
+
+        panel.fill(obj);
+
+      
 
     });
 
