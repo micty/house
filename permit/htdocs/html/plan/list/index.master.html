@@ -16,11 +16,15 @@
     <!--weber.css.end-->
 </head>
 <body class="iframe">
-    <div class="panel">
-        <div class="group">待办列表</div>
-        <div id="div-todo-list" class="list">
-            <link rel="html" href="modules/todo.html" />
-            <!--
+    <div class="header">
+        规划许可列表
+    </div>
+    <div class="container">
+        <div class="panel">
+            <div class="group">待办列表</div>
+            <div id="div-todo-list" class="list">
+                <link rel="html" href="modules/todo.html" />
+                <!--
             <table class="list-table" cellspacing="0" cellpadding="0">
                 <tr class="header">
                     <th>序号</th>
@@ -51,16 +55,14 @@
                 #--row.end--#
             </table>
             -->
+            </div>
         </div>
-    </div>
-    
+        <div class="panel">
+            <div class="group">已办列表</div>
+            <div id="div-done-list" class="list">
+                <link rel="html" href="modules/done.html" />
 
-    <div class="panel">
-        <div class="group">已办列表</div>
-        <div id="div-done-list" class="list">
-            <link rel="html" href="modules/done.html" />
-
-            <!--
+                <!--
             <table class="list-table" cellspacing="0" cellpadding="0">
                 <tr class="header">
                     <th>序号</th>
@@ -97,14 +99,15 @@
 
             </table>
             -->
+            </div>
         </div>
     </div>
+        
 
     <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
     <script src="../../../f/miniquery/miniquery.debug.js"></script>
     <script src="../../../f/kisp/kisp.debug.js"></script>
     <script src="../../../config.js"></script>
-
 
     <!--weber.js.begin-->
     <script>
@@ -115,8 +118,6 @@
         ]
     </script>
     <!--weber.js.end-->
-
-
 
 </body>
 </html>

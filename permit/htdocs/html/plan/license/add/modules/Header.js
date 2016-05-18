@@ -1,13 +1,13 @@
 ﻿
 
-define('/Footer', function (require, module, exports) {
+define('/Header', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
    
-    var panel = KISP.create('Panel', '#div-footer');
+    var panel = KISP.create('Panel', '#div-header');
 
 
 

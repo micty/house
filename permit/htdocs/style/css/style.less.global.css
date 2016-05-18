@@ -75,8 +75,44 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-.iframe {
+body.iframe {
     overflow: hidden;
+}
+body.iframe > .header {
+    background: #5D6A7E;
+    padding: 0px 10px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 15px;
+    height: 42px;
+    line-height: 42px;
+}
+body.iframe > .header button {
+    background-color: #8BC34A;
+    border: none;
+    color: #fff;
+    padding: 6px 25px;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    float: right;
+    margin-top: 4px;
+}
+body.iframe > .header button i {
+    display: inline-block;
+    margin-right: 5px;
+}
+body.iframe > .header button.save {
+    background: #FF9800;
+}
+body.iframe > .header:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+body.iframe > .container {
+    margin: 10px 10px;
 }
 table.form-table {
     border: solid 1px #9E9E9E;
@@ -93,11 +129,15 @@ table.form-table .name {
 }
 table.form-table .value {
     width: 70%;
-    padding: 5px 7px;
+    padding: 0px 7px;
 }
 table.form-table .value .total {
     font-size: 17px;
     font-weight: bold;
+}
+table.form-table .value.readonly {
+    /*color: gray;*/
+    color: #2196F3;
 }
 table.form-table .big {
     width: 90px;

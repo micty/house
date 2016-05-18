@@ -13,7 +13,7 @@ KISP.launch(function (require, module) {
     
     var API = module.require('API');
     var Form = module.require('Form');
-    var Footer = module.require('Footer');
+    var Header = module.require('Header');
 
 
     API.on('success', {
@@ -35,7 +35,7 @@ KISP.launch(function (require, module) {
 
 
 
-    Footer.on('submit', function () {
+    Header.on('submit', function () {
 
         var data = Form.get(id);
         if (!data) {
@@ -46,7 +46,7 @@ KISP.launch(function (require, module) {
     });
 
 
-    Footer.render();
+    Header.render();
 
 
 

@@ -27,7 +27,7 @@ module.exports = {
     */
     get: function (res) {
 
-        //try {
+        try {
             var Land = require('./Land');
             var Plan = require('./Plan');
             var Construct = require('./Construct');
@@ -144,13 +144,13 @@ module.exports = {
                 },
             });
 
-        //}
-        //catch (ex) {
-        //    res.send({
-        //        code: 500,
-        //        msg: ex.message,
-        //    });
-        //}
+        }
+        catch (ex) {
+            res.send({
+                code: 500,
+                msg: ex.message,
+            });
+        }
 
     },
 

@@ -17,43 +17,46 @@
 </head>
 <body class="iframe">
     <div id="div-header" class="header">
+        土地出让列表
         <button><i class="icon fa fa-plus"></i>添加</button>
     </div>
-    <div id="div-list" class="list">
-        <link rel="html" href="modules/demo.html" />
-        <!--
-        <table class="list-table" cellspacing="0" cellpadding="0">
-            <tr class="header">
-                <th>序号</th>
-                <th>土地挂牌编号</th>
-                <th>土地区域</th>
-                <th>土地座落</th>
-                <th>土地面积</th>
-                <th>建筑面积</th>
-                <th>提交时间</th>
-                <th style="{operate-display}">操作</th>
-            </tr>
+    <div class="container">
+        <div id="div-list" class="list">
+            <link rel="html" href="modules/demo.html" />
+            <!--
+            <table class="list-table" cellspacing="0" cellpadding="0">
+                <tr class="header">
+                    <th>序号</th>
+                    <th>土地挂牌编号</th>
+                    <th>土地区域</th>
+                    <th>土地座落</th>
+                    <th>土地面积</th>
+                    <th>建筑面积</th>
+                    <th>提交时间</th>
+                    <th style="{operate-display}">操作</th>
+                </tr>
 
-            #--row.begin--#
-            <tr data-index="{index}">
-                <td>{no}</td>
-                <td>
-                    <a href="javascript:" data-index="{index}" data-cmd="detail">{number}<a/>
-                </td>
-                <td>{town}</td>
-                <td>{location}</td>
-                <td>{size}</td>
-                <td>{buildSize}</td>
-                <td>{datetime}</td>
-                <td class="operate" style="{operate-display}">
-                    <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
-                    <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
-                </td>
-            </tr>
-            #--row.end--#
-            
-        </table>
-        -->
+                #--row.begin--#
+                <tr data-index="{index}">
+                    <td>{no}</td>
+                    <td>
+                        <a href="javascript:" data-index="{index}" data-cmd="detail">{number}<a/>
+                    </td>
+                    <td>{town}</td>
+                    <td>{location}</td>
+                    <td>{size}</td>
+                    <td>{buildSize}</td>
+                    <td>{datetime}</td>
+                    <td class="operate" style="{operate-display}">
+                        <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                        <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                    </td>
+                </tr>
+                #--row.end--#
+
+            </table>
+            -->
+        </div>
     </div>
 
     <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>

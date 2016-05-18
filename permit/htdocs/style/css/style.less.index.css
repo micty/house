@@ -303,7 +303,7 @@ body {
 }
 .content .tab-panel .tabs .hover {
     background: #5D6A7E;
-    color: #fff;
+    color: #B4CAEC;
 }
 .content .tab-panel .tabs .hover .icon-home {
     background-position: 0px -39px;
@@ -379,7 +379,8 @@ body {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 .content .iframes {
-    padding: 10px 10px 0 10px;
+    /*padding: 10px 10px 0 10px;*/
+    padding: 0px;
 }
 .content .iframes iframe {
     border: none;
