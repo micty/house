@@ -123,4 +123,12 @@ module.exports = {
             'delete': false,     //删除压缩前的源 css 文件。
         },
     },
+
+    lessLinks: {
+        compile: {
+            'write': true,      //写入编译后的 css 文件。
+            'minify': true,     //使用压缩版。
+            'delete': true,     //编译完后删除源 less 文件。
+        },
+    },
 }
