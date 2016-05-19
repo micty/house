@@ -2,7 +2,7 @@
 * weber - web develop tool
 * name: default 
 * version: 1.3.0
-* build: 2016-05-18 17:32:49
+* build: 2016-05-19 11:15:37
 * files: 54(52)
 *    partial/default/begin.js
 *    core/Module.js
@@ -7258,7 +7258,7 @@ Module.expose({
     ////html
     //'Attribute': true,
     //'CssLinks': true,
-    //'HtmlLinks': true,
+    'HtmlLinks': true,
     //'HtmlList': true,
     //'JsList': true,
     //'JsScripts': true,
