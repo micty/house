@@ -5,6 +5,8 @@ define('/Form', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+
+    var Size = require('Size');
     var NumberField = require('NumberField');
 
    
@@ -12,34 +14,54 @@ define('/Form', function (require, module, exports) {
 
 
 
+    function get(data) {
 
-    function totalSize() {
-        var total = 0;
+        data = data || {};
 
-        panel.$.find('[data-name="size"]').each(function () {
-            var txt = this;
-            var nf = new NumberField(txt);
-            var value = nf.get();
-            value = Number(value);
+        panel.$.find('[name]').each(function () {
 
-            total += value;
+            var name = this.name;
+            var value = this.value;
 
+            var type = this.getAttribute('data-type');
+            if (type == 'number' || type == 'price') {
+                value = NumberField.value(this);
+            }
+
+            //针对新增，为了更容易发现意外的重复的 name 字段。
+            if (!data.id && name in data) {
+                throw new Error('重复的 name 字段: ' + name);
+            }
+
+            data[name] = value;
         });
 
-        panel.$.find('#totalSize').val(total);
-        new NumberField('#totalSize').update();
+        return data;
     }
 
-   
+
+    function totalSize() {
+
+        var data = get();
+
+        $('#totalSize').html(Size.totalText(data));
+        $('#totalSize0').html(Size.totalText(data, 0));
+        $('#totalSize1').html(Size.totalText(data, 1));
+
+    }
+
+
+
     panel.on('init', function () {
 
-        new NumberField('[data-type="number"]');
-
-        panel.$.find('[data-name="size"]').on('change', function (event) {
+        NumberField.create('[data-type="number"]');
+        panel.$.find('[data-type="number"]').on('change', function (event) {
             totalSize();
         });
 
     });
+
+
 
 
     panel.on('init', function () {
@@ -73,9 +95,9 @@ define('/Form', function (require, module, exports) {
 
             });
 
-            totalSize();
 
-            new NumberField('[data-type="number"]').update();
+            NumberField.update('[data-type="number"]');
+            totalSize();
         }
 
 
@@ -84,26 +106,7 @@ define('/Form', function (require, module, exports) {
 
 
     return panel.wrap({
-        get: function (data) {
-
-            panel.$.find('[name]').each(function () {
-
-                var name = this.name;
-                var value = this.value;
-
-                var type = this.getAttribute('data-type');
-                if (type == 'number') {
-                    var txt = this;
-                    var nf = new NumberField(txt);
-                    value = nf.get();
-                    value = Number(value);
-                }
-
-                data[name] = value;
-            });
-
-            return data;
-        },
+        'get': get,
     });
 
 });

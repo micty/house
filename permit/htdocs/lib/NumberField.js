@@ -197,7 +197,9 @@ define('NumberField', function (require, exports, module) {
         get: function (value, options) {
 
             if (typeof value == 'number') {
+
                 if (!input) {
+
                     input = document.createElement('input');
                     input.type = 'text';
 
@@ -225,6 +227,15 @@ define('NumberField', function (require, exports, module) {
 
         update: function (el, options) {
             new NumberField(el).update(options);
+        },
+
+        value: function (txt) {
+           
+            var nf = new NumberField(txt);
+            var value = nf.get();
+            value = Number(value);
+
+            return value;
         },
 
     });

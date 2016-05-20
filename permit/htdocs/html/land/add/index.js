@@ -37,7 +37,7 @@ KISP.launch(function (require, module) {
 
     Header.on('submit', function () {
 
-        var data = Form.get(id);
+        var data = Form.get({'id': id, });
         if (!data) {
             return;
         }

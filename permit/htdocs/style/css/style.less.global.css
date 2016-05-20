@@ -139,6 +139,10 @@ table.form-table .value.readonly {
     /*color: gray;*/
     color: #2196F3;
 }
+table.form-table .value.total {
+    font-size: 16px;
+    font-weight: bold;
+}
 table.form-table .big {
     width: 90px;
     text-align: center;
@@ -184,6 +188,12 @@ table.form-table tr.title td {
     color: #fff;
     font-weight: bold;
     padding: 6px 5px;
+}
+table.form-table tr.sub-title td {
+    background: none;
+    color: #4C4C4C;
+    font-weight: bold;
+    text-align: center;
 }
 table.form-table td {
     border: solid 1px #9E9E9E;

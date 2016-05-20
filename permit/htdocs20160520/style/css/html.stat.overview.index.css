@@ -1,0 +1,80 @@
+.main {
+    /*width: 842px;*/
+    width: 950px;
+    margin: auto;
+}
+.main > .header {
+    margin-bottom: 10px;
+    line-height: 40px;
+    padding: 0px 10px;
+    text-align: center;
+    font-size: 30px;
+}
+.main .sub {
+    font-size: 14px;
+}
+.main .sub .left {
+    float: left;
+    margin-left: 10px;
+}
+.main .sub .right {
+    float: right;
+    margin-right: 10px;
+}
+.main .sub:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+.main table.stat-table {
+    width: 100%;
+    border: solid 2px #95A5B9;
+    /*border: solid 2px #000;*/
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+}
+.main table.stat-table td {
+    border: solid 1px #95A5B9;
+    /*border: solid 1px #000;*/
+    /*border-right: none;
+              border-bottom: none;*/
+    text-align: left;
+    padding: 1px 5px 1px 8px;
+}
+.main table.stat-table td.group {
+    border-top-width: 2px;
+}
+.main table.stat-table tr:hover {
+    background: #FFF6E9;
+}
+.main table.stat-table tr {
+    /* key ����*/
+    /* value ����*/
+}
+.main table.stat-table tr td:nth-child(2n-1) {
+    width: 100px;
+    text-align: right;
+    background: #f5f5f5;
+}
+.main table.stat-table tr td:nth-child(2n-1):after {
+    display: inline-block;
+    content: "";
+}
+.main table.stat-table tr td:nth-child(2n-1).sub-group {
+    font-weight: bold;
+}
+.main table.stat-table tr td:nth-child(2n) {
+    width: 100px;
+    border-right-width: 2px;
+    font-size: 16px;
+}
+.main table.stat-table tr td:nth-child(2n) .sep {
+    display: inline-block;
+    margin-right: 2px;
+}
+.main table.stat-table tr td:last-child {
+    border-right: none;
+}
+.main table.stat-table tr:last-child td {
+    border-bottom: none;
+}

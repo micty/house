@@ -6,27 +6,48 @@ define('/Form', function (require, module, exports) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
    
+    var Size = require('Size');
     var NumberField = require('NumberField');
 
     var panel = KISP.create('Panel', '#table-form');
 
 
-    function totalSize() {
-        var total = 0;
+    function get(data) {
 
-        panel.$.find('[data-name="size"]').each(function () {
-            var txt = this;
-            var nf = new NumberField(txt);
-            var value = nf.get();
-            value = Number(value);
+        data = data || {};
 
-            total += value;
+        panel.$.find('[name]').each(function () {
 
+            var name = this.name;
+            var value = this.value;
+
+            var type = this.getAttribute('data-type');
+            if (type == 'number' || type == 'price') {
+                value = NumberField.value(this);
+            }
+
+            //针对新增，为了更容易发现意外的重复的 name 字段。
+            if (!data.id && name in data) {
+                throw new Error('重复的 name 字段: ' + name);
+            }
+
+            data[name] = value;
         });
 
-        panel.$.find('#totalSize').val(total);
-        NumberField.update('#totalSize');
+        return data;
     }
+
+
+    function totalSize() {
+
+        var data = get();
+
+        $('#totalSize').html(Size.totalText(data));
+        $('#totalSize0').html(Size.totalText(data, 0));
+        $('#totalSize1').html(Size.totalText(data, 1));
+
+    }
+
 
 
     panel.on('init', function () {
@@ -36,11 +57,13 @@ define('/Form', function (require, module, exports) {
             currencySign: '¥',
         });
 
-        panel.$.find('[data-name="size"]').on('change', function (event) {
+        panel.$.find('[data-type="number"]').on('change', function (event) {
             totalSize();
         });
       
     });
+
+
 
 
     panel.on('init', function () {
@@ -55,6 +78,8 @@ define('/Form', function (require, module, exports) {
             todayHighlight: true
         });
     });
+
+
 
 
 
@@ -73,42 +98,22 @@ define('/Form', function (require, module, exports) {
 
             });
 
-            totalSize();
-
             NumberField.update('[data-type="number"]');
             NumberField.update('[data-type="price"]');
+
+            totalSize();
+           
         }
 
-        
 
     });
 
 
+
+
+
     return panel.wrap({
-        get: function (id) {
-
-            var data = {
-                'id': id,
-            };
-
-            panel.$.find('[name]').each(function () {
-
-                var name = this.name;
-                var value = this.value;
-
-                var type = this.getAttribute('data-type');
-                if (type == 'number' || type == 'price') {
-                    var txt = this;
-                    var nf = new NumberField(txt);
-                    value = nf.get();
-                    value = Number(value);
-                }
-
-                data[name] = value;
-            });
-
-            return data;
-        },
+        'get': get,
     });
 
 

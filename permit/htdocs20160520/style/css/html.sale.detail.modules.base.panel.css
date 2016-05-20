@@ -1,0 +1,15 @@
+.panel-base {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 10px;
+}
+.panel-base .form-table .name {
+    width: 100px;
+}
+.panel-base .form-table .number {
+    font-size: 16px;
+}
+.panel-base .form-table .total {
+    font-size: 17px;
+    font-weight: bold;
+}
