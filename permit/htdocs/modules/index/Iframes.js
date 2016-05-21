@@ -74,7 +74,7 @@ define('/Iframes', function (require, module, exports) {
 
         var clientHeight = document.documentElement.clientHeight; //浏览器窗口可视区域
         var iframeTop = $(div).offset().top;
-        var footerHeight = 50;
+        var footerHeight = 4;
 
         var minHeight = clientHeight - iframeTop - footerHeight;
 

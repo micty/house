@@ -32,10 +32,8 @@ define('/Base', function (require, module) {
     });
 
 
-    panel.on('render', function (id, isLand) {
-
-
-        API.get(id, isLand);
+    panel.on('render', function (id) {
+        API.get(id);
     });
 
    

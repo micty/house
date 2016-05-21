@@ -6,7 +6,7 @@ var Directory = require('../lib/Directory');
 
 
 function getPath() {
-    return './data/construct-license-list.json';
+    return './data/plan-license-list.json';
 }
 
 function getDateTime() {
@@ -89,22 +89,22 @@ module.exports = {
     */
     add: function (res, data) {
 
-        var constructId = data.constructId;
-        if (!constructId) {
-            emptyError('constructId', res);
+        var planId = data.planId;
+        if (!planId) {
+            emptyError('planId', res);
             return;
         }
 
-        var Construct = require('./Construct');
-        var constructs = Construct.list();
-        var construct = constructs.find(function (item) {
-            return item.id == constructId;
+        var Plan = require('./Plan');
+        var plans = Plan.list();
+        var plan = plans.find(function (item) {
+            return item.id == planId;
         });
         
-        if (!construct) {
+        if (!plan) {
             res.send({
                 code: 404,
-                msg: '不存在 constructId 为 ' + constructId + ' 的建设记录。',
+                msg: '不存在 planId 为 ' + planId + ' 的规划记录。',
             });
             return;
         }
@@ -141,7 +141,7 @@ module.exports = {
                 }
 
                 list = list.filter(function (item) {
-                    return item.constructId == constructId;
+                    return item.planId == planId;
                 });
 
                 res.send({
@@ -221,10 +221,10 @@ module.exports = {
                         return;
                     }
 
-                    var constructId = data.constructId;
+                    var planId = data.planId;
 
                     list = list.filter(function (item) {
-                        return item.constructId == constructId;
+                        return item.planId == planId;
                     });
 
                     res.send({
@@ -307,10 +307,10 @@ module.exports = {
                         return;
                     }
 
-                    var constructId = item.constructId;
+                    var planId = item.planId;
 
                     list = list.filter(function (item) {
-                        return item.constructId == constructId;
+                        return item.planId == planId;
                     });
 
                     res.send({
@@ -345,7 +345,7 @@ module.exports = {
             var data = fs.readFileSync(path, 'utf8');
             var list = JSON.parse(data);
 
-            //过滤出指定 constructId 的记录。
+            //过滤出指定 planId 的记录。
             if (fn) {
                 var isFn = typeof fn == 'function';
 
@@ -355,8 +355,8 @@ module.exports = {
                         return !removed;
                     }
 
-                    //此时的 fn 当作 constructId。
-                    return item.constructId != fn;
+                    //此时的 fn 当作 planId。
+                    return item.planId != fn;
                     
                 });
             }
@@ -375,7 +375,7 @@ module.exports = {
     /**
     * 读取列表。
     */
-    list: function (res) {
+    list: function (res, planId) {
    
         var path = getPath();
         var existed = fs.existsSync(path);
@@ -388,6 +388,15 @@ module.exports = {
 
             var data = fs.readFileSync(path, 'utf8');
             var list = JSON.parse(data);
+
+            //过滤出指定 planId 的记录。
+            if (planId) {
+                list = list.filter(function (item) {
+                    return item.planId == planId;
+                });
+            }
+            
+
             return list;
         }
 
@@ -416,10 +425,10 @@ module.exports = {
             try {
                 var list = JSON.parse(data);
 
-                //过滤出指定 constructId 的记录。
-                if (constructId) {
+                //过滤出指定 planId 的记录。
+                if (planId) {
                     list = list.filter(function (item) {
-                        return item.constructId == constructId;
+                        return item.planId == planId;
                     });
                 }
 
@@ -440,45 +449,7 @@ module.exports = {
 
         });
 
-    },
-
-
-
-    /**
-   * 获取待办和已办列表。
-   */
-    all: function (res) {
-
-        try {
-            var Land = require('./Land');
-            var Plan = require('./Plan');
-            var PlanLicense = require('PlanLicense');
-
-            var lands = Land.list();
-            var plans = Plan.list();
-            var licenses = PlanLicense.list();
-            var list = module.exports.list();
-          
-
-            res.send({
-                code: 200,
-                msg: '',
-                data: {
-                    'list': list,
-                    'lands': lands,
-                    'licenses': licenses,
-                },
-            });
-
-        }
-        catch (ex) {
-            res.send({
-                code: 500,
-                msg: ex.message,
-            });
-        }
-
-    },
+    }
 
 
 };

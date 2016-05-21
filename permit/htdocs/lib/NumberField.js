@@ -1,7 +1,7 @@
 ﻿
 /**
 * 数值型输入框类。
-* @author micty
+* https://github.com/BobKnothe/autoNumeric
 */
 define('NumberField', function (require, exports, module) {
 
@@ -150,7 +150,11 @@ define('NumberField', function (require, exports, module) {
             invoke(this, 'destroy', arguments);
         },
 
-        update: function () {
+        update: function (options) {
+            if (options) { //如果指定了，则需要转成原始控件的格式。
+                arguments[0] = normalizeObject(options);
+            }
+
             invoke(this, 'update', arguments);
         },
 
@@ -194,32 +198,7 @@ define('NumberField', function (require, exports, module) {
             $.Object.extend(defaults, obj);
         },
 
-        get: function (value, options) {
-
-            if (typeof value == 'number') {
-
-                if (!input) {
-
-                    input = document.createElement('input');
-                    input.type = 'text';
-
-                    options = $.Object.extend({
-                        min: '-9999999999999.99',   //允许的最小值，必须用字符串
-                        max: '9999999999999.99',    //允许的最大值，必须用字符串，且比 min 要大
-
-                    }, options);
-
-                    nf = new NumberField(input, options);
-                }
-
-
-                input.value = value;
-                nf.update();
-
-                return input.value;
-                
-            }
-        },
+       
 
         create: function (el, options) {
             return new NumberField(el, options);
@@ -236,6 +215,39 @@ define('NumberField', function (require, exports, module) {
             value = Number(value);
 
             return value;
+        },
+
+        text: function (value, options) {
+
+            if (!input) {
+
+                input = document.createElement('input');
+                input.type = 'text';
+
+                options = $.Object.extend({
+                    min: '-9999999999999.99',   //允许的最小值，必须用字符串
+                    max: '9999999999999.99',    //允许的最大值，必须用字符串，且比 min 要大
+
+                }, options);
+
+                nf = new NumberField(input, options);
+            }
+
+
+            input.value = value;
+            nf.update(options);
+
+            return input.value;
+
+        },
+
+        money: function (value, options) {
+    
+            options = $.Object.extend({}, options, {
+                currencySign: '¥',
+            });
+
+            return NumberField.text(value, options);
         },
 
     });

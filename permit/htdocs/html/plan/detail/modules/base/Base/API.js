@@ -16,70 +16,10 @@ define('/Base/API', function (require, module, exports) {
 
 
 
-    function post(data) {
-
-        var id = data.id;
-        var name = id ? 'Plan.update' : 'Plan.add';
-        var api = KISP.create('API', name);
-
-        api.on({
-
-            'request': function () {
-
-                loading = loading || KISP.create('Loading', {
-                    mask: 0,
-
-                });
-
-                loading.show('提交中...');
-
-            },
-
-            'response': function () {
-                loading.hide();
-            },
-
-            'success': function (data, json, xhr) {
-
-                toast = toast || KISP.create('Toast', {
-                    text: '提交成功',
-                    duration: 1500,
-                    mask: 0,
-                });
-
-                toast.show();
-
-                setTimeout(function () {
-                    emitter.fire('success', 'post', [data]);
-
-                }, 1500);
-
-            },
- 
-
-            'fail': function (code, msg, json) {
-                KISP.alert('提交失败: {0}({1})', msg, code);
-            },
-
-            'error': function () {
-                KISP.alert('提交错误: 网络繁忙，请稍候再试');
-            },
-        });
+    function get(id) {
 
 
-        api.post(data);
-
-
-    }
-
-
-
-
-    function get(id, isLand) {
-
-
-        var name = isLand ? 'Land.get' : 'Plan.get';
-        var api = KISP.create('API', name);
+        var api = KISP.create('API', 'Plan.get');
 
         api.on({
 
@@ -118,7 +58,6 @@ define('/Base/API', function (require, module, exports) {
 
     return {
         get: get,
-        post: post,
         on: emitter.on.bind(emitter),
     };
 

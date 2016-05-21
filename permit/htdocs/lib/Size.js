@@ -5,6 +5,8 @@ define('Size', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
 
+    var NumberField = require('NumberField');
+
 
     var sizes = [
         [
@@ -32,7 +34,7 @@ define('Size', function (require, module, exports) {
 
         keys.forEach(function (key) {
             var value = data[key];
-            value = Number(value);
+            value = Number(value) || 0;
             total += value;
         });
 
@@ -41,11 +43,37 @@ define('Size', function (require, module, exports) {
     }
 
     function totalText(data, index) {
-        var NumberField = require('NumberField');
 
         var value = total(data, index);
-        value = NumberField.get(value);
+        value = NumberField.text(value);
         return value;
+    }
+
+    function text(data, key) {
+        var value = data[key];
+        return NumberField.text(value);
+    }
+
+
+    function format(data) {
+
+        data = $.Object.extend({}, data, {
+            'totalSize': totalText(data),
+            'totalSize0': totalText(data, 0),
+            'totalSize1': totalText(data, 1),
+        });
+
+        var keys = $.Array.reduceDimension(sizes);
+        $.Array.each(keys, function (key) {
+
+            var value = data[key];
+            
+            value = NumberField.text(value);
+            data[key] = value;
+        });
+
+        return data;
+
     }
 
 
@@ -55,6 +83,8 @@ define('Size', function (require, module, exports) {
     return {
         'total': total,
         'totalText': totalText,
+        'format': format,
+        'text': text,
     };
 
 

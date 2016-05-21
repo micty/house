@@ -6,7 +6,7 @@ var Directory = require('../lib/Directory');
 
 
 function getPath() {
-    return './data/construct-license-list.json';
+    return './data/sale-license-list.json';
 }
 
 function getDateTime() {
@@ -89,22 +89,22 @@ module.exports = {
     */
     add: function (res, data) {
 
-        var constructId = data.constructId;
-        if (!constructId) {
-            emptyError('constructId', res);
+        var saleId = data.saleId;
+        if (!saleId) {
+            emptyError('saleId', res);
             return;
         }
 
-        var Construct = require('./Construct');
-        var constructs = Construct.list();
-        var construct = constructs.find(function (item) {
-            return item.id == constructId;
+        var Sale = require('./Sale');
+        var sales = Sale.list();
+        var sale = sales.find(function (item) {
+            return item.id == saleId;
         });
         
-        if (!construct) {
+        if (!sale) {
             res.send({
                 code: 404,
-                msg: '不存在 constructId 为 ' + constructId + ' 的建设记录。',
+                msg: '不存在 saleId 为 ' + saleId + ' 的建设记录。',
             });
             return;
         }
@@ -141,7 +141,7 @@ module.exports = {
                 }
 
                 list = list.filter(function (item) {
-                    return item.constructId == constructId;
+                    return item.saleId == saleId;
                 });
 
                 res.send({
@@ -221,10 +221,10 @@ module.exports = {
                         return;
                     }
 
-                    var constructId = data.constructId;
+                    var saleId = data.saleId;
 
                     list = list.filter(function (item) {
-                        return item.constructId == constructId;
+                        return item.saleId == saleId;
                     });
 
                     res.send({
@@ -307,10 +307,10 @@ module.exports = {
                         return;
                     }
 
-                    var constructId = item.constructId;
+                    var saleId = item.saleId;
 
                     list = list.filter(function (item) {
-                        return item.constructId == constructId;
+                        return item.saleId == saleId;
                     });
 
                     res.send({
@@ -345,7 +345,7 @@ module.exports = {
             var data = fs.readFileSync(path, 'utf8');
             var list = JSON.parse(data);
 
-            //过滤出指定 constructId 的记录。
+            //过滤出指定 saleId 的记录。
             if (fn) {
                 var isFn = typeof fn == 'function';
 
@@ -355,8 +355,8 @@ module.exports = {
                         return !removed;
                     }
 
-                    //此时的 fn 当作 constructId。
-                    return item.constructId != fn;
+                    //此时的 fn 当作 saleId。
+                    return item.saleId != fn;
                     
                 });
             }
@@ -375,7 +375,7 @@ module.exports = {
     /**
     * 读取列表。
     */
-    list: function (res) {
+    list: function (res, saleId) {
    
         var path = getPath();
         var existed = fs.existsSync(path);
@@ -388,6 +388,15 @@ module.exports = {
 
             var data = fs.readFileSync(path, 'utf8');
             var list = JSON.parse(data);
+
+            //过滤出指定 saleId 的记录。
+            if (saleId) {
+                list = list.filter(function (item) {
+                    return item.saleId == saleId;
+                });
+            }
+            
+
             return list;
         }
 
@@ -416,10 +425,10 @@ module.exports = {
             try {
                 var list = JSON.parse(data);
 
-                //过滤出指定 constructId 的记录。
-                if (constructId) {
+                //过滤出指定 saleId 的记录。
+                if (saleId) {
                     list = list.filter(function (item) {
-                        return item.constructId == constructId;
+                        return item.saleId == saleId;
                     });
                 }
 
@@ -440,45 +449,7 @@ module.exports = {
 
         });
 
-    },
-
-
-
-    /**
-   * 获取待办和已办列表。
-   */
-    all: function (res) {
-
-        try {
-            var Land = require('./Land');
-            var Plan = require('./Plan');
-            var PlanLicense = require('PlanLicense');
-
-            var lands = Land.list();
-            var plans = Plan.list();
-            var licenses = PlanLicense.list();
-            var list = module.exports.list();
-          
-
-            res.send({
-                code: 200,
-                msg: '',
-                data: {
-                    'list': list,
-                    'lands': lands,
-                    'licenses': licenses,
-                },
-            });
-
-        }
-        catch (ex) {
-            res.send({
-                code: 500,
-                msg: ex.message,
-            });
-        }
-
-    },
+    }
 
 
 };

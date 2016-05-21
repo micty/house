@@ -5,6 +5,7 @@ define('/Form', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var Size = require('Size');
     var NumberField = require('NumberField');
 
    
@@ -14,27 +15,12 @@ define('/Form', function (require, module, exports) {
 
     panel.on('render', function (data) {
 
-        var totalSize = 0;
-
-        $.Array.each([
-            'commerceSize',
-            'residenceSize',
-            'officeSize',
-            'otherSize',
-
-        ], function (item) {
-
-            totalSize += Number(data[item]);
-        });
-
-        data.totalSize = totalSize;
 
 
+        data = Size.format(data);
 
         panel.fill(data);
 
-        new NumberField('[data-type="number"]');
-    
 
 
 

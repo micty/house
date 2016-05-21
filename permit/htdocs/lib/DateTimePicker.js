@@ -13,7 +13,13 @@ define('DateTimePicker', function (require, module, exports) {
 
 
     //默认配置
-    var defaults = {};
+    var defaults = {
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        minView: 'month',
+        todayBtn: true,
+        todayHighlight: true
+    };
 
 
 
@@ -109,6 +115,10 @@ define('DateTimePicker', function (require, module, exports) {
             }
             //set
             $.Object.extend(defaults, obj);
+        },
+
+        create: function (el, options) {
+            return new DateTimePicker(el, options);
         },
 
     });

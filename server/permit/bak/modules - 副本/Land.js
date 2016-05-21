@@ -6,7 +6,7 @@ var Directory = require('../lib/Directory');
 
 
 function getPath() {
-    return './data/construct-license-list.json';
+    return './data/land-list.json';
 }
 
 function getDateTime() {
@@ -89,27 +89,6 @@ module.exports = {
     */
     add: function (res, data) {
 
-        var constructId = data.constructId;
-        if (!constructId) {
-            emptyError('constructId', res);
-            return;
-        }
-
-        var Construct = require('./Construct');
-        var constructs = Construct.list();
-        var construct = constructs.find(function (item) {
-            return item.id == constructId;
-        });
-        
-        if (!construct) {
-            res.send({
-                code: 404,
-                msg: '不存在 constructId 为 ' + constructId + ' 的建设记录。',
-            });
-            return;
-        }
-
-
         var path = getPath();
         var list = [];
 
@@ -127,10 +106,10 @@ module.exports = {
             });
 
             list.push(item);
+            list = JSON.stringify(list, null, 4);
 
-            var json = JSON.stringify(list, null, 4);
 
-            fs.writeFile(path, json, 'utf8', function (err) {
+            fs.writeFile(path, list, 'utf8', function (err) {
 
                 if (err) {
                     res.send({
@@ -140,14 +119,10 @@ module.exports = {
                     return;
                 }
 
-                list = list.filter(function (item) {
-                    return item.constructId == constructId;
-                });
-
                 res.send({
                     code: 200,
                     msg: '添加成功',
-                    data: list,
+                    data: item,
                 });
             });
         }
@@ -191,11 +166,11 @@ module.exports = {
 
             try {
                 var list = JSON.parse(content);
-                var item = $.Array.findItem(list, function (item, index) {
+                var index = $.Array.findIndex(list, function (item, index) {
                     return item.id == id;
                 });
 
-                if (!item) {
+                if (index < 0) {
                     res.send({
                         code: 201,
                         msg: '不存在该记录',
@@ -207,11 +182,10 @@ module.exports = {
                 var datetime = getDateTime();
                 data['datetime'] = datetime;
 
-                $.Object.extend(item, data);
+                list[index] = data;
+                list = JSON.stringify(list, null, 4);
 
-                var json = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, json, 'utf8', function (err) {
+                fs.writeFile(path, list, 'utf8', function (err) {
 
                     if (err) {
                         res.send({
@@ -221,16 +195,9 @@ module.exports = {
                         return;
                     }
 
-                    var constructId = data.constructId;
-
-                    list = list.filter(function (item) {
-                        return item.constructId == constructId;
-                    });
-
                     res.send({
                         code: 200,
                         msg: '更新成功',
-                        data: list,
                     });
                 });
 
@@ -290,11 +257,7 @@ module.exports = {
                     return;
                 }
 
-                var item = list[index];
                 list.splice(index, 1);
-
-
-
                 var json = JSON.stringify(list, null, 4);
 
                 fs.writeFile(path, json, 'utf8', function (err) {
@@ -306,12 +269,6 @@ module.exports = {
                         });
                         return;
                     }
-
-                    var constructId = item.constructId;
-
-                    list = list.filter(function (item) {
-                        return item.constructId == constructId;
-                    });
 
                     res.send({
                         code: 200,
@@ -330,45 +287,6 @@ module.exports = {
         });
     },
 
-    /**
-    * 按条件删除指定的记录。
-    */
-    removeBy: function (fn) {
-
-        var path = getPath();
-        var existed = fs.existsSync(path);
-        if (!existed) {
-            return;
-        }
-
-        try {
-            var data = fs.readFileSync(path, 'utf8');
-            var list = JSON.parse(data);
-
-            //过滤出指定 constructId 的记录。
-            if (fn) {
-                var isFn = typeof fn == 'function';
-
-                list = list.filter(function (item, index) {
-                    if (isFn) {
-                        var removed = fn(item, index);
-                        return !removed;
-                    }
-
-                    //此时的 fn 当作 constructId。
-                    return item.constructId != fn;
-                    
-                });
-            }
-
-            var json = JSON.stringify(list, null, 4);
-            fs.writeFileSync(path, json, 'utf8');
-        }
-        catch (ex) {
-            return ex;
-        }
-
-    },
 
 
 
@@ -415,19 +333,11 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
-
-                //过滤出指定 constructId 的记录。
-                if (constructId) {
-                    list = list.filter(function (item) {
-                        return item.constructId == constructId;
-                    });
-                }
-
                 list.reverse(); //倒序一下
 
                 res.send({
                     code: 200,
-                    msg: 'ok',
+                    msg: '',
                     data: list,
                 });
             }
@@ -440,45 +350,7 @@ module.exports = {
 
         });
 
-    },
-
-
-
-    /**
-   * 获取待办和已办列表。
-   */
-    all: function (res) {
-
-        try {
-            var Land = require('./Land');
-            var Plan = require('./Plan');
-            var PlanLicense = require('PlanLicense');
-
-            var lands = Land.list();
-            var plans = Plan.list();
-            var licenses = PlanLicense.list();
-            var list = module.exports.list();
-          
-
-            res.send({
-                code: 200,
-                msg: '',
-                data: {
-                    'list': list,
-                    'lands': lands,
-                    'licenses': licenses,
-                },
-            });
-
-        }
-        catch (ex) {
-            res.send({
-                code: 500,
-                msg: ex.message,
-            });
-        }
-
-    },
+    }
 
 
 };

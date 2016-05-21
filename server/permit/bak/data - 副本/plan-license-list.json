@@ -1,0 +1,90 @@
+[
+    {
+        "id": "6B89265039CA",
+        "planId": "5E4922B039CC",
+        "number": "AAAAAAAAAAAAAA",
+        "commerceSize": "1235",
+        "residenceSize": "42222",
+        "officeSize": "23568",
+        "otherSize": "99999",
+        "date": "2016-05-24",
+        "datetime": "2016-05-14 11:50:51"
+    },
+    {
+        "number": "BBBBBBBBB",
+        "date": "2016-05-02",
+        "residenceSize": "323",
+        "commerceSize": "233",
+        "officeSize": "3535",
+        "otherSize": "2323",
+        "planId": "5E4922B039CC",
+        "id": "9F3045DD5EBF",
+        "datetime": "2016-05-14 11:50:43"
+    },
+    {
+        "number": "规划许可证aa",
+        "date": "2016-05-17",
+        "residenceSize": "5680",
+        "commerceSize": "2500",
+        "officeSize": "6000",
+        "otherSize": "8900",
+        "planId": "5E4922B039CC",
+        "id": "7D41960CD489",
+        "datetime": "2016-05-18 11:21:12"
+    },
+    {
+        "number": "w",
+        "date": "2016-05-10",
+        "residenceSize": "0",
+        "commerceSize": "0",
+        "officeSize": "0",
+        "otherSize": "0",
+        "planId": "478EDF752C97",
+        "id": "AE535C98078E",
+        "datetime": "2016-05-14 15:26:47"
+    },
+    {
+        "number": "a",
+        "date": "2016-05-02",
+        "residenceSize": "1222222",
+        "commerceSize": "21",
+        "officeSize": "213",
+        "otherSize": "23",
+        "planId": "410AFBDF1CB3",
+        "id": "A11CB1F1ACE1",
+        "datetime": "2016-05-16 11:47:54"
+    },
+    {
+        "planId": "5E4922B039CC",
+        "number": "wwwwwwwwww-00",
+        "date": "2016-05-10",
+        "commerceSize": "12223200",
+        "residenceSize": "22300000",
+        "officeSize": "55555000",
+        "otherSize": "66666900",
+        "id": "49E8522F589D",
+        "datetime": "2016-05-16 16:00:14"
+    },
+    {
+        "planId": "9318C9B7431F",
+        "number": "aa",
+        "date": "2016-05-03",
+        "commerceSize": "0",
+        "residenceSize": "0",
+        "officeSize": "0",
+        "otherSize": "0",
+        "id": "58F0406BD1AE",
+        "datetime": "2016-05-16 16:06:20"
+    },
+    {
+        "planId": "9318C9B7431F",
+        "number": "bb",
+        "date": "2016-05-10",
+        "commerceSize": "1",
+        "residenceSize": "2",
+        "officeSize": "3",
+        "otherSize": "4",
+        "id": "D20A4B2E14D2",
+        "datetime": "2016-05-16 16:06:06"
+    }
+]

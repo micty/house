@@ -375,7 +375,7 @@ module.exports = {
     /**
     * 读取列表。
     */
-    list: function (res) {
+    list: function (res, constructId) {
    
         var path = getPath();
         var existed = fs.existsSync(path);
@@ -388,6 +388,15 @@ module.exports = {
 
             var data = fs.readFileSync(path, 'utf8');
             var list = JSON.parse(data);
+
+            //过滤出指定 constructId 的记录。
+            if (constructId) {
+                list = list.filter(function (item) {
+                    return item.constructId == constructId;
+                });
+            }
+            
+
             return list;
         }
 
@@ -440,45 +449,7 @@ module.exports = {
 
         });
 
-    },
-
-
-
-    /**
-   * 获取待办和已办列表。
-   */
-    all: function (res) {
-
-        try {
-            var Land = require('./Land');
-            var Plan = require('./Plan');
-            var PlanLicense = require('PlanLicense');
-
-            var lands = Land.list();
-            var plans = Plan.list();
-            var licenses = PlanLicense.list();
-            var list = module.exports.list();
-          
-
-            res.send({
-                code: 200,
-                msg: '',
-                data: {
-                    'list': list,
-                    'lands': lands,
-                    'licenses': licenses,
-                },
-            });
-
-        }
-        catch (ex) {
-            res.send({
-                code: 500,
-                msg: ex.message,
-            });
-        }
-
-    },
+    }
 
 
 };

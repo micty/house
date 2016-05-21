@@ -18,11 +18,6 @@
     </script>
     <!--weber.css.end-->
 
-    <style>
-        .iframe {
-            min-height: 800px;
-        }
-    </style>
 
 </head>
 <body class="iframe">
@@ -39,42 +34,74 @@
                     <tr class="title">
                         <td colspan="3">基本信息</td>
                     </tr>
-                        <tr>
-                        <td class="name">许可证</td>
+                    <tr>
+                        <td class="name">规划许可证号</td>
                         <td class="value">{number}</td>
-                        <td class="tip"><span></span></td>
+                        <td class="tip"></td>
                     </tr>
                     <tr>
-                        <td class="name">许可日期</td>
+                        <td class="name">规划许可时间</td>
                         <td class="value">{date}</td>
-                        <td class="tip"><span></span></td>
+                        <td class="tip"></td>
                     </tr>
+
                     <tr class="title">
-                        <td colspan="3">许可规划建筑面积</td>
+                        <td colspan="3">建筑面积</td>
+                    </tr>
+                    <tr class="sub-title">
+                        <td colspan="3">计容建筑面积</td>
                     </tr>
                     <tr>
                         <td class="name">商业</td>
-                        <td class="value"><input value="{commerceSize}" type="text" data-type="number" data-name="size" readonly/></td>
+                        <td class="value">{commerceSize}</td>
                         <td class="tip"><span>(平方米)</span></td>
                     </tr>
                     <tr>
                         <td class="name">住宅</td>
-                        <td class="value"><input value="{residenceSize}" type="text" data-type="number" data-name="size" readonly/></td>
+                        <td class="value">{residenceSize}</td>
                         <td class="tip"><span>(平方米)</span></td>
                     </tr>
                     <tr>
                         <td class="name">办公</td>
-                        <td class="value"><input value="{officeSize}" type="text" data-type="number" data-name="size" readonly/></td>
+                        <td class="value">{officeSize}</td>
                         <td class="tip"><span>(平方米)</span></td>
                     </tr>
                     <tr>
                         <td class="name">其它</td>
-                        <td class="value"><input value="{otherSize}" type="text" data-type="number" data-name="size" readonly/></td>
+                        <td class="value">{otherSize}</td>
                         <td class="tip"><span>(平方米)</span></td>
                     </tr>
                     <tr>
                         <td class="name">总面积</td>
-                        <td class="value"><input value="{totalSize}" class="total" type="text" data-type="number" readonly></td>
+                        <td class="value total">{totalSize0}</td>
+                        <td class="tip"><span>(平方米)</span></td>
+                    </tr>
+
+                    <tr class="sub-title">
+                        <td colspan="3">不计容建筑面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">地下车库</td>
+                        <td class="value">{parkSize}</td>
+                        <td class="tip"><span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value">{otherSize1}</td>
+                        <td class="tip"><span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total">{totalSize1}</td>
+                        <td class="tip"><span>(平方米)</span></td>
+                    </tr>
+
+                    <tr class="sub-title">
+                        <td colspan="3">总建筑面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total">{totalSize}</td>
                         <td class="tip"><span>(平方米)</span></td>
                     </tr>
                 </tbody>

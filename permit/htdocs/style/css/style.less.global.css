@@ -104,7 +104,10 @@ body.iframe > .header button i {
     margin-right: 5px;
 }
 body.iframe > .header button.save {
-    background: #FF9800;
+    background: #FF5722;
+}
+body.iframe > .header button.edit {
+    background: #03A9F4;
 }
 body.iframe > .header:after {
     content: '';
@@ -112,7 +115,7 @@ body.iframe > .header:after {
     clear: both;
 }
 body.iframe > .container {
-    margin: 10px 10px;
+    margin: 5px 10px;
 }
 table.form-table {
     border: solid 1px #9E9E9E;
@@ -199,7 +202,7 @@ table.form-table td {
     border: solid 1px #9E9E9E;
     border-top: none;
     border-right: none;
-    padding: 5px 5px;
+    padding: 4px 5px;
 }
 table.list-table {
     width: 100%;
@@ -209,23 +212,45 @@ table.list-table {
     font-family: 'Microsoft YaHei';
     font-size: 14px;
 }
-table.list-table th,
-table.list-table td {
+table.list-table th {
     border: solid 1px #95A5B9;
     border-left: none;
     border-top: none;
     text-align: left;
     padding: 5px 5px;
 }
-table.list-table th a,
-table.list-table td a {
-    color: black;
-    text-decoration: none;
+table.list-table td {
+    border: solid 1px #95A5B9;
+    border-left: none;
+    border-top: none;
+    text-align: left;
+    padding: 4px 5px;
 }
-table.list-table th a:hover,
+table.list-table td a {
+    color: #03A9F4;
+    /*text-decoration: underline;*/
+    font-size: 15px;
+}
 table.list-table td a:hover {
-    color: red;
+    /*color: red;*/
     text-decoration: underline;
+}
+table.list-table td.town {
+    text-align: center;
+    width: 60px;
+}
+table.list-table td.date {
+    width: 80px;
+    color: #9e9e9e;
+}
+table.list-table td.number {
+    text-align: right;
+}
+table.list-table th.date {
+    text-align: center;
+}
+table.list-table th.number {
+    text-align: right;
 }
 table.list-table tr.header {
     background: #e3e3e5;

@@ -20,8 +20,6 @@ KISP.launch(function (require, module) {
 
 
 
-
-    //说明是编辑的。
     if (!id) {
         KISP.alert('缺少 id', function () {
             Bridge.close();
@@ -43,7 +41,6 @@ KISP.launch(function (require, module) {
             });
         },
     });
-
 
 
     Header.render();

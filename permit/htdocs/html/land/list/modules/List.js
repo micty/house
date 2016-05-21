@@ -4,6 +4,7 @@ define('/List', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
     var SessionStorage = require('SessionStorage');
+    var Size = require('Size');
 
     var panel = KISP.create('Panel', '#div-list');
     var user = SessionStorage.get('user');
@@ -25,27 +26,13 @@ define('/List', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var buildSize = 0;
-                    $.Array.each([
-                        'commerceSize',
-                        'residenceSize',
-                        'officeSize',
-                        'otherSize',
-                    ], function (key) {
-
-                        buildSize += Number(item[key]);
-                    });
-
-                    var dt = item.datetime;
-                    dt = $.Date.parse(dt);
-                    dt = $.Date.format(dt, 'yyyy-MM-dd');
-
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
                         'operate-display': display,
-                        'datetime': dt,
-                        'buildSize': buildSize,
+                        'datetime': item.datetime.split(' ')[0],
+                        'totalSize': Size.totalText(item),
+                        'size': Size.text(item, 'size'),
                     });
 
                     return {

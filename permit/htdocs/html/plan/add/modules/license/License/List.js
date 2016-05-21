@@ -4,6 +4,7 @@ define('/License/List', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
     var SessionStorage = require('SessionStorage');
+    var Size = require('Size');
 
     var panel = KISP.create('Panel', '#div-license-list');
     var user = SessionStorage.get('user');
@@ -25,28 +26,14 @@ define('/License/List', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var buildSize = 0;
-                    $.Array.each([
-                        'commerceSize',
-                        'residenceSize',
-                        'officeSize',
-                        'otherSize',
-                    ], function (key) {
+                    var data = Size.format(item);
 
-                        buildSize += Number(item[key]);
-                    });
-
-
-                    var dt = item.datetime;
-                    dt = $.Date.parse(dt);
-                    dt = $.Date.format(dt, 'yyyy-MM-dd');
-
-                    var data = $.Object.extend({}, item, {
+                    data = $.Object.extend(data, {
                         'index': index,
                         'no': index + 1,
                         'operate-display': '',
-                        'datetime': dt,
-                        'buildSize': buildSize,
+                        'datetime': item.datetime.split(' ')[0],
+                    
                     });
 
                     return {
