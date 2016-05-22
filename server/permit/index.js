@@ -149,23 +149,6 @@ app.get('/Construct.all', function (req, res) {
 });
 
 
-//建设许可证模块
-var ConstructLicense = require('./modules/ConstructLicense');
-app.get('/ConstructLicense.get', function (req, res) {
-    ConstructLicense.get(res, req.query.id);
-});
-app.post('/ConstructLicense.add', function (req, res) {
-    ConstructLicense.add(res, req.body);
-});
-app.post('/ConstructLicense.update', function (req, res) {
-    ConstructLicense.update(res, req.body);
-});
-app.get('/ConstructLicense.remove', function (req, res) {
-    ConstructLicense.remove(res, req.query.id);
-});
-app.get('/ConstructLicense.list', function (req, res) {
-    ConstructLicense.list(res, req.query.constructId);
-});
 
 
 

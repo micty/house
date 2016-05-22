@@ -15,9 +15,8 @@ KISP.launch(function (require, module) {
 
     API.on('success', {
         'get': function (data) {
-         
-            Todo.render(data.todo);
-            Done.render(data.done);
+            Todo.render(data.todos);
+            Done.render(data.dones);
         },
 
         'remove': function () {
@@ -27,15 +26,30 @@ KISP.launch(function (require, module) {
 
 
     Todo.on({
-        'detail': function (item, index) {
+        'land.detail': function (item, index) {
             Bridge.open({
                 name: '土地出让详情',
-                url: 'html/land/detail/index.html?id=' + item.id,
+                url: 'html/land/detail/index.html?id=' + item.land.id,
             });
         },
+
+        'plan.detail': function (item, index) {
+            Bridge.open({
+                name: '规划许可详情',
+                url: 'html/plan/detail/index.html?id=' + item.plan.id,
+            });
+        },
+
+        'license.detail': function (item, index) {
+            Bridge.open({
+                name: '规划许可证详情',
+                url: 'html/plan/license/detail/index.html?id=' + item.license.id,
+            });
+        },
+
         'edit': function (item, index) {
             Bridge.open(['construct', 'add'], {
-                'landId': item.id,
+                'licenseId': item.license.id,
             });
         },
     });
@@ -50,10 +64,17 @@ KISP.launch(function (require, module) {
             });
         },
 
-        'detail': function (item, index) {
+        'plan.detail': function (item, index) {
             Bridge.open({
-                name: '建设许可详情',
-                url: 'html/construct/detail/index.html?id=' + item.id,
+                name: '规划许可详情',
+                url: 'html/plan/detail/index.html?id=' + item.plan.id,
+            });
+        },
+
+        'construct.detail': function (item, index) {
+           
+            Bridge.open(['construct', 'add'], {
+                'id': item.construct.id,
             });
         },
 
@@ -62,9 +83,8 @@ KISP.launch(function (require, module) {
         },
 
         'edit': function (item, index) {
- 
             Bridge.open(['construct', 'add'], {
-                'id': item.id,
+                'id': item.construct.id,
             });
         },
     });

@@ -57,7 +57,7 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
-                var item = $.Array.findItem(list, function (item, index) {
+                var item = list.find(function (item, index) {
                     return item.id == id;
                 });
 
@@ -69,10 +69,43 @@ module.exports = {
                     return;
                 }
 
+          
+                var Plan = require('./Plan');
+                var plans = Plan.list();
+                var plan = plans.find(function (plan, index) {
+                    return item.planId == plan.id;
+                });
+
+                if (!plan) {
+                    res.send({
+                        code: 202,
+                        msg: '不存在关联的 plan 记录',
+                    });
+                    return;
+                }
+
+                var Land = require('./Land');
+                var lands = Land.list();
+                var land = lands.find(function (land, index) {
+                    return plan.landId == land.id;
+                });
+
+                if (!land) {
+                    res.send({
+                        code: 203,
+                        msg: '不存在关联的 land 记录',
+                    });
+                    return;
+                }
+
                 res.send({
                     code: 200,
                     msg: 'ok',
-                    data: item,
+                    data: {
+                        'license': item,
+                        'plan': plan,
+                        'land': land,
+                    },
                 });
             }
             catch (ex) {

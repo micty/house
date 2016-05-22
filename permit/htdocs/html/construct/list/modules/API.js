@@ -34,19 +34,10 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                var list = data.list;
                 var lands = data.lands;
-
-                var landId$item = {};
-
-                list.forEach(function (item) {
-                    landId$item[item.landId] = item;
-                });
-
-                var todos = $.Array.grep(lands, function (land) {
-                    var item = landId$item[land.id];
-                    return !item;
-                });
+                var plans = data.plans;
+                var licenses = data.licenses; //planLicenses
+                var list = data.list;
 
 
                 var id$land = {};
@@ -55,30 +46,84 @@ define('/API', function (require, module, exports) {
                 });
 
 
+                var id$plan = {};
+                plans.forEach(function (item) {
+                    id$plan[item.id] = item;
+                });
 
-                var dones = $.Array.map(list, function (item) {
+                var id$license = {};
+                licenses.forEach(function (item) {
+                    id$license[item.id] = item;
+                });
 
-                    var land = id$land[item.landId];
+                //从施工许可证中标记出已办的规划许可证。
+                var licenseId$done = {};
+                list.forEach(function (item) {
+                    licenseId$done[item.licenseId] = true;
+                });
+
+                //从所有的规划许可证中找出待办的。
+                var todos = $.Array.map(licenses, function (license) {
+
+                    //已完成的
+                    var done = licenseId$done[license.id];
+                    if (done) {
+                        return null;
+                    }
+
+                    //找到关联的规划记录。
+                    var plan = id$plan[license.planId];
+                    if (!plan) {
+                        return null;
+                    }
+
+                    //找到关联的土地记录。
+                    var land = id$land[plan.landId];
                     if (!land) {
                         return null;
                     }
 
-                    var constructId = item.id;
-
-                    var licenses = $.Array.grep(data.licenses, function (item) {
-                        return item.constructId == constructId;
-                    });
-
-                    return $.Object.extend({}, item, {
+                    return {
+                        'license': license,
+                        'plan': plan,
                         'land': land,
-                        'licenses': licenses,
-                    });
+                    };
+                });
+
+
+
+                var dones = $.Array.map(list, function (item) {
+
+                    //找到关联的规划许可证。
+                    var license = id$license[item.licenseId];
+                    if (!license) {
+                        return null;
+                    }
+
+                    //找到关联的规划记录。
+                    var plan = id$plan[license.planId];
+                    if (!plan) {
+                        return null;
+                    }
+
+                    //找到关联的土地记录。
+                    var land = id$land[plan.landId];
+                    if (!land) {
+                        return null;
+                    }
+
+                    return {
+                        'license': license,
+                        'plan': plan,
+                        'land': land,
+                        'construct': item,
+                    };
 
                 });
 
                 emitter.fire('success', 'get', [{
-                    'done': dones,
-                    'todo': todos,
+                    'todos': todos,
+                    'dones': dones,
                 }]);
             },
 

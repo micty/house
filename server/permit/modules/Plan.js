@@ -56,7 +56,7 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
-                var item = $.Array.findItem(list, function (item, index) {
+                var item = list.find(function (item, index) {
                     return item.id == id;
                 });
 
@@ -70,9 +70,17 @@ module.exports = {
 
                 var Land = require('./Land');
                 var lands = Land.list();
-                var land = $.Array.findItem(lands, function (land) {
+                var land = lands.find(function (land) {
                     return land.id == item.landId;
                 });
+
+                if (!land) {
+                    res.send({
+                        code: 202,
+                        msg: '不存在关联的 land 该记录',
+                    });
+                    return;
+                }
 
 
                 res.send({

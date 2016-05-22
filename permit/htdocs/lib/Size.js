@@ -33,7 +33,7 @@ define('Size', function (require, module, exports) {
 
 
         keys.forEach(function (key) {
-            var value = data[key];
+            var value = data[key] || 0;
             value = Number(value) || 0;
             total += value;
         });
@@ -66,7 +66,7 @@ define('Size', function (require, module, exports) {
         var keys = $.Array.reduceDimension(sizes);
         $.Array.each(keys, function (key) {
 
-            var value = data[key];
+            var value = data[key] || 0;
             
             value = NumberField.text(value);
             data[key] = value;

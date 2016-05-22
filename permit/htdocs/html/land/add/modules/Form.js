@@ -69,14 +69,7 @@ define('/Form', function (require, module, exports) {
     panel.on('init', function () {
 
         var DateTimePicker = require('DateTimePicker');
-
-        var dtp = new DateTimePicker('[data-type="date"]', {
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            minView: 'month',
-            todayBtn: true,
-            todayHighlight: true
-        });
+        DateTimePicker.create('[data-type="date"]');
     });
 
 

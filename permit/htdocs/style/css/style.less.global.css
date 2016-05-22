@@ -230,6 +230,7 @@ table.list-table td a {
     color: #03A9F4;
     /*text-decoration: underline;*/
     font-size: 15px;
+    cursor: pointer;
 }
 table.list-table td a:hover {
     /*color: red;*/

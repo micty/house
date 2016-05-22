@@ -1,6 +1,5 @@
 ﻿
-
-define('/License/API', function (require, module, exports) {
+define('/API', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -12,55 +11,14 @@ define('/License/API', function (require, module, exports) {
     var loading = null;
     var toast = null;
 
-    //获取数据
-    function get(constructId) {
-
-        var api = KISP.create('API', 'ConstructLicense.list');
-
-        api.on({
-
-            'request': function () {
-
-                loading = loading || KISP.create('Loading', {
-                    mask: 0,
-                });
-
-                loading.show('加载中...');
-            },
-
-            'response': function () {
-                loading.hide();
-            },
-
-            'success': function (data, json, xhr) {
-                var list = data;
-           
-                emitter.fire('success', 'get', [list]);
-            },
-
-            'fail': function (code, msg, json, xhr) {
-                KISP.alert('获取数据失败: {0} ({1})', msg, code);
-            },
-
-            'error': function (code, msg, json, xhr) {
-                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
-            },
-        });
-
-        api.get({
-            'constructId': constructId,
-        });
-
-
-    }
 
 
 
     function post(data) {
 
         var id = data.id;
-        var name = id ? 'update' : 'add';
-        var api = KISP.create('API', 'ConstructLicense.' + name);
+        var name = id ? 'Construct.update' : 'Construct.add';
+        var api = KISP.create('API', name);
 
         api.on({
 
@@ -95,7 +53,7 @@ define('/License/API', function (require, module, exports) {
                 }, 1500);
 
             },
-
+ 
 
             'fail': function (code, msg, json) {
                 KISP.alert('提交失败: {0}({1})', msg, code);
@@ -113,19 +71,21 @@ define('/License/API', function (require, module, exports) {
     }
 
 
-    function remove(id) {
 
-        var api = KISP.create('API', 'ConstructLicense.remove');
+
+    function get(id, isLicense) {
+
+
+        var name = isLicense ? 'PlanLicense.get' : 'Construct.get';
+        var api = KISP.create('API', name);
 
         api.on({
 
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
-
+                    mask: 0,
                 });
-
-                loading.show('删除中...');
+                loading.show('读取中...');
             },
 
             'response': function () {
@@ -133,21 +93,21 @@ define('/License/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
-                var list = data;
-                
-                emitter.fire('success', 'remove', [list]);
+                emitter.fire('success', 'get', [data]);
             },
 
-            'fail': function (code, msg, json, xhr) {
-                KISP.alert('删除数据失败: {0} ({1})', msg, code);
+            'fail': function (code, msg, json) {
+                alert('读取失败: {0}({1})', msg, code);
             },
-            'error': function (code, msg, json, xhr) {
-                KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
+
+            'error': function () {
+                alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
 
+
         api.get({
-            'id': id,
+            'id': id, 
         });
 
     }
@@ -157,7 +117,6 @@ define('/License/API', function (require, module, exports) {
     return {
         get: get,
         post: post,
-        remove: remove,
         on: emitter.on.bind(emitter),
     };
 

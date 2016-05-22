@@ -18,7 +18,8 @@ define('DateTimePicker', function (require, module, exports) {
         autoclose: true,
         minView: 'month',
         todayBtn: true,
-        todayHighlight: true
+        todayHighlight: true,
+        pickerPosition: 'top-right',
     };
 
 

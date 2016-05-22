@@ -1,6 +1,6 @@
 ﻿
 
-define('/Base/Header', function (require, module) {
+define('/Header', function (require, module) {
 
 
     var $ = require('$');
@@ -9,23 +9,21 @@ define('/Base/Header', function (require, module) {
     var user = SessionStorage.get('user');
 
     
-    var panel = KISP.create('Panel', '#div-base-header');
+    var panel = KISP.create('Panel', '#div-header');
     
     panel.on('init', function () {
 
         panel.$.on('click', 'button', function () {
-
             panel.fire('save');
         });
  
-
     });
 
 
 
     panel.on('render', function () {
 
-        panel.$.find('button').toggle(user.role == 'land');
+
 
     });
 

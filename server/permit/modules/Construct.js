@@ -35,7 +35,6 @@ module.exports = {
         }
 
 
-
         var path = getPath();
         if (!fs.existsSync(path)) {
             res.send({
@@ -61,7 +60,6 @@ module.exports = {
                 var item = $.Array.findItem(list, function (item, index) {
                     return item.id == id;
                 });
-
                 if (!item) {
                     res.send({
                         code: 201,
@@ -70,19 +68,56 @@ module.exports = {
                     return;
                 }
 
+
+                var PlanLicense = require('./PlanLicense');
+                var licenses = PlanLicense.list();
+                var license = licenses.find(function (license) {
+                    return license.id = item.licenseId;
+                });
+                if (!license) {
+                    res.send({
+                        code: 202,
+                        msg: '不存在关联的规划许可证记录',
+                    });
+                    return;
+                }
+
+                var Plan = require('./Plan');
+                var plans = Plan.list();
+                var plan = plans.find(function (plan) {
+                    return plan.id = license.planId;
+                });
+                if (!plan) {
+                    res.send({
+                        code: 203,
+                        msg: '不存在关联的规划记录',
+                    });
+                    return;
+                }
+
                 var Land = require('./Land');
                 var lands = Land.list();
-                var land = $.Array.findItem(lands, function (land) {
-                    return land.id == item.landId;
+                var land = lands.find(function (land) {
+                    return land.id = plan.landId;
                 });
+                if (!land) {
+                    res.send({
+                        code: 203,
+                        msg: '不存在关联的土地记录',
+                    });
+                    return;
+                }
+
 
 
                 res.send({
                     code: 200,
                     msg: 'ok',
                     data: {
-                        'construct': item,
                         'land': land,
+                        'plan': plan,
+                        'license': license,
+                        'construct': item,
                     },
                 });
             }
@@ -100,9 +135,23 @@ module.exports = {
     */
     add: function (res, data) {
 
-        var landId = data.landId;
-        if (!landId || landId === 'undefined') {
-            emptyError('landId', res);
+        var licenseId = data.licenseId;
+        if (!licenseId) {
+            emptyError('licenseId', res);
+            return;
+        }
+
+        var PlanLicense = require('./PlanLicense');
+        var licenses = PlanLicense.list();
+        var license = licenses.find(function (item) {
+            return item.id == licenseId;
+        });
+
+        if (!license) {
+            res.send({
+                code: 404,
+                msg: '不存在 licenseId 为 ' + licenseId + ' 的规划许可证记录。',
+            });
             return;
         }
 
@@ -117,29 +166,17 @@ module.exports = {
                 list = JSON.parse(list);
             }
 
-            var item = list.find(function (item) {
-                return item.landId == landId;
-            });
 
-            if (item) {
-                res.send({
-                    code: 201,
-                    msg: '已存在 landId 为' + landId + ' 的记录。',
-                });
-                return;
-            }
-
-
-            item = $.Object.extend(data, {
+            var item = $.Object.extend(data, {
                 'id': $.String.random(),
                 'datetime': getDateTime(),
             });
 
             list.push(item);
-            list = JSON.stringify(list, null, 4);
 
+            var json = JSON.stringify(list, null, 4);
 
-            fs.writeFile(path, list, 'utf8', function (err) {
+            fs.writeFile(path, json, 'utf8', function (err) {
 
                 if (err) {
                     res.send({
@@ -152,7 +189,7 @@ module.exports = {
                 res.send({
                     code: 200,
                     msg: '添加成功',
-                    data: item,
+                    data: list,
                 });
             });
         }
@@ -196,11 +233,11 @@ module.exports = {
 
             try {
                 var list = JSON.parse(content);
-                var index = $.Array.findIndex(list, function (item, index) {
+                var item = $.Array.findItem(list, function (item, index) {
                     return item.id == id;
                 });
 
-                if (index < 0) {
+                if (!item) {
                     res.send({
                         code: 201,
                         msg: '不存在该记录',
@@ -212,10 +249,11 @@ module.exports = {
                 var datetime = getDateTime();
                 data['datetime'] = datetime;
 
-                list[index] = data;
-                list = JSON.stringify(list, null, 4);
+                $.Object.extend(item, data);
 
-                fs.writeFile(path, list, 'utf8', function (err) {
+                var json = JSON.stringify(list, null, 4);
+
+                fs.writeFile(path, json, 'utf8', function (err) {
 
                     if (err) {
                         res.send({
@@ -225,9 +263,16 @@ module.exports = {
                         return;
                     }
 
+                    var licenseId = data.licenseId;
+
+                    list = list.filter(function (item) {
+                        return item.licenseId == licenseId;
+                    });
+
                     res.send({
                         code: 200,
                         msg: '更新成功',
+                        data: list,
                     });
                 });
 
@@ -287,7 +332,11 @@ module.exports = {
                     return;
                 }
 
+                var item = list[index];
                 list.splice(index, 1);
+
+
+
                 var json = JSON.stringify(list, null, 4);
 
                 fs.writeFile(path, json, 'utf8', function (err) {
@@ -300,8 +349,11 @@ module.exports = {
                         return;
                     }
 
-                    var ConstructLicense = require('./ConstructLicense');
-                    ConstructLicense.removeBy(id);
+                    var licenseId = item.licenseId;
+
+                    list = list.filter(function (item) {
+                        return item.licenseId == licenseId;
+                    });
 
                     res.send({
                         code: 200,
@@ -320,6 +372,45 @@ module.exports = {
         });
     },
 
+    /**
+    * 按条件删除指定的记录。
+    */
+    removeBy: function (fn) {
+
+        var path = getPath();
+        var existed = fs.existsSync(path);
+        if (!existed) {
+            return;
+        }
+
+        try {
+            var data = fs.readFileSync(path, 'utf8');
+            var list = JSON.parse(data);
+
+            //过滤出指定 licenseId 的记录。
+            if (fn) {
+                var isFn = typeof fn == 'function';
+
+                list = list.filter(function (item, index) {
+                    if (isFn) {
+                        var removed = fn(item, index);
+                        return !removed;
+                    }
+
+                    //此时的 fn 当作 licenseId。
+                    return item.licenseId != fn;
+
+                });
+            }
+
+            var json = JSON.stringify(list, null, 4);
+            fs.writeFileSync(path, json, 'utf8');
+        }
+        catch (ex) {
+            return ex;
+        }
+
+    },
 
 
 
@@ -342,7 +433,6 @@ module.exports = {
             return list;
         }
 
-
         //重载 list(res)，供 http 请求调用。
         if (!existed) {
             res.send({
@@ -352,6 +442,7 @@ module.exports = {
             });
             return;
         }
+
 
 
         fs.readFile(path, 'utf8', function (err, data) {
@@ -366,11 +457,19 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
+
+                //过滤出指定 licenseId 的记录。
+                if (licenseId) {
+                    list = list.filter(function (item) {
+                        return item.licenseId == licenseId;
+                    });
+                }
+
                 list.reverse(); //倒序一下
 
                 res.send({
                     code: 200,
-                    msg: '',
+                    msg: 'ok',
                     data: list,
                 });
             }
@@ -386,26 +485,31 @@ module.exports = {
     },
 
 
+
     /**
-    * 获取待办和已办列表。
-    */
+   * 获取待办和已办列表。
+   */
     all: function (res) {
 
         try {
             var Land = require('./Land');
-            var ConstructLicense = require('./ConstructLicense');
+            var Plan = require('./Plan');
+            var PlanLicense = require('./PlanLicense');
 
             var lands = Land.list();
+            var plans = Plan.list();
+            var licenses = PlanLicense.list();
             var list = module.exports.list();
-            var licenses = ConstructLicense.list();
+
 
             res.send({
                 code: 200,
                 msg: '',
                 data: {
-                    'list': list,
                     'lands': lands,
+                    'plans': plans,
                     'licenses': licenses,
+                    'list': list,
                 },
             });
 
@@ -418,7 +522,6 @@ module.exports = {
         }
 
     },
-
 
 
 };
