@@ -14,18 +14,16 @@ define('/Header', function (require, module) {
     panel.on('init', function () {
 
         panel.$.on('click', 'button', function () {
-
             panel.fire('edit');
         });
  
-
     });
 
 
 
     panel.on('render', function () {
 
-        panel.$.find('button').toggle(user.role == 'land');
+
 
     });
 

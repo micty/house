@@ -70,16 +70,22 @@ KISP.launch(function (require, module) {
                 url: 'html/plan/detail/index.html?id=' + item.plan.id,
             });
         },
+        'license.detail': function (item, index) {
+            Bridge.open({
+                name: '规划许可证详情',
+                url: 'html/plan/license/detail/index.html?id=' + item.license.id,
+            });
+        },
 
-        'construct.detail': function (item, index) {
-           
-            Bridge.open(['construct', 'add'], {
-                'id': item.construct.id,
+        'detail': function (item, index) {
+            Bridge.open({
+                name: '施工许可证详情',
+                url: 'html/construct/detail/index.html?id=' + item.construct.id,
             });
         },
 
         'remove': function (item, index) {
-            API.remove(item.id);
+            API.remove(item.construct.id);
         },
 
         'edit': function (item, index) {

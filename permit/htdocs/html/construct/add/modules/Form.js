@@ -35,6 +35,13 @@ define('/Form', function (require, module, exports) {
         current = data;
 
         data.license = Size.format(data.license);
+
+        data.construct = data.construct || { //针对新增的情况。
+            number: '',
+            date: '',
+            size: '',
+        };
+
         data = $Object.linear(data);
 
         panel.fill(data);

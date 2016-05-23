@@ -1,34 +1,10 @@
 [
     {
-        "id": "54312C92C9D0",
-        "licenseId": "6B89265039CA",
-        "number": "a",
-        "date": "2016-05-16",
-        "size": "2",
-        "datetime": "2016-05-22 11:32:14"
-    },
-    {
-        "id": "E2BC2C272A3C",
-        "licenseId": "9F3045DD5EBF",
-        "number": "bb",
-        "date": "2016-05-17",
-        "size": "22,222",
-        "datetime": "2016-05-22 11:34:02"
-    },
-    {
-        "id": "E875C595C39E",
-        "licenseId": "A11CB1F1ACE1",
-        "number": "aaa",
-        "date": "2016-05-16",
-        "size": "11,111",
-        "datetime": "2016-05-22 11:34:33"
-    },
-    {
-        "id": "6C9723E4ED5E",
-        "licenseId": "D20A4B2E14D2",
-        "number": "4444444",
-        "date": "2016-05-24",
-        "size": "6,000",
-        "datetime": "2016-05-22 11:48:40"
+        "id": "FD762FF62DCD",
+        "licenseId": "07488D9BC267",
+        "number": "test-001",
+        "date": "2016-05-01",
+        "size": "7,777",
+        "datetime": "2016-05-23 17:01:39"
     }
 ]

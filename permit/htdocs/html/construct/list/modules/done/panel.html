@@ -5,10 +5,11 @@
         <table class="list-table" cellspacing="0" cellpadding="0">
             <tr class="header">
                 <th>序号</th>
-                <th>土地挂牌编号</th>
-                <th>土地区域</th>
+                
                 <th>项目名称</th>
                 <th>建设单位</th>
+                <th>规划许可证号</th>
+                <th>规划许可时间</th>
                 <th>施工许可证号</th>
                 <th>发证日期</th>
                 <th style="{operate-display}">操作</th>
@@ -17,16 +18,19 @@
             #--row.begin--#
             <tr data-index="{index}">
                 <td>{no}</td>
-                <td>
-                    <a data-index="{index}" data-cmd="land.detail">{land.number}<a/>
-                </td>
-                <td>{land.town}</td>
+               
                 <td>
                     <a data-index="{index}" data-cmd="plan.detail">{plan.project}<a/>
                 </td>
                 <td>{plan.developer}</td>
+
                 <td>
-                    <a data-index="{index}" data-cmd="construct.detail">{construct.number}<a/>
+                    <a data-index="{index}" data-cmd="license.detail">{license.number}<a/>
+                </td>
+                <td>{license.date}</td>
+
+                <td>
+                    <a data-index="{index}" data-cmd="detail">{construct.number}<a/>
                 </td>
                 <td>{construct.date}</td>
                 <td class="operate" style="{operate-display}">

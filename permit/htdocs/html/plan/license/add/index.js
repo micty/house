@@ -29,8 +29,8 @@ KISP.launch(function (require, module) {
         },
 
         'get': function (data) {
-            current = data;
-            Form.render(data);
+            current = data.license;
+            Form.render(current);
         },
 
     });

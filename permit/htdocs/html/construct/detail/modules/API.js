@@ -1,5 +1,4 @@
 ﻿
-
 define('/API', function (require, module, exports) {
 
     var $ = require('$');
@@ -12,20 +11,17 @@ define('/API', function (require, module, exports) {
     var loading = null;
     var toast = null;
 
-    //获取数据
     function get(id) {
 
-        var api = KISP.create('API', 'ConstructLicense.get');
+        var api = KISP.create('API', 'Construct.get');
 
         api.on({
 
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
-
-                loading.show('加载中...');
+                loading.show('读取中...');
             },
 
             'response': function () {
@@ -36,23 +32,21 @@ define('/API', function (require, module, exports) {
                 emitter.fire('success', 'get', [data]);
             },
 
-            'fail': function (code, msg, json, xhr) {
-                KISP.alert('获取数据失败: {0} ({1})', msg, code);
+            'fail': function (code, msg, json) {
+                alert('读取失败: {0}({1})', msg, code);
             },
 
-            'error': function (code, msg, json, xhr) {
-                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
+            'error': function () {
+                alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
+
 
         api.get({
-            'id': id,
+            'id': id, 
         });
 
-
     }
-
-
 
 
 

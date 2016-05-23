@@ -29,8 +29,9 @@ KISP.launch(function (require, module) {
         },
 
         'post': function (data, json) {
+            Bridge.close(); //这个要先执行。
             Bridge.open(['construct', 'list']);
-            Bridge.close();
+           
         },
 
 

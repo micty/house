@@ -28,7 +28,7 @@ module.exports = {
     /**
     * 获取一条记录。
     */
-    get: function (res, id)  {
+    get: function (res, id) {
         if (!id) {
             emptyError('id', res);
             return;
@@ -276,7 +276,7 @@ module.exports = {
                         data: list,
                     });
                 });
-                
+
             }
             catch (ex) {
                 res.send({
@@ -294,7 +294,7 @@ module.exports = {
     * 读取列表。
     */
     list: function (res) {
-   
+
         var path = getPath();
         var existed = fs.existsSync(path);
 
@@ -320,7 +320,7 @@ module.exports = {
         }
 
 
-       
+
         fs.readFile(path, 'utf8', function (err, data) {
 
             if (err) {

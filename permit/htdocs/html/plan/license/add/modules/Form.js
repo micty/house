@@ -67,7 +67,9 @@ define('/Form', function (require, module, exports) {
 
     panel.on('init', function () {
 
-        DateTimePicker.create('[data-type="date"]');
+        DateTimePicker.create('[data-type="date"]', {
+            pickerPosition: 'bottom-right',
+        });
     });
 
 
@@ -76,6 +78,7 @@ define('/Form', function (require, module, exports) {
     panel.on('render', function (data) {
 
         if (data) {
+
             panel.$.find('[name]').each(function () {
                 var name = this.name;
 

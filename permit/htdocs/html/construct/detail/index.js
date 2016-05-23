@@ -10,9 +10,10 @@ KISP.launch(function (require, module) {
 
     var Url = MiniQuery.require('Url');
 
-    var Base = module.require('Base');
-    var License = module.require('License');
+    var API = module.require('API');
+    var Form = module.require('Form');
     var Header = module.require('Header');
+
 
     var user = SessionStorage.get('user');
     var qs = Url.getQueryString(window);
@@ -20,21 +21,11 @@ KISP.launch(function (require, module) {
 
 
 
+    API.on('success', {
 
-    if (!id) {
-        KISP.alert('缺少 id', function () {
-            Bridge.close();
-        });
-        return;
-    }
-
-
-    License.on({
-        'detail': function (id) {
-            Bridge.open({
-                name: '施工许可证详情',
-                url: 'html/construct/license/detail/index.html?id=' + id,
-            });
+        'get': function (data) {
+            Header.render();
+            Form.render(data);
         },
     });
 
@@ -44,9 +35,19 @@ KISP.launch(function (require, module) {
         });
     });
 
-    Header.render();
-    Base.render(id);
-    License.render(id);
+
+    if (!id) {
+        KISP.alert('必须指定 id', function () {
+            Bridge.close();
+        });
+        return;
+
+    
+    }
+
+    API.get(id);
+   
+
 
 
 });

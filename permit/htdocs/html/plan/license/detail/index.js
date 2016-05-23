@@ -17,7 +17,7 @@ KISP.launch(function (require, module) {
 
     API.on('success', {
         'get': function (data) {
-            Form.render(data);
+            Form.render(data.license);
             Header.render();
         },
 
@@ -29,6 +29,7 @@ KISP.launch(function (require, module) {
             name: '编辑规划许可证',
             url: 'html/plan/license/add/index.html?id=' + id,
         });
+
     });
 
 

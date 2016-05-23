@@ -55,8 +55,7 @@ define('/Done', function (require, module) {
             var item = list[index];
 
             if (cmd == 'remove') {
-                var msg = '确认要删除规划许可【' + item.project + '】<br />' +
-                    ' 同时也会删除其所拥有的许可证。';
+                var msg = '确认要删除施工许可证【' + item.construct.number + '】';
 
                 KISP.confirm(msg, function () {
                     panel.fire(cmd, [item, index]);

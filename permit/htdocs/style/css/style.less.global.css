@@ -140,11 +140,14 @@ table.form-table .value .total {
 }
 table.form-table .value.readonly {
     /*color: gray;*/
-    color: #2196F3;
+    color: #8691A0;
 }
 table.form-table .value.total {
     font-size: 16px;
     font-weight: bold;
+}
+table.form-table .value.number {
+    font-size: 16px;
 }
 table.form-table .big {
     width: 90px;

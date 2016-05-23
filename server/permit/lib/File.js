@@ -18,7 +18,7 @@ module.exports = (function () {
     function write(path, text) {
 
         Directory.create(path);
-        FS.writeFileSync(path, text);
+        FS.writeFileSync(path, text, 'utf-8');
 
     }
 
@@ -26,7 +26,7 @@ module.exports = (function () {
     function read(path) {
 
         if (exists(path)) {
-            return FS.readFileSync(path);
+            return FS.readFileSync(path, 'utf-8');
         }
         else {
             return null;

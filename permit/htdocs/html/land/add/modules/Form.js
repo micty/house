@@ -8,6 +8,7 @@ define('/Form', function (require, module, exports) {
    
     var Size = require('Size');
     var NumberField = require('NumberField');
+    var DateTimePicker = require('DateTimePicker');
 
     var panel = KISP.create('Panel', '#table-form');
 
@@ -60,33 +61,26 @@ define('/Form', function (require, module, exports) {
         panel.$.find('[data-type="number"]').on('change', function (event) {
             totalSize();
         });
+
+        DateTimePicker.create('[data-type="date"]');
+
       
     });
-
-
-
-
-    panel.on('init', function () {
-
-        var DateTimePicker = require('DateTimePicker');
-        DateTimePicker.create('[data-type="date"]');
-    });
-
-
 
 
 
     panel.on('render', function (data) {
 
         if (data) {
+
             panel.$.find('[name]').each(function () {
                 var name = this.name;
+                var value = data[name];
 
                 if (!(name in data)) {
-                    return;
+                    value = '';
                 }
 
-                var value = data[name];
                 this.value = value;
 
             });
