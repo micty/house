@@ -75,10 +75,10 @@ define('/Base/API', function (require, module, exports) {
 
 
 
-    function get(id, isLand) {
+    function get(id, isLicense) {
 
 
-        var name = isLand ? 'Land.get' : 'Sale.get';
+        var name = isLicense ? 'PlanLicense.get' : 'Sale.get';
         var api = KISP.create('API', name);
 
         api.on({

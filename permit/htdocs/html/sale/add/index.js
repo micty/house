@@ -15,13 +15,6 @@ KISP.launch(function (require, module) {
 
 
     var user = SessionStorage.get('user');
-    //if (user.role != 'sale') {
-    //    KISP.alert('您没有权限操作本页面', function () {
-    //        Bridge.close();
-    //    });
-    //    return;
-    //}
-
     var qs = Url.getQueryString(window);
     var id = qs.id;
 
@@ -71,24 +64,19 @@ KISP.launch(function (require, module) {
         return;
     }
 
+
+
     //说明是新增的。
-    var landId = qs.landId;
-    if (!landId) {
-        KISP.alert('新增时必须指定 landId', function () {
+    var licenseId = qs.licenseId;
+    if (!licenseId) {
+        KISP.alert('新增时必须指定规划许可证 licenseId', function () {
             Bridge.close();
         });
         return;
     }
 
-   
 
-    Base.on({
-        'save': function (item) {
-            License.render(item.id);
-        },
-    });
-
-    Base.render(landId, true);
+    Base.render(licenseId, true);
     License.render();
 
 

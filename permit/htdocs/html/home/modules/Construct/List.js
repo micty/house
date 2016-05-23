@@ -41,7 +41,7 @@ define('/Construct/List', function (require, module) {
 
             return {
                 'index': index,
-                'title': item.project,
+                'title': item.number,
                 'date': item.datetime.split(' ')[0],
             };
         });

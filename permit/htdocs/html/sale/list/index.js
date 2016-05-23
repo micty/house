@@ -15,9 +15,8 @@ KISP.launch(function (require, module) {
 
     API.on('success', {
         'get': function (data) {
-         
-            Todo.render(data.todo);
-            Done.render(data.done);
+            Todo.render(data.todos);
+            Done.render(data.dones);
         },
 
         'remove': function () {
@@ -27,15 +26,30 @@ KISP.launch(function (require, module) {
 
 
     Todo.on({
-        'detail': function (item, index) {
+        'land.detail': function (item, index) {
             Bridge.open({
                 name: '土地出让详情',
-                url: 'html/land/detail/index.html?id=' + item.id,
+                url: 'html/land/detail/index.html?id=' + item.land.id,
             });
         },
+
+        'plan.detail': function (item, index) {
+            Bridge.open({
+                name: '规划许可详情',
+                url: 'html/plan/detail/index.html?id=' + item.plan.id,
+            });
+        },
+
+        'license.detail': function (item, index) {
+            Bridge.open({
+                name: '规划许可证详情',
+                url: 'html/plan/license/detail/index.html?id=' + item.license.id,
+            });
+        },
+
         'edit': function (item, index) {
             Bridge.open(['sale', 'add'], {
-                'landId': item.id,
+                'licenseId': item.license.id,
             });
         },
     });
@@ -50,26 +64,38 @@ KISP.launch(function (require, module) {
             });
         },
 
+        'plan.detail': function (item, index) {
+            Bridge.open({
+                name: '规划许可详情',
+                url: 'html/plan/detail/index.html?id=' + item.plan.id,
+            });
+        },
+        'license.detail': function (item, index) {
+            Bridge.open({
+                name: '规划许可证详情',
+                url: 'html/plan/license/detail/index.html?id=' + item.license.id,
+            });
+        },
+
         'detail': function (item, index) {
             Bridge.open({
                 name: '预售许可详情',
-                url: 'html/sale/detail/index.html?id=' + item.id,
+                url: 'html/sale/detail/index.html?id=' + item.sale.id,
             });
         },
 
         'remove': function (item, index) {
-            API.remove(item.id);
+            API.remove(item.sale.id);
         },
 
         'edit': function (item, index) {
- 
             Bridge.open(['sale', 'add'], {
-                'id': item.id,
+                'id': item.sale.id,
             });
         },
     });
-   
+
 
     API.get();
-    
+
 });

@@ -196,7 +196,8 @@ table.form-table tr.title td {
     padding: 6px 5px;
 }
 table.form-table tr.sub-title td {
-    background: none;
+    /*background: none;*/
+    background: #E6E6E6;
     color: #4C4C4C;
     font-weight: bold;
     text-align: center;

@@ -63,6 +63,12 @@ define('/Form', function (require, module, exports) {
             panel.$.find('[name]').each(function () {
                 var name = this.name;
                 var value = this.value;
+
+                var type = this.getAttribute('data-type');
+                if (type == 'number' || type == 'price') {
+                    value = NumberField.value(this);
+                }
+
                 data[name] = value;
             });
 

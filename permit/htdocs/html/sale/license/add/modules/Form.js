@@ -68,11 +68,8 @@ define('/Form', function (require, module, exports) {
         var DateTimePicker = require('DateTimePicker');
 
         var dtp = new DateTimePicker('[data-type="date"]', {
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            minView: 'month',
-            todayBtn: true,
-            todayHighlight: true
+            pickerPosition: 'bottom-right',
+
         });
     });
 

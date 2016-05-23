@@ -85,7 +85,7 @@ module.exports = {
 
                 var Plan = require('./Plan');
                 var plans = Plan.list();
-                var plan = plans.find(function (plan) {
+                var plan = $.Array.findItem(plans, function (plan) {
                     return plan.id == license.planId;
                 });
                 if (!plan) {
@@ -98,12 +98,12 @@ module.exports = {
 
                 var Land = require('./Land');
                 var lands = Land.list();
-                var land = lands.find(function (land) {
+                var land = $.Array.findItem(lands, function (land) {
                     return land.id == plan.landId;
                 });
                 if (!land) {
                     res.send({
-                        code: 203,
+                        code: 204,
                         msg: '不存在关联的土地记录',
                     });
                     return;
@@ -458,14 +458,6 @@ module.exports = {
 
             try {
                 var list = JSON.parse(data);
-
-                //过滤出指定 licenseId 的记录。
-                if (licenseId) {
-                    list = list.filter(function (item) {
-                        return item.licenseId == licenseId;
-                    });
-                }
-
                 list.reverse(); //倒序一下
 
                 res.send({

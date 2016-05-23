@@ -42,10 +42,10 @@ define('/Base', function (require, module) {
     });
 
 
-    panel.on('render', function (id, isLand) {
+    panel.on('render', function (id, isLicense) {
 
         Header.render();
-        API.get(id, isLand);
+        API.get(id, isLicense);
     });
 
    
