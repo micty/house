@@ -26,8 +26,8 @@
         "location": "佛山市禅城区科润路南北、佛山一环以东、东平水道以西",
         "size": "65000",
         "use": "二类居住用地，商业、商务、娱乐康体用地",
-        "commerceSize": "6000",
         "residenceSize": "9800",
+        "commerceSize": "6000",
         "officeSize": "7800",
         "otherSize": "3000",
         "parkSize": "2000",
@@ -37,6 +37,6 @@
         "date": "2016-05-07",
         "contract": "SU20160530",
         "license": "ABC8956321",
-        "datetime": "2016-05-23 13:51:37"
+        "datetime": "2016-05-24 17:49:06"
     }
 ]

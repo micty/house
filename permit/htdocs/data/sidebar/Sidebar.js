@@ -29,7 +29,7 @@
     },
     {
         icon: 'credit-card',
-        name: '预售管理',
+        name: '销售管理',
         url: 'html/sale/list/index.html',
         //autoOpen: true,
         cmd: ['sale', 'list'],
@@ -63,7 +63,7 @@
     },
     {
         icon: 'plus',
-        name: '预售许可发布',
+        name: '销售许可发布',
         url: 'html/sale/add/index.html',
         cmd: ['sale', 'add'],
         display: false,

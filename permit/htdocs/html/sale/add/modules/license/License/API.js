@@ -12,6 +12,8 @@ define('/License/API', function (require, module, exports) {
     var loading = null;
     var toast = null;
 
+
+
     //获取数据
     function get(saleId) {
 
@@ -34,8 +36,17 @@ define('/License/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
                 var list = data;
+
+                var groups = [
+                    [],
+                    [],
+                ];
+
+                list.forEach(function (item) {
+                    groups[item.type].push(item);
+                });
            
-                emitter.fire('success', 'get', [list]);
+                emitter.fire('success', 'get', groups);
             },
 
             'fail': function (code, msg, json, xhr) {

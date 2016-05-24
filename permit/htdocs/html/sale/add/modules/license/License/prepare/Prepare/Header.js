@@ -1,6 +1,6 @@
 ﻿
 
-define('/Header', function (require, module) {
+define('/License/Prepare/Header', function (require, module) {
 
 
     var $ = require('$');
@@ -9,13 +9,13 @@ define('/Header', function (require, module) {
     var user = SessionStorage.get('user');
 
     
-    var panel = KISP.create('Panel', '#div-header');
+    var panel = KISP.create('Panel', '#div-license-prepare-header');
     
     panel.on('init', function () {
 
         panel.$.on('click', 'button', function () {
 
-            panel.fire('edit');
+            panel.fire('add');
         });
  
 
@@ -23,12 +23,12 @@ define('/Header', function (require, module) {
 
 
 
-    panel.on('render', function () {
+    panel.on('render', function (showOperate) {
 
-        panel.$.find('button').toggle(user.role == 'land');
+        panel.$.toggleClass('noop', !showOperate);
+
 
     });
-
 
 
     return panel.wrap();

@@ -10,8 +10,9 @@ define('/License', function (require, module) {
     var Bridge = require('Bridge');
 
     var API = module.require('API');
-    var Header = module.require('Header');
-    var List = module.require('List');
+    var Prepare = module.require('Prepare');
+    var Doing = module.require('Doing');
+ 
 
 
     var current = null;
@@ -20,61 +21,68 @@ define('/License', function (require, module) {
     panel.on('init', function () {
 
 
-        Header.on('add', function () {
-            panel.fire('add', [current.saleId]);
-        });
-
 
         API.on('success', {
-
-            'get': function (data) {
-                List.render(data);
+            'get': function (a, b) {
+                Prepare.render(a);
+                Doing.render(b);
             },
 
-            'remove': function (data) {
-                List.render(data);
-                panel.fire('change');
-            },
-            'post': function (data) {
-                List.render(data);
-                panel.fire('change');
+            'remove': function () {
+                API.get(current.saleId);
             },
         });
 
-        List.on({
-
-            'detail': function (item, index) {
-                panel.fire('detail', [item.id]);
+        Prepare.on({
+            'add': function () {
+                panel.fire('add', [0, current.saleId]);
+            },
+            'detail': function (item) {
+                panel.fire('detail', [item]);
             },
 
-            'remove': function (item, index) {
+            'edit': function (item) {
+                panel.fire('edit', [item]);
+            },
+
+            'remove': function (item) {
                 API.remove(item.id);
             },
-
-            'edit': function (item, index) {
-                panel.fire('edit', [item.id]);
-            },
         });
 
+
+        Doing.on({
+            'add': function () {
+                panel.fire('add', [1, current.saleId]);
+            },
+            'detail': function (item) {
+                panel.fire('detail', [item]);
+            },
+
+            'edit': function (item) {
+                panel.fire('edit', [item]);
+            },
+
+            'remove': function (item) {
+                API.remove(item.id);
+            },
+        });
+      
+
     });
+
+
 
     panel.on('render', function (saleId) {
 
-        //新增的初始状态，只作展示，不能添加。
-        if (!saleId) {
-            Header.render(false);
-            List.render([]);
-            return;
-        }
 
-        current = {
-            'saleId': saleId,
-        };
+        current = { 'saleId': saleId, };
 
         API.get(saleId);
-        Header.render(true);
 
     });
+
+
 
 
     return panel.wrap();

@@ -23,7 +23,16 @@ define('Size', function (require, module, exports) {
 
 
 
-    function total(data, index) {
+    function total(prefix, data, index) {
+
+        //重载 total(data, index);
+        if (typeof prefix == 'object') {
+            index = data;
+            data = prefix;
+            prefix = '';
+        }
+
+
 
         var total = 0;
 
@@ -33,6 +42,9 @@ define('Size', function (require, module, exports) {
 
 
         keys.forEach(function (key) {
+
+            key = prefix + key;
+
             var value = data[key] || 0;
             value = Number(value) || 0;
             total += value;
@@ -42,34 +54,36 @@ define('Size', function (require, module, exports) {
 
     }
 
-    function totalText(data, index) {
+    function totalText(prefix, data, index) {
 
-        var value = total(data, index);
+        var value = total(prefix, data, index);
         value = NumberField.text(value);
+
         return value;
     }
 
+
     function text(data, key) {
-        var value = data[key];
+        var value = data[key] || 0;
         return NumberField.text(value);
     }
 
 
-    function format(data) {
+    function format(prefix, data) {
 
-        data = $.Object.extend({}, data, {
-            'totalSize': totalText(data),
-            'totalSize0': totalText(data, 0),
-            'totalSize1': totalText(data, 1),
-        });
+
+        //重载 format(data);
+        if (typeof prefix == 'object') {
+            data = prefix;
+            prefix = '';
+        }
 
         var keys = $.Array.reduceDimension(sizes);
         $.Array.each(keys, function (key) {
+     
+            key = prefix + key;
 
-            var value = data[key] || 0;
-            
-            value = NumberField.text(value);
-            data[key] = value;
+            data[key] = text(data, key);
         });
 
         return data;

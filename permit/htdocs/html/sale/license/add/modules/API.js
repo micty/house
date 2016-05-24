@@ -12,6 +12,7 @@ define('/API', function (require, module, exports) {
     var loading = null;
     var toast = null;
 
+
     //获取数据
     function get(id) {
 
@@ -21,7 +22,7 @@ define('/API', function (require, module, exports) {
 
             'request': function () {
 
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
                 });
 
@@ -54,6 +55,8 @@ define('/API', function (require, module, exports) {
 
 
 
+
+
     function post(data) {
 
         var id = data.id;
@@ -64,7 +67,7 @@ define('/API', function (require, module, exports) {
 
             'request': function () {
 
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
 
                 });
@@ -79,7 +82,7 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                toast = toast || KISP.create('Toast', {
+                toast = toast || top.KISP.create('Toast', {
                     text: '提交成功',
                     duration: 1500,
                     mask: 0,
@@ -111,51 +114,11 @@ define('/API', function (require, module, exports) {
     }
 
 
-    function remove(id) {
-
-        var api = KISP.create('API', 'SaleLicense.remove');
-
-        api.on({
-
-            'request': function () {
-
-                loading = loading || KISP.create('Loading', {
-
-                });
-
-                loading.show('删除中...');
-            },
-
-            'response': function () {
-                loading.hide();
-            },
-
-            'success': function (data, json, xhr) {
-                var list = data;
-
-                emitter.fire('success', 'remove', [list]);
-            },
-
-            'fail': function (code, msg, json, xhr) {
-                KISP.alert('删除数据失败: {0} ({1})', msg, code);
-            },
-            'error': function (code, msg, json, xhr) {
-                KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
-            },
-        });
-
-        api.get({
-            'id': id,
-        });
-
-    }
-
 
 
     return {
         get: get,
         post: post,
-        remove: remove,
         on: emitter.on.bind(emitter),
     };
 

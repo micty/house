@@ -10,7 +10,9 @@ define('/License', function (require, module) {
     var Bridge = require('Bridge');
 
     var API = module.require('API');
-    var List = module.require('List');
+    var Prepare = module.require('Prepare');
+    var Doing = module.require('Doing');
+ 
 
 
     var current = null;
@@ -21,38 +23,66 @@ define('/License', function (require, module) {
 
 
         API.on('success', {
-
-            'get': function (data) {
-                List.render(data);
+            'get': function (a, b) {
+                Prepare.render(a);
+                Doing.render(b);
             },
 
-            'remove': function (data) {
-                List.render(data);
-                panel.fire('change');
-            },
-            'post': function (data) {
-                List.render(data);
-                panel.fire('change');
+            'remove': function () {
+                API.get(current.saleId);
             },
         });
 
-        List.on({
-            'detail': function (item, index) {
-                panel.fire('detail', [item.id]);
+        Prepare.on({
+            'add': function () {
+                panel.fire('add', [0, current.saleId]);
+            },
+            'detail': function (item) {
+                panel.fire('detail', [item]);
+            },
+
+            'edit': function (item) {
+                panel.fire('edit', [item]);
+            },
+
+            'remove': function (item) {
+                API.remove(item.id);
             },
         });
 
 
+        Doing.on({
+            'add': function () {
+                panel.fire('add', [1, current.saleId]);
+            },
+            'detail': function (item) {
+                panel.fire('detail', [item]);
+            },
+
+            'edit': function (item) {
+                panel.fire('edit', [item]);
+            },
+
+            'remove': function (item) {
+                API.remove(item.id);
+            },
+        });
+      
+
     });
 
-    panel.on('render', function (planId) {
 
-        current = {
-            'planId': planId,
-        };
 
-        API.get(planId);
+    panel.on('render', function (saleId) {
+
+
+        current = { 'saleId': saleId, };
+
+        API.get(saleId);
+
     });
+
+
 
 
     return panel.wrap();

@@ -25,10 +25,19 @@ define('/Form', function (require, module, exports) {
     panel.on('render', function (data) {
 
 
+        
+
+        data = $.Object.extend({}, data, {
+            'totalSize0': Size.totalText(data, 0),
+            'totalSize1': Size.totalText(data, 1),
+            'totalSize': Size.totalText(data),
+            'size': Size.text(data, 'size'),
+            'price': NumberField.money(data.price),
+        });
+
+
         data = Size.format(data);
 
-        data.size = Size.text(data, 'size');
-        data.price = NumberField.money(data.price);
 
         panel.fill(data);
 

@@ -1,52 +1,44 @@
 ﻿
-define('/License/List', function (require, module) {
+define('/License/Doing/List', function (require, module) {
 
     var $ = require('$');
     var KISP = require('KISP');
     var SessionStorage = require('SessionStorage');
 
-    var panel = KISP.create('Panel', '#div-license-list');
+    var Cell = require('Cell');
+    var Size = require('Size');
+
+    var panel = KISP.create('Panel', '#div-license-doing-list');
     var user = SessionStorage.get('user');
     var list = [];
 
     panel.on('init', function () {
 
-        var display = user.role == 'land' ? '' : 'display: none;';
 
 
         panel.template(['row'],  function (data, index) {
 
             return {
                 data: {
-                    'operate-display': display,
+                    'operate-display': '',
                 },
 
                 list: data.list,
 
                 fn: function (item, index) {
 
-                    var buildSize = 0;
-                    $.Array.each([
-                        'commerceSize',
-                        'residenceSize',
-                        'officeSize',
-                        'otherSize',
-                    ], function (key) {
-
-                        buildSize += Number(item[key]);
-                    });
-
-
-                    var dt = item.datetime;
-                    dt = $.Date.parse(dt);
-                    dt = $.Date.format(dt, 'yyyy-MM-dd');
-
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
                         'operate-display': '',
-                        'datetime': dt,
-                        'buildSize': buildSize,
+                        'datetime': item.datetime.split(' ')[0],
+
+
+                        'totalSize': Size.totalText(item),
+                        'totalCell': Cell.totalText(item),
+
+                        'saled-totalSize': Size.totalText('saled-', item),
+                        'saled-totalCell': Cell.totalText('saled-', item),
                     });
 
                     return {

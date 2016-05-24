@@ -219,17 +219,17 @@ define('NumberField', function (require, exports, module) {
 
         text: function (value, options) {
 
+            options = $.Object.extend(defaults, {
+                min: '-9999999999999.99',   //允许的最小值，必须用字符串
+                currencySign: '',   //这个是必须的，否则可能会受 money() 方法的影响。
+
+            }, options);
+
+
             if (!input) {
 
                 input = document.createElement('input');
                 input.type = 'text';
-
-                options = $.Object.extend({
-                    min: '-9999999999999.99',   //允许的最小值，必须用字符串
-                    max: '9999999999999.99',    //允许的最大值，必须用字符串，且比 min 要大
-
-                }, options);
-
                 nf = new NumberField(input, options);
             }
 

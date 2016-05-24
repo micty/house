@@ -81,12 +81,12 @@ define('/Form', function (require, module, exports) {
 
             panel.$.find('[name]').each(function () {
                 var name = this.name;
+                var value = data[name];
 
                 if (!(name in data)) {
-                    return;
+                    value = '';
                 }
 
-                var value = data[name];
                 this.value = value;
 
             });

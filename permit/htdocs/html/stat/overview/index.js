@@ -9,11 +9,6 @@ KISP.launch(function (require, module) {
     var Url = MiniQuery.require('Url');
 
     var Bridge = require('Bridge');
-    var NumberField = require('NumberField');
-
-    var v = NumberField.get(12345678);
-    v = NumberField.get(96666);
-    console.log(v);
 
     var API = module.require('API');
     var Formater = module.require('Formater');

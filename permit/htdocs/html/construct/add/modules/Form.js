@@ -31,10 +31,20 @@ define('/Form', function (require, module, exports) {
 
     panel.on('render', function (data) {
 
-
         current = data;
 
-        data.license = Size.format(data.license);
+
+        var license = data.license;
+
+        license = $.Object.extend({}, license, {
+            'totalSize0': Size.totalText(license, 0),
+            'totalSize1': Size.totalText(license, 1),
+            'totalSize': Size.totalText(license),
+        });
+
+        data.license = Size.format(license);
+
+
 
         data.construct = data.construct || { //针对新增的情况。
             number: '',

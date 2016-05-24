@@ -28,13 +28,13 @@ define('/Base', function (require, module) {
 
         });
 
-
     });
 
 
-    panel.on('render', function (id) {
+    panel.on('render', function (id, isLicense) {
 
-        API.get(id);
+  
+        API.get(id, isLicense);
     });
 
    

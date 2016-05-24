@@ -26,13 +26,16 @@ define('/License/List', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var data = Size.format(item);
 
-                    data = $.Object.extend(data, {
+                    data = $.Object.extend(data, item, {
                         'index': index,
                         'no': index + 1,
                         'operate-display': '',
                         'datetime': item.datetime.split(' ')[0],
+
+                        'totalSize0': Size.totalText(item, 0),
+                        'totalSize1': Size.totalText(item, 1),
+                        'totalSize': Size.totalText(item),
 
                     });
 

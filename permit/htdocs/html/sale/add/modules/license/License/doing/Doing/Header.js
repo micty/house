@@ -1,6 +1,6 @@
 ﻿
 
-define('/License/Header', function (require, module) {
+define('/License/Doing/Header', function (require, module) {
 
 
     var $ = require('$');
@@ -9,7 +9,7 @@ define('/License/Header', function (require, module) {
     var user = SessionStorage.get('user');
 
     
-    var panel = KISP.create('Panel', '#div-license-header');
+    var panel = KISP.create('Panel', '#div-license-doing-header');
     
     panel.on('init', function () {
 

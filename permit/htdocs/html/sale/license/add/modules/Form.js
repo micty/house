@@ -5,72 +5,80 @@ define('/Form', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+
+  
     var NumberField = require('NumberField');
+    var DateTimePicker = require('DateTimePicker');
+    var Cell = require('Cell');
+    var Size = require('Size');
 
-   
-    var panel = KISP.create('Panel', '#table-form');
+    var panel = KISP.create('Panel', '#div-form');
+
+    var type$item = {
+        0: {
+            number: '预售',
+            title: '预售',
+        },
+        1: {
+            number: '备案',
+            title: '现售',
+        },
+    };
 
 
 
+    function get(data) {
 
+        data = data || {};
 
-    function totalSize() {
-        var total = 0;
+        panel.$.find('[name]').each(function () {
 
-        panel.$.find('[data-name="size"]').each(function () {
-            var txt = this;
-            var nf = new NumberField(txt);
-            var value = nf.get();
-            value = Number(value);
+            var name = this.name;
+            var value = this.value;
 
-            total += value;
+            var type = this.getAttribute('data-type');
+            if (type == 'number' || type == 'price') {
+                value = NumberField.value(this);
+            }
 
+            data[name] = value;
         });
 
-        panel.$.find('#totalSize').val(total);
-        new NumberField('#totalSize').update();
+        return data;
     }
 
-    function totalCell() {
-        var total = 0;
 
-        panel.$.find('[data-name="cell"]').each(function () {
-            var txt = this;
-            var nf = new NumberField(txt);
-            var value = nf.get();
-            value = Number(value);
+    function total() {
 
-            total += value;
+        var data = get();
 
+        $.Object.each({
+                    
+            'totalSize0': Size.totalText(data, 0),
+            'totalSize1': Size.totalText(data, 1),
+            'totalSize': Size.totalText(data),
+            'totalCell': Cell.totalText(data),
+
+            'saled-totalSize0': Size.totalText('saled-', data, 0),
+            'saled-totalSize1': Size.totalText('saled-', data, 1),
+            'saled-totalSize': Size.totalText('saled-', data),
+            'saled-totalCell': Cell.totalText('saled-', data),
+
+
+        }, function (key, value) {
+            $('#' + key).html(value);
         });
 
-        panel.$.find('#totalCell').val(total);
-        new NumberField('#totalCell').update();
     }
+
 
 
     panel.on('init', function () {
 
-        new NumberField('[data-type="number"]');
-
-        panel.$.find('[data-name="size"]').on('change', function (event) {
-            totalSize();
+        panel.$.on('change', '[data-type="number"]', function (event) {
+            total();
         });
 
-        panel.$.find('[data-name="cell"]').on('change', function (event) {
-            totalCell();
-        });
-    });
-
-
-    panel.on('init', function () {
-
-        var DateTimePicker = require('DateTimePicker');
-
-        var dtp = new DateTimePicker('[data-type="date"]', {
-            pickerPosition: 'bottom-right',
-
-        });
     });
 
 
@@ -78,51 +86,40 @@ define('/Form', function (require, module, exports) {
 
     panel.on('render', function (data) {
 
-        if (data) {
-            panel.$.find('[name]').each(function () {
-                var name = this.name;
+  
+        var item = type$item[data.type];
+   
+        panel.fill(item);
 
-                if (!(name in data)) {
-                    return;
-                }
 
-                var value = data[name];
-                this.value = value;
 
-            });
+        panel.$.find('[name]').each(function () {
+            var name = this.name;
+            var value = data[name];
 
-            totalSize();
-            totalCell();
+            if (!(name in data)) {
+                value = '';
+            }
 
-            NumberField.update('[data-type="number"]');
-        }
+            this.value = value;
 
+        });
+
+        total();
+
+
+        NumberField.create('[data-type="number"]');
+        DateTimePicker.create('[data-type="date"]', {
+            pickerPosition: 'bottom-right',
+        });
 
 
     });
 
 
+
     return panel.wrap({
-        get: function (data) {
-
-            panel.$.find('[name]').each(function () {
-
-                var name = this.name;
-                var value = this.value;
-
-                var type = this.getAttribute('data-type');
-                if (type == 'number') {
-                    var txt = this;
-                    var nf = new NumberField(txt);
-                    value = nf.get();
-                    value = Number(value);
-                }
-
-                data[name] = value;
-            });
-
-            return data;
-        },
+        'get': get,
     });
 
 });

@@ -27,8 +27,10 @@
 </head>
 <body class="iframe">
     <div id="div-header" class="header">
-        <span>预售许可证详情</span>
+        <!--
+        <span>{text} - 详情</span>
         <button><i class="icon fa fa-edit"></i>编辑</button>
+        -->
     </div>
 
     <div class="container">
@@ -39,86 +41,19 @@
                     <tr class="title">
                         <td colspan="3">基本信息</td>
                     </tr>
-                     <tr>
-                        <td class="name">预售证号</td>
+                    <tr>
+                        <td class="name">{type.number}证号</td>
                         <td class="value">{number}</td>
                         <td class="tip"><span></span></td>
                     </tr>
                     <tr>
                         <td class="name">发证日期</td>
                         <td class="value">{date}</td>
-                        <td class="tip"><span></span></td>
-                    </tr>
-                    <tr class="title">
-                        <td colspan="3">预售房屋建筑面积</td>
-                    </tr>
-                    <tr>
-                        <td class="name">商业用房</td>
-                        <td class="value"><input value="{commerceSize}" type="text" data-type="number" data-name="size" readonly/></td>
-                        <td class="tip"><span>(平方米)</span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">住宅用房</td>
-                        <td class="value"><input value="{residenceSize}" type="text" data-type="number" data-name="size" readonly/></td>
-                        <td class="tip"><span>(平方米)</span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">办公用房</td>
-                        <td class="value"><input value="{officeSize}" type="text" data-type="number" data-name="size" readonly/></td>
-                        <td class="tip"><span>(平方米)</span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">其它用房</td>
-                        <td class="value"><input value="{otherSize}" type="text" data-type="number" data-name="size" readonly/></td>
-                        <td class="tip"><span>(平方米)</span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">总面积</td>
-                        <td class="value"><input value="{totalSize}" class="total" type="text" data-type="number" readonly></td>
-                        <td class="tip"><span>(平方米)</span></td>
+                        <td class="tip"></td>
                     </tr>
 
-                    <tr class="title">
-                        <td colspan="3">预售房屋单元数</td>
-                    </tr>
-                    <tr>
-                        <td class="name">商业用房</td>
-                        <td class="value"><input value="{commerceCell}" type="text" data-type="number" data-name="cell" readonly/></td>
-                        <td class="tip"><span>(间)</span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">住宅用房</td>
-                        <td class="value"><input value="{residenceCell}" type="text" data-type="number" data-name="cell" readonly/></td>
-                        <td class="tip"><span>(间)</span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">办公用房</td>
-                        <td class="value"><input value="{officeCell}" type="text" data-type="number" data-name="cell" readonly/></td>
-                        <td class="tip"><span>(间)</span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">其它用房</td>
-                        <td class="value"><input value="{otherCell}" type="text" data-type="number" data-name="cell" readonly/></td>
-                        <td class="tip"><span>(间)</span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">总单元数</td>
-                        <td class="value"><input value="{totalCell}" class="total" type="text" data-type="number"  readonly></td>
-                        <td class="tip"><span>(间)</span></td>
-                    </tr>
-                    <tr class="title">
-                        <td colspan="3">栋号及层数描述</td>
-                    </tr>
-                    <tr>
-                        <td class="name">预售房屋栋号及层数</td>
-                        <td class="value">{saleDesc}</td>
-                        <td class="tip"><span></span></td>
-                    </tr>
-                    <tr>
-                        <td class="name">发证时各栋已建层数</td>
-                        <td class="value">{publishDesc}</td>
-                        <td class="tip"><span></span></td>
-                    </tr>
+                    <link rel="html" href="modules/sales.html" />
+                    <link rel="html" href="modules/saled.html" />
                 </tbody>
             </table>
             -->

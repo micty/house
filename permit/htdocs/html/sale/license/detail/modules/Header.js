@@ -11,7 +11,10 @@ define('/Header', function (require, module, exports) {
     var panel = KISP.create('Panel', '#div-header');
 
 
-
+    var type$text = {
+        0: '预售许可证',
+        1: '现售备案',
+    };
 
 
     panel.on('init', function () {
@@ -27,8 +30,10 @@ define('/Header', function (require, module, exports) {
 
 
 
-    panel.on('render', function () {
-
+    panel.on('render', function (data) {
+        panel.fill({
+            'text': type$text[data.type],
+        });
     });
 
 

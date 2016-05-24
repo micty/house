@@ -215,6 +215,13 @@ table.form-table {
         &[data-type="price"] {
             font-size: 16px;
         }
+
+        &:hover {
+            background: #FFFCDD;
+        }
+        &:focus {
+            background: #DEF0FF;
+        }
     }
 
     select {
@@ -244,6 +251,28 @@ table.form-table {
                 color: #fff;
                 font-weight: bold;
                 padding: 6px 5px;
+
+                span {
+                    float: right;
+                    color: #ccc;
+                    cursor: pointer;
+                    font-size: 13px;
+                    font-weight: normal;
+
+                    &:hover {
+                        color: #FF9800;
+                    }
+
+                    i {
+                        margin-left: 5px;
+                    }
+                }
+
+                &:after {
+                    display: block;
+                    content: '';
+                    clear: both;
+                }
             }
         }
 
