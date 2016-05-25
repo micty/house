@@ -1,0 +1,31 @@
+[
+    {
+        "id": "67FDC871F785",
+        "name": "admin-land",
+        "alias": "土地出让管理员",
+        "password": "47bce5c74f589f4867dbd57e9ca9f808",
+        "role": "land"
+    },
+    {
+        "id": "E59F3DCB1B0B",
+        "name": "admin-plan",
+        "alias": "土地规划管理员",
+        "password": "08f8e0260c64418510cefb2b06eee5cd",
+        "role": "plan"
+    },
+    {
+        "id": "08C7A7E99445",
+        "name": "admin-construct",
+        "alias": "施工许可管理员",
+        "password": "9df62e693988eb4e1e1444ece0578579",
+        "role": "construct"
+    },
+    {
+        "id": "4C260F290DE4",
+        "name": "admin-sale",
+        "alias": "预售许可管理员",
+        "password": "77963b7a931377ad4ab5ad6a9cd718aa",
+        "role": "sale"
+    }
+    
+]

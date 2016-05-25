@@ -34,7 +34,6 @@ module.exports = {
             var Sale = require('./Sale');
 
             var PlanLicense = require('./PlanLicense');
-            var ConstructLicense = require('./ConstructLicense');
             var SaleLicense = require('./SaleLicense');
 
             var lands = Land.list();

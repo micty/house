@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../../f/datetimepicker/datetimepicker.mod.debug.css" rel="stylesheet" />
+    <link href="../../../../f/kisp/kisp.debug.css" rel="stylesheet" />
+
+    <link rel="less" href="../../../../style/less/global.less" />
+
+
+    <!--weber.css.begin-->
+    <script>
+        [
+            'index.less',
+            'modules/**/*.less',
+        ]
+    </script>
+    <!--weber.css.end-->
+
+
+</head>
+<body class="iframe">
+    <div id="div-header" class="header">
+        规划许可证 - 发布
+        <button class="save"><i class="icon fa fa-check"></i>提交</button>
+    </div>
+    <div class="container">
+        <div class="main">
+            <table id="table-form" class="form-table" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr class="title">
+                        <td colspan="3">基本信息</td>
+                    </tr>
+                    <tr>
+                        <td class="name">规划许可证号</td>
+                        <td class="value"><input name="number" type="text" /></td>
+                        <td class="tip"><span></span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">规划许可时间</td>
+                        <td class="value"><input name="date" type="text" data-type="date" /></td>
+                        <td class="tip">日期<span>(年月日)</span></td>
+                    </tr>
+
+                    <tr class="title">
+                        <td colspan="3">建筑面积</td>
+                    </tr>
+                    <tr class="sub-title">
+                        <td colspan="3">计容建筑面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">住宅</td>
+                        <td class="value"><input name="residenceSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">商业</td>
+                        <td class="value"><input name="commerceSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">办公</td>
+                        <td class="value"><input name="officeSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value"><input name="otherSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="totalSize0"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+
+                    <tr class="sub-title">
+                        <td colspan="3">不计容建筑面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">地下车库</td>
+                        <td class="value"><input name="parkSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value"><input name="otherSize1" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="totalSize1"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+
+                    <tr class="sub-title">
+                        <td colspan="3">总建筑面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="totalSize"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../../../../f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="../../../../f/miniquery/miniquery.debug.js"></script>
+    <script src="../../../../f/kisp/kisp.debug.js"></script>
+    <script src="../../../../f/autoNumeric/autoNumeric.debug.js"></script>
+    <script src="../../../../f/datetimepicker/datetimepicker.mod.debug.js"></script>
+
+    <script src="../../../../config.js"></script>
+
+
+    <!--weber.js.begin-->
+    <script>
+        [
+            '../../../../lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--weber.js.end-->
+
+
+
+
+</body>
+</html>

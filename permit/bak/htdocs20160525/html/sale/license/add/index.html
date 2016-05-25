@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../../f/font-awesome/css/font-awesome.debug.css?27BF" rel="stylesheet" />
+    <link href="../../../../f/datetimepicker/datetimepicker.mod.debug.css?9446" rel="stylesheet" />
+    <link href="../../../../f/kisp/kisp.debug.css?A8A6" rel="stylesheet" />
+
+    <link href="../../../../style/css/style.less.global.css?FEB5" rel="stylesheet" />
+
+    <!--weber.css.begin-->
+    <link href="../../../../style/css/html.sale.license.add.index.css?BAD3" rel="stylesheet" />
+    <!--weber.css.end-->
+    
+
+    <style>
+        .iframe {
+            min-height: 800px;
+        }
+    </style>
+
+</head>
+<body class="iframe">
+    <div id="div-header" class="header">
+    <!--
+        {text} - 发布
+        <button class="save"><i class="icon fa fa-check"></i>提交</button>
+    -->
+    </div>
+
+    <div class="container">
+        <div id="div-form" class="main">
+        <!--
+            <table class="form-table" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr class="title">
+                        <td colspan="3">基本信息</td>
+                    </tr>
+                    <tr>
+                        <td class="name">{number}证号</td>
+                        <td class="value"><input name="number" type="text" /></td>
+                        <td class="tip"><span></span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">发证日期</td>
+                        <td class="value"><input name="date" type="text" data-type="date" /></td>
+                        <td class="tip">日期<span>(年月日)</span></td>
+                    </tr>
+
+                    
+                    <tr class="title">
+                        <td colspan="3">{title}信息<span>收起<i class="fa fa-angle-double-up"></i></span></td>
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr class="sub-title">
+                        <td colspan="3">{title}计容面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">住宅</td>
+                        <td class="value"><input name="residenceSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">商业</td>
+                        <td class="value"><input name="commerceSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="name">办公</td>
+                        <td class="value"><input name="officeSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value"><input name="otherSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="totalSize0"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+                    
+                    <tr class="sub-title">
+                        <td colspan="3">{title}不计容面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">地下车库</td>
+                        <td class="value"><input name="parkSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value"><input name="otherSize1" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="totalSize1"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+                    
+                    <tr class="sub-title">
+                        <td colspan="3">{title}总面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="totalSize"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr class="sub-title">
+                        <td colspan="3">{title}房屋单元数</td>
+                    </tr>
+                    <tr>
+                        <td class="name">住宅</td>
+                        <td class="value"><input name="residenceCell" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(间)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">商业</td>
+                        <td class="value"><input name="commerceCell" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(间)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">办公</td>
+                        <td class="value"><input name="officeCell" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(间)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value"><input name="otherCell" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(间)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总单元数</td>
+                        <td class="value total" id="totalCell"></td>
+                        <td class="tip">计算<span>(间)</span></td>
+                    </tr>
+                    
+                    
+                    <tr class="title">
+                        <td colspan="3">已售信息<span>收起<i class="fa fa-angle-double-up"></i></span></td>
+                    </tr>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <tr class="sub-title">
+                        <td colspan="3">已售计容面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">住宅</td>
+                        <td class="value"><input name="saled-residenceSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">商业</td>
+                        <td class="value"><input name="saled-commerceSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="name">办公</td>
+                        <td class="value"><input name="saled-officeSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value"><input name="saled-otherSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="saled-totalSize0"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <tr class="sub-title">
+                        <td colspan="3">已售不计容面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">地下车库</td>
+                        <td class="value"><input name="saled-parkSize" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value"><input name="saled-otherSize1" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(平方米)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="saled-totalSize1"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+                    
+                    
+                    <tr class="sub-title">
+                        <td colspan="3">已售总面积</td>
+                    </tr>
+                    <tr>
+                        <td class="name">总面积</td>
+                        <td class="value total" id="saled-totalSize"></td>
+                        <td class="tip">计算<span>(平方米)</span></td>
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr class="sub-title">
+                        <td colspan="3">已售房屋单元数</td>
+                    </tr>
+                    <tr>
+                        <td class="name">住宅</td>
+                        <td class="value"><input name="saled-residenceCell" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(间)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">商业</td>
+                        <td class="value"><input name="saled-commerceCell" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(间)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">办公</td>
+                        <td class="value"><input name="saled-officeCell" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(间)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">其它</td>
+                        <td class="value"><input name="saled-otherCell" type="text" data-type="number" /></td>
+                        <td class="tip">数字<span>(间)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name">总单元数</td>
+                        <td class="value total" id="saled-totalCell"></td>
+                        <td class="tip">计算<span>(间)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        -->
+        </div>
+    </div>
+
+    <script src="../../../../f/jquery/jquery-2.1.1.debug.js?33E0"></script>
+    <script src="../../../../f/miniquery/miniquery.debug.js?7232"></script>
+    <script src="../../../../f/kisp/kisp.debug.js?753F"></script>
+    <script src="../../../../f/autoNumeric/autoNumeric.debug.js?1FDF"></script>
+    <script src="../../../../f/datetimepicker/datetimepicker.mod.debug.js?089D"></script>
+
+    <script src="../../../../config.js?A891"></script>
+
+
+    <!--weber.js.begin-->
+    <script src="../../../../lib/Bridge.js?0BC6"></script>
+    <script src="../../../../lib/Cell.js?6E00"></script>
+    <script src="../../../../lib/DateTimePicker.js?6492"></script>
+    <script src="../../../../lib/LocalStorage.js?E6A6"></script>
+    <script src="../../../../lib/Multitask.js?FCCD"></script>
+    <script src="../../../../lib/NumberField.js?2B03"></script>
+    <script src="../../../../lib/Object.js?167A"></script>
+    <script src="../../../../lib/SessionStorage.js?C73C"></script>
+    <script src="../../../../lib/Size.js?BAF1"></script>
+    <script src="../../../../lib/Tabs.js?7EF4"></script>
+    <script src="../../../../lib/Url.js?E924"></script>
+    <script src="modules/API.js?C1EB"></script>
+    <script src="modules/Form.js?FE21"></script>
+    <script src="modules/Header.js?6B0A"></script>
+    <script src="modules/Router.js?426D"></script>
+    <script src="index.js?DE86"></script>
+    <!--weber.js.end-->
+
+
+
+
+
+</body>
+</html>
