@@ -12,11 +12,25 @@ KISP.launch(function (require, module) {
 
     var Base = module.require('Base');
     var License = module.require('License');
-
+    var Header = module.require('Header');
 
     var user = SessionStorage.get('user');
     var qs = Url.getQueryString(window);
     var id = qs.id;
+
+    if (!id) {
+        KISP.alert('缺少 id', function () {
+            Bridge.close();
+        });
+        return;
+    }
+
+
+    Header.on('edit', function () {
+        Bridge.open(['sale', 'add'], {
+            'id': id,
+        });
+    });
 
     License.on({
         'change': function () {
@@ -61,28 +75,8 @@ KISP.launch(function (require, module) {
     });
 
 
-
-    //说明是编辑的。
-    if (id) { 
-        Base.render(id);
-        License.render(id);
-        return;
-    }
-
-
-
-    //说明是新增的。
-    var licenseId = qs.licenseId;
-    if (!licenseId) {
-        KISP.alert('新增时必须指定规划许可证 licenseId', function () {
-            Bridge.close();
-        });
-        return;
-    }
-
-
-    Base.render(licenseId, true);
-    License.render();
-
+    Header.render();
+    Base.render(id);
+    License.render(id);
 
 });

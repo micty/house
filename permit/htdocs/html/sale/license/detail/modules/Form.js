@@ -52,6 +52,9 @@ define('/Form', function (require, module, exports) {
 
 
         data = Size.format(data);
+        data = Cell.format(data);
+        data = Size.format('saled-', data);
+        data = Cell.format('saled-', data);
 
 
         panel.fill(data);
