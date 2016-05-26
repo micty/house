@@ -29,13 +29,13 @@ define('/License', function (require, module) {
             },
 
             'remove': function () {
-                API.get(current.saleId);
+                API.get(current.id);
             },
         });
 
         Prepare.on({
             'add': function () {
-                panel.fire('add', [0, current.saleId]);
+                panel.fire('add', [0, current.id]);
             },
             'detail': function (item) {
                 panel.fire('detail', [item]);
@@ -53,7 +53,7 @@ define('/License', function (require, module) {
 
         Doing.on({
             'add': function () {
-                panel.fire('add', [1, current.saleId]);
+                panel.fire('add', [1, current.id]);
             },
             'detail': function (item) {
                 panel.fire('detail', [item]);
@@ -73,12 +73,19 @@ define('/License', function (require, module) {
 
 
 
-    panel.on('render', function (saleId) {
+    panel.on('render', function (data) {
+
+        //说明是新增的
+        if (!data) {
+            Prepare.render();
+            Doing.render();
+            return;
+        }
 
 
-        current = { 'saleId': saleId, };
 
-        API.get(saleId);
+        current = data;
+        API.get(data.id);
 
     });
 

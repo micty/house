@@ -25,10 +25,6 @@ define('/Todo', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var land = item.land;
-                    var plan = item.plan;
-                    var license = item.license;
-
                     item = $Object.linear(item);
 
                     var data = $.Object.extend({}, item, {

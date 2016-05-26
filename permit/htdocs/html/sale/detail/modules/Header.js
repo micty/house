@@ -14,7 +14,6 @@ define('/Header', function (require, module) {
     panel.on('init', function () {
 
         panel.$.on('click', 'button', function () {
-
             panel.fire('edit');
         });
  

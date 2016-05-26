@@ -17,6 +17,43 @@ function id$item(list) {
 }
 
 
+function sizes(prefix, item, data) {
+
+    //重载 sizes(item, data)
+    if (typeof prefix == 'object') {
+        data = item;
+        item = prefix;
+        prefix = '';
+    }
+
+    var keys = [
+        'residenceSize',
+        'commerceSize',
+        'officeSize',
+        'otherSize',
+        'parkSize',
+        'otherSize1',
+    ];
+
+
+
+    var obj = $.Object.extend({}, data);
+
+    keys.forEach(function (key) {
+
+        skey = prefix + key;
+
+        if (!(skey in item)) {
+            return;
+        }
+
+        obj[key] = Number(item[skey]) || 0;
+    });
+
+    return obj;
+}
+
+
 
 module.exports = {
 
@@ -43,7 +80,6 @@ module.exports = {
 
 
             var plan_licenses = PlanLicense.list();
-            var construct_licenses = ConstructLicense.list();
             var sale_licenses = SaleLicense.list();
 
 
@@ -51,16 +87,14 @@ module.exports = {
             var id$plan = id$item(plans);
             var id$construct = id$item(constructs);
             var id$sale = id$item(sales);
+            var id$planLicense = id$item(plan_licenses);
+            var id$saleLicense = id$item(sale_licenses);
 
 
             lands = lands.map(function (item) {
-                return {
+                return sizes(item, {
                     'town': item.town,
-                    'commerceSize': item.commerceSize,
-                    'residenceSize': item.residenceSize,
-                    'officeSize': item.officeSize,
-                    'otherSize': item.otherSize,
-                };
+                });
             });
 
 
@@ -76,58 +110,73 @@ module.exports = {
                     return null;
                 }
 
-                return {
+                return sizes(item, {
                     'town': land.town,
-                    'commerceSize': item.commerceSize,
-                    'residenceSize': item.residenceSize,
-                    'officeSize': item.officeSize,
-                    'otherSize': item.otherSize,
-                };
+                });
             });
 
 
-            constructs = $.Array.map(construct_licenses, function (item) {
+            constructs = $.Array.map(constructs, function (item) {
 
-                var construct = id$construct[item.constructId];
-                if (!construct) {
+                var license = id$planLicense[item.licenseId]; //规划许可证
+                if (!license) {
                     return null;
                 }
 
-                var land = id$land[construct.landId];
+                var plan = id$plan[license.planId];
+                if (!plan) {
+                    return null;
+                }
+
+                var land = id$land[plan.landId];
                 if (!land) {
                     return null;
                 }
 
-                return {
+                return sizes(license, {
                     'town': land.town,
-                    'before': item.before,
-                    'commerceSize': item.commerceSize,
-                    'residenceSize': item.residenceSize,
-                    'officeSize': item.officeSize,
-                    'otherSize': item.otherSize,
-                };
+                });
             });
 
 
-            sales = $.Array.map(sale_licenses, function (item) {
 
+            var prepares = [];          //预售许可
+            var doings = [];            //现售备案
+            var saledPrepares = [];    //预售许可，已售部分
+            var saledDoings = [];      //现售备案，已售部分
+
+            sale_licenses.forEach(function (item) {
                 var sale = id$sale[item.saleId];
                 if (!sale) {
                     return null;
                 }
 
-                var land = id$land[sale.landId];
+                var plan = id$plan[sale.planId];
+                if (!plan) {
+                    return null;
+                }
+
+                var land = id$land[plan.landId];
                 if (!land) {
                     return null;
                 }
 
-                return {
+           
+                var obj = sizes(item, {
                     'town': land.town,
-                    'commerceSize': item.commerceSize,
-                    'residenceSize': item.residenceSize,
-                    'officeSize': item.officeSize,
-                    'otherSize': item.otherSize,
-                };
+                });
+
+                var a = item.type == 0 ? prepares : doings;
+                a.push(obj);
+
+                //
+                var obj = sizes('saled-', item, {
+                    'town': land.town,
+                });
+
+                var a = item.type == 0 ? saledPrepares : saledDoings;
+                a.push(obj);
+          
             });
 
 
@@ -139,7 +188,10 @@ module.exports = {
                     'lands': lands,
                     'plans': plans,
                     'constructs': constructs,
-                    'sales': sales,
+                    'prepares': prepares,
+                    'doings': doings,
+                    'saled-prepares': saledPrepares,
+                    'saled-doings': saledDoings,
                 },
             });
 

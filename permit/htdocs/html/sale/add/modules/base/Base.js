@@ -16,14 +16,21 @@ define('/Base', function (require, module) {
 
         API.on('success', {
 
-            'post': function (data, json) {
-                panel.fire('save', [data]);
-                panel.fire('change');
+            'update': function (data) {
+                panel.fire('update', [data]);
+            },
 
+
+            'add': function (data) {
+                panel.fire('add', [data]);
+            },
+
+            'post': function (data) {
+                panel.fire('change');
             },
 
             'get': function (data) {
-         
+                Header.render();
                 Form.render(data);
             },
 
@@ -42,10 +49,8 @@ define('/Base', function (require, module) {
     });
 
 
-    panel.on('render', function (id, isLicense) {
-
-        Header.render();
-        API.get(id, isLicense);
+    panel.on('render', function (data) {
+        API.get(data);
     });
 
    

@@ -25,7 +25,6 @@ define('/Base/Header', function (require, module) {
 
     panel.on('render', function () {
 
-        panel.$.find('button').toggle(user.role == 'land');
 
     });
 

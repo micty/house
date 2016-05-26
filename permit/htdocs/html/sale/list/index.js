@@ -39,17 +39,10 @@ KISP.launch(function (require, module) {
                 url: 'html/plan/detail/index.html?id=' + item.plan.id,
             });
         },
-
-        'license.detail': function (item, index) {
-            Bridge.open({
-                name: '规划许可证详情',
-                url: 'html/plan/license/detail/index.html?id=' + item.license.id,
-            });
-        },
-
+       
         'edit': function (item, index) {
             Bridge.open(['sale', 'add'], {
-                'licenseId': item.license.id,
+                'planId': item.plan.id,
             });
         },
     });
@@ -60,7 +53,7 @@ KISP.launch(function (require, module) {
         'land.detail': function (item, index) {
             Bridge.open({
                 name: '土地出让详情',
-                url: 'html/land/detail/index.html?id=' + item.landId,
+                url: 'html/land/detail/index.html?id=' + item.land.id,
             });
         },
 
@@ -70,16 +63,10 @@ KISP.launch(function (require, module) {
                 url: 'html/plan/detail/index.html?id=' + item.plan.id,
             });
         },
-        'license.detail': function (item, index) {
-            Bridge.open({
-                name: '规划许可证详情',
-                url: 'html/plan/license/detail/index.html?id=' + item.license.id,
-            });
-        },
 
         'detail': function (item, index) {
             Bridge.open({
-                name: '预售许可详情',
+                name: '销售许可详情',
                 url: 'html/sale/detail/index.html?id=' + item.sale.id,
             });
         },

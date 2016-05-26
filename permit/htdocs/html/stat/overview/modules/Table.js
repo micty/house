@@ -6,7 +6,6 @@ define('/Table', function (require, module) {
     var NumberField = require('NumberField');
 
     var panel = KISP.create('Panel', '#div-table');
-    var list = [];
 
 
     panel.on('init', function () {
@@ -15,7 +14,8 @@ define('/Table', function (require, module) {
 
             return {
                 data: {
-
+                    'total0': NumberField.text(data.total0),
+                    'total1': NumberField.text(data.total1),
                 },
 
                 list: data.rows,
@@ -28,7 +28,7 @@ define('/Table', function (require, module) {
 
                         fn: function (item, index) {
 
-                            var value = NumberField.get(item.value) || '';
+                            var value = NumberField.text(item.value) || '';
                             value = value.split(',').join('<span class="sep">,</span>');
 
                             return {
@@ -56,12 +56,7 @@ define('/Table', function (require, module) {
     panel.on('render', function (data) {
 
 
-        list = data;
-
-        //二级模板填充所需要的数据格式
-        panel.fill({
-            'rows': list,
-        });
+        panel.fill(data);
 
 
     });

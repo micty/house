@@ -60,6 +60,7 @@ module.exports = {
                 var item = $.Array.findItem(list, function (item, index) {
                     return item.id == id;
                 });
+
                 if (!item) {
                     res.send({
                         code: 201,
@@ -69,33 +70,21 @@ module.exports = {
                 }
 
 
-                var PlanLicense = require('./PlanLicense');
-                var licenses = PlanLicense.list();
-                var license = $.Array.findItem(licenses, function (license) {
-                    return license.id == item.licenseId;
-                });
-
-                if (!license) {
-                    res.send({
-                        code: 202,
-                        msg: '不存在关联的规划许可证记录',
-                    });
-                    return;
-                }
-
                 var Plan = require('./Plan');
                 var plans = Plan.list();
                 var plan = $.Array.findItem(plans, function (plan) {
-                    return plan.id == license.planId;
+                    return plan.id == item.planId;
                 });
+
                 if (!plan) {
                     res.send({
-                        code: 203,
+                        code: 202,
                         msg: '不存在关联的规划记录',
                     });
                     return;
                 }
 
+               
                 var Land = require('./Land');
                 var lands = Land.list();
                 var land = $.Array.findItem(lands, function (land) {
@@ -103,7 +92,7 @@ module.exports = {
                 });
                 if (!land) {
                     res.send({
-                        code: 204,
+                        code: 203,
                         msg: '不存在关联的土地记录',
                     });
                     return;
@@ -117,7 +106,6 @@ module.exports = {
                     data: {
                         'land': land,
                         'plan': plan,
-                        'license': license,
                         'sale': item,
                     },
                 });
@@ -136,9 +124,9 @@ module.exports = {
     */
     add: function (res, data) {
 
-        var licenseId = data.licenseId;
-        if (!licenseId || licenseId === 'undefined') {
-            emptyError('licenseId', res);
+        var planId = data.planId;
+        if (!planId || planId === 'undefined') {
+            emptyError('planId', res);
             return;
         }
 
@@ -154,13 +142,13 @@ module.exports = {
             }
 
             var item = list.find(function (item) {
-                return item.licenseId == licenseId;
+                return item.planId == planId;
             });
 
             if (item) {
                 res.send({
                     code: 201,
-                    msg: '已存在 licenseId 为' + licenseId + ' 的记录。',
+                    msg: '已存在 planId 为' + planId + ' 的记录。',
                 });
                 return;
             }
@@ -430,25 +418,12 @@ module.exports = {
         try {
             var Land = require('./Land');
             var Plan = require('./Plan');
-            var PlanLicense = require('./PlanLicense');
             var SaleLicense = require('./SaleLicense');
 
             var lands = Land.list();
             var plans = Plan.list();
-            var licenses = PlanLicense.list();
-            var saleLicenses = SaleLicense.list();
-            var list = module.exports.list();
-
-            //统计 sale 所拥有的 sale license 个数。
-            var id$count = {};
-            saleLicenses.forEach(function (item) {
-                var id = item.saleId;
-
-                var count = id$count[id] || 0;
-                count++;
-                id$count[id] = count;
-            });
-
+            var sales = module.exports.list();
+            var licenses = SaleLicense.list();
 
 
             res.send({
@@ -457,9 +432,8 @@ module.exports = {
                 data: {
                     'lands': lands,
                     'plans': plans,
+                    'sales': sales,
                     'licenses': licenses,
-                    'list': list,
-                    'id$count': id$count,
                 },
             });
 

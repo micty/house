@@ -27,8 +27,6 @@ define('/Done', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var land = item.land;
-
                     item = $Object.linear(item);
 
                     var data = $.Object.extend({}, item, {

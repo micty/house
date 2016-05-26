@@ -3,6 +3,8 @@ define('/Done', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
     var SessionStorage = require('SessionStorage');
+    var $Object = require('$Object');
+
 
     var panel = KISP.create('Panel', '#div-done-list');
     var user = SessionStorage.get('user');
@@ -26,17 +28,13 @@ define('/Done', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var land = item.land;
-
+                    item = $Object.linear(item);
 
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
                         'operate-display': display,
                         'license': item.licenses.length,
-                        'land.number': land.number,
-                        'land.town': land.town,
-                        'land.location': land.location,
                     });
 
                     return {

@@ -19,8 +19,8 @@ define('/Base/API', function (require, module, exports) {
     function post(data) {
 
         var id = data.id;
-        var name = id ? 'Sale.update' : 'Sale.add';
-        var api = KISP.create('API', name);
+        var name = id ? 'update' : 'add';
+        var api = KISP.create('API', 'Sale.' + name);
 
         api.on({
 
@@ -50,8 +50,8 @@ define('/Base/API', function (require, module, exports) {
                 toast.show();
 
                 setTimeout(function () {
+                    emitter.fire('success', name, [data]);
                     emitter.fire('success', 'post', [data]);
-
                 }, 1500);
 
             },
@@ -75,10 +75,10 @@ define('/Base/API', function (require, module, exports) {
 
 
 
-    function get(id, isLicense) {
+    function get(data) {
 
 
-        var name = isLicense ? 'PlanLicense.get' : 'Sale.get';
+        var name = data.id ? 'Sale.get': 'Plan.get';
         var api = KISP.create('API', name);
 
         api.on({
@@ -99,17 +99,17 @@ define('/Base/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                alert('读取失败: {0}({1})', msg, code);
+                KISP.alert('读取失败: {0}({1})', msg, code);
             },
 
             'error': function () {
-                alert('读取错误: 网络繁忙，请稍候再试');
+                KISP.alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
 
 
         api.get({
-            'id': id, 
+            'id': data.id || data.planId,
         });
 
     }

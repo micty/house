@@ -33,24 +33,6 @@ KISP.launch(function (require, module) {
     });
 
     License.on({
-        'change': function () {
-            Bridge.refresh(['sale', 'list']);
-        },
-        'add': function (type, saleId) {
-            Bridge.open({
-                name: type == 0 ? '新增预售许可证' : '新增现售备案',
-                url: Url.addQueryString('html/sale/license/add/index.html', {
-                    'type': type,
-                    'saleId': saleId,
-                }),
-            });
-        },
-        'edit': function (item) {
-            Bridge.open({
-                name: item.type == 0 ? '编辑预售许可证' : '编辑现售备案',
-                url: 'html/sale/license/add/index.html?id=' + item.id,
-            });
-        },
         'detail': function (item) {
             Bridge.open({
                 name: item.type == 0 ? '预售许可证详情' : '现售备案详情',
@@ -59,20 +41,6 @@ KISP.launch(function (require, module) {
         },
     });
 
-
-
-    Base.on({
-        'change': function () {
-            Bridge.refresh(['sale', 'list']);
-        },
-        'save': function (item) {
-            if (!id) {
-                id = item.id;
-                Base.render(id); //让新增之后变成编辑状态。
-                License.render(id);
-            }
-        },
-    });
 
 
     Header.render();

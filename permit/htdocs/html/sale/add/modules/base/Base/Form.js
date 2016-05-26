@@ -24,8 +24,6 @@ define('/Base/Form', function (require, module, exports) {
 
         current = data;
 
-        data.license = Size.format(data.license);
-
         data.sale = data.sale || { //针对新增的情况。
             project: '',
             location: '',
@@ -47,7 +45,7 @@ define('/Base/Form', function (require, module, exports) {
 
             var data = {
                 'id': sale.id,
-                'licenseId': current.license.id,
+                'planId': current.plan.id,
             };
 
             panel.$.find('[name]').each(function () {

@@ -6,7 +6,7 @@ define('/Router', function (require, module, exports) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
     var Url = MiniQuery.require('Url');
-
+    var Bridge = require('Bridge');
    
     var panel = KISP.create('Panel');
 

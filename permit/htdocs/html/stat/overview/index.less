@@ -4,7 +4,7 @@
 
 .main {
     /*width: 842px;*/
-    width: 950px;
+    /*width: 950px;*/
     margin: auto;
 
     >.header {
@@ -51,7 +51,7 @@
             /*border-right: none;
             border-bottom: none;*/
             text-align: left;
-            padding: 1px 5px 1px 8px;
+            padding: 0px 5px 0px 8px;
 
             &.group {
                 border-top-width: 2px;
@@ -64,6 +64,23 @@
         }
 
         tr {
+
+            &.header {
+                td {
+                    background: #696969 !important;
+                    color: #fff;
+                    border-right-width: 2px;
+                    text-align: center !important;
+                }
+            }
+
+            &.footer {
+                td {
+                    font-weight: bold;
+                    text-align: center !important;
+                    border-top-width: 2px;
+                }
+            }
             /* key ²¿·Ö*/
             td:nth-child(2n-1) {
                 width: 100px;

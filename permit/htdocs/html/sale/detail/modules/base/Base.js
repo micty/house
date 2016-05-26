@@ -8,18 +8,11 @@ define('/Base', function (require, module) {
     var API = module.require('API');
     var Form = module.require('Form');
 
-
     var panel = KISP.create('Panel', '#div-panel-base');
 
     panel.on('init', function () {
 
         API.on('success', {
-
-            'post': function (data, json) {
-                panel.fire('save', [data]);
-                panel.fire('change');
-
-            },
 
             'get': function (data) {
          
@@ -31,10 +24,8 @@ define('/Base', function (require, module) {
     });
 
 
-    panel.on('render', function (id, isLicense) {
-
-  
-        API.get(id, isLicense);
+    panel.on('render', function (id) {
+        API.get(id);
     });
 
    
