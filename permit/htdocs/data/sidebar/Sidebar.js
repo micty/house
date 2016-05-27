@@ -83,8 +83,23 @@
 
 
     {
-        icon: 'bar-chart',
+        icon: 'table',
         name: '统计报表',
+        url: 'html/stat/overview/index.html',
+    },
+    {
+        icon: 'area-chart',
+        name: '区域统计',
+        url: 'html/stat/overview/index.html',
+    },
+    {
+        icon: 'line-chart',
+        name: '功能统计',
+        url: 'html/stat/overview/index.html',
+    },
+    {
+        icon: 'bar-chart',
+        name: '板块统计',
         url: 'html/stat/overview/index.html',
     },
     
