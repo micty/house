@@ -14,15 +14,14 @@ define('/Formater/Group', function (require, module, exports) {
         { name: '已办预售许可', key: 'prepares', },
         { name: '已办现售备案', key: 'doings', },
 
-    ];
+        {},
+        {},
+        {},
 
-    var towns = [
-        { name: '南庄镇', key: '南庄', },
-        { name: '石湾镇街道', key: '石湾', },
-        { name: '张槎街道', key: '张槎', },
-        { name: '祖庙街道', key: '祖庙', },
-    ];
+        { name: '预售已售面积', key: 'saled-prepares', },
+        { name: '现售已售面积', key: 'saled-doings', },
 
+    ];
 
     function get(list, town, title) {
 
@@ -35,12 +34,19 @@ define('/Formater/Group', function (require, module, exports) {
     }
 
 
-    //取得标准的开始几组
-    function getStandards(data, town) {
+    //取得基础的几组
+    function getBases(data, town) {
 
         var groups = $.Array.keep(roles, function (role) {
-            var list = data[role.key];
+
+            var key = role.key;
+            if (!key) {
+                return [];
+            }
+
+            var list = data[key];
             var title = role.name;
+
             var group = get(list, town, title);
             return group;
         });
@@ -77,7 +83,7 @@ define('/Formater/Group', function (require, module, exports) {
 
 
     return {
-        'getStandards': getStandards,
+        'getBases': getBases,
         'getEmpty': getEmpty,
         'substract': substract,
         'get': get,

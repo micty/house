@@ -100,7 +100,7 @@
     {
         icon: 'bar-chart',
         name: '板块统计',
-        url: 'html/stat/overview/index.html',
+        url: 'html/stat/role/index.html',
     },
     
 ];

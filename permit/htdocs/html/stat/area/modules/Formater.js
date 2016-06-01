@@ -12,8 +12,8 @@ define('/Formater', function (require, module, exports) {
 
     function format(data, town) {
 
-        //标准
-        var groups = Group.getStandards(data, town);
+        //基础
+        var groups = Group.getBases(data, town);
 
         //空白组
         groups[5] = Group.getEmpty(groups[0]);
@@ -23,12 +23,6 @@ define('/Formater', function (require, module, exports) {
 
         //未办施工许可。
         groups[7] = Group.substract(groups[1], groups[2], '未办施工许可');
-
-        //预售已售房屋面积。 
-        groups[8] = Group.get(data['saled-prepares'], town, '预售已售面积');
-
-        //现售已售房屋面积。 
-        groups[9] = Group.get(data['saled-doings'], town, '现售已售面积');
 
 
         var cols = groups.slice(0, 5).map(function (group, index) {
