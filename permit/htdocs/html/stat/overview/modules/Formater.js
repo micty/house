@@ -51,11 +51,11 @@ define('/Formater', function (require, module, exports) {
 
 
         //未办规划许可。
-        var unplans = List.minus(cols[0], cols[1], -1);
+        var unplans = List.minus(cols[0], cols[1]);
         unplans[0].text = '未办规划许可';
      
         //未办施工许可。
-        var unconstructs = List.minus(cols[1], cols[2], -1);
+        var unconstructs = List.minus(cols[1], cols[2]);
         unconstructs[0].text = '未办施工许可';
 
 

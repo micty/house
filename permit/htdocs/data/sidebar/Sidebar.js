@@ -90,7 +90,7 @@
     {
         icon: 'area-chart',
         name: '区域统计',
-        url: 'html/stat/overview/index.html',
+        url: 'html/stat/area/index.html',
     },
     {
         icon: 'line-chart',

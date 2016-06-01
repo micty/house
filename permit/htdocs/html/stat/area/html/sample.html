@@ -1,0 +1,30 @@
+﻿
+<ul class="sub">
+    <li class="left"></li>
+    <li class="right">单位：平方米</li>
+</ul>
+<table class="stat-table" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr class="header">
+            <td colspan="2">土地</td>
+            <td colspan="2">规划</td>
+            <td colspan="2">建设</td>
+            <td colspan="4">销售</td>
+        </tr>
+        #--row.begin--#
+        <tr>
+            #--col.begin--#
+            <td class="{group-class} {sub-group-class}">{name}</td>
+            <td class="{group-class}">{value}</td>
+            #--col.end--#
+        </tr>
+        #--row.end--#
+
+        <tr class="footer">
+            <td colspan="3">未售面积合计<br />（土地出让面积-预售已售-现售已售）</td>
+            <td colspan="2">{total0}</td>
+            <td colspan="3">未售面积合计<br />（取得预售+现售-预售已售-现售已售）</td>
+            <td colspan="2">{total1}</td>
+        </tr>
+    </tbody>
+</table>
