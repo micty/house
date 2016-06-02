@@ -10,8 +10,8 @@ define('Size', function (require, module, exports) {
 
     var sizes = [
         [
-            'commerceSize',
             'residenceSize',
+            'commerceSize',
             'officeSize',
             'otherSize',
         ],
@@ -22,7 +22,11 @@ define('Size', function (require, module, exports) {
     ];
 
 
-
+    //重载：
+    // total(prefix, data, index)
+    // total(prefix, data)
+    // total(data, index)
+    // total(data)
     function total(prefix, data, index) {
 
         //重载 total(data, index);

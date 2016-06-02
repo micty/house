@@ -90,17 +90,18 @@
     {
         icon: 'area-chart',
         name: '区域统计',
-        url: 'html/stat/area/index.html',
+        url: 'html/stat/town/index.html',
+    },
+    {
+        icon: 'bar-chart',
+        name: '版块统计',
+        url: 'html/stat/role/index.html',
     },
     {
         icon: 'line-chart',
         name: '功能统计',
-        url: 'html/stat/overview/index.html',
+        url: 'html/stat/use/index.html',
     },
-    {
-        icon: 'bar-chart',
-        name: '板块统计',
-        url: 'html/stat/role/index.html',
-    },
-    
+
+
 ];

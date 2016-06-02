@@ -23,18 +23,18 @@ KISP.launch(function (require, module) {
         'success': function (data) {
             current = data;
 
-            Tabs.render(0);
+            Tabs.render();
         },
     });
 
 
 
-    Tabs.on('change', function (item) {
+    Tabs.on('change', function (town) {
 
-        Header.render(item);
+        Header.render(town);
 
         var data = current;
-        data = Formater.format(data, item.key);
+        data = Formater.format(data, town.key);
 
         Table.render(data);
 

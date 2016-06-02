@@ -4,7 +4,7 @@ define('/Formater', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
-
+    var NumberField = require('NumberField');
     var Group = module.require('Group');
 
 
@@ -12,7 +12,7 @@ define('/Formater', function (require, module, exports) {
 
     function format(data, role) {
 
-        var clusters = [];
+        var clusters = []; 
         var bases = Group.getBases(data); 
 
         switch (role) {
@@ -36,22 +36,45 @@ define('/Formater', function (require, module, exports) {
 
         }
 
+        console.dir(clusters);
 
-        var colss = $.Array.keep(clusters, function (groups) {
 
-            var names = $.Array.keep(groups[0], function (item) {
-                return item.name;
+        //列数组的数组，即列的二维数组。
+        var colss = $.Array.keep(clusters, function (cluster, clusterNo) {
+
+            var groups = cluster;
+
+            var names = $.Array.keep(groups[0], function (item, index) {
+
+                var isFirst = index == 0;
+
+                return {
+                    'text': item.name,
+                    'isName': true,
+                    'group': isFirst,
+                    'subGroup': isFirst,
+                };
             });
+
 
             //值数组的数组，即值的二维数组。
-            var valuess = $.Array.keep(groups, function (group) {
+            var valuess = $.Array.keep(groups, function (group, groupNo) {
 
-                var values = $.Array.keep(group, function (item) {
-                    return item.value;
+                group = $.Array.keep(group, function (item, index) {
+
+                    var isFirst = index == 0;
+                    var value = item.value;
+
+                    return {
+                        'text': NumberField.text(value),
+                        'group': isFirst,
+                        'subGroup': isFirst,
+                    };
                 });
 
-                return values;
+                return group;
             });
+
 
             var cols = [names].concat(valuess);
 
@@ -73,8 +96,6 @@ define('/Formater', function (require, module, exports) {
         });
 
         var rows = $.Array.transpose(a);
-
-
 
         return {
             'rows': rows,

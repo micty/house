@@ -3,7 +3,7 @@ define('/Table', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
     var SessionStorage = require('SessionStorage');
-    var NumberField = require('NumberField');
+   
 
     var panel = KISP.create('Panel', '#div-table');
 
@@ -31,8 +31,10 @@ define('/Table', function (require, module) {
                             return {
                                 data: {
                                 
-                                    'value': item,
-                                   
+                                    'text': item.text,
+                                    'name-value-class': item.isName ? 'name' : 'value',
+                                    'group-class': item.group ? 'group' : '',
+                                    'sub-group-class': item.subGroup ? 'sub-group' : '',
                                 },
                             };
                         },

@@ -1,0 +1,805 @@
+删除目录 ../build/dist/htdocs/
+复制目录 ../htdocs/ → ../build/dist/htdocs/
+匹配到 22 个模板页:
+    html/construct/add/index.master.html
+    html/construct/detail/index.master.html
+    html/construct/list/index.master.html
+    html/home/index.master.html
+    html/land/add/index.master.html
+    html/land/detail/index.master.html
+    html/land/list/index.master.html
+    html/plan/add/index.master.html
+    html/plan/detail/index.master.html
+    html/plan/license/add/index.master.html
+    html/plan/license/detail/index.master.html
+    html/plan/list/index.master.html
+    html/sale/add/index.master.html
+    html/sale/detail/index.master.html
+    html/sale/license/add/index.master.html
+    html/sale/license/detail/index.master.html
+    html/sale/list/index.master.html
+    html/stat/area/index.master.html
+    html/stat/overview/index.master.html
+    html/stat/role/index.master.html
+    index.master.html
+    login.master.html
+写入 ../build/dist/htdocs/config.js
+------------------------------------------------------------------------------
+>> 开始构建 html/construct/add/index.master.html
+混入 ../build/dist/htdocs/html/construct/add/modules/sample.html
+编译 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+编译 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.debug.css
+写入 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+编译 ../build/dist/htdocs/f/kisp/kisp.debug.css
+写入 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.js
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/construct/add/modules/API.js
+    html/construct/add/modules/Form.js
+    html/construct/add/modules/Header.js
+    html/construct/add/index.js
+    partial/end.js
+编译 ../build/dist/htdocs/style/less/global.less
+写入 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/construct/add/index.less
+写入 ../build/dist/htdocs/style/css/B1CC36B9929169DE63711B9F0ECD521F.css
+写入 ../build/dist/htdocs/html/construct/add/index.html
+<< 完成构建 html/construct/add/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/construct/detail/index.master.html
+混入 ../build/dist/htdocs/html/construct/detail/modules/sample.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/construct/detail/modules/API.js
+    html/construct/detail/modules/Form.js
+    html/construct/detail/modules/Header.js
+    html/construct/detail/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+已编译过 ../build/dist/htdocs/html/construct/detail/index.less
+写入 ../build/dist/htdocs/style/css/B1CC36B9929169DE63711B9F0ECD521F.css
+写入 ../build/dist/htdocs/html/construct/detail/index.html
+<< 完成构建 html/construct/detail/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/construct/list/index.master.html
+复合片段 ../build/dist/htdocs/html/construct/list/modules/todo/panel.html
+复合片段 ../build/dist/htdocs/html/construct/list/modules/done/panel.html
+混入 ../build/dist/htdocs/html/construct/list/modules/todo/sample.html
+混入 ../build/dist/htdocs/html/construct/list/modules/todo/panel.html
+混入 ../build/dist/htdocs/html/construct/list/modules/done/sample.html
+混入 ../build/dist/htdocs/html/construct/list/modules/done/panel.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/construct/list/modules/API.js
+    html/construct/list/modules/done/Done.js
+    html/construct/list/modules/todo/Todo.js
+    html/construct/list/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/construct/list/index.less
+写入 ../build/dist/htdocs/style/css/877772C9F122C5FD2AD8B5FB7FED0015.css
+写入 ../build/dist/htdocs/html/construct/list/index.html
+<< 完成构建 html/construct/list/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/home/index.master.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 32 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/home/modules/Construct/API.js
+    html/home/modules/Construct/Header.js
+    html/home/modules/Construct/List.js
+    html/home/modules/Construct.js
+    html/home/modules/Land/API.js
+    html/home/modules/Land/Header.js
+    html/home/modules/Land/List.js
+    html/home/modules/Land.js
+    html/home/modules/Plan/API.js
+    html/home/modules/Plan/Header.js
+    html/home/modules/Plan/List.js
+    html/home/modules/Plan.js
+    html/home/modules/Sale/API.js
+    html/home/modules/Sale/Header.js
+    html/home/modules/Sale/List.js
+    html/home/modules/Sale.js
+    html/home/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/home/index.less
+写入 ../build/dist/htdocs/style/css/F4855BDD2AB8C22C7ABDD14CC1F7518F.css
+写入 ../build/dist/htdocs/html/home/index.html
+<< 完成构建 html/home/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/land/add/index.master.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/land/add/modules/API.js
+    html/land/add/modules/Form.js
+    html/land/add/modules/Header.js
+    html/land/add/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/land/add/index.less
+写入 ../build/dist/htdocs/style/css/B1CC36B9929169DE63711B9F0ECD521F.css
+写入 ../build/dist/htdocs/html/land/add/index.html
+<< 完成构建 html/land/add/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/land/detail/index.master.html
+混入 ../build/dist/htdocs/html/land/detail/modules/html/sample.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/land/detail/modules/API.js
+    html/land/detail/modules/Form.js
+    html/land/detail/modules/Header.js
+    html/land/detail/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/land/detail/index.less
+写入 ../build/dist/htdocs/style/css/B1CC36B9929169DE63711B9F0ECD521F.css
+写入 ../build/dist/htdocs/html/land/detail/index.html
+<< 完成构建 html/land/detail/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/land/list/index.master.html
+混入 ../build/dist/htdocs/html/land/list/modules/html/sample.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/land/list/modules/API.js
+    html/land/list/modules/Header.js
+    html/land/list/modules/List.js
+    html/land/list/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/land/list/index.less
+写入 ../build/dist/htdocs/style/css/C10F6986897716E08266A294507BB4B7.css
+写入 ../build/dist/htdocs/html/land/list/index.html
+<< 完成构建 html/land/list/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/plan/add/index.master.html
+复合片段 ../build/dist/htdocs/html/plan/add/modules/base/panel.html
+复合片段 ../build/dist/htdocs/html/plan/add/modules/license/panel.html
+混入 ../build/dist/htdocs/html/plan/add/modules/base/demo.html
+混入 ../build/dist/htdocs/html/plan/add/modules/base/sample.html
+混入 ../build/dist/htdocs/html/plan/add/modules/base/panel.html
+混入 ../build/dist/htdocs/html/plan/add/modules/license/sample.html
+混入 ../build/dist/htdocs/html/plan/add/modules/license/panel.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 24 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/plan/add/modules/base/Base/API.js
+    html/plan/add/modules/base/Base/Form.js
+    html/plan/add/modules/base/Base/Header.js
+    html/plan/add/modules/base/Base.js
+    html/plan/add/modules/license/License/API.js
+    html/plan/add/modules/license/License/Header.js
+    html/plan/add/modules/license/License/List.js
+    html/plan/add/modules/license/License.js
+    html/plan/add/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/plan/add/index.less
+编译 ../build/dist/htdocs/html/plan/add/modules/base/panel.less
+编译 ../build/dist/htdocs/html/plan/add/modules/license/panel.less
+写入 ../build/dist/htdocs/style/css/ABAE313EE23FBB0A25A337F45F0F22CC.css
+写入 ../build/dist/htdocs/html/plan/add/index.html
+<< 完成构建 html/plan/add/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/plan/detail/index.master.html
+复合片段 ../build/dist/htdocs/html/plan/detail/modules/base/panel.html
+复合片段 ../build/dist/htdocs/html/plan/detail/modules/license/panel.html
+混入 ../build/dist/htdocs/html/plan/detail/modules/base/demo.html
+混入 ../build/dist/htdocs/html/plan/detail/modules/base/sample.html
+混入 ../build/dist/htdocs/html/plan/detail/modules/base/panel.html
+混入 ../build/dist/htdocs/html/plan/detail/modules/license/sample.html
+混入 ../build/dist/htdocs/html/plan/detail/modules/license/panel.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 23 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/plan/detail/modules/base/Base/API.js
+    html/plan/detail/modules/base/Base/Form.js
+    html/plan/detail/modules/base/Base.js
+    html/plan/detail/modules/Header.js
+    html/plan/detail/modules/license/License/API.js
+    html/plan/detail/modules/license/License/List.js
+    html/plan/detail/modules/license/License.js
+    html/plan/detail/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/plan/detail/index.less
+编译 ../build/dist/htdocs/html/plan/detail/modules/base/panel.less
+编译 ../build/dist/htdocs/html/plan/detail/modules/license/panel.less
+写入 ../build/dist/htdocs/style/css/1922EF9E35522BB6E4C36BF3310EF900.css
+写入 ../build/dist/htdocs/html/plan/detail/index.html
+<< 完成构建 html/plan/detail/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/plan/license/add/index.master.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/plan/license/add/modules/API.js
+    html/plan/license/add/modules/Form.js
+    html/plan/license/add/modules/Header.js
+    html/plan/license/add/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/plan/license/add/index.less
+写入 ../build/dist/htdocs/style/css/D532CA5C648645FFAEFA7D80F67AE19E.css
+写入 ../build/dist/htdocs/html/plan/license/add/index.html
+<< 完成构建 html/plan/license/add/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/plan/license/detail/index.master.html
+混入 ../build/dist/htdocs/html/plan/license/detail/modules/sample.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/plan/license/detail/modules/API.js
+    html/plan/license/detail/modules/Form.js
+    html/plan/license/detail/modules/Header.js
+    html/plan/license/detail/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/plan/license/detail/index.less
+写入 ../build/dist/htdocs/style/css/D532CA5C648645FFAEFA7D80F67AE19E.css
+写入 ../build/dist/htdocs/html/plan/license/detail/index.html
+<< 完成构建 html/plan/license/detail/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/plan/list/index.master.html
+复合片段 ../build/dist/htdocs/html/plan/list/modules/todo/panel.html
+复合片段 ../build/dist/htdocs/html/plan/list/modules/done/panel.html
+混入 ../build/dist/htdocs/html/plan/list/modules/todo/sample.html
+混入 ../build/dist/htdocs/html/plan/list/modules/todo/panel.html
+混入 ../build/dist/htdocs/html/plan/list/modules/done/sample.html
+混入 ../build/dist/htdocs/html/plan/list/modules/done/panel.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/plan/list/modules/API.js
+    html/plan/list/modules/done/Done.js
+    html/plan/list/modules/todo/Todo.js
+    html/plan/list/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/plan/list/index.less
+写入 ../build/dist/htdocs/style/css/877772C9F122C5FD2AD8B5FB7FED0015.css
+写入 ../build/dist/htdocs/html/plan/list/index.html
+<< 完成构建 html/plan/list/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/sale/add/index.master.html
+复合片段 ../build/dist/htdocs/html/sale/add/modules/base/panel.html
+复合片段 ../build/dist/htdocs/html/sale/add/modules/license/License/prepare/panel.html
+复合片段 ../build/dist/htdocs/html/sale/add/modules/license/License/doing/panel.html
+复合片段 ../build/dist/htdocs/html/sale/add/modules/license/panel.html
+混入 ../build/dist/htdocs/html/sale/add/modules/base/sample.html
+混入 ../build/dist/htdocs/html/sale/add/modules/base/panel.html
+混入 ../build/dist/htdocs/html/sale/add/modules/license/License/prepare/sample.html
+混入 ../build/dist/htdocs/html/sale/add/modules/license/License/prepare/panel.html
+混入 ../build/dist/htdocs/html/sale/add/modules/license/License/doing/sample.html
+混入 ../build/dist/htdocs/html/sale/add/modules/license/License/doing/panel.html
+混入 ../build/dist/htdocs/html/sale/add/modules/license/panel.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 29 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/sale/add/modules/base/Base/API.js
+    html/sale/add/modules/base/Base/Form.js
+    html/sale/add/modules/base/Base/Header.js
+    html/sale/add/modules/base/Base.js
+    html/sale/add/modules/license/License/API.js
+    html/sale/add/modules/license/License/doing/Doing/Header.js
+    html/sale/add/modules/license/License/doing/Doing/List.js
+    html/sale/add/modules/license/License/doing/Doing.js
+    html/sale/add/modules/license/License/prepare/Prepare/Header.js
+    html/sale/add/modules/license/License/prepare/Prepare/List.js
+    html/sale/add/modules/license/License/prepare/Prepare.js
+    html/sale/add/modules/license/License.js
+    html/sale/add/modules/Router.js
+    html/sale/add/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/sale/add/index.less
+已编译过 ../build/dist/htdocs/html/sale/add/modules/base/panel.less
+编译 ../build/dist/htdocs/html/sale/add/modules/license/panel.less
+写入 ../build/dist/htdocs/style/css/E4C5CF972587B9C23936F50214A2B596.css
+写入 ../build/dist/htdocs/html/sale/add/index.html
+<< 完成构建 html/sale/add/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/sale/detail/index.master.html
+复合片段 ../build/dist/htdocs/html/sale/detail/modules/base/panel.html
+复合片段 ../build/dist/htdocs/html/sale/detail/modules/license/License/prepare/panel.html
+复合片段 ../build/dist/htdocs/html/sale/detail/modules/license/License/doing/panel.html
+复合片段 ../build/dist/htdocs/html/sale/detail/modules/license/panel.html
+混入 ../build/dist/htdocs/html/sale/detail/modules/base/sample.html
+混入 ../build/dist/htdocs/html/sale/detail/modules/base/panel.html
+混入 ../build/dist/htdocs/html/sale/detail/modules/license/License/prepare/sample.html
+混入 ../build/dist/htdocs/html/sale/detail/modules/license/License/prepare/panel.html
+混入 ../build/dist/htdocs/html/sale/detail/modules/license/License/doing/sample.html
+混入 ../build/dist/htdocs/html/sale/detail/modules/license/License/doing/panel.html
+混入 ../build/dist/htdocs/html/sale/detail/modules/license/panel.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 26 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/sale/detail/modules/base/Base/API.js
+    html/sale/detail/modules/base/Base/Form.js
+    html/sale/detail/modules/base/Base.js
+    html/sale/detail/modules/Header.js
+    html/sale/detail/modules/license/License/API.js
+    html/sale/detail/modules/license/License/doing/Doing/List.js
+    html/sale/detail/modules/license/License/doing/Doing.js
+    html/sale/detail/modules/license/License/prepare/Prepare/List.js
+    html/sale/detail/modules/license/License/prepare/Prepare.js
+    html/sale/detail/modules/license/License.js
+    html/sale/detail/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/sale/detail/index.less
+编译 ../build/dist/htdocs/html/sale/detail/modules/base/panel.less
+编译 ../build/dist/htdocs/html/sale/detail/modules/license/panel.less
+写入 ../build/dist/htdocs/style/css/F296D85B7C081AF89B5706FFC020EC66.css
+写入 ../build/dist/htdocs/html/sale/detail/index.html
+<< 完成构建 html/sale/detail/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/sale/license/add/index.master.html
+混入 ../build/dist/htdocs/html/sale/license/add/modules/sales.html
+混入 ../build/dist/htdocs/html/sale/license/add/modules/saled.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 20 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/sale/license/add/modules/API.js
+    html/sale/license/add/modules/Form.js
+    html/sale/license/add/modules/Header.js
+    html/sale/license/add/modules/Router.js
+    html/sale/license/add/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/sale/license/add/index.less
+写入 ../build/dist/htdocs/style/css/6E10F91A3CB886B433315837B52DF036.css
+写入 ../build/dist/htdocs/html/sale/license/add/index.html
+<< 完成构建 html/sale/license/add/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/sale/license/detail/index.master.html
+混入 ../build/dist/htdocs/html/sale/license/detail/modules/sales.html
+混入 ../build/dist/htdocs/html/sale/license/detail/modules/saled.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/datetimepicker/datetimepicker.mod.min.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/sale/license/detail/modules/API.js
+    html/sale/license/detail/modules/Form.js
+    html/sale/license/detail/modules/Header.js
+    html/sale/license/detail/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/sale/license/detail/index.less
+写入 ../build/dist/htdocs/style/css/6E10F91A3CB886B433315837B52DF036.css
+写入 ../build/dist/htdocs/html/sale/license/detail/index.html
+<< 完成构建 html/sale/license/detail/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/sale/list/index.master.html
+复合片段 ../build/dist/htdocs/html/sale/list/modules/todo/panel.html
+复合片段 ../build/dist/htdocs/html/sale/list/modules/done/panel.html
+混入 ../build/dist/htdocs/html/sale/list/modules/todo/sample.html
+混入 ../build/dist/htdocs/html/sale/list/modules/todo/panel.html
+混入 ../build/dist/htdocs/html/sale/list/modules/done/sample.html
+混入 ../build/dist/htdocs/html/sale/list/modules/done/panel.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 19 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/sale/list/modules/API.js
+    html/sale/list/modules/done/Done.js
+    html/sale/list/modules/todo/Todo.js
+    html/sale/list/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/sale/list/index.less
+写入 ../build/dist/htdocs/style/css/877772C9F122C5FD2AD8B5FB7FED0015.css
+写入 ../build/dist/htdocs/html/sale/list/index.html
+<< 完成构建 html/sale/list/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/stat/area/index.master.html
+混入 ../build/dist/htdocs/html/stat/area/html/sample.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 22 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/stat/area/modules/API.js
+    html/stat/area/modules/Formater/Group.js
+    html/stat/area/modules/Formater.js
+    html/stat/area/modules/Header.js
+    html/stat/area/modules/Table.js
+    html/stat/area/modules/Tabs.js
+    html/stat/area/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/stat/area/index.less
+写入 ../build/dist/htdocs/style/css/A0846D704D06C4C9078CF79920F5DAF3.css
+写入 ../build/dist/htdocs/html/stat/area/index.html
+<< 完成构建 html/stat/area/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/stat/overview/index.master.html
+混入 ../build/dist/htdocs/html/stat/overview/html/sample.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 22 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/stat/overview/modules/API.js
+    html/stat/overview/modules/Formater/Column.js
+    html/stat/overview/modules/Formater/Group.js
+    html/stat/overview/modules/Formater/List.js
+    html/stat/overview/modules/Formater.js
+    html/stat/overview/modules/Table.js
+    html/stat/overview/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/stat/overview/index.less
+写入 ../build/dist/htdocs/style/css/0C9583070F121CF38C99C5C0EF08A27B.css
+写入 ../build/dist/htdocs/html/stat/overview/index.html
+<< 完成构建 html/stat/overview/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 html/stat/role/index.master.html
+混入 ../build/dist/htdocs/html/stat/role/html/sample.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 22 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    html/stat/role/modules/API.js
+    html/stat/role/modules/Formater/Group.js
+    html/stat/role/modules/Formater.js
+    html/stat/role/modules/Header.js
+    html/stat/role/modules/Table.js
+    html/stat/role/modules/Tabs.js
+    html/stat/role/index.js
+    partial/end.js
+已编译过 ../build/dist/htdocs/style/css/style.less.global.css
+编译 ../build/dist/htdocs/html/stat/role/index.less
+写入 ../build/dist/htdocs/style/css/A0846D704D06C4C9078CF79920F5DAF3.css
+写入 ../build/dist/htdocs/html/stat/role/index.html
+<< 完成构建 html/stat/role/index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 index.master.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 23 个文件:
+    partial/begin.js
+    lib/Array.js
+    lib/Bridge.js
+    lib/Cell.js
+    lib/DateTimePicker.js
+    lib/LocalStorage.js
+    lib/Multitask.js
+    lib/NumberField.js
+    lib/Object.js
+    lib/SessionStorage.js
+    lib/Size.js
+    lib/StatUse.js
+    lib/Tabs.js
+    lib/Url.js
+    modules/index/Iframes.js
+    modules/index/MenuData.js
+    modules/index/PageList.js
+    modules/index/PageTabs.js
+    modules/index/Sidebar.js
+    modules/index/Tips.js
+    modules/index/UserInfos.js
+    index.js
+    partial/end.js
+编译 ../build/dist/htdocs/style/less/global.less
+编译 ../build/dist/htdocs/style/less/index.less
+写入 ../build/dist/htdocs/style/css/B70D4124C9D06374D92C085AECD1CC92.css
+写入 ../build/dist/htdocs/index.html
+<< 完成构建 index.master.html
+------------------------------------------------------------------------------
+>> 开始构建 login.master.html
+已编译过 ../build/dist/htdocs/f/font-awesome/css/font-awesome.debug.css
+已编译过 ../build/dist/htdocs/f/kisp/kisp.debug.css
+合并 5 个文件:
+    partial/begin.js
+    lib/LocalStorage.js
+    lib/SessionStorage.js
+    login.js
+    partial/end.js
+编译 ../build/dist/htdocs/style/less/login.less
+写入 ../build/dist/htdocs/style/css/10E6B66F7D50498ABF8AD66D5CF0870B.css
+写入 ../build/dist/htdocs/login.html
+<< 完成构建 login.master.html
+------------------------------------------------------------------------------
+清理 12 个文件:
+    ../build/dist/htdocs/api/GetNewsList.js
+    ../build/dist/htdocs/api/GetRecommedList.js
+    ../build/dist/htdocs/api/GetSignupList.js
+    ../build/dist/htdocs/api/home/flow.js
+    ../build/dist/htdocs/api/home/message.js
+    ../build/dist/htdocs/api/home/query.js
+    ../build/dist/htdocs/api/home/todo.js
+    ../build/dist/htdocs/api/login/login.js
+    ../build/dist/htdocs/api/Stat.overview.js
+    ../build/dist/htdocs/style/less/index0.less
+    ../build/dist/htdocs/f/jquery/jquery-2.1.1.min.map
+    ../build/dist/htdocs/f/font-awesome/readme.md
+=================================全部构建完成=================================

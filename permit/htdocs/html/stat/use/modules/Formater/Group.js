@@ -2,9 +2,9 @@
 define('/Formater/Group', function (require, module, exports) {
 
     var $ = require('$');
-    var StatUse = require('StatUse');
     var $Array = require('Array');
 
+    var StatTown = module.require('StatTown');
 
 
     var roles = [
@@ -23,19 +23,10 @@ define('/Formater/Group', function (require, module, exports) {
 
     ];
 
-    function get(list, town, title) {
-
-        list = $.Array.grep(list, function (item) {
-            return item.town == town;
-        });
-
-        var group = StatUse.get(list, title);
-        return group;
-    }
 
 
     //取得基础的几组
-    function getBases(data, town) {
+    function getBases(data, use) {
 
         var groups = $.Array.keep(roles, function (role) {
 
@@ -47,7 +38,7 @@ define('/Formater/Group', function (require, module, exports) {
             var list = data[key];
             var title = role.name;
 
-            var group = get(list, town, title);
+            var group = StatTown.get(list, use, title);
             return group;
         });
 
@@ -86,7 +77,6 @@ define('/Formater/Group', function (require, module, exports) {
         'getBases': getBases,
         'getEmpty': getEmpty,
         'substract': substract,
-        'get': get,
     };
 
 });

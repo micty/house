@@ -8,15 +8,14 @@ define('/MenuData', function (require, module, exports) {
     var KISP = require('KISP');
     var Script = MiniQuery.require('Script');
 
+    var key = '__Sidebar__';
     var list = null;
 
     var home = {
         name: '首页',
         isHome: true,
         id: $.String.random(5),
-        //id: '0-0',
         url: 'html/home/index.html',
-        //url: 'html/welcome/index.html',
     };
 
 
@@ -31,11 +30,11 @@ define('/MenuData', function (require, module, exports) {
             return;
         }
 
-        var url = 'data/sidebar/Sidebar.js';
+        var url = 'data/Sidebar.js';
 
         Script.load(url, function () {
 
-            list = window['__Sidebar__'] || [];
+            list = window[key] || [];
 
             $.Array.each(list, function (item, no) {
 
