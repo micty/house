@@ -10,21 +10,19 @@ KISP.launch(function (require, module) {
  
     var MD5 = KISP.require('MD5');
 
-    
+    var User = require('User');
 
-    var LocalStorage = require('LocalStorage');
-    var SessionStorage = require('SessionStorage');
+   
 
 
 
     function login() {
 
-        SessionStorage.remove('user');
 
-        var name = $('#txt-name').val();
+        var number = $('#txt-number').val();
         var password = $('#txt-password').val();
 
-        if (!name) {
+        if (!number) {
             KISP.alert('请输入用户名');
             return;
         }
@@ -36,7 +34,7 @@ KISP.launch(function (require, module) {
 
 
         post({
-            'name': name,
+            'number': number,
             'password': password,
         });
     }
@@ -58,7 +56,7 @@ KISP.launch(function (require, module) {
 
     function post(data) {
 
-        var api = KISP.create('API', 'Login.login');
+        var api = KISP.create('API', 'User.login');
 
         var loading = null;
 
@@ -75,9 +73,8 @@ KISP.launch(function (require, module) {
 
             'success': function (data, json, xhr) {
 
-                SessionStorage.set('user', data);
-                LocalStorage.set('user', data);
 
+                User.set(data);
 
                 var toast = KISP.create('Toast', {
                     text: '登录成功',
@@ -110,20 +107,20 @@ KISP.launch(function (require, module) {
         var password = MD5.encrypt(data.password);
 
         api.post({
-            'name': data.name,
+            'number': data.number,
             'password': password,
         });
 
     }
 
 
-    var user = LocalStorage.get('user');
-    //debugger;
-    var txtName = document.getElementById('txt-name');
+    var user = User.get(true);
+
+    var txtNumber = document.getElementById('txt-number');
     var txtPassword = document.getElementById('txt-password');
 
     if (user) {
-        txtName.value = user.name;
+        txtNumber.value = user.number;
         txtPassword.focus();
     }
     else {

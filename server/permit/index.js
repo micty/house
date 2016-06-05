@@ -42,13 +42,6 @@ app.all('/*', function (req, res, next) {
 
 
 
-//登录模块
-var Login = require('./modules/Login');
-app.post('/Login.login', function (req, res) {
-    Login.login(res, req.body);
-});
-
-
 //土地出让模块
 var Land = require('./modules/Land');
 app.get('/Land.get', function (req, res) {
@@ -179,4 +172,29 @@ app.get('/SaleLicense.list', function (req, res) {
 var Stat = require('./modules/Stat');
 app.get('/Stat.get', function (req, res) {
     Stat.get(res);
+});
+
+
+
+
+
+//用户模块
+var User = require('./modules/User');
+app.get('/User.get', function (req, res) {
+    User.get(res, req.query.id);
+});
+app.post('/User.add', function (req, res) {
+    User.add(res, req.body);
+});
+app.post('/User.update', function (req, res) {
+    User.update(res, req.body);
+});
+app.get('/User.remove', function (req, res) {
+    User.remove(res, req.query.id);
+});
+app.get('/User.list', function (req, res) {
+    User.list(res);
+});
+app.post('/User.login', function (req, res) {
+    User.login(res, req.body);
 });

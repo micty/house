@@ -4,6 +4,7 @@ define('/Todo', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
     var Bridge = require('Bridge');
+    var User = require('User');
     var Size = require('Size');
 
     var List = module.require('List');
@@ -13,12 +14,13 @@ define('/Todo', function (require, module) {
     panel.on('init', function () {
 
 
+        var display = User.is('plan') ? '' : 'display: none;';
 
         panel.template(['row'], function (data, index) {
 
             return {
                 data: {
-                    'operate-display': '',
+                    'operate-display': display,
                 },
 
                 list: data.list,
@@ -28,7 +30,7 @@ define('/Todo', function (require, module) {
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
-                        'operate-display': '',
+                        'operate-display': display,
                         'datetime': item.datetime.split(' ')[0],
                         'totalSize': Size.totalText(item),
                         'size': Size.text(item, 'size'),

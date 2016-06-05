@@ -2,19 +2,17 @@
 define('/Done', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
-    var SessionStorage = require('SessionStorage');
+    var User = require('User');
     var $Object = require('$Object');
 
     var panel = KISP.create('Panel', '#div-done-list');
-    var user = SessionStorage.get('user');
+
     var list = [];
 
     panel.on('init', function () {
 
-        var display = user.role == 'plan' ? '' : 'display: none;';
+        var display = User.is('sale') ? '' : 'display: none;';
 
-        //test
-        display = '';
 
         panel.template(['row'], function (data, index) {
 

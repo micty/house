@@ -67,10 +67,15 @@
         url: 'html/sale/add/index.html',
         cmd: ['sale', 'add'],
         display: false,
-        border: true,
 
     },
-
+    {
+        icon: 'plus',
+        name: '用户发布',
+        url: 'html/user/add/index.html',
+        cmd: ['user', 'add'],
+        display: false,
+    },
 
     ////详情页
     //{
@@ -101,7 +106,14 @@
         icon: 'line-chart',
         name: '功能统计',
         url: 'html/stat/use/index.html',
+        border: true,
     },
+    {
+        icon: 'user',
+        name: '用户管理',
+        url: 'html/user/list/index.html',
+        cmd: ['user', 'list'],
 
+    },
 
 ];

@@ -5,8 +5,8 @@ define('/Header', function (require, module) {
 
     var $ = require('$');
     var KISP = require('KISP');
-    var SessionStorage = require('SessionStorage');
-    var user = SessionStorage.get('user');
+    var User = require('User');
+ 
 
     
     var panel = KISP.create('Panel', '#div-header');
@@ -24,6 +24,7 @@ define('/Header', function (require, module) {
 
     panel.on('render', function () {
 
+        panel.$.toggleClass('noop', !User.is('sale'));
 
     });
 

@@ -3,7 +3,6 @@ define('/List', function (require, module) {
 
     var $ = require('$');
     var KISP = require('KISP');
-    var Size = require('Size');
     var User = require('User');
 
     var panel = KISP.create('Panel', '#div-list');
@@ -11,8 +10,7 @@ define('/List', function (require, module) {
 
     panel.on('init', function () {
 
-        var display = User.is('land') ? '' : 'display: none;';
-
+        var display = User.isSuper() ? '' : 'display: none;';
 
         panel.template(['row'],  function (data, index) {
 
@@ -30,8 +28,6 @@ define('/List', function (require, module) {
                         'no': index + 1,
                         'operate-display': display,
                         'datetime': item.datetime.split(' ')[0],
-                        'totalSize': Size.totalText(item),
-                        'size': Size.text(item, 'size'),
                     });
 
                     return {

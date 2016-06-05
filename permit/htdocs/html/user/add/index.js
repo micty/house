@@ -16,25 +16,20 @@ KISP.launch(function (require, module) {
     var Header = module.require('Header');
 
 
-    if (!User.is('land')) {
-
-        KISP.alert('你没有权限操作本页面', function () {
+    if (!User.isSuper()) {
+        KISP.alert('你无权操作本页面', function () {
             Bridge.close();
         });
-
         return;
     }
-
 
 
     API.on('success', {
 
         'post': function (data, json) {
             Bridge.close();
-            Bridge.open(['land', 'list']);
-            Bridge.refresh(['plan', 'list']);
-            Bridge.refresh(['construct', 'list']);
-            Bridge.refresh(['sale', 'list']);
+            Bridge.open(['user', 'list']);
+           
         },
 
         'get': function (data) {
@@ -58,8 +53,6 @@ KISP.launch(function (require, module) {
 
 
     Header.render();
-
-
 
 
 

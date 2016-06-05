@@ -1,31 +1,50 @@
 [
     {
-        "id": "67FDC871F785",
-        "name": "admin-land",
-        "alias": "土地出让管理员",
-        "password": "47bce5c74f589f4867dbd57e9ca9f808",
-        "role": "land"
+        "id": "3C58B1ED56CA",
+        "department": "土地",
+        "number": "land",
+        "password": "900150983cd24fb0d6963f7d28e17f72",
+        "name": "邓先生",
+        "sex": "男",
+        "phone": "13760187469",
+        "address": "新浪乐居",
+        "role": "land",
+        "datetime": "2016-06-05 17:34:48"
     },
     {
-        "id": "E59F3DCB1B0B",
-        "name": "admin-plan",
-        "alias": "土地规划管理员",
-        "password": "08f8e0260c64418510cefb2b06eee5cd",
-        "role": "plan"
+        "id": "A60CA49D17F6",
+        "department": "规划",
+        "number": "plan",
+        "password": "900150983cd24fb0d6963f7d28e17f72",
+        "name": "邓先生",
+        "sex": "男",
+        "phone": "",
+        "address": "",
+        "role": "plan",
+        "datetime": "2016-06-05 17:34:56"
     },
     {
-        "id": "08C7A7E99445",
-        "name": "admin-construct",
-        "alias": "施工许可管理员",
-        "password": "9df62e693988eb4e1e1444ece0578579",
-        "role": "construct"
+        "id": "694E445302EA",
+        "department": "建设",
+        "number": "construct",
+        "password": "900150983cd24fb0d6963f7d28e17f72",
+        "name": "邓先生",
+        "sex": "男",
+        "phone": "",
+        "address": "",
+        "role": "construct",
+        "datetime": "2016-06-05 17:35:05"
     },
     {
-        "id": "4C260F290DE4",
-        "name": "admin-sale",
-        "alias": "预售许可管理员",
-        "password": "77963b7a931377ad4ab5ad6a9cd718aa",
-        "role": "sale"
+        "id": "100F323C1432",
+        "department": "销售",
+        "number": "sale",
+        "password": "900150983cd24fb0d6963f7d28e17f72",
+        "name": "邓先生",
+        "sex": "男",
+        "phone": "",
+        "address": "",
+        "role": "sale",
+        "datetime": "2016-06-05 17:35:21"
     }
-    
 ]

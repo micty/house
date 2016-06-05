@@ -5,8 +5,7 @@ define('/Header', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
-    var SessionStorage = require('SessionStorage');
-    var user = SessionStorage.get('user');
+    var User = require('User');
    
     var panel = KISP.create('Panel', '#div-header');
 
@@ -34,6 +33,10 @@ define('/Header', function (require, module, exports) {
         panel.fill({
             'text': type$text[data.type],
         });
+
+        panel.$.toggleClass('noop', !User.is('sale'));
+
+
     });
 
 
