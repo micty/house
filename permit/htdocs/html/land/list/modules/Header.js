@@ -24,8 +24,7 @@ define('/Header', function (require, module) {
 
 
     panel.on('render', function () {
-
-        panel.$.find('button').toggle(User.is('land'));
+        panel.$.toggleClass('noop', !User.is('land'));
 
     });
 

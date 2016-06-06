@@ -11,8 +11,7 @@ define('/Done', function (require, module) {
 
     panel.on('init', function () {
 
-
-        var display = User.is('plan') ? '' : 'display: none;';
+        var display = User.display('plan');
 
 
         panel.template(['row'], function (data, index) {

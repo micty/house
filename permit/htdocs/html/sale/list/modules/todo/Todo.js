@@ -13,7 +13,7 @@ define('/Todo', function (require, module) {
 
     panel.on('init', function () {
 
-        var display = User.is('sale') ? '' : 'display: none;';
+        var display = User.display('sale');
 
 
         panel.template(['row'], function (data, index) {

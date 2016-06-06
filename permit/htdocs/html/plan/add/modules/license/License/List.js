@@ -3,23 +3,19 @@ define('/License/List', function (require, module) {
 
     var $ = require('$');
     var KISP = require('KISP');
-    var SessionStorage = require('SessionStorage');
     var Size = require('Size');
 
     var panel = KISP.create('Panel', '#div-license-list');
-    var user = SessionStorage.get('user');
     var list = [];
 
     panel.on('init', function () {
 
-        var display = user.role == 'land' ? '' : 'display: none;';
 
 
         panel.template(['row'],  function (data, index) {
 
             return {
                 data: {
-                    'operate-display': display,
                 },
 
                 list: data.list,
@@ -30,7 +26,6 @@ define('/License/List', function (require, module) {
                     data = $.Object.extend(data, item, {
                         'index': index,
                         'no': index + 1,
-                        'operate-display': '',
                         'datetime': item.datetime.split(' ')[0],
                     
                         'totalSize0': Size.totalText(item, 0),

@@ -23,7 +23,7 @@ define('/Sale/List', function (require, module) {
 
             Bridge.open({
                 name: '预售许可详情',
-                url: 'html/sale/detail/index.html?id=' + item.id,
+                url: 'html/sale/detail/index.html?id=' + item.sale.id,
             });
 
         });
@@ -41,8 +41,10 @@ define('/Sale/List', function (require, module) {
 
             return {
                 'index': index,
-                'title': item.project,
-                'date': item.datetime.split(' ')[0],
+                'title': item.land.number,
+                'project': item.plan.project,
+                'location': item.sale.location,
+                'date': item.sale.datetime.split(' ')[0],
             };
         });
 

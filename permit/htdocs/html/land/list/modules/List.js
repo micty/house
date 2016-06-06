@@ -11,7 +11,7 @@ define('/List', function (require, module) {
 
     panel.on('init', function () {
 
-        var display = User.is('land') ? '' : 'display: none;';
+        var display = User.display('land');
 
 
         panel.template(['row'],  function (data, index) {

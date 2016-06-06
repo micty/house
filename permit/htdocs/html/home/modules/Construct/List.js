@@ -23,7 +23,7 @@ define('/Construct/List', function (require, module) {
 
             Bridge.open({
                 name: '建设许可详情',
-                url: 'html/construct/detail/index.html?id=' + item.id,
+                url: 'html/construct/detail/index.html?id=' + item.construct.id,
             });
 
         });
@@ -39,12 +39,17 @@ define('/Construct/List', function (require, module) {
 
         panel.fill(list, function (item, index) {
 
+
             return {
                 'index': index,
-                'title': item.number,
-                'date': item.datetime.split(' ')[0],
+                'title': item.construct.number,
+                'number': item.land.number,
+                'project': item.plan.project,
+                'date': item.construct.datetime.split(' ')[0],
             };
         });
+
+
 
         var nodata = list.length == 0;
         panel.$.toggleClass('nodata', nodata);

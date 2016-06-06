@@ -42,6 +42,8 @@ define('/Land/List', function (require, module) {
             return {
                 'index': index,
                 'title': item.number,
+                'location': item.location,
+                'winner': item.winner,
                 'date': item.datetime.split(' ')[0],
             };
         });

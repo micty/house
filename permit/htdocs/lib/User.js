@@ -32,17 +32,25 @@ define('User', function (require, module, exports) {
         return user.role == 'administrator';
     }
 
+
     function is(role) {
         var user = get();
-        return user.role == role;
+
+        return user.role == role ||
+            user.role == 'administrator';
     }
 
+
+    function display(role) {
+        return is(role) ? '' : 'display: none;';
+    }
 
     return {
         'get': get,
         'set': set,
         'isSuper': isSuper,
         'is': is,
+        'display': display,
     };
 
 

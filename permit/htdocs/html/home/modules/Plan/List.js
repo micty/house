@@ -39,9 +39,13 @@ define('/Plan/List', function (require, module) {
 
         panel.fill(list, function (item, index) {
 
+            console.log(item);
             return {
                 'index': index,
+                'number': item.land.number,
                 'title': item.project,
+                'location': item.land.location,
+                'count': item.licenses.length,
                 'date': item.datetime.split(' ')[0],
             };
         });

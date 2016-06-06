@@ -6,7 +6,7 @@ KISP.launch(function (require, module) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
     var Bridge = require('Bridge');
-    var SessionStorage = require('SessionStorage');
+    var User = require('User');
 
     var Url = MiniQuery.require('Url');
 
@@ -15,9 +15,12 @@ KISP.launch(function (require, module) {
     var Header = module.require('Header');
 
 
-    var user = SessionStorage.get('user');
-    var qs = Url.getQueryString(window);
-    var id = qs.id;
+    if (!User.is('construct')) {
+        KISP.alert('你没有权限操作本页面', function () {
+            Bridge.close();
+        });
+        return;
+    }
 
 
 
@@ -47,6 +50,11 @@ KISP.launch(function (require, module) {
         API.post(data);
     });
 
+
+
+
+    var qs = Url.getQueryString(window);
+    var id = qs.id;
 
     //说明是编辑的。
     if (id) {

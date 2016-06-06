@@ -5,8 +5,6 @@ define('/License/Doing/Header', function (require, module) {
 
     var $ = require('$');
     var KISP = require('KISP');
-    var SessionStorage = require('SessionStorage');
-    var user = SessionStorage.get('user');
 
     
     var panel = KISP.create('Panel', '#div-license-doing-header');

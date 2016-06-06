@@ -3,24 +3,21 @@ define('/License/Prepare/List', function (require, module) {
 
     var $ = require('$');
     var KISP = require('KISP');
-    var SessionStorage = require('SessionStorage');
 
     var Cell = require('Cell');
     var Size = require('Size');
 
     var panel = KISP.create('Panel', '#div-license-prepare-list');
-    var user = SessionStorage.get('user');
     var list = [];
 
     panel.on('init', function () {
-
 
 
         panel.template(['row'],  function (data, index) {
 
             return {
                 data: {
-                    'operate-display': '',
+                   
                 },
 
                 list: data.list,
@@ -30,9 +27,8 @@ define('/License/Prepare/List', function (require, module) {
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
-                        'operate-display': '',
+                    
                         'datetime': item.datetime.split(' ')[0],
-
 
                         'totalSize': Size.totalText(item),
                         'totalCell': Cell.totalText(item),

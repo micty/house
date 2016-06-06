@@ -53,7 +53,7 @@ define('/UserInfos', function (require, module, exports) {
         panel.fill({
             'name': user.name,
             'number': user.number,
-            'department': user.department,
+            'department': user.department || '',
             'message-count': 0,
         });
     });

@@ -17,18 +17,13 @@ KISP.launch(function (require, module) {
 
 
     if (!User.is('land')) {
-
         KISP.alert('你没有权限操作本页面', function () {
             Bridge.close();
         });
-
         return;
     }
 
-
-
     API.on('success', {
-
         'post': function (data, json) {
             Bridge.close();
             Bridge.open(['land', 'list']);
@@ -58,7 +53,6 @@ KISP.launch(function (require, module) {
 
 
     Header.render();
-
 
 
 

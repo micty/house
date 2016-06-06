@@ -10,7 +10,7 @@ define('/Done', function (require, module) {
 
     panel.on('init', function () {
 
-        var display = User.is('construct') ? '' : 'display: none;';
+        var display = User.display('construct');
 
 
         panel.template(['row'], function (data, index) {

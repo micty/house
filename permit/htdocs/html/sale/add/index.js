@@ -6,13 +6,20 @@ KISP.launch(function (require, module) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
     var Bridge = require('Bridge');
-    var SessionStorage = require('SessionStorage');
+    var User = require('User');
     var Url = MiniQuery.require('Url');
 
     var Base = module.require('Base');
     var License = module.require('License');
     var Router = module.require('Router');
 
+
+    if (!User.is('sale')) {
+        KISP.alert('你没有权限操作本页面', function () {
+            Bridge.close();
+        });
+        return;
+    }
 
 
     License.on({

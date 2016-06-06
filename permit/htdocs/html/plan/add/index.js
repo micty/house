@@ -5,14 +5,24 @@ KISP.launch(function (require, module) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
     var Bridge = require('Bridge');
+    var User = require('User');
 
     var Url = MiniQuery.require('Url');
 
     var Base = module.require('Base');
     var License = module.require('License');
 
-    var qs = Url.getQueryString(window);
-    var id = qs.id;
+
+    if (!User.is('plan')) {
+        KISP.alert('你没有权限操作本页面', function () {
+            Bridge.close();
+        });
+        return;
+    }
+
+
+
+
 
 
     License.on({
@@ -54,6 +64,10 @@ KISP.launch(function (require, module) {
     });
 
 
+
+
+    var qs = Url.getQueryString(window);
+    var id = qs.id;
 
     //说明是编辑的。
     if (id) { 
