@@ -5,9 +5,6 @@ define('/Formater/Group/StatTown', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
 
-    var NumberField = require('NumberField');
-
-  
     var towns = [
         { key: '南庄', name: '南庄镇', },
         { key: '石湾', name: '石湾镇街道', },
@@ -38,11 +35,11 @@ define('/Formater/Group/StatTown', function (require, module, exports) {
 
         var items = $.Array.keep(towns, function (town) {
 
-            var items = $.Array.grep(list, function (item) {
+            var a = $.Array.grep(list, function (item) {
                 return item.town == town.key;
             });
 
-            var total = sum(list, use);
+            var total = sum(a, use);
 
             return {
                 'name': town.name,

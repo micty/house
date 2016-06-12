@@ -27,7 +27,9 @@ define('/Formater', function (require, module, exports) {
 
             case 'construct':
                 clusters[0] = bases[2];
-                clusters[1] = Group.substract(bases[1], bases[2], '未办施工许可');
+
+                //未办施工许可 = 土地出让 - 已办施工许可
+                clusters[1] = Group.substract(bases[0], bases[2], '未办施工许可');
                 break;
 
             case 'sale':

@@ -55,7 +55,8 @@ define('/Formater', function (require, module, exports) {
         unplans[0].text = '未办规划许可';
      
         //未办施工许可。
-        var unconstructs = List.minus(cols[1], cols[2]);
+        //未办施工许可 = 土地出让 - 已办施工许可
+        var unconstructs = List.minus(cols[0], cols[2]);
         unconstructs[0].text = '未办施工许可';
 
 
