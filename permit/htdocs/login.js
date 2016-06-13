@@ -124,7 +124,7 @@ KISP.launch(function (require, module) {
         txtPassword.focus();
     }
     else {
-        txtUser.focus();
+        txtNumber.focus();
     }
 
 

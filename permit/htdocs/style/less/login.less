@@ -1,9 +1,4 @@
 
-
-@green: #00b69a;
-@grey-light: #b2bccc;
-@grey-dark: #637994;
-
 body {
     margin: 0;
     padding: 0;
@@ -14,138 +9,63 @@ body {
     background-repeat: no-repeat;
 }
 
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
-
-.clear {
-    display: block;
-    clear: both;
-    content: "";
-}
-
-
-
-.login-box {
+.container {
     font-family: Microsoft YaHei, simhei;
-    font-size: 16px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-top: -92px;
+    margin-left: -180px;
 
     .title {
-        font-size: 48px;
-        margin-top: 88px;
-        height: 80px;
-        line-height: 80px;
         text-align: center;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        color: #fff;
+        font-size: 30px;
+        color: #279AC5;
     }
 
-    .content {
-        margin-top: 15px;
+    .main {
+        margin: 20px auto;
+        width: 300px;
+        color: #637994;
+        border-radius: 4px;
+        list-style: none;
 
-        &:after {
-            .clear;
+
+
+        input {
+            width: 226px;
+            height: 16px;
+            line-height: 22px;
+            border: 1px solid #d3dcea;
+            border-top: 0;
+            padding: 12px 16px;
+            margin: 0;
+            font-size: 20px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
         }
+    }
 
+    .footer {
+        text-align: center;
+        margin-top: 10px;
 
-        .login-panel {
-            img {
-                border: none;
-            }
-
-            margin: 0px auto;
-            width: 300px;
-            /*border: 1px solid #dedae8;*/
-            color: @grey-dark;
-            border-radius: 4px;
-            vertical-align: middle;
-            position: relative;
-            /*background: #fff;*/
-            ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                padding-bottom: 10px;
-
-                li {
-                    height: 41px;
-                }
-            }
-
-
-
-            .hidden {
-                display: none;
-            }
-
-            .tabs:after {
-                .clear;
-            }
-
-            .select-tab {
-                text-align: center;
-                width: 100%;
-                height: 40px;
-                line-height: 40px;
-                color: #fff;
-                font-size: 30px;
-
-                color: #279AC5;
-            }
-
-
-            .user-label {
-                margin: 1px 20px 0;
-                padding-right: 2px;
-
-                input {
-                    width: 226px;
-                    height: 16px;
-                    line-height: 22px;
-                    border: 1px solid #d3dcea;
-                    border-top: 0;
-                    padding: 12px 16px;
-                    margin: 0;
-                    font-size: 20px;
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                    border-bottom-left-radius: 4px;
-                    border-bottom-right-radius: 4px;
-                }
-            }
-
-            .first {
-                margin-top: 30px !important;
-
-                input {
-                    border-top: 1px solid #d3dcea;
-                    border-top-left-radius: 4px;
-                    border-top-right-radius: 4px;
-                    border-bottom-left-radius: 0;
-                    border-bottom-right-radius: 0;
-                }
-            }
-
-
-
-            .login-bt {
-                margin: 20px 20px 0;
-                line-height: 42px;
-                background: #8cc96e;
-                color: white;
-                text-align: center;
-                cursor: pointer;
-                border-radius: 4px;
-                font-size: 20px;
-            }
-
-            .disabled {
-                background: @grey-light;
-                cursor: not-allowed;
-            }
+        button {
+            background-color: #8BC34A;
+            border: none;
+            color: #fff;
+            padding: 10px 97px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            font-family: Microsoft YaHei, simhei;
         }
     }
 }
