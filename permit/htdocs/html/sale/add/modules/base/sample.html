@@ -4,41 +4,49 @@
             <td class="name">土地挂牌编号</td>
             <td class="value readonly">{land.number}</td>
             <td class="tip"><span>只读</span></td>
+            <td class="desc none">{land.numberDesc}</td>
         </tr>
         <tr>
             <td class="name">土地区域</td>
             <td class="value readonly">{land.town}</td>
             <td class="tip"><span>只读</span></td>
+            <td class="desc none">{land.townDesc}</td>
         </tr>
         <tr>
             <td class="name">土地出让合同号</td>
             <td class="value readonly">{land.contract}</td>
             <td class="tip"><span>只读</span></td>
+            <td class="desc none">{land.contractDesc}</td>
         </tr>
         <tr>
             <td class="name">土地证号</td>
             <td class="value readonly">{land.license}</td>
             <td class="tip"><span>只读</span></td>
+            <td class="desc none">{land.licenseDesc}</td>
         </tr>
         <tr>
             <td class="name">规划项目名称</td>
             <td class="value readonly">{plan.project}</td>
             <td class="tip"><span>只读</span></td>
+            <td class="desc none">{plan.projectDesc}</td>
         </tr>
         <tr>
             <td class="name">建设单位</td>
             <td class="value readonly">{plan.developer}</td>
             <td class="tip"><span>只读</span></td>
+            <td class="desc none">{plan.developerDesc}</td>
         </tr>
         <tr>
             <td class="name">项目名称</td>
             <td class="value"><input name="project" type="text" value="{sale.project}" /></td>
             <td class="tip"><span>必填</span></td>
+            <td class="desc"><input name="projectDesc" type="text" placeholder="备注" value="{sale.projectDesc}" /></td>
         </tr>
         <tr>
             <td class="name">公安门牌</td>
             <td class="value"><input name="location" type="text" value="{sale.location}" /></td>
             <td class="tip"></td>
+            <td class="desc"><input name="locationDesc" type="text" placeholder="备注" value="{sale.locationDesc}" /></td>
         </tr>
     </tbody>
 </table>

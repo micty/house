@@ -27,6 +27,8 @@ define('/Base/Form', function (require, module, exports) {
         data.sale = data.sale || { //针对新增的情况。
             project: '',
             location: '',
+            projectDesc: '',
+            locationDesc: '',
         };
 
         data = $Object.linear(data);

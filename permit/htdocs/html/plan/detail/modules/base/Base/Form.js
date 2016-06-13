@@ -29,6 +29,10 @@ define('/Base/Form', function (require, module, exports) {
             'land.number': land.number,
             'land.town': land.town,
             'land.location': land.location,
+
+            'land.numberDesc': land.numberDesc,
+            'land.townDesc': land.townDesc,
+            'land.locationDesc': land.locationDesc,
         });
 
         panel.fill(data);
