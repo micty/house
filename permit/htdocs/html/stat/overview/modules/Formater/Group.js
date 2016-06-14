@@ -2,6 +2,7 @@
 define('/Formater/Group', function (require, module, exports) {
 
     var $ = require('$');
+    var $Array = require('Array');
 
 
     //示例数据
@@ -41,11 +42,18 @@ define('/Formater/Group', function (require, module, exports) {
 
 
     var roles = [
-        { text: '土地出让', key: 'lands', },
-        { text: '已办规划许可', key: 'plans', },
-        { text: '已办施工许可', key: 'constructs', },
-        { text: '已办预售许可', key: 'prepares', },
-        { text: '已办现售备案', key: 'doings', },
+        { name: '土地出让', key: 'lands', },
+        { name: '已办规划许可', key: 'plans', },
+        { name: '已办施工许可', key: 'constructs', },
+        { name: '已办预售许可', key: 'prepares', },
+        { name: '已办现售备案', key: 'doings', },
+
+        {},
+        {},
+        {},
+
+        { name: '预售已售面积', key: 'saled-prepares', },
+        { name: '现售已售面积', key: 'saled-doings', },
 
     ];
 
@@ -133,26 +141,67 @@ define('/Formater/Group', function (require, module, exports) {
 
         var total = sum(useList, 'value') / 2;
 
-        return {
+        var group = {
             'text': text,
             'value': total,
             'uses': useList,
             'towns': townList,
         };
 
+        return linearize(group);
+
+    }
+
+    //把一个分组转成列数组。
+    function linearize(group) {
+        var list = [];
+
+        list.push({
+            'text': group.text,
+            'value': group.value,
+            'group': true,
+            'subGroup': true,
+        });
+
+        list = list.concat(group.uses);
+
+        $.Array.each(group.towns, function (town) {
+
+            list.push({
+                'text': town.text,
+                'value': town.value,
+                'subGroup': true,
+            });
+
+            list = list.concat(town.uses);
+        });
+
+        return list;
     }
 
 
-    //取得标准的开始几组
-    function getStandards(data) {
+
+
+
+
+
+    //取得基础的几组
+    function getBases(data) {
 
         var groups = $.Array.keep(roles, function (role) {
-            var text = role.text;
-            var list = data[role.key];
-            var group = get(text, list);
+
+            var key = role.key;
+            if (!key) {
+                return [];
+            }
+
+            var title = role.name;
+            var list = data[key];
+            var group = get(title, list);
 
             return group;
         });
+
 
         return groups;
     }
@@ -160,10 +209,35 @@ define('/Formater/Group', function (require, module, exports) {
 
 
 
+    function getEmpty(group) {
+
+        //空白组
+        group = $.Array.keep(group, function () {
+            return {
+                name: '',
+                value: '',
+                text: '',
+            };
+        });
+
+        group[0].group = true;
+        group[0].subGroup = true;
+
+        return group;
+    }
+
+
+    function substract(A, B, name) {
+        var group = $Array.substract(A, B);
+        group[0].name = name;
+        return group;
+    }
 
     return {
         'get': get,
-        'getStandards': getStandards,
+        'getBases': getBases,
+        'getEmpty': getEmpty,
+        'substract': substract,
       
     };
 

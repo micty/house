@@ -94,6 +94,7 @@ module.exports = {
             lands = lands.map(function (item) {
                 return sizes(item, {
                     'town': item.town,
+                    'size': Number(item.size) || 0,
                 });
             });
 

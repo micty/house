@@ -35,6 +35,7 @@ define('/Table', function (require, module) {
                                     'name-value-class': item.isName ? 'name' : 'value',
                                     'group-class': item.group ? 'group' : '',
                                     'sub-group-class': item.subGroup ? 'sub-group' : '',
+                                    'hidden-class': item.hidden ? 'hidden' : '',
                                 },
                             };
                         },

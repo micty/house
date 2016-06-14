@@ -8,7 +8,7 @@ define('/Formater/Group', function (require, module, exports) {
 
 
     var roles = [
-        { name: '土地出让', key: 'lands', },
+        { name: '出让可建面积', key: 'lands', },
         { name: '已办规划许可', key: 'plans', },
         { name: '已办施工许可', key: 'constructs', },
         { name: '已办预售许可', key: 'prepares', },
@@ -43,15 +43,8 @@ define('/Formater/Group', function (require, module, exports) {
     function getCluster(title, list) {
 
         var groups = $.Array.keep(towns, function (town) {
-
             var group = get(title, list, town.key);
-
             return group;
-
-            //return {
-            //    'town': town.key,
-            //    'list': group,
-            //};
         });
 
         return groups;

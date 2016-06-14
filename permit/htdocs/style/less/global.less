@@ -209,7 +209,6 @@ table.form-table {
         &.none {
             background: #f5f5f5;
         }
-
     }
 
 
@@ -454,6 +453,14 @@ table.stat-table {
         &.sub-group {
             font-weight: bold;
         }
+
+        &.hidden {
+            display: none;
+        }
+
+        &.transparent {
+            opacity: 0;
+        }
     }
 
 
@@ -477,9 +484,25 @@ table.stat-table {
 
         &.footer {
             td {
-                font-weight: bold;
-                text-align: center;
                 border-top-width: 2px;
+
+                &.name {
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                &.value {
+                    font-weight: bold;
+                }
+
+                .title {
+                    font-weight: bold;
+                }
+
+                .desc {
+                    /*color: gray;*/
+                }
             }
         }
 

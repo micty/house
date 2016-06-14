@@ -18,12 +18,15 @@ define('/Formater', function (require, module, exports) {
         //空白组
         groups[5] = Group.getEmpty(groups[0]);
 
-        //未办规划许可。
-        groups[6] = Group.substract(groups[0], groups[1], '未办规划许可');
+        ////未办规划许可。
+        //groups[6] = Group.substract(groups[0], groups[1], '未办规划许可');
+        groups[6] = Group.getEmpty(groups[0]);
 
-        //未办施工许可。
-        //未办施工许可 = 土地出让 - 已办施工许可
-        groups[7] = Group.substract(groups[0], groups[2], '未办施工许可');
+
+        ////未办施工许可。
+        ////未办施工许可 = 土地出让 - 已办施工许可
+        //groups[7] = Group.substract(groups[0], groups[2], '未办施工许可');
+        groups[7] = Group.getEmpty(groups[0]);
 
 
         var cols = groups.slice(0, 5).map(function (group, index) {
@@ -36,7 +39,7 @@ define('/Formater', function (require, module, exports) {
 
         return {
             'rows': rows,
-            'total0': groups[0][0].value - groups[8][0].value - groups[9][0].value,
+            'total0': groups[1][0].value - groups[8][0].value - groups[9][0].value,
             'total1': groups[3][0].value + groups[4][0].value - groups[8][0].value - groups[9][0].value,
         };
 
