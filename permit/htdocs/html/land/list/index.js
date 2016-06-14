@@ -13,24 +13,34 @@ KISP.launch(function (require, module) {
     var API = module.require('API');
     var Header = module.require('Header');
     var List = module.require('List');
+    var Tabs = module.require('Tabs');
 
     var currentIndex = -1;
+    var current = null;
 
-    Header.on('add', function () {
-        Bridge.open(['land', 'add']);
+
+    Tabs.on('change', function (item) {
+        List.render(current, item.key);
     });
 
     API.on('success', {
-
         'get': function (data) {
-            List.render(data);
+            current = data;
+            Tabs.render(0);
         },
-
         'remove': function () {
             List.remove(currentIndex);
             Bridge.refresh(['plan', 'list']);
         },
     });
+
+
+
+
+    Header.on('add', function () {
+        Bridge.open(['land', 'add']);
+    });
+
 
     List.on({
 

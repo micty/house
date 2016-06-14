@@ -11,13 +11,29 @@ KISP.launch(function (require, module) {
     var API = module.require('API');
     var Todo = module.require('Todo');
     var Done = module.require('Done');
+    var Tabs = module.require('Tabs');
 
+
+    var current = null;
+
+
+    Tabs.on('change', {
+        'todo': function () {
+            Done.hide();
+            Todo.render(current.todo);
+        },
+        'done': function () {
+            Todo.hide();
+            Done.render(current.done);
+        },
+    });
 
     API.on('success', {
         'get': function (data) {
-         
-            Todo.render(data.todo);
-            Done.render(data.done);
+
+            current = data;
+            Tabs.render(0);
+            
         },
 
         'remove': function () {
@@ -69,6 +85,9 @@ KISP.launch(function (require, module) {
         },
     });
    
+
+
+
 
     API.get();
     

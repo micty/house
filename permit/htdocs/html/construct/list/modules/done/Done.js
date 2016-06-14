@@ -5,7 +5,7 @@ define('/Done', function (require, module) {
     var User = require('User');
     var $Object = require('$Object');
 
-    var panel = KISP.create('Panel', '#div-done-list');
+    var panel = KISP.create('Panel', '#div-panel-done');
     var list = [];
 
     panel.on('init', function () {
@@ -53,8 +53,7 @@ define('/Done', function (require, module) {
 
             if (cmd == 'remove') {
                 var msg = '确认要删除施工许可证【' + item.construct.number + '】';
-
-                KISP.confirm(msg, function () {
+                top.KISP.confirm(msg, function () {
                     panel.fire(cmd, [item, index]);
                 });
                 return;

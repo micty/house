@@ -838,5 +838,70 @@
         "otherSize1": "636.54",
         "id": "E3A240A512E9",
         "datetime": "2016-06-14 17:05:16"
+    },
+    {
+        "planId": "A07476F10011",
+        "number": "建字第440604201300191号",
+        "date": "2013-05-30",
+        "residenceSize": "86609.9",
+        "commerceSize": "0",
+        "officeSize": "0",
+        "otherSize": "560.82",
+        "parkSize": "60016.1",
+        "otherSize1": "2369.18",
+        "id": "F21CA08EF286",
+        "datetime": "2016-06-14 19:16:59"
+    },
+    {
+        "planId": "A07476F10011",
+        "number": "建字第440604201300192号",
+        "date": "2013-05-30",
+        "residenceSize": "0",
+        "commerceSize": "11751.48",
+        "officeSize": "0",
+        "otherSize": "0",
+        "parkSize": "0",
+        "otherSize1": "121.44",
+        "id": "F8B946061C6F",
+        "datetime": "2016-06-14 19:17:10"
+    },
+    {
+        "planId": "A07476F10011",
+        "number": "建字第440604201300193号",
+        "date": "2013-05-30",
+        "residenceSize": "0",
+        "commerceSize": "2451.22",
+        "officeSize": "41679.96",
+        "otherSize": "0",
+        "parkSize": "0",
+        "otherSize1": "0",
+        "id": "6FACED531646",
+        "datetime": "2016-06-14 19:19:47"
+    },
+    {
+        "planId": "A07476F10011",
+        "number": "建字第440604201400181号",
+        "date": "2014-05-30",
+        "residenceSize": "0",
+        "commerceSize": "9415.95",
+        "officeSize": "86164.17",
+        "otherSize": "5670.39",
+        "parkSize": "65819.3",
+        "otherSize1": "3305.39",
+        "id": "CBD623A9A817",
+        "datetime": "2016-06-14 19:34:23"
+    },
+    {
+        "planId": "A07476F10011",
+        "number": "建字第440604201400182号",
+        "date": "2014-05-30",
+        "residenceSize": "0",
+        "commerceSize": "53585.99",
+        "officeSize": "132736.03",
+        "otherSize": "6677.32",
+        "parkSize": "0",
+        "otherSize1": "2750.27",
+        "id": "9417D2BFF028",
+        "datetime": "2016-06-14 19:36:40"
     }
 ]

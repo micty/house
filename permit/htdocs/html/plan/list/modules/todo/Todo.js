@@ -8,7 +8,7 @@ define('/Todo', function (require, module) {
     var Size = require('Size');
 
     var List = module.require('List');
-    var panel = KISP.create('Panel', '#div-todo-list');
+    var panel = KISP.create('Panel', '#div-panel-todo');
     var list = [];
 
     panel.on('init', function () {

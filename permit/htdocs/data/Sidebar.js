@@ -113,7 +113,13 @@
         name: '用户管理',
         url: 'html/user/list/index.html',
         cmd: ['user', 'list'],
+    },
 
+    {
+        icon: 'tree',
+        name: '逻辑流程图',
+        url: 'html/doc/tree/index.html',
+      
     },
 
 ];

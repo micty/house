@@ -4,7 +4,7 @@
         <th>土地挂牌编号</th>
         <th class="town">土地区域</th>
         <th>规划项目名称</th>
-        <th>建设单位</th>
+        <th style="display:none;">建设单位</th>
         <th>销售项目名称</th>
         <th>公安门牌</th>
         <th style="{operate-display}">操作</th>
@@ -19,7 +19,7 @@
         <td>
             <a data-index="{index}" data-cmd="plan.detail">{plan.project}</a>
         </td>
-        <td>{plan.developer}</td>
+        <td style="display:none;">{plan.developer}</td>
         <td>
             <a data-index="{index}" data-cmd="detail">{sale.project}</a>
         </td>

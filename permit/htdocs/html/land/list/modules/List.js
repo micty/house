@@ -53,7 +53,7 @@ define('/List', function (require, module) {
 
             if (cmd == 'remove') {
                 var msg = '确认要删除【' + item.number + '】';
-                KISP.confirm(msg, function () {
+                top.KISP.confirm(msg, function () {
                     panel.fire(cmd, [item, index]);
                 });
                 return;
@@ -66,8 +66,13 @@ define('/List', function (require, module) {
     });
 
 
-    panel.on('render', function (data) {
+    panel.on('render', function (data, town) {
 
+        if (town) {
+            data = data.filter(function (item) {
+                return item.town == town;
+            });
+        }
         
         list = data;
 

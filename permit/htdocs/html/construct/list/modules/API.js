@@ -122,8 +122,8 @@ define('/API', function (require, module, exports) {
                 });
 
                 emitter.fire('success', 'get', [{
-                    'todos': todos,
-                    'dones': dones,
+                    'todo': todos,
+                    'done': dones,
                 }]);
             },
 

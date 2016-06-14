@@ -49,7 +49,7 @@ define('/List', function (require, module) {
 
             if (cmd == 'remove') {
                 var msg = '确认要删除【' + item.number + '】';
-                KISP.confirm(msg, function () {
+                top.KISP.confirm(msg, function () {
                     panel.fire(cmd, [item, index]);
                 });
                 return;
