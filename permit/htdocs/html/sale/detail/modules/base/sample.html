@@ -2,7 +2,9 @@
     <tbody>
         <tr>
             <td class="name">土地挂牌编号</td>
-            <td class="value readonly">{land.number}</td>
+            <td class="value readonly">
+                <a data-cmd="land.detail">{land.number}</a>
+            </td>
             <td class="tip"></td>
             <td class="desc none">{land.numberDesc}</td>
         </tr>
@@ -26,7 +28,9 @@
         </tr>
         <tr>
             <td class="name">规划项目名称</td>
-            <td class="value readonly">{plan.project}</td>
+            <td class="value readonly">
+                <a data-cmd="plan.detail">{plan.project}</a>
+            </td>
             <td class="tip"></td>
             <td class="desc none">{plan.projectDesc}</td>
         </tr>

@@ -1,7 +1,5 @@
 ﻿
-
 KISP.launch(function (require, module) {
-
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -14,27 +12,36 @@ KISP.launch(function (require, module) {
     var Header = module.require('Header');
     var List = module.require('List');
     var Tabs = module.require('Tabs');
+    var Pager = module.require('Pager');
 
-    var currentIndex = -1;
-    var current = null;
+    var pageSize = KISP.data('pager').size;
 
 
     Tabs.on('change', function (item) {
-        List.render(current, item.key);
+
+        API.get({
+            'pageNo': 1,
+            'pageSize': pageSize,
+            'town': item.key,
+        });
     });
 
     API.on('success', {
-        'get': function (data) {
-            current = data;
-            Tabs.render(0);
+        'get': function (data, page) {
+
+         
+            List.render(data);
+
+            if (page.no == 1) {   //翻页引起的，不需要重新渲染。
+                Pager.render(page);
+            }
         },
         'remove': function () {
-            List.remove(currentIndex);
             Bridge.refresh(['plan', 'list']);
+
+            API.get();
         },
     });
-
-
 
 
     Header.on('add', function () {
@@ -43,7 +50,6 @@ KISP.launch(function (require, module) {
 
 
     List.on({
-
         'detail': function (item, index) {
             Bridge.open({
                 name: '土地出让详情',
@@ -52,7 +58,6 @@ KISP.launch(function (require, module) {
         },
 
         'remove': function (item, index) {
-            currentIndex = index;
             API.remove(item.id);
         },
 
@@ -63,10 +68,15 @@ KISP.launch(function (require, module) {
             });
         },
     });
+
+    Pager.on({
+        'change': function (no) {
+            API.get({ 'pageNo': no });
+        },
+    });
     
 
-  
-    API.get();
     Header.render();
+    Tabs.render(0);
     
 });

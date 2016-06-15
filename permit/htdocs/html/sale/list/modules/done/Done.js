@@ -2,66 +2,32 @@
 define('/Done', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
-    var User = require('User');
-    var $Object = require('$Object');
+
+    var List = module.require('List');
+    var Pager = module.require('Pager');
 
     var panel = KISP.create('Panel', '#div-panel-done');
-
     var list = [];
+    var pageSize = KISP.data('pager').size;
 
     panel.on('init', function () {
 
-        var display = User.display('sale');
+        Pager.on({
+            'change': function (no) {
 
+                var begin = (no - 1) * pageSize;
+                var end = begin + pageSize;
+                var items = list.slice(begin, end);
 
-        panel.template(['row'], function (data, index) {
+                List.render(items);
 
-            return {
-                data: {
-                    'operate-display': display,
-                },
-
-                list: data.list,
-
-                fn: function (item, index) {
-
-                    item = $Object.linear(item);
-
-                    var data = $.Object.extend({}, item, {
-                        'index': index,
-                        'no': index + 1,
-                        'operate-display': display,
-                    });
-
-                    return {
-                        'data': data,
-                    };
-                },
-            };
+            },
         });
 
-
-
-
-        panel.$.on('click', '[data-cmd]', function (event) {
-
-            var btn = this;
-            var index = btn.getAttribute('data-index');
-            var cmd = btn.getAttribute('data-cmd');
-            var item = list[index];
-
-            if (cmd == 'remove') {
-                var msg = '确认要删除【' + item.sale.project + '】' + 
-                    '这也将会删除其所拥有的预售许可证';
-
-                top.KISP.confirm(msg, function () {
-                    panel.fire(cmd, [item, index]);
-                });
-                return;
-            }
-
-            panel.fire(cmd, [item, index]);
-
+        List.on({
+            'cmd': function (cmd, item) {
+                panel.fire(cmd, [item]);
+            },
         });
 
     });
@@ -72,12 +38,15 @@ define('/Done', function (require, module) {
 
         list = data;
 
-        //二级模板填充所需要的数据格式
-        panel.fill({
-            'list': list,
+        Pager.render({
+            'no': 1,
+            'size': pageSize,
+            'total': data.length,
         });
 
-        panel.$.toggleClass('nodata', list.length == 0);
+        var items = list.slice(0, pageSize);
+        List.render(items);
+
 
     });
 

@@ -17,15 +17,25 @@ define('/Form', function (require, module, exports) {
 
 
 
-
+    var current = null;
 
     panel.on('fill', function () {
+
+        panel.$.on('click', '[data-cmd]', function () {
+
+            var cmd = this.getAttribute('data-cmd');
+            cmd = cmd.split('.')[0];
+
+            var data = current[cmd];
+            panel.fire('detail', cmd, [data]);
+        });
 
     });
 
 
     panel.on('render', function (data) {
 
+        current = data;
 
         var license = data.license;
 

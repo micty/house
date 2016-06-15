@@ -46,6 +46,10 @@ define('/Base', function (require, module) {
             API.post(data);
         });
 
+
+        Form.on('detail', function (cmd, data) {
+            panel.fire('detail', cmd, [data]);
+        });
     });
 
 

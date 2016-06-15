@@ -1,0 +1,35 @@
+﻿<!--Samples.Pager--!
+
+<ul id="{ul-id}" class="Pager footer">
+    <li class="page-count">
+        共<span> {count} </span>页 <span> {total} </span>条记录
+    </li>
+    <li class="buttons">
+        <ul>
+            <li class="LR-button {first-disabled-class}" data-button="previous" title="上一页">
+                <i class="left-btn"></i>
+            </li>
+
+            #--item.begin--#
+            <li class="item {active}" {data-no}>{no}</li>
+            #--item.end--#
+
+            #--more.begin--#
+            <li class="item more"></li>
+            #--more.end--#
+
+            <li class="LR-button {final-disabled-class}"  data-button="next" title="下一页">
+                <i class="right-btn"></i>
+            </li>
+        </ul>
+    </li>
+
+
+    <li class="page-jump">
+        <span>到第</span>
+        <input id="{txt-id}" type="text" class="page-number" value="{toNo}" {txt-disabled}/><span>页</span>
+        <a href="javascript:" class="jump-button {jump-disabled-class}" data-button="to">确定</a>
+    </li>
+</ul>
+
+--Samples.Pager-->

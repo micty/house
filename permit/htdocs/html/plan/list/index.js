@@ -43,13 +43,13 @@ KISP.launch(function (require, module) {
 
 
     Todo.on({
-        'detail': function (item, index) {
+        'detail': function (item) {
             Bridge.open({
                 name: '土地出让详情',
                 url: 'html/land/detail/index.html?id=' + item.id,
             });
         },
-        'edit': function (item, index) {
+        'edit': function (item) {
             Bridge.open(['plan', 'add'], {
                 'landId': item.id,
             });

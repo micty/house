@@ -36,6 +36,29 @@ KISP.launch(function (require, module) {
     });
 
 
+    Form.on('detail', {
+        'land': function (land) {
+            Bridge.open({
+                name: '土地出让详情',
+                url: 'html/land/detail/index.html?id=' + land.id,
+            });
+        },
+        'plan': function (plan) {
+            Bridge.open({
+                name: '规划许可详情',
+                url: 'html/plan/detail/index.html?id=' + plan.id,
+            });
+        },
+        'license': function (license) {
+            Bridge.open({
+                name: '规划许可证详情',
+                url: 'html/plan/license/detail/index.html?id=' + license.id,
+            });
+        },
+    });
+
+
+
     if (!id) {
         KISP.alert('必须指定 id', function () {
             Bridge.close();

@@ -38,6 +38,10 @@
             //在 paper/list 用到
             url: '../../../../../index.html',
         },
+
+        'pager': {
+            size: 20, //分页大小
+        },
      
     });
 

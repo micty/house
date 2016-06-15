@@ -3,76 +3,57 @@ define('/Todo', function (require, module) {
 
     var $ = require('$');
     var KISP = require('KISP');
-    var Bridge = require('Bridge');
-    var User = require('User');
-    var Size = require('Size');
 
     var List = module.require('List');
+    var Pager = module.require('Pager');
+
     var panel = KISP.create('Panel', '#div-panel-todo');
     var list = [];
+    var pageSize = KISP.data('pager').size;
+
 
     panel.on('init', function () {
 
+        Pager.on({
+            'change': function (no) {
+                
+                var begin = (no - 1) * pageSize;
+                var end = begin + pageSize;
+                var items = list.slice(begin, end);
 
-        var display = User.display('plan');
+                List.render(items);
 
-        panel.template(['row'], function (data, index) {
-
-            return {
-                data: {
-                    'operate-display': display,
-                },
-
-                list: data.list,
-
-                fn: function (item, index) {
-
-                    var data = $.Object.extend({}, item, {
-                        'index': index,
-                        'no': index + 1,
-                        'operate-display': display,
-                        'datetime': item.datetime.split(' ')[0],
-                        'totalSize': Size.totalText(item),
-                        'size': Size.text(item, 'size'),
-                    });
-
-                    return {
-                        'data': data,
-                    };
-                },
-            };
+            },
         });
 
-
-
-
-        panel.$.on('click', '[data-cmd]', function (event) {
-
-            var btn = this;
-            var index = btn.getAttribute('data-index');
-            var cmd = btn.getAttribute('data-cmd');
-            var item = list[index];
-
-            panel.fire(cmd, [item, index]);
-
+        List.on({
+            'cmd': function (cmd, item) {
+                panel.fire(cmd, [item]);
+            },
         });
-
+      
     });
 
 
 
 
     panel.on('render', function (data) {
+        
         list = data;
 
-        //二级模板填充所需要的数据格式
-        panel.fill({
-            'list': list,
+        Pager.render({
+            'no': 1,
+            'size': pageSize,
+            'total': data.length,
         });
 
-        panel.$.toggleClass('nodata', list.length == 0);
+        var items = list.slice(0, pageSize);
+        List.render(items);
+
     });
 
+
+    
 
 
     return panel.wrap();

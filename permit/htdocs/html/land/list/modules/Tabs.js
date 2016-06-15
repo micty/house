@@ -44,7 +44,6 @@ define('/Tabs', function (require, module) {
         });
 
         index = index || 0;
-
         tabs.active(index);
     });
 

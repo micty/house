@@ -66,14 +66,8 @@ define('/List', function (require, module) {
     });
 
 
-    panel.on('render', function (data, town) {
+    panel.on('render', function (data) {
 
-        if (town) {
-            data = data.filter(function (item) {
-                return item.town == town;
-            });
-        }
-        
         list = data;
 
         //二级模板填充所需要的数据格式
@@ -87,17 +81,7 @@ define('/List', function (require, module) {
 
 
 
-    return panel.wrap({
-
-        remove: function (index) {
-            panel.$.find('tr[data-index="' + index + '"]').slideUp(function () {
-
-                list.splice(index, 1);
-                panel.render(list);
-
-            });
-        },
-    });
+    return panel.wrap();
 
 
 });

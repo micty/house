@@ -64,6 +64,15 @@ KISP.launch(function (require, module) {
     });
 
 
+    Base.on('detail', {
+        'land': function (land) {
+            Bridge.open({
+                name: '土地出让详情',
+                url: 'html/land/detail/index.html?id=' + land.id,
+            });
+        },
+    });
+
 
 
     var qs = Url.getQueryString(window);

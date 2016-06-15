@@ -38,6 +38,12 @@ define('/Base', function (require, module) {
             API.post(data);
         });
 
+        Form.on('detail', {
+            'land': function (land) {
+                panel.fire('detail', 'land', [land]);
+            },
+        });
+
     });
 
 

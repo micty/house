@@ -13,6 +13,12 @@ define('/Base/Form', function (require, module, exports) {
 
     panel.on('init', function () {
 
+        panel.$.on('click', '[data-cmd="land.detail"]', function () {
+
+            var land = current.land;
+
+            panel.fire('detail', 'land', [land]);
+        });
 
     });
 

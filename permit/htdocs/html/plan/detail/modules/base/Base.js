@@ -28,6 +28,12 @@ define('/Base', function (require, module) {
 
         });
 
+        Form.on('detail', {
+            'land': function (land) {
+                panel.fire('detail', 'land', [land]);
+            },
+        });
+
 
     });
 

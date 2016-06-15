@@ -10,10 +10,57 @@ define('/API', function (require, module, exports) {
 
     var emitter = new Emitter();
     var loading = null;
+    var list = null; //暂时实现前端分页
+
+
+    var defaults = {};
+
+
+    function getPageList(options) {
+
+        //注意，这里有记忆功能，上次的值会给记录下
+        options = $.Object.extend(defaults, options);
+
+        var items = list;
+        var town = options.town;
+
+        if (town) {
+            items = items.filter(function (item) {
+                return item.town == town;
+            });
+        }
+
+        var total = items.length;  //总记录数，以过滤后的为准。
+        var pageNo = options.pageNo || 1;
+        var pageSize = options.pageSize;
+
+        var begin = (pageNo - 1) * pageSize;
+        var end = begin + pageSize;
+
+        items = items.slice(begin, end);
+      
+
+        emitter.fire('success', 'get', [items, {
+            'no': pageNo,
+            'size': pageSize,
+            'total': total,
+        }]);
+
+    }
+
+
 
 
     //获取数据
-    function get() {
+    function get(options) {
+
+        if (options && list) {
+            getPageList(options);
+            return;
+        }
+
+        options = options || { pageNo: 1 };
+
 
         var api = KISP.create('API', 'Land.list', {
             
@@ -36,9 +83,8 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
-                var list = data;
-           
-                emitter.fire('success', 'get', [list]);
+                list = data;
+                getPageList(options);
             },
 
             'fail': function (code, msg, json, xhr) {

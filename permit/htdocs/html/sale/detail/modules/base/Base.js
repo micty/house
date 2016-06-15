@@ -21,6 +21,10 @@ define('/Base', function (require, module) {
 
         });
 
+        Form.on('detail', function (cmd, data) {
+            panel.fire('detail', cmd, [data]);
+        });
+
     });
 
 

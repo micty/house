@@ -25,5 +25,16 @@
         "size": "5000",
         "sizeDesc": "施工许可证备注03",
         "datetime": "2016-06-13 17:32:48"
+    },
+    {
+        "id": "3BE56A993899",
+        "licenseId": "2897D8E7D0DB",
+        "number": "test",
+        "numberDesc": "{construct.numberDesc}",
+        "date": "",
+        "dateDesc": "{construct.dateDesc}",
+        "size": "0",
+        "sizeDesc": "{construct.sizeDesc}",
+        "datetime": "2016-06-15 16:21:55"
     }
 ]

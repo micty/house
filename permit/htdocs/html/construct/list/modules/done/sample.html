@@ -3,9 +3,9 @@
         <th>序号</th>
 
         <th>项目名称</th>
-        <th>建设单位</th>
+        <th style="display: none;">建设单位</th>
         <th>规划许可证号</th>
-        <th>规划许可时间</th>
+        <th style="display: none;">规划许可时间</th>
         <th>施工许可证号</th>
         <th>发证日期</th>
         <th style="{operate-display}">操作</th>
@@ -17,11 +17,11 @@
         <td>
             <a data-index="{index}" data-cmd="plan.detail">{plan.project}</a>
         </td>
-        <td>{plan.developer}</td>
+        <td style="display: none;">{plan.developer}</td>
         <td>
             <a data-index="{index}" data-cmd="license.detail">{license.number}</a>
         </td>
-        <td>{license.date}</td>
+        <td style="display: none;">{license.date}</td>
         <td>
             <a data-index="{index}" data-cmd="detail">{construct.number}</a>
         </td>

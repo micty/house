@@ -61,6 +61,21 @@ KISP.launch(function (require, module) {
         },
     });
 
+    Base.on('detail', {
+        'land': function (land) {
+            Bridge.open({
+                name: '土地出让详情',
+                url: 'html/land/detail/index.html?id=' + land.id,
+            });
+        },
+        'plan': function (plan) {
+            Bridge.open({
+                name: '规划许可详情',
+                url: 'html/plan/detail/index.html?id=' + plan.id,
+            });
+        },
+    });
+
 
 
     Router.on({

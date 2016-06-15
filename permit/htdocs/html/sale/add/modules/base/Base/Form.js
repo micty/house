@@ -16,6 +16,14 @@ define('/Base/Form', function (require, module, exports) {
 
 
     panel.on('init', function () {
+        panel.$.on('click', '[data-cmd]', function () {
+
+            var cmd = this.getAttribute('data-cmd');
+            cmd = cmd.split('.')[0];
+
+            var data = current[cmd];
+            panel.fire('detail', [cmd, data]);
+        });
 
     });
 
