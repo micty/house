@@ -3,6 +3,10 @@
 ; (function (KISP) {
 
     var $ = KISP.require('$');
+    var MiniQuery = KISP.require('MiniQuery');
+    var Url = MiniQuery.require('Url');
+
+    var qs = Url.getQueryString(window) || {};
 
 
     /**
@@ -34,13 +38,8 @@
     });
 
     KISP.data({
-        'demo': {
-            //在 paper/list 用到
-            url: '../../../../../index.html',
-        },
-
         'pager': {
-            size: 20, //分页大小
+            size: qs.pageSize || (top.KISP.data('pager') || {}).size || 20,    //分页大小,
         },
      
     });

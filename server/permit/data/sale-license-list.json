@@ -215,7 +215,9 @@
         "saled-otherCell": "0",
         "saled-otherCellDesc": "预售许可证备注22",
         "id": "C30943A65672",
-        "datetime": "2016-06-13 17:50:42"
+        "datetime": "2016-06-16 14:15:57",
+        "location": "公安门牌-11",
+        "locationDesc": ""
     },
     {
         "saleId": "DD563209A541",
@@ -265,7 +267,9 @@
         "saled-otherCell": "0",
         "saled-otherCellDesc": "现售备案备注22",
         "id": "C687A881E750",
-        "datetime": "2016-06-13 17:58:23"
+        "datetime": "2016-06-16 14:16:08",
+        "location": "公安门牌-22",
+        "locationDesc": ""
     },
     {
         "saleId": "5A4108C3D6A8",

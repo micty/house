@@ -8,7 +8,9 @@ KISP.launch(function (require, module) {
 
     var Bridge = require('Bridge');
 
+
     var API = module.require('API');
+    var Header = module.require('Header');
     var Todo = module.require('Todo');
     var Done = module.require('Done');
 
@@ -18,12 +20,17 @@ KISP.launch(function (require, module) {
     var current = null;
 
 
+    Header.on('import', function () {
+        Bridge.open(['sale', 'import']);
+    });
+
     Tabs.on('change', {
         'todo': function () {
             Done.hide();
             Todo.render(current.todo);
         },
         'done': function () {
+            console.log(current);
             Todo.hide();
             Done.render(current.done);
         },
@@ -100,7 +107,7 @@ KISP.launch(function (require, module) {
         },
     });
 
-
+    Header.render();
     API.get();
 
 });

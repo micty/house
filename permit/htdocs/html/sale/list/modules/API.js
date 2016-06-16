@@ -66,6 +66,16 @@ define('/API', function (require, module, exports) {
                 planId$sale[sale.planId] = sale;
             });
 
+            var saleId$licenses = {};
+            licenses.forEach(function (license) {
+                var saleId = license.saleId;
+                var licenses = saleId$licenses[saleId];
+                if (!licenses) {
+                    licenses = saleId$licenses[saleId] = [];
+                }
+
+                licenses.push(license);
+            });
 
             //从规划记录中找出待办的子集。
             var todos = $.Array.map(plans, function (plan) {
@@ -104,10 +114,21 @@ define('/API', function (require, module, exports) {
                     return null;
                 }
 
+                var id = sale.id;
+                var licenses = saleId$licenses[id] || [];
+
+                var groups = [0, 1].map(function (type) {
+                    return licenses.filter(function (item) {
+                        return item.type == type;
+                    });
+                });
+
+
                 return {
                     'sale': sale,
                     'plan': plan,
                     'land': land,
+                    'licenses': groups,
                 };
 
             });

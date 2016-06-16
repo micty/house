@@ -24,15 +24,12 @@ define('/Done/List', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var licenses = item.licenses;
                     item = $Object.linear(item);
 
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
                         'operate-display': display,
-                        'licenses.0.length': licenses[0].length,
-                        'licenses.1.length': licenses[1].length,
                     });
 
                     return {

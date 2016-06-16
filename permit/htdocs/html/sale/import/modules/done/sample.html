@@ -6,8 +6,7 @@
         <th>规划项目名称</th>
         <th style="display:none;">建设单位</th>
         <th>销售项目名称</th>
-        <th class="number">预售许可证数</th>
-        <th class="number">现售备案数</th>
+        <th>公安门牌</th>
         <th style="{operate-display}">操作</th>
     </tr>
     #--row.begin--#
@@ -24,8 +23,7 @@
         <td>
             <a data-index="{index}" data-cmd="detail">{sale.project}</a>
         </td>
-        <td class="number">{licenses.0.length}</td>
-        <td class="number">{licenses.1.length}</td>
+        <td>{sale.location}</td>
         <td class="operate" style="{operate-display}">
             <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
             <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>

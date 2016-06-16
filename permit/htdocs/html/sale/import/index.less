@@ -1,0 +1,67 @@
+﻿
+.panel {
+    margin-bottom: 40px;
+
+    >.header {
+        background: #FFEB3B;
+        padding: 0px 10px;
+        margin-top: 10px;
+        font-size: 16px;
+        color: red;
+        height: 40px;
+        line-height: 40px;
+
+        button {
+            position: relative;
+            top: 5px;
+            background: #FF5722;
+            border: none;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 14px;
+            border-radius: 3px;
+            cursor: pointer;
+            float: right;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+}
+
+.list {
+    margin-top: 10px;
+
+    &.nodata {
+        text-align: center;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        line-height: 80px;
+        border: solid 1px #D4D5DE;
+        color: #7c7c7d;
+        font-size: 16px;
+
+
+        &:after {
+            content: '暂无数据';
+        }
+
+        table {
+            display: none;
+        }
+    }
+}
+
+.pager {
+    text-align: right;
+    margin-bottom: 15px;
+    height: 25px;
+    padding: 20px 15px;
+}
