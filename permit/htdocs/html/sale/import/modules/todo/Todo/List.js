@@ -54,6 +54,9 @@ define('/Todo/List', function (require, module) {
                 return;
             }
 
+
+            panel.fire(cmd, [item, index]);
+
         });
 
     });

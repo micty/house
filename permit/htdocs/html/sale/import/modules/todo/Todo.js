@@ -12,7 +12,7 @@ define('/Todo', function (require, module) {
     var list = [];
     var pageSize = KISP.data('pager').size;
 
-    var pageSize = 5;
+    //var pageSize = 5;
 
     panel.on('init', function () {
 
@@ -43,6 +43,10 @@ define('/Todo', function (require, module) {
         });
 
         List.on({
+
+            'detail': function (item) {
+                panel.fire('detail', [item]);
+            },
             'remove': function (item) {
                 
                 var id = item.id;
@@ -61,7 +65,8 @@ define('/Todo', function (require, module) {
 
     panel.on('render', function (data) {
 
-
+   
+        data = data || [];
         list = data;
 
         Pager.render({

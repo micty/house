@@ -85,13 +85,51 @@ module.exports = {
     },
 
     /**
-    * 添加一条记录。
+    * 添加一条或多条记录。
     */
     add: function (res, data) {
 
+        //重载 add(items)，批量添加。
+        if (res instanceof Array) {
+            var items = res;
+            var list = [];
+            var path = getPath();
+
+            if (fs.existsSync(path)) {
+                list = fs.readFileSync(path);
+                list = JSON.parse(list);
+            }
+
+            var number$item = {};
+            list.forEach(function (item) {
+                number$item[item.number] = item;
+            });
+
+            var exists = items.filter(function (item) {
+                return !!number$item[item.number];
+            });
+
+            if (exists.length > 0) {
+                return exists;
+            }
+
+            list = list.concat(items);
+
+            var json = JSON.stringify(list, null, 4);
+            fs.writeFile(path, json, 'utf8');
+            return;
+        }
+
+        //重载 add(res, data)，单条添加。
         var saleId = data.saleId;
         if (!saleId) {
             emptyError('saleId', res);
+            return;
+        }
+
+        var number = data.number;
+        if (!number) {
+            emptyError('number', res);
             return;
         }
 
@@ -120,8 +158,22 @@ module.exports = {
                 list = JSON.parse(list);
             }
 
+            //确保证号唯一
+            var item = list.find(function (item) {
+                return item.number == number;
+            });
 
-            var item = $.Object.extend(data, {
+            if (item) {
+                res.send({
+                    code: 301,
+                    msg: '已存在该证号的记录',
+                    data: item,
+                });
+                return;
+            }
+
+
+            item = $.Object.extend(data, {
                 'id': $.String.random(),
                 'datetime': getDateTime(),
             });
@@ -159,6 +211,8 @@ module.exports = {
         }
 
     },
+
+
 
     /**
     * 更新一条记录。

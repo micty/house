@@ -148,6 +148,10 @@ app.get('/Sale.list', function (req, res) {
 app.get('/Sale.all', function (req, res) {
     Sale.all(res);
 });
+app.post('/Sale.import', function (req, res) {
+    Sale.import(res, req.body);
+});
+
 
 //预售许可证模块
 var SaleLicense = require('./modules/SaleLicense');

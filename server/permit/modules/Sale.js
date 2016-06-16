@@ -345,8 +345,6 @@ module.exports = {
     },
 
 
-
-
     /**
     * 读取列表。
     */
@@ -444,6 +442,160 @@ module.exports = {
                 msg: ex.message,
             });
         }
+
+
+    },
+
+    /**
+    * 批量导入。
+    */
+    import: function (res, data) {
+
+        var groups = JSON.parse(data['data']);
+
+        var none = {
+            lands: [],
+            plans: [],
+        };
+
+        var licenses = [];  //需要导入的预售许可证或现售备案。
+        var list = module.exports.list();   //全部销售记录
+        var count = list.length;            //记录原来的条数，用于判断是否由于增加了记录而重新写入。
+        var planId$sale = {};               //以 planId 作为主键
+
+        list.forEach(function (sale) {
+            planId$sale[sale.planId] = sale;
+        });
+
+
+        groups.forEach(function (item) {
+           
+            var Land = require('./Land');
+            var Plan = require('./Plan');
+
+            var lands = Land.list();
+            var plans = Plan.list();
+            var land = item.land;
+
+            //根据土地证号找到整条土地记录
+            var landItem = lands.find(function (item) {
+                var a = item.license.split('|');
+                var index = a.indexOf(land.license);
+                return index > -1;
+            });
+
+            if (!landItem) {
+                none.lands.push(land);
+                return;
+            }
+
+            //根据土地 id 找到整条规划记录
+            var plan = plans.find(function (item) {
+                return item.landId == landItem.id;
+            });
+
+            if (!plan) {
+                none.plans.push(land);
+                return;
+            }
+
+            //检查是否已存在该销售记录
+            var planId = plan.id;
+            var sale = planId$sale[planId];
+            var saleId = sale ? sale.id : $.String.random();
+
+            //未存在该销售记录，则添加
+            if (!sale) {
+                list.push({
+                    'id': saleId,
+                    'planId': planId,
+                    'project': item.sale.project,
+                    'datetime': getDateTime(),
+                });
+            }
+
+            item.licenses.forEach(function (item) {
+
+                Object.keys(item).forEach(function (key) {
+                    key = key + 'Desc';
+                    item[key] = '';         //增加空的备注字段。
+                });
+
+
+                $.Object.extend(item, {
+                    'id': $.String.random(),
+                    'saleId': saleId,            //关联到销售记录
+                    'datetime': getDateTime(),
+                });
+            });
+
+            licenses = licenses.concat(item.licenses); //合并到总列表
+           
+        });
+
+        //存在无法关联的土地记录或规划记录。
+        if (none.lands.length > 0 || none.plans.length > 0) {
+            res.send({
+                code: 302,
+                msg: '存在无法关联的土地记录或规划记录',
+                data: none,
+            });
+
+            return;
+        }
+
+
+        //销售记录的条数发生了变化，写回 json 文件。
+        if (list.length > count) {
+            try {
+                var path = getPath();
+                var json = JSON.stringify(list, null, 4);
+                fs.writeFileSync(path, json, 'utf8');
+            }
+            catch (ex) {
+                res.send({
+                    code: 502,
+                    msg: ex.message,
+                });
+
+                return;
+            }
+        }
+       
+        if (licenses.length > 0) {
+            try {
+                var SaleLicense = require('./SaleLicense');
+                var exists = SaleLicense.add(licenses);
+                if (exists) {
+                    res.send({
+                        code: 301,
+                        msg: '存在重复证号的预售许可证或现售备案。',
+                        data: exists,
+                    });
+
+                    return;
+                }
+
+                res.send({
+                    code: 200,
+                    msg: '全部导入成功',
+                });
+            }
+            catch (ex) {
+                res.send({
+                    code: 503,
+                    msg: ex.message,
+                });
+            }
+
+            return;
+        }
+
+
+        res.send({
+            code: 201,
+            msg: '没有需要导入的数据。',
+        });
 
 
     },
