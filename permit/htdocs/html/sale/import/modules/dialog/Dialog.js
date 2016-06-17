@@ -64,6 +64,10 @@ define('/Dialog', function (require, module, exports) {
             var type = dialog.$.find('[name="type"]').val();
             var list = data.list;
 
+            list.forEach(function (item) {
+                item.type = type;
+            });
+
             panel.fire('submit', [type, list]);
             dialog.hide();
 
@@ -166,6 +170,7 @@ define('/Dialog', function (require, module, exports) {
 
             item = {
                 'id': $.String.random(), //增加一个随机 id，方便在列表中处理。
+
             };
 
             keys.forEach(function (key, index) {

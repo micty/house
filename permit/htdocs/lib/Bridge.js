@@ -23,6 +23,11 @@ define('Bridge', function (require, module) {
                 Bridge.refresh(cmd);
             },
 
+            'data': function (key, value) {
+                var args = [].slice.call(arguments, 0);
+                return Bridge.data.apply(null, args);
+            },
+
         };
     }
 
@@ -37,6 +42,7 @@ define('Bridge', function (require, module) {
     var mapper = new Mapper();
     var emitter = new Emitter(); // top 页面自己使用的 emitter。
 
+    var data = {};  //跨页传输数据。
 
     return {
 
@@ -107,6 +113,29 @@ define('Bridge', function (require, module) {
             var sn = iframe.getAttribute('data-sn'); //这个就是对应的菜单项的 id。
 
             emitter.fire('close', [sn]);
+        },
+
+        'data': function (key, value) {
+
+            //通过把 value 在 json 字符串中转换可以深度拷贝该对象。
+
+            //get
+            if (arguments.length == 1) {
+                value = data[key];
+                value = JSON.parse(value);
+                return value;
+            }
+
+            //set
+            if (value === null) {
+                delete data[key];
+                return;
+            }
+
+            value = JSON.stringify(value);
+
+            data[key] = value;
+            return value;
         },
 
         'on': emitter.on.bind(emitter),

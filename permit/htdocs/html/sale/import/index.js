@@ -42,22 +42,36 @@ KISP.launch(function (require, module) {
     });
 
     Todo.on({
-        'detail': function (item) {
-            API.get(item.land);
-        },
         'submit': function (list) {
             API.post(0, list);
         },
     });
 
     Done.on({
-        'detail': function (item) {
-            API.get(item.land);
-        },
         'submit': function (list) {
             API.post(1, list);
         },
     });
+
+
+    var detail = {
+        'land.detail': function (item) {
+            API.get(item.land);
+        },
+        'license.detail': function (item) {
+            var key = $.String.random();
+            Bridge.data(key, item);
+            Bridge.open({
+                name: item.type == 0 ? '预售许可证详情' : '现售备案详情',
+                url: 'html/sale/license/detail/index.html?key=' + key,
+            });
+        },
+    };
+
+    Todo.on(detail);
+    Done.on(detail);
+
+
 
     API.on('success', {
         'get': function (item) {

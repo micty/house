@@ -88,13 +88,19 @@ define('/PageList', function (require, module, exports) {
         }
 
 
-        list.splice(lastIndex(), 0, item); //在最后一项前面插入 item
+        if (activedIndex < 0) {
+            list.push(item);
+        }
+        else { //在当前激活的项后面插入。
+            list.splice(activedIndex + 1, 0, item);
+        }
+
 
         if (lastIndex() >= 2) {
             lastItem().hidden = false;
         }
 
-        var index = lastIndex() - 1;
+        var index = findIndexById(item.id);
         active(index, true); //不触发事件
     }
 

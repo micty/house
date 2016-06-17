@@ -28,6 +28,18 @@ define('/Form', function (require, module, exports) {
 
     panel.on('render', function (data) {
 
+       
+        //有 land 字段，说明是导入的数据，在内存中的，不是真实的后台记录。
+        var isTemp = 'land' in data;
+        panel.$.toggleClass('temp', isTemp);
+
+        Object.keys(data).forEach(function (key) {
+            var desc = key + 'Desc';
+            if (!(desc in data)) {
+                data[desc] = '';
+            }
+        });
+
 
         var item = type$item[data.type];
 

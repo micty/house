@@ -44,8 +44,11 @@ define('/Done', function (require, module) {
 
         List.on({
 
-            'detail': function (item) {
-                panel.fire('detail', [item]);
+            'land.detail': function (item) {
+                panel.fire('land.detail', [item]);
+            },
+            'license.detail': function (item) {
+                panel.fire('license.detail', [item]);
             },
             'remove': function (item) {
 

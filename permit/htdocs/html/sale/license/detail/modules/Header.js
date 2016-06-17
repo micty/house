@@ -30,11 +30,15 @@ define('/Header', function (require, module, exports) {
 
 
     panel.on('render', function (data) {
+      
         panel.fill({
             'text': type$text[data.type],
         });
 
-        panel.$.toggleClass('noop', !User.is('sale'));
+        //有 land 字段，说明是导入的数据，在内存中的，不是真实的后台记录。
+        var isTemp = 'land' in data;
+
+        panel.$.toggleClass('noop', isTemp || !User.is('sale'));
 
 
     });

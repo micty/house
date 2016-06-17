@@ -14,6 +14,7 @@ define('/PageTabs', function (require, module, exports) {
 
     var tabs = null;
     var list = [];
+    var activedIndex = -1;
 
     var samples = $.String.getTemplates(ul.innerHTML, [
        { //这个节点是辅助用的
@@ -61,10 +62,16 @@ define('/PageTabs', function (require, module, exports) {
         }
 
 
-        list.push(item);
+        if (activedIndex < 0) {
+            list.push(item);
+        }
+        else { //在当前激活的项后面插入。
+            list.splice(activedIndex + 1, 0, item);
+        }
+        
         fill();
 
-        index = lastIndex();
+        index = findIndexById(item.id);
         active(index, true); //不触发事件
 
     }
@@ -154,6 +161,7 @@ define('/PageTabs', function (require, module, exports) {
         });
 
         tabs.on('change', function (index, li) {
+            activedIndex = index;
             active(index);
         });
 

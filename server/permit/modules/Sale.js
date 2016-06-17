@@ -453,12 +453,13 @@ module.exports = {
 
         var groups = JSON.parse(data['data']);
 
+        //记录无法关联的土地记录和规划记录。
         var none = {
             lands: [],
             plans: [],
         };
 
-        var licenses = [];  //需要导入的预售许可证或现售备案。
+        var licenses = [];                  //需要导入的预售许可证或现售备案。
         var list = module.exports.list();   //全部销售记录
         var count = list.length;            //记录原来的条数，用于判断是否由于增加了记录而重新写入。
         var planId$sale = {};               //以 planId 作为主键
@@ -479,7 +480,8 @@ module.exports = {
 
             //根据土地证号找到整条土地记录
             var landItem = lands.find(function (item) {
-                var a = item.license.split('|');
+                var a = item.license.split('|');        //这里只需要找到一个土地证号即可
+
                 var index = a.indexOf(land.license);
                 return index > -1;
             });

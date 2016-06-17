@@ -6,7 +6,6 @@ KISP.launch(function (require, module) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
     var Bridge = require('Bridge');
-    var SessionStorage = require('SessionStorage');
 
     var Url = MiniQuery.require('Url');
 
@@ -35,8 +34,21 @@ KISP.launch(function (require, module) {
 
 
     var qs = Url.getQueryString(window);
-    var id = qs.id;
 
+    //从内存中传完整数据过来的。
+    var key = qs.key;
+
+    if (key) {
+        var item = Bridge.data(key);
+
+        Header.render(item);
+        Form.render(item);
+        return;
+    }
+
+
+    //只传 id，需要读取后台。
+    var id = qs.id;
     if (!id) {
         KISP.alert('请传入 id');
         return;
