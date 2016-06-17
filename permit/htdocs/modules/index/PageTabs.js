@@ -14,7 +14,6 @@ define('/PageTabs', function (require, module, exports) {
 
     var tabs = null;
     var list = [];
-    var activedIndex = -1;
 
     var samples = $.String.getTemplates(ul.innerHTML, [
        { //这个节点是辅助用的
@@ -62,12 +61,9 @@ define('/PageTabs', function (require, module, exports) {
         }
 
 
-        if (activedIndex < 0) {
-            list.push(item);
-        }
-        else { //在当前激活的项后面插入。
-            list.splice(activedIndex + 1, 0, item);
-        }
+        //在当前激活的项后面插入。
+        var activedIndex = tabs.getActivedIndex();
+        list.splice(activedIndex + 1, 0, item);
         
         fill();
 
