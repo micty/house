@@ -27,7 +27,7 @@ define('/Dialog', function (require, module, exports) {
                 { text: '确定', name: 'ok', },
             ],
 
-            height: 600,
+            height: 650,
             width: 900,
             autoClosed: false,
             cssClass: 'dialog-add',
@@ -57,7 +57,7 @@ define('/Dialog', function (require, module, exports) {
 
             var msgs = data.msgs;
             if (msgs.length > 0) {
-                KISP.alert(msgs.join('<br />'));
+                top.KISP.alert(msgs.join('<br />'));
                 return;
             }
 
