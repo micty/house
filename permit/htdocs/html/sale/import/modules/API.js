@@ -7,6 +7,7 @@ define('/API', function (require, module, exports) {
     var KISP = require('KISP');
 
     var Emitter = MiniQuery.require('Emitter');
+    var Logs = require('Logs');
 
     var emitter = new Emitter();
     var loading = null;
@@ -83,40 +84,57 @@ define('/API', function (require, module, exports) {
             'fail': function (code, msg, json, xhr) {
                 var data = json.data;
 
-                if (code == 301) {
-                    var numbers = data.map(function (item) {
-                        return '【' + item.number + '】';
-                    });
+                var msgs = [msg];
 
-                    msg += numbers.join(', ');
+                switch (code) {
+                    case 301:
+                        data.forEach(function (item) {
+                            msgs.push('【' + item.number + '】');
+                        });
+                        Logs.render(msgs);
+                        break;
+
+                    case 302:
+                        var lands = data.lands.map(function (land) {
+                            return '【' + land.license + '】';
+                        });
+
+                        if (lands.length > 0) {
+                            msgs.push('无法关联的土地记录:');
+                            msgs = msgs.concat(lands);
+                        }
+
+                        var plans = data.plans.map(function (land) {
+                            return '【' + land.license + '】';
+                        });
+
+                        if (plans.length > 0) {
+                            msgs.push('无法关联的规划记录:');
+                            msgs = msgs.concat(plans);
+
+                        }
+                        Logs.render(msgs);
+                        break;
+
+
+                    default:
+                        top.KISP.alert('提交数据失败: {0} ', msg, code);
+                        break;
+
                 }
-                else if (code == 302) {
-                    var lands = data.lands.map(function (land) {
-                        return '【' + land.license + '】';
-                    });
 
-                    if (lands.length > 0) {
-                        msg += '<br />无法关联的土地记录: ' + lands.join(', ');
-                    }
-
-                    var plans = data.plans.map(function (land) {
-                        return '【' + land.license + '】';
-                    });
-
-                    if (plans.length > 0) {
-                        msg += '<br />无法关联的规划记录: ' + plans.join(', ');
-                    }
-                }
+              
 
 
-
-                top.KISP.alert('提交数据失败: {0} ', msg, code);
             },
 
             'error': function (code, msg, json, xhr) {
                 top.KISP.alert('提交数据错误: 网络繁忙，请稍候再试');
             },
         });
+
+
+
 
 
         api.on('success', function (data, json, xhr) {
@@ -139,7 +157,7 @@ define('/API', function (require, module, exports) {
 
         var data = format(type, list);
         data = JSON.stringify(data);
-        console.log(data);
+ 
 
         api.post({
             'data': data,

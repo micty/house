@@ -5,6 +5,9 @@ define('/Dialog', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var Logs = require('Logs');
+
+    var Excel = module.require('Excel');
 
 
     var panel = KISP.create('Panel', '#div-dialog');
@@ -52,22 +55,25 @@ define('/Dialog', function (require, module, exports) {
         dialog.on('button', 'ok', function () {
 
 
+            var type = dialog.$.find('[name="type"]').val();
             var content = dialog.$.find('textarea').val();
-            var data = parse(content);
 
-            var msgs = data.msgs;
-            if (msgs.length > 0) {
-                top.KISP.alert(msgs.join('<br />'));
+            var data = Excel.parse(type, content);
+
+            if (typeof data == 'string') {
+                top.KISP.alert(data);
                 return;
             }
 
-            var type = dialog.$.find('[name="type"]').val();
+
+            var msgs = data.msgs;
+            if (msgs.length > 0) {
+                Logs.render(msgs);
+                return;
+            }
+          
             var list = data.list;
-
-            list.forEach(function (item) {
-                item.type = type;
-            });
-
+         
             panel.fire('submit', [type, list]);
             dialog.hide();
 
@@ -89,105 +95,6 @@ define('/Dialog', function (require, module, exports) {
 
 
 
-    function parse(content) {
-        var list = content.split('\n');
-
-        var begin = 4;
-        var end = list.findIndex(function (item) {
-            return item.startsWith('"说明');
-        });
-
-        if (end < 0) {
-            end = list.length;
-        }
-
-
-        list = list.slice(begin, end);
-
-        var msgs = [];
-        var data = {
-            'msgs': msgs,
-            'list': list,
-        };
-
-        if (list.length == 0) {
-            msgs.push('没有找到有效的数据记录');
-            return data;
-        }
-
-
-
-        var keys = [
-            'land',
-            'project',
-
-            'number',
-            'date',
-            'location',
-
-            'residenceSize',
-            'commerceSize',
-            'officeSize',
-            'otherSize',
-            'parkSize',
-            'otherSize1',
-
-            'residenceCell',
-            'commerceCell',
-            'officeCell',
-            'otherCell',
-
-            'saled-residenceSize',
-            'saled-commerceSize',
-            'saled-officeSize',
-            'saled-otherSize',
-            'saled-parkSize',
-            'saled-otherSize1',
-
-            'saled-residenceCell',
-            'saled-commerceCell',
-            'saled-officeCell',
-            'saled-otherCell',
-        ];
-
-
-
-        data.list = $.Array.map(list, function (item, index) {
-
-            var no = index + 1;
-            var values = item.split('\t');
-
-            //空行
-            if (!values.join(''.trim())) {
-                return null;
-            }
-
-            if (values.length != keys.length) {
-                msgs.push('第 ' + no + ' 条记录的字段个数不正确');
-                return null;
-            }
-       
-
-            item = {
-                'id': $.String.random(), //增加一个随机 id，方便在列表中处理。
-
-            };
-
-            keys.forEach(function (key, index) {
-                item[key] = values[index];
-            });
-
-            if (!item.land) {
-                msgs.push('第 ' + no + ' 条记录缺少土地证号');
-                return null;
-            }
-
-            return item;
-        });
-
-        return data;
-
-    }
 
 
 
