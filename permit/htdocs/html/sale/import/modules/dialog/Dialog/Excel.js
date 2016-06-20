@@ -19,6 +19,10 @@ define('/Dialog/Excel', function (require, module, exports) {
             return item.split('\t');
         });
 
+        if (list.length < 4) {
+            return '没有找到有效的数据';
+        }
+
 
         var fields = Fields.get(list[3]);
 
