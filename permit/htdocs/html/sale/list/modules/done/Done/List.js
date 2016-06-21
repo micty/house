@@ -57,7 +57,7 @@ define('/Done/List', function (require, module) {
                     '这也将会删除其所拥有的预售许可证';
 
                 top.KISP.confirm(msg, function () {
-                    panel.fire(cmd, [item, index]);
+                    panel.fire('cmd', [cmd, item]);
                 });
                 return;
             }

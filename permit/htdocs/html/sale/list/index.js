@@ -65,7 +65,7 @@ KISP.launch(function (require, module) {
             });
         },
        
-        'edit': function (item, index) {
+        'edit': function (item) {
             Bridge.open(['sale', 'add'], {
                 'planId': item.plan.id,
             });
@@ -96,11 +96,11 @@ KISP.launch(function (require, module) {
             });
         },
 
-        'remove': function (item, index) {
+        'remove': function (item) {
             API.remove(item.sale.id);
         },
 
-        'edit': function (item, index) {
+        'edit': function (item) {
             Bridge.open(['sale', 'add'], {
                 'id': item.sale.id,
             });

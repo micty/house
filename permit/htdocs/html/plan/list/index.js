@@ -59,25 +59,25 @@ KISP.launch(function (require, module) {
 
     Done.on({
 
-        'land.detail': function (item, index) {
+        'land.detail': function (item) {
             Bridge.open({
                 name: '土地出让详情',
                 url: 'html/land/detail/index.html?id=' + item.landId,
             });
         },
 
-        'detail': function (item, index) {
+        'detail': function (item) {
             Bridge.open({
                 name: '规划许可详情',
                 url: 'html/plan/detail/index.html?id=' + item.id,
             });
         },
 
-        'remove': function (item, index) {
+        'remove': function (item) {
             API.remove(item.id);
         },
 
-        'edit': function (item, index) {
+        'edit': function (item) {
  
             Bridge.open(['plan', 'add'], {
                 'id': item.id,

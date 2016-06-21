@@ -56,7 +56,7 @@ define('/Done/List', function (require, module) {
                     ' 同时也会删除其所拥有的许可证。';
 
                 top.KISP.confirm(msg, function () {
-                    panel.fire(cmd, [item, index]);
+                    panel.fire('cmd', [cmd, item]);
                 });
                 return;
             }

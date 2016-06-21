@@ -50,18 +50,18 @@ KISP.launch(function (require, module) {
 
 
     List.on({
-        'detail': function (item, index) {
+        'detail': function (item) {
             Bridge.open({
                 name: '土地出让详情',
                 url: 'html/land/detail/index.html?id=' + item.id,
             });
         },
 
-        'remove': function (item, index) {
+        'remove': function (item) {
             API.remove(item.id);
         },
 
-        'edit': function (item, index) {
+        'edit': function (item) {
  
             Bridge.open(['land', 'add'], {
                 'id': item.id,

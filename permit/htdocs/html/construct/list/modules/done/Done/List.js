@@ -54,7 +54,7 @@ define('/Done/List', function (require, module) {
             if (cmd == 'remove') {
                 var msg = '确认要删除施工许可证【' + item.construct.number + '】';
                 top.KISP.confirm(msg, function () {
-                    panel.fire(cmd, [item, index]);
+                    panel.fire('cmd', [cmd, item]);
                 });
                 return;
             }
