@@ -30,8 +30,8 @@ define('/Dialog', function (require, module, exports) {
                 { text: '确定', name: 'ok', },
             ],
 
-            height: 650,
-            width: 900,
+            height: 560,
+            width: 700,
             autoClosed: false,
             cssClass: 'dialog-add',
         });
