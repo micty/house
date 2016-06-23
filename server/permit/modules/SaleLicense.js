@@ -91,7 +91,12 @@ module.exports = {
 
         //重载 add(items)，批量添加。
         if (res instanceof Array) {
-            var items = res;
+            var items = res;    //需要添加的数据列表
+            if (items.length == 0) {
+                return;
+            }
+
+
             var list = [];
             var path = getPath();
 
@@ -100,24 +105,56 @@ module.exports = {
                 list = JSON.parse(list);
             }
 
-            var number$item = {};
+            //用类型与证号作主键
+            var type$number$item = {
+                0: {},
+                1: {},
+            };
+
             list.forEach(function (item) {
-                number$item[item.number] = item;
+                type$number$item[item.type][item.number] = item;
             });
 
-            var exists = items.filter(function (item) {
-                return !!number$item[item.number];
+            var adds= [];
+            var edits = [];
+
+            items.forEach(function (item) {
+                var oldItem = type$number$item[item.type][item.number];
+
+                //已存在相同类型与证号的记录，则合并覆盖。
+                if (oldItem) {
+                    $.Object.extend(oldItem, item);
+                    edits.push(item);
+                    return;
+                }
+
+                //新记录。
+
+
+                //先增加空的备注字段。
+                Object.keys(item).forEach(function (key) {
+                    key = key + 'Desc';
+                    item[key] = '';         
+                });
+
+                //后增加其它字段。
+                $.Object.extend(item, {
+                    'id': $.String.random(),
+                    'datetime': getDateTime(),
+                });
+
+                list.push(item);
+                adds.push(items);
             });
 
-            if (exists.length > 0) {
-                return exists;
-            }
-
-            list = list.concat(items);
 
             var json = JSON.stringify(list, null, 4);
             fs.writeFile(path, json, 'utf8');
-            return;
+
+            return {
+                'adds': adds,
+                'edits': edits,
+            };
         }
 
         //重载 add(res, data)，单条添加。

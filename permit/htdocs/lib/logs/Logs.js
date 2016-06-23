@@ -15,7 +15,7 @@ define('Logs', function (require, module, exports) {
 
         dialog = KISP.create('Dialog', {
 
-            title: '错误消息',
+            title: '处理结果',
             text: '<textarea readonly></textarea>',
             buttons: [
                 { text: '确定', name: 'ok', },

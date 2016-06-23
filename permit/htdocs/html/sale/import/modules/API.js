@@ -87,6 +87,11 @@ define('/API', function (require, module, exports) {
                 var msgs = [msg];
 
                 switch (code) {
+
+                    case 201:
+
+                        break;
+
                     case 301:
                         data.forEach(function (item) {
                             msgs.push('【' + item.number + '】');
@@ -157,11 +162,9 @@ define('/API', function (require, module, exports) {
 
         var data = format(type, list);
         data = JSON.stringify(data);
- 
+        data = encodeURIComponent(data);
 
-        api.post({
-            'data': data,
-        });
+        api.post({'data': data});
 
 
     }

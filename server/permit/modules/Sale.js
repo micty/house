@@ -451,32 +451,34 @@ module.exports = {
     */
     import: function (res, data) {
 
-        var groups = JSON.parse(data['data']);
+        data = decodeURIComponent(data['data']);
+        var groups = JSON.parse(data);
 
-        //记录无法关联的土地记录和规划记录。
+        //记录无法关联的土地记录和规划记录，以及相应的预售许可证和现售备案。
         var none = {
             lands: [],
             plans: [],
+            licenses: [],
         };
 
         var licenses = [];                  //需要导入的预售许可证或现售备案。
         var list = module.exports.list();   //全部销售记录
-        var count = list.length;            //记录原来的条数，用于判断是否由于增加了记录而重新写入。
-        var planId$sale = {};               //以 planId 作为主键
+        var count = list.length;            //用于判断是否由于增加了记录而重新写入。
+        var planId$sale = {};               //以 planId 作为主键关联到销售记录。
 
         list.forEach(function (sale) {
             planId$sale[sale.planId] = sale;
         });
 
 
-        groups.forEach(function (item) {
+        groups.forEach(function (group) {
            
             var Land = require('./Land');
             var Plan = require('./Plan');
 
             var lands = Land.list();
             var plans = Plan.list();
-            var land = item.land;
+            var land = group.land;
 
             //根据土地证号找到整条土地记录
             var landItem = lands.find(function (item) {
@@ -488,6 +490,7 @@ module.exports = {
 
             if (!landItem) {
                 none.lands.push(land);
+                none.licenses = none.licenses.concat(group.licenses);
                 return;
             }
 
@@ -498,10 +501,11 @@ module.exports = {
 
             if (!plan) {
                 none.plans.push(land);
+                none.licenses = none.licenses.concat(group.licenses);
                 return;
             }
 
-            //检查是否已存在该销售记录
+            //根据规划 id 找到对应的销售记录。
             var planId = plan.id;
             var sale = planId$sale[planId];
             var saleId = sale ? sale.id : $.String.random();
@@ -511,38 +515,35 @@ module.exports = {
                 list.push({
                     'id': saleId,
                     'planId': planId,
-                    'project': item.sale.project,
+                    'project': group.sale.project,
                     'datetime': getDateTime(),
                 });
             }
 
-            item.licenses.forEach(function (item) {
-
-                Object.keys(item).forEach(function (key) {
-                    key = key + 'Desc';
-                    item[key] = '';         //增加空的备注字段。
-                });
-
-
-                $.Object.extend(item, {
-                    'id': $.String.random(),
-                    'saleId': saleId,            //关联到销售记录
-                    'datetime': getDateTime(),
-                });
+            group.licenses.forEach(function (item) {
+                item.saleId = saleId; //关联到销售记录
             });
 
-            licenses = licenses.concat(item.licenses); //合并到总列表
+            licenses = licenses.concat(group.licenses); //合并到总列表
            
         });
 
-        //存在无法关联的土地记录或规划记录。
-        if (none.lands.length > 0 || none.plans.length > 0) {
+     
+
+        var invalid = none.licenses.length > 0;
+
+        if (licenses.length == 0) {
+
+            var msg = '没有可以导入的销售许可证或现售备案。 ';
+            if (invalid) {
+                msg += '存在无法关联的土地记录或规划记录。';
+            }
+
             res.send({
-                code: 302,
-                msg: '存在无法关联的土地记录或规划记录',
+                code: invalid ? 301 : 300,
+                msg: msg,
                 data: none,
             });
-
             return;
         }
 
@@ -564,40 +565,28 @@ module.exports = {
             }
         }
        
-        if (licenses.length > 0) {
-            try {
-                var SaleLicense = require('./SaleLicense');
-                var exists = SaleLicense.add(licenses);
-                if (exists) {
-                    res.send({
-                        code: 301,
-                        msg: '存在重复证号的预售许可证或现售备案。',
-                        data: exists,
-                    });
+        //预售许可证或现售备案列表。
+        try {
+            var SaleLicense = require('./SaleLicense');
+            var result = SaleLicense.add(licenses);
 
-                    return;
-                }
+            res.send({
+                code: invalid ? 201 : 200,
+                msg: invalid ?
+                    '部分导入成功! 存在部分无法关联的土地记录或规划记录。' :
+                    '全部导入成功。',
 
-                res.send({
-                    code: 200,
-                    msg: '全部导入成功',
-                });
-            }
-            catch (ex) {
-                res.send({
-                    code: 503,
-                    msg: ex.message,
-                });
-            }
-
-            return;
+                data: $.Object.extend({}, none, result),
+            });
+        }
+        catch (ex) {
+            res.send({
+                code: 503,
+                msg: ex.message,
+            });
         }
 
-
-        res.send({
-            code: 201,
-            msg: '没有需要导入的数据。',
-        });
+      
 
 
     },
