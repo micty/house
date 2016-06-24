@@ -67,71 +67,17 @@ define('/API', function (require, module, exports) {
         var api = KISP.create('API', 'Sale.import');
 
         api.on({
-
             'request': function () {
-
                 loading = loading || top.KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('提交中...');
             },
-
             'response': function () {
                 loading.hide();
             },
 
             'fail': function (code, msg, json, xhr) {
-                var data = json.data;
-
-                var msgs = [msg];
-
-                switch (code) {
-
-                    case 201:
-
-
-
-                        break;
-
-                    case 301:
-                        data.forEach(function (item) {
-                            msgs.push('【' + item.number + '】');
-                        });
-                        Logs.render(msgs);
-                        break;
-
-                    case 302:
-                        var lands = data.lands.map(function (land) {
-                            return '【' + land.license + '】';
-                        });
-
-                        if (lands.length > 0) {
-                            msgs.push('无法关联的土地记录:');
-                            msgs = msgs.concat(lands);
-                        }
-
-                        var plans = data.plans.map(function (land) {
-                            return '【' + land.license + '】';
-                        });
-
-                        if (plans.length > 0) {
-                            msgs.push('无法关联的规划记录:');
-                            msgs = msgs.concat(plans);
-
-                        }
-                        Logs.render(msgs);
-                        break;
-
-
-                    default:
-                        top.KISP.alert('提交数据失败: {0} ', msg, code);
-                        break;
-
-                }
-
-              
-
 
             },
 
@@ -141,26 +87,96 @@ define('/API', function (require, module, exports) {
         });
 
 
+        api.on('done', function (code, msg, json) {
+
+            //由于状态码不同时，参数形式不同，这里用查找的方式。
+            var data = json.data;
+            if (!data) {
+                top.KISP.alert('提交数据失败: {0} ', msg);
+                return;
+            }
+
+            var msgs = [msg];
+            var typeText = type == 0 ? '预售许可证' : '现售备案';
+
+            var lands = data.lands || [];
+            var plans = data.plans || [];
+            var sales = data.sales || [];
+            var licenses = data.licenses || [];
+            var adds = data.adds || [];
+            var edits = data.edits || [];
+
+            if (lands.length > 0) {
+                lands = lands.map(function (land) {
+                    return '\t' + land.license;
+                });
+
+                msgs.push('-------------------------------------------------------------------');
+                msgs.push('无法关联的土地记录' + ' ' + lands.length + ' 条:');
+                msgs = msgs.concat(lands);
+            }
+
+           
+
+            if (plans.length > 0) {
+                plans = plans.map(function (land) {
+                    return '\t' + land.license;
+                });
+                msgs.push('-------------------------------------------------------------------');
+                msgs.push('无法关联的规划记录' + ' ' + plans.length + ' 条:');
+                msgs = msgs.concat(plans);
+            }
 
 
+            if (sales.length > 0) {
+                sales = sales.map(function (sale) {
+                    return '\t' + sale.project;
+                });
 
-        api.on('success', function (data, json, xhr) {
+                msgs.push('-------------------------------------------------------------------');
+                msgs.push('新增导入的销售记录' + ' ' + sales.length + ' 条:');
+                msgs = msgs.concat(sales);
+            }
 
 
-            toast = toast || top.KISP.create('Toast', {
-                text: '提交成功',
-                duration: 1500,
-                mask: 0,
+            if (licenses.length > 0) {
+                licenses = licenses.map(function (license) {
+                    return '\t' + license.number;
+                });
+
+                msgs.push('-------------------------------------------------------------------');
+                msgs.push('无法导入的' + typeText + ' ' + licenses.length + ' 条:');
+                msgs = msgs.concat(licenses);
+            }
+
+            if (adds.length > 0) {
+                adds = adds.map(function (license) {
+                    return '\t' + license.number;
+                });
+
+                msgs.push('-------------------------------------------------------------------');
+                msgs.push('新增导入的' + typeText + ' ' + adds.length + ' 条:');
+                msgs = msgs.concat(adds);
+            }
+
+
+            if (edits.length > 0) {
+                edits = edits.map(function (license) {
+                    return '\t' + license.number;
+                });
+
+                msgs.push('-------------------------------------------------------------------');
+                msgs.push('覆盖导入的' + typeText + ' ' + edits.length + ' 条:');
+                msgs = msgs.concat(edits);
+            }
+
+
+            Logs.render(msgs, function () {
+                emitter.fire('success', 'post', [type]);
             });
 
-            toast.show();
-
-            setTimeout(function () {
-                emitter.fire('success', 'post', [type]);
-
-            }, 1500);
-
         });
+
 
         var data = format(type, list);
         data = JSON.stringify(data);

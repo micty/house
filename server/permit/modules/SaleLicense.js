@@ -129,8 +129,6 @@ module.exports = {
                 }
 
                 //新记录。
-
-
                 //先增加空的备注字段。
                 Object.keys(item).forEach(function (key) {
                     key = key + 'Desc';
@@ -143,8 +141,8 @@ module.exports = {
                     'datetime': getDateTime(),
                 });
 
+                adds.push(item);
                 list.push(item);
-                adds.push(items);
             });
 
 

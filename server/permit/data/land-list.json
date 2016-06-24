@@ -1,7 +1,7 @@
 [
     {
         "id": "90F09F291184",
-        "number": "a-1001",
+        "number": "land-1001",
         "numberDesc": "",
         "town": "南庄",
         "townDesc": "",
@@ -33,11 +33,11 @@
         "contractDesc": "",
         "license": "a-1001-1001",
         "licenseDesc": "",
-        "datetime": "2016-06-16 22:24:33"
+        "datetime": "2016-06-24 10:15:04"
     },
     {
         "id": "EB51D5F19BB6",
-        "number": "a-1002",
+        "number": "land-1002",
         "numberDesc": "",
         "town": "石湾",
         "townDesc": "",
@@ -69,6 +69,6 @@
         "contractDesc": "",
         "license": "a-1002-1002",
         "licenseDesc": "",
-        "datetime": "2016-06-16 22:24:44"
+        "datetime": "2016-06-24 10:14:55"
     }
 ]

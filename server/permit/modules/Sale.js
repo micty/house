@@ -458,6 +458,7 @@ module.exports = {
         var none = {
             lands: [],
             plans: [],
+            sales: [],      //需要新增的销售记录
             licenses: [],
         };
 
@@ -512,12 +513,15 @@ module.exports = {
 
             //未存在该销售记录，则添加
             if (!sale) {
-                list.push({
+                sale = {
                     'id': saleId,
                     'planId': planId,
                     'project': group.sale.project,
                     'datetime': getDateTime(),
-                });
+                };
+
+                list.push(sale);
+                none.sales.push(sale);
             }
 
             group.licenses.forEach(function (item) {
@@ -557,7 +561,7 @@ module.exports = {
             }
             catch (ex) {
                 res.send({
-                    code: 502,
+                    code: 501,
                     msg: ex.message,
                 });
 
@@ -571,7 +575,7 @@ module.exports = {
             var result = SaleLicense.add(licenses);
 
             res.send({
-                code: invalid ? 201 : 200,
+                code: invalid ? 201 : 0, //这里全部成功用 0，方便前端处理
                 msg: invalid ?
                     '部分导入成功! 存在部分无法关联的土地记录或规划记录。' :
                     '全部导入成功。',
@@ -581,7 +585,7 @@ module.exports = {
         }
         catch (ex) {
             res.send({
-                code: 503,
+                code: 502,
                 msg: ex.message,
             });
         }

@@ -11,6 +11,7 @@ define('Logs', function (require, module, exports) {
     var dialog = null;
 
 
+
     panel.on('init', function () {
 
         dialog = KISP.create('Dialog', {
@@ -34,17 +35,26 @@ define('Logs', function (require, module, exports) {
         });
 
 
+
+        dialog.on('button', 'ok', function () {
+
+            var fn = dialog.data('ok');
+            fn && fn();
+        });
+
     
 
     });
 
 
 
-    panel.on('render', function (data) {
+    panel.on('render', function (data, fn) {
 
         if (Array.isArray(data)) {
             data = data.join('\n');
         }
+
+        dialog.data('ok', fn);
 
         dialog.show();
         dialog.$.find('textarea').val(data);
