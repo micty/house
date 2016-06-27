@@ -12,8 +12,7 @@ define('/API', function (require, module, exports) {
     var emitter = new Emitter();
     var loading = null;
     var toast = null;
-
-
+    var LINE = '_____________________________________________________________________________________________________________________';
 
     function get(license) {
 
@@ -62,9 +61,43 @@ define('/API', function (require, module, exports) {
 
 
 
+
+    function getLands(groups, lands) {
+        lands = lands.map(function (land) {
+
+            var license = land.license;
+            var group = groups.find(function (group) {
+                return group.land.license == license;
+            });
+
+            return '\t' + license + '\t' + group.sale.project;
+        });
+
+        return lands
+    }
+
+
+
+    function getLicenses(licenses) {
+
+        licenses = licenses.map(function (license) {
+            return '\t' + license.number + '\t' + license.date + '\t' + license.location;
+        });
+
+        return licenses
+    }
+
+
+
+
+
+
     function post(type, list) {
 
+        var groups = format(type, list);
+
         var api = KISP.create('API', 'Sale.import');
+    
 
         api.on({
             'request': function () {
@@ -107,11 +140,9 @@ define('/API', function (require, module, exports) {
             var edits = data.edits || [];
 
             if (lands.length > 0) {
-                lands = lands.map(function (land) {
-                    return '\t' + land.license;
-                });
+                lands = getLands(groups, lands)
 
-                msgs.push('-------------------------------------------------------------------');
+                msgs.push(LINE);
                 msgs.push('无法关联的土地记录' + ' ' + lands.length + ' 条:');
                 msgs = msgs.concat(lands);
             }
@@ -119,10 +150,10 @@ define('/API', function (require, module, exports) {
            
 
             if (plans.length > 0) {
-                plans = plans.map(function (land) {
-                    return '\t' + land.license;
-                });
-                msgs.push('-------------------------------------------------------------------');
+
+                plans = getLands(groups, plans);
+
+                msgs.push(LINE);
                 msgs.push('无法关联的规划记录' + ' ' + plans.length + ' 条:');
                 msgs = msgs.concat(plans);
             }
@@ -133,39 +164,33 @@ define('/API', function (require, module, exports) {
                     return '\t' + sale.project;
                 });
 
-                msgs.push('-------------------------------------------------------------------');
+                msgs.push(LINE);
                 msgs.push('新增导入的销售记录' + ' ' + sales.length + ' 条:');
                 msgs = msgs.concat(sales);
             }
 
 
             if (licenses.length > 0) {
-                licenses = licenses.map(function (license) {
-                    return '\t' + license.number;
-                });
+                licenses = getLicenses(licenses);
 
-                msgs.push('-------------------------------------------------------------------');
+                msgs.push(LINE);
                 msgs.push('无法导入的' + typeText + ' ' + licenses.length + ' 条:');
                 msgs = msgs.concat(licenses);
             }
 
             if (adds.length > 0) {
-                adds = adds.map(function (license) {
-                    return '\t' + license.number;
-                });
+                adds = getLicenses(adds);
 
-                msgs.push('-------------------------------------------------------------------');
+                msgs.push(LINE);
                 msgs.push('新增导入的' + typeText + ' ' + adds.length + ' 条:');
                 msgs = msgs.concat(adds);
             }
 
 
             if (edits.length > 0) {
-                edits = edits.map(function (license) {
-                    return '\t' + license.number;
-                });
+                edits = getLicenses(edits);
 
-                msgs.push('-------------------------------------------------------------------');
+                msgs.push(LINE);
                 msgs.push('覆盖导入的' + typeText + ' ' + edits.length + ' 条:');
                 msgs = msgs.concat(edits);
             }
@@ -178,8 +203,7 @@ define('/API', function (require, module, exports) {
         });
 
 
-        var data = format(type, list);
-        data = JSON.stringify(data);
+        var data = JSON.stringify(groups);
         data = encodeURIComponent(data);
 
         api.post({'data': data});
