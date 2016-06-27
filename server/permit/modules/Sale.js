@@ -520,6 +520,9 @@ module.exports = {
                     'datetime': getDateTime(),
                 };
 
+                //注册一下，防止重复添加。
+                planId$sale[planId] = sale;
+
                 list.push(sale);
                 none.sales.push(sale);
             }

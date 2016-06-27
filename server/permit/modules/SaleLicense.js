@@ -141,6 +141,9 @@ module.exports = {
                     'datetime': getDateTime(),
                 });
 
+                //更新注册
+                type$number$item[item.type][item.number] = item;
+
                 adds.push(item);
                 list.push(item);
             });
