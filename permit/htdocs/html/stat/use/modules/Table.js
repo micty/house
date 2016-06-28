@@ -2,7 +2,6 @@
 define('/Table', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
-    var SessionStorage = require('SessionStorage');
     var NumberField = require('NumberField');
 
     var panel = KISP.create('Panel', '#div-table');

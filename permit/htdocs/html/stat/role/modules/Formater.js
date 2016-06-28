@@ -103,6 +103,7 @@ define('/Formater', function (require, module, exports) {
                     var value = item.value;
 
                     return {
+                        'value': value,
                         'text': NumberField.text(value),
                         'group': isFirst,
                         'subGroup': isFirst,

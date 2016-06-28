@@ -11,6 +11,7 @@ KISP.launch(function (require, module) {
     var Bridge = require('Bridge');
 
     var API = module.require('API');
+    var Chart = module.require('Chart');
     var Formater = module.require('Formater');
     var Table = module.require('Table');
     var Tabs = module.require('Tabs');
@@ -37,6 +38,7 @@ KISP.launch(function (require, module) {
         data = Formater.format(data, town.key);
 
         Table.render(data);
+        Chart.render(data.rows);
 
     });
 

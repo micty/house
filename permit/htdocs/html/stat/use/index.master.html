@@ -5,9 +5,8 @@
     <title></title>
     <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
-
     <link rel="less" href="../../../style/less/global.less" />
-    
+
     <!--weber.css.begin-->
     <script>
         [
@@ -21,7 +20,6 @@
     <div class="header">
         <span>功能统计</span>
     </div>
-
     <div class="container">
         <ul id="ul-tabs" class="tabs">
             <!--<li data-index="{index}">{name}</li>-->
@@ -31,6 +29,10 @@
             <div id="div-header" class="header">
                 <!--<span>{name}</span>-->
             </div>
+
+            <div id="div-chart">
+                <canvas id="canvas-chart"></canvas>
+            </div>
             <div id="div-table" class="main">
                 <!--
                 <link rel="html" href="html/sample.html" />
@@ -39,14 +41,12 @@
         </div>
     </div>
 
-
-
     <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
     <script src="../../../f/miniquery/miniquery.debug.js"></script>
     <script src="../../../f/autoNumeric/autoNumeric.debug.js"></script>
+    <script src="../../../f/chart/Chart.debug.js"></script>
     <script src="../../../f/kisp/kisp.debug.js"></script>
     <script src="../../../config.js"></script>
-
 
     <!--weber.js.begin-->
     <script>
@@ -57,8 +57,6 @@
         ]
     </script>
     <!--weber.js.end-->
-
-
 
 </body>
 </html>
