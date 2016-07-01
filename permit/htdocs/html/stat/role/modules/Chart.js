@@ -47,7 +47,8 @@ define('/Chart', function (require, module) {
                 //第一列是名称，排除掉。
                 'data': row.slice(2).map(function (item) {
 
-                    return item.value;
+                    return item.value.toFixed(2);
+
                 }),
             };
 

@@ -53,9 +53,25 @@ define('/Construct/List', function (require, module) {
 
         var nodata = list.length == 0;
         panel.$.toggleClass('nodata', nodata);
-        if (nodata) {
-            //panel.$.html('<li class="nodata">暂无数据，<a>立即添加</a></li>');
-        }
+        
+        var max = 0;
+        panel.$.find('a').each(function () {
+            var width = $(this).width();
+            if (width > max) {
+                max = width;
+            }
+
+        }).width(max + 1);
+
+
+        var max = 0;
+        panel.$.find('.land-number').each(function () {
+            var width = $(this).width();
+            if (width > max) {
+                max = width;
+            }
+
+        }).width(max + 1);
 
     });
 

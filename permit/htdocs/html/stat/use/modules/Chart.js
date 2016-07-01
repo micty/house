@@ -48,7 +48,8 @@ define('/Chart', function (require, module) {
                         labels.push(item.name);
                     }
 
-                    return item.value;
+                    return item.value.toFixed(2);
+
                 }),
             };
 

@@ -95,7 +95,7 @@
                 cursor: pointer;
                 display: inline-block;
                 /*width: 200px;*/
-                min-width: 180px;
+                /*min-width: 180px;*/
             }
 
             span {
@@ -106,6 +106,13 @@
 
                 &.land-number {
                     /*width: 220px;*/
+                }
+
+                &.location {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    max-width: 50%;
                 }
 
                 &.sub {

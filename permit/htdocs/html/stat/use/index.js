@@ -37,6 +37,7 @@ KISP.launch(function (require, module) {
         var data = current;
         data = Formater.format(data, town.key);
 
+
         Table.render(data);
         Chart.render(data.rows);
 

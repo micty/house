@@ -43,16 +43,32 @@ define('/Land/List', function (require, module) {
                 'index': index,
                 'title': item.number,
                 'location': item.location,
-                'winner': item.winner,
+                'winner': item.winner.split('、')[0],
                 'date': item.datetime.split(' ')[0],
             };
         });
 
         var nodata = list.length == 0;
         panel.$.toggleClass('nodata', nodata);
-        if (nodata) {
-            //panel.$.html('<li class="nodata">暂无数据，<a>立即添加</a></li>');
-        }
+        
+        var max = 0;
+        panel.$.find('a').each(function () {
+            var width = $(this).width();
+            if (width > max) {
+                max = width;
+            }
+
+        }).width(max + 1);
+
+
+        var max = 0;
+        panel.$.find('.sub').each(function () {
+            var width = $(this).width();
+            if (width > max) {
+                max = width;
+            }
+
+        }).width(max + 1);
 
     });
 
