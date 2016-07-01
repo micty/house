@@ -28,38 +28,34 @@ var server = app.listen(8080, function () {
 });
 
 
-
-//var sid$data = {};
-
-app.all('/*', function (req, res, next) {
-
+app.use(function (req, res, next) {
     res.set({
         'Access-Control-Allow-Origin': '*',
     });
-
     next();
 });
 
 
 
+var Router = require('./lib/Router');
 
 //土地出让模块
-var Land = require('./modules/Land');
-app.get('/Land.get', function (req, res) {
-    Land.get(res, req.query.id);
+Router.use(app, {
+    module: require('./modules/Land'),
+    base: '/Land.',
+    get: [
+        'get',
+        'remove',
+        'list',
+    ],
+    post: [
+        'add',
+        'update',
+    ],
 });
-app.post('/Land.add', function (req, res) {
-    Land.add(res, req.body);
-});
-app.post('/Land.update', function (req, res) {
-    Land.update(res, req.body);
-});
-app.get('/Land.remove', function (req, res) {
-    Land.remove(res, req.query.id);
-});
-app.get('/Land.list', function (req, res) {
-    Land.list(res);
-});
+
+
+
 
 //规划许可模块
 var Plan = require('./modules/Plan');

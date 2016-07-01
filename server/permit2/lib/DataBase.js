@@ -5,8 +5,12 @@ var File = require('./File');
 var Directory = require('./Directory');
 var fs = require('fs');
 
+function now() {
+    return $.Date.format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+}
 
-function DataList(name) {
+
+function DataBase(name) {
 
     var dir = process.cwd() + '/data/' + name + '/';
     dir = dir.split('\\').join('/');
@@ -30,14 +34,9 @@ function DataList(name) {
     };
 }
 
-function now() {
-    return $.Date.format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-}
 
-
-
-DataList.prototype = {
-    constructor: DataList,
+DataBase.prototype = {
+    constructor: DataBase,
 
     get: function (id) {
 
@@ -140,4 +139,4 @@ DataList.prototype = {
 
 
 
-module.exports = DataList;
+module.exports = DataBase;
