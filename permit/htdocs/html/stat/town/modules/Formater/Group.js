@@ -44,6 +44,8 @@ define('/Formater/Group', function (require, module, exports) {
                 return [];
             }
 
+            //debugger;
+
             var list = data[key];
             var title = role.name;
 

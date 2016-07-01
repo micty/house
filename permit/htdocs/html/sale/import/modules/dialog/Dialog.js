@@ -12,6 +12,7 @@ define('/Dialog', function (require, module, exports) {
 
     var panel = KISP.create('Panel', '#div-dialog');
     var dialog = null;
+    var toast = null;
 
 
     panel.on('init', function () {
@@ -56,6 +57,19 @@ define('/Dialog', function (require, module, exports) {
 
 
             var type = dialog.$.find('[name="type"]').val();
+            if (!type) {
+                toast = toast || top.KISP.create('Toast', {
+                    icon: 'remove',
+                    text: '请选择类型',
+                    duration: 1500,
+                    mask: 0.25,
+                });
+                toast.show();
+
+                return;
+            }
+
+
             var content = dialog.$.find('textarea').val();
 
             var data = Excel.parse(type, content);
@@ -89,6 +103,8 @@ define('/Dialog', function (require, module, exports) {
 
 
         dialog.show();
+
+        dialog.$.find('[name="type"]').val('');
 
     });
 
