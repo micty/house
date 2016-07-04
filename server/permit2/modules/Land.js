@@ -1,10 +1,54 @@
 ﻿
 
 var DataBase = require('../lib/DataBase');
-var db = new DataBase('land');
+
+var db = new DataBase('Land', [
+    //{ name: 'id', type: 'string', required: false, },
+    { name: 'datetime', type: 'string', required: false, },
+
+    { name: 'number', type: 'string', required: false, },
+    { name: 'numberDesc', type: 'string', required: false, },
+    { name: 'town', type: 'string', required: false, },
+    { name: 'townDesc', type: 'string', required: false, },
+    { name: 'location', type: 'string', required: false, },
+    { name: 'locationDesc', type: 'string', required: false, },
+    { name: 'size', type: 'number', required: false, },
+    { name: 'sizeDesc', type: 'string', required: false, },
+    { name: 'use', type: 'string', required: false, },
+    { name: 'useDesc', type: 'string', required: false, },
+    { name: 'residenceSize', type: 'number', required: false, },
+    { name: 'residenceSizeDesc', type: 'string', required: false, },
+    { name: 'commerceSize', type: 'number', required: false, },
+    { name: 'commerceSizeDesc', type: 'string', required: false, },
+    { name: 'officeSize', type: 'number', required: false, },
+    { name: 'officeSizeDesc', type: 'string', required: false, },
+    { name: 'otherSize', type: 'number', required: false, },
+    { name: 'otherSizeDesc', type: 'string', required: false, },
+    { name: 'parkSize', type: 'number', required: false, },
+    { name: 'parkSizeDesc', type: 'string', required: false, },
+    { name: 'otherSize1', type: 'number', required: false, },
+    { name: 'otherSize1Desc', type: 'string', required: false, },
+    { name: 'winner', type: 'string', required: false, },
+    { name: 'winnerDesc', type: 'string', required: false, },
+    { name: 'price', type: 'number', required: false, },
+    { name: 'priceDesc', type: 'string', required: false, },
+    { name: 'date', type: 'string', required: false, },
+    { name: 'dateDesc', type: 'string', required: false, },
+    { name: 'contract', type: 'string', required: false, },
+    { name: 'contractDesc', type: 'string', required: false, },
+    { name: 'license', type: 'string', required: false, },
+    { name: 'licenseDesc', type: 'string', required: false, },
+]);
+
+
 
 
 module.exports = {
+
+    /**
+    * 仅供其它内部模块调用。
+    */
+    db: db, 
 
     /**
     * 获取一条记录。
@@ -23,7 +67,7 @@ module.exports = {
                 res.success(item);
             }
             else {
-                res.none();
+                res.none({'id': id });
             }
         }
         catch (ex) {
@@ -42,7 +86,7 @@ module.exports = {
 
         try{
             item = db.add(item);
-            res.success(item);
+            res.success('添加成功', item);
         }
         catch (ex) {
             res.error(ex);
@@ -63,8 +107,13 @@ module.exports = {
         }
 
         try {
-            item = db.update(item);
-            res.success(item);
+            var data = db.update(item);
+            if (data) {
+                res.success('更新成功', data);
+            }
+            else {
+                res.none(item);
+            }
         }
         catch (ex) {
             res.error(ex);
@@ -85,7 +134,12 @@ module.exports = {
 
         try {
             var item = db.remove(id);
-            res.success(item);
+            if (item) {
+                res.success('删除成功', item);
+            }
+            else {
+                res.none({ 'id': id });
+            }
         }
         catch (ex) {
             res.error(ex);

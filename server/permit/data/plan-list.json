@@ -1330,5 +1330,159 @@
         "developer": "佛山市龙光阳光海岸房地产有限公司",
         "developerDesc": "",
         "datetime": "2016-06-20 08:41:51"
+    },
+    {
+        "id": "2E68203442D8",
+        "landId": "4E5E6FF1D002",
+        "project": "龙光·天悦龙庭",
+        "projectDesc": "",
+        "use": "二类居住用地兼容商业服务业设施用地",
+        "useDesc": "",
+        "developer": "佛山市禅城区龙光房地产有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:16:47"
+    },
+    {
+        "id": "266F102C9CB4",
+        "landId": "3B7EED5D65CA",
+        "project": "招商臻园",
+        "projectDesc": "",
+        "use": "二类居住用地，兼容商业商务娱乐康体用地",
+        "useDesc": "",
+        "developer": "佛山依云观园房地产有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:29:28"
+    },
+    {
+        "id": "9A191FBEF3D1",
+        "landId": "37EA9CC5600C",
+        "project": "综合车间",
+        "projectDesc": "",
+        "use": "",
+        "useDesc": "",
+        "developer": "佛山市能盛置业有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:21:13"
+    },
+    {
+        "id": "49BA740FBD86",
+        "landId": "F88E9E2E61BA",
+        "project": "佛网(挂)2012-006汾江路西侧、大麦村东侧地块商住建设项目",
+        "projectDesc": "",
+        "use": "二类居住用地，可兼容商业服务业设施用地",
+        "useDesc": "",
+        "developer": "佛山市中投金茂投资发展有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:27:58"
+    },
+    {
+        "id": "CE0C40321616",
+        "landId": "FABA00B80B1A",
+        "project": "佛网(挂)2012-004号地块佛山市百年银汇假日酒店",
+        "projectDesc": "",
+        "use": "商业服务业设施用地，不兼容居住用地",
+        "useDesc": "",
+        "developer": "佛山市百年银汇投资有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:33:14"
+    },
+    {
+        "id": "681CE92F926C",
+        "landId": "C823B98FB2E0",
+        "project": " 瑞鸿综合办公大楼",
+        "projectDesc": "",
+        "use": "",
+        "useDesc": "",
+        "developer": " 佛山市瑞鸿创展实业投资有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:30:28"
+    },
+    {
+        "id": "DC58A66E1470",
+        "landId": "E5992351782D",
+        "project": "佛网(挂)2012-005影荫路南侧、影荫三街北侧、澜石大涌西侧地块商住建设项目",
+        "projectDesc": "",
+        "use": "二类居住用地、可兼容商业服务业设施用地",
+        "useDesc": "",
+        "developer": "佛山市中投金茂投资发展有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:33:53"
+    },
+    {
+        "id": "DD1B7718875C",
+        "landId": "92C55BD1AD30",
+        "project": "影荫路南侧、影荫一街东侧地块项目苹果公馆",
+        "projectDesc": "",
+        "use": "商务用地，兼容商业用地",
+        "useDesc": "",
+        "developer": "佛山市盈昇置业投资有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:46:02"
+    },
+    {
+        "id": "998FB049D6DA",
+        "landId": "067EDCCB4E1F",
+        "project": "佛山市富凯房地产有限公司",
+        "projectDesc": "",
+        "use": "居住用地，可兼容商业金融业用地、办公用地、文化娱乐用地",
+        "useDesc": "地块一面积8238平方米，地块二面积699平方米",
+        "developer": "佛山市富凯房地产有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:46:16"
+    },
+    {
+        "id": "FE862760A5F3",
+        "landId": "9041E91AF11E",
+        "project": "佛山市龙光置业房产有限公司",
+        "projectDesc": "",
+        "use": "二类居住用地，可兼容商业用地",
+        "useDesc": "",
+        "developer": "佛山市龙光置业房产有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:48:18"
+    },
+    {
+        "id": "154B1B8A80F8",
+        "landId": "46F0B03C709A",
+        "project": "保利天玺花园",
+        "projectDesc": "",
+        "use": "",
+        "useDesc": "",
+        "developer": "佛山保利置业有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 14:56:46"
+    },
+    {
+        "id": "93E209A3B528",
+        "landId": "1F5DDC53A29F",
+        "project": "",
+        "projectDesc": "",
+        "use": "",
+        "useDesc": "",
+        "developer": "",
+        "developerDesc": "",
+        "datetime": "2016-06-28 15:15:25"
+    },
+    {
+        "id": "A4D4FECE99D3",
+        "landId": "DCC7AE9F0894",
+        "project": "鸿业城市花园13号楼",
+        "projectDesc": "",
+        "use": "商住用地",
+        "useDesc": "",
+        "developer": "佛山市海翔房地产开发有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 15:10:59"
+    },
+    {
+        "id": "0CDD41B76C48",
+        "landId": "6B57EB861075",
+        "project": "佛山雅居乐佰利郡花园",
+        "projectDesc": "",
+        "use": "居住用地,可兼容商业金融业、办公、文化娱乐用地",
+        "useDesc": "",
+        "developer": "佛山市雅居乐房地产有限公司",
+        "developerDesc": "",
+        "datetime": "2016-06-28 15:34:26"
     }
 ]

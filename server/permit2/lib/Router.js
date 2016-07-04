@@ -11,10 +11,17 @@ Response.prototype = {
         this.res.send(json);
     },
 
-    success: function (data) {
+    success: function (msg, data) {
+
+        //重载 success(data);
+        if (typeof msg != 'string') {
+            data = msg;
+            msg = 'ok';
+        }
+
         this.res.send({
             code: 200,
-            msg: 'ok',
+            msg: msg,
             data: data,
         });
     },
@@ -26,10 +33,18 @@ Response.prototype = {
         });
     },
 
-    none: function () {
+    none: function (msg, item) {
+
+        //重载 none(item);
+        if (typeof msg != 'string') {
+            item = msg;
+            msg = '不存在该记录';
+        }
+
         this.res.send({
             code: 404,
-            msg: '不存在该记录。',
+            msg: msg,
+            data: item,
         });
 
     },
