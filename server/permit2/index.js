@@ -55,27 +55,20 @@ Router.use(app, {
 });
 
 
-
-
 //规划许可模块
-var Plan = require('./modules/Plan');
-app.get('/Plan.get', function (req, res) {
-    Plan.get(res, req.query.id);
-});
-app.post('/Plan.add', function (req, res) {
-    Plan.add(res, req.body);
-});
-app.post('/Plan.update', function (req, res) {
-    Plan.update(res, req.body);
-});
-app.get('/Plan.remove', function (req, res) {
-    Plan.remove(res, req.query.id);
-});
-app.get('/Plan.list', function (req, res) {
-    Plan.list(res);
-});
-app.get('/Plan.all', function (req, res) {
-    Plan.all(res);
+Router.use(app, {
+    module: require('./modules/Plan'),
+    base: '/Plan.',
+    get: [
+        'get',
+        'remove',
+        'list',
+        'all',
+    ],
+    post: [
+        'add',
+        'update',
+    ],
 });
 
 

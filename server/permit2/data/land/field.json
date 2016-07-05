@@ -5,9 +5,11 @@
         "required": false
     },
     {
+        "alias": "土地挂牌编号",
         "name": "number",
         "type": "string",
-        "required": false
+        "required": false,
+        "unique": true
     },
     {
         "name": "numberDesc",

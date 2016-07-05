@@ -1,24 +1,34 @@
 ﻿
-
 var $ = require('./MiniQuery');
 var File = require('./File');
 var Directory = require('./Directory');
 var fs = require('fs');
+var Emitter = $.require('Emitter');
 
 function now() {
     return $.Date.format(new Date(), 'yyyy-MM-dd HH:mm:ss');
 }
 
+var emitter = new Emitter(DataBase);
+var root = process.cwd() + '/data/';
+
 
 function DataBase(name, fields) {
-
-    var dir = process.cwd() + '/data/' + name + '/';
+    var dir = root + name + '/';
     dir = dir.split('\\').join('/');
 
+    var field = dir + 'field.json';
     var list = dir + 'list.json';
     var map = dir + 'map.json';
-    var field = dir + 'field.json';
+    var unique = dir + 'unique.json';
 
+
+    if (!File.exists(field)) {
+        File.writeJSON(field, fields);
+    }
+    else {
+        fields = File.readJSON(field);
+    }
 
     if (!File.exists(list)) {
         File.writeJSON(list, []);
@@ -28,45 +38,83 @@ function DataBase(name, fields) {
         File.writeJSON(map, {});
     }
 
-    if (!File.exists(field)) {
-        File.writeJSON(field, fields);
+    if (!File.exists(unique)) {
+        var obj = {};
+
+        fields.forEach(function (field) {
+            if (field.unique) {
+                obj[field.name] = {};
+            }
+        });
+
+        File.writeJSON(unique, obj);
     }
-    else {
-        fields = File.readJSON(field);
-    }
+
 
     var meta = this.meta = {
+        'emitter': new Emitter(this),
         'list': list,
         'map': map,
-        'fields': fields,
-        'unique': {},
+        'fields': fields,       //字段描述信息在创建后不会再变。
+        'unique': unique,
     };
 
+    var self = this;
 
-    //记录需要一对一的字段
     fields.forEach(function (field) {
         var name = field.name;
-
-        if (field.unique) {
-            var file = meta.unique[name] = dir + name + '$id.json';
-
-            if (!File.exists(file)) {
-                File.writeJSON(file, {});
-            }
+        var refer = field.refer;
+        if (!refer) {
+            return;
         }
+   
+        DataBase.on('create', refer, function (db) {
+            db.on({
+                'remove': function (refers) {
+                    var list = self.list();
+
+                    refers.forEach(function (refer) {
+                        var id = refer.id;
+
+                        var ids = list.filter(function (item) {
+                            return item[name] == id;
+
+                        }).map(function (item) {
+                            return item.id;
+                        });
+
+                        self.remove(ids);
+                    });
+                },
+            });
+        });
     });
 
+    emitter.fire('create', name, [this]);
 
-   
 }
 
 
+//静态方法。
+DataBase.on = function (name, fn) {
+    var args = [].slice.call(arguments, 0);
+    emitter.on.apply(emitter, args);
+};
 
-
-
+//实例方法。
 DataBase.prototype = {
     constructor: DataBase,
 
+    /**
+    * 绑定事件。
+    */
+    on: function (name, fn) {
+        var meta = this.meta;
+        var emitter = meta.emitter;
+
+        var args = [].slice.call(arguments, 0);
+        emitter.on.apply(emitter, args);
+    },
     
     /**
     * 获取一条指定 id 的记录。
@@ -92,18 +140,16 @@ DataBase.prototype = {
     },
 
     /**
-    * 获取全部记录。
+    * 获取全部或指定条件的记录。
     */
-    list: function () {
+    list: function (filter) {
         var meta = this.meta;
         var fields = meta.fields;
 
         var map = File.readJSON(meta.map);
         var list = File.readJSON(meta.list);
-       
 
-
-        return list.map(function (id) {
+        list = list.map(function (id) {
             var values = map[id];
             var item = { 'id': id };
 
@@ -112,44 +158,88 @@ DataBase.prototype = {
             });
 
             return item;
+        });
 
+        //没指定过滤条件，则返回全部。
+        if (!filter) {
+            return list;
+        }
+
+        //过滤条件为一个函数，则使用函数的过滤规则。
+        if (typeof filter == 'function') {
+            return list.filter(filter);
+        }
+
+        //过滤条件为一个对象。
+        return list.filter(function (item) {
+            for (var key in filter) {
+                if (filter[key] !== item[key]) {
+                    return false;
+                }
+            }
+            return true;
         });
 
     },
 
-
     /**
-    * 移除一条指定 id 的记录。
+    * 移除一条或多条指定 id 的记录。
     */
     remove: function (id) {
         var meta = this.meta;
+        var fields = meta.fields;
+       
         var map = File.readJSON(meta.map);
-        var values = map[id];
-
-        if (!values) {
-            return;
-        }
-     
-        delete map[id];
-
         var list = File.readJSON(meta.list);
-        var index = list.indexOf(id);
-        list.splice(index, 1);
+        var unique = File.readJSON(meta.unique);
+
+        var ids = Array.isArray(id) ? id : [id];
+
+        var items = ids.map(function (id) {
+
+            var index = list.indexOf(id);
+            if (index >= 0) {
+                list.splice(index, 1);
+            }
+
+            var values = map[id];
+            delete map[id];
+
+            if (!values) {
+                return;
+            }
+
+            var item = { 'id': id };
+
+            fields.forEach(function (field, index) {
+
+                var value = values[index];
+                var name = field.name;
+
+                item[name] = value;
+
+                if (field.unique) {
+                    delete unique[name][value];
+                }
+            });
+
+            return item;
+        });
 
         File.writeJSON(meta.map, map);
         File.writeJSON(meta.list, list);
+        File.writeJSON(meta.unique, unique);
 
-        var item = { 'id': id };
-        var fields = meta.fields;
-
-        fields.forEach(function (field, index) {
-            item[field.name] = values[index];
+        //过滤掉空项。
+        items = items.filter(function (item) {
+            return !!item;
         });
+
+        meta.emitter.fire('remove', [items]);
 
         return item;
     },
 
-    
     /**
     * 添加一条记录。
     * @param {Object} item 要添加的记录的数据对象。
@@ -198,15 +288,15 @@ DataBase.prototype = {
 
                 if (field.unique) {
                     var file = meta.unique[name];
-                    var name$id = File.readJSON(file);
+                    var value$id = File.readJSON(file);
 
-                    if (name$id[name]) {
-                        errors.push('已存在 ' + name + ' 为 ' + name$id[name] + ' 的记录');
+                    if (value$id[value]) {
+                        errors.push('已存在' + (field.alias || name) + '为' + value + '的记录');
                         return;
                     }
 
-                    name$id[name] = id;
-                    File.writeJSON(field, name$id);
+                    value$id[value] = id;
+                    File.writeJSON(file, value$id);
                 }
 
 
@@ -238,7 +328,6 @@ DataBase.prototype = {
         return item;
 
     },
-
 
     /**
     * 更新一条指定 id 的记录。

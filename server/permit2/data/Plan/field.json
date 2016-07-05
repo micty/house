@@ -1,0 +1,43 @@
+[
+    {
+        "name": "datetime",
+        "type": "string",
+        "required": false
+    },
+    {
+        "name": "landId",
+        "type": "string",
+        "required": true,
+        "unique": true
+    },
+    {
+        "name": "project",
+        "type": "string",
+        "required": false
+    },
+    {
+        "name": "projectDesc",
+        "type": "string",
+        "required": false
+    },
+    {
+        "name": "use",
+        "type": "string",
+        "required": false
+    },
+    {
+        "name": "useDesc",
+        "type": "string",
+        "required": false
+    },
+    {
+        "name": "developer",
+        "type": "string",
+        "required": false
+    },
+    {
+        "name": "developerDesc",
+        "type": "string",
+        "required": false
+    }
+]

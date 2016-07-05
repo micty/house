@@ -3,10 +3,9 @@
 var DataBase = require('../lib/DataBase');
 
 var db = new DataBase('Land', [
-    //{ name: 'id', type: 'string', required: false, },
     { name: 'datetime', type: 'string', required: false, },
 
-    { name: 'number', type: 'string', required: false, },
+    { name: 'number', type: 'string', required: false, unique: true, },
     { name: 'numberDesc', type: 'string', required: false, },
     { name: 'town', type: 'string', required: false, },
     { name: 'townDesc', type: 'string', required: false, },
@@ -165,7 +164,7 @@ module.exports = {
             res.error(ex);
         }
 
-    }
+    },
 
 
 };

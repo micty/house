@@ -3,10 +3,9 @@
 var DataBase = require('../lib/DataBase');
 
 var db = new DataBase('Plan', [
-    //{ name: 'id', type: 'string', required: false, },
     { name: 'datetime', type: 'string', required: false, },
 
-    { name: 'landId', type: 'string', required: true, unique: true, },
+    { name: 'landId', type: 'string', required: true, unique: true, refer: 'Land',  },
     { name: 'project', type: 'string', required: false, },
     { name: 'projectDesc', type: 'string', required: false, },
     { name: 'use', type: 'string', required: false, },
@@ -17,8 +16,12 @@ var db = new DataBase('Plan', [
 
 
 
-
 module.exports = {
+
+    /**
+    * 仅供其它内部模块调用。
+    */
+    db: db,
 
     /**
     * 获取一条记录。
@@ -147,7 +150,33 @@ module.exports = {
             res.error(ex);
         }
 
-    }
+    },
+
+    /**
+    * 获取待办和已办列表。
+    */
+    all: function (req, res) {
+
+        //try {
+            var Land = require('./Land');
+            var PlanLicense = require('./PlanLicense');
+
+            var lands = Land.db.list();
+            var licenses = PlanLicense.db.list();
+            var list = db.list();
+
+            res.success({
+                'list': list,
+                'lands': lands,
+                'licenses': licenses,
+            });
+
+        //}
+        //catch (ex) {
+        //    res.error(ex);
+        //}
+
+    },
 
 
 };
