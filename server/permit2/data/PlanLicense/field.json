@@ -3,35 +3,21 @@
         "name": "datetime"
     },
     {
+        "name": "planId",
+        "required": true,
+        "refer": "Plan"
+    },
+    {
         "name": "number"
     },
     {
         "name": "numberDesc"
     },
     {
-        "name": "town"
+        "name": "date"
     },
     {
-        "name": "townDesc"
-    },
-    {
-        "name": "location"
-    },
-    {
-        "name": "locationDesc"
-    },
-    {
-        "name": "size",
-        "type": "number"
-    },
-    {
-        "name": "sizeDesc"
-    },
-    {
-        "name": "use"
-    },
-    {
-        "name": "useDesc"
+        "name": "dateDesc"
     },
     {
         "name": "residenceSize",
@@ -74,36 +60,5 @@
     },
     {
         "name": "otherSize1Desc"
-    },
-    {
-        "name": "winner"
-    },
-    {
-        "name": "winnerDesc"
-    },
-    {
-        "name": "price",
-        "type": "number"
-    },
-    {
-        "name": "priceDesc"
-    },
-    {
-        "name": "date"
-    },
-    {
-        "name": "dateDesc"
-    },
-    {
-        "name": "contract"
-    },
-    {
-        "name": "contractDesc"
-    },
-    {
-        "name": "license"
-    },
-    {
-        "name": "licenseDesc"
     }
 ]

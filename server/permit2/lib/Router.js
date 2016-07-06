@@ -50,10 +50,13 @@ Response.prototype = {
     },
 
     error: function (ex) {
+
         this.res.send({
             code: 500,
             msg: ex.message,
         });
+
+        console.dir(ex);
     },
 };
 

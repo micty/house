@@ -1,43 +1,29 @@
 [
     {
-        "name": "datetime",
-        "type": "string",
-        "required": false
+        "name": "datetime"
     },
     {
         "name": "landId",
-        "type": "string",
         "required": true,
-        "unique": true
+        "unique": true,
+        "refer": "Land"
     },
     {
-        "name": "project",
-        "type": "string",
-        "required": false
+        "name": "project"
     },
     {
-        "name": "projectDesc",
-        "type": "string",
-        "required": false
+        "name": "projectDesc"
     },
     {
-        "name": "use",
-        "type": "string",
-        "required": false
+        "name": "use"
     },
     {
-        "name": "useDesc",
-        "type": "string",
-        "required": false
+        "name": "useDesc"
     },
     {
-        "name": "developer",
-        "type": "string",
-        "required": false
+        "name": "developer"
     },
     {
-        "name": "developerDesc",
-        "type": "string",
-        "required": false
+        "name": "developerDesc"
     }
 ]

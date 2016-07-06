@@ -11,24 +11,35 @@ function now() {
 
 var emitter = new Emitter(DataBase);
 var root = process.cwd() + '/data/';
-
+var name$db = {};             
 
 function DataBase(name, fields) {
+
+    var isOuter = !!fields;             //判断是否为外面实例化的创建（通过指定 fields）
+    if (isOuter && name$db[name]) {
+        throw new Error('已经存在名为 ' + name + ' 的 DataBase 实例');
+    }
+
     var dir = root + name + '/';
     dir = dir.split('\\').join('/');
 
-    var field = dir + 'field.json';
-    var list = dir + 'list.json';
-    var map = dir + 'map.json';
-    var unique = dir + 'unique.json';
+    var field = dir + 'field.json';     //字段描述列表: fields
+    var list = dir + 'list.json';       //id 索引列表: ids
+    var map = dir + 'map.json';         //记录映射表: id$item
+    var unique = dir + 'unique.json';   //一对一字段映射 id 表: fieldName$value$id 
 
-
-    if (!File.exists(field)) {
+    //字段描述列表。 
+    if (fields) {
         File.writeJSON(field, fields);
     }
     else {
-        fields = File.readJSON(field);
+        fields = File.exists(field) ? File.readJSON(field) || [] : [];
     }
+
+    fields.forEach(function (field) {
+        field.type = field.type || 'string'; //默认为 string 类型。
+    });
+
 
     if (!File.exists(list)) {
         File.writeJSON(list, []);
@@ -38,17 +49,22 @@ function DataBase(name, fields) {
         File.writeJSON(map, {});
     }
 
-    if (!File.exists(unique)) {
-        var obj = {};
+    //一对一字段映射。
+    var obj = File.exists(unique) ? File.readJSON(unique) || {} : {};
 
-        fields.forEach(function (field) {
-            if (field.unique) {
-                obj[field.name] = {};
-            }
-        });
+    fields.forEach(function (field) {
+        var name = field.name;
 
-        File.writeJSON(unique, obj);
-    }
+        if (field.unique) {
+            obj[name] = obj[name] || {};
+        }
+        else {
+            delete obj[name];
+        }
+    });
+
+    File.writeJSON(unique, obj);
+
 
 
     var meta = this.meta = {
@@ -59,18 +75,24 @@ function DataBase(name, fields) {
         'unique': unique,
     };
 
-    var self = this;
 
-    fields.forEach(function (field) {
-        var name = field.name;
-        var refer = field.refer;
-        if (!refer) {
-            return;
-        }
-   
-        DataBase.on('create', refer, function (db) {
-            db.on({
-                'remove': function (refers) {
+    if (isOuter) {
+
+        var self = this;
+
+        //关联外键
+        fields.forEach(function (field) {
+            var name = field.name;
+            var refer = field.refer;
+            if (!refer) {
+                return;
+            }
+
+            DataBase.on('create', refer, function (db) {
+
+                //级联删除所关联的下级节点。
+                db.on('remove', function (refers) {
+
                     var list = self.list();
 
                     refers.forEach(function (refer) {
@@ -85,21 +107,39 @@ function DataBase(name, fields) {
 
                         self.remove(ids);
                     });
-                },
+                });
             });
         });
-    });
 
-    emitter.fire('create', name, [this]);
+        emitter.fire('create', name, [this]);
+        name$db[name] = this;
+    }
+    
 
 }
 
 
 //静态方法。
-DataBase.on = function (name, fn) {
+DataBase.on = function (action, name, fn) {
+
+    //指定名称的数据库已经创建，立即触发回调函数。
+    if (action == 'create') {   //外面绑定只能 on('create', name, fn) 的方式。
+        var db = name$db[name];
+        if (db) {
+            fn && fn(db);
+            return;
+        }
+    }
+
+    //尚未创建，则先注册。
     var args = [].slice.call(arguments, 0);
     emitter.on.apply(emitter, args);
 };
+
+DataBase.get = function (name) {
+    return name$db[name] || new DataBase(name);
+};
+
 
 //实例方法。
 DataBase.prototype = {
@@ -119,7 +159,7 @@ DataBase.prototype = {
     /**
     * 获取一条指定 id 的记录。
     */
-    get: function (id) {
+    get: function (id, refer) {
 
         var meta = this.meta;
         var map = File.readJSON(meta.map);
@@ -132,11 +172,26 @@ DataBase.prototype = {
         var item = { 'id': id };
         var fields = meta.fields;
 
+        var refers = refer ? {} : null;
+
         fields.forEach(function (field, index) {
-            item[field.name] = values[index];
+            var name = field.name;
+            var value = values[index];
+            var refer = field.refer;
+
+            item[name] = value;
+
+            //指定了要获取关联的外键，并且该字段是外键的。
+            if (refers && refer) {
+                var db = DataBase.get(refer);
+                refers[name] = db.get(value, true);
+            }
         });
 
-        return item;
+        return refer ? {
+            'item': item,
+            'refer': refers,
+        } : item;
     },
 
     /**
@@ -212,7 +267,6 @@ DataBase.prototype = {
             var item = { 'id': id };
 
             fields.forEach(function (field, index) {
-
                 var value = values[index];
                 var name = field.name;
 
@@ -237,30 +291,25 @@ DataBase.prototype = {
 
         meta.emitter.fire('remove', [items]);
 
-        return item;
+        return Array.isArray(id) ? items: items[0];
     },
 
     /**
-    * 添加一条记录。
+    * 添加一条或多条记录。
     * @param {Object} item 要添加的记录的数据对象。
     */
     add: function (item) {
         var meta = this.meta;
         var fields = meta.fields;
-        var errors = [];
 
         var map = File.readJSON(meta.map);
         var list = File.readJSON(meta.list);
+        var unique = File.readJSON(meta.unique);
 
-        if (Array.isArray(item)) {  //重载 add(items)，批量添加
-            item = item.map(add);
-        }
-        else {                      //单个添加
-            item = add(item);
-        }
+        var items = Array.isArray(item) ? item : [item];
+        var errors = [];
 
-
-        function add(item) {
+        items = items.map(function (item) {
             var id = $.String.random();
 
             item.id = id;
@@ -269,7 +318,6 @@ DataBase.prototype = {
 
             //必须确保值的长度跟键的长度一致。
             map[id] = fields.map(function (field) {
-
                 var name = field.name;
                 var type = field.type;
                 var value = item[name];
@@ -279,7 +327,7 @@ DataBase.prototype = {
                         errors.push('缺少字段 ' + name);
                         return;
                     }
-                    
+
                     if (type == 'string' && !value) {
                         errors.push('字段 ' + name + ' 不能为空');
                         return;
@@ -287,18 +335,24 @@ DataBase.prototype = {
                 }
 
                 if (field.unique) {
-                    var file = meta.unique[name];
-                    var value$id = File.readJSON(file);
-
-                    if (value$id[value]) {
+                    if (unique[name][value]) {
                         errors.push('已存在' + (field.alias || name) + '为' + value + '的记录');
                         return;
                     }
 
-                    value$id[value] = id;
-                    File.writeJSON(file, value$id);
+                    unique[name][value] = id;
                 }
 
+                var refer = field.refer;
+                if (refer) {
+                    var db = DataBase.get(refer);
+                    var referItem = db.get(value);
+                    if (!referItem) {
+                        //如：不存在关联的 landId 为 554SA76445BA 的 Land 记录。
+                        errors.push('不存在关联的 ' + name + ' 为 ' + value + ' 的 ' + refer + ' 记录');
+                        return;
+                    }
+                }
 
                 //存储时作数据转换。
                 switch (type) {
@@ -315,17 +369,19 @@ DataBase.prototype = {
             });
 
             return item;
-        }
+        });
 
         if (errors.length > 0) {
             throw new Error(errors.join('\n'));
         }
 
-
         File.writeJSON(meta.map, map);
         File.writeJSON(meta.list, list);
+        File.writeJSON(meta.unique, unique);
 
-        return item;
+        meta.emitter.fire('add', [items]);
+
+        return Array.isArray(item) ? items : items[0];
 
     },
 
@@ -333,7 +389,6 @@ DataBase.prototype = {
     * 更新一条指定 id 的记录。
     */
     update: function (item) {
-
         var meta = this.meta;
         var map = File.readJSON(meta.map);
         var id = item.id;
@@ -344,17 +399,38 @@ DataBase.prototype = {
         }
 
         var fields = meta.fields;
+        var unique = File.readJSON(meta.unique);
+
         item.datetime = now();
 
         fields.forEach(function (field, index) {
             var name = field.name;
+            var has = name in item;
+            var value = has ? item[name] : values[index];
 
-            if (!(name in item)) {
-                item[name] = values[index];     //取原来的值，为了返回给调用方。
+            if (!has) {
+                item[name] = value; //取原来的值，为了返回给调用方。
                 return;
             }
 
-            var value = item[name];
+            //以下的 value === item[name]，即为 item 中的，而不是原来的 values[index]。
+
+            if (field.required) {
+                if (type == 'string' && !value) {
+                    errors.push('字段 ' + name + ' 不能为空');
+                    return;
+                }
+            }
+
+            if (field.unique && value != values[index]) { //只有值发生变化时才作进一步判断。
+             
+                if (unique[name][value]) {
+                    errors.push('已存在' + (field.alias || name) + '为' + value + '的记录');
+                    return;
+                }
+
+                unique[name][value] = id;
+            }
 
             //存储时作数据转换。
             switch (field.type) {
@@ -372,6 +448,10 @@ DataBase.prototype = {
 
       
         File.writeJSON(meta.map, map);
+        File.writeJSON(meta.unique, unique);
+
+        meta.emitter.fire('update', [item]);
+
         return item;
     },
 

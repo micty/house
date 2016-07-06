@@ -3,25 +3,26 @@
 var DataBase = require('../lib/DataBase');
 
 var db = new DataBase('PlanLicense', [
-    { name: 'datetime', type: 'string', required: false, },
+    { name: 'datetime', },
 
-    { name: 'planId', type: 'string', required: true, unique: true, },
-    { name: 'number', type: 'string', required: false, },
-    { name: 'numberDesc', type: 'string', required: false, },
-    { name: 'date', type: 'string', required: false, },
-    { name: 'dateDesc', type: 'string', required: false, },
-    { name: 'residenceSize', type: 'number', required: false, },
-    { name: 'residenceSizeDesc', type: 'string', required: false, },
-    { name: 'commerceSize', type: 'number', required: false, },
-    { name: 'commerceSizeDesc', type: 'string', required: false, },
-    { name: 'officeSize', type: 'number', required: false, },
-    { name: 'officeSizeDesc', type: 'string', required: false, },
-    { name: 'otherSize', type: 'number', required: false, },
-    { name: 'otherSizeDesc', type: 'string', required: false, },
-    { name: 'parkSize', type: 'number', required: false, },
-    { name: 'parkSizeDesc', type: 'string', required: false, },
-    { name: 'otherSize1', type: 'number', required: false, },
-    { name: 'otherSize1Desc', type: 'string', required: false, },
+    { name: 'planId', required: true, refer: 'Plan', },
+
+    { name: 'number', },
+    { name: 'numberDesc', },
+    { name: 'date', },
+    { name: 'dateDesc', },
+    { name: 'residenceSize', type: 'number', },
+    { name: 'residenceSizeDesc', },
+    { name: 'commerceSize', type: 'number', },
+    { name: 'commerceSizeDesc', },
+    { name: 'officeSize', type: 'number', },
+    { name: 'officeSizeDesc', },
+    { name: 'otherSize', type: 'number', },
+    { name: 'otherSizeDesc', },
+    { name: 'parkSize', type: 'number', },
+    { name: 'parkSizeDesc', },
+    { name: 'otherSize1', type: 'number', },
+    { name: 'otherSize1Desc', },
 
 ]);
 
@@ -47,23 +48,28 @@ module.exports = {
         }
 
         try {
-            var item = db.get(id);
-            if (!item) {
+            var data = db.get(id, true);
+            if (!data) {
                 res.none({ 'id': id });
                 return;
             }
 
-            var Plan = require('./Plan');
-            var plan = Plan.db.get(item.planId);
-
+            var plan = data.refer.planId;
             if (!plan) {
                 res.none('不存在关联的 Plan 该记录', item);
                 return;
             }
 
+            var land = plan.refer.landId;
+            if (!land) {
+                res.none('不存在关联的 Land 该记录', land);
+                return;
+            }
+
             res.success({
-                'land': land,
-                'plan': item,
+                'license': data.item,
+                'plan': plan.item,
+                'land': land.item,
             });
 
         }

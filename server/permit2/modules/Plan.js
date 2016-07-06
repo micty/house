@@ -3,15 +3,16 @@
 var DataBase = require('../lib/DataBase');
 
 var db = new DataBase('Plan', [
-    { name: 'datetime', type: 'string', required: false, },
+    { name: 'datetime', },
 
-    { name: 'landId', type: 'string', required: true, unique: true, refer: 'Land',  },
-    { name: 'project', type: 'string', required: false, },
-    { name: 'projectDesc', type: 'string', required: false, },
-    { name: 'use', type: 'string', required: false, },
-    { name: 'useDesc', type: 'string', required: false, },
-    { name: 'developer', type: 'string', required: false, },
-    { name: 'developerDesc', type: 'string', required: false, },
+    { name: 'landId', required: true, unique: true, refer: 'Land', },
+
+    { name: 'project', },
+    { name: 'projectDesc', },
+    { name: 'use', },
+    { name: 'useDesc', },
+    { name: 'developer', },
+    { name: 'developerDesc', },
 ]);
 
 
@@ -35,14 +36,13 @@ module.exports = {
         }
 
         try{
-            var item = db.get(id);
-            if (!item) {
+            var data = db.get(id, true);
+            if (!data) {
                 res.none({ 'id': id });
                 return;
             }
 
-            var Land = require('./Land');
-            var land = Land.db.get(item.landId);
+            var land = data.refer.landId;
 
             if (!land) {
                 res.none('不存在关联的 Land 该记录', item);
@@ -50,8 +50,8 @@ module.exports = {
             }
 
             res.success({
-                'land': land,
-                'plan': item,
+                'land': land.item,
+                'plan': data.item,
             });
 
         }
@@ -157,7 +157,7 @@ module.exports = {
     */
     all: function (req, res) {
 
-        //try {
+        try {
             var Land = require('./Land');
             var PlanLicense = require('./PlanLicense');
 
@@ -171,10 +171,10 @@ module.exports = {
                 'licenses': licenses,
             });
 
-        //}
-        //catch (ex) {
-        //    res.error(ex);
-        //}
+        }
+        catch (ex) {
+            res.error(ex);
+        }
 
     },
 

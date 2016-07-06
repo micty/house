@@ -1484,5 +1484,93 @@
         "developer": "佛山市雅居乐房地产有限公司",
         "developerDesc": "",
         "datetime": "2016-06-28 15:34:26"
+    },
+    {
+        "id": "F12C6EC2A650",
+        "landId": "09CE525F3921",
+        "project": "东华里岭南天地",
+        "projectDesc": "",
+        "use": "",
+        "useDesc": "",
+        "developer": "",
+        "developerDesc": "",
+        "datetime": "2016-07-05 21:31:19"
+    },
+    {
+        "id": "A8FF59829EBF",
+        "landId": "F00B99B709C7",
+        "project": "万科城",
+        "projectDesc": "",
+        "use": "居住用地，兼容商业",
+        "useDesc": "",
+        "developer": "佛山市万科投资有限公司",
+        "developerDesc": "",
+        "datetime": "2016-07-05 18:20:31"
+    },
+    {
+        "id": "A1E37909CFA0",
+        "landId": "1AE1A8F11A99",
+        "project": "季华路南侧、彩虹路北侧地块项目",
+        "projectDesc": "",
+        "use": "商业商务娱乐康体用地，兼容二类居住用地",
+        "useDesc": "",
+        "developer": "佛山市彩管置业有限公司",
+        "developerDesc": "",
+        "datetime": "2016-07-05 21:07:01"
+    },
+    {
+        "id": "DCACC977A134",
+        "landId": "C853B54DB66C",
+        "project": "南庄镇港宏世家",
+        "projectDesc": "",
+        "use": "居住用地，可兼容商业、办公、文化娱乐用地",
+        "useDesc": "",
+        "developer": "佛山市禅城区南庄镇南庄集团有限公司",
+        "developerDesc": "",
+        "datetime": "2016-07-06 09:29:29"
+    },
+    {
+        "id": "0755ADDCAC44",
+        "landId": "85876D80F6B8",
+        "project": "TD2015(CC)XG001地块建设项目",
+        "projectDesc": "",
+        "use": "一类工业用地、商业商务用地、娱乐康体用地、物流仓储用地",
+        "useDesc": "",
+        "developer": "佛山市同向新力工业自动化科技应用有限公司",
+        "developerDesc": "",
+        "datetime": "2016-07-06 10:13:16"
+    },
+    {
+        "id": "AF6328FB184F",
+        "landId": "C8FDF16C3B23",
+        "project": "佛禅（挂）2012-012地块广东零壹科技产业园",
+        "projectDesc": "",
+        "use": "主导为工业用地，可兼容商业服务业设施用地、物流仓储用地",
+        "useDesc": "",
+        "developer": "广东零壹置业有限公司",
+        "developerDesc": "",
+        "datetime": "2016-07-06 10:25:12"
+    },
+    {
+        "id": "63EA2764AB86",
+        "landId": "78927A5B2B27",
+        "project": "华南电源创新科技园",
+        "projectDesc": "",
+        "use": "都市型产业用地（主导为工业用地，可兼容商业服务业设施用地、物流仓储用地）。",
+        "useDesc": "",
+        "developer": "佛山市禅城区华南电源创新科技园投资管理有限公司",
+        "developerDesc": "",
+        "datetime": "2016-07-06 10:24:53"
+    },
+    {
+        "id": "A6F653F898B5",
+        "landId": "4140C7A99B7E",
+        "project": "佛禅（挂）2007-017地块普君新城",
+        "projectDesc": "",
+        "use": "居住用地，兼容商业金融业用地、办公用地",
+        "useDesc": "",
+        "developer": "佛山市东建集团有限公司",
+        "developerDesc": "",
+        "datetime": "2016-07-06 10:26:45"
     }
 ]
