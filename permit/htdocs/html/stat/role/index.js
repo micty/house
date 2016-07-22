@@ -20,6 +20,7 @@ KISP.launch(function (require, module) {
 
     var current = null;
     var saleRows = null;
+    var type = Url.getQueryString(window, 'type') || '';
 
 
     API.on({
@@ -40,7 +41,12 @@ KISP.launch(function (require, module) {
 
         data = Formater.format(data, key);
  
-        Table.render(data);
+        if (type == 'table') {
+            Table.render(data);
+        }
+        else {
+            Table.hide();
+        }
 
 
         var rows = data.rows;
@@ -50,13 +56,27 @@ KISP.launch(function (require, module) {
      
 
         if (key == 'sale') {
-            saleRows = rows;
-            SaleTabs.render();
+            if (type == 'chart') {
+                saleRows = rows;
+                SaleTabs.render();
+            }
+            else {
+                SaleTabs.hide();
+            }
         }
         else {
-            Chart.render(rows);
             SaleTabs.hide();
+
+            if (type == 'chart') {
+                Chart.render(rows);
+            }
+            else {
+                Chart.hide();
+            }
         }
+
+
+       
 
     });
 

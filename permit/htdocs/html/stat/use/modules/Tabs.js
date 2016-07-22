@@ -18,6 +18,8 @@ define('/Tabs', function (require, module) {
         { key: 'otherSize', name: '计容面积其它', },
         { key: 'parkSize', name: '地下车库', },
         { key: 'otherSize1', name: '不计容面积其它', },
+
+        { key: 'diy', name: '自建房', },
     ];
 
 

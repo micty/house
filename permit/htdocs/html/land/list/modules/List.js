@@ -32,6 +32,7 @@ define('/List', function (require, module) {
                         'datetime': item.datetime.split(' ')[0],
                         'totalSize': Size.totalText(item),
                         'size': Size.text(item, 'size'),
+                        'diy-class': item.diy == '是' ? 'diy' : '',
                     });
 
                     return {

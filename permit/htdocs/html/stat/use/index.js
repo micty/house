@@ -18,6 +18,7 @@ KISP.launch(function (require, module) {
     var Header = module.require('Header');
 
     var current = null;
+    var type = Url.getQueryString(window, 'type') || '';
 
 
     API.on({
@@ -30,16 +31,31 @@ KISP.launch(function (require, module) {
 
 
 
-    Tabs.on('change', function (town) {
+    Tabs.on('change', function (item) {
 
-        Header.render(town);
+        Header.render(item);
 
         var data = current;
-        data = Formater.format(data, town.key);
+        data = Formater.format(data, item.key);
 
 
-        Table.render(data);
-        Chart.render(data.rows);
+        switch (type) {
+
+            case 'table':
+                Chart.hide();
+                Table.render(data);
+                break;
+
+            case 'chart':
+                Table.hide();
+                Chart.render(data.rows);
+                break;
+
+            default:
+                Table.render(data);
+                Chart.render(data.rows);
+                break;
+        }
 
     });
 

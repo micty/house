@@ -11,6 +11,7 @@ define('/Formater/Group', function (require, module, exports) {
         { name: '土地出让', key: 'lands', },
         { name: '已办规划许可', key: 'plans', },
         { name: '已办施工许可', key: 'constructs', },
+
         { name: '已办预售许可', key: 'prepares', },
         { name: '已办现售备案', key: 'doings', },
 

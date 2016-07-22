@@ -103,20 +103,41 @@
     },
     {
         icon: 'area-chart',
-        name: '区域统计',
-        url: 'html/stat/town/index.html',
+        name: '区域统计表',
+        url: 'html/stat/town/index.html?type=table',
     },
     {
         icon: 'bar-chart',
-        name: '版块统计',
-        url: 'html/stat/role/index.html',
+        name: '版块统计表',
+        url: 'html/stat/role/index.html?type=table',
     },
     {
         icon: 'line-chart',
-        name: '功能统计',
-        url: 'html/stat/use/index.html',
+        name: '功能统计表',
+        url: 'html/stat/use/index.html?type=table',
         border: true,
     },
+
+    {
+        icon: 'area-chart',
+        name: '区域统计图',
+        url: 'html/stat/town/index.html?type=chart',
+    },
+    {
+        icon: 'bar-chart',
+        name: '版块统计图',
+        url: 'html/stat/role/index.html?type=chart',
+    },
+    {
+        icon: 'line-chart',
+        name: '功能统计图',
+        url: 'html/stat/use/index.html?type=chart',
+        border: true,
+    },
+
+
+
+
     {
         icon: 'user',
         name: '用户管理',

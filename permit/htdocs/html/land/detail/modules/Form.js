@@ -33,6 +33,10 @@ define('/Form', function (require, module, exports) {
             'totalSize': Size.totalText(data),
             'size': Size.text(data, 'size'),
             'price': NumberField.money(data.price),
+
+            //后来添加的字段
+            'diy': data.diy || '',
+            'diyDesc': data.diyDesc || '',
         });
 
 

@@ -1505,7 +1505,7 @@
         "useDesc": "",
         "developer": "佛山市万科投资有限公司",
         "developerDesc": "",
-        "datetime": "2016-07-05 18:20:31"
+        "datetime": "2016-07-21 17:31:39"
     },
     {
         "id": "A1E37909CFA0",
@@ -1572,5 +1572,27 @@
         "developer": "佛山市东建集团有限公司",
         "developerDesc": "",
         "datetime": "2016-07-06 10:26:45"
+    },
+    {
+        "id": "9BB461DCE1A0",
+        "landId": "2D41677AD65B",
+        "project": "石紫村地块商住项目",
+        "projectDesc": "",
+        "use": "商场、住宅",
+        "useDesc": "",
+        "developer": "佛山市恒紫房地产开发有限公司、佛山市禅城区张槎街道石紫股份合作经济社",
+        "developerDesc": "",
+        "datetime": "2016-07-07 12:43:37"
+    },
+    {
+        "id": "1E92574F1065",
+        "landId": "63C1CB44636F",
+        "project": "卓景花园",
+        "projectDesc": "",
+        "use": "居住用地，兼容商业金融、办公用地",
+        "useDesc": "",
+        "developer": "佛山市卓越房地产开发有限公司",
+        "developerDesc": "",
+        "datetime": "2016-07-07 16:02:50"
     }
 ]

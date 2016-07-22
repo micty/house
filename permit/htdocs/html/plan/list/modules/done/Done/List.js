@@ -32,6 +32,8 @@ define('/Done/List', function (require, module) {
                         'no': index + 1,
                         'operate-display': display,
                         'license': item.licenses.length,
+                        'diy-class': item['land.diy'] == '是' ? 'diy' : '',
+
                     });
 
                     return {

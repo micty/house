@@ -94,6 +94,7 @@ module.exports = {
             lands = lands.map(function (item) {
                 return sizes(item, {
                     'town': item.town,
+                    'diy': item.diy,
                     'size': Number(item.size) || 0,
                 });
             });
@@ -113,6 +114,7 @@ module.exports = {
 
                 return sizes(item, {
                     'town': land.town,
+                    'diy': land.diy,
                 });
             });
 
@@ -136,6 +138,7 @@ module.exports = {
 
                 return sizes(license, {
                     'town': land.town,
+                    'diy': land.diy,
                 });
             });
 
@@ -165,6 +168,7 @@ module.exports = {
            
                 var obj = sizes(item, {
                     'town': land.town,
+                    'diy': land.diy,
                 });
 
                 var a = item.type == 0 ? prepares : doings;
@@ -173,6 +177,7 @@ module.exports = {
                 //
                 var obj = sizes('saled-', item, {
                     'town': land.town,
+                    'diy': land.diy,
                 });
 
                 var a = item.type == 0 ? saledPrepares : saledDoings;

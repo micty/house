@@ -10,10 +10,10 @@ define('/Formater', function (require, module, exports) {
 
 
 
-    function format(data, town) {
+    function format(data, use) {
 
         //基础
-        var groups = Group.getBases(data, town);
+        var groups = Group.getBases(data, use);
 
         //空白组
         groups[5] = Group.getEmpty(groups[0]);

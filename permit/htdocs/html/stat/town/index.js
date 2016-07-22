@@ -16,14 +16,16 @@ KISP.launch(function (require, module) {
     var Table = module.require('Table');
     var Tabs = module.require('Tabs');
     var Header = module.require('Header');
+    var Router = module.require('Router');
+    
 
     var current = null;
+    var type = Url.getQueryString(window, 'type') || '';
 
 
     API.on({
         'success': function (data) {
             current = data;
-
             Tabs.render();
         },
     });
@@ -37,14 +39,29 @@ KISP.launch(function (require, module) {
         var data = current;
         data = Formater.format(data, town.key);
 
-        Table.render(data);
-        Chart.render(data.rows);
+        switch (type) {
 
+            case 'table':
+                Chart.hide();
+                Table.render(data);
+                break;
+
+            case 'chart':
+                Table.hide();
+                Chart.render(data.rows);
+                break;
+
+            default:
+                Table.render(data);
+                Chart.render(data.rows);
+                break;
+        }
     });
 
 
-
     API.get();
+
+
 
     
 });
