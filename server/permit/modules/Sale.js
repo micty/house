@@ -411,9 +411,11 @@ module.exports = {
     /**
     * 获取待办和已办列表。
     */
-    all: function (res) {
+    all: function (res, data) {
 
         try {
+            data = data || {};
+
             var Land = require('./Land');
             var Plan = require('./Plan');
             var SaleLicense = require('./SaleLicense');
@@ -423,6 +425,16 @@ module.exports = {
             var sales = module.exports.list();
             var licenses = SaleLicense.list();
 
+            lands = lands.filter(function (item) {
+                return item.diy != '是';
+            });
+
+            var keyword = data.keyword;
+            if (keyword) {
+                lands = lands.filter(function (item) {
+                    return item.number.indexOf(keyword) >= 0;
+                });
+            }
 
             res.send({
                 code: 200,

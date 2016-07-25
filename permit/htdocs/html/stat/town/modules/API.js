@@ -14,7 +14,10 @@ define('/API', function (require, module, exports) {
 
 
     //获取数据
-    function get() {
+    function post(options) {
+
+        options = options || {};
+
 
         var api = KISP.create('API', 'Stat.get', {
             //proxy: 'api/Stat.overview.js',
@@ -50,7 +53,7 @@ define('/API', function (require, module, exports) {
             },
         });
 
-        api.get();
+        api.post(options);
 
 
     }
@@ -58,7 +61,7 @@ define('/API', function (require, module, exports) {
 
 
     return {
-        get: get,
+        post: post,
         on: emitter.on.bind(emitter),
     };
 

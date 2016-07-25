@@ -238,6 +238,42 @@ DataBase.prototype = {
     },
 
     /**
+    * 获取指定页码和页大小的记录列表。
+    * @param {number} pageNo 页码数值，从 1 开始。
+    * @param {number} pageSize 页的大小，即每页记录的条数。
+    * @return {object} 返回一个 { list: [], total: 123 } 的数据结构对象。
+    */
+    page: function (pageNo, pageSize) {
+        var meta = this.meta;
+        var fields = meta.fields;
+
+        var map = File.readJSON(meta.map);
+        var list = File.readJSON(meta.list);
+
+        var total = list.length;            //总记录数。
+        var begin = (pageNo - 1) * pageSize;
+        var end = begin + pageSize;
+
+        list = list.slice(begin, end);
+
+        list = list.map(function (id) {
+            var values = map[id];
+            var item = { 'id': id };
+
+            fields.forEach(function (field, index) {
+                item[field.name] = values[index];
+            });
+
+            return item;
+        });
+
+        return {
+            'list': list,
+            'total': total,
+        };
+    },
+
+    /**
     * 移除一条或多条指定 id 的记录。
     */
     remove: function (id) {

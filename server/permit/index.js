@@ -78,8 +78,9 @@ app.get('/Plan.remove', function (req, res) {
 app.get('/Plan.list', function (req, res) {
     Plan.list(res);
 });
-app.get('/Plan.all', function (req, res) {
-    Plan.all(res);
+
+app.post('/Plan.all', function (req, res) {
+    Plan.all(res, req.body);
 });
 
 
@@ -120,8 +121,8 @@ app.get('/Construct.remove', function (req, res) {
 app.get('/Construct.list', function (req, res) {
     Construct.list(res);
 });
-app.get('/Construct.all', function (req, res) {
-    Construct.all(res);
+app.post('/Construct.all', function (req, res) {
+    Construct.all(res, req.body);
 });
 
 
@@ -145,8 +146,8 @@ app.get('/Sale.remove', function (req, res) {
 app.get('/Sale.list', function (req, res) {
     Sale.list(res);
 });
-app.get('/Sale.all', function (req, res) {
-    Sale.all(res);
+app.post('/Sale.all', function (req, res) {
+    Sale.all(res, req.body);
 });
 app.post('/Sale.import', function (req, res) {
     Sale.import(res, req.body);
@@ -175,8 +176,8 @@ app.get('/SaleLicense.list', function (req, res) {
 
 //统计模块
 var Stat = require('./modules/Stat');
-app.get('/Stat.get', function (req, res) {
-    Stat.get(res);
+app.post('/Stat.get', function (req, res) {
+    Stat.get(res, req.body);
 });
 
 

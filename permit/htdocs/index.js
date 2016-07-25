@@ -15,6 +15,7 @@ KISP.launch(function (require, module) {
     var Iframes = module.require('Iframes');
     var Tips = module.require('Tips');
     var UserInfos = module.require('UserInfos');
+    var Search = module.require('Search');
 
 
     UserInfos.on({
@@ -141,12 +142,20 @@ KISP.launch(function (require, module) {
         },
     });
 
+    Search.on('submit', function (data) {
+       
+        var item = Iframes.getActivedItem();
+        Bridge.fire('search', item.id, [data]);
+
+    });
+
 
 
     PageTabs.render();
     PageList.render();
     Iframes.render();
     UserInfos.render();
+    Search.render();
 
 
     //加载菜单数据

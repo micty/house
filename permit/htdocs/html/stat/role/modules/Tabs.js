@@ -35,6 +35,9 @@ define('/Tabs', function (require, module) {
 
 
     panel.on('render', function (index) {
+        index = index || 0;
+
+
         tabs.render(list, function (item, index) {
             return {
                 'index': index,
@@ -42,7 +45,6 @@ define('/Tabs', function (require, module) {
             };
         });
 
-        index = index || 0;
 
         tabs.active(index);
     });

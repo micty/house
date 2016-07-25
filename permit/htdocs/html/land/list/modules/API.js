@@ -13,7 +13,9 @@ define('/API', function (require, module, exports) {
     var list = null; //暂时实现前端分页
 
 
-    var defaults = {};
+    var defaults = {
+        'keyword': '',
+    };
 
 
     function getPageList(options) {
@@ -27,6 +29,13 @@ define('/API', function (require, module, exports) {
         if (town) {
             items = items.filter(function (item) {
                 return item.town == town;
+            });
+        }
+
+        var keyword = options.keyword;
+        if (keyword) {
+            items = items.filter(function (item) {
+                return item.number.indexOf(keyword) >= 0;
             });
         }
 

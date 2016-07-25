@@ -29,13 +29,13 @@ KISP.launch(function (require, module) {
     });
 
     API.on('success', {
-        'get': function (data) {
+        'post': function (data) {
             current = data;
-            Tabs.render(0);
+            Tabs.render();
         },
 
         'remove': function () {
-            API.get();
+            API.post();
         },
     });
 
@@ -76,7 +76,7 @@ KISP.launch(function (require, module) {
         'land.detail': function (item) {
             Bridge.open({
                 name: '土地出让详情',
-                url: 'html/land/detail/index.html?id=' + item.landId,
+                url: 'html/land/detail/index.html?id=' + item.land.id,
             });
         },
 
@@ -111,7 +111,13 @@ KISP.launch(function (require, module) {
         },
     });
    
+    Bridge.on({
+        'search': function (data) {
+            API.post({ 'keyword': data, });
+        },
+    });
 
-    API.get();
+
+    API.post();
     
 });

@@ -9,6 +9,7 @@ define('/Tabs', function (require, module) {
 
     var panel = KISP.create('Panel', '#ul-tabs');
     var tabs = null;
+    var currentIndex;
 
     var list = [
         { key: 'todo', name: '待办任务', },
@@ -25,6 +26,7 @@ define('/Tabs', function (require, module) {
         });
 
         tabs.on('change', function (item, index) {
+            currentIndex = index;
             item = list[index];
             
             panel.fire('change', item.key, []);
@@ -34,6 +36,12 @@ define('/Tabs', function (require, module) {
 
 
     panel.on('render', function (index) {
+        if (index === undefined) {
+            index = currentIndex;
+        }
+        index = index || 0;
+
+
         tabs.render(list, function (item, index) {
             return {
                 'index': index,
@@ -41,7 +49,6 @@ define('/Tabs', function (require, module) {
             };
         });
 
-        index = index || 0;
 
         tabs.active(index);
     });

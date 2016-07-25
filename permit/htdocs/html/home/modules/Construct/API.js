@@ -105,7 +105,7 @@ define('/Construct/API', function (require, module, exports) {
             },
         });
 
-        api.get();
+        api.post();
 
 
     }

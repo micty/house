@@ -13,7 +13,9 @@ define('/API', function (require, module, exports) {
     var toast = null;
 
     //获取数据
-    function get() {
+    function post(options) {
+
+        options = options || {'keyword': '', };
 
         var api = KISP.create('API', 'Plan.all');
 
@@ -76,7 +78,7 @@ define('/API', function (require, module, exports) {
 
                 });
 
-                emitter.fire('success', 'get', [{
+                emitter.fire('success', 'post', [{
                     'done': dones,
                     'todo': todos,
                 }]);
@@ -91,7 +93,7 @@ define('/API', function (require, module, exports) {
             },
         });
 
-        api.get();
+        api.post(options);
 
 
     }
@@ -150,9 +152,9 @@ define('/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        remove: remove,
-        on: emitter.on.bind(emitter),
+        'post': post,
+        'remove': remove,
+        'on': emitter.on.bind(emitter),
     };
 
 

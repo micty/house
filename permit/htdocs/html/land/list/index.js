@@ -74,6 +74,13 @@ KISP.launch(function (require, module) {
             API.get({ 'pageNo': no });
         },
     });
+
+
+    Bridge.on({
+        'search': function (data) {
+            API.get({ 'keyword': data, });
+        },
+    });
     
 
     Header.render();

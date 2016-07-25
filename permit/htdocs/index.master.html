@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>禅城区房地产数据信息管理系统</title>
-   
+
     <link href="f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
     <link href="f/kisp/kisp.debug.css" rel="stylesheet" />
-
     <!--weber.css.begin-->
     <script>
         [
@@ -17,7 +16,6 @@
     </script>
     <!--weber.css.end-->
 </head>
-
 <body>
     <div class="side-bar">
         <div class="banner"><i class="icon fa fa-gear"></i>房地产信息管理</div>
@@ -38,13 +36,13 @@
             </ul>
         </div>
     </div>
-
     <div class="content">
         <div class="header container">
-            <span class="search-box">
+
+            <div id="div-search" class="search-box">
                 <i class="icon-search"></i>
-                <input placeholder="搜索" />
-            </span>
+                <input placeholder="搜索土地挂牌编号" />
+            </div>
             <ul id="ul-panel-user-infos" class="user-info">
                 <!--
                 <li id="li-user-infos" class="user-setting">
@@ -71,7 +69,6 @@
         </div>
         <div class="tab-panel">
             <div class="container">
-
                 <div id="div-tips" class="msg-box" style="display: none;">
                     <!--
                     <div id="div-tips-content" class="msg-content {type}" >
@@ -85,23 +82,21 @@
                     </div>
                     -->
                 </div>
-
                 <ol id="ul-page-tabs" class="tabs">
-                <!--
-                    #--home.begin--#
-                    <li class="home {actived-class}" data-index="{index}" {draggable}>
-                        <i class="icon-home"></i>
-                    </li>
-                    #--home.end--#
+                    <!--
+                        #--home.begin--#
+                        <li class="home {actived-class}" data-index="{index}" {draggable}>
+                            <i class="icon-home"></i>
+                        </li>
+                        #--home.end--#
 
-                    #--item.begin--#
-                    <li class="{actived-class}" data-index="{index}" {draggable} >
-                        {name}<i class="icon-close" title="关闭本页签" ></i>
-                    </li>
-                    #--item.end--#
-                -->
+                        #--item.begin--#
+                        <li class="{actived-class}" data-index="{index}" {draggable} >
+                            {name}<i class="icon-close" title="关闭本页签" ></i>
+                        </li>
+                        #--item.end--#
+                    -->
                 </ol>
-
                 <div id="div-page-list" class="tab-more">
                     <i class="tab-dropdown" title="所有页签列表"></i>
                     <ul id="ul-page-list" class="tab-more-content" style="display: none;">
@@ -110,7 +105,6 @@
                             {name}<i class="icon-close" title="{title}" style="{icon-display}"></i>
                         </li>
                         -->
-
                     </ul>
                 </div>
             </div>
@@ -125,13 +119,10 @@
         </div>
     </div>
 
-
     <script src="f/jquery/jquery-2.1.1.debug.js"></script>
     <script src="f/miniquery/miniquery.debug.js"></script>
     <script src="f/kisp/kisp.debug.js"></script>
-
     <script src="config.js"></script>
-
     <!--weber.js.begin-->
     <script>
         [
@@ -141,6 +132,5 @@
         ]
     </script>
     <!--weber.js.end-->
-
 </body>
 </html>

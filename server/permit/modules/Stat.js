@@ -62,9 +62,15 @@ module.exports = {
     /**
     * 获取。
     */
-    get: function (res) {
+    get: function (res, data) {
 
         try {
+            data = data || {};
+
+            var beginDate = data.beginDate || '';
+            var endDate = data.endDate || '';
+            var role = data.role || 'sale';
+
             var Land = require('./Land');
             var Plan = require('./Plan');
             var Construct = require('./Construct');
@@ -78,9 +84,97 @@ module.exports = {
             var constructs = Construct.list();
             var sales = Sale.list();
 
-
             var plan_licenses = PlanLicense.list();
             var sale_licenses = SaleLicense.list();
+
+            //如果指定了开始时间或结束时间，
+            if (beginDate || endDate) {
+                beginDate = Number(beginDate.split('-').join(''));
+                endDate = Number(endDate.split('-').join('')) || 99991231;
+
+                switch (role) {
+                    case 'land':
+                        lands = lands.filter(function (item) {
+                            try {
+                                var date = $.Date.parse(item.date);
+                                date = $.Date.format(date, 'yyyyMMdd');
+                                date = Number(date);
+                                return beginDate <= date && date <= endDate;
+                            }
+                            catch (ex) {
+                                return false;
+                            }
+                        });
+
+                    case 'plan':
+                        plan_licenses = plan_licenses.filter(function (item) {
+                            try {
+                                var date = $.Date.parse(item.date);
+                                date = $.Date.format(date, 'yyyyMMdd');
+                                date = Number(date);
+                                return beginDate <= date && date <= endDate;
+                            }
+                            catch (ex) {
+                                return false;
+                            }
+                        });
+
+                        break;
+
+                    case 'construct':
+                        constructs = constructs.filter(function (item) {
+                            try {
+                                var date = $.Date.parse(item.date);
+                                date = $.Date.format(date, 'yyyyMMdd');
+                                date = Number(date);
+                                return beginDate <= date && date <= endDate;
+                            }
+                            catch (ex) {
+                                return false;
+                            }
+                        });
+                        break;
+
+                    //指定的是销售的提交时间
+                    case 'sale':
+                        //过滤出相关时间段的销售记录。
+                        sales = sales.filter(function (item) {
+                            var date = item.datetime.split(' ')[0];
+                            date = date.split('-').join('');
+                            date = Number(date);
+
+                            return beginDate <= date && date <= endDate;
+                        });
+
+                        //根据销售记录反向找出已关联的规划记录。
+                        var planId$sale = {};
+                        sales.forEach(function (item) {
+                            planId$sale[item.planId] = item;
+                        });
+
+                        plans = plans.filter(function (item) {
+                            return !!planId$sale[item.id];
+                        });
+
+                        //根据规划记录反向找出已关联的土地记录。
+                        var landId$plan = {};
+                        plans.forEach(function (item) {
+                            landId$plan[item.landId] = item;
+                        });
+
+                        lands = lands.filter(function (item) {
+                            return !!landId$plan[item.id];
+                        });
+
+                        break;
+                }
+
+            }
+
+            
+
+
+    
 
 
             var id$land = id$item(lands);
@@ -146,8 +240,8 @@ module.exports = {
 
             var prepares = [];          //预售许可
             var doings = [];            //现售备案
-            var saledPrepares = [];    //预售许可，已售部分
-            var saledDoings = [];      //现售备案，已售部分
+            var saledPrepares = [];     //预售许可，已售部分
+            var saledDoings = [];       //现售备案，已售部分
 
             sale_licenses.forEach(function (item) {
                 var sale = id$sale[item.saleId];

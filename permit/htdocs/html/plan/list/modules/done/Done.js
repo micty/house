@@ -37,7 +37,6 @@ define('/Done', function (require, module) {
 
     panel.on('render', function (data) {
 
-
         list = data;
 
         Pager.render({

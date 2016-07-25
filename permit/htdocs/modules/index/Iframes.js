@@ -294,6 +294,14 @@ define('/Iframes', function (require, module, exports) {
         render: render,
         on: emitter.on.bind(emitter),
 
+        /**
+        * 获取当前激活的项。
+        */
+        getActivedItem: function () {
+            var index = tabs.getActivedIndex();
+            return list[index];
+        },
+
     };
 });
 

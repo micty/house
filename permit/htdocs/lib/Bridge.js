@@ -60,14 +60,17 @@ define('Bridge', function (require, module) {
 
 
 
-        'fire': function (name, item) {
+        'fire': function (name, item, args) {
+
+
+            var id = typeof item == 'object' ? item.id : item;
 
             //根据菜单 item 找到对应的 iframe。
             var iframes = $('iframe').toArray();
 
             var iframe = $.Array.findItem(iframes, function (iframe, index) {
                 var sn = iframe.getAttribute('data-sn');
-                return sn == item.id;
+                return sn == id;
             });
 
             if (!iframe) {
@@ -82,7 +85,8 @@ define('Bridge', function (require, module) {
                 return;
             }
 
-            var values = emitter.fire(name, []);
+            args = args || [];
+            var values = emitter.fire(name, args);
             var len = values.length;
             if (len > 0) {
                 return values[len - 1]; //只取最后一个值。

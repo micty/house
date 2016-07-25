@@ -29,15 +29,15 @@ KISP.launch(function (require, module) {
     });
 
     API.on('success', {
-        'get': function (data) {
+        'post': function (data) {
 
             current = data;
-            Tabs.render(0);
+            Tabs.render();
             
         },
 
         'remove': function () {
-            API.get();
+            API.post();
         },
     });
 
@@ -86,9 +86,13 @@ KISP.launch(function (require, module) {
     });
    
 
+    Bridge.on({
+        'search': function (data) {
+            API.post({ 'keyword': data, });
+        },
+    });
 
 
-
-    API.get();
+    API.post();
     
 });

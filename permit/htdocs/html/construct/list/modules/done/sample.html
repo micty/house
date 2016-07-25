@@ -1,7 +1,7 @@
 ﻿<table class="list-table" cellspacing="0" cellpadding="0">
     <tr class="header">
         <th>序号</th>
-
+        <th>土地挂牌编号</th>
         <th>项目名称</th>
         <th style="display: none;">建设单位</th>
         <th>规划许可证号</th>
@@ -13,7 +13,9 @@
     #--row.begin--#
     <tr data-index="{index}">
         <td>{no}</td>
-
+        <td>
+            <a data-index="{index}" data-cmd="land.detail">{land.number}</a>
+        </td>
         <td>
             <a data-index="{index}" data-cmd="plan.detail">{plan.project}</a>
         </td>
