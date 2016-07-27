@@ -32,7 +32,7 @@ define('/License', function (require, module) {
             },
 
             'remove': function (data) {
-                List.render(data);
+                API.get(current.planId);
                 panel.fire('change');
             },
             'post': function (data) {

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
+
+    <link rel="less" href="../../../style/less/global.less" />
+
+    <!--weber.css.begin-->
+    <script>
+        [
+            'index.less',
+            'modules/**/*.less',
+        ]
+    </script>
+    <!--weber.css.end-->
+
+</head>
+<body class="iframe">
+    <div id="div-header" class="header noop">
+        逻辑结构图
+    </div>
+    <div class="container">
+
+        <div class="main">
+            <img src="../../../style/img/tree.png" />
+        </div>
+        <div class="desc">
+           
+            <p> <b>注意：</b><span class="note">删除父节点会导致所关联的子节点失效。</span></p>
+            <p>
+                <b>例如：</b>删除一条土地出让记录，则会使所有关联到它的规划记录、规划许可证、施工许可证、销售记录、预售许可证、现售备案失效，从而在页面中再也找不到这些失效的记录。 
+            </p>
+            <p>
+                <b>因此：</b>当要删除一条记录时，要特别谨慎。 如果删除的记录处于上游，则要三思而后行，因为删除它会意味着下游的记录也失效（如同也给删除了一样）。
+            </p>
+        </div>
+    </div>
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js"></script>
+    <script src="../../../f/autoNumeric/autoNumeric.debug.js"></script>
+    <script src="../../../f/kisp/kisp.debug.js"></script>
+    <script src="../../../config.js"></script>
+
+    <!--weber.js.begin-->
+    <script>
+        [
+            '../../../lib/**/*.js',
+            'modules/**/*.js',
+            'index.js',
+        ]
+    </script>
+    <!--weber.js.end-->
+
+
+
+</body>
+</html>

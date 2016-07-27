@@ -7,17 +7,13 @@ KISP.launch(function (require, module) {
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
 
- 
     var MD5 = KISP.require('MD5');
-
     var User = require('User');
 
    
 
 
-
     function login() {
-
 
         var number = $('#txt-number').val();
         var password = $('#txt-password').val();
@@ -56,7 +52,7 @@ KISP.launch(function (require, module) {
 
     function post(data) {
 
-        var api = KISP.create('API', 'User.login');
+        var api = KISP.create('API', 'User/login');
 
         var loading = null;
 
@@ -73,7 +69,6 @@ KISP.launch(function (require, module) {
 
             'success': function (data, json, xhr) {
 
-
                 User.set(data);
 
                 var toast = KISP.create('Toast', {
@@ -85,7 +80,6 @@ KISP.launch(function (require, module) {
                 toast.show();
 
                 setTimeout(function () {
-                    
 
                     location.href = 'index.html';
 

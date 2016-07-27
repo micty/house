@@ -1,5 +1,6 @@
 ﻿
 /**
+* 编译 SPA 的版本并进行监控。
 * 使用命令:
 *   node watch
 *   node watch open
@@ -8,7 +9,7 @@
 *   node watch qr 450
 */
 
-var defaults = require('./config/config.js');
+var defaults = require('./config/defaults.js');
 var Weber = require('./f/weber');
 Weber.config(defaults);
 

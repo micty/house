@@ -1,0 +1,184 @@
+
+.Pager {
+    font-size: 12px;
+    color: #282828;
+    margin-left: -10px;
+    display: inline-block;
+    float: right;
+
+    > li {
+        float: left;
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+    }
+
+
+    .buttons {
+
+        .LR-button {
+            position: relative;
+            float: left;
+            margin-left: 6px;
+            border: 1px solid #dbdee6;
+            height: 23px;
+            line-height: 23px;
+            padding-left: 9px;
+            padding-right: 9px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            color: #282828;
+
+            &:hover {
+                color: #54add3;
+            }
+
+            .right-btn {
+                top: 4px;
+                left: 9px;
+                position: absolute;
+                border: solid;
+                border-color: transparent transparent transparent #7f8390;
+                border-width: 7px;
+            }
+
+            .left-btn {
+                top: 4px;
+                left: -1px;
+                position: absolute;
+                border: solid;
+                border-color: transparent #7f8390 transparent transparent;
+                border-width: 7px;
+            }
+        }
+
+        .item {
+            float: left;
+            margin-left: 6px;
+            border: 1px solid #dbdee6;
+            height: 23px;
+            line-height: 23px;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            cursor: pointer;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+
+            &:hover {
+                background-color: #54add3;
+                color: #ffffff;
+                border-color: transparent;
+            }
+        }
+
+        .more {
+            float: left;
+            margin-left: 6px;
+            height: 26px;
+            line-height: 26px;
+            padding-left: 7px;
+            padding-right: 7px;
+            text-align: center;
+            border-color: transparent;
+            cursor: auto;
+
+            &:hover {
+                background-color: #ffffff;
+                color: #282828;
+            }
+
+            &:after {
+                content: "...";
+                display: inline;
+            }
+        }
+
+        li:first-child {
+            margin-left: 0px;
+        }
+
+        .active {
+            color: #54add3;
+            border-color: transparent;
+            cursor: default;
+
+            &:hover {
+                background-color: transparent;
+                color: #54add3;
+            }
+        }
+
+        .disabled {
+            cursor: default;
+
+            &:hover {
+                border-color: #dbdee6;
+                background-color: #ffffff;
+                color: #282828;
+            }
+        }
+
+
+        &:before,
+        &:after {
+            content: " ";
+            display: table;
+        }
+
+        &:after {
+            clear: both;
+        }
+    }
+
+    .page-count {
+        margin: 0 20px;
+    }
+
+    .page-jump {
+        /*margin-left: 10px;*/
+        span {
+            margin: 0 10px;
+        }
+
+        .page-number {
+            width: 40px;
+            border: 1px solid #dbdee6;
+            padding: 6px 0;
+            text-align: center;
+            height: 12px;
+            line-height: 12px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .jump-button {
+            display: inline-block;
+            padding: 0 10px;
+            background-color: #54add3;
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+    }
+
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}

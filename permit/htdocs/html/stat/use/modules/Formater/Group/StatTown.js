@@ -13,35 +13,12 @@ define('/Formater/Group/StatTown', function (require, module, exports) {
     ];
 
 
-
-    var uses = [
-        'commerceSize',
-        'officeSize',
-        'otherSize',
-        'otherSize1',
-        'parkSize',
-        'residenceSize',
-    ];
-
     //对一个数组中指定的列求和。
     function sum(list, key) {
 
         var total = 0;
 
         $.Array.each(list, function (item) {
-
-            //自建房的，全部字段相加。
-            if (key == 'diy') { 
-                uses.forEach(function (key) {
-                    var value = item[key];
-                    value = Number(value);
-                    total += value;
-                });
-
-                return;
-            }
-
-            //
             var value = item[key];
             value = Number(value);
             total += value;
@@ -54,13 +31,6 @@ define('/Formater/Group/StatTown', function (require, module, exports) {
 
     //从指定的列表数据中创建一个分组。
     function get(list, use, title) {
-
-        //自建房
-        if (use == 'diy') {
-            list = list.filter(function (item) {
-                return item.diy == '是';
-            });
-        }
 
         var items = $.Array.keep(towns, function (town) {
 

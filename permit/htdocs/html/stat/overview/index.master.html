@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="../../../f/font-awesome/css/font-awesome.debug.css" rel="stylesheet" />
+    <link href="../../../f/datetimepicker/datetimepicker.mod.debug.css" rel="stylesheet" />
     <link href="../../../f/kisp/kisp.debug.css" rel="stylesheet" />
 
     <link rel="less" href="../../../style/less/global.less" />
@@ -17,14 +18,23 @@
     </script>
     <!--weber.css.end-->
 </head>
-<body class="iframe">
-    <div class="header">
+<body class="iframe stat">
+    <div id="div-header" class="header">
         <span>统计报表</span>
+        <button class="print"><i class="icon fa fa-print"></i>打印</button>
     </div>
 
     <div class="container">
+        <ul id="ul-filter" class="filter">
+            <li id="li-filter-dates">
+                <span>提交时间：</span>
+                <input type="text" data-type="date" name="begin">
+                -
+                <input type="text" data-type="date" name="end">
+            </li>
+        </ul>
         <div class="main">
-            <div id="div-header" class="header">
+            <div class="header">
                 <span>房地产数据信息一览表</span>
             </div>
             <div id="div-table" class="main">
@@ -40,6 +50,7 @@
     <script src="../../../f/jquery/jquery-2.1.1.debug.js"></script>
     <script src="../../../f/miniquery/miniquery.debug.js"></script>
     <script src="../../../f/autoNumeric/autoNumeric.debug.js"></script>
+    <script src="../../../f/datetimepicker/datetimepicker.mod.debug.js"></script>
     <script src="../../../f/kisp/kisp.debug.js"></script>
     <script src="../../../config.js"></script>
 

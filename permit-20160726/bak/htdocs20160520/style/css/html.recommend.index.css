@@ -1,0 +1,158 @@
+.header {
+    text-align: right;
+    margin-bottom: 10px;
+}
+.header button {
+    background-color: #EA960D;
+    border: none;
+    color: #fff;
+    padding: 8px 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    /* font-family: "Microsoft YaHei"; */
+    cursor: pointer;
+    outline: none;
+}
+.header button:active {
+    background: #FFA513;
+}
+.main {
+    width: 950px;
+    margin: auto;
+    min-height: 700px;
+}
+.main .timeline {
+    border-bottom: dashed 1px #EA960D;
+}
+.main .timeline:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.main .timeline li {
+    background: #000;
+    color: #fff;
+    margin: 0px 5px 7px 5px;
+    padding: 5px 0px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 69px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+.main .timeline li.on {
+    background: #EA960D;
+}
+.main .timeline li.on:before {
+    content: '';
+    display: inline-block;
+    /* height: 8px; */
+    /* background-color: #FE086E; */
+    /* width: 8px; */
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    margin-left: -8px;
+    /* border-width: 8px; */
+    border: solid 8px rgba(255, 0, 0, 0);
+    border-top-color: #EA960D;
+    border-left-color: rgba(0, 0, 255, 0);
+    border-right-color: rgba(0, 128, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+.main .timeline li:after {
+    content: '';
+    display: inline-block;
+    height: 8px;
+    background-color: #EA960D;
+    width: 8px;
+    position: absolute;
+    left: 50%;
+    bottom: -18px;
+    margin-left: -4px;
+}
+.main .list {
+    padding: 0px;
+    margin-left: 46px;
+    margin-top: 20px;
+}
+.main .list.nodata {
+    font-size: 30px;
+    text-align: center;
+    color: red;
+}
+.main .list:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.main .list .item {
+    float: left;
+    margin: 0px 15px 20px 15px;
+}
+.main .list .item img {
+    width: 240px;
+}
+.main .list .item h3 {
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 17px;
+    color: #DE8A00;
+}
+.main .list .item button {
+    background-color: #0D57EA;
+    border: none;
+    color: #fff;
+    padding: 2px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+.main .list .item button.delete {
+    background: red;
+}
+.main .list .item .fields {
+    font-size: 12px;
+    line-height: 20px;
+}
+ul {
+    list-style: none;
+}
+.dialog-add ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.dialog-add li {
+    margin: 5px 0px;
+}
+.dialog-add input {
+    font-size: 16px;
+}
+.dialog-add input,
+.dialog-add textarea {
+    width: 100%;
+    padding: 2px 5px;
+}
+.dialog-add textarea {
+    height: 40px;
+    padding-right: 7px;
+    word-break: break-all;
+}
+.dialog-add .url {
+    font-size: 12px;
+}
+.dialog-add .main {
+    width: 70%;
+    float: left;
+}
+.dialog-add .preview {
+    float: right;
+    margin-top: 5px;
+}
+.dialog-add .preview img {
+    max-width: 165px;
+}

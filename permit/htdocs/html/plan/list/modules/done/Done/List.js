@@ -31,9 +31,7 @@ define('/Done/List', function (require, module) {
                         'index': index,
                         'no': index + 1,
                         'operate-display': display,
-                        'license': item.licenses.length,
-                        'diy-class': item['land.diy'] == '是' ? 'diy' : '',
-
+                        'diy-class': item['land.diy'] ? 'diy' : '',
                     });
 
                     return {
@@ -51,14 +49,15 @@ define('/Done/List', function (require, module) {
             var btn = this;
             var index = btn.getAttribute('data-index');
             var cmd = btn.getAttribute('data-cmd');
-            var item = list[index];
+
+            var item = list[index].plan;
 
             if (cmd == 'remove') {
                 var msg = '确认要删除规划许可【' + item.project + '】' +
                     ' 同时也会删除其所拥有的许可证。';
 
                 top.KISP.confirm(msg, function () {
-                    panel.fire('cmd', [cmd, item]);
+                    panel.fire('remove', [item]);
                 });
                 return;
             }

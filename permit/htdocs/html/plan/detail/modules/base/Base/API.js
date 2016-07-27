@@ -6,6 +6,7 @@ define('/Base/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -18,13 +19,12 @@ define('/Base/API', function (require, module, exports) {
 
     function get(id) {
 
-
-        var api = KISP.create('API', 'Plan.get');
+        var api = new API('Plan.get');
 
         api.on({
 
             'request': function () {
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
                 });
                 loading.show('读取中...');
@@ -39,11 +39,11 @@ define('/Base/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                alert('读取失败: {0}({1})', msg, code);
+                top.KISP.alert('读取失败: {0}({1})', msg, code);
             },
 
             'error': function () {
-                alert('读取错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -57,8 +57,8 @@ define('/Base/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'on': emitter.on.bind(emitter),
     };
 
 

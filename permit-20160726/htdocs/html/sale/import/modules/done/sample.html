@@ -1,0 +1,30 @@
+﻿<table class="list-table" cellspacing="0" cellpadding="0">
+    <tr class="header">
+        <th>序号</th>
+        <th>土地证号</th>
+        <th>项目名称</th>
+        <th>备案证号</th>
+        <th>发证日期</th>
+        <th>公安门牌</th>
+        <th>操作</th>
+    </tr>
+    #--row.begin--#
+    <tr data-index="{index}">
+        <td>{order}</td>
+        <td>
+            <a data-index="{index}" data-cmd="land.detail">{land}</a>
+        </td>
+        <td>{project}</td>
+        <td>
+            <a data-index="{index}" data-cmd="license.detail">{number}</a>
+        </td>
+
+        <td>{date}</td>
+        <td>{location}</td>
+        <td class="operate">
+            <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+        </td>
+    </tr>
+    #--row.end--#
+
+</table>

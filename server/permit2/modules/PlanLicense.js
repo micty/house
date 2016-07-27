@@ -37,10 +37,9 @@ module.exports = {
     db: db,
 
     /**
-    * 获取一条记录。
+    * 获取一条指定 id 的记录。
     */
     get: function (req, res) {
-
         var id = req.query.id;
         if (!id) {
             res.empty('id');
@@ -56,13 +55,13 @@ module.exports = {
 
             var plan = data.refer.planId;
             if (!plan) {
-                res.none('不存在关联的 Plan 该记录', item);
+                res.none('不存在关联的 Plan 记录', data);
                 return;
             }
 
             var land = plan.refer.landId;
             if (!land) {
-                res.none('不存在关联的 Land 该记录', land);
+                res.none('不存在关联的 Land 记录', data);
                 return;
             }
 
@@ -76,21 +75,17 @@ module.exports = {
         catch (ex) {
             res.error(ex);
         }
-
-
     },
-
 
     /**
     * 添加一条记录。
     */
     add: function (req, res) {
-
-        var item = req.body;
+        var item = req.body.data;
 
         try {
             item = db.add(item);
-            res.success('添加成功', item);
+            res.success(item);
         }
         catch (ex) {
             res.error(ex);
@@ -101,8 +96,7 @@ module.exports = {
     * 更新一条记录。
     */
     update: function (req, res) {
-
-        var item = req.body;
+        var item = req.body.data;
         var id = item.id;
 
         if (!id) {
@@ -113,7 +107,7 @@ module.exports = {
         try {
             var data = db.update(item);
             if (data) {
-                res.success('更新成功', data);
+                res.success(data);
             }
             else {
                 res.none(item);
@@ -125,10 +119,9 @@ module.exports = {
     },
 
     /**
-    * 删除一条记录。
+    * 删除一条指定 id 的记录。
     */
     remove: function (req, res) {
-
         var id = req.query.id;
 
         if (!id) {
@@ -139,7 +132,7 @@ module.exports = {
         try {
             var item = db.remove(id);
             if (item) {
-                res.success('删除成功', item);
+                res.success(item);
             }
             else {
                 res.none({ 'id': id });
@@ -151,26 +144,25 @@ module.exports = {
     },
 
     /**
-    * 读取列表。
+    * 读取指定 planId 的列表。
     */
     list: function (req, res) {
-
-        //重载 list()，供内部其它模块调用。
-        if (!req) {
-            return db.list();
+        var planId = req.query.planId;
+        if (!planId) {
+            res.empty('planId');
+            return;
         }
 
         try {
-            var list = db.list();
-            list.reverse(); //倒序一下
+            var list = db.list(function (item) {
+                return item.planId == planId;
+            });
             res.success(list);
         }
         catch (ex) {
             res.error(ex);
         }
-
     },
-
 
 };
 

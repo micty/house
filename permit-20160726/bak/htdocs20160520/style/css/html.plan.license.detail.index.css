@@ -1,0 +1,7 @@
+.main {
+    max-width: 900px;
+    margin: auto;
+}
+.main .form-table .name {
+    width: 70px;
+}

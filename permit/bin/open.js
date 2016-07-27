@@ -6,7 +6,7 @@
 *   node open localhost
 */
 
-var defaults = require('./config/config.js');
+var defaults = require('./config/defaults.js');
 var Weber = require('./f/weber');
 Weber.config(defaults);
 

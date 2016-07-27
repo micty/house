@@ -24,9 +24,6 @@ define('/Form', function (require, module, exports) {
 
     panel.on('render', function (data) {
 
-
-        
-
         data = $.Object.extend({}, data, {
             'totalSize0': Size.totalText(data, 0),
             'totalSize1': Size.totalText(data, 1),
@@ -35,7 +32,7 @@ define('/Form', function (require, module, exports) {
             'price': NumberField.money(data.price),
 
             //后来添加的字段
-            'diy': data.diy || '',
+            'diy': data.diy ? '是' : '否',
             'diyDesc': data.diyDesc || '',
         });
 

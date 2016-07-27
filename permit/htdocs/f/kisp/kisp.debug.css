@@ -528,30 +528,6 @@
   width: 100%;
   z-index: 1024;
 }
-.KISP.Mask.BeforeForward {
-  z-index: 2 !important;
-  opacity: 0 !important;
-}
-.KISP.Mask.Forward {
-  transition: opacity 0.7s;
-  -ms-transition: opacity 0.7s;
-  -moz-transition: opacity 0.7s;
-  -webkit-transition: opacity 0.7s;
-  -o-transition: opacity 0.7s;
-  opacity: 0.4 !important;
-}
-.KISP.Mask.BeforeBack {
-  z-index: 2 !important;
-  opacity: 0.4 !important;
-}
-.KISP.Mask.Back {
-  transition: opacity 0.5s;
-  -ms-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  -webkit-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  opacity: 0 !important;
-}
 
 .KISP.NoData {
   display: -webkit-box;
@@ -845,36 +821,7 @@
   top: 0;
   bottom: 0;
 }
-.KISP.View.BeforeForward {
-  transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  -moz-transform: translateX(100%);
-  -webkit-transform: translateX(100%);
-  -o-transform: translateX(100%);
-}
-.KISP.View.Forward {
-  transition: transform 0.7s;
-  -ms-transition: -ms-transform 0.7s;
-  -moz-transition: -moz-transform 0.7s;
-  -webkit-transition: -webkit-transform 0.7s;
-  -o-transition: -o-transform 0.7s;
-  transform: translateX(0px);
-  -ms-transform: translateX(0px);
-  -moz-transform: translateX(0px);
-  -webkit-transform: translateX(0px);
-  -o-transform: translateX(0px);
-  box-shadow: 10px 0px 12px 10px rgba(0, 0, 0, 0.3);
-  -ms-box-shadow: 10px 0px 12px 10px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 10px 0px 12px 10px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 10px 0px 12px 10px rgba(0, 0, 0, 0.3);
-  -o-box-shadow: 10px 0px 12px 10px rgba(0, 0, 0, 0.3);
-}
-.KISP.View.Back {
-  transition: transform 0.5s;
-  -ms-transition: -ms-transform 0.5s;
-  -moz-transition: -moz-transform 0.5s;
-  -webkit-transition: -webkit-transform 0.5s;
-  -o-transition: -o-transform 0.5s;
+.KISP.View.Shadow {
   box-shadow: 10px 0px 12px 10px rgba(0, 0, 0, 0.3);
   -ms-box-shadow: 10px 0px 12px 10px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 10px 0px 12px 10px rgba(0, 0, 0, 0.3);

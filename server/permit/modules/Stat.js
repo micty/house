@@ -94,6 +94,7 @@ module.exports = {
 
                 switch (role) {
                     case 'land':
+                        //土地的按竞得时间。
                         lands = lands.filter(function (item) {
                             try {
                                 var date = $.Date.parse(item.date);
@@ -170,11 +171,6 @@ module.exports = {
                 }
 
             }
-
-            
-
-
-    
 
 
             var id$land = id$item(lands);

@@ -1,26 +1,22 @@
 ﻿
 
-var fs = require('fs');
-var $ = require('../lib/MiniQuery');
-var Directory = require('../lib/Directory');
+var DataBase = require('../lib/DataBase');
+
+var db = new DataBase('User', [
+    { name: 'datetime', },
+
+    { name: 'department', },
+    { name: 'number', },
+    { name: 'password', },
+    { name: 'name', },
+    { name: 'sex', },
+    { name: 'phone', },
+    { name: 'address', },
+    { name: 'role', },
+    
+]);
 
 
-function getPath() {
-    return './data/user-list.json';
-}
-
-function getDateTime() {
-    var datetime = $.Date.format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-    return datetime;
-}
-
-
-function emptyError(name, res) {
-    res.send({
-        code: 201,
-        msg: '字段 ' + name + ' 不能为空',
-    });
-}
 
 
 module.exports = {
@@ -28,383 +24,155 @@ module.exports = {
     /**
     * 获取一条记录。
     */
-    get: function (res, id) {
+    get: function (req, res) {
+
+        var id = req.query.id;
         if (!id) {
-            emptyError('id', res);
+            res.empty('id');
             return;
         }
 
-
-        var path = getPath();
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
+        try {
+            var item = db.get(id);
+            if (item) {
+                res.success(item);
+            }
+            else {
+                res.none({ 'id': id });
+            }
+        }
+        catch (ex) {
+            res.error(ex);
         }
 
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-                var item = $.Array.findItem(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (!item) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-                res.send({
-                    code: 200,
-                    msg: 'ok',
-                    data: item,
-                });
-            }
-            catch (ex) {
-                res.send({
-                    code: 501,
-                    msg: ex.message,
-                });
-            }
-        });
     },
+
 
     /**
     * 添加一条记录。
     */
-    add: function (res, data) {
+    add: function (req, res) {
 
-        var number = data.number;
-        if (!number) {
-            emptyError('number', res);
-            return;
-        }
-
-
-        var path = getPath();
-        var list = [];
+        var item = req.body;
 
         try {
-
-            if (fs.existsSync(path)) {
-                list = fs.readFileSync(path);
-                list = JSON.parse(list);
-            }
-
-            var item = list.find(function (item) {
-                return number == item.number;
-            });
-
-            if (item) {
-                res.send({
-                    code: 201,
-                    msg: '已存在重复的登录账号',
-                });
-                return;
-            }
-
-
-            item = $.Object.extend(data, {
-                'id': $.String.random(),
-                'datetime': getDateTime(),
-            });
-
-            list.push(item);
-            list = JSON.stringify(list, null, 4);
-
-
-            fs.writeFile(path, list, 'utf8', function (err) {
-
-                if (err) {
-                    res.send({
-                        code: 500,
-                        msg: err,
-                    });
-                    return;
-                }
-
-                res.send({
-                    code: 200,
-                    msg: '添加成功',
-                    data: item,
-                });
-            });
+            item = db.add(item);
+            res.success('添加成功', item);
         }
         catch (ex) {
-            res.send({
-                code: 501,
-                msg: ex.message,
-            });
+            res.error(ex);
         }
-
     },
 
     /**
     * 更新一条记录。
     */
-    update: function (res, data) {
-        var id = data.id;
+    update: function (req, res) {
+
+        var item = req.body;
+        var id = item.id;
+
         if (!id) {
-            emptyError('id', res);
+            res.empty('id');
             return;
         }
 
-        var path = getPath();
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
+        try {
+            var data = db.update(item);
+            if (data) {
+                res.success('更新成功', data);
+            }
+            else {
+                res.none(item);
+            }
         }
-
-        fs.readFile(path, 'utf8', function (err, content) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(content);
-                var index = $.Array.findIndex(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (index < 0) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-
-                var datetime = getDateTime();
-                data['datetime'] = datetime;
-
-                list[index] = data;
-                list = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, list, 'utf8', function (err) {
-
-                    if (err) {
-                        res.send({
-                            code: 501,
-                            msg: err,
-                        });
-                        return;
-                    }
-
-                    res.send({
-                        code: 200,
-                        msg: '更新成功',
-                    });
-                });
-
-            }
-            catch (ex) {
-                res.send({
-                    code: 502,
-                    msg: ex.message,
-                });
-            }
-        });
+        catch (ex) {
+            res.error(ex);
+        }
     },
 
     /**
     * 删除一条记录。
     */
-    remove: function (res, id) {
+    remove: function (req, res) {
+
+        var id = req.query.id;
 
         if (!id) {
-            emptyError('id', res);
+            res.empty('id');
             return;
         }
 
-
-        var path = getPath();
-
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
+        try {
+            var item = db.remove(id);
+            if (item) {
+                res.success('删除成功', item);
+            }
+            else {
+                res.none({ 'id': id });
+            }
         }
-
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-                var index = $.Array.findIndex(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (index < 0) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-                list.splice(index, 1);
-                var json = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, json, 'utf8', function (err) {
-
-                    if (err) {
-                        res.send({
-                            code: 501,
-                            msg: err,
-                        });
-                        return;
-                    }
-
-                    res.send({
-                        code: 200,
-                        msg: '删除成功',
-                        data: list,
-                    });
-                });
-
-            }
-            catch (ex) {
-                res.send({
-                    code: 502,
-                    msg: ex.message,
-                });
-            }
-        });
+        catch (ex) {
+            res.error(ex);
+        }
     },
-
-
-
 
     /**
     * 读取列表。
     */
-    list: function (res) {
-
-        var path = getPath();
-        var existed = fs.existsSync(path);
+    list: function (req, res) {
 
         //重载 list()，供内部其它模块调用。
-        if (!res) {
-            if (!existed) {
-                return [];
-            }
-
-            var data = fs.readFileSync(path, 'utf8');
-            var list = JSON.parse(data);
-            return list;
+        if (!req) {
+            return db.list();
         }
 
-        //重载 list(res)，供 http 请求调用。
-        if (!existed) {
-            res.send({
-                code: 200,
-                msg: 'empty',
-                data: [],
-            });
-            return;
+        try {
+            var list = db.list();
+            list.reverse(); //倒序一下
+            res.success(list);
         }
-
-
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 201,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-                list.reverse(); //倒序一下
-
-                //不要把密码返回
-                list.forEach(function (item) {
-                    delete item['password'];
-                });
-
-                res.send({
-                    code: 200,
-                    msg: '',
-                    data: list,
-                });
-            }
-            catch (ex) {
-                res.send({
-                    code: 500,
-                    msg: ex.message,
-                });
-            }
-
-        });
+        catch (ex) {
+            res.error(ex);
+        }
 
     },
 
+    /**
+    * 登录。
+    */
+    login: function (req, res) {
 
-    login: function (res, data) {
+        var Session = require('../lib/Session');
 
+        var data = req.body;
         var number = data.number;
         var password = data.password;
+
 
         //针对超级管理员，password = 'fsadmin';
         if (number == 'administrator' &&
             password == '4e55030f4f26da6c98acf44708d710ea') {
 
-            res.send({
-                code: 200,
-                msg: 'ok',
-                data: {
-                    "number": number,
-                    "name": "超级管理员",
-                    "role": number,
-                },
-            });
+            var item = {
+                'number': number,
+                'name': "超级管理员",
+                'role': number,
+            };
+
+            item.token = Session.add(item);
+
+            res.success(item);
             return;
         }
 
 
         try {
-            var list = module.exports.list();
+            var list = db.list();
 
             var item = list.find(function (item, index) {
-                return item.number == data.number &&
-                    item.password == data.password;
+                return item.number == number &&
+                    item.password == password;
             });
 
             if (!item) {
@@ -415,17 +183,12 @@ module.exports = {
                 return;
             }
 
-            res.send({
-                code: 200,
-                msg: 'ok',
-                data: item,
-            });
+            item.token = Session.add(item);
+
+            res.success(item);
         }
         catch (ex) {
-            res.send({
-                code: 501,
-                msg: ex.message,
-            });
+            res.error(ex);
         }
     },
 

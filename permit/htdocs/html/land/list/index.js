@@ -14,23 +14,18 @@ KISP.launch(function (require, module) {
     var Tabs = module.require('Tabs');
     var Pager = module.require('Pager');
 
-    var pageSize = KISP.data('pager').size;
-
 
     Tabs.on('change', function (item) {
-
         API.get({
             'pageNo': 1,
-            'pageSize': pageSize,
             'town': item.key,
         });
     });
 
     API.on('success', {
-        'get': function (data, page) {
-
+        'get': function (list, page) {
          
-            List.render(data);
+            List.render(list);
 
             if (page.no == 1) {   //翻页引起的，不需要重新渲染。
                 Pager.render(page);
@@ -38,8 +33,7 @@ KISP.launch(function (require, module) {
         },
         'remove': function () {
             Bridge.refresh(['plan', 'list']);
-
-            API.get();
+            API.get(1);
         },
     });
 
@@ -71,14 +65,14 @@ KISP.launch(function (require, module) {
 
     Pager.on({
         'change': function (no) {
-            API.get({ 'pageNo': no });
+            API.get(no);
         },
     });
 
 
     Bridge.on({
-        'search': function (data) {
-            API.get({ 'keyword': data, });
+        'search': function (keyword) {
+            API.get(keyword);
         },
     });
     

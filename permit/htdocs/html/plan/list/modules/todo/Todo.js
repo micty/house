@@ -4,25 +4,28 @@ define('/Todo', function (require, module) {
     var $ = require('$');
     var KISP = require('KISP');
 
+    var API = module.require('API');
     var List = module.require('List');
     var Pager = module.require('Pager');
 
     var panel = KISP.create('Panel', '#div-panel-todo');
-    var list = [];
-    var pageSize = KISP.data('pager').size;
-
 
     panel.on('init', function () {
 
+        API.on('success', function (list, page) {
+
+            List.render(list);
+
+            if (page.no == 1) {   //翻页引起的，不需要重新渲染。
+                Pager.render(page);
+            }
+            
+        });
+
+
         Pager.on({
             'change': function (no) {
-                
-                var begin = (no - 1) * pageSize;
-                var end = begin + pageSize;
-                var items = list.slice(begin, end);
-
-                List.render(items);
-
+                API.get(no);
             },
         });
 
@@ -35,20 +38,14 @@ define('/Todo', function (require, module) {
     });
 
 
+   
 
-
-    panel.on('render', function (data) {
+    panel.on('render', function (keyword) {
         
-        list = data;
-
-        Pager.render({
-            'no': 1,
-            'size': pageSize,
-            'total': data.length,
+        API.get({
+            'pageNo': 1,
+            'keyword': keyword || '',
         });
-
-        var items = list.slice(0, pageSize);
-        List.render(items);
 
     });
 

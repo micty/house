@@ -5,6 +5,7 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -14,17 +15,13 @@ define('/API', function (require, module, exports) {
 
     //获取数据
     function get(id) {
-
-        var api = KISP.create('API', 'PlanLicense.get');
+        var api = new API('PlanLicense.get');
 
         api.on({
-
             'request': function () {
-
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('加载中...');
             },
 
@@ -37,11 +34,11 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('获取数据失败: {0} ({1})', msg, code);
+                top.KISP.alert('获取数据失败: {0} ({1})', msg, code);
             },
 
             'error': function (code, msg, json, xhr) {
-                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -49,28 +46,21 @@ define('/API', function (require, module, exports) {
             'id': id,
         });
 
-
     }
-
 
 
     function post(data) {
 
-        var id = data.id;
-        var name = id ? 'update' : 'add';
-        var api = KISP.create('API', 'PlanLicense.' + name);
+        var name = data.id ? 'update' : 'add';
+        var api = new API('PlanLicense.' + name);
 
         api.on({
-
             'request': function () {
-
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
-
                 });
 
                 loading.show('提交中...');
-
             },
 
             'response': function () {
@@ -79,7 +69,7 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                toast = toast || KISP.create('Toast', {
+                toast = toast || top.KISP.create('Toast', {
                     text: '提交成功',
                     duration: 1500,
                     mask: 0,
@@ -96,11 +86,11 @@ define('/API', function (require, module, exports) {
 
 
             'fail': function (code, msg, json) {
-                KISP.alert('提交失败: {0}({1})', msg, code);
+                top.KISP.alert('提交失败: {0}({1})', msg, code);
             },
 
             'error': function () {
-                KISP.alert('提交错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('提交错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -113,16 +103,11 @@ define('/API', function (require, module, exports) {
 
     function remove(id) {
 
-        var api = KISP.create('API', 'PlanLicense.remove');
+        var api = new API('PlanLicense.remove');
 
         api.on({
-
             'request': function () {
-
-                loading = loading || KISP.create('Loading', {
-
-                });
-
+                loading = loading || top.KISP.create('Loading');
                 loading.show('删除中...');
             },
 
@@ -132,15 +117,14 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
                 var list = data;
-
                 emitter.fire('success', 'remove', [list]);
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('删除数据失败: {0} ({1})', msg, code);
+                top.KISP.alert('删除数据失败: {0} ({1})', msg, code);
             },
             'error': function (code, msg, json, xhr) {
-                KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -153,10 +137,10 @@ define('/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        post: post,
-        remove: remove,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'post': post,
+        'remove': remove,
+        'on': emitter.on.bind(emitter),
     };
 
 

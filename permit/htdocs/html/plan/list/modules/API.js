@@ -36,7 +36,7 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                var list = data.list;
+                var list = data.list;       //plans
                 var lands = data.lands;
 
                 var landId$item = {};

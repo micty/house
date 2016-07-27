@@ -3,7 +3,9 @@
         "name": "datetime"
     },
     {
-        "name": "number"
+        "name": "number",
+        "required": true,
+        "alias": "土地挂牌编号"
     },
     {
         "name": "numberDesc"
@@ -32,6 +34,13 @@
     },
     {
         "name": "useDesc"
+    },
+    {
+        "name": "diy",
+        "type": "boolean"
+    },
+    {
+        "name": "diyDesc"
     },
     {
         "name": "residenceSize",

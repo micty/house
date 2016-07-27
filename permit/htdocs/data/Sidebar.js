@@ -108,13 +108,18 @@
     },
     {
         icon: 'bar-chart',
-        name: '版块统计表',
+        name: '板块统计表',
         url: 'html/stat/role/index.html?type=table',
     },
     {
         icon: 'line-chart',
         name: '功能统计表',
         url: 'html/stat/use/index.html?type=table',
+    },
+    {
+        icon: 'line-chart',
+        name: '自建房统计表',
+        url: 'html/stat/diy/index.html?type=table',
         border: true,
     },
 
@@ -125,16 +130,20 @@
     },
     {
         icon: 'bar-chart',
-        name: '版块统计图',
+        name: '板块统计图',
         url: 'html/stat/role/index.html?type=chart',
     },
     {
         icon: 'line-chart',
         name: '功能统计图',
         url: 'html/stat/use/index.html?type=chart',
+    },
+    {
+        icon: 'line-chart',
+        name: '自建房统计图',
+        url: 'html/stat/diy/index.html?type=chart',
         border: true,
     },
-
 
 
 

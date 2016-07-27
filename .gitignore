@@ -18,6 +18,11 @@
 /permit/htdocs/style/css
 /permit/htdocs/**/index.html
 
+/permit-20160726/bin/node_modules
+/permit-20160726/build
+/permit-20160726/htdocs/style/css
+/permit-20160726/htdocs/**/index.html
+
 
 /mobile/bin/node_modules
 /mobile/build
@@ -26,7 +31,7 @@
 
 
 /permit/server/node_modules
-
+/permit2/server/node_modules
 
 
 /old/bin/node_modules

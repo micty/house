@@ -17,7 +17,7 @@ define('User', function (require, module, exports) {
         }
 
         var user = SessionStorage.get('user') || {};
-        return key ? use[key] : user;
+        return key ? user[key] : user;
     }
 
 

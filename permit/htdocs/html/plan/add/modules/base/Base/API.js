@@ -6,6 +6,7 @@ define('/Base/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -15,18 +16,20 @@ define('/Base/API', function (require, module, exports) {
 
 
 
-
+    /**
+    * 添加或更新一条记录。
+    */
     function post(data) {
 
         var id = data.id;
         var name = id ? 'Plan.update' : 'Plan.add';
-        var api = KISP.create('API', name);
+        var api = new API(name);
 
         api.on({
 
             'request': function () {
 
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
 
                 });
@@ -41,7 +44,7 @@ define('/Base/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                toast = toast || KISP.create('Toast', {
+                toast = toast || top.KISP.create('Toast', {
                     text: '提交成功',
                     duration: 1500,
                     mask: 0,
@@ -58,11 +61,11 @@ define('/Base/API', function (require, module, exports) {
  
 
             'fail': function (code, msg, json) {
-                KISP.alert('提交失败: {0}({1})', msg, code);
+                top.KISP.alert('提交失败: {0}', msg);
             },
 
             'error': function () {
-                KISP.alert('提交错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('提交错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -74,17 +77,16 @@ define('/Base/API', function (require, module, exports) {
 
 
 
-
+    /**
+    * 获取一条土地记录或规划记录。
+    */
     function get(id, isLand) {
-
-
         var name = isLand ? 'Land.get' : 'Plan.get';
-        var api = KISP.create('API', name);
+        var api = new API(name);
 
         api.on({
-
             'request': function () {
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
                 });
                 loading.show('读取中...');
@@ -99,11 +101,11 @@ define('/Base/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                alert('读取失败: {0}({1})', msg, code);
+                top.KISP.alert('读取失败: {0}({1})', msg, code);
             },
 
             'error': function () {
-                alert('读取错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -117,9 +119,9 @@ define('/Base/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        post: post,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'post': post,
+        'on': emitter.on.bind(emitter),
     };
 
 

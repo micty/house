@@ -5,85 +5,53 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
     var emitter = new Emitter();
     var loading = null;
-    var list = null; //暂时实现前端分页
-
 
     var defaults = {
+        'pageNo': 1,
+        'pageSize': KISP.data('pager').size,
         'keyword': '',
+        'town': '',
     };
 
 
-    function getPageList(options) {
+    function normalize(opt) {
+        switch (typeof opt) {
+            case 'number': //重载 normalize(pageNo)
+                opt = { 'pageNo': opt };
+                break;
+
+            case 'string': //重载 normalize(keyword)
+                opt = { 'keyword': opt, 'pageNo': 1, };
+                break;
+        }
 
         //注意，这里有记忆功能，上次的值会给记录下
-        options = $.Object.extend(defaults, options);
-
-        var items = list;
-        var town = options.town;
-
-        if (town) {
-            items = items.filter(function (item) {
-                return item.town == town;
-            });
-        }
-
-        var keyword = options.keyword;
-        if (keyword) {
-            items = items.filter(function (item) {
-                return item.number.indexOf(keyword) >= 0;
-            });
-        }
-
-        var total = items.length;  //总记录数，以过滤后的为准。
-        var pageNo = options.pageNo || 1;
-        var pageSize = options.pageSize;
-
-        var begin = (pageNo - 1) * pageSize;
-        var end = begin + pageSize;
-
-        items = items.slice(begin, end);
-      
-
-        emitter.fire('success', 'get', [items, {
-            'no': pageNo,
-            'size': pageSize,
-            'total': total,
-        }]);
-
+        opt = $.Object.extend(defaults, opt);
+        return opt;
     }
 
 
+    /**
+    * 获取指定条件的记录列表。
+    */
+    function get(opt) {
 
+        opt = normalize(opt);
 
-    //获取数据
-    function get(options) {
-
-        if (options && list) {
-            getPageList(options);
-            return;
-        }
-
-        options = options || { pageNo: 1 };
-
-
-        var api = KISP.create('API', 'Land.list', {
-            
-        });
-
+        var api = new API('Land.page');
 
         api.on({
 
             'request': function () {
-
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('加载中...');
             },
 
@@ -92,35 +60,42 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
-                list = data;
-                getPageList(options);
+
+                var list = data['list'];
+
+                emitter.fire('success', 'get', [list, {
+                    'total': data.total,    //总记录数
+                    'no': opt.pageNo,
+                    'size': opt.pageSize,
+                }]);
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('获取数据失败: {0} ({1})', msg, code);
+                top.KISP.alert('获取数据失败: {0}', msg);
             },
 
             'error': function (code, msg, json, xhr) {
-                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
             },
         });
 
-        api.get();
-
+        api.post(opt);
 
     }
 
 
-
+    /**
+    * 移除指定 id 的记录。
+    */
     function remove(id) {
 
-        var api = KISP.create('API', 'Land.remove');
+        var api = new API('Land.remove');
 
         api.on({
 
             'request': function () {
 
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
 
                 });
 
@@ -138,10 +113,10 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('删除数据失败: {0} ({1})', msg, code);
+                top.KISP.alert('删除数据失败: {0} ({1})', msg, code);
             },
             'error': function (code, msg, json, xhr) {
-                KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -154,9 +129,9 @@ define('/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        remove: remove,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'remove': remove,
+        'on': emitter.on.bind(emitter),
     };
 
 

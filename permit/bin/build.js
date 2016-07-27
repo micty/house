@@ -1,5 +1,6 @@
 ﻿
 /**
+* 构建 SPA 的版本。
 * 使用命令:
 *   node build
 *   node build dist
@@ -13,7 +14,7 @@
 *   node build dist qr 450
 */
 
-var defaults = require('./config/config.js');
+var defaults = require('./config/defaults.js');
 var Weber = require('./f/weber');
 Weber.config(defaults);
 

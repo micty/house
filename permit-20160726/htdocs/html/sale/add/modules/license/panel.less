@@ -1,0 +1,73 @@
+
+
+.panel-license {
+    margin: auto;
+    max-width: 900px;
+
+
+    div.header {
+        /*隐藏操作按钮*/
+        &.noop {
+            .toolbar {
+                display: none;
+            }
+        }
+
+        .toolbar {
+            position: relative;
+
+            button {
+                i {
+                    margin-right: 4px;
+                }
+
+                position: absolute;
+                right: 7px;
+                top: 3px;
+                background: #8BC34A;
+                border: none;
+                color: #fff;
+                padding: 0px 15px 0px 15px;
+                font-size: 13px;
+                border-radius: 3px;
+                cursor: pointer;
+                outline: none;
+                height: 26px;
+                line-height: 26px;
+                /* font-weight: bold; */
+            }
+        }
+
+        .name {
+            background: #4C4C4C;
+            color: #fff;
+            text-align: left;
+            font-weight: bold;
+            padding: 6px 5px;
+            font-size: 14px;
+            border-bottom: solid 1px #9E9E9E;
+        }
+    }
+
+
+    .list {
+
+        &.nodata {
+            text-align: center;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            line-height: 100px;
+            border: solid 1px #D4D5DE;
+            color: #7c7c7d;
+            font-size: 16px;
+
+            &:after {
+                content: '暂无数据';
+            }
+
+            table {
+                display: none;
+            }
+        }
+    }
+}

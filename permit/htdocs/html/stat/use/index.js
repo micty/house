@@ -19,13 +19,17 @@ KISP.launch(function (require, module) {
     var Filter = module.require('Filter');
     var Header = module.require('Header');
 
-    var current = null;
+    var current = {
+        data: null,
+        item: null,
+    };
+
     var qs = Url.getQueryString(window);
 
 
     API.on({
         'success': function (data) {
-            current = data;
+            current.data = data;
             Header.render();
             Filter.render();
             Tabs.render();
@@ -36,9 +40,11 @@ KISP.launch(function (require, module) {
 
     Tabs.on('change', function (item) {
 
+        current.item = item;
+
         Title.render(item);
 
-        var data = current;
+        var data = current.data;
         data = Formater.format(data, item.key);
 
 

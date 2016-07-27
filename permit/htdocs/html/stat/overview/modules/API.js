@@ -14,7 +14,9 @@ define('/API', function (require, module, exports) {
 
 
     //获取数据
-    function get() {
+    function post(options) {
+
+        options = options || {};
 
         var api = KISP.create('API', 'Stat.get', {
             //proxy: 'api/Stat.overview.js',
@@ -25,7 +27,7 @@ define('/API', function (require, module, exports) {
 
             'request': function () {
 
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', {
                     mask: 0,
                 });
 
@@ -42,15 +44,15 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('获取数据失败: {0} ({1})', msg, code);
+                top.KISP.alert('获取数据失败: {0} ({1})', msg, code);
             },
 
             'error': function (code, msg, json, xhr) {
-                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
             },
         });
 
-        api.post();
+        api.post(options);
 
 
     }
@@ -58,7 +60,7 @@ define('/API', function (require, module, exports) {
 
 
     return {
-        get: get,
+        post: post,
         on: emitter.on.bind(emitter),
     };
 

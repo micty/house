@@ -515,8 +515,6 @@
         "sizeDesc": "",
         "use": "二类居住用地,可兼容商业商务用地",
         "useDesc": "",
-        "diy": "是",
-        "diyDesc": "",
         "residenceSize": "73886",
         "residenceSizeDesc": "",
         "commerceSize": "18472",
@@ -539,7 +537,7 @@
         "contractDesc": "",
         "license": "佛禅国用(2014)第1101226号",
         "licenseDesc": "",
-        "datetime": "2016-07-22 11:43:27"
+        "datetime": "2016-06-15 17:24:32"
     },
     {
         "id": "4647C77D0AB7",
@@ -733,8 +731,6 @@
         "sizeDesc": "",
         "use": "商业、办公、文化用地，不兼容居住用地",
         "useDesc": "",
-        "diy": "是",
-        "diyDesc": "",
         "residenceSize": "0",
         "residenceSizeDesc": "",
         "commerceSize": "68462.95",
@@ -757,7 +753,7 @@
         "contractDesc": "",
         "license": "佛禅国用(2014)第1206161号",
         "licenseDesc": "",
-        "datetime": "2016-07-22 11:42:18"
+        "datetime": "2016-06-15 16:39:23"
     },
     {
         "id": "7412F3388CBA",
@@ -5235,8 +5231,6 @@
         "sizeDesc": "",
         "use": "一类工业用地、商业商务用地、娱乐康体用地、物流仓储用地",
         "useDesc": "",
-        "diy": "否",
-        "diyDesc": "",
         "residenceSize": "0",
         "residenceSizeDesc": "",
         "commerceSize": "14103",
@@ -5259,7 +5253,7 @@
         "contractDesc": "",
         "license": "佛禅国用(2015)第1100862号",
         "licenseDesc": "",
-        "datetime": "2016-07-22 11:32:53"
+        "datetime": "2016-07-05 14:47:23"
     },
     {
         "id": "C8FDF16C3B23",
@@ -5273,8 +5267,6 @@
         "sizeDesc": "",
         "use": "都市型产业用地（主导为工业用地，可兼容商业服务业设施用地、物流仓储用地）",
         "useDesc": "",
-        "diy": "否",
-        "diyDesc": "",
         "residenceSize": "0",
         "residenceSizeDesc": "",
         "commerceSize": "5000",
@@ -5297,7 +5289,7 @@
         "contractDesc": "",
         "license": "佛禅国用(2015)第1102588号|佛禅国用(2012)第1100440号|佛禅国用(2015)第1101397号",
         "licenseDesc": "",
-        "datetime": "2016-07-22 11:33:02"
+        "datetime": "2016-07-06 10:55:44"
     },
     {
         "id": "78927A5B2B27",
@@ -5419,8 +5411,6 @@
         "sizeDesc": "",
         "use": "住宅、商业",
         "useDesc": "",
-        "diy": "是",
-        "diyDesc": "",
         "residenceSize": "9228.32",
         "residenceSizeDesc": "",
         "commerceSize": "2623.73",
@@ -5443,7 +5433,7 @@
         "contractDesc": "",
         "license": "佛禅国用(2015)第1200161号|佛禅国用(2012)第1201363号",
         "licenseDesc": "",
-        "datetime": "2016-07-22 11:34:10"
+        "datetime": "2016-07-12 09:44:11"
     },
     {
         "id": "63C1CB44636F",
@@ -5457,8 +5447,6 @@
         "sizeDesc": "",
         "use": "城镇住宅兼容商服（商业金融、办公）用地",
         "useDesc": "",
-        "diy": "是",
-        "diyDesc": "11111",
         "residenceSize": "113356",
         "residenceSizeDesc": "",
         "commerceSize": "28941.5",
@@ -5481,6 +5469,6 @@
         "contractDesc": "",
         "license": "佛禅国用(2013)第1100235号|佛禅国用(2015)第1100447号|佛府国用(2010)第06000736200号",
         "licenseDesc": "",
-        "datetime": "2016-07-22 10:29:40"
+        "datetime": "2016-07-06 16:07:23"
     }
 ]

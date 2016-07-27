@@ -85,6 +85,14 @@ function use(app, options) {
 
             app[method](route, function (req, res) {
 
+                //预解析 data 字段。
+                var data = req.body.data;
+                if (data) {
+                    data = decodeURIComponent(data);
+                    data = JSON.parse(data);
+                    req.body.data = data;
+                }
+
                 var fn = M[name];
 
                 if (typeof fn != 'function') {

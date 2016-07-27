@@ -1,0 +1,146 @@
+﻿<table class="form-table" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr class="title">
+            <td colspan="4">土地出让信息</td>
+        </tr>
+        <tr>
+            <td class="name">土地挂牌编号</td>
+            <td class="value readonly">{land.number}</td>
+            <td class="tip"><span>只读</span></td>
+            <td class="desc none">{land.numberDesc}</td>
+        </tr>
+        <tr>
+            <td class="name">土地区域</td>
+            <td class="value readonly">{land.town}</td>
+            <td class="tip"><span>只读</span></td>
+            <td class="desc none">{land.townDesc}</td>
+        </tr>
+        <tr>
+            <td class="name">土地座落</td>
+            <td class="value readonly">{land.location}</td>
+            <td class="tip"><span>只读</span></td>
+            <td class="desc none">{land.locationDesc}</td>
+        </tr>
+        <tr class="title">
+            <td colspan="4">规划许可信息</td>
+        </tr>
+        <tr>
+            <td class="name">项目名称</td>
+            <td class="value readonly">{plan.project}</td>
+            <td class="tip"><span>只读</span></td>
+            <td class="desc none">{plan.projectDesc}</td>
+        </tr>
+        <tr>
+            <td class="name">土地规划用途</td>
+            <td class="value readonly">{plan.use}</td>
+            <td class="tip"><span>只读</span></td>
+            <td class="desc none">{plan.useDesc}</td>
+        </tr>
+        <tr>
+            <td class="name">建设单位</td>
+            <td class="value readonly">{plan.developer}</td>
+            <td class="tip"><span>只读</span></td>
+            <td class="desc none">{plan.developerDesc}</td>
+        </tr>
+
+
+        <tr class="title">
+            <td colspan="4">规划许可证信息</td>
+        </tr>
+        <tr>
+            <td class="name">规划许可证号</td>
+            <td class="value readonly">{license.number}</td>
+            <td class="tip"><span>只读</span></td>
+            <td class="desc none">{license.numberDesc}</td>
+        </tr>
+
+        <tr class="sub-title">
+            <td colspan="4">计容建筑面积</td>
+        </tr>
+        <tr>
+            <td class="name">住宅</td>
+            <td class="value number">{license.residenceSize}</td>
+            <td class="tip">只读<span>(平方米)</span></td>
+            <td class="desc none">{license.residenceSizeDesc}</td>
+        </tr>
+        <tr>
+            <td class="name">商业</td>
+            <td class="value number">{license.commerceSize}</td>
+            <td class="tip">只读<span>(平方米)</span></td>
+            <td class="desc none">{license.commerceSizeDesc}</td>
+        </tr>
+
+        <tr>
+            <td class="name">办公</td>
+            <td class="value number">{license.officeSize}</td>
+            <td class="tip">只读<span>(平方米)</span></td>
+            <td class="desc none">{license.officeSizeDesc}</td>
+        </tr>
+        <tr>
+            <td class="name">其它</td>
+            <td class="value number">{license.otherSize}</td>
+            <td class="tip">只读<span>(平方米)</span></td>
+            <td class="desc none">{license.otherSizeDesc}</td>
+        </tr>
+        <tr>
+            <td class="name">总面积</td>
+            <td class="value total">{license.totalSize0}</td>
+            <td class="tip">计算<span>(平方米)</span></td>
+            <td class="desc none"></td>
+        </tr>
+
+        <tr class="sub-title">
+            <td colspan="4">不计容建筑面积</td>
+        </tr>
+        <tr>
+            <td class="name">地下车库</td>
+            <td class="value number">{license.parkSize}</td>
+            <td class="tip">只读<span>(平方米)</span></td>
+            <td class="desc none">{license.parkSizeDesc}</td>
+        </tr>
+        <tr>
+            <td class="name">其它</td>
+            <td class="value number">{license.otherSize1}</td>
+            <td class="tip">只读<span>(平方米)</span></td>
+            <td class="desc none">{license.otherSize1Desc}</td>
+        </tr>
+        <tr>
+            <td class="name">总面积</td>
+            <td class="value total">{license.totalSize1}</td>
+            <td class="tip">计算<span>(平方米)</span></td>
+            <td class="desc none"></td>
+        </tr>
+
+        <tr class="sub-title">
+            <td colspan="4">总建筑面积</td>
+        </tr>
+        <tr>
+            <td class="name">总面积</td>
+            <td class="value total">{license.totalSize}</td>
+            <td class="tip">计算<span>(平方米)</span></td>
+            <td class="desc none"></td>
+        </tr>
+
+        <tr class="title">
+            <td colspan="4">施工许可信息</td>
+        </tr>
+        <tr>
+            <td class="name">施工许可证</td>
+            <td class="value"><input name="number" type="text" value="{construct.number}" /></td>
+            <td class="tip"><span>必填</span></td>
+            <td class="desc"><input name="numberDesc" type="text" placeholder="备注" value="{construct.numberDesc}" /></td>
+        </tr>
+        <tr>
+            <td class="name">发证日期</td>
+            <td class="value"><input name="date" type="text" data-type="date" value="{construct.date}" /></td>
+            <td class="tip">日期<span>(年月日)</span></td>
+            <td class="desc"><input name="dateDesc" type="text" placeholder="备注" value="{construct.dateDesc}" /></td>
+        </tr>
+        <tr>
+            <td class="name">建筑面积</td>
+            <td class="value"><input name="size" type="text" data-type="number" value="{construct.size}" /></td>
+            <td class="tip">数字<span>(平方米)</span></td>
+            <td class="desc"><input name="sizeDesc" type="text" placeholder="备注" value="{construct.sizeDesc}" /></td>
+        </tr>
+    </tbody>
+</table>
