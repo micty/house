@@ -48,7 +48,7 @@ define('/Todo/API', function (require, module, exports) {
         api.on({
 
             'request': function () {
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
                 loading.show('加载中...');
@@ -70,11 +70,11 @@ define('/Todo/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                top.KISP.alert('获取数据失败: {0}', msg);
+                KISP.alert('获取数据失败: {0}', msg);
             },
 
             'error': function (code, msg, json, xhr) {
-                top.KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
+                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
             },
         });
 

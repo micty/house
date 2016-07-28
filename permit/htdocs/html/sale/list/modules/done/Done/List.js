@@ -31,8 +31,6 @@ define('/Done/List', function (require, module) {
                         'index': index,
                         'no': index + 1,
                         'operate-display': display,
-                        'licenses.0.length': licenses[0].length,
-                        'licenses.1.length': licenses[1].length,
                     });
 
                     return {
@@ -57,7 +55,7 @@ define('/Done/List', function (require, module) {
                     '这也将会删除其所拥有的预售许可证';
 
                 top.KISP.confirm(msg, function () {
-                    panel.fire('cmd', [cmd, item]);
+                    panel.fire('remove', [item]);
                 });
                 return;
             }

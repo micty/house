@@ -4,9 +4,9 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
-    var API = require('API');
 
     var emitter = new Emitter();
     var loading = null;
@@ -20,7 +20,7 @@ define('/API', function (require, module, exports) {
 
         api.on({
             'request': function () {
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
                 loading.show('提交中...');
@@ -32,7 +32,7 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                toast = toast || top.KISP.create('Toast', {
+                toast = toast || KISP.create('Toast', {
                     text: '提交成功',
                     duration: 1500,
                     mask: 0,
@@ -47,11 +47,11 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                top.KISP.alert('提交失败: {0}', msg);
+                KISP.alert('提交失败: {0}', msg);
             },
 
             'error': function () {
-                top.KISP.alert('提交错误: 网络繁忙，请稍候再试');
+                KISP.alert('提交错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -66,12 +66,10 @@ define('/API', function (require, module, exports) {
         var api = new API('Land.get');
 
         api.on({
-
             'request': function () {
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('读取中...');
             },
 
@@ -83,13 +81,12 @@ define('/API', function (require, module, exports) {
                 emitter.fire('success', 'get', [data]);
             },
 
-
             'fail': function (code, msg, json) {
-                top.KISP.alert('读取失败: {0}({1})', msg, code);
+                KISP.alert('读取失败: {0}', msg);
             },
 
             'error': function () {
-                top.KISP.alert('读取错误: 网络繁忙，请稍候再试');
+                KISP.alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
 

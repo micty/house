@@ -72,7 +72,7 @@ module.exports = {
     },
 
     /**
-    * 更新一条记录。
+    * 更新一条指定 id 的记录。
     */
     update: function (req, res) {
         var item = req.body.data;
@@ -116,20 +116,6 @@ module.exports = {
             else {
                 res.none({ 'id': id });
             }
-        }
-        catch (ex) {
-            res.error(ex);
-        }
-    },
-
-    /**
-    * 读取列表。
-    */
-    list: function (req, res) {
-        try {
-            var list = db.list();
-            list.reverse(); //倒序一下
-            res.success(list);
         }
         catch (ex) {
             res.error(ex);

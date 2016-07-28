@@ -1,6 +1,6 @@
 ﻿
 
-define('/Done/API', function (require, module, exports) {
+define('/Todo/API', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -43,7 +43,7 @@ define('/Done/API', function (require, module, exports) {
 
         opt = normalize(opt);
 
-        var api = new API('Plan.page');
+        var api = new API('Sale.todos');
 
         api.on({
 
@@ -62,7 +62,7 @@ define('/Done/API', function (require, module, exports) {
 
                 var list = data['list'];
 
-                emitter.fire('success', 'get', [list, {
+                emitter.fire('success', [list, {
                     'total': data.total,    //总记录数
                     'no': opt.pageNo,
                     'size': opt.pageSize,
@@ -82,45 +82,9 @@ define('/Done/API', function (require, module, exports) {
 
     }
 
-    /**
-    * 移除指定 id 的记录。
-    */
-    function remove(id) {
-
-        var api = new API('Plan.remove');
-
-        api.on({
-            'request': function () {
-                loading = loading || KISP.create('Loading');
-                loading.show('删除中...');
-            },
-
-            'response': function () {
-                loading.hide();
-            },
-
-            'success': function (data, json, xhr) {
-                emitter.fire('success', 'remove', []);
-            },
-
-            'fail': function (code, msg, json, xhr) {
-                KISP.alert('删除数据失败: {0} ({1})', msg, code);
-            },
-            'error': function (code, msg, json, xhr) {
-                KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
-            },
-        });
-
-        api.get({
-            'id': id,
-        });
-
-    }
-
 
     return {
         'get': get,
-        'remove': remove,
         'on': emitter.on.bind(emitter),
     };
 

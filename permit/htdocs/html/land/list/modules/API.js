@@ -49,7 +49,7 @@ define('/API', function (require, module, exports) {
         api.on({
 
             'request': function () {
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
                 loading.show('加载中...');
@@ -71,11 +71,11 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                top.KISP.alert('获取数据失败: {0}', msg);
+                KISP.alert('获取数据失败: {0}', msg);
             },
 
             'error': function (code, msg, json, xhr) {
-                top.KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
+                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -92,13 +92,8 @@ define('/API', function (require, module, exports) {
         var api = new API('Land.remove');
 
         api.on({
-
             'request': function () {
-
-                loading = loading || top.KISP.create('Loading', {
-
-                });
-
+                loading = loading || KISP.create('Loading');
                 loading.show('删除中...');
             },
 
@@ -108,15 +103,14 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
                 var list = data;
-                
                 emitter.fire('success', 'remove', [list]);
             },
 
             'fail': function (code, msg, json, xhr) {
-                top.KISP.alert('删除数据失败: {0} ({1})', msg, code);
+                KISP.alert('删除数据失败: {0}', msg);
             },
             'error': function (code, msg, json, xhr) {
-                top.KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
+                KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
             },
         });
 

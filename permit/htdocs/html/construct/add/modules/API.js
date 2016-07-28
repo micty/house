@@ -4,6 +4,7 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -16,21 +17,15 @@ define('/API', function (require, module, exports) {
 
     function post(data) {
 
-        var id = data.id;
-        var name = id ? 'Construct.update' : 'Construct.add';
-        var api = KISP.create('API', name);
+        var name = data.id ? 'update' : 'add';
+        var api = new API('Construct.' + name);
 
         api.on({
-
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
-
                 });
-
                 loading.show('提交中...');
-
             },
 
             'response': function () {
@@ -56,7 +51,7 @@ define('/API', function (require, module, exports) {
  
 
             'fail': function (code, msg, json) {
-                KISP.alert('提交失败: {0}({1})', msg, code);
+                KISP.alert('提交失败: {0}', msg);
             },
 
             'error': function () {
@@ -71,16 +66,12 @@ define('/API', function (require, module, exports) {
     }
 
 
-
-
     function get(id, isLicense) {
 
-
         var name = isLicense ? 'PlanLicense.get' : 'Construct.get';
-        var api = KISP.create('API', name);
+        var api = new API(name);
 
         api.on({
-
             'request': function () {
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
@@ -97,27 +88,30 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                alert('读取失败: {0}({1})', msg, code);
+                KISP.alert('读取失败: {0}', msg);
             },
 
             'error': function () {
-                alert('读取错误: 网络繁忙，请稍候再试');
+                KISP.alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
 
 
-        api.get({
-            'id': id, 
-        });
+        var data = { 'id': id };
+        if (isLicense) {
+            data.refer = true;  //获取关联的外键信息
+        }
+
+        api.get(data);
 
     }
 
 
 
     return {
-        get: get,
-        post: post,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'post': post,
+        'on': emitter.on.bind(emitter),
     };
 
 

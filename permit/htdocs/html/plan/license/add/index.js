@@ -35,7 +35,7 @@ KISP.launch(function (require, module) {
         },
 
         'get': function (data) {
-            current = data.license;
+            current = data;
             Form.render(current);
         },
 

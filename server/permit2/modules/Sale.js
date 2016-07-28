@@ -23,10 +23,9 @@ module.exports = {
     db: db,
 
     /**
-    * 获取一条记录。
+    * 获取一条指定 id 的记录。
     */
     get: function (req, res) {
-
         var id = req.query.id;
         if (!id) {
             res.empty('id');
@@ -42,13 +41,13 @@ module.exports = {
 
             var plan = data.refer.planId;
             if (!plan) {
-                res.none('不存在关联的 Plan 该记录', item);
+                res.none('不存在关联的 Plan 记录', data);
                 return;
             }
 
             var land = plan.refer.landId;
             if (!land) {
-                res.none('不存在关联的 Land 该记录', land);
+                res.none('不存在关联的 Land 记录', data);
                 return;
             }
 
@@ -62,21 +61,17 @@ module.exports = {
         catch (ex) {
             res.error(ex);
         }
-
-
     },
-
 
     /**
     * 添加一条记录。
     */
     add: function (req, res) {
-
-        var item = req.body;
+        var item = req.body.data;
 
         try {
             item = db.add(item);
-            res.success('添加成功', item);
+            res.success(item);
         }
         catch (ex) {
             res.error(ex);
@@ -84,11 +79,10 @@ module.exports = {
     },
 
     /**
-    * 更新一条记录。
+    * 更新一条指定 id 的记录。
     */
     update: function (req, res) {
-
-        var item = req.body;
+        var item = req.body.data;
         var id = item.id;
 
         if (!id) {
@@ -99,7 +93,7 @@ module.exports = {
         try {
             var data = db.update(item);
             if (data) {
-                res.success('更新成功', data);
+                res.success(data);
             }
             else {
                 res.none(item);
@@ -111,10 +105,9 @@ module.exports = {
     },
 
     /**
-    * 删除一条记录。
+    * 删除一条指定 id 的记录。
     */
     remove: function (req, res) {
-
         var id = req.query.id;
 
         if (!id) {
@@ -125,7 +118,7 @@ module.exports = {
         try {
             var item = db.remove(id);
             if (item) {
-                res.success('删除成功', item);
+                res.success(item);
             }
             else {
                 res.none({ 'id': id });
@@ -137,53 +130,123 @@ module.exports = {
     },
 
     /**
-    * 读取列表。
+    * 读取指定分页和条件的已办列表。
     */
-    list: function (req, res) {
+    page: function (req, res) {
+        var opt = req.body.data;
+        var pageNo = opt.pageNo;
 
-        //重载 list()，供内部其它模块调用。
-        if (!req) {
-            return db.list();
+        if (!pageNo) {
+            res.empty('pageNo');
+            return;
+        }
+
+        var pageSize = opt.pageSize;
+        if (!pageSize) {
+            res.empty('pageSize');
+            return;
         }
 
         try {
-            var list = db.list();
-            list.reverse(); //倒序一下
-            res.success(list);
+            var keyword = opt.keyword;
+            var list = db.list(true);
+
+            if (keyword) {
+                list = list.filter(function (item) {
+                    var land = item.refer.planId.refer.landId;
+                    return land.number.indexOf(keyword) >= 0;
+                });
+            }
+
+            var SaleLicense = require('./SaleLicense').db;
+
+            list = list.map(function (item) {
+
+                var plan = item.refer.planId;
+                var land = plan.refer.landId;
+
+                var id = item.item.id;
+
+                var count0 = SaleLicense.count(function (license) {
+                    return license.saleId == id && license.type == 0;
+                });
+
+                var count1 = SaleLicense.count(function (license) {
+                    return license.saleId == id && license.type == 1;
+                });
+
+                return {
+                    'sale': item.item,
+                    'plan': plan.item,
+                    'land': land.item,
+                    'license0': count0,
+                    'license1': count1,
+                };
+            });
+
+            var data = DataBase.page(pageNo, pageSize, list);
+
+            res.success(data);
         }
         catch (ex) {
             res.error(ex);
         }
-
     },
 
-
     /**
-    * 获取待办和已办列表。
+    * 读取指定分页和条件的待办列表。
     */
-    all: function (req, res) {
+    todos: function (req, res) {
+        var opt = req.body.data;
+        var pageNo = opt.pageNo;
+
+        if (!pageNo) {
+            res.empty('pageNo');
+            return;
+        }
+
+        var pageSize = opt.pageSize;
+        if (!pageSize) {
+            res.empty('pageSize');
+            return;
+        }
 
         try {
-            var Land = require('./Land');
-            var Plan = require('./Plan');
-            var SaleLicense = require('./SaleLicense');
+            //用 planId 作为主键关联整条记录。
+            var id$item = db.map('planId');
+            var keyword = opt.keyword;
+            var Plan = require('./Plan').db;
 
-            var lands = Land.db.list();
-            var plans = Plan.db.list();
-            var licenses = SaleLicense.db.list();
-            var sales = db.list();
+            var plans = Plan.list(true, function (plan) {
+                var item = id$item[plan.item.id];
+                if (item) { 
+                    return false; //说明是已办的。
+                }
 
-            res.success({
-                'lands': lands,
-                'plans': plans,
-                'sales': sales,
-                'licenses': licenses,
+                var land = plan.refer.landId.item;
+                if (keyword && land.number.indexOf(keyword) < 0) {
+                    return false;
+                }
+
+                return true;
             });
+
+            plans = plans.map(function (item) {
+                var land = item.refer.landId;
+
+                return {
+                    'plan': item.item,
+                    'land': land.item,
+                };
+            });
+
+            var data = DataBase.page(pageNo, pageSize, plans);
+
+            res.success(data);
         }
         catch (ex) {
             res.error(ex);
         }
-
     },
 
     /**

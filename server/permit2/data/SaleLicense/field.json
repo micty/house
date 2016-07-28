@@ -9,7 +9,8 @@
     },
     {
         "name": "type",
-        "type": "number"
+        "type": "number",
+        "required": true
     },
     {
         "name": "number"

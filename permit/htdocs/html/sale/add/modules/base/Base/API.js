@@ -6,6 +6,7 @@ define('/Base/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -18,21 +19,15 @@ define('/Base/API', function (require, module, exports) {
 
     function post(data) {
 
-        var id = data.id;
-        var name = id ? 'update' : 'add';
-        var api = KISP.create('API', 'Sale.' + name);
+        var name = data.id ? 'update' : 'add';
+        var api = new API('Sale.' + name);
 
         api.on({
-
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
-
                 });
-
                 loading.show('提交中...');
-
             },
 
             'response': function () {
@@ -58,7 +53,7 @@ define('/Base/API', function (require, module, exports) {
  
 
             'fail': function (code, msg, json) {
-                KISP.alert('提交失败: {0}({1})', msg, code);
+                KISP.alert('提交失败: {0}', msg);
             },
 
             'error': function () {
@@ -77,12 +72,10 @@ define('/Base/API', function (require, module, exports) {
 
     function get(data) {
 
-
         var name = data.id ? 'Sale.get': 'Plan.get';
-        var api = KISP.create('API', name);
+        var api = new API(name);
 
         api.on({
-
             'request': function () {
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
@@ -117,9 +110,9 @@ define('/Base/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        post: post,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'post': post,
+        'on': emitter.on.bind(emitter),
     };
 
 

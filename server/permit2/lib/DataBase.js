@@ -234,7 +234,7 @@ DataBase.prototype = {
     * @return {Array} 返回记录列表数组。
     */
     list: function (refer, filter) {
-        //重载 count(filter);
+        //重载 list(filter);
         if (typeof refer == 'function') {
             filter = refer;
             refer = false;
@@ -374,19 +374,28 @@ DataBase.prototype = {
 
         var ids = Array.isArray(id) ? id : [id];
 
+        //记录被修改的文件。
+        var changed = {
+            list: false,
+            map: false,
+            unique: false,
+        };
+
         var items = ids.map(function (id) {
 
             var index = list.indexOf(id);
             if (index >= 0) {
                 list.splice(index, 1);
+                changed.list = true;
             }
 
             var values = map[id];
-            delete map[id];
-
             if (!values) {
                 return;
             }
+           
+            delete map[id];
+            changed.map = true;
 
             var item = { 'id': id };
 
@@ -398,15 +407,16 @@ DataBase.prototype = {
 
                 if (field.unique) {
                     delete unique[name][value];
+                    changed.unique = true;
                 }
             });
 
             return item;
         });
 
-        File.writeJSON(meta.map, map);
-        File.writeJSON(meta.list, list);
-        File.writeJSON(meta.unique, unique);
+        changed.list && File.writeJSON(meta.list, list);
+        changed.map && File.writeJSON(meta.map, map);
+        changed.unique &&  File.writeJSON(meta.unique, unique);
 
         //过滤掉空项。
         items = items.filter(function (item) {
@@ -679,7 +689,7 @@ DataBase.prototype = {
         var id$item = {};
 
         list.forEach(function (item) {
-            var id = item[key];
+            var id = refer ? item.item[key] : item[key];
             id$item[id] = item;
         });
 

@@ -20,7 +20,7 @@ define('/License/API', function (require, module, exports) {
 
         api.on({
             'request': function () {
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
                 loading.show('加载中...');
@@ -37,11 +37,11 @@ define('/License/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                top.KISP.alert('获取数据失败: {0} ({1})', msg, code);
+                KISP.alert('获取数据失败: {0} ({1})', msg, code);
             },
 
             'error': function (code, msg, json, xhr) {
-                top.KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
+                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -62,7 +62,7 @@ define('/License/API', function (require, module, exports) {
 
         api.on({
             'request': function () {
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
 
@@ -92,11 +92,11 @@ define('/License/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                top.KISP.alert('提交失败: {0}({1})', msg, code);
+                KISP.alert('提交失败: {0}({1})', msg, code);
             },
 
             'error': function () {
-                top.KISP.alert('提交错误: 网络繁忙，请稍候再试');
+                KISP.alert('提交错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -127,10 +127,10 @@ define('/License/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                top.KISP.alert('删除数据失败: {0} ({1})', msg, code);
+                KISP.alert('删除数据失败: {0} ({1})', msg, code);
             },
             'error': function (code, msg, json, xhr) {
-                top.KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
+                KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
             },
         });
 

@@ -91,7 +91,7 @@ module.exports = {
     },
 
     /**
-    * 更新一条记录。
+    * 更新一条指定 id 的记录。
     */
     update: function (req, res) {
         var item = req.body.data;
@@ -142,20 +142,6 @@ module.exports = {
     },
 
     /**
-    * 读取列表。
-    */
-    list: function (req, res) {
-        try {
-            var list = db.list();
-            list.reverse(); //倒序一下
-            res.success(list);
-        }
-        catch (ex) {
-            res.error(ex);
-        }
-    },
-
-    /**
     * 读取指定分页和条件的已办列表。
     */
     page: function (req, res) {
@@ -176,7 +162,6 @@ module.exports = {
         try {
             var keyword = opt.keyword;
             var list = db.list(true);
-
           
             list = list.map(function (item) {
                 var license = item.refer.licenseId; //关联的规划许可证。
@@ -185,9 +170,9 @@ module.exports = {
 
                 return {
                     'construct': item.item,
-                    'license': license,
-                    'plan': plan,
-                    'land': land,
+                    'license': license.item,
+                    'plan': plan.item,
+                    'land': land.item,
                 };
             });
 
@@ -226,15 +211,14 @@ module.exports = {
 
         try {
             //用 licenseId 作为主键关联整条记录。
-            var licenseId$construct = db.map('licenseId', true);
-
+            var id$item = db.map('licenseId');
             var keyword = opt.keyword;
             var PlanLicense = require('./PlanLicense').db;
 
-            var licenses = PlanLicense.list(function (license) {
-                var construct = licenseId$construct[license.id];
-                if (construct) { //说明是已办的。
-                    return false;
+            var licenses = PlanLicense.list(true, function (license) {
+                var item = id$item[license.item.id];
+                if (item) { 
+                    return false; //说明是已办的。
                 }
 
                 if (keyword) {
@@ -258,9 +242,7 @@ module.exports = {
                 };
             });
 
-
             var data = DataBase.page(pageNo, pageSize, licenses);
-
             res.success(data);
         }
         catch (ex) {

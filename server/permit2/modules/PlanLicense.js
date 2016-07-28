@@ -30,7 +30,6 @@ var db = new DataBase('PlanLicense', [
 
 
 module.exports = {
-
     /**
     * 仅供其它内部模块调用。
     */
@@ -47,26 +46,25 @@ module.exports = {
         }
 
         try {
-            var data = db.get(id, true);
-            if (!data) {
+            var refer = req.query.refer == 'true'; //是否需要关联获取外键记录。
+            var item = db.get(id, refer);
+
+            if (!item) {
                 res.none({ 'id': id });
                 return;
             }
 
-            var plan = data.refer.planId;
-            if (!plan) {
-                res.none('不存在关联的 Plan 记录', data);
+            if (!refer) {
+                res.success(item);
                 return;
             }
 
+            //需要外键信息的。 在 construct/add 页面用到。
+            var plan = item.refer.planId;
             var land = plan.refer.landId;
-            if (!land) {
-                res.none('不存在关联的 Land 记录', data);
-                return;
-            }
 
             res.success({
-                'license': data.item,
+                'license': item.item,
                 'plan': plan.item,
                 'land': land.item,
             });
@@ -93,7 +91,7 @@ module.exports = {
     },
 
     /**
-    * 更新一条记录。
+    * 更新一条指定 id 的记录。
     */
     update: function (req, res) {
         var item = req.body.data;

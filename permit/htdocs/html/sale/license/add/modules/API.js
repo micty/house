@@ -5,6 +5,7 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -16,16 +17,13 @@ define('/API', function (require, module, exports) {
     //获取数据
     function get(id) {
 
-        var api = KISP.create('API', 'SaleLicense.get');
+        var api = new API('SaleLicense.get');
 
         api.on({
-
             'request': function () {
-
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('加载中...');
             },
 
@@ -50,7 +48,6 @@ define('/API', function (require, module, exports) {
             'id': id,
         });
 
-
     }
 
 
@@ -59,21 +56,15 @@ define('/API', function (require, module, exports) {
 
     function post(data) {
 
-        var id = data.id;
-        var name = id ? 'update' : 'add';
-        var api = KISP.create('API', 'SaleLicense.' + name);
+        var name = data.id ? 'update' : 'add';
+        var api = new API('SaleLicense.' + name);
 
         api.on({
-
             'request': function () {
-
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
-
                 });
-
                 loading.show('提交中...');
-
             },
 
             'response': function () {
@@ -82,7 +73,7 @@ define('/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
 
-                toast = toast || top.KISP.create('Toast', {
+                toast = toast || KISP.create('Toast', {
                     text: '提交成功',
                     duration: 1500,
                     mask: 0,
@@ -115,11 +106,10 @@ define('/API', function (require, module, exports) {
 
 
 
-
     return {
-        get: get,
-        post: post,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'post': post,
+        'on': emitter.on.bind(emitter),
     };
 
 

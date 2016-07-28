@@ -56,7 +56,7 @@ app.use(function (req, res, next) {
 //用户模块
 Router.use(app, {
     module: require('./modules/User'),
-    base: '/User/',
+    base: '/User.',
     get: [
         'get',
         'remove',
@@ -69,7 +69,6 @@ Router.use(app, {
     ],
 });
 
-
 //土地出让模块
 Router.use(app, {
     module: require('./modules/Land'),
@@ -77,7 +76,6 @@ Router.use(app, {
     get: [
         'get',
         'remove',
-        'list',
     ],
     post: [
         'add',
@@ -93,7 +91,6 @@ Router.use(app, {
     get: [
         'get',
         'remove',
-        'list',
     ],
     post: [
         'add',
@@ -102,7 +99,6 @@ Router.use(app, {
         'todos',
     ],
 });
-
 
 //规划许可证模块
 Router.use(app, {
@@ -119,10 +115,6 @@ Router.use(app, {
     ],
 });
 
-
-
-
-
 //建设许可模块
 Router.use(app, {
     module: require('./modules/Construct'),
@@ -130,15 +122,14 @@ Router.use(app, {
     get: [
         'get',
         'remove',
-        'list',
-        'all',
     ],
     post: [
         'add',
         'update',
+        'page',
+        'todos',
     ],
 });
-
 
 //预售许可模块
 Router.use(app, {
@@ -147,16 +138,15 @@ Router.use(app, {
     get: [
         'get',
         'remove',
-        'list',
-        'all',
     ],
     post: [
         'add',
         'update',
         'import',
+        'page',
+        'todos',
     ],
 });
-
 
 //预售许可证模块
 Router.use(app, {
@@ -172,7 +162,6 @@ Router.use(app, {
         'update',
     ],
 });
-
 
 
 

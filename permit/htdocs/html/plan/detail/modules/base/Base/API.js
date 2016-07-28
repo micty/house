@@ -24,7 +24,7 @@ define('/Base/API', function (require, module, exports) {
         api.on({
 
             'request': function () {
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
                 loading.show('读取中...');
@@ -39,11 +39,11 @@ define('/Base/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                top.KISP.alert('读取失败: {0}({1})', msg, code);
+                KISP.alert('读取失败: {0}({1})', msg, code);
             },
 
             'error': function () {
-                top.KISP.alert('读取错误: 网络繁忙，请稍候再试');
+                KISP.alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
 

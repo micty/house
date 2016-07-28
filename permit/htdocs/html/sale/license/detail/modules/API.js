@@ -5,6 +5,7 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -15,16 +16,13 @@ define('/API', function (require, module, exports) {
     //获取数据
     function get(id) {
 
-        var api = KISP.create('API', 'SaleLicense.get');
+        var api = new API('SaleLicense.get');
 
         api.on({
-
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('加载中...');
             },
 
@@ -37,7 +35,7 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('获取数据失败: {0} ({1})', msg, code);
+                KISP.alert('获取数据失败: {0}', msg);
             },
 
             'error': function (code, msg, json, xhr) {
@@ -49,16 +47,14 @@ define('/API', function (require, module, exports) {
             'id': id,
         });
 
-
     }
 
 
 
 
-
     return {
-        get: get,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'on': emitter.on.bind(emitter),
     };
 
 

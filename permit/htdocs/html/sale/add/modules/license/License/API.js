@@ -5,6 +5,7 @@ define('/License/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -17,16 +18,13 @@ define('/License/API', function (require, module, exports) {
     //获取数据
     function get(saleId) {
 
-        var api = KISP.create('API', 'SaleLicense.list');
+        var api = new API('SaleLicense.list');
 
         api.on({
-
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('加载中...');
             },
 
@@ -50,7 +48,7 @@ define('/License/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('获取数据失败: {0} ({1})', msg, code);
+                KISP.alert('获取数据失败: {0}', msg);
             },
 
             'error': function (code, msg, json, xhr) {
@@ -71,19 +69,14 @@ define('/License/API', function (require, module, exports) {
 
         var id = data.id;
         var name = id ? 'update' : 'add';
-        var api = KISP.create('API', 'SaleLicense.' + name);
+        var api = new API('SaleLicense.' + name);
 
         api.on({
-
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
-
                 });
-
                 loading.show('提交中...');
-
             },
 
             'response': function () {
@@ -109,7 +102,7 @@ define('/License/API', function (require, module, exports) {
 
 
             'fail': function (code, msg, json) {
-                KISP.alert('提交失败: {0}({1})', msg, code);
+                KISP.alert('提交失败: {0}', msg);
             },
 
             'error': function () {
@@ -126,16 +119,11 @@ define('/License/API', function (require, module, exports) {
 
     function remove(id) {
 
-        var api = KISP.create('API', 'SaleLicense.remove');
+        var api = new API('SaleLicense.remove');
 
         api.on({
-
             'request': function () {
-
-                loading = loading || KISP.create('Loading', {
-
-                });
-
+                loading = loading || KISP.create('Loading');
                 loading.show('删除中...');
             },
 
@@ -145,12 +133,11 @@ define('/License/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
                 var list = data;
-                
                 emitter.fire('success', 'remove', [list]);
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('删除数据失败: {0} ({1})', msg, code);
+                KISP.alert('删除数据失败: {0}', msg);
             },
             'error': function (code, msg, json, xhr) {
                 KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
@@ -166,10 +153,10 @@ define('/License/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        post: post,
-        remove: remove,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'post': post,
+        'remove': remove,
+        'on': emitter.on.bind(emitter),
     };
 
 

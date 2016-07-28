@@ -4,19 +4,20 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
     var emitter = new Emitter();
     var loading = null;
-    var toast = null;
+
+
 
     function get(id) {
 
-        var api = KISP.create('API', 'Construct.get');
+        var api = new API('Construct.get');
 
         api.on({
-
             'request': function () {
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
@@ -33,11 +34,11 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                alert('读取失败: {0}({1})', msg, code);
+                KISP.alert('读取失败: {0}', msg);
             },
 
             'error': function () {
-                alert('读取错误: 网络繁忙，请稍候再试');
+                KISP.alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -51,8 +52,8 @@ define('/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'on': emitter.on.bind(emitter),
     };
 
 

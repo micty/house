@@ -17,8 +17,6 @@ define('/Form', function (require, module, exports) {
 
 
 
-
-
     panel.on('fill', function () {
 
         NumberField.create('[data-type="number"]');
@@ -50,6 +48,9 @@ define('/Form', function (require, module, exports) {
             number: '',
             date: '',
             size: '',
+            numberDesc: '',
+            dateDesc: '',
+            sizeDesc: '',
         };
 
         data = $Object.linear(data);

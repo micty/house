@@ -43,10 +43,9 @@ define('/Done/API', function (require, module, exports) {
 
         opt = normalize(opt);
 
-        var api = new API('Plan.page');
+        var api = new API('Construct.page');
 
         api.on({
-
             'request': function () {
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
@@ -87,11 +86,13 @@ define('/Done/API', function (require, module, exports) {
     */
     function remove(id) {
 
-        var api = new API('Plan.remove');
+        var api = new API('Construct.remove');
 
         api.on({
             'request': function () {
-                loading = loading || KISP.create('Loading');
+                loading = loading || KISP.create('Loading', {
+
+                });
                 loading.show('删除中...');
             },
 
@@ -104,7 +105,7 @@ define('/Done/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('删除数据失败: {0} ({1})', msg, code);
+                KISP.alert('删除数据失败: {0}', msg);
             },
             'error': function (code, msg, json, xhr) {
                 KISP.alert('删除数据错误: 网络繁忙，请稍候再试');

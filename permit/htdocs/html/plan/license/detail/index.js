@@ -17,7 +17,7 @@ KISP.launch(function (require, module) {
 
     API.on('success', {
         'get': function (data) {
-            Form.render(data.license);
+            Form.render(data);
             Header.render();
         },
 

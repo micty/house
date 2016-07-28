@@ -43,10 +43,9 @@ define('/Done/API', function (require, module, exports) {
 
         opt = normalize(opt);
 
-        var api = new API('Plan.page');
+        var api = new API('Sale.page');
 
         api.on({
-
             'request': function () {
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
@@ -87,7 +86,7 @@ define('/Done/API', function (require, module, exports) {
     */
     function remove(id) {
 
-        var api = new API('Plan.remove');
+        var api = new API('Sale.remove');
 
         api.on({
             'request': function () {

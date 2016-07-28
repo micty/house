@@ -20,13 +20,10 @@ KISP.launch(function (require, module) {
             Bridge.close();
         });
         return;
-
-
     }
 
 
     var current = null;
-
 
 
     API.on('success', {

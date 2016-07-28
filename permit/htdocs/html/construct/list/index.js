@@ -8,7 +8,6 @@ KISP.launch(function (require, module) {
 
     var Bridge = require('Bridge');
 
-    var API = module.require('API');
     var Todo = module.require('Todo');
     var Done = module.require('Done');
     var Tabs = module.require('Tabs');
@@ -20,22 +19,13 @@ KISP.launch(function (require, module) {
     Tabs.on('change', {
         'todo': function () {
             Done.hide();
-            Todo.render(current.todo);
+            Todo.render();
+            current = Todo;
         },
         'done': function () {
             Todo.hide();
-            Done.render(current.done);
-        },
-    });
-
-    API.on('success', {
-        'post': function (data) {
-            current = data;
-            Tabs.render();
-        },
-
-        'remove': function () {
-            API.post();
+            Done.render();
+            current = Done;
         },
     });
 
@@ -100,9 +90,6 @@ KISP.launch(function (require, module) {
             });
         },
 
-        'remove': function (item) {
-            API.remove(item.construct.id);
-        },
 
         'edit': function (item) {
             Bridge.open(['construct', 'add'], {
@@ -112,12 +99,14 @@ KISP.launch(function (require, module) {
     });
    
     Bridge.on({
-        'search': function (data) {
-            API.post({ 'keyword': data, });
+        'search': function (keyword) {
+            current.render(keyword);
         },
     });
 
 
-    API.post();
+    Tabs.render();
+
+   
     
 });

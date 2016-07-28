@@ -52,7 +52,7 @@ KISP.launch(function (require, module) {
 
     function post(data) {
 
-        var api = KISP.create('API', 'User/login');
+        var api = KISP.create('API', 'User.login');
 
         var loading = null;
 
