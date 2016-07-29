@@ -1,5 +1,5 @@
 ﻿
-
+var $ = require('../lib/MiniQuery');
 var DataBase = require('../lib/DataBase');
 
 var db = new DataBase('SaleLicense', [
@@ -8,7 +8,7 @@ var db = new DataBase('SaleLicense', [
     { name: 'saleId', required: true, refer: 'Sale', },
     { name: 'type', type: 'number', required: true, },
 
-    { name: 'number', },
+    { name: 'number', required: true, unique: true, }, //证号
     { name: 'numberDesc', },
     { name: 'date', },
     { name: 'dateDesc', },
@@ -176,6 +176,47 @@ module.exports = {
         }
     },
 
+    /**
+    * 批量导入。
+    */
+    import: function (items) {
 
+        //以证号作为主键。
+        var number$item = db.map('number');
+
+        var adds = [];
+        var updates = [];
+
+        items.forEach(function (item) {
+            var number = item.number;
+            var oldItem = number$item[number];
+
+            //已存在相同证号的记录，则合并覆盖。
+            if (oldItem) {
+                item = $.Object.extend({}, oldItem, item);
+                updates.push(item);
+                return;
+            }
+
+            //新记录。
+            adds.push(item);
+
+            //更新注册
+            number$item[number] = item;
+        });
+
+        if (adds.length > 0) {
+            adds = db.add(adds);
+        }
+
+        if (updates.length > 0) {
+            updates = db.update(updates);
+        }
+
+        return {
+            'adds': adds,
+            'updates': updates,
+        };
+    },
 };
 

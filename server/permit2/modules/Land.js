@@ -179,5 +179,24 @@ module.exports = {
         }
     },
 
+    /**
+    * 以某个键作为主键关联整条记录。
+    * 该方法主要用于销售中的导入。
+    */
+    map: function (key) {
+        var list = db.list();
+        var id$item = {};
+
+        list.forEach(function (item) {
+            var ids = item[key].split('|');
+
+            ids.forEach(function (id) {
+                id$item[id] = item;
+            });
+        });
+
+        return id$item;
+    },
+
 };
 

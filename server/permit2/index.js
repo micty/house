@@ -84,7 +84,7 @@ Router.use(app, {
     ],
 });
 
-//规划许可模块
+//规划模块
 Router.use(app, {
     module: require('./modules/Plan'),
     base: '/Plan.',
@@ -115,7 +115,7 @@ Router.use(app, {
     ],
 });
 
-//建设许可模块
+//建设模块
 Router.use(app, {
     module: require('./modules/Construct'),
     base: '/Construct.',
@@ -131,7 +131,7 @@ Router.use(app, {
     ],
 });
 
-//预售许可模块
+//预售模块
 Router.use(app, {
     module: require('./modules/Sale'),
     base: '/Sale.',
@@ -142,9 +142,9 @@ Router.use(app, {
     post: [
         'add',
         'update',
-        'import',
         'page',
         'todos',
+        'import',
     ],
 });
 

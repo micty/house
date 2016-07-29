@@ -5,6 +5,7 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
     var Logs = require('Logs');
@@ -15,12 +16,12 @@ define('/API', function (require, module, exports) {
     var LINE = '___________________________________________________________' +
         '__________________________________________________________';
 
+
     function get(license) {
 
-        var api = KISP.create('API', 'Land.list');
+        var api = new API('Land.list');
 
         api.on({
-
             'request': function () {
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
@@ -39,7 +40,7 @@ define('/API', function (require, module, exports) {
                 });
 
                 if (!item) {
-                    top.KISP.alert('不存在该土地记录');
+                    KISP.alert('不存在该土地记录');
                     return;
                 }
 
@@ -47,14 +48,13 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json) {
-                top.KISP.alert('读取失败: {0}', msg, code);
+                KISP.alert('读取失败: {0}', msg, code);
             },
 
             'error': function () {
-                top.KISP.alert('读取错误: 网络繁忙，请稍候再试');
+                KISP.alert('读取错误: 网络繁忙，请稍候再试');
             },
         });
-
 
         api.get();
 
@@ -97,12 +97,12 @@ define('/API', function (require, module, exports) {
 
         var groups = format(type, list);
 
-        var api = KISP.create('API', 'Sale.import');
+        var api = new API('Sale.import');
     
 
         api.on({
             'request': function () {
-                loading = loading || top.KISP.create('Loading', {
+                loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
                 loading.show('提交中...');
@@ -116,7 +116,7 @@ define('/API', function (require, module, exports) {
             },
 
             'error': function (code, msg, json, xhr) {
-                top.KISP.alert('提交数据错误: 网络繁忙，请稍候再试');
+                KISP.alert('提交数据错误: 网络繁忙，请稍候再试');
             },
         });
 
@@ -126,7 +126,7 @@ define('/API', function (require, module, exports) {
             //由于状态码不同时，参数形式不同，这里用查找的方式。
             var data = json.data;
             if (!data) {
-                top.KISP.alert('提交数据失败: {0} ', msg);
+                KISP.alert('提交数据失败: {0} ', msg);
                 return;
             }
 
@@ -138,7 +138,7 @@ define('/API', function (require, module, exports) {
             var sales = data.sales || [];
             var licenses = data.licenses || [];
             var adds = data.adds || [];
-            var edits = data.edits || [];
+            var updates = data.updates || [];
 
             if (lands.length > 0) {
                 lands = getLands(groups, lands)
@@ -188,12 +188,12 @@ define('/API', function (require, module, exports) {
             }
 
 
-            if (edits.length > 0) {
-                edits = getLicenses(edits);
+            if (updates.length > 0) {
+                updates = getLicenses(updates);
 
                 msgs.push(LINE);
-                msgs.push('覆盖导入的' + typeText + ' ' + edits.length + ' 条:');
-                msgs = msgs.concat(edits);
+                msgs.push('覆盖导入的' + typeText + ' ' + updates.length + ' 条:');
+                msgs = msgs.concat(updates);
             }
 
 
@@ -204,10 +204,10 @@ define('/API', function (require, module, exports) {
         });
 
 
-        var data = JSON.stringify(groups);
-        data = encodeURIComponent(data);
+        //var data = JSON.stringify(groups);
+        //data = encodeURIComponent(data);
 
-        api.post({'data': data});
+        api.post(groups);
 
 
     }

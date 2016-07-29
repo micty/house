@@ -171,6 +171,23 @@ DataBase.page = function (pageNo, pageSize, list) {
     };
 },
 
+DataBase.map = function (list, key) {
+    var id$item = {};
+
+    list.forEach(function (item) {
+        var id = item[key];
+        id$item[id] = item;
+    });
+
+    return id$item;
+};
+
+DataBase.newId = function () {
+    var id = $.String.random();
+    return id;
+};
+
+
 //实例方法。
 DataBase.prototype = {
     constructor: DataBase,
@@ -430,6 +447,7 @@ DataBase.prototype = {
 
     /**
     * 添加一条或多条记录。
+    * 记录中如果指定了 id 则使用它，否则自动分配一个新的 id。
     * @param {Object} item 要添加的记录的数据对象或其数组。
     * @return {Object|Array} 返回被添加的单条记录或其数组。
     */
@@ -445,10 +463,15 @@ DataBase.prototype = {
         var errors = [];
 
         items = items.map(function (item) {
-            var id = $.String.random();
+            var id = item.id || DataBase.newId();
+
+            if (map[id]) {
+                errors.push('已存在 id 为 ' + id + ' 的记录。');
+                return;
+            }
 
             item.id = id;
-            item.datetime = now();
+            item.datetime = item.datetime || now();
             list.push(id);
 
             //必须确保值的长度跟键的长度一致。
@@ -493,13 +516,13 @@ DataBase.prototype = {
                 //存储时作数据转换。
                 switch (type) {
                     case 'string':
-                        value = String(value);
+                        value = value == null ? '' : String(value); //把 null 和 undefined 转为 '' 。
                         break;
                     case 'number':
-                        value = Number(value);
+                        value = value == null ? 0 : Number(value);  //把 null 和 undefined 转为 0 。
                         break;
                     case 'boolean':
-                        value = value == 'true';
+                        value = value ? value != 'false' : false;
                         break;
                 }
 
@@ -524,78 +547,85 @@ DataBase.prototype = {
     },
 
     /**
-    * 更新一条指定 id 的记录。
+    * 更新一条或多条指定 id 的记录。
     * @param {Object} item 要更新的记录的数据对象。
     * @return {Object|Array} 返回被更新的单条记录。
     */
     update: function (item) {
         var meta = this.meta;
         var map = File.readJSON(meta.map);
-        var id = item.id;
-        if (!id) {
-            throw new Error('字段 id 不能为空。');
-        }
 
-        var values = map[id];
-        if (!values) {
-            return;
-        }
-
-        var errors = [];
         var fields = meta.fields;
         var unique = File.readJSON(meta.unique);
-        
+        var items = Array.isArray(item) ? item : [item];
+        var errors = [];
 
-        item.datetime = now();
-
-        fields.forEach(function (field, index) {
-            var name = field.name;
-            var alias = field.alias || name;
-
-            if (!(name in item)) {
-                item[name] = values[index]; //取原来的值，为了返回给调用方。
+        items = items.map(function (item) {
+            var id = item.id;
+            if (!id) {
+                errors.push('字段 id 不能为空。');
                 return;
             }
 
-            //以下的 value === item[name]，而不是原来的 values[index]。
-            var type = field.type;
-            var value = item[name];
-
-            if (field.required) {
-                if (type == 'string' && !value) {
-                    errors.push('字段' + alias + '的值不能为空');
-                    return;
-                }
+            var values = map[id];
+            if (!values) {
+                errors.push('不存在 id 为 ' + id + ' 的记录。');
+                return;
             }
 
-            //只有值发生变化时才作进一步判断。
-            if (field.unique && value != values[index]) { 
-                var id2 = unique[name][value]; //关联的 id 值。
-                if (id2) {
-                    //如: 已存在 landId 为 2250EA134178 的记录。
-                    errors.push('已存在' + alias + '为 ' + value + ' 的记录， 其关联的 id 为' + id2);
+            fields.forEach(function (field, index) {
+                var name = field.name;
+                var alias = field.alias || name;
+
+                if (!(name in item)) {
+                    item[name] = values[index]; //取原来的值，为了返回给调用方。
                     return;
                 }
 
-                unique[name][value] = id;
-            }
+                //以下的 value === item[name]，而不是原来的 values[index]。
+                var type = field.type;
+                var value = item[name];
 
-            //存储时作数据转换。
-            switch (type) {
-                case 'string':
-                    value = String(value);
-                    break;
+                if (field.required) {
+                    if (type == 'string' && !value) {
+                        errors.push('字段' + alias + '的值不能为空');
+                        return;
+                    }
+                }
 
-                case 'number':
-                    value = Number(value);
-                    break;
+                //只有值发生变化时才作进一步判断。
+                if (field.unique && value != values[index]) {
+                    var id2 = unique[name][value]; //关联的 id 值。
+                    if (id2) {
+                        //如: 已存在 landId 为 2250EA134178 的记录。
+                        errors.push('已存在' + alias + '为 ' + value + ' 的记录， 其关联的 id 为' + id2);
+                        return;
+                    }
 
-                case 'boolean':
-                    value = value == 'true';
-                    break;
-            }
+                    unique[name][value] = id;
+                }
 
-            values[index] = value;
+                //存储时作数据转换。
+                switch (type) {
+                    case 'string':
+                        value = String(value);
+                        break;
+
+                    case 'number':
+                        value = Number(value);
+                        break;
+
+                    case 'boolean':
+                        value = value == 'true';
+                        break;
+                }
+
+                values[index] = value;
+            });
+
+            item.datetime = now();
+            return item;
+
         });
 
         if (errors.length > 0) {
@@ -607,7 +637,7 @@ DataBase.prototype = {
 
         meta.emitter.fire('update', [item]);
 
-        return item;
+        return Array.isArray(item) ? items : items[0];
     },
 
     /**

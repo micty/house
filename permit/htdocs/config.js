@@ -41,7 +41,7 @@
     KISP.data({
         'pager': {
             size: qs.pageSize || (top.KISP.data('pager') || {}).size || 20,    //分页大小,
-            size: 1,    //分页大小,
+            //size: 1,    //分页大小,
         },
      
     });

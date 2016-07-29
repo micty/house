@@ -57,14 +57,20 @@ function sizes(prefix, item, data) {
 
 module.exports = {
 
-    
+
 
     /**
     * 获取。
     */
-    get: function (res) {
+    get: function (res, data) {
 
         try {
+            data = data || {};
+
+            var beginDate = data.beginDate || '';
+            var endDate = data.endDate || '';
+            var role = data.role || 'sale';
+
             var Land = require('./Land');
             var Plan = require('./Plan');
             var Construct = require('./Construct');
@@ -78,10 +84,8 @@ module.exports = {
             var constructs = Construct.list();
             var sales = Sale.list();
 
-
             var plan_licenses = PlanLicense.list();
             var sale_licenses = SaleLicense.list();
-
 
             var id$land = id$item(lands);
             var id$plan = id$item(plans);
@@ -94,6 +98,7 @@ module.exports = {
             lands = lands.map(function (item) {
                 return sizes(item, {
                     'town': item.town,
+                    'diy': item.diy,
                     'size': Number(item.size) || 0,
                 });
             });
@@ -113,6 +118,7 @@ module.exports = {
 
                 return sizes(item, {
                     'town': land.town,
+                    'diy': land.diy,
                 });
             });
 
@@ -136,6 +142,7 @@ module.exports = {
 
                 return sizes(license, {
                     'town': land.town,
+                    'diy': land.diy,
                 });
             });
 
@@ -143,8 +150,8 @@ module.exports = {
 
             var prepares = [];          //预售许可
             var doings = [];            //现售备案
-            var saledPrepares = [];    //预售许可，已售部分
-            var saledDoings = [];      //现售备案，已售部分
+            var saledPrepares = [];     //预售许可，已售部分
+            var saledDoings = [];       //现售备案，已售部分
 
             sale_licenses.forEach(function (item) {
                 var sale = id$sale[item.saleId];
@@ -162,9 +169,10 @@ module.exports = {
                     return null;
                 }
 
-           
+
                 var obj = sizes(item, {
                     'town': land.town,
+                    'diy': land.diy,
                 });
 
                 var a = item.type == 0 ? prepares : doings;
@@ -173,11 +181,12 @@ module.exports = {
                 //
                 var obj = sizes('saled-', item, {
                     'town': land.town,
+                    'diy': land.diy,
                 });
 
                 var a = item.type == 0 ? saledPrepares : saledDoings;
                 a.push(obj);
-          
+
             });
 
 
@@ -208,5 +217,54 @@ module.exports = {
 
 
 
+
+    /**
+    * 按区域(镇街)进行统计。
+    */
+    town: function (req, res) {
+        var data = req.body.data;
+        var town = data.town;
+        if (!town) {
+            res.empty('town');
+            return;
+        }
+
+        var Land = require('./Land').db;
+        var lands = Land.list(function (item) {
+            return item.town == town;
+        });
+
+        lands = lands.map(function (item) {
+            return sizes(item, {
+                'town': item.town,
+                'diy': item.diy,
+                'size': Number(item.size) || 0,
+            });
+        });
+
+
+
+    },
+
+    /**
+    * 按板块(角色)进行统计。
+    */
+    role: function () {
+
+    },
+
+    /**
+    * 按功能(用途)进行统计。
+    */
+    use: function () {
+
+    },
+
+    /**
+    * 按自建房进行统计。
+    */
+    diy: function () {
+
+    },
 };
 

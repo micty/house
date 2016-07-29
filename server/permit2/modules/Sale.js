@@ -1,5 +1,5 @@
 ﻿
-
+var $ = require('../lib/MiniQuery');
 var DataBase = require('../lib/DataBase');
 
 var db = new DataBase('Sale', [
@@ -250,69 +250,63 @@ module.exports = {
     },
 
     /**
-    * 批量导入。 todo.....
+    * 批量导入。 
     */
-    import: function (res, data) {
+    import: function (req, res) {
 
-        data = decodeURIComponent(data['data']);
-        var groups = JSON.parse(data);
+        //同一个土地证号就为一个组。
+        var groups = req.body.data; 
 
         //记录无法关联的土地记录和规划记录，以及相应的预售许可证和现售备案。
-        var none = {
-            lands: [],
-            plans: [],
-            sales: [],      //需要新增的销售记录
-            licenses: [],
+        var fail = {
+            'lands': [],
+            'plans': [],
+            'licenses': [],
         };
 
-        var licenses = [];          //需要导入的预售许可证或现售备案。
-        var list = db.list();       //全部销售记录
-        var count = list.length;    //用于判断是否由于增加了记录而重新写入。
-        var planId$sale = {};       //以 planId 作为主键关联到销售记录。
+        var sales = db.list();      //导入前的销售记录。
 
-        list.forEach(function (sale) {
-            planId$sale[sale.planId] = sale;
-        });
+        var license$land = require('./Land').map('license');    //以土地证号为主键关联整条土地记录。
+        var landId$plan = require('./Plan').db.map('landId');   //以 landId 作为主键关联整条规划记录。
+        var planId$sale = DataBase.map(sales, 'planId');        //以 planId 作为主键关联整条销售记录。
+
+        //需要导入的
+        var imported = {
+            'sales': [],
+            'licenses': [],
+        };
+
+        //把 items 合并到 list 中。
+        function concat(list, items) {
+            list.push.apply(list, items);
+        }
 
 
         groups.forEach(function (group) {
-
-            var Land = require('./Land');
-            var Plan = require('./Plan');
-
-            var lands = Land.db.list();
-            var plans = Plan.db.list();
             var land = group.land;
+            var licenses = group.licenses;
 
             //根据土地证号找到整条土地记录
-            var landItem = lands.find(function (item) {
-                var a = item.license.split('|');        //这里只需要找到一个土地证号即可
-
-                var index = a.indexOf(land.license);
-                return index > -1;
-            });
+            var landItem = license$land[land.license];
 
             if (!landItem) {
-                none.lands.push(land);
-                none.licenses = none.licenses.concat(group.licenses);
+                fail.lands.push(land);
+                concat(fail.licenses, licenses);
                 return;
             }
 
-            //根据土地 id 找到整条规划记录
-            var plan = plans.find(function (item) {
-                return item.landId == landItem.id;
-            });
-
+            //根据土地 id 向上找到整条规划记录
+            var plan = landId$plan[landItem.id];
             if (!plan) {
-                none.plans.push(land);
-                none.licenses = none.licenses.concat(group.licenses);
+                fail.plans.push(land);  //这里压进的是 land，而不是 plan。
+                concat(fail.licenses, licenses);
                 return;
             }
 
-            //根据规划 id 找到对应的销售记录。
+            //根据规划 id 向下找到对应的销售记录。
             var planId = plan.id;
             var sale = planId$sale[planId];
-            var saleId = sale ? sale.id : $.String.random();
+            var saleId = sale ? sale.id : DataBase.newId();
 
             //未存在该销售记录，则添加
             if (!sale) {
@@ -320,77 +314,59 @@ module.exports = {
                     'id': saleId,
                     'planId': planId,
                     'project': group.sale.project,
-                    'datetime': getDateTime(),
+                    'projectDesc': '',
                 };
 
                 //注册一下，防止重复添加。
                 planId$sale[planId] = sale;
-
-                list.push(sale);
-                none.sales.push(sale);
+                imported.sales.push(sale);
             }
 
-            group.licenses.forEach(function (item) {
-                item.saleId = saleId; //关联到销售记录
+            //关联到销售记录
+            licenses.forEach(function (item) {
+                item.saleId = saleId; 
             });
 
-            licenses = licenses.concat(group.licenses); //合并到总列表
-
+            concat(imported.licenses, licenses);
         });
 
-        var invalid = none.licenses.length > 0;
 
-        if (licenses.length == 0) {
-            var msg = '没有可以导入的销售许可证或现售备案。 ';
-            if (invalid) {
-                msg += '存在无法关联的土地记录或规划记录。';
-            }
+        var invalid = fail.licenses.length > 0;
 
+        if (imported.licenses.length == 0) {
             res.send({
                 code: invalid ? 301 : 300,
-                msg: msg,
-                data: none,
+                msg: '没有可以导入的销售许可证或现售备案。' + (invalid ? ' 存在无法关联的土地记录或规划记录。' : ''),
+                data: fail,
             });
             return;
         }
 
-
-        //销售记录的条数发生了变化，写回 json 文件。
-        if (list.length > count) {
+        //新增了销售记录。
+        if (imported.sales.length > 0) {
             try {
-                var path = getPath();
-                var json = JSON.stringify(list, null, 4);
-                fs.writeFileSync(path, json, 'utf8');
+                db.add(imported.sales);
             }
             catch (ex) {
-                res.send({
-                    code: 501,
-                    msg: ex.message,
-                });
-
+                res.error(ex);
                 return;
             }
         }
 
         //预售许可证或现售备案列表。
         try {
-            var SaleLicense = require('./SaleLicense');
-            var result = SaleLicense.add(licenses);
+            var result = require('./SaleLicense').import(imported.licenses);
 
             res.send({
                 code: invalid ? 201 : 0, //这里全部成功用 0，方便前端处理
                 msg: invalid ?
                     '部分导入成功! 存在部分无法关联的土地记录或规划记录。' :
                     '全部导入成功。',
-
-                data: $.Object.extend({}, none, result),
+                data: $.Object.extend({}, fail, result),
             });
         }
         catch (ex) {
-            res.send({
-                code: 502,
-                msg: ex.message,
-            });
+            res.error(ex);
         }
 
     },
