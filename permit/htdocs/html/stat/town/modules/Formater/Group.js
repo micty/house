@@ -6,36 +6,24 @@ define('/Formater/Group', function (require, module, exports) {
     var $Array = require('Array');
 
 
-
     var roles = [
-        { name: '土地出让', key: 'lands', },
-        { name: '已办规划许可', key: 'plans', },
-        { name: '已办施工许可', key: 'constructs', },
-        { name: '已办预售许可', key: 'prepares', },
-        { name: '已办现售备案', key: 'doings', },
-
-        {},
-        {},
-        {},
-
-        { name: '预售已售面积', key: 'saled-prepares', },
-        { name: '现售已售面积', key: 'saled-doings', },
+        { name: '土地出让', key: 'land', },
+        { name: '已办规划许可', key: 'plan', },
+        { name: '已办施工许可', key: 'construct', },
+        { name: '已办预售许可', key: 'prepare', },
+        { name: '已办现售备案', key: 'doing', },
+        { name: '', },
+        { name: '未办规划许可', },
+        { name: '未办施工许可', },
+        { name: '预售已售面积', key: 'saled-prepare', },
+        { name: '现售已售面积', key: 'saled-doing', },
 
     ];
 
-    function get(list, town, title) {
-
-        list = $.Array.grep(list, function (item) {
-            return item.town == town;
-        });
-
-        var group = StatUse.get(list, title);
-        return group;
-    }
 
 
     //取得基础的几组
-    function getBases(data, town) {
+    function getBases(data) {
 
         var groups = $.Array.keep(roles, function (role) {
 
@@ -44,12 +32,10 @@ define('/Formater/Group', function (require, module, exports) {
                 return [];
             }
 
-            //debugger;
-
-            var list = data[key];
+            var item = data[key];
             var title = role.name;
 
-            var group = get(list, town, title);
+            var group = StatUse.get(item, title);
             return group;
         });
 
@@ -57,9 +43,9 @@ define('/Formater/Group', function (require, module, exports) {
     }
 
 
+    //空白组
     function getEmpty(group) {
-
-        //空白组
+        
         group = $.Array.keep(group, function () {
             return {
                 name: '',
@@ -80,7 +66,6 @@ define('/Formater/Group', function (require, module, exports) {
         group[0].name = name;
         return group;
     }
-
 
 
 

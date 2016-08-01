@@ -7,7 +7,6 @@ define('StatUse', function (require, module, exports) {
 
     var NumberField = require('NumberField');
 
-  
 
     var uses = [
         { name: '计容面积', key: ['residenceSize', 'commerceSize', 'officeSize', 'otherSize'], },
@@ -22,65 +21,50 @@ define('StatUse', function (require, module, exports) {
     ];
 
 
-
-    //对一个数组中指定的列或多列进行求和。
-    function sum(list, key) {
-
-        var total = 0;
-
-        //重载 sum(list, keys)，多列的情况
-        if (key instanceof Array) {
-
-            $.Array.each(key, function (key) {
-                total += sum(list, key);
-            });
-
-        }
-        else { //单列
-            $.Array.each(list, function (item) {
-                var value = item[key];
-                value = Number(value);
-                total += value;
-            });
-        }
-
-        return total;
-    }
-
-
-
-
     //从指定的列表数据中创建一个分组。
-    function get(list, title) {
+    function get(stat, title) {
 
-        //按用途统计
-        var items = $.Array.keep(uses, function (use) {
+        var list = $.Array.keep(uses, function (use) {
 
-            var total = sum(list, use.key);
+            var key = use.key;
+            var value = 0;
+
+            if (Array.isArray(key)) {
+                key.forEach(function (key) {
+                    value += stat[key];
+                });
+            }
+            else {
+                value = stat[key];
+            }
 
             return {
                 'name': use.name,
-                'value': total,
+                'value': value,
             };
         });
 
         if (!title) {
-            return items;
+            return list;
         }
 
+        var total = 0;
 
-        var total = sum(items, 'value') / 2;
+        list.forEach(function (item) {
+            total += item.value;
+        });
 
-        items = [{
+        total = total / 2;
+
+
+        list.unshift({
             'name': title,
             'value': total,
             'group': true,
             'subGroup': true,
+        });
 
-        }].concat(items);
-
-
-        return items;
+        return list;
 
     }
 

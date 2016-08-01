@@ -163,15 +163,17 @@ Router.use(app, {
     ],
 });
 
-
-
 //统计模块
-var Stat = require('./modules/Stat');
-app.get('/Stat.get', function (req, res) {
-    Stat.get(res);
+Router.use(app, {
+    module: require('./modules/Stat'),
+    base: '/Stat.',
+    get: [
+    ],
+    post: [
+        'town',
+        'use',
+    ],
 });
-
-
 
 
 

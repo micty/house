@@ -172,6 +172,8 @@ DataBase.page = function (pageNo, pageSize, list) {
 },
 
 DataBase.map = function (list, key) {
+    key = key || 'id';
+
     var id$item = {};
 
     list.forEach(function (item) {
@@ -259,9 +261,7 @@ DataBase.prototype = {
 
         var meta = this.meta;
         var map = File.readJSON(meta.map);
-        
         var fields = meta.fields;
-
         var list = filter;
 
         if (Array.isArray(filter)) { //说明 filter 是 id 数组。

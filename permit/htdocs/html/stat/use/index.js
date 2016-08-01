@@ -19,60 +19,50 @@ KISP.launch(function (require, module) {
     var Filter = module.require('Filter');
     var Header = module.require('Header');
 
-    var current = {
-        data: null,
-        item: null,
-    };
-
-    var qs = Url.getQueryString(window);
+    var type = Url.getQueryString(window, 'type') || '';
 
 
     API.on({
         'success': function (data) {
-            current.data = data;
-            Header.render();
-            Filter.render();
-            Tabs.render();
+            data = Formater.format(data);
+
+            switch (type) {
+                case 'table':
+                    Chart.hide();
+                    Table.render(data);
+                    break;
+
+                case 'chart':
+                    Table.hide();
+                    Chart.render(data.rows);
+                    break;
+
+                default:
+                    Table.render(data);
+                    Chart.render(data.rows);
+                    break;
+            }
         },
     });
 
 
-
     Tabs.on('change', function (item) {
 
-        current.item = item;
-
+        Header.render();
+        Filter.render();
         Title.render(item);
 
-        var data = current.data;
-        data = Formater.format(data, item.key);
-
-
-        switch (qs.type) {
-
-            case 'table':
-                Chart.hide();
-                Table.render(data);
-                break;
-
-            case 'chart':
-                Table.hide();
-                Chart.render(data.rows);
-                break;
-
-            default:
-                Table.render(data);
-                Chart.render(data.rows);
-                break;
-        }
-        
+        API.post({
+            'use': item.key,
+        });
     });
+
+
 
     Filter.on({
         //选择日期时
         'dates': function (begin, end) {
             API.post({
-                'role': 'sale',
                 'beginDate': begin,
                 'endDate': end,
             });
@@ -96,8 +86,7 @@ KISP.launch(function (require, module) {
         },
     });
 
+    Tabs.render(0);
 
-    API.post();
 
-    
 });

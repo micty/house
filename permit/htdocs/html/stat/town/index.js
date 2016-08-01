@@ -16,51 +16,45 @@ KISP.launch(function (require, module) {
     var Table = module.require('Table');
     var Tabs = module.require('Tabs');
     var Title = module.require('Title');
-    var Router = module.require('Router');
     var Filter = module.require('Filter');
     var Header = module.require('Header');
 
-
-    var current = null;
     var type = Url.getQueryString(window, 'type') || '';
 
 
     API.on({
         'success': function (data) {
-            current = data;
+            data = Formater.format(data);
 
-            Header.render();
-            Filter.render();
-            Tabs.render();
+            switch (type) {
+                case 'table':
+                    Chart.hide();
+                    Table.render(data);
+                    break;
+
+                case 'chart':
+                    Table.hide();
+                    Chart.render(data.rows);
+                    break;
+
+                default:
+                    Table.render(data);
+                    Chart.render(data.rows);
+                    break;
+            }
         },
     });
 
 
-
-    Tabs.on('change', function (town) {
+    Tabs.on('change', function (item) {
       
-        Title.render(town);
+        Header.render();
+        Filter.render();
+        Title.render(item);
 
-        var data = current;
-        data = Formater.format(data, town.key);
-
-        switch (type) {
-
-            case 'table':
-                Chart.hide();
-                Table.render(data);
-                break;
-
-            case 'chart':
-                Table.hide();
-                Chart.render(data.rows);
-                break;
-
-            default:
-                Table.render(data);
-                Chart.render(data.rows);
-                break;
-        }
+        API.post({
+            'town': item.key,
+        });
     });
 
 
@@ -69,7 +63,6 @@ KISP.launch(function (require, module) {
         //选择日期时
         'dates': function (begin, end) {
             API.post({
-                'role': 'sale',
                 'beginDate': begin,
                 'endDate': end,
             });
@@ -93,12 +86,7 @@ KISP.launch(function (require, module) {
         },
     });
 
-
-
-
-    API.post();
-
-
+    Tabs.render(0);
 
     
 });

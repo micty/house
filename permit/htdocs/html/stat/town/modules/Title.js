@@ -19,7 +19,9 @@ define('/Title', function (require, module) {
 
 
     panel.on('render', function (data) {
-        panel.fill(data);
+        panel.fill({
+            'name': data.name,
+        });
     });
 
 
