@@ -172,6 +172,7 @@ Router.use(app, {
     post: [
         'town',
         'use',
+        'role',
     ],
 });
 

@@ -8,13 +8,13 @@ define('/Formater/Group', function (require, module, exports) {
 
 
     var roles = [
-        { name: '出让可建面积', key: 'lands', },
-        { name: '已办规划许可', key: 'plans', },
-        { name: '已办施工许可', key: 'constructs', },
-        { name: '已办预售许可', key: 'prepares', },
-        { name: '预售已售面积', key: 'saled-prepares', },
-        { name: '已办现售备案', key: 'doings', },
-        { name: '现售已售面积', key: 'saled-doings', },
+        { name: '出让可建面积', key: 'land', },
+        { name: '已办规划许可', key: 'plan', },
+        { name: '已办施工许可', key: 'construct', },
+        { name: '已办预售许可', key: 'prepare', },
+        { name: '预售已售面积', key: 'saled-prepare', },
+        { name: '已办现售备案', key: 'doing', },
+        { name: '现售已售面积', key: 'saled-doing', },
     ];
 
 
@@ -27,52 +27,50 @@ define('/Formater/Group', function (require, module, exports) {
     ];
 
 
-    function get(title, list, town) {
 
-        if (town) {
-            list = $.Array.grep(list, function (item) {
-                return item.town == town;
-            });
-        }
+  
+    function get(data) {
 
-
-        var group = StatUse.get(list, title);
-        return group;
-    }
-
-    function getCluster(title, list) {
-
-        var groups = $.Array.keep(towns, function (town) {
-            var group = get(title, list, town.key);
-            return group;
-        });
-
-        return groups;
-    }
-
-
-
-    //取得基础的几组
-    function getBases(data) {
-
-        var clusters = $.Array.keep(roles, function (role) {
-
+        var clusters = $.Array.map(roles, function (role) {
             var key = role.key;
-            if (!key) {
-                return [];
+            var town$stat = data[key];
+
+            if (!town$stat) {
+                return null;
             }
 
-            var list = data[key];
+
             var title = role.name;
 
+            var groups = $.Array.map(towns, function (town) {
+                var key = town.key;
+                if (!key) {
+                    return [];
+                }
 
-            return getCluster(title, list);
+                var stat = town$stat[key];
+                var group = StatUse.get(stat, title);
+
+                return group;
+            });
+
+            groups[0]
+
+
+            if (key == 'land') {
+                //针对土地，把土地面积放在第一行。
+                var list = sizes(town$stat);
+
+                list.forEach(function (item, index) {
+                    groups[index].unshift(item);
+                });
+            }
+
+            return groups;
         });
 
         return clusters;
     }
-
-
 
 
     function substract(A, B, name) {
@@ -92,15 +90,45 @@ define('/Formater/Group', function (require, module, exports) {
     }
 
 
+    /**
+    * 针对土地出让的，统计土地面积。
+    */
+    function sizes(town$stat) {
 
+        var total = 0;
 
+        var list = $.Array.map(towns, function (town) {
+            var key = town.key;
+            if (!key) {
+                return {
+                    'name': '土地出让面积',
+                    'value': 0,
+                    'group': true,
+                    'subGroup': true,
+                };
+            }
+
+            var stat = town$stat[key];
+            var value = stat.size;
+
+            total += value;
+
+            return {
+                'name': town.name,
+                'value': value,
+            };
+        });
+
+        list[0].value = total;
+
+        return list;
+    }
 
 
     return {
-        'getBases': getBases,
-        'getCluster': getCluster,
-        'substract': substract,
         'get': get,
+
+        'substract': substract,
     };
 
 });

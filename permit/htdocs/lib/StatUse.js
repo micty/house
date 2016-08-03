@@ -14,14 +14,13 @@ define('StatUse', function (require, module, exports) {
         { name: '商业', key: 'commerceSize', },
         { name: '办公', key: 'officeSize', },
         { name: '其它', key: 'otherSize', },
-
         { name: '不计容面积', key: ['parkSize', 'otherSize1'], },
         { name: '地下车库', key: 'parkSize', },
         { name: '其它', key: 'otherSize1', },
     ];
 
 
-    //从指定的列表数据中创建一个分组。
+
     function get(stat, title) {
 
         var list = $.Array.keep(uses, function (use) {

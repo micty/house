@@ -23,21 +23,11 @@ KISP.launch(function (require, module) {
 
     var saleRows = null;
     var type = Url.getQueryString(window, 'type') || '';
-
-    var current = {
-        data: null,
-        item: null,
-        beginDate: '',
-        endDate: '',
-    };
-
-
+    var role = '';
 
     API.on({
         'success': function (data) {
-            var key = current.item.key;
-
-            data = Formater.format(data, key);
+            data = Formater.format(data, role);
 
             if (type == 'table') {
                 Table.render(data);
@@ -48,12 +38,12 @@ KISP.launch(function (require, module) {
 
 
             var rows = data.rows;
-            if (key == 'land') {
+            if (role == 'land') {
                 rows = rows.slice(1);
             }
 
 
-            if (key == 'sale') {
+            if (role == 'sale') {
                 if (type == 'chart') {
                     saleRows = rows;
                     SaleTabs.render();
@@ -80,17 +70,13 @@ KISP.launch(function (require, module) {
 
     Tabs.on('change', function (item) {
 
-        current.item = item;
+        role = item.key;
 
         Header.render();
         Filter.render();
         Title.render(item);
 
-        API.post({
-            'role': item.key,
-            'beginDate': current.beginDate,
-            'endDate': current.endDate,
-        });
+        API.post({ 'role': role, });
 
     });
 
@@ -112,12 +98,7 @@ KISP.launch(function (require, module) {
     Filter.on({
         //选择日期时
         'dates': function (begin, end) {
-
-            current.beginDate = begin;
-            current.endDate = end;
-
             API.post({
-                'role': current.item.key,
                 'beginDate': begin,
                 'endDate': end,
             });
