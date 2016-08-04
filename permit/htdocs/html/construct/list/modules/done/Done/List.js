@@ -25,6 +25,10 @@ define('/Done/List', function (require, module) {
                 fn: function (item, index) {
 
                     var land = item.land;
+                    var license = item.license;
+
+                    //后来新增的。
+                    license.name = license.name || '';
 
                     item = $Object.linear(item);
 

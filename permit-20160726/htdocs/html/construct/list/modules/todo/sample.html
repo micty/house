@@ -5,6 +5,7 @@
         <th style="display: none;">土地区域</th>
         <th>规划项目名称</th>
         <th style="display: none;">规划建设单位</th>
+        <th>规划许可证名称</th>
         <th>规划许可证号</th>
         <th class="date" title="规划许可时间">许可时间</th>
         <th style="{operate-display}">操作</th>
@@ -20,6 +21,9 @@
             <a data-index="{index}" data-cmd="plan.detail">{plan.project}</a>
         </td>
         <td style="display: none;">{plan.developer}</td>
+        <td>
+            <a data-index="{index}" data-cmd="license.detail">{license.name}</a>
+        </td>
         <td>
             <a data-index="{index}" data-cmd="license.detail">{license.number}</a>
         </td>

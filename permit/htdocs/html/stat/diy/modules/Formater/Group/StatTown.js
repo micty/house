@@ -14,75 +14,37 @@ define('/Formater/Group/StatTown', function (require, module, exports) {
 
 
 
-    var uses = [
-        'commerceSize',
-        'officeSize',
-        'otherSize',
-        'otherSize1',
-        'parkSize',
-        'residenceSize',
-    ];
-
-    //对一个数组中指定的列求和。
-    function sum(list) {
-
-        var total = 0;
-
-        $.Array.each(list, function (item) {
-
-            //自建房的，全部字段相加。
-            uses.forEach(function (key) {
-                var value = item[key];
-                value = Number(value);
-                total += value;
-            });
-        });
-
-        return total;
-    }
-
-
-
     //从指定的列表数据中创建一个分组。
-    function get(list, title) {
+    function get(item, title) {
 
-        //自建房
-        list = list.filter(function (item) {
-            return item.diy == '是';
-        });
-
-        var items = $.Array.keep(towns, function (town) {
-
-            var a = $.Array.grep(list, function (item) {
-                return item.town == town.key;
-            });
-
-            var total = sum(a);
+        var list = $.Array.keep(towns, function (town) {
+            var value = item[town.key];
 
             return {
                 'name': town.name,
-                'value': total,
+                'value': value,
             };
         });
 
-
         if (!title) {
-            return items;
+            return list;
         }
 
 
-        var total = sum(items, 'value'); //这里没有除以 2
+        var total = 0;
+        list.forEach(function (item) {
+            total += item.value;
+        });
 
-        items = [{
+
+        list.unshift({
             'name': title,
             'value': total,
             'group': true,
             'subGroup': true,
+        });
 
-        }].concat(items);
-
-
-        return items;
+        return list;
 
     }
 

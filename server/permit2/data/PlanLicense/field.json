@@ -14,6 +14,12 @@
         "name": "numberDesc"
     },
     {
+        "name": "name"
+    },
+    {
+        "name": "nameDesc"
+    },
+    {
         "name": "date"
     },
     {

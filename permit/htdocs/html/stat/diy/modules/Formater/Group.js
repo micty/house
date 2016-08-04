@@ -8,11 +8,10 @@ define('/Formater/Group', function (require, module, exports) {
 
 
     var roles = [
-        { name: '土地出让', key: 'lands', },
-        { name: '已办规划许可', key: 'plans', },
-        { name: '已办施工许可', key: 'constructs', },
+        { name: '土地出让', key: 'land', },
+        { name: '已办规划许可', key: 'plan', },
+        { name: '已办施工许可', key: 'construct', },
     ];
-
 
 
     //取得基础的几组
@@ -25,10 +24,10 @@ define('/Formater/Group', function (require, module, exports) {
                 return [];
             }
 
-            var list = data[key];
+            var item = data[key];
             var title = role.name;
 
-            var group = StatTown.get(list, title);
+            var group = StatTown.get(item, title);
             return group;
         });
 
@@ -36,37 +35,8 @@ define('/Formater/Group', function (require, module, exports) {
     }
 
 
-    function getEmpty(group) {
-
-        //空白组
-        group = $.Array.keep(group, function () {
-            return {
-                name: '',
-                value: '',
-                text: '',
-            };
-        });
-
-        group[0].group = true;
-        group[0].subGroup = true;
-
-        return group;
-    }
-
-
-    function substract(A, B, name) {
-        var group = $Array.substract(A, B);
-        group[0].name = name;
-        return group;
-    }
-
-
-
-
     return {
         'getBases': getBases,
-        'getEmpty': getEmpty,
-        'substract': substract,
     };
 
 });

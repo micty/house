@@ -623,7 +623,7 @@ DataBase.prototype = {
                 values[index] = value;
             });
 
-            item.datetime = now();
+            item.datetime = now();  //更新提交时间。
             return item;
 
         });

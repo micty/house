@@ -173,6 +173,8 @@ Router.use(app, {
         'town',
         'use',
         'role',
+        'diy',
+        'all',
     ],
 });
 

@@ -9,6 +9,8 @@ var db = new DataBase('PlanLicense', [
 
     { name: 'number', },
     { name: 'numberDesc', },
+    { name: 'name', },
+    { name: 'nameDesc', },
     { name: 'date', },
     { name: 'dateDesc', },
     { name: 'residenceSize', type: 'number', },

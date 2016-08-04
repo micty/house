@@ -99,7 +99,7 @@
     {
         icon: 'table',
         name: '统计报表',
-        url: 'html/stat/overview/index.html',
+        url: 'html/stat/all/index.html',
     },
     {
         icon: 'area-chart',

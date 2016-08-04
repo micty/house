@@ -36,6 +36,7 @@ define('/Formater', function (require, module, exports) {
         //基础
         var groups = Group.getBases(data);
 
+
         //空白组
         groups[5] = Group.getEmpty(groups[0]);
 

@@ -1,21 +1,47 @@
 ﻿
-
-
 var $ = require('../lib/MiniQuery');
 var DataBase = require('../lib/DataBase');
 
-var towns = ['南庄', '石湾', '张槎', '祖庙'];
-
-var uses = [
-    'residenceSize',
-    'commerceSize',
-    'officeSize',
-    'otherSize',
-    'parkSize',
-    'otherSize1',
-];
+var Dates = require('./Stat/Dates');
+var Towns = require('./Stat/Towns');
+var Uses = require('./Stat/Uses');
 
 
+//按区域进行分类，再按功能进行求和。
+function sum(list, prefix, keys) {
+
+    //重载sum(list, keys)
+    if (Array.isArray(prefix)) {
+        keys = prefix;
+        prefix = '';
+    }
+
+    prefix = prefix || '';
+    keys = keys || Uses;
+
+    //初始化
+    var stat = {};
+
+    Towns.forEach(function (town) {
+        var group = stat[town] = {};
+
+        keys.forEach(function (key) {
+            group[key] = 0;
+        });
+    });
+
+    list.forEach(function (item) {
+        var group = stat[item.town];
+        var key$value = item.item;
+
+        keys.forEach(function (key) {
+            var skey = prefix + key;
+            group[key] += key$value[skey];
+        });
+    });
+
+    return stat;
+}
 
 
 module.exports = {
@@ -44,20 +70,16 @@ module.exports = {
         var Sale = require('./Sale').db;
         var SaleLicense = require('./SaleLicense').db;
 
-        var beginDate = data.beginDate || '';
-        var endDate = data.endDate || '';
+        var dates = Dates.normalize(data);
 
         //如果指定了开始时间或结束时间，
-        if (beginDate || endDate) {
-            beginDate = Number(beginDate.split('-').join(''));
-            endDate = Number(endDate.split('-').join('')) || 20960101;
-
+        if (dates) {
             //根据销售记录的提交时间找出相应的销售记录集合。
             sales = Sale.list(true, function (sale) {
                 var date = sale.item.datetime.split(' ')[0].split('-').join('');
                 date = Number(date);
 
-                if (date < beginDate || date > endDate) {
+                if (date < dates.begin || date > dates.end) {
                     return false;
                 }
 
@@ -103,21 +125,25 @@ module.exports = {
         }
         else {
             lands = Land.list(function (item) {
-                return item.town == town;
+                return !item.diy && item.town == town;
             });
 
             planLicenses = PlanLicense.list(true, function (item) {
-                return item.refer.planId.refer.landId.item.town == town;
+                var land = item.refer.planId.refer.landId.item;
+                return !land.diy && land.town == town;
+
             }).map(function (item) {
                 return item.item;
             });
 
             constructs = Construct.list(true, function (item) {
-                return item.refer.licenseId.refer.planId.refer.landId.item.town == town;
+                var land = item.refer.licenseId.refer.planId.refer.landId.item;
+                return !land.diy && land.town == town;
             });
 
             saleLicenses = SaleLicense.list(true, function (item) {
-                return item.refer.saleId.refer.planId.refer.landId.item.town == town;
+                var land = item.refer.saleId.refer.planId.refer.landId.item;
+                return !land.diy && land.town == town;
             }).map(function (item) {
                 return item.item;
             });
@@ -133,7 +159,7 @@ module.exports = {
             prefix = prefix || '';
             var stat = {};
 
-            uses.forEach(function (key) {
+            Uses.forEach(function (key) {
                 stat[key] = 0;
                 var skey = prefix + key;
 
@@ -145,35 +171,23 @@ module.exports = {
             return stat;
         }
 
-        var stat = {
-            'land': null,
-            'plan': null,
-            'construct': null,
-            'prepare': null,
-            'doing': null,
-            'saled-prepare': null,
-            'saled-doing': null,
-        };
-
+        var stat = { };
         
         stat['land'] = sum(lands);
         stat['plan'] = sum(planLicenses);
         stat['construct'] = sum(constructs);
-        
 
-        var groups = {
-            0: [],
-            1: [],
-        };
+        //按 type 进行分类收集。
+        var types = { 0: [], 1: [], };
 
         saleLicenses.forEach(function (item) {
-            groups[item.type].push(item);
+            types[item.type].push(item);
         });
 
-        stat['prepare'] = sum(groups[0]);
-        stat['doing'] = sum(groups[1]);
-        stat['saled-prepare'] = sum(groups[0], 'saled-');
-        stat['saled-doing'] = sum(groups[1], 'saled-');
+        stat['prepare'] = sum(types[0]);
+        stat['doing'] = sum(types[1]);
+        stat['saled-prepare'] = sum(types[0], 'saled-');
+        stat['saled-doing'] = sum(types[1], 'saled-');
 
         res.success(stat);
     },
@@ -189,10 +203,24 @@ module.exports = {
             return;
         }
 
+        var dates = Dates.normalize(data);
+
         var stat = ({
             'land': function () {
                 var Land = require('./Land').db;
                 var list = Land.list();
+
+                //如果指定了开始时间或结束时间，则以竞得时间为准。
+                if (dates) {
+                    list = list.filter(function (item) {
+                        return Dates.filter(dates, item.date);
+                    });
+                }
+
+                list = list.filter(function (item) {
+                    return !item.diy;
+                });
+
                 list = list.map(function (item) {
                     return {
                         'item': item,
@@ -200,7 +228,7 @@ module.exports = {
                     };
                 });
 
-                var keys = uses.concat('size');
+                var keys = Uses.concat('size');
                 var stat = sum(list, keys);
                 return { 'land': stat };
             },
@@ -208,6 +236,17 @@ module.exports = {
             'plan': function () {
                 var PlanLicense = require('./PlanLicense').db;
                 var list = PlanLicense.list(true);
+                //如果指定了开始时间或结束时间，则以规划许可证时间为准。
+                if (dates) {
+                    list = list.filter(function (item) {
+                        return Dates.filter(dates, item.item.date);
+                    });
+                }
+
+                list = list.filter(function (item) {
+                    var land = item.refer.planId.refer.landId.item;
+                    return !land.diy;
+                });
 
                 list = list.map(function (item) {
                     return {
@@ -224,6 +263,18 @@ module.exports = {
                 var Construct = require('./Construct').db;
                 //注意，这里用的规划许可证的字段。
                 var list = Construct.list(true);
+
+                //如果指定了开始时间或结束时间，则以建设日期为准。
+                if (dates) {
+                    list = list.filter(function (item) {
+                        return Dates.filter(dates, item.item.date);
+                    });
+                }
+
+                list = list.filter(function (item) {
+                    var land = item.refer.licenseId.refer.planId.refer.landId.item;
+                    return !land.diy;
+                });
 
                 list = list.map(function (item) {
                     var license = item.refer.licenseId;
@@ -242,20 +293,25 @@ module.exports = {
                 var list = SaleLicense.list(true);
                 var types = { 0: [], 1: [], };
 
+                //如果指定了开始时间或结束时间，则以....为准。
+                if (dates) {
+                    //todo...................
+                }
+
                 list.forEach(function (item) {
+                    var land = item.refer.saleId.refer.planId.refer.landId.item;
+                    if (land.diy) {
+                        return;
+                    }
+
                     var data = item.item;
                     types[data.type].push({
                         'item': data,
-                        'town': item.refer.saleId.refer.planId.refer.landId.item.town,
+                        'town': land.town,
                     });
                 });
 
-                var stat = {
-                    'prepare': null,
-                    'doing': null,
-                    'saled-prepare': null,
-                    'saled-doing': null,
-                };
+                var stat = { };
 
                 stat['prepare'] = sum(types[0]);
                 stat['doing'] = sum(types[1]);
@@ -270,45 +326,9 @@ module.exports = {
         res.success(stat);
 
 
-        function sum(list, prefix, keys) {
-
-            //重载sum(list, keys)
-            if (Array.isArray(prefix)) {
-                keys = prefix;
-                prefix = '';
-            }
-            
-            prefix = prefix || '';
-            keys = keys || uses;
-
-            //初始化
-            var stat = {};
-
-            towns.forEach(function (town) {
-                var group = stat[town] = {};
-
-                keys.forEach(function (key) {
-                    group[key] = 0;
-                });
-            });
-
-            list.forEach(function (item) {
-                var group = stat[item.town];
-                var key$value = item.item;
-
-                keys.forEach(function (key) {
-                    var skey = prefix + key;
-                    group[key] += key$value[skey];
-                });
-            });
-
-            return stat;
-        }
+        
 
     },
-
-
-
 
     /**
     * 按功能(用途)进行统计。
@@ -334,20 +354,17 @@ module.exports = {
         var Sale = require('./Sale').db;
         var SaleLicense = require('./SaleLicense').db;
 
-        var beginDate = data.beginDate || '';
-        var endDate = data.endDate || '';
+        var dates = Dates.normalize(data);
 
         //如果指定了开始时间或结束时间，
-        if (beginDate || endDate) {
-            beginDate = Number(beginDate.split('-').join(''));
-            endDate = Number(endDate.split('-').join('')) || 20960101;
+        if (dates) {
 
             //根据销售记录的提交时间找出相应的销售记录集合。
             sales = Sale.list(true, function (sale) {
                 var date = sale.item.datetime.split(' ')[0].split('-').join('');
                 date = Number(date);
 
-                if (date < beginDate || date > endDate) {
+                if (date < dates.begin || date > dates.end) {
                     return false;
                 }
 
@@ -395,6 +412,133 @@ module.exports = {
         }
 
 
+        lands = lands.filter(function (item) {
+            return !item.diy;
+        });
+
+        lands = lands.map(function (item) {
+            return {
+                'item': item,
+                'town': item.town,
+            };
+        });
+
+        planLicenses = planLicenses.filter(function (item) {
+            var land = item.refer.planId.refer.landId.item;
+            return !land.diy;
+        });
+
+        planLicenses = planLicenses.map(function (item) {
+            return {
+                'item': item.item,
+                'town': item.refer.planId.refer.landId.item.town,
+            };
+        });
+
+        constructs = constructs.filter(function (item) {
+            var land = item.refer.licenseId.refer.planId.refer.landId.item;
+            return !land.diy;
+        });
+
+        //注意，这里用的规划许可证的字段。
+        constructs = constructs.map(function (item) {
+            var license = item.refer.licenseId;
+            return {
+                'item': license.item,
+                'town': license.refer.planId.refer.landId.item.town,
+            };
+        });
+
+        saleLicenses = saleLicenses.filter(function (item) {
+            var land = item.refer.saleId.refer.planId.refer.landId.item;
+            return !land.diy;
+        });
+
+        saleLicenses = saleLicenses.map(function (item) {
+            return {
+                'item': item.item,
+                'town': item.refer.saleId.refer.planId.refer.landId.item.town,
+            };
+        });
+
+
+        function sum(list, prefix) {
+            var key = prefix ? prefix + use : use;
+            var stat = {};
+
+            Towns.forEach(function (town) {
+                stat[town] = 0;
+            });
+
+            list.forEach(function (item) {
+                var town = item.town;
+                var value = item.item[key];
+                stat[town] += value;
+            });
+
+            return stat;
+        }
+
+
+        var stat = { };
+
+        stat['land'] = sum(lands);
+        stat['plan'] = sum(planLicenses);
+        stat['construct'] = sum(constructs);
+
+        //按 type 进行分类收集。
+        var types = { 0: [], 1: [], };
+
+        saleLicenses.forEach(function (item) {
+            types[item.item.type].push(item);
+        });
+
+        stat['prepare'] = sum(types[0]);
+        stat['doing'] = sum(types[1]);
+        stat['saled-prepare'] = sum(types[0], 'saled-');
+        stat['saled-doing'] = sum(types[1], 'saled-');
+
+        res.success(stat);
+    },
+
+    /**
+    * 按自建房进行统计。
+    */
+    diy: function (req, res) {
+        var data = req.body.data;
+
+        var lands = [];
+        var plans = [];
+        var constructs = [];
+        var planLicenses = [];
+
+        var Land = require('./Land').db;
+        var Construct = require('./Construct').db;
+        var PlanLicense = require('./PlanLicense').db;
+
+        var dates = Dates.normalize(data);
+
+        //如果指定了开始时间或结束时间，
+        if (dates) {
+
+        }
+        else {
+            lands = Land.list(function (item) {
+                return item.diy;
+            });
+
+            planLicenses = PlanLicense.list(true, function (item) {
+                var land = item.refer.planId.refer.landId.item;
+                return land.diy;
+            });
+
+            constructs = Construct.list(true, function (item) {
+                var land = item.refer.licenseId.refer.planId.refer.landId.item;
+                return land.diy;
+            });
+
+        }
+
 
         lands = lands.map(function (item) {
             return {
@@ -419,25 +563,23 @@ module.exports = {
             };
         });
 
-        saleLicenses = saleLicenses.map(function (item) {
-            return {
-                'item': item.item,
-                'town': item.refer.saleId.refer.planId.refer.landId.item.town,
-            };
-        });
-
-
-        function sum(list, prefix) {
-            var key = prefix ? prefix + use : use;
+        function sum(list) {
             var stat = {};
 
-            towns.forEach(function (town) {
+            Towns.forEach(function (town) {
                 stat[town] = 0;
             });
 
             list.forEach(function (item) {
                 var town = item.town;
-                var value = item.item[key];
+                var value = 0;
+
+                item = item.item;
+
+                Uses.forEach(function (key) {
+                    value += item[key];
+                });
+
                 stat[town] += value;
             });
 
@@ -445,43 +587,123 @@ module.exports = {
         }
 
 
-        var stat = {
-            'land': null,
-            'plan': null,
-            'construct': null,
-            'prepare': null,
-            'doing': null,
-            'saled-prepare': null,
-            'saled-doing': null,
-        };
-
+        var stat = {};
 
         stat['land'] = sum(lands);
         stat['plan'] = sum(planLicenses);
         stat['construct'] = sum(constructs);
 
-
-        var groups = {
-            0: [],
-            1: [],
-        };
-
-        saleLicenses.forEach(function (item) {
-            groups[item.item.type].push(item);
-        });
-
-        stat['prepare'] = sum(groups[0]);
-        stat['doing'] = sum(groups[1]);
-        stat['saled-prepare'] = sum(groups[0], 'saled-');
-        stat['saled-doing'] = sum(groups[1], 'saled-');
-
         res.success(stat);
     },
 
     /**
-    * 按自建房进行统计。
+    * 统计一览表。
     */
-    diy: function () {
+    all: function (req, res) {
+        var data = req.body.data;
+        var dates = Dates.normalize(data);
+
+        var roles = {
+            'land': function () {
+                var Land = require('./Land').db;
+                var list = Land.list();
+
+                list = list.filter(function (item) {
+                    return !item.diy;
+                });
+
+                list = list.map(function (item) {
+                    return {
+                        'item': item,
+                        'town': item.town,
+                    };
+                });
+                var stat = sum(list);
+                return { 'land': stat };
+            },
+
+            'plan': function () {
+                var PlanLicense = require('./PlanLicense').db;
+                var list = PlanLicense.list(true);
+
+                list = list.filter(function (item) {
+                    var land = item.refer.planId.refer.landId.item;
+                    return !land.diy;
+                });
+
+                list = list.map(function (item) {
+                    return {
+                        'item': item.item,
+                        'town': item.refer.planId.refer.landId.item.town,
+                    };
+                });
+
+                var stat = sum(list);
+                return { 'plan': stat };
+            },
+
+            'construct': function () {
+                var Construct = require('./Construct').db;
+                //注意，这里用的规划许可证的字段。
+                var list = Construct.list(true);
+
+                list = list.filter(function (item) {
+                    var land = item.refer.licenseId.refer.planId.refer.landId.item;
+                    return !land.diy;
+                });
+
+                list = list.map(function (item) {
+                    var license = item.refer.licenseId;
+                    return {
+                        'item': license.item,
+                        'town': license.refer.planId.refer.landId.item.town,
+                    };
+                });
+
+                var stat = sum(list);
+                return { 'construct': stat };
+            },
+
+            'sale': function () {
+                var SaleLicense = require('./SaleLicense').db;
+                var list = SaleLicense.list(true);
+                var types = { 0: [], 1: [], };
+
+                list.forEach(function (item) {
+                    var land = item.refer.saleId.refer.planId.refer.landId.item;
+                    if (land.diy) {
+                        return;
+                    }
+
+                    var data = item.item;
+                    types[data.type].push({
+                        'item': data,
+                        'town': land.town,
+                    });
+                });
+
+                var stat = {};
+
+                stat['prepare'] = sum(types[0]);
+                stat['doing'] = sum(types[1]);
+                stat['saled-prepare'] = sum(types[0], 'saled-');
+                stat['saled-doing'] = sum(types[1], 'saled-');
+
+                return stat;
+            },
+        };
+
+
+        var stat = {};
+
+        Object.keys(roles).forEach(function (key) {
+            var fn = roles[key];
+            var obj = fn();
+
+            $.Object.extend(stat, obj);
+        });
+
+        res.success(stat);
 
     },
 };

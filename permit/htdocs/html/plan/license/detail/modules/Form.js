@@ -21,6 +21,10 @@ define('/Form', function (require, module, exports) {
             'totalSize0': Size.totalText(data, 0),
             'totalSize1': Size.totalText(data, 1),
             'totalSize': Size.totalText(data),
+
+            //后来新增的字段
+            'name': data.name || '',
+            'nameDesc': data.nameDesc || '',
         });
 
 

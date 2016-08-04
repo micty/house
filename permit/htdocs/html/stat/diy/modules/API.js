@@ -5,6 +5,7 @@ define('/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -19,19 +20,14 @@ define('/API', function (require, module, exports) {
         options = options || {};
 
 
-        var api = KISP.create('API', 'Stat.get', {
-            //proxy: 'api/Stat.overview.js',
-        });
+        var api = new API('Stat.diy');
 
 
         api.on({
-
             'request': function () {
-
                 loading = loading || KISP.create('Loading', {
                     mask: 0,
                 });
-
                 loading.show('加载中...');
             },
 
@@ -61,9 +57,10 @@ define('/API', function (require, module, exports) {
 
 
     return {
-        post: post,
-        on: emitter.on.bind(emitter),
+        'post': post,
+        'on': emitter.on.bind(emitter),
     };
+
 
 
 });

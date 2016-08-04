@@ -54,11 +54,33 @@ define('/Formater/Group', function (require, module, exports) {
                 return group;
             });
 
-            groups[0]
+            //基础的4组
+            var bases = groups.slice(1);
+
+            //把基础的4组的每一行对应相加到第一列即合计里
+            groups[0] = groups[1].map(function (item, col) {
+
+                //统计对应的列的 value 字段。
+                var total = 0;
+                bases.forEach(function (items) {
+                    total += items[col].value;
+                });
+
+                return {
+                    'name': item.name,
+                    'value': total,
+                };
+            });
+
+            //加粗合计
+            $.Object.extend(groups[0][0], {
+                group: true,
+                subGroup: true,
+            });
 
 
+            //针对土地，把土地面积放在第一行。
             if (key == 'land') {
-                //针对土地，把土地面积放在第一行。
                 var list = sizes(town$stat);
 
                 list.forEach(function (item, index) {

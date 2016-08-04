@@ -4,6 +4,7 @@
         <th>土地挂牌编号</th>
         <th>项目名称</th>
         <th style="display: none;">建设单位</th>
+        <th>规划许可证名称</th>
         <th>规划许可证号</th>
         <th style="display: none;">规划许可时间</th>
         <th>施工许可证号</th>
@@ -20,6 +21,9 @@
             <a data-index="{index}" data-cmd="plan.detail">{plan.project}</a>
         </td>
         <td style="display: none;">{plan.developer}</td>
+        <td>
+            <a data-index="{index}" data-cmd="license.detail">{license.name}</a>
+        </td>
         <td>
             <a data-index="{index}" data-cmd="license.detail">{license.number}</a>
         </td>

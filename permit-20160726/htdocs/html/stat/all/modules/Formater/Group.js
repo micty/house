@@ -229,7 +229,7 @@ define('/Formater/Group', function (require, module, exports) {
 
     function substract(A, B, name) {
         var group = $Array.substract(A, B);
-        group[0].name = name;
+        group[0].text = name;
         return group;
     }
 

@@ -29,12 +29,16 @@ define('/Todo/List', function (require, module) {
                     var plan = item.plan;
                     var license = item.license;
 
+                    //后来新增的。
+                    license.name = license.name || '';
+
                     item = $Object.linear(item);
 
                     var data = $.Object.extend({}, item, {
                         'index': index,
                         'no': index + 1,
                         'operate-display': display,
+                        
                     });
 
                     return {
