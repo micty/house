@@ -166,21 +166,20 @@ module.exports = {
                 var land = plan.refer.landId;
 
                 var id = item.item.id;
+                var counts = { 0: 0, 1: 0, };
 
-                var count0 = SaleLicense.count(function (license) {
-                    return license.saleId == id && license.type == 0;
-                });
-
-                var count1 = SaleLicense.count(function (license) {
-                    return license.saleId == id && license.type == 1;
+                SaleLicense.list(function (item) {
+                    if (item.saleId == id) {
+                        counts[item.type]++;
+                    }
                 });
 
                 return {
                     'sale': item.item,
                     'plan': plan.item,
                     'land': land.item,
-                    'license0': count0,
-                    'license1': count1,
+                    'license0': counts[0],
+                    'license1': counts[1],
                 };
             });
 

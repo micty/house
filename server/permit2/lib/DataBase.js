@@ -447,7 +447,7 @@ DataBase.prototype = {
 
     /**
     * 添加一条或多条记录。
-    * 记录中如果指定了 id 则使用它，否则自动分配一个新的 id。
+    * 记录中如果指定了 id (datetime) 则使用它，否则自动分配一个新的 id (datetime)。
     * @param {Object} item 要添加的记录的数据对象或其数组。
     * @return {Object|Array} 返回被添加的单条记录或其数组。
     */
