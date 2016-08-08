@@ -165,10 +165,7 @@ module.exports = {
         }
 
         try {
-            var list = db.list(function (item) {
-                return item.saleId == saleId;
-            });
-
+            var list = db.refer('saleId', saleId);
             res.success(list);
         }
         catch (ex) {

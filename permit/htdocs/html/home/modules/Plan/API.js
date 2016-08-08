@@ -5,6 +5,7 @@ define('/Plan/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -15,58 +16,13 @@ define('/Plan/API', function (require, module, exports) {
     //获取数据
     function get() {
 
-        var api = KISP.create('API', 'Plan.all', {
-            
-        });
-
+        var api = new API('Plan.page');
 
         api.on({
-
-
             'success': function (data, json, xhr) {
-
                 var list = data.list;
-                var lands = data.lands;
-
-                var landId$item = {};
-
-                list.forEach(function (item) {
-                    landId$item[item.landId] = item;
-                });
-
-
-                var id$land = {};
-                lands.forEach(function (item) {
-                    id$land[item.id] = item;
-                });
-
-                var dones = $.Array.map(list, function (item) {
-
-                    var land = id$land[item.landId];
-                    if (!land) {
-                        return null;
-                    }
-
-                    var planId = item.id;
-
-                    var licenses = $.Array.grep(data.licenses, function (item) {
-                        return item.planId == planId;
-                    });
-
-                    return $.Object.extend({}, item, {
-                        'land': land,
-                        'licenses': licenses,
-                    });
-
-                });
-
-
-                emitter.fire('success', 'get', [dones.slice(0, 5)]);
+                emitter.fire('success', 'get', [list]);
             },
-
-
-
-
 
             'fail': function (code, msg, json, xhr) {
                 KISP.alert('获取数据失败: {0} ({1})', msg, code);
@@ -77,7 +33,10 @@ define('/Plan/API', function (require, module, exports) {
             },
         });
 
-        api.post();
+        api.post({
+            'pageNo': 1,
+            'pageSize': 5,
+        });
 
 
     }

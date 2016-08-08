@@ -43,10 +43,10 @@ define('/Plan/List', function (require, module) {
             return {
                 'index': index,
                 'number': item.land.number,
-                'title': item.project,
+                'title': item.plan.project,
                 'location': item.land.location,
-                'count': item.licenses.length,
-                'date': item.datetime.split(' ')[0],
+                'count': item.license,
+                'date': item.plan.datetime.split(' ')[0],
             };
         });
 

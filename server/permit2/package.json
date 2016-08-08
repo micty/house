@@ -11,6 +11,8 @@
     "express-session": "",
     "cookie-parser": "",
     "express": "^4.13.3",
-    "compression": ""
+    "compression": "",
+    "colors": ""
+
   }
 }

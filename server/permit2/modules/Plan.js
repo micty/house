@@ -1,5 +1,6 @@
 ﻿
 var DataBase = require('../lib/DataBase');
+var Cache = require('./Plan/Cache');
 
 var db = new DataBase('Plan', [
     { name: 'datetime', },
@@ -141,6 +142,12 @@ module.exports = {
         }
 
         try {
+            var cache = Cache.getPage(opt);
+            if (cache) {
+                res.success(cache);
+                return;
+            }
+
             var keyword = opt.keyword;
             var list = db.list(true);
 
@@ -156,20 +163,17 @@ module.exports = {
             list = list.map(function (item) {
 
                 var plan = item.item;
-
-                var count = PlanLicense.count(function (license) {
-                    return license.planId == plan.id;
-                });
+                var licenses = PlanLicense.refer('planId', plan.id);
 
                 return {
                     'land': item.refer.landId.item,
                     'plan': plan,
-                    'license': count,
+                    'license': licenses.length,
                 };
             });
 
             var data = DataBase.page(pageNo, pageSize, list);
-
+            Cache.setPage(opt, data);
             res.success(data);
         }
         catch (ex) {

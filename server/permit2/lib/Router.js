@@ -116,4 +116,5 @@ function use(app, options) {
 
 module.exports = {
     'use': use,
+    'Response': Response,
 };

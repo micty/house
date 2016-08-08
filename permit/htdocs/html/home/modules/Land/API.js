@@ -5,6 +5,7 @@ define('/Land/API', function (require, module, exports) {
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
     var KISP = require('KISP');
+    var API = require('API');
 
     var Emitter = MiniQuery.require('Emitter');
 
@@ -12,13 +13,11 @@ define('/Land/API', function (require, module, exports) {
     var loading = null;
 
 
+
     //获取数据
     function get() {
 
-        var api = KISP.create('API', 'Land.list', {
-            
-        });
-
+        var api = new API('Land.page');
 
         api.on({
 
@@ -36,8 +35,7 @@ define('/Land/API', function (require, module, exports) {
             //},
 
             'success': function (data, json, xhr) {
-                var list = data.slice(0, 5);
-            
+                var list = data.list;
                 emitter.fire('success', 'get', [list]);
             },
 
@@ -50,7 +48,10 @@ define('/Land/API', function (require, module, exports) {
             },
         });
 
-        api.get();
+        api.post({
+            'pageNo': 1,
+            'pageSize': 5,
+        });
 
 
     }

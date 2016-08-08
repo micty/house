@@ -154,9 +154,7 @@ module.exports = {
         }
 
         try {
-            var list = db.list(function (item) {
-                return item.planId == planId;
-            });
+            var list = db.refer('planId', planId);
             res.success(list);
         }
         catch (ex) {

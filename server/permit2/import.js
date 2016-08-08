@@ -1,9 +1,9 @@
 ﻿
 
-//setTimeout(stat, 5000);
-stat();
+//setTimeout(start, 5000);
+start();
 
-function stat() {
+function start() {
 
     var $ = require('./lib/MiniQuery');
     var DataBase = require('./lib/DataBase');
@@ -32,7 +32,8 @@ function stat() {
         throw new Error('不存在 ' + name + ' 对应的数据文件记录。');
     }
 
-    file = './data/000/' + file;
+    file = './data-old/' + file;
+
     if (!File.exists(file)) {
         throw new Error('不存在 ' + name + ' 对应的数据文件:', file);
     }

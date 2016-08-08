@@ -5,6 +5,7 @@ var DataBase = require('../lib/DataBase');
 var Dates = require('./Stat/Dates');
 var Towns = require('./Stat/Towns');
 var Uses = require('./Stat/Uses');
+var Cache = require('./Stat/Cache');
 
 
 //按区域进行分类，再按功能进行求和。
@@ -44,6 +45,8 @@ function sum(list, prefix, keys) {
 }
 
 
+
+
 module.exports = {
 
     /**
@@ -57,6 +60,18 @@ module.exports = {
             return;
         }
 
+        var cache = Cache.get('town', data);
+        if (cache) {
+            res.success(cache);
+            return;
+        }
+
+        var Land = require('./Land').db;
+        var Construct = require('./Construct').db;
+        var PlanLicense = require('./PlanLicense').db;
+        var Sale = require('./Sale').db;
+        var SaleLicense = require('./SaleLicense').db;
+
         var lands = [];
         var plans = [];
         var constructs = [];
@@ -64,11 +79,6 @@ module.exports = {
         var planLicenses = [];
         var saleLicenses = [];
 
-        var Land = require('./Land').db;
-        var Construct = require('./Construct').db;
-        var PlanLicense = require('./PlanLicense').db;
-        var Sale = require('./Sale').db;
-        var SaleLicense = require('./SaleLicense').db;
 
         var dates = Dates.normalize(data);
 
@@ -189,6 +199,7 @@ module.exports = {
         stat['saled-prepare'] = sum(types[0], 'saled-');
         stat['saled-doing'] = sum(types[1], 'saled-');
 
+        Cache.set('town', data, stat);
         res.success(stat);
     },
 
@@ -200,6 +211,12 @@ module.exports = {
         var role = data.role;
         if (!role) {
             res.empty('role');
+            return;
+        }
+
+        var cache = Cache.get('role', data);
+        if (cache) {
+            res.success(cache);
             return;
         }
 
@@ -323,11 +340,8 @@ module.exports = {
 
         })[role]();
 
+        Cache.set('role', data, stat);
         res.success(stat);
-
-
-        
-
     },
 
     /**
@@ -338,6 +352,12 @@ module.exports = {
         var use = data.use;
         if (!use) {
             res.empty('use');
+            return;
+        }
+
+        var cache = Cache.get('use', data);
+        if (cache) {
+            res.success(cache);
             return;
         }
 
@@ -498,6 +518,7 @@ module.exports = {
         stat['saled-prepare'] = sum(types[0], 'saled-');
         stat['saled-doing'] = sum(types[1], 'saled-');
 
+        Cache.set('use', data, stat);
         res.success(stat);
     },
 
@@ -506,6 +527,13 @@ module.exports = {
     */
     diy: function (req, res) {
         var data = req.body.data;
+
+        var cache = Cache.get('diy', data);
+        if (cache) {
+            res.success(cache);
+            return;
+        }
+
 
         var lands = [];
         var plans = [];
@@ -593,6 +621,7 @@ module.exports = {
         stat['plan'] = sum(planLicenses);
         stat['construct'] = sum(constructs);
 
+        Cache.set('diy', data, stat);
         res.success(stat);
     },
 
@@ -601,6 +630,12 @@ module.exports = {
     */
     all: function (req, res) {
         var data = req.body.data;
+        var cache = Cache.get('all', data);
+        if (cache) {
+            res.success(cache);
+            return;
+        }
+
         var dates = Dates.normalize(data);
 
         var roles = {
@@ -703,6 +738,7 @@ module.exports = {
             $.Object.extend(stat, obj);
         });
 
+        Cache.set('all', data, stat);
         res.success(stat);
 
     },

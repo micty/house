@@ -33,6 +33,7 @@ function DataBase(name, fields) {
     var list = dir + 'list.json';       //id 索引列表: ids
     var map = dir + 'map.json';         //记录映射表: id$item
     var unique = dir + 'unique.json';   //一对一字段映射 id 表: fieldName$value$referId 
+    var refer = dir + 'refer.json';     //外键所关联的子节点。
 
     //字段描述列表。 
     if (fields) {
@@ -56,21 +57,40 @@ function DataBase(name, fields) {
         File.writeJSON(map, {});
     }
 
-    //初始化一对一字段映射文件。
-    var obj = File.exists(unique) ? File.readJSON(unique) || {} : {};
+    (function () {
+        //初始化一对一字段映射文件。
+        var obj = File.exists(unique) ? File.readJSON(unique) || {} : {};
 
-    fields.forEach(function (field) {
-        var name = field.name;
+        fields.forEach(function (field) {
+            var name = field.name;
+            if (field.unique) {
+                obj[name] = obj[name] || {}; //初始化容器。
+            }
+            else {
+                delete obj[name];
+            }
+        });
 
-        if (field.unique) { 
-            obj[name] = obj[name] || {}; //初始化容器。
-        }
-        else {
-            delete obj[name];
-        }
-    });
+        File.writeJSON(unique, obj);
+    })();
 
-    File.writeJSON(unique, obj);
+    (function () {
+        //初始化外键所关联的子节点文件。
+        var obj = File.exists(refer) ? File.readJSON(refer) || {} : {};
+
+        fields.forEach(function (field) {
+            var name = field.name;
+            if (field.refer) {
+                obj[name] = obj[name] || {}; //初始化容器。
+            }
+            else {
+                delete obj[name];
+            }
+        });
+
+        File.writeJSON(refer, obj);
+    })();
+
 
 
     var meta = this.meta = {
@@ -78,7 +98,9 @@ function DataBase(name, fields) {
         'list': list,
         'map': map,
         'fields': fields,       //字段描述信息在创建后不会再变。
+        'field': field,
         'unique': unique,
+        'refer': refer,
     };
 
 
@@ -89,13 +111,11 @@ function DataBase(name, fields) {
         fields.forEach(function (field) {
             var name = field.name;
             var refer = field.refer;    //关联的外键的数据库名称。
-
             if (!refer) {
                 return;
             }
 
             DataBase.on('create', refer, function (db) {
-
                 //级联删除所关联的下级节点。
                 db.on('remove', function (refers) {
 
@@ -103,7 +123,6 @@ function DataBase(name, fields) {
 
                     refers.forEach(function (refer) {
                         var id = refer.id;
-
                         //在当前数据库表中找出所有关联到该外键的记录集。
                         var ids = list.filter(function (item) {
                             return item[name] == id;
@@ -121,7 +140,6 @@ function DataBase(name, fields) {
         emitter.fire('create', name, [this]);
         name$db[name] = this;
     }
-    
 
 }
 
@@ -388,6 +406,7 @@ DataBase.prototype = {
         var map = File.readJSON(meta.map);
         var list = File.readJSON(meta.list);
         var unique = File.readJSON(meta.unique);
+        var refers = File.readJSON(meta.refer);
 
         var ids = Array.isArray(id) ? id : [id];
 
@@ -396,6 +415,7 @@ DataBase.prototype = {
             list: false,
             map: false,
             unique: false,
+            refer: false,
         };
 
         var items = ids.map(function (id) {
@@ -426,6 +446,18 @@ DataBase.prototype = {
                     delete unique[name][value];
                     changed.unique = true;
                 }
+
+                if (field.refer) {
+                    var obj = refers[name];
+                    var ids = obj[value];
+                    if (ids) {
+                        var k = ids.indexOf(id);
+                        if (k >= 0) {
+                            ids.splice(k, 1);
+                            changed.refer = true;
+                        }
+                    }
+                }
             });
 
             return item;
@@ -433,7 +465,8 @@ DataBase.prototype = {
 
         changed.list && File.writeJSON(meta.list, list);
         changed.map && File.writeJSON(meta.map, map);
-        changed.unique &&  File.writeJSON(meta.unique, unique);
+        changed.unique && File.writeJSON(meta.unique, unique);
+        changed.refer && File.writeJSON(meta.refer, refers);
 
         //过滤掉空项。
         items = items.filter(function (item) {
@@ -458,6 +491,8 @@ DataBase.prototype = {
         var map = File.readJSON(meta.map);
         var list = File.readJSON(meta.list);
         var unique = File.readJSON(meta.unique);
+        var refers = File.readJSON(meta.refer);
+        
 
         var items = Array.isArray(item) ? item : [item];
         var errors = [];
@@ -511,6 +546,19 @@ DataBase.prototype = {
                         errors.push('不存在关联的 ' + name + ' 为 ' + value + ' 的 ' + refer + ' 记录');
                         return;
                     }
+
+                    var obj = refers[name];
+                    var ids = obj[value];
+                    if (!ids) {
+                        obj[value] = ids = [];
+                    }
+                    var k = ids.indexOf(id);
+                    if (k >= 0) {
+                        //如：已存在 saleId 为 554SA76445BA 对应原 id 为 123456 的记录。
+                        errors.push('已存在 ' + name + ' 为 ' + value + ' 对应的 id 为 ' + id + ' 记录');
+                        return;
+                    }
+                    ids.push(id);
                 }
 
                 //存储时作数据转换。
@@ -539,6 +587,7 @@ DataBase.prototype = {
         File.writeJSON(meta.map, map);
         File.writeJSON(meta.list, list);
         File.writeJSON(meta.unique, unique);
+        File.writeJSON(meta.refer, refers);
 
         meta.emitter.fire('add', [items]);
 
@@ -557,6 +606,8 @@ DataBase.prototype = {
 
         var fields = meta.fields;
         var unique = File.readJSON(meta.unique);
+        var refers = File.readJSON(meta.refer);
+
         var items = Array.isArray(item) ? item : [item];
         var errors = [];
 
@@ -576,13 +627,14 @@ DataBase.prototype = {
             fields.forEach(function (field, index) {
                 var name = field.name;
                 var alias = field.alias || name;
+                var oldValue = values[index];
 
                 if (!(name in item)) {
-                    item[name] = values[index]; //取原来的值，为了返回给调用方。
+                    item[name] = oldValue; //取原来的值，为了返回给调用方。
                     return;
                 }
 
-                //以下的 value === item[name]，而不是原来的 values[index]。
+                //以下的 value === item[name]，而不是原来的 oldValue。
                 var type = field.type;
                 var value = item[name];
 
@@ -593,17 +645,44 @@ DataBase.prototype = {
                     }
                 }
 
-                //只有值发生变化时才作进一步判断。
-                if (field.unique && value != values[index]) {
-                    var id2 = unique[name][value]; //关联的 id 值。
-                    if (id2) {
-                        //如: 已存在 landId 为 2250EA134178 的记录。
-                        errors.push('已存在' + alias + '为 ' + value + ' 的记录， 其关联的 id 为' + id2);
-                        return;
-                    }
+                if (value != oldValue) {
+                
+                    if (field.unique) {
+                        var id2 = unique[name][value]; //关联的 id 值。
+                        if (id2) {
+                            //如: 已存在 landId 为 2250EA134178 的记录。
+                            errors.push('已存在' + alias + '为 ' + value + ' 的记录， 其关联的 id 为' + id2);
+                            return;
+                        }
 
-                    unique[name][value] = id;
+                        unique[name][value] = id;
+                    }
+                 
+                    if (field.refer) {
+                        var obj = refers[name];
+                        var ids = obj[oldValue]; //关联的 id 值。
+                        if (ids) {
+                            var k = ids.indexOf(id);
+                            if (k >= 0) {
+                                ids.splice(k, 1);
+                            }
+                        }
+
+                        ids = obj[value];
+                        if (!ids) {
+                            ids = obj[value] = [];
+                        }
+
+                        var k = ids.indexOf(id);
+                        if (k >= 0) {
+                            //如：已存在 saleId 为 554SA76445BA 对应原 id 为 123456 的记录。
+                            errors.push('已存在 ' + name + ' 为 ' + value + ' 对应的 id 为 ' + id + ' 记录');
+                            return;
+                        }
+                        ids.push(id);
+                    }
                 }
+
 
                 //存储时作数据转换。
                 switch (type) {
@@ -634,6 +713,7 @@ DataBase.prototype = {
       
         File.writeJSON(meta.map, map);
         File.writeJSON(meta.unique, unique);
+        File.writeJSON(meta.refer, refers);
 
         meta.emitter.fire('update', [item]);
 
@@ -707,6 +787,7 @@ DataBase.prototype = {
     * @param {string} key 一条记录中要作为主键的字段名称。 
     * @param {boolan} [refer=false] 是否获取关联的外键记录。 
     * @param {function} [filter=null] 过滤函数。 
+    * @return {Object} 返回一个对象。
     */
     map: function (key, refer, filter) {
         //重载 map(key, filter);
@@ -724,6 +805,48 @@ DataBase.prototype = {
         });
 
         return id$item;
+    },
+
+    /**
+    * 获取某个指定外键值所关联的记录列表。
+    * @param {string} key 外键的字段名称。 
+    * @param {string} key 外键的字段值。 
+    * @param {boolan} [refer=false] 是否获取关联的外键记录。 
+    * @return {Array} 返回一个数组。
+    */
+    refer: function (key, value, refer) {
+        var meta = this.meta;
+        var refers = File.readJSON(meta.refer);
+        var obj = refers[key];
+        if (!obj) {
+            throw new Error(key + ' 不是外键');
+        }
+
+        var ids = obj[value] || [];
+        var list = this.list(refer, ids);
+        return list;
+    },
+
+    /**
+    * 获取整个数据库文件所对应的 md5 值。
+    * @return {string} 返回一个 32 位的 md5 字符串。
+    */
+    md5: function () {
+        var MD5 = require('./MD5');
+        var meta = this.meta;
+        var contents = [];
+    
+        for (var key in meta) {
+            var item = meta[key];
+
+            if (typeof item == 'string' && item.endsWith('.json')) {
+                item = File.read(item);
+                contents.push(item);
+            }
+        }
+
+        var md5 = MD5.get(contents.join('\n'));
+        return md5;
     },
 
 };

@@ -1,6 +1,8 @@
 ﻿
 
 var DataBase = require('../lib/DataBase');
+var Cache = require('./Construct/Cache');
+
 
 var db = new DataBase('Construct', [
     { name: 'datetime', },
@@ -160,6 +162,12 @@ module.exports = {
         }
 
         try {
+            var cache = Cache.getPage(opt);
+            if (cache) {
+                res.success(cache);
+                return;
+            }
+
             var keyword = opt.keyword;
             var list = db.list(true);
           
@@ -184,6 +192,7 @@ module.exports = {
             }
 
             var data = DataBase.page(pageNo, pageSize, list);
+            Cache.setPage(opt, data);
             res.success(data);
         }
         catch (ex) {
@@ -210,6 +219,12 @@ module.exports = {
         }
 
         try {
+            var cache = Cache.getTodos(opt);
+            if (cache) {
+                res.success(cache);
+                return;
+            }
+
             //用 licenseId 作为主键关联整条记录。
             var id$item = db.map('licenseId');
             var keyword = opt.keyword;
@@ -243,6 +258,7 @@ module.exports = {
             });
 
             var data = DataBase.page(pageNo, pageSize, licenses);
+            Cache.setTodos(opt, data);
             res.success(data);
         }
         catch (ex) {

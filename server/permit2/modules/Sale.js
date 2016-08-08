@@ -1,6 +1,7 @@
 ﻿
 var $ = require('../lib/MiniQuery');
 var DataBase = require('../lib/DataBase');
+var Cache = require('./Sale/Cache');
 
 var db = new DataBase('Sale', [
     { name: 'datetime', },
@@ -148,6 +149,12 @@ module.exports = {
         }
 
         try {
+            var cache = Cache.getPage(opt);
+            if (cache) {
+                res.success(cache);
+                return;
+            }
+
             var keyword = opt.keyword;
             var list = db.list(true);
 
@@ -167,11 +174,10 @@ module.exports = {
 
                 var id = item.item.id;
                 var counts = { 0: 0, 1: 0, };
+                var licenses = SaleLicense.refer('saleId', id);
 
-                SaleLicense.list(function (item) {
-                    if (item.saleId == id) {
-                        counts[item.type]++;
-                    }
+                licenses.forEach(function (item) {
+                    counts[item.type]++;
                 });
 
                 return {
@@ -184,7 +190,7 @@ module.exports = {
             });
 
             var data = DataBase.page(pageNo, pageSize, list);
-
+            Cache.setPage(opt, data);
             res.success(data);
         }
         catch (ex) {
@@ -211,6 +217,12 @@ module.exports = {
         }
 
         try {
+            var cache = Cache.getTodos(opt);
+            if (cache) {
+                res.success(cache);
+                return;
+            }
+
             //用 planId 作为主键关联整条记录。
             var id$item = db.map('planId');
             var keyword = opt.keyword;
@@ -240,7 +252,7 @@ module.exports = {
             });
 
             var data = DataBase.page(pageNo, pageSize, plans);
-
+            Cache.setTodos(opt, data);
             res.success(data);
         }
         catch (ex) {
