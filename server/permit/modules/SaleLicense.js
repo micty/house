@@ -35,27 +35,7 @@ var db = new DataBase('SaleLicense', [
     { name: 'officeCellDesc', },
     { name: 'otherCell', type: 'number', },
     { name: 'otherCellDesc', },
-
-    { name: 'saled-residenceSize', type: 'number', },
-    { name: 'saled-residenceSizeDesc', },
-    { name: 'saled-commerceSize', type: 'number', },
-    { name: 'saled-commerceSizeDesc', },
-    { name: 'saled-officeSize', type: 'number', },
-    { name: 'saled-officeSizeDesc', },
-    { name: 'saled-otherSize', type: 'number', },
-    { name: 'saled-otherSizeDesc', },
-    { name: 'saled-parkSize', type: 'number', },
-    { name: 'saled-parkSizeDesc', },
-    { name: 'saled-otherSize1', type: 'number', },
-    { name: 'saled-otherSize1Desc', },
-    { name: 'saled-residenceCell', type: 'number', },
-    { name: 'saled-residenceCellDesc', },
-    { name: 'saled-commerceCell', type: 'number', },
-    { name: 'saled-commerceCellDesc', },
-    { name: 'saled-officeCell', type: 'number', },
-    { name: 'saled-officeCellDesc', },
-    { name: 'saled-otherCell', type: 'number', },
-    { name: 'saled-otherCellDesc', },
+   
 ]);
 
 

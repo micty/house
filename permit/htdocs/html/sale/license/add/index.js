@@ -9,11 +9,11 @@ KISP.launch(function (require, module) {
     var User = require('User');
 
 
-    var API = module.require('API');
-    var Form = module.require('Form');
-    var Header = module.require('Header');
-    var Router = module.require('Router');
 
+    var Header = module.require('Header');
+    var Base = module.require('Base');
+    var Saled = module.require('Saled');
+    var Router = module.require('Router');
 
     if (!User.is('sale')) {
         KISP.alert('你没有权限操作本页面', function () {
@@ -26,51 +26,35 @@ KISP.launch(function (require, module) {
     var current = null;
 
 
-    API.on('success', {
 
-        'post': function (data, json) {
-            Bridge.close();
-            Bridge.refresh(['sale', 'list']);
 
-            Bridge.open(['sale', 'add'], {
-                'id': current.saleId,
-            });
-        },
-
-        'get': function (data) {
-            current = data;
-
+    Base.on({
+        'render': function (data) {
             Header.render(data);
-            Form.render(data);
         },
-
-    });
-
-
-
-    Header.on('submit', function () {
-
-        var data = Form.get(current);
-        API.post(data);
+        'change': function () {
+            Bridge.refresh(['sale', 'list']);
+        },
+        'add': function (item) {
+            Base.render(item); //让新增之后变成编辑状态。
+            //Saled.render(item);
+        },
     });
 
 
 
     Router.on({
-
-        'render': function (data) {
-            current = data;
-        },
-
         'new': function (data) {
-            Header.render(data);
-            Form.render(data);
+            Base.render(data);
+            //Saled.render();
         },
 
         'edit': function (data) {
-            API.get(data.id);
+            Base.render(data);
+            //Saled.render(data);
         },
     });
+
 
 
     Router.render();
