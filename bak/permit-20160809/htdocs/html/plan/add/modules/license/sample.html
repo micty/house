@@ -1,0 +1,30 @@
+﻿<table class="list-table" cellspacing="0" cellpadding="0">
+    <tr class="header">
+        <th>序号</th>
+        <th>规划许可证号</th>
+        <th class="date">许可时间</th>
+        <th class="number">总面积</th>
+        <th class="number">计容面积</th>
+        <th class="number">不计容面积</th>
+        <th class="date">提交时间</th>
+        <th>操作</th>
+    </tr>
+
+    #--row.begin--#
+    <tr data-index="{index}">
+        <td>{no}</td>
+        <td>
+            <a data-index="{index}" data-cmd="detail">{number}</a>
+        </td>
+        <td class="date">{date}</td>
+        <td class="number">{totalSize}</td>
+        <td class="number">{totalSize0}</td>
+        <td class="number">{totalSize1}</td>
+        <td class="date">{datetime}</td>
+        <td class="operate">
+            <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+            <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+        </td>
+    </tr>
+    #--row.end--#
+</table>

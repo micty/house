@@ -1,0 +1,29 @@
+[
+    {
+        "name": "datetime"
+    },
+    {
+        "name": "department"
+    },
+    {
+        "name": "number"
+    },
+    {
+        "name": "password"
+    },
+    {
+        "name": "name"
+    },
+    {
+        "name": "sex"
+    },
+    {
+        "name": "phone"
+    },
+    {
+        "name": "address"
+    },
+    {
+        "name": "role"
+    }
+]

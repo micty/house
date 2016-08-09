@@ -1,0 +1,248 @@
+blockquote,
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+    font: 12px/1.5 'Microsoft YaHei', tahoma, arial, "Hiragino Sans Gb", simsun, sans-serif;
+    color: #181818;
+}
+small {
+    font-size: 12px;
+}
+li,
+ol {
+    list-style: none;
+}
+ol,
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+sup {
+    vertical-align: text-top;
+}
+sub {
+    vertical-align: text-bottom;
+}
+legend {
+    color: #141414;
+}
+fieldset,
+img {
+    border: 0;
+}
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+    outline: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body.iframe {
+    overflow: hidden;
+}
+body.iframe > .header {
+    background: #5D6A7E;
+    padding: 0px 10px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 15px;
+    height: 42px;
+    line-height: 42px;
+}
+body.iframe > .header button {
+    background-color: #8BC34A;
+    border: none;
+    color: #fff;
+    padding: 6px 25px;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    float: right;
+    margin-top: 4px;
+}
+body.iframe > .header button i {
+    display: inline-block;
+    margin-right: 5px;
+}
+body.iframe > .header button.save {
+    background: #FF9800;
+}
+body.iframe > .header:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+body.iframe > .container {
+    margin: 10px 10px;
+}
+table.form-table {
+    border: solid 1px #9E9E9E;
+    border-bottom: none;
+    border-left: none;
+    width: 100%;
+    font-size: 14px;
+}
+table.form-table .name {
+    background: #f5f5f5;
+    text-align: right;
+    width: 70px;
+    font-weight: bold;
+}
+table.form-table .value {
+    width: 70%;
+    padding: 0px 7px;
+}
+table.form-table .value .total {
+    font-size: 16px;
+    font-weight: bold;
+}
+table.form-table .value.readonly {
+    /*color: gray;*/
+    color: #2196F3;
+}
+table.form-table .big {
+    width: 90px;
+    text-align: center;
+}
+table.form-table .tip {
+    background: #f5f5f5;
+    font-size: 12px;
+    color: #7c7c7d;
+    width: 150px;
+}
+table.form-table .tip span {
+    display: inline-block;
+    margin-left: 4px;
+}
+table.form-table input {
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+}
+table.form-table input[data-type="number"],
+table.form-table input[data-type="price"] {
+    font-size: 16px;
+}
+table.form-table select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 15px;
+    margin-left: -4px;
+}
+table.form-table textarea {
+    width: 100%;
+    height: 120px;
+    border: none;
+    padding: 5px;
+    display: -webkit-box;
+    box-sizing: border-box;
+    /*font-size: 16px;*/
+    line-height: 24px;
+}
+table.form-table tr.title td {
+    background: #4C4C4C;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 5px;
+}
+table.form-table td {
+    border: solid 1px #9E9E9E;
+    border-top: none;
+    border-right: none;
+    padding: 5px 5px;
+}
+table.list-table {
+    width: 100%;
+    border: solid 1px #95A5B9;
+    border-right: none;
+    border-bottom: none;
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+}
+table.list-table th,
+table.list-table td {
+    border: solid 1px #95A5B9;
+    border-left: none;
+    border-top: none;
+    text-align: left;
+    padding: 5px 5px;
+}
+table.list-table th a,
+table.list-table td a {
+    color: black;
+    text-decoration: none;
+}
+table.list-table th a:hover,
+table.list-table td a:hover {
+    color: red;
+    text-decoration: underline;
+}
+table.list-table tr.header {
+    background: #e3e3e5;
+}
+table.list-table tr.header:hover {
+    background: #e3e3e5;
+}
+table.list-table tr.header th:nth-child(1) {
+    width: 28px;
+}
+table.list-table tr:hover {
+    background: #FFF6E9;
+}
+table.list-table .operate {
+    width: 90px;
+}
+table.list-table .operate span {
+    color: blue;
+    cursor: pointer;
+    font-size: 12px;
+}
+table.list-table .operate span:hover {
+    text-decoration: underline;
+}
+table.list-table .operate span.remove {
+    color: red;
+}
+table.list-table .operate span i {
+    margin: 0px 4px;
+}

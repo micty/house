@@ -1,0 +1,17 @@
+.panel-base {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 10px;
+}
+.panel-base > .header .name {
+    background: #4C4C4C;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 6px 5px;
+    font-size: 14px;
+    border-bottom: solid 1px #9E9E9E;
+}
+.panel-base .form-table .name {
+    width: 100px;
+}

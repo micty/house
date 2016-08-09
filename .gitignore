@@ -18,10 +18,15 @@
 /permit/htdocs/style/css
 /permit/htdocs/**/index.html
 
-/permit-20160726/bin/node_modules
-/permit-20160726/build
-/permit-20160726/htdocs/style/css
-/permit-20160726/htdocs/**/index.html
+/bak/permit-20160726/bin/node_modules
+/bak/permit-20160726/build
+/bak/permit-20160726/htdocs/style/css
+/bak/permit-20160726/htdocs/**/index.html
+
+/bak/permit-201600809/bin/node_modules
+/bak/permit-201600809/build
+/bak/permit-201600809/htdocs/style/css
+/bak/permit-201600809/htdocs/**/index.html
 
 
 /mobile/bin/node_modules

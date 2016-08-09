@@ -1,0 +1,162 @@
+﻿<table id="table-form" class="form-table" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr class="title">
+            <td colspan="4">基本信息</td>
+        </tr>
+        <tr>
+            <td class="name">土地挂牌编号</td>
+            <td class="value"><input name="number" type="text" /></td>
+            <td class="tip">*<span>必填</span></td>
+            <td class="desc"><input name="numberDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">土地区域</td>
+            <td class="value">
+                <select name="town">
+                    <option>南庄</option>
+                    <option>石湾</option>
+                    <option>张槎</option>
+                    <option>祖庙</option>
+                </select>
+            </td>
+            <td class="tip"><span></span></td>
+            <td class="desc"><input name="townDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">土地座落</td>
+            <td class="value"><input name="location" type="text" /></td>
+            <td class="tip"><span></span></td>
+            <td class="desc"><input name="locationDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">土地面积</td>
+            <td class="value"><input name="size" type="text" data-type="number" /></td>
+            <td class="tip">数字<span>(平方米)</span></td>
+            <td class="desc"><input name="sizeDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">土地用途</td>
+            <td class="value"><input name="use" type="text" /></td>
+            <td class="tip"><span></span></td>
+            <td class="desc"><input name="useDesc" type="text" placeholder="备注" /></td>
+        </tr>
+
+        <tr>
+            <td class="name">是否自建房</td>
+            <td class="value">
+                <select name="diy">
+                    <option value="false">否</option>
+                    <option value="true">是</option>
+                </select>
+            </td>
+            <td class="tip"><span></span></td>
+            <td class="desc"><input name="diyDesc" type="text" placeholder="备注" /></td>
+        </tr>
+
+
+
+        <tr class="title">
+            <td colspan="4">建筑面积</td>
+        </tr>
+        <tr class="sub-title">
+            <td colspan="4">计容建筑面积</td>
+        </tr>
+        <tr>
+            <td class="name">住宅</td>
+            <td class="value"><input name="residenceSize" type="text" data-type="number" /></td>
+            <td class="tip">数字<span>(平方米)</span></td>
+            <td class="desc"><input name="residenceSizeDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">商业</td>
+            <td class="value"><input name="commerceSize" type="text" data-type="number" /></td>
+            <td class="tip">数字<span>(平方米)</span></td>
+            <td class="desc"><input name="commerceSizeDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">办公</td>
+            <td class="value"><input name="officeSize" type="text" data-type="number" /></td>
+            <td class="tip">数字<span>(平方米)</span></td>
+            <td class="desc"><input name="officeSizeDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">其它</td>
+            <td class="value"><input name="otherSize" type="text" data-type="number" /></td>
+            <td class="tip">数字<span>(平方米)</span></td>
+            <td class="desc"><input name="otherSizeDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">总面积</td>
+            <td class="value total" id="totalSize0"></td>
+            <td class="tip">计算<span>(平方米)</span></td>
+            <td class="desc none"></td>
+        </tr>
+
+        <tr class="sub-title">
+            <td colspan="4">不计容建筑面积</td>
+        </tr>
+        <tr>
+            <td class="name">地下车库</td>
+            <td class="value"><input name="parkSize" type="text" data-type="number" /></td>
+            <td class="tip">数字<span>(平方米)</span></td>
+            <td class="desc"><input name="parkSizeDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">其它</td>
+            <td class="value"><input name="otherSize1" type="text" data-type="number" /></td>
+            <td class="tip">数字<span>(平方米)</span></td>
+            <td class="desc"><input name="otherSize1Desc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">总面积</td>
+            <td class="value total" id="totalSize1"></td>
+            <td class="tip">计算<span>(平方米)</span></td>
+            <td class="desc none"></td>
+        </tr>
+
+        <tr class="sub-title">
+            <td colspan="4">总建筑面积</td>
+        </tr>
+        <tr>
+            <td class="name">总面积</td>
+            <td class="value total" id="totalSize"></td>
+            <td class="tip">计算<span>(平方米)</span></td>
+            <td class="desc none"></td>
+        </tr>
+
+
+        <tr class="title">
+            <td colspan="4">竞标信息</td>
+        </tr>
+        <tr>
+            <td class="name">受让人</td>
+            <td class="value"><input name="winner" type="text" /></td>
+            <td class="tip"><span></span></td>
+            <td class="desc"><input name="winnerDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">成交价格</td>
+            <td class="value"><input name="price" type="text" data-type="price" /></td>
+            <td class="tip">数字<span>(万元)</span></td>
+            <td class="desc"><input name="priceDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">竞得时间</td>
+            <td class="value"><input name="date" type="text" data-type="date" /></td>
+            <td class="tip">日期<span>(年月日)</span></td>
+            <td class="desc"><input name="dateDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">土地出让合同号</td>
+            <td class="value"><input name="contract" type="text" /></td>
+            <td class="tip"><span></span></td>
+            <td class="desc"><input name="contractDesc" type="text" placeholder="备注" /></td>
+        </tr>
+        <tr>
+            <td class="name">土地证号</td>
+            <td class="value"><input name="license" type="text" /></td>
+            <td class="tip"><span></span></td>
+            <td class="desc"><input name="licenseDesc" type="text" placeholder="备注" /></td>
+        </tr>
+    </tbody>
+</table>

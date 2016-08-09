@@ -1,0 +1,94 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title></title><link href="../../../f/font-awesome/css/font-awesome.min.css?0442" rel="stylesheet"/><link href="../../../f/kisp/kisp.min.css?3A87" rel="stylesheet"/><link href="../../../style/css/style.less.global.css?75EA" rel="stylesheet"/><link href="../../../style/css/A888B550ABB846307B0783033088ED11.css" rel="stylesheet"/></head><body class="iframe"><div class="header">规划许可 - 列表</div><div class="container"><ul id="ul-tabs" class="tabs"><!--<li data-index="{index}">{name}</li>--></ul><div id="div-panel-todo" class="panel" style="display: none"><div id="div-todo-list" class="list"><!--
+                <table class="list-table" cellspacing="0" cellpadding="0">
+                    <tr class="header">
+                        <th>序号</th>
+                        <th>土地挂牌编号</th>
+                        <th class="town">土地区域</th>
+                        <th>土地座落</th>
+                        <th class="number">土地面积</th>
+                        <th class="number">建筑面积</th>
+                        <th class="date">提交时间</th>
+                        <th style="{operate-display}">操作</th>
+                    </tr>
+                    #--row.begin--#
+                    <tr data-index="{index}">
+                        <td>{no}</td>
+                        <td class="{diy-class}">
+                            <a data-index="{index}" data-cmd="detail">{number}</a>
+                        </td>
+                        <td class="town">{town}</td>
+                        <td>{location}</td>
+                        <td class="number">{size}</td>
+                        <td class="number">{totalSize}</td>
+                        <td class="date">{datetime}</td>
+                        <td class="operate" style="{operate-display}">
+                            <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                        </td>
+                    </tr>
+                    #--row.end--#
+                </table>
+             --></div><div id="div-todo-pager" class="pager"></div></div><div id="div-panel-done" class="panel" style="display: none"><div id="div-done-list" class="list"><!--
+                    <table class="list-table" cellspacing="0" cellpadding="0">
+                        <tr class="header">
+                            <th>序号</th>
+                            <th>土地挂牌编号</th>
+                            <th class="town">土地区域</th>
+                            <th>项目名称</th>
+                            <th style="display:none;">建设单位</th>
+                            <th class="number">规划许可证数</th>
+                            <th style="{operate-display}">操作</th>
+                        </tr>
+                        #--row.begin--#
+                        <tr data-index="{index}">
+                            <td>{no}</td>
+                            <td class="{diy-class}">
+                                <a data-index="{index}" data-cmd="land.detail">{land.number}</a>
+                            </td>
+                            <td class="town">{land.town}</td>
+                            <td>
+                                <a data-index="{index}" data-cmd="detail">{plan.project}</a>
+                            </td>
+                            <td style="display:none;">{plan.developer}</td>
+                            <td class="number">{license}</td>
+                            <td class="operate" style="{operate-display}">
+                                <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                                <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                            </td>
+                        </tr>
+                        #--row.end--#
+                    </table>
+                 --></div><div id="div-done-pager" class="pager"></div></div></div><!--Samples.Pager--!
+    
+    <ul id="{ul-id}" class="Pager footer">
+        <li class="page-count">
+            共<span> {count} </span>页 <span> {total} </span>条记录
+        </li>
+        <li class="buttons">
+            <ul>
+                <li class="LR-button {first-disabled-class}" data-button="previous" title="上一页">
+                    <i class="left-btn"></i>
+                </li>
+    
+                #--item.begin--#
+                <li class="item {active}" {data-no}>{no}</li>
+                #--item.end--#
+    
+                #--more.begin--#
+                <li class="item more"></li>
+                #--more.end--#
+    
+                <li class="LR-button {final-disabled-class}"  data-button="next" title="下一页">
+                    <i class="right-btn"></i>
+                </li>
+            </ul>
+        </li>
+    
+    
+        <li class="page-jump">
+            <span>到第</span>
+            <input id="{txt-id}" type="text" class="page-number" value="{toNo}" {txt-disabled}/><span>页</span>
+            <a href="javascript:" class="jump-button {jump-disabled-class}" data-button="to">确定</a>
+        </li>
+    </ul>
+    
+    --Samples.Pager--><script src="../../../f/jquery/jquery-2.1.1.min.js?E40E"></script><script src="../../../f/miniquery/miniquery.min.js?3C2A"></script><script src="../../../f/autoNumeric/autoNumeric.min.js?6D5E"></script><script src="../../../f/kisp/kisp.min.js?1EC3"></script><script src="../../../config.js?A40B"></script><script src="9B8B1B3B2082C223E8D7F01EB71A227A.js"></script></body></html>

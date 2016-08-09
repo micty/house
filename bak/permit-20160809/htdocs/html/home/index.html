@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../f/font-awesome/css/font-awesome.debug.css?3F05" rel="stylesheet" />
+    <link href="../../f/kisp/kisp.debug.css?2350" rel="stylesheet" />
+    <link href="../../style/css/style.less.global.css?4152" rel="stylesheet" />
+
+    <!--weber.css.begin-->
+    <link href="../../style/css/html.home.index.css?EEBF" rel="stylesheet" />
+    <!--weber.css.end-->
+    
+</head>
+<body class="iframe">
+    <div class="header">
+        禅城区房地产数据统计平台 - 首页
+    </div>
+    <div class="container">
+        <div class="main">
+            <div id="div-panel-land" class="panel">
+                <div id="div-land-header" class="header">
+                    土地出让
+                    <a>更多<i class="icon fa fa-angle-double-right"></i></a>
+                </div>
+                <ul id="ul-land-list" class="list">
+                    <li class="loading">加载中...</li>
+                    <!--
+                    <li>
+                        <a data-index="{index}">{title}</a>
+                        <span class="location">位置: {location}</span>
+                        <div class="right">
+                            <span class="sub">竞得人: {winner}</span>
+                            <span class="date">{date}</span>
+                        </div>
+
+                    </li>
+                    -->
+                </ul>
+            </div>
+            <div class="panel">
+                <div id="div-plan-header" class="header">
+                    规划许可
+                    <a>更多<i class="icon fa fa-angle-double-right"></i></a>
+                </div>
+                <ul id="ul-plan-list" class="list">
+                    <li class="loading">加载中...</li>
+                    <!--
+                    <li>
+                        <a data-index="{index}">{title}</a>
+                        <span class="land-number">土地编号: {number}</span>
+                        <span>位置: {location}</span>
+                        <div class="right">
+                            <span class="sub">许可证数: {count}</span>
+                            <span class="date">{date}</span>
+                        </div>
+
+                    </li>
+                    -->
+                </ul>
+            </div>
+            <div class="panel">
+                <div id="div-construct-header" class="header">
+                    建设许可
+                    <a>更多<i class="icon fa fa-angle-double-right"></i></a>
+                </div>
+                <ul id="ul-construct-list" class="list">
+                    <li class="loading">加载中...</li>
+                    <!--
+                    <li>
+                        <a data-index="{index}">{title}</a>
+
+                        <span class="land-number">土地编号: {number}</span>
+                        <span>项目名称: {project}</span>
+                    
+                        <div class="right">
+                           
+                            <span class="date">{date}</span>
+                        </div>
+                    </li>
+                    -->
+                </ul>
+            </div>
+            <div class="panel">
+                <div id="div-sale-header" class="header">
+                    销售许可
+                    <a>更多<i class="icon fa fa-angle-double-right"></i></a>
+                </div>
+                <ul id="ul-sale-list" class="list">
+                    <li class="loading">加载中...</li>
+                    <!--
+                    <li>
+                        <a data-index="{index}">{title}</a>
+                        <span>项目名称: {project}</span>
+                        <div class="right">
+                            <span class="date">{date}</span>
+                        </div>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../f/jquery/jquery-2.1.1.debug.js?7403"></script>
+    <script src="../../f/miniquery/miniquery.debug.js?DBB5"></script>
+    <script src="../../f/kisp/kisp.debug.js?9EFD"></script>
+    <script src="../../config.js?99A1"></script>
+
+    <!--weber.js.begin-->
+    <script src="../../lib/API.js?99BE"></script>
+    <script src="../../lib/Array.js?21FD"></script>
+    <script src="../../lib/Bridge.js?2369"></script>
+    <script src="../../lib/Cell.js?5086"></script>
+    <script src="../../lib/Chart.js?EEEA"></script>
+    <script src="../../lib/DateTimePicker.js?67CE"></script>
+    <script src="../../lib/LocalStorage.js?2879"></script>
+    <script src="../../lib/logs/Logs.js?0190"></script>
+    <script src="../../lib/Multitask.js?0A21"></script>
+    <script src="../../lib/NumberField.js?BBED"></script>
+    <script src="../../lib/Object.js?4396"></script>
+    <script src="../../lib/pager/Pager/Helper.js?F5D0"></script>
+    <script src="../../lib/pager/Pager.js?6E81"></script>
+    <script src="../../lib/SessionStorage.js?B24D"></script>
+    <script src="../../lib/Size.js?A56D"></script>
+    <script src="../../lib/StatUse.js?F74B"></script>
+    <script src="../../lib/Tabs.js?F57E"></script>
+    <script src="../../lib/Url.js?4345"></script>
+    <script src="../../lib/User.js?C967"></script>
+    <script src="modules/Construct/API.js?AD80"></script>
+    <script src="modules/Construct/Header.js?CE63"></script>
+    <script src="modules/Construct/List.js?A202"></script>
+    <script src="modules/Construct.js?C021"></script>
+    <script src="modules/Land/API.js?07D5"></script>
+    <script src="modules/Land/Header.js?6463"></script>
+    <script src="modules/Land/List.js?FDEE"></script>
+    <script src="modules/Land.js?FC4D"></script>
+    <script src="modules/Plan/API.js?A736"></script>
+    <script src="modules/Plan/Header.js?E85F"></script>
+    <script src="modules/Plan/List.js?1731"></script>
+    <script src="modules/Plan.js?10BB"></script>
+    <script src="modules/Sale/API.js?A30C"></script>
+    <script src="modules/Sale/Header.js?A71E"></script>
+    <script src="modules/Sale/List.js?995F"></script>
+    <script src="modules/Sale.js?2F37"></script>
+    <script src="index.js?17F4"></script>
+    <!--weber.js.end-->
+
+
+</body>
+</html>

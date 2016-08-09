@@ -1,489 +1,166 @@
 ﻿
 
-var fs = require('fs');
-var $ = require('../lib/MiniQuery');
-var Directory = require('../lib/Directory');
+var DataBase = require('../lib/DataBase');
+
+var db = new DataBase('PlanLicense', [
+    { name: 'datetime', },
+
+    { name: 'planId', required: true, refer: 'Plan', },
+
+    { name: 'number', },
+    { name: 'numberDesc', },
+    { name: 'name', },
+    { name: 'nameDesc', },
+    { name: 'date', },
+    { name: 'dateDesc', },
+    { name: 'residenceSize', type: 'number', },
+    { name: 'residenceSizeDesc', },
+    { name: 'commerceSize', type: 'number', },
+    { name: 'commerceSizeDesc', },
+    { name: 'officeSize', type: 'number', },
+    { name: 'officeSizeDesc', },
+    { name: 'otherSize', type: 'number', },
+    { name: 'otherSizeDesc', },
+    { name: 'parkSize', type: 'number', },
+    { name: 'parkSizeDesc', },
+    { name: 'otherSize1', type: 'number', },
+    { name: 'otherSize1Desc', },
+
+]);
 
 
-function getPath() {
-    return './data/plan-license-list.json';
-}
-
-function getDateTime() {
-    var datetime = $.Date.format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-    return datetime;
-}
-
-
-function emptyError(name, res) {
-    res.send({
-        code: 201,
-        msg: '字段 ' + name + ' 不能为空',
-    });
-}
 
 
 module.exports = {
+    /**
+    * 仅供其它内部模块调用。
+    */
+    db: db,
 
     /**
-    * 获取一条记录。
+    * 获取一条指定 id 的记录。
     */
-    get: function (res, id)  {
+    get: function (req, res) {
+        var id = req.query.id;
         if (!id) {
-            emptyError('id', res);
+            res.empty('id');
             return;
         }
 
+        try {
+            var refer = req.query.refer == 'true'; //是否需要关联获取外键记录。
+            var item = db.get(id, refer);
 
-        var path = getPath();
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
-        }
-
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
+            if (!item) {
+                res.none({ 'id': id });
                 return;
             }
 
-            try {
-                var list = JSON.parse(data);
-                var item = list.find(function (item, index) {
-                    return item.id == id;
-                });
-
-                if (!item) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-          
-                var Plan = require('./Plan');
-                var plans = Plan.list();
-                var plan = plans.find(function (plan, index) {
-                    return item.planId == plan.id;
-                });
-
-                if (!plan) {
-                    res.send({
-                        code: 202,
-                        msg: '不存在关联的 plan 记录',
-                    });
-                    return;
-                }
-
-                var Land = require('./Land');
-                var lands = Land.list();
-                var land = lands.find(function (land, index) {
-                    return plan.landId == land.id;
-                });
-
-                if (!land) {
-                    res.send({
-                        code: 203,
-                        msg: '不存在关联的 land 记录',
-                    });
-                    return;
-                }
-
-                res.send({
-                    code: 200,
-                    msg: 'ok',
-                    data: {
-                        'license': item,
-                        'plan': plan,
-                        'land': land,
-                    },
-                });
+            if (!refer) {
+                res.success(item);
+                return;
             }
-            catch (ex) {
-                res.send({
-                    code: 501,
-                    msg: ex.message,
-                });
-            }
-        });
+
+            //需要外键信息的。 在 construct/add 页面用到。
+            var plan = item.refer.planId;
+            var land = plan.refer.landId;
+
+            res.success({
+                'license': item.item,
+                'plan': plan.item,
+                'land': land.item,
+            });
+
+        }
+        catch (ex) {
+            res.error(ex);
+        }
     },
 
     /**
     * 添加一条记录。
     */
-    add: function (res, data) {
+    add: function (req, res) {
+        var item = req.body.data;
 
-        var planId = data.planId;
+        try {
+            item = db.add(item);
+            res.success(item);
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
+
+    /**
+    * 更新一条指定 id 的记录。
+    */
+    update: function (req, res) {
+        var item = req.body.data;
+        var id = item.id;
+
+        if (!id) {
+            res.empty('id');
+            return;
+        }
+
+        try {
+            var data = db.update(item);
+            if (data) {
+                res.success(data);
+            }
+            else {
+                res.none(item);
+            }
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
+
+    /**
+    * 删除一条指定 id 的记录。
+    */
+    remove: function (req, res) {
+        var id = req.query.id;
+
+        if (!id) {
+            res.empty('id');
+            return;
+        }
+
+        try {
+            var item = db.remove(id);
+            if (item) {
+                res.success(item);
+            }
+            else {
+                res.none({ 'id': id });
+            }
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
+
+    /**
+    * 读取指定 planId 的列表。
+    */
+    list: function (req, res) {
+        var planId = req.query.planId;
         if (!planId) {
-            emptyError('planId', res);
-            return;
-        }
-
-        var Plan = require('./Plan');
-        var plans = Plan.list();
-        var plan = plans.find(function (item) {
-            return item.id == planId;
-        });
-        
-        if (!plan) {
-            res.send({
-                code: 404,
-                msg: '不存在 planId 为 ' + planId + ' 的规划记录。',
-            });
-            return;
-        }
-
-
-        var path = getPath();
-        var list = [];
-
-        try {
-
-            if (fs.existsSync(path)) {
-                list = fs.readFileSync(path);
-                list = JSON.parse(list);
-            }
-
-
-            var item = $.Object.extend(data, {
-                'id': $.String.random(),
-                'datetime': getDateTime(),
-            });
-
-            list.push(item);
-
-            var json = JSON.stringify(list, null, 4);
-
-            fs.writeFile(path, json, 'utf8', function (err) {
-
-                if (err) {
-                    res.send({
-                        code: 500,
-                        msg: err,
-                    });
-                    return;
-                }
-
-                list = list.filter(function (item) {
-                    return item.planId == planId;
-                });
-
-                res.send({
-                    code: 200,
-                    msg: '添加成功',
-                    data: list,
-                });
-            });
-        }
-        catch (ex) {
-            res.send({
-                code: 501,
-                msg: ex.message,
-            });
-        }
-
-    },
-
-    /**
-    * 更新一条记录。
-    */
-    update: function (res, data) {
-        var id = data.id;
-        if (!id) {
-            emptyError('id', res);
-            return;
-        }
-
-        var path = getPath();
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
-        }
-
-        fs.readFile(path, 'utf8', function (err, content) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(content);
-                var item = $.Array.findItem(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (!item) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-
-                var datetime = getDateTime();
-                data['datetime'] = datetime;
-
-                $.Object.extend(item, data);
-
-                var json = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, json, 'utf8', function (err) {
-
-                    if (err) {
-                        res.send({
-                            code: 501,
-                            msg: err,
-                        });
-                        return;
-                    }
-
-                    var planId = data.planId;
-
-                    list = list.filter(function (item) {
-                        return item.planId == planId;
-                    });
-
-                    res.send({
-                        code: 200,
-                        msg: '更新成功',
-                        data: list,
-                    });
-                });
-
-            }
-            catch (ex) {
-                res.send({
-                    code: 502,
-                    msg: ex.message,
-                });
-            }
-        });
-    },
-
-    /**
-    * 删除一条记录。
-    */
-    remove: function (res, id) {
-
-        if (!id) {
-            emptyError('id', res);
-            return;
-        }
-
-
-        var path = getPath();
-
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
-        }
-
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-                var index = $.Array.findIndex(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (index < 0) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-                var item = list[index];
-                list.splice(index, 1);
-
-
-
-                var json = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, json, 'utf8', function (err) {
-
-                    if (err) {
-                        res.send({
-                            code: 501,
-                            msg: err,
-                        });
-                        return;
-                    }
-
-                    var planId = item.planId;
-
-                    list = list.filter(function (item) {
-                        return item.planId == planId;
-                    });
-
-                    res.send({
-                        code: 200,
-                        msg: '删除成功',
-                        data: list,
-                    });
-                });
-                
-            }
-            catch (ex) {
-                res.send({
-                    code: 502,
-                    msg: ex.message,
-                });
-            }
-        });
-    },
-
-    /**
-    * 按条件删除指定的记录。
-    */
-    removeBy: function (fn) {
-
-        var path = getPath();
-        var existed = fs.existsSync(path);
-        if (!existed) {
+            res.empty('planId');
             return;
         }
 
         try {
-            var data = fs.readFileSync(path, 'utf8');
-            var list = JSON.parse(data);
-
-            //过滤出指定 planId 的记录。
-            if (fn) {
-                var isFn = typeof fn == 'function';
-
-                list = list.filter(function (item, index) {
-                    if (isFn) {
-                        var removed = fn(item, index);
-                        return !removed;
-                    }
-
-                    //此时的 fn 当作 planId。
-                    return item.planId != fn;
-                    
-                });
-            }
-
-            var json = JSON.stringify(list, null, 4);
-            fs.writeFileSync(path, json, 'utf8');
+            var list = db.refer('planId', planId);
+            res.success(list);
         }
         catch (ex) {
-            return ex;
+            res.error(ex);
         }
-
     },
-
-
-
-    /**
-    * 读取列表。
-    */
-    list: function (res, planId) {
-   
-        var path = getPath();
-        var existed = fs.existsSync(path);
-
-        //重载 list()，供内部其它模块调用。
-        if (!res) {
-            if (!existed) {
-                return [];
-            }
-
-            var data = fs.readFileSync(path, 'utf8');
-            var list = JSON.parse(data);
-
-            //过滤出指定 planId 的记录。
-            if (planId) {
-                list = list.filter(function (item) {
-                    return item.planId == planId;
-                });
-            }
-            
-
-            return list;
-        }
-
-        //重载 list(res)，供 http 请求调用。
-        if (!existed) {
-            res.send({
-                code: 200,
-                msg: 'empty',
-                data: [],
-            });
-            return;
-        }
-
-
-       
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 201,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-
-                //过滤出指定 planId 的记录。
-                if (planId) {
-                    list = list.filter(function (item) {
-                        return item.planId == planId;
-                    });
-                }
-
-                list.reverse(); //倒序一下
-
-                res.send({
-                    code: 200,
-                    msg: 'ok',
-                    data: list,
-                });
-            }
-            catch (ex) {
-                res.send({
-                    code: 500,
-                    msg: ex.message,
-                });
-            }
-
-        });
-
-    }
-
 
 };
 

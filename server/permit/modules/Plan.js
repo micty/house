@@ -1,443 +1,231 @@
 ﻿
+var DataBase = require('../lib/DataBase');
+var Cache = require('./Plan/Cache');
 
-var fs = require('fs');
-var $ = require('../lib/MiniQuery');
-var Directory = require('../lib/Directory');
+var db = new DataBase('Plan', [
+    { name: 'datetime', },
 
+    { name: 'landId', required: true, unique: true, refer: 'Land', },
 
-function getPath() {
-    return './data/plan-list.json';
-}
+    { name: 'project', },
+    { name: 'projectDesc', },
+    { name: 'use', },
+    { name: 'useDesc', },
+    { name: 'developer', },
+    { name: 'developerDesc', },
+]);
 
-function getDateTime() {
-    var datetime = $.Date.format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-    return datetime;
-}
-
-
-function emptyError(name, res) {
-    res.send({
-        code: 201,
-        msg: '字段 ' + name + ' 不能为空',
-    });
-}
 
 
 module.exports = {
+    /**
+    * 仅供其它内部模块调用。
+    */
+    db: db,
 
     /**
-    * 获取一条记录。
+    * 获取一条指定 id 的记录。
     */
-    get: function (res, id)  {
+    get: function (req, res) {
+        var id = req.query.id;
         if (!id) {
-            emptyError('id', res);
+            res.empty('id');
             return;
         }
 
-        var path = getPath();
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
-        }
-
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
+        try{
+            var data = db.get(id, true);
+            if (!data) {
+                res.none({ 'id': id });
                 return;
             }
 
-            try {
-                var list = JSON.parse(data);
-                var item = list.find(function (item, index) {
-                    return item.id == id;
-                });
-
-                if (!item) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-                var Land = require('./Land');
-                var lands = Land.list();
-                var land = lands.find(function (land) {
-                    return land.id == item.landId;
-                });
-
-                if (!land) {
-                    res.send({
-                        code: 202,
-                        msg: '不存在关联的 land 该记录',
-                    });
-                    return;
-                }
-
-
-                res.send({
-                    code: 200,
-                    msg: 'ok',
-                    data: {
-                        'plan': item,
-                        'land': land,
-                    },
-                });
+            var land = data.refer.landId;
+            if (!land) {
+                res.none('不存在关联的 Land 该记录', item);
+                return;
             }
-            catch (ex) {
-                res.send({
-                    code: 501,
-                    msg: ex.message,
-                });
-            }
-        });
+
+            res.success({
+                'land': land.item,
+                'plan': data.item,
+            });
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+      
     },
 
     /**
     * 添加一条记录。
     */
-    add: function (res, data) {
+    add: function (req, res) {
+        var item = req.body.data;
 
-        var landId = data.landId;
-        if (!landId || landId === 'undefined') {
-            emptyError('landId', res);
+        try{
+            item = db.add(item);
+            res.success(item);
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
+
+    /**
+    * 更新一条指定 id 的记录。
+    */
+    update: function (req, res) {
+        var item = req.body.data;
+        var id = item.id;
+
+        if (!id) {
+            res.empty('id');
             return;
         }
 
+        try {
+            var data = db.update(item);
+            if (data) {
+                res.success(data);
+            }
+            else {
+                res.none(item);
+            }
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
 
-        var path = getPath();
-        var list = [];
+    /**
+    * 删除一条指定 id 的记录。
+    */
+    remove: function (req, res) {
+        var id = req.query.id;
+
+        if (!id) {
+            res.empty('id');
+            return;
+        }
 
         try {
-
-            if (fs.existsSync(path)) {
-                list = fs.readFileSync(path);
-                list = JSON.parse(list);
-            }
-
-            var item = list.find(function (item) {
-                return item.landId == landId;
-            });
-
+            var item = db.remove(id);
             if (item) {
-                res.send({
-                    code: 201,
-                    msg: '已存在 landId 为' + landId + ' 的记录。',
-                });
-                return;
+                res.success(item);
             }
-
-
-            item = $.Object.extend(data, {
-                'id': $.String.random(),
-                'datetime': getDateTime(),
-            });
-
-            list.push(item);
-            list = JSON.stringify(list, null, 4);
-
-
-            fs.writeFile(path, list, 'utf8', function (err) {
-
-                if (err) {
-                    res.send({
-                        code: 500,
-                        msg: err,
-                    });
-                    return;
-                }
-
-                res.send({
-                    code: 200,
-                    msg: '添加成功',
-                    data: item,
-                });
-            });
+            else {
+                res.none({ 'id': id });
+            }
         }
         catch (ex) {
-            res.send({
-                code: 501,
-                msg: ex.message,
-            });
+            res.error(ex);
         }
-
     },
 
     /**
-    * 更新一条记录。
+    * 读取指定分页和条件的已办列表。
     */
-    update: function (res, data) {
-        var id = data.id;
-        if (!id) {
-            emptyError('id', res);
+    page: function (req, res) {
+        var opt = req.body.data;
+        var pageNo = opt.pageNo;
+
+        if (!pageNo) {
+            res.empty('pageNo');
             return;
         }
 
-        var path = getPath();
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
+        var pageSize = opt.pageSize;
+        if (!pageSize) {
+            res.empty('pageSize');
             return;
         }
-
-        fs.readFile(path, 'utf8', function (err, content) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(content);
-                var index = $.Array.findIndex(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (index < 0) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-
-                var item = $.Object.extend({}, data, {
-                    'datetime': getDateTime(),
-                });
-
-                list[index] = item;
-
-                var json = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, json, 'utf8', function (err) {
-
-                    if (err) {
-                        res.send({
-                            code: 501,
-                            msg: err,
-                        });
-                        return;
-                    }
-
-                    res.send({
-                        code: 200,
-                        msg: '更新成功',
-                        data: item,
-                    });
-                });
-
-            }
-            catch (ex) {
-                res.send({
-                    code: 502,
-                    msg: ex.message,
-                });
-            }
-        });
-    },
-
-    /**
-    * 删除一条记录。
-    */
-    remove: function (res, id) {
-
-        if (!id) {
-            emptyError('id', res);
-            return;
-        }
-
-
-        var path = getPath();
-
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
-        }
-
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-                var index = $.Array.findIndex(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (index < 0) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-                list.splice(index, 1);
-                var json = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, json, 'utf8', function (err) {
-
-                    if (err) {
-                        res.send({
-                            code: 501,
-                            msg: err,
-                        });
-                        return;
-                    }
-
-                    var PlanLicense = require('./PlanLicense');
-                    PlanLicense.removeBy(id);
-
-                    res.send({
-                        code: 200,
-                        msg: '删除成功',
-                        data: list,
-                    });
-                });
-                
-            }
-            catch (ex) {
-                res.send({
-                    code: 502,
-                    msg: ex.message,
-                });
-            }
-        });
-    },
-
-
-
-
-    /**
-    * 读取列表。
-    */
-    list: function (res) {
-   
-        var path = getPath();
-        var existed = fs.existsSync(path);
-
-        //重载 list()，供内部其它模块调用。
-        if (!res) {
-            if (!existed) {
-                return [];
-            }
-
-            var data = fs.readFileSync(path, 'utf8');
-            var list = JSON.parse(data);
-            return list;
-        }
-
-
-        //重载 list(res)，供 http 请求调用。
-        if (!existed) {
-            res.send({
-                code: 200,
-                msg: 'empty',
-                data: [],
-            });
-            return;
-        }
-
-       
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 201,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-                list.reverse(); //倒序一下
-
-                res.send({
-                    code: 200,
-                    msg: '',
-                    data: list,
-                });
-            }
-            catch (ex) {
-                res.send({
-                    code: 500,
-                    msg: ex.message,
-                });
-            }
-
-        });
-
-    },
-
-
-    /**
-    * 获取待办和已办列表。
-    */
-    all: function (res, data) {
 
         try {
-            data = data || {};
+            var cache = Cache.getPage(opt);
+            if (cache) {
+                res.success(cache);
+                return;
+            }
 
+            var keyword = opt.keyword;
+            var list = db.list(true);
 
-            var Land = require('./Land');
-            var PlanLicense = require('./PlanLicense');
-
-            var lands = Land.list();
-            var list = module.exports.list();
-            var licenses = PlanLicense.list();
-
-            var keyword = data.keyword;
             if (keyword) {
-                lands = lands.filter(function (item) {
-                    return item.number.indexOf(keyword) >= 0;
+                list = list.filter(function (item) {
+                    var land = item.refer.landId;
+                    return land.number.indexOf(keyword) >= 0;
                 });
             }
-           
-            res.send({
-                code: 200,
-                msg: '',
-                data: {
-                    'list': list,
-                    'lands': lands,
-                    'licenses': licenses,
-                },
+
+            var PlanLicense = require('./PlanLicense').db;
+
+            list = list.map(function (item) {
+
+                var plan = item.item;
+                var licenses = PlanLicense.refer('planId', plan.id);
+
+                return {
+                    'land': item.refer.landId.item,
+                    'plan': plan,
+                    'license': licenses.length,
+                };
             });
 
+            var data = DataBase.page(pageNo, pageSize, list);
+            Cache.setPage(opt, data);
+            res.success(data);
         }
         catch (ex) {
-            res.send({
-                code: 500,
-                msg: ex.message,
-            });
+            res.error(ex);
         }
-
     },
 
+    /**
+    * 读取指定分页和条件的待办列表。
+    */
+    todos: function (req, res) {
+        var opt = req.body.data;
+        var pageNo = opt.pageNo;
+
+        if (!pageNo) {
+            res.empty('pageNo');
+            return;
+        }
+
+        var pageSize = opt.pageSize;
+        if (!pageSize) {
+            res.empty('pageSize');
+            return;
+        }
+
+        try {
+            //用 landId 作为主键关联整条记录。
+            var landId$plan = db.map('landId');  
+            var keyword = opt.keyword;
+            var Land = require('./Land').db;
+
+            var lands = Land.list(function (land) {
+                var plan = landId$plan[land.id];
+                if (plan) { //说明是已办的。
+                    return false;
+                }
+
+                if (keyword && land.number.indexOf(keyword) < 0) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            var data = DataBase.page(pageNo, pageSize, lands);
+
+            res.success(data);
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
 
 
 };

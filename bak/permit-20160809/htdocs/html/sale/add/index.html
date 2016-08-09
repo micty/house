@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css?3F05" rel="stylesheet" />
+    <link href="../../../f/datetimepicker/datetimepicker.mod.debug.css?5B60" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css?2350" rel="stylesheet" />
+
+    <link href="../../../style/css/style.less.global.css?4152" rel="stylesheet" />
+
+
+    <!--weber.css.begin-->
+    <link href="../../../style/css/html.sale.add.index.css?D41D" rel="stylesheet" />
+    <link href="../../../style/css/html.sale.add.modules.base.panel.css?EC28" rel="stylesheet" />
+    <link href="../../../style/css/html.sale.add.modules.license.panel.css?0344" rel="stylesheet" />
+    <!--weber.css.end-->
+    
+</head>
+<body class="iframe">
+    <div class="header">
+        销售许可 - 发布
+    </div>
+
+    <div class="container">
+        <div id="div-panel-base" class="panel-base" >
+           
+            <div id="div-base-header" class="header">
+                <div class="toolbar">
+                    <button data-cmd="edit"><i class="icon fa fa-check"></i>保存</button>
+                </div>
+                <div class="name">基本信息</div>
+            </div>
+        
+            <div id="div-base-form">
+                <!--
+                <table class="form-table" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="name">土地挂牌编号</td>
+                            <td class="value readonly">
+                                <a data-cmd="land.detail">{land.number}</a>
+                            </td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{land.numberDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地区域</td>
+                            <td class="value readonly">{land.town}</td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{land.townDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地出让合同号</td>
+                            <td class="value readonly">{land.contract}</td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{land.contractDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地证号</td>
+                            <td class="value readonly">{land.license}</td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{land.licenseDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">规划项目名称</td>
+                            <td class="value readonly">
+                                <a data-cmd="plan.detail">{plan.project}</a>
+                            </td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{plan.projectDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">建设单位</td>
+                            <td class="value readonly">{plan.developer}</td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{plan.developerDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">项目名称</td>
+                            <td class="value"><input name="project" type="text" value="{sale.project}" /></td>
+                            <td class="tip"><span>必填</span></td>
+                            <td class="desc"><input name="projectDesc" type="text" placeholder="备注" value="{sale.projectDesc}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                -->
+            </div>
+        </div>
+        
+        <div id="div-panel-license" class="panel-license">
+        
+        
+            <div id="div-panel-license-prepare">
+                <div id="div-license-prepare-header" class="header noop">
+                    <div class="toolbar">
+                        <button data-cmd="edit"><i class="icon fa fa-edit"></i>添加</button>
+                    </div>
+                    <div class="name">预售许可证</div>
+                </div>
+            
+                <div id="div-license-prepare-list" class="list">
+                    <!--
+                    <table class="list-table" cellspacing="0" cellpadding="0">
+                        <tr class="header">
+                            <th>序号</th>
+                            <th>预售证号</th>
+                            <th class="date">发证日期</th>
+                            <th class="number">预售总面积</th>
+                            <th class="number">预售总单元</th>
+                            <th class="number">已售总面积</th>
+                            <th class="number">已售总单元</th>
+                            <th class="date">提交时间</th>
+                            <th>操作</th>
+                        </tr>
+                    
+                        #--row.begin--#
+                        <tr data-index="{index}">
+                            <td>{no}</td>
+                            <td>
+                                <a data-index="{index}" data-cmd="detail">{number}</a>
+                            </td>
+                            <td class="date">{date}</td>
+                            <td class="number">{totalSize}</td>
+                            <td class="number">{totalCell}</td>
+                            <td class="number">{saled-totalSize}</td>
+                            <td class="number">{saled-totalCell}</td>
+                            <td class="date">{datetime}</td>
+                            <td class="operate">
+                                <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                                <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                            </td>
+                        </tr>
+                        #--row.end--#
+                    </table>
+                    -->
+                </div>
+            </div>
+            <div id="div-panel-license-doing">
+                <div id="div-license-doing-header" class="header noop">
+                    <div class="toolbar">
+                        <button data-cmd="edit"><i class="icon fa fa-edit"></i>添加</button>
+                    </div>
+                    <div class="name">现售备案</div>
+                </div>
+            
+                <div id="div-license-doing-list" class="list">
+                    <!--
+                    <table class="list-table" cellspacing="0" cellpadding="0">
+                        <tr class="header">
+                            <th>序号</th>
+                            <th>备案证号</th>
+                            <th class="date">发证日期</th>
+                            <th class="number">现售总面积</th>
+                            <th class="number">现售总单元</th>
+                            <th class="number">已售总面积</th>
+                            <th class="number">已售总单元</th>
+                            <th class="date">提交时间</th>
+                            <th>操作</th>
+                        </tr>
+                    
+                        #--row.begin--#
+                        <tr data-index="{index}">
+                            <td>{no}</td>
+                            <td>
+                                <a data-index="{index}" data-cmd="detail">{number}</a>
+                            </td>
+                            <td class="date">{date}</td>
+                            <td class="number">{totalSize}</td>
+                            <td class="number">{totalCell}</td>
+                            <td class="number">{saled-totalSize}</td>
+                            <td class="number">{saled-totalCell}</td>
+                            <td class="date">{datetime}</td>
+                            <td class="operate">
+                                <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                                <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                            </td>
+                        </tr>
+                        #--row.end--#
+                    </table>
+                    -->
+                </div>
+            </div>
+        
+        
+        </div>
+    </div>
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js?7403"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js?DBB5"></script>
+    <script src="../../../f/kisp/kisp.debug.js?9EFD"></script>
+    <script src="../../../f/autoNumeric/autoNumeric.debug.js?6D5E"></script>
+    <script src="../../../f/datetimepicker/datetimepicker.mod.debug.js?D5DE"></script>
+
+    <script src="../../../config.js?99A1"></script>
+
+    <!--weber.js.begin-->
+    <script src="../../../lib/API.js?99BE"></script>
+    <script src="../../../lib/Array.js?21FD"></script>
+    <script src="../../../lib/Bridge.js?2369"></script>
+    <script src="../../../lib/Cell.js?5086"></script>
+    <script src="../../../lib/Chart.js?EEEA"></script>
+    <script src="../../../lib/DateTimePicker.js?67CE"></script>
+    <script src="../../../lib/LocalStorage.js?2879"></script>
+    <script src="../../../lib/logs/Logs.js?0190"></script>
+    <script src="../../../lib/Multitask.js?0A21"></script>
+    <script src="../../../lib/NumberField.js?BBED"></script>
+    <script src="../../../lib/Object.js?4396"></script>
+    <script src="../../../lib/pager/Pager/Helper.js?F5D0"></script>
+    <script src="../../../lib/pager/Pager.js?6E81"></script>
+    <script src="../../../lib/SessionStorage.js?B24D"></script>
+    <script src="../../../lib/Size.js?A56D"></script>
+    <script src="../../../lib/StatUse.js?F74B"></script>
+    <script src="../../../lib/Tabs.js?F57E"></script>
+    <script src="../../../lib/Url.js?4345"></script>
+    <script src="../../../lib/User.js?C967"></script>
+    <script src="modules/base/Base/API.js?E354"></script>
+    <script src="modules/base/Base/Form.js?BDD0"></script>
+    <script src="modules/base/Base/Header.js?7375"></script>
+    <script src="modules/base/Base.js?E8FF"></script>
+    <script src="modules/license/License/API.js?55B1"></script>
+    <script src="modules/license/License/doing/Doing/Header.js?FA8D"></script>
+    <script src="modules/license/License/doing/Doing/List.js?E9D5"></script>
+    <script src="modules/license/License/doing/Doing.js?E605"></script>
+    <script src="modules/license/License/prepare/Prepare/Header.js?50F7"></script>
+    <script src="modules/license/License/prepare/Prepare/List.js?5BCF"></script>
+    <script src="modules/license/License/prepare/Prepare.js?755B"></script>
+    <script src="modules/license/License.js?7EDF"></script>
+    <script src="modules/Router.js?8C80"></script>
+    <script src="index.js?0D84"></script>
+    <!--weber.js.end-->
+
+
+
+</body>
+</html>

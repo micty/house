@@ -1,0 +1,28 @@
+.header.noop button {
+    display: none;
+}
+.list {
+    margin-top: 10px;
+}
+.list.nodata {
+    text-align: center;
+    font-size: 18px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    line-height: 175px;
+    border: solid 1px #D4D5DE;
+    color: #7c7c7d;
+    font-size: 16px;
+}
+.list.nodata:after {
+    content: '暂无数据';
+}
+.list.nodata table {
+    display: none;
+}
+.pager {
+    text-align: right;
+    margin-bottom: 15px;
+    height: 25px;
+    padding: 20px 15px;
+}

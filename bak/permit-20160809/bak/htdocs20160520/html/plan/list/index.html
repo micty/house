@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css?3F05" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css?A8A6" rel="stylesheet" />
+
+    <link href="../../../style/css/style.less.global.css?14EB" rel="stylesheet" />
+
+    <!--weber.css.begin-->
+    <link href="../../../style/css/html.plan.list.index.css?E367" rel="stylesheet" />
+    <!--weber.css.end-->
+    
+</head>
+<body class="iframe">
+    <div class="header">
+        规划许可列表
+    </div>
+    <div class="container">
+        <div class="panel">
+            <div class="group">待办列表</div>
+            <div id="div-todo-list" class="list">
+                <table class="list-table"  cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr class="header">
+                            <th>序号</th>
+                            <th>土地挂牌编号</th>
+                            <th>土地区域</th>
+                            <th>土地座落</th>
+                            <th>土地面积</th>
+                            <th>建筑面积</th>
+                            <th>提交时间</th>
+                            <th style="">操作</th>
+                        </tr>
+                
+                        <tr data-index="0">
+                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="operate"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--
+            <table class="list-table" cellspacing="0" cellpadding="0">
+                <tr class="header">
+                    <th>序号</th>
+                    <th>土地挂牌编号</th>
+                    <th>土地区域</th>
+                    <th>土地座落</th>
+                    <th>土地面积</th>
+                    <th>建筑面积</th>
+                    <th>提交时间</th>
+                    <th style="{operate-display}">操作</th>
+                </tr>
+
+                #--row.begin--#
+                <tr data-index="{index}">
+                    <td>{no}</td>
+                    <td>
+                        <a href="javascript:" data-index="{index}" data-cmd="detail">{number}<a/>
+                    </td>
+                    <td>{town}</td>
+                    <td>{location}</td>
+                    <td>{size}</td>
+                    <td>{buildSize}</td>
+                    <td>{datetime}</td>
+                    <td class="operate" style="{operate-display}">
+                        <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                    </td>
+                </tr>
+                #--row.end--#
+            </table>
+            -->
+            </div>
+        </div>
+        <div class="panel">
+            <div class="group">已办列表</div>
+            <div id="div-done-list" class="list">
+                <table class="list-table"  cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr class="header">
+                            <th>序号</th>
+                            <th>土地挂牌编号</th>
+                            <th>土地区域</th>
+                            <th>土地座落</th>
+                            <th>项目名称</th>
+                            <th>开发商名称</th>
+                            <th>许可证数</th>
+                            <th>操作</th>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="operate"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!--
+            <table class="list-table" cellspacing="0" cellpadding="0">
+                <tr class="header">
+                    <th>序号</th>
+                    <th>土地挂牌编号</th>
+                    <th>土地区域</th>
+                    <th>土地座落</th>
+                    <th>项目名称</th>
+                    <th>开发商名称</th>
+                    <th>许可证数</th>
+                    <th style="{operate-display}">操作</th>
+                </tr>
+
+                #--row.begin--#
+                <tr data-index="{index}">
+                    <td>{no}</td>
+                    <td>
+                        <a href="javascript:" data-index="{index}" data-cmd="land.detail">
+                            {land.number}
+                        <a/>
+                    </td>
+                    <td>{land.town}</td>
+                    <td>{land.location}</td>
+                    <td>
+                        <a href="javascript:" data-index="{index}" data-cmd="detail">{project}<a/>
+                    </td>
+                    <td>{developer}</td>
+                    <td>{license}</td>
+                    <td class="operate" style="{operate-display}">
+                        <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                        <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                    </td>
+                </tr>
+                #--row.end--#
+
+            </table>
+            -->
+            </div>
+        </div>
+    </div>
+        
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js?7403"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js?4A11"></script>
+    <script src="../../../f/kisp/kisp.debug.js?753F"></script>
+    <script src="../../../config.js?1E74"></script>
+
+    <!--weber.js.begin-->
+    <script src="../../../lib/Bridge.js?E632"></script>
+    <script src="../../../lib/DateTimePicker.js?1C8B"></script>
+    <script src="../../../lib/LocalStorage.js?2879"></script>
+    <script src="../../../lib/Multitask.js?4FB5"></script>
+    <script src="../../../lib/NumberField.js?72B3"></script>
+    <script src="../../../lib/SessionStorage.js?B24D"></script>
+    <script src="../../../lib/Tabs.js?0F53"></script>
+    <script src="../../../lib/Url.js?4345"></script>
+    <script src="modules/API.js?CE15"></script>
+    <script src="modules/Done.js?F0B1"></script>
+    <script src="modules/Todo.js?AB9C"></script>
+    <script src="index.js?A1F4"></script>
+    <!--weber.js.end-->
+
+
+</body>
+</html>

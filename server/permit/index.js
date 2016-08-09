@@ -1,10 +1,14 @@
 ﻿
 
 var $ = require('./lib/MiniQuery');
+var Router = require('./lib/Router');
+var Session = require('./lib/Session');
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
+var compression = require('compression');
 
 var app = express();
 
@@ -18,9 +22,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(cookieParser());
+app.use(compression());     //使用 gzip 压缩。
+
 
 //在政府的某些机子里，3001、3030端口会给屏蔽了。 经过测试 8080 是可以的。
-var server = app.listen(8080, function () {
+var server = app.listen(8081, function () {
     var host = server.address().address;
     var port = server.address().port;
 
@@ -28,14 +34,18 @@ var server = app.listen(8080, function () {
 });
 
 
-
-//var sid$data = {};
-
-app.all('/*', function (req, res, next) {
+app.use(function (req, res, next) {
 
     res.set({
         'Access-Control-Allow-Origin': '*',
     });
+
+    //if (!req.url.startsWith('/User/login?')) {
+    //    var valid = Session.check(req, res);
+    //    if (!valid) {
+    //        return;
+    //    }
+    //}
 
     next();
 });
@@ -43,164 +53,130 @@ app.all('/*', function (req, res, next) {
 
 
 
+//用户模块
+Router.use(app, {
+    module: require('./modules/User'),
+    base: '/User.',
+    get: [
+        'get',
+        'remove',
+        'list',
+    ],
+    post: [
+        'add',
+        'update',
+        'login',
+    ],
+});
+
 //土地出让模块
-var Land = require('./modules/Land');
-app.get('/Land.get', function (req, res) {
-    Land.get(res, req.query.id);
-});
-app.post('/Land.add', function (req, res) {
-    Land.add(res, req.body);
-});
-app.post('/Land.update', function (req, res) {
-    Land.update(res, req.body);
-});
-app.get('/Land.remove', function (req, res) {
-    Land.remove(res, req.query.id);
-});
-app.get('/Land.list', function (req, res) {
-    Land.list(res);
+Router.use(app, {
+    module: require('./modules/Land'),
+    base: '/Land.',
+    get: [
+        'get',
+        'remove',
+    ],
+    post: [
+        'add',
+        'update',
+        'page',
+    ],
 });
 
-//规划许可模块
-var Plan = require('./modules/Plan');
-app.get('/Plan.get', function (req, res) {
-    Plan.get(res, req.query.id);
+//规划模块
+Router.use(app, {
+    module: require('./modules/Plan'),
+    base: '/Plan.',
+    get: [
+        'get',
+        'remove',
+    ],
+    post: [
+        'add',
+        'update',
+        'page',
+        'todos',
+    ],
 });
-app.post('/Plan.add', function (req, res) {
-    Plan.add(res, req.body);
-});
-app.post('/Plan.update', function (req, res) {
-    Plan.update(res, req.body);
-});
-app.get('/Plan.remove', function (req, res) {
-    Plan.remove(res, req.query.id);
-});
-app.get('/Plan.list', function (req, res) {
-    Plan.list(res);
-});
-
-app.post('/Plan.all', function (req, res) {
-    Plan.all(res, req.body);
-});
-
 
 //规划许可证模块
-var PlanLicense = require('./modules/PlanLicense');
-app.get('/PlanLicense.get', function (req, res) {
-    PlanLicense.get(res, req.query.id);
-});
-app.post('/PlanLicense.add', function (req, res) {
-    PlanLicense.add(res, req.body);
-});
-app.post('/PlanLicense.update', function (req, res) {
-    PlanLicense.update(res, req.body);
-});
-app.get('/PlanLicense.remove', function (req, res) {
-    PlanLicense.remove(res, req.query.id);
-});
-app.get('/PlanLicense.list', function (req, res) {
-    PlanLicense.list(res, req.query.planId);
+Router.use(app, {
+    module: require('./modules/PlanLicense'),
+    base: '/PlanLicense.',
+    get: [
+        'get',
+        'remove',
+        'list',
+    ],
+    post: [
+        'add',
+        'update',
+    ],
 });
 
-
-
-//建设许可模块
-var Construct = require('./modules/Construct');
-app.get('/Construct.get', function (req, res) {
-    Construct.get(res, req.query.id);
-});
-app.post('/Construct.add', function (req, res) {
-    Construct.add(res, req.body);
-});
-app.post('/Construct.update', function (req, res) {
-    Construct.update(res, req.body);
-});
-app.get('/Construct.remove', function (req, res) {
-    Construct.remove(res, req.query.id);
-});
-app.get('/Construct.list', function (req, res) {
-    Construct.list(res);
-});
-app.post('/Construct.all', function (req, res) {
-    Construct.all(res, req.body);
+//建设模块
+Router.use(app, {
+    module: require('./modules/Construct'),
+    base: '/Construct.',
+    get: [
+        'get',
+        'remove',
+    ],
+    post: [
+        'add',
+        'update',
+        'page',
+        'todos',
+    ],
 });
 
-
-
-
-
-//预售许可模块
-var Sale = require('./modules/Sale');
-app.get('/Sale.get', function (req, res) {
-    Sale.get(res, req.query.id);
+//预售模块
+Router.use(app, {
+    module: require('./modules/Sale'),
+    base: '/Sale.',
+    get: [
+        'get',
+        'remove',
+    ],
+    post: [
+        'add',
+        'update',
+        'page',
+        'todos',
+        'import',
+    ],
 });
-app.post('/Sale.add', function (req, res) {
-    Sale.add(res, req.body);
-});
-app.post('/Sale.update', function (req, res) {
-    Sale.update(res, req.body);
-});
-app.get('/Sale.remove', function (req, res) {
-    Sale.remove(res, req.query.id);
-});
-app.get('/Sale.list', function (req, res) {
-    Sale.list(res);
-});
-app.post('/Sale.all', function (req, res) {
-    Sale.all(res, req.body);
-});
-app.post('/Sale.import', function (req, res) {
-    Sale.import(res, req.body);
-});
-
 
 //预售许可证模块
-var SaleLicense = require('./modules/SaleLicense');
-app.get('/SaleLicense.get', function (req, res) {
-    SaleLicense.get(res, req.query.id);
+Router.use(app, {
+    module: require('./modules/SaleLicense'),
+    base: '/SaleLicense.',
+    get: [
+        'get',
+        'remove',
+        'list',
+    ],
+    post: [
+        'add',
+        'update',
+    ],
 });
-app.post('/SaleLicense.add', function (req, res) {
-    SaleLicense.add(res, req.body);
-});
-app.post('/SaleLicense.update', function (req, res) {
-    SaleLicense.update(res, req.body);
-});
-app.get('/SaleLicense.remove', function (req, res) {
-    SaleLicense.remove(res, req.query.id);
-});
-app.get('/SaleLicense.list', function (req, res) {
-    SaleLicense.list(res, req.query.saleId);
-});
-
-
 
 //统计模块
-var Stat = require('./modules/Stat');
-app.post('/Stat.get', function (req, res) {
-    Stat.get(res, req.body);
+Router.use(app, {
+    module: require('./modules/Stat'),
+    base: '/Stat.',
+    get: [
+    ],
+    post: [
+        'town',
+        'use',
+        'role',
+        'diy',
+        'all',
+    ],
 });
 
 
 
-
-
-//用户模块
-var User = require('./modules/User');
-app.get('/User.get', function (req, res) {
-    User.get(res, req.query.id);
-});
-app.post('/User.add', function (req, res) {
-    User.add(res, req.body);
-});
-app.post('/User.update', function (req, res) {
-    User.update(res, req.body);
-});
-app.get('/User.remove', function (req, res) {
-    User.remove(res, req.query.id);
-});
-app.get('/User.list', function (req, res) {
-    User.list(res);
-});
-app.post('/User.login', function (req, res) {
-    User.login(res, req.body);
-});

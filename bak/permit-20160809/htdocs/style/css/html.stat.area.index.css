@@ -1,0 +1,43 @@
+.tabs {
+    border-bottom: solid 1px #d9dcdf;
+}
+.tabs li {
+    display: inline-block;
+    cursor: pointer;
+    padding: 4px 10px;
+    font-size: 16px;
+    border-bottom: solid 4px #fff;
+    margin-right: 10px;
+}
+.tabs li.on {
+    border-bottom-color: #03a9f4;
+    color: #56aaeb;
+}
+.main {
+    /*width: 842px;*/
+    /*width: 950px;*/
+    margin: auto;
+}
+.main > .header {
+    margin-bottom: 10px;
+    line-height: 40px;
+    padding: 0px 10px;
+    text-align: center;
+    font-size: 30px;
+}
+.main .sub {
+    font-size: 14px;
+}
+.main .sub .left {
+    float: left;
+    margin-left: 10px;
+}
+.main .sub .right {
+    float: right;
+    margin-right: 10px;
+}
+.main .sub:after {
+    display: block;
+    content: "";
+    clear: both;
+}

@@ -37,16 +37,16 @@ module.exports = {
 
                 var tags = [
                     {
-                        begin: '/**grunt.debug.begin*/',
-                        end: '/**grunt.debug.end*/',
+                        begin: '/**weber.debug.begin*/',
+                        end: '/**weber.debug.end*/',
                         value: [
                             "KISP.require('Edition').set('min');",
                             "KISP.data('build-date-time', '" + now + "');",
                         ].join('\r\n'),
                     },
                     {
-                        begin: '/**grunt.test.begin*/',
-                        end: '/**grunt.test.end*/',
+                        begin: '/**weber.test.begin*/',
+                        end: '/**weber.test.end*/',
                         value: '',
                     },
                 ];

@@ -1,548 +1,219 @@
 ﻿
-
-var fs = require('fs');
 var $ = require('../lib/MiniQuery');
-var Directory = require('../lib/Directory');
+var DataBase = require('../lib/DataBase');
 
+var db = new DataBase('SaleLicense', [
+    { name: 'datetime', },
 
-function getPath() {
-    return './data/sale-license-list.json';
-}
+    { name: 'saleId', required: true, refer: 'Sale', },
+    { name: 'type', type: 'number', required: true, },
 
-function getDateTime() {
-    var datetime = $.Date.format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-    return datetime;
-}
+    { name: 'number', required: true, unique: true, }, //证号
+    { name: 'numberDesc', },
+    { name: 'date', },
+    { name: 'dateDesc', },
+    { name: 'location', },
+    { name: 'locationDesc', },
 
+    { name: 'residenceSize', type: 'number', },
+    { name: 'residenceSizeDesc', },
+    { name: 'commerceSize', type: 'number', },
+    { name: 'commerceSizeDesc', },
+    { name: 'officeSize', type: 'number', },
+    { name: 'officeSizeDesc', },
+    { name: 'otherSize', type: 'number', },
+    { name: 'otherSizeDesc', },
+    { name: 'parkSize', type: 'number', },
+    { name: 'parkSizeDesc', },
+    { name: 'otherSize1', type: 'number', },
+    { name: 'otherSize1Desc', },
+    { name: 'residenceCell', type: 'number', },
+    { name: 'residenceCellDesc', },
+    { name: 'commerceCell', type: 'number', },
+    { name: 'commerceCellDesc', },
+    { name: 'officeCell', type: 'number', },
+    { name: 'officeCellDesc', },
+    { name: 'otherCell', type: 'number', },
+    { name: 'otherCellDesc', },
 
-function emptyError(name, res) {
-    res.send({
-        code: 201,
-        msg: '字段 ' + name + ' 不能为空',
-    });
-}
+    { name: 'saled-residenceSize', type: 'number', },
+    { name: 'saled-residenceSizeDesc', },
+    { name: 'saled-commerceSize', type: 'number', },
+    { name: 'saled-commerceSizeDesc', },
+    { name: 'saled-officeSize', type: 'number', },
+    { name: 'saled-officeSizeDesc', },
+    { name: 'saled-otherSize', type: 'number', },
+    { name: 'saled-otherSizeDesc', },
+    { name: 'saled-parkSize', type: 'number', },
+    { name: 'saled-parkSizeDesc', },
+    { name: 'saled-otherSize1', type: 'number', },
+    { name: 'saled-otherSize1Desc', },
+    { name: 'saled-residenceCell', type: 'number', },
+    { name: 'saled-residenceCellDesc', },
+    { name: 'saled-commerceCell', type: 'number', },
+    { name: 'saled-commerceCellDesc', },
+    { name: 'saled-officeCell', type: 'number', },
+    { name: 'saled-officeCellDesc', },
+    { name: 'saled-otherCell', type: 'number', },
+    { name: 'saled-otherCellDesc', },
+]);
 
 
 module.exports = {
+    /**
+    * 仅供其它内部模块调用。
+    */
+    db: db,
 
     /**
-    * 获取一条记录。
+    * 获取一条指定 id 的记录。
     */
-    get: function (res, id)  {
+    get: function (req, res) {
+        var id = req.query.id;
         if (!id) {
-            emptyError('id', res);
+            res.empty('id');
             return;
         }
-
-
-        var path = getPath();
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
-        }
-
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-                var item = $.Array.findItem(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (!item) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-                res.send({
-                    code: 200,
-                    msg: 'ok',
-                    data: item,
-                });
-            }
-            catch (ex) {
-                res.send({
-                    code: 501,
-                    msg: ex.message,
-                });
-            }
-        });
-    },
-
-    /**
-    * 添加一条或多条记录。
-    */
-    add: function (res, data) {
-
-        //重载 add(items)，批量添加。
-        if (res instanceof Array) {
-            var items = res;    //需要添加的数据列表
-            if (items.length == 0) {
-                return;
-            }
-
-
-            var list = [];
-            var path = getPath();
-
-            if (fs.existsSync(path)) {
-                list = fs.readFileSync(path);
-                list = JSON.parse(list);
-            }
-
-            //用类型与证号作主键
-            var type$number$item = {
-                0: {},
-                1: {},
-            };
-
-            list.forEach(function (item) {
-                type$number$item[item.type][item.number] = item;
-            });
-
-            var adds= [];
-            var edits = [];
-
-            items.forEach(function (item) {
-                var oldItem = type$number$item[item.type][item.number];
-
-                //已存在相同类型与证号的记录，则合并覆盖。
-                if (oldItem) {
-                    $.Object.extend(oldItem, item);
-                    edits.push(item);
-                    return;
-                }
-
-                //新记录。
-                //先增加空的备注字段。
-                Object.keys(item).forEach(function (key) {
-                    key = key + 'Desc';
-                    item[key] = '';         
-                });
-
-                //后增加其它字段。
-                $.Object.extend(item, {
-                    'id': $.String.random(),
-                    'datetime': getDateTime(),
-                });
-
-                //更新注册
-                type$number$item[item.type][item.number] = item;
-
-                adds.push(item);
-                list.push(item);
-            });
-
-
-            var json = JSON.stringify(list, null, 4);
-            fs.writeFile(path, json, 'utf8');
-
-            return {
-                'adds': adds,
-                'edits': edits,
-            };
-        }
-
-        //重载 add(res, data)，单条添加。
-        var saleId = data.saleId;
-        if (!saleId) {
-            emptyError('saleId', res);
-            return;
-        }
-
-        var number = data.number;
-        if (!number) {
-            emptyError('number', res);
-            return;
-        }
-
-        var Sale = require('./Sale');
-        var sales = Sale.list();
-        var sale = sales.find(function (item) {
-            return item.id == saleId;
-        });
-        
-        if (!sale) {
-            res.send({
-                code: 404,
-                msg: '不存在 saleId 为 ' + saleId + ' 的建设记录。',
-            });
-            return;
-        }
-
-
-        var path = getPath();
-        var list = [];
 
         try {
-
-            if (fs.existsSync(path)) {
-                list = fs.readFileSync(path);
-                list = JSON.parse(list);
-            }
-
-            //确保证号唯一
-            var item = list.find(function (item) {
-                return item.number == number;
-            });
-
+            var item = db.get(id); //这里不需要关联获取外键记录。
             if (item) {
-                res.send({
-                    code: 301,
-                    msg: '已存在该证号的记录',
-                    data: item,
-                });
-                return;
+                res.success(item);
             }
-
-
-            item = $.Object.extend(data, {
-                'id': $.String.random(),
-                'datetime': getDateTime(),
-            });
-
-            list.push(item);
-
-            var json = JSON.stringify(list, null, 4);
-
-            fs.writeFile(path, json, 'utf8', function (err) {
-
-                if (err) {
-                    res.send({
-                        code: 500,
-                        msg: err,
-                    });
-                    return;
-                }
-
-                list = list.filter(function (item) {
-                    return item.saleId == saleId;
-                });
-
-                res.send({
-                    code: 200,
-                    msg: '添加成功',
-                    data: list,
-                });
-            });
+            else {
+                res.none({ 'id': id });
+            }
         }
         catch (ex) {
-            res.send({
-                code: 501,
-                msg: ex.message,
-            });
+            res.error(ex);
         }
-
-    },
-
-
-
-    /**
-    * 更新一条记录。
-    */
-    update: function (res, data) {
-        var id = data.id;
-        if (!id) {
-            emptyError('id', res);
-            return;
-        }
-
-        var path = getPath();
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
-        }
-
-        fs.readFile(path, 'utf8', function (err, content) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(content);
-                var item = $.Array.findItem(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (!item) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-
-                var datetime = getDateTime();
-                data['datetime'] = datetime;
-
-                $.Object.extend(item, data);
-
-                var json = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, json, 'utf8', function (err) {
-
-                    if (err) {
-                        res.send({
-                            code: 501,
-                            msg: err,
-                        });
-                        return;
-                    }
-
-                    var saleId = data.saleId;
-
-                    list = list.filter(function (item) {
-                        return item.saleId == saleId;
-                    });
-
-                    res.send({
-                        code: 200,
-                        msg: '更新成功',
-                        data: list,
-                    });
-                });
-
-            }
-            catch (ex) {
-                res.send({
-                    code: 502,
-                    msg: ex.message,
-                });
-            }
-        });
     },
 
     /**
-    * 删除一条记录。
+    * 添加一条记录。
     */
-    remove: function (res, id) {
+    add: function (req, res) {
+        var item = req.body.data;
+
+        try {
+            item = db.add(item);
+            res.success(item);
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
+
+    /**
+    * 更新一条指定 id 的记录。
+    */
+    update: function (req, res) {
+        var item = req.body.data;
+        var id = item.id;
 
         if (!id) {
-            emptyError('id', res);
-            return;
-        }
-
-
-        var path = getPath();
-
-        if (!fs.existsSync(path)) {
-            res.send({
-                code: 201,
-                msg: '不存在该记录',
-            });
-            return;
-        }
-
-
-        fs.readFile(path, 'utf8', function (err, data) {
-
-            if (err) {
-                res.send({
-                    code: 500,
-                    msg: err,
-                });
-                return;
-            }
-
-            try {
-                var list = JSON.parse(data);
-                var index = $.Array.findIndex(list, function (item, index) {
-                    return item.id == id;
-                });
-
-                if (index < 0) {
-                    res.send({
-                        code: 201,
-                        msg: '不存在该记录',
-                    });
-                    return;
-                }
-
-                var item = list[index];
-                list.splice(index, 1);
-
-
-
-                var json = JSON.stringify(list, null, 4);
-
-                fs.writeFile(path, json, 'utf8', function (err) {
-
-                    if (err) {
-                        res.send({
-                            code: 501,
-                            msg: err,
-                        });
-                        return;
-                    }
-
-                    var saleId = item.saleId;
-
-                    list = list.filter(function (item) {
-                        return item.saleId == saleId;
-                    });
-
-                    res.send({
-                        code: 200,
-                        msg: '删除成功',
-                        data: list,
-                    });
-                });
-                
-            }
-            catch (ex) {
-                res.send({
-                    code: 502,
-                    msg: ex.message,
-                });
-            }
-        });
-    },
-
-    /**
-    * 按条件删除指定的记录。
-    */
-    removeBy: function (fn) {
-
-        var path = getPath();
-        var existed = fs.existsSync(path);
-        if (!existed) {
+            res.empty('id');
             return;
         }
 
         try {
-            var data = fs.readFileSync(path, 'utf8');
-            var list = JSON.parse(data);
-
-            //过滤出指定 saleId 的记录。
-            if (fn) {
-                var isFn = typeof fn == 'function';
-
-                list = list.filter(function (item, index) {
-                    if (isFn) {
-                        var removed = fn(item, index);
-                        return !removed;
-                    }
-
-                    //此时的 fn 当作 saleId。
-                    return item.saleId != fn;
-                    
-                });
+            var data = db.update(item);
+            if (data) {
+                res.success(data);
             }
-
-            var json = JSON.stringify(list, null, 4);
-            fs.writeFileSync(path, json, 'utf8');
+            else {
+                res.none(item);
+            }
         }
         catch (ex) {
-            return ex;
+            res.error(ex);
         }
-
     },
 
-
-
     /**
-    * 读取列表。
+    * 删除一条指定 id 的记录。
     */
-    list: function (res, saleId) {
-   
-        var path = getPath();
-        var existed = fs.existsSync(path);
-
-        //重载 list()，供内部其它模块调用。
-        if (!res) {
-            if (!existed) {
-                return [];
-            }
-
-            var data = fs.readFileSync(path, 'utf8');
-            var list = JSON.parse(data);
-
-            //过滤出指定 saleId 的记录。
-            if (saleId) {
-                list = list.filter(function (item) {
-                    return item.saleId == saleId;
-                });
-            }
-            
-
-            return list;
-        }
-
-        //重载 list(res)，供 http 请求调用。
-        if (!existed) {
-            res.send({
-                code: 200,
-                msg: 'empty',
-                data: [],
-            });
+    remove: function (req, res) {
+        var id = req.query.id;
+        if (!id) {
+            res.empty('id');
             return;
         }
 
+        try {
+            var item = db.remove(id);
+            if (item) {
+                res.success(item);
+            }
+            else {
+                res.none({ 'id': id });
+            }
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
 
-       
-        fs.readFile(path, 'utf8', function (err, data) {
+    /**
+    * 读取指定 saleId 的列表。
+    */
+    list: function (req, res) {
+        var saleId = req.query.saleId;
+        if (!saleId) {
+            res.empty('saleId');
+            return;
+        }
 
-            if (err) {
-                res.send({
-                    code: 201,
-                    msg: err,
-                });
+        try {
+            var list = db.refer('saleId', saleId);
+            res.success(list);
+        }
+        catch (ex) {
+            res.error(ex);
+        }
+    },
+
+    /**
+    * 批量导入。
+    */
+    import: function (items) {
+
+        //以证号作为主键。
+        var number$item = db.map('number');
+
+        var adds = [];
+        var updates = [];
+
+        items.forEach(function (item) {
+            var number = item.number;
+            var oldItem = number$item[number];
+
+            //已存在相同证号的记录，则合并覆盖。
+            if (oldItem) {
+                item = $.Object.extend({}, oldItem, item);
+                updates.push(item);
                 return;
             }
 
-            try {
-                var list = JSON.parse(data);
+            //新记录。
+            adds.push(item);
 
-                //过滤出指定 saleId 的记录。
-                if (saleId) {
-                    list = list.filter(function (item) {
-                        return item.saleId == saleId;
-                    });
-                }
-
-                list.reverse(); //倒序一下
-
-                res.send({
-                    code: 200,
-                    msg: 'ok',
-                    data: list,
-                });
-            }
-            catch (ex) {
-                res.send({
-                    code: 500,
-                    msg: ex.message,
-                });
-            }
-
+            //更新注册
+            number$item[number] = item;
         });
 
-    }
+        if (adds.length > 0) {
+            adds = db.add(adds);
+        }
 
+        if (updates.length > 0) {
+            updates = db.update(updates);
+        }
 
+        return {
+            'adds': adds,
+            'updates': updates,
+        };
+    },
 };
 

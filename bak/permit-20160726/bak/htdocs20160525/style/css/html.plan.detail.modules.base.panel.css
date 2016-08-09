@@ -1,0 +1,8 @@
+.panel-base {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 10px;
+}
+.panel-base .form-table .name {
+    width: 100px;
+}
