@@ -1,6 +1,6 @@
 ﻿
 
-define('/Form', function (require, module, exports) {
+define('/Base/Form', function (require, module, exports) {
 
     var $ = require('$');
     var MiniQuery = require('MiniQuery');
@@ -11,7 +11,7 @@ define('/Form', function (require, module, exports) {
 
  
 
-    var panel = KISP.create('Panel', '#div-form');
+    var panel = KISP.create('Panel', '#div-base-form');
 
 
     var type$item = {
@@ -53,20 +53,11 @@ define('/Form', function (require, module, exports) {
             'totalSize1': Size.totalText(data, 1),
             'totalSize': Size.totalText(data),
             'totalCell': Cell.totalText(data),
-
-            'saled-totalSize0': Size.totalText('saled-', data, 0),
-            'saled-totalSize1': Size.totalText('saled-', data, 1),
-            'saled-totalSize': Size.totalText('saled-', data),
-            'saled-totalCell': Cell.totalText('saled-', data),
-
-           
         });
 
 
         data = Size.format(data);
         data = Cell.format(data);
-        data = Size.format('saled-', data);
-        data = Cell.format('saled-', data);
 
 
         panel.fill(data);

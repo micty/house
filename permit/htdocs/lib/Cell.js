@@ -77,6 +77,28 @@ define('Cell', function (require, module, exports) {
 
 
 
+    function sum(list) {
+        var stat = {};
+
+        keys.forEach(function (key) {
+            stat[key] = 0;
+        });
+
+        list.forEach(function (item) {
+            keys.forEach(function (key) {
+                stat[key] += item[key];
+            });
+        });
+
+        return stat;
+    }
+
+    function sumText(list) {
+        var stat = sum(list);
+        var value = totalText(stat);
+        return value;
+    }
+
 
 
     return {
@@ -84,6 +106,7 @@ define('Cell', function (require, module, exports) {
         'totalText': totalText,
         'format': format,
         'text': text,
+        'sumText': sumText,
     };
 
 

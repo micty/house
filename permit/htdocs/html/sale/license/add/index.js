@@ -9,7 +9,6 @@ KISP.launch(function (require, module) {
     var User = require('User');
 
 
-
     var Header = module.require('Header');
     var Base = module.require('Base');
     var Saled = module.require('Saled');
@@ -26,6 +25,32 @@ KISP.launch(function (require, module) {
     var current = null;
 
 
+    Saled.on({
+        'change': function () {
+            
+        },
+        'add': function (licenseId) {
+            var sn = Bridge.sn();
+            Bridge.open({
+                name: '新增已售记录',
+                url: 'html/sale/saled/add/index.html?licenseId=' + licenseId + '&sn=' + sn,
+            });
+        },
+        'edit': function (id) {
+            var sn = Bridge.sn();
+            Bridge.open({
+                name: '编辑已售记录',
+                url: 'html/sale/saled/add/index.html?id=' + id + '&sn=' + sn,
+            });
+        },
+        'detail': function (id) {
+            Bridge.open({
+                name: '已售记录详情',
+                url: 'html/sale/saled/detail/index.html?id=' + id,
+            });
+        },
+    });
+
 
 
     Base.on({
@@ -37,7 +62,7 @@ KISP.launch(function (require, module) {
         },
         'add': function (item) {
             Base.render(item); //让新增之后变成编辑状态。
-            //Saled.render(item);
+            Saled.render(item);
         },
     });
 
@@ -46,12 +71,12 @@ KISP.launch(function (require, module) {
     Router.on({
         'new': function (data) {
             Base.render(data);
-            //Saled.render();
+            Saled.render();
         },
 
-        'edit': function (data) {
-            Base.render(data);
-            //Saled.render(data);
+        'edit': function (id) {
+            Base.render(id);
+            Saled.render(id);
         },
     });
 

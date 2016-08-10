@@ -28,6 +28,10 @@ define('Bridge', function (require, module) {
                 return Bridge.data.apply(null, args);
             },
 
+            'sn': function () {
+                return Bridge.sn(window);
+            },
+
         };
     }
 
@@ -45,6 +49,22 @@ define('Bridge', function (require, module) {
     var data = {};  //跨页传输数据。
 
     return {
+
+        'sn': function (win) {
+            //根据 iframe 的 window 对象找到对应的 iframe。
+            var iframes = $('iframe').toArray();
+
+            var iframe = $.Array.findItem(iframes, function (iframe, index) {
+                return iframe.contentWindow === win;
+            });
+
+            if (!iframe) {
+                return;
+            }
+
+            var sn = iframe.getAttribute('data-sn'); //这个就是对应的菜单项的 id。
+            return sn;
+        },
 
         'bind': function (win, args) {
 
@@ -141,6 +161,8 @@ define('Bridge', function (require, module) {
             data[key] = value;
             return value;
         },
+
+
 
         'on': emitter.on.bind(emitter),
     };

@@ -132,8 +132,15 @@ KISP.launch(function (require, module) {
             PageTabs.remove(id, true); //触发事件
         },
 
-        'refresh': function (id) {
-            MenuData.getItem(id, function (item) {
+        'refresh': function (item) {
+
+            //传进来的是一个 {'sn': sn}
+            if (typeof item == 'object' && 'sn' in item) {
+                Iframes.refresh(item);
+                return;
+            }
+            
+            MenuData.getItem(item, function (item) {
                 if (!item) {
                     return;
                 }

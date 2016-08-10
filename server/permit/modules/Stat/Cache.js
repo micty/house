@@ -9,6 +9,7 @@ var dbs = [
     'Construct',
     'Sale',
     'SaleLicense',
+    'Saled',
 ];
 
 var cache = new Cache('Stat');

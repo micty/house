@@ -95,6 +95,28 @@ define('Size', function (require, module, exports) {
     }
 
 
+    function sum(list) {
+        var stat = {};
+        var keys = $.Array.reduceDimension(sizes); //取全部
+
+        keys.forEach(function (key) {
+            stat[key] = 0;
+        });
+
+        list.forEach(function (item) {
+            keys.forEach(function (key) {
+                stat[key] += item[key];
+            });
+        });
+
+        return stat;
+    }
+
+    function sumText(list){
+        var stat = sum(list);
+        var value = totalText(stat);
+        return value;
+    }
 
 
 
@@ -103,6 +125,7 @@ define('Size', function (require, module, exports) {
         'totalText': totalText,
         'format': format,
         'text': text,
+        'sumText': sumText,
     };
 
 

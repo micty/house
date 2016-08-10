@@ -51,9 +51,12 @@ module.exports = {
         }
 
         try {
-            var item = db.get(id); //这里不需要关联获取外键记录。
+            var item = db.get(id, true);
             if (item) {
-                res.success(item);
+                res.success({
+                    'license': item.refer.licenseId.item,
+                    'saled': item.item,
+                });
             }
             else {
                 res.none({ 'id': id });

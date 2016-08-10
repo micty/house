@@ -12,27 +12,14 @@ define('/License', function (require, module) {
     var API = module.require('API');
     var List = module.require('List');
 
-
-    var current = null;
     var panel = KISP.create('Panel', '#div-panel-license');
 
     panel.on('init', function () {
 
 
-
         API.on('success', {
-
             'get': function (data) {
                 List.render(data);
-            },
-
-            'remove': function (data) {
-                List.render(data);
-                panel.fire('change');
-            },
-            'post': function (data) {
-                List.render(data);
-                panel.fire('change');
             },
         });
 
@@ -48,10 +35,6 @@ define('/License', function (require, module) {
     });
 
     panel.on('render', function (planId) {
-
-        current = {
-            'planId': planId,
-        };
 
         API.get(planId);
     });

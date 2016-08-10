@@ -14,11 +14,8 @@ KISP.launch(function (require, module) {
     var License = module.require('License');
     var Header = module.require('Header');
 
-    var user = SessionStorage.get('user');
     var qs = Url.getQueryString(window);
     var id = qs.id;
-
-
 
     if (!id) {
         KISP.alert('缺少 id', function () {

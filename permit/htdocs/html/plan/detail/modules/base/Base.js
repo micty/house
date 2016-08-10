@@ -14,18 +14,9 @@ define('/Base', function (require, module) {
     panel.on('init', function () {
 
         API.on('success', {
-
-            'post': function (data, json) {
-                panel.fire('save', [data]);
-                panel.fire('change');
-
-            },
-
             'get': function (data) {
-         
                 Form.render(data);
             },
-
         });
 
         Form.on('detail', {

@@ -163,6 +163,21 @@ Router.use(app, {
     ],
 });
 
+//已售模块
+Router.use(app, {
+    module: require('./modules/Saled'),
+    base: '/Saled.',
+    get: [
+        'get',
+        'remove',
+        'list',
+    ],
+    post: [
+        'add',
+        'update',
+    ],
+});
+
 //统计模块
 Router.use(app, {
     module: require('./modules/Stat'),

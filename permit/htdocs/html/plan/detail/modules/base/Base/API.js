@@ -1,6 +1,4 @@
-﻿/// <reference path="API.js" />
-
-
+﻿
 define('/Base/API', function (require, module, exports) {
 
     var $ = require('$');

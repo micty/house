@@ -5,6 +5,7 @@
         <th class="date">发证日期</th>
         <th class="number">预售总面积</th>
         <th class="number">预售总单元</th>
+        <th class="number">已售记录</th>
         <th class="number">已售总面积</th>
         <th class="number">已售总单元</th>
         <th class="date">提交时间</th>
@@ -14,14 +15,15 @@
     <tr data-index="{index}">
         <td>{no}</td>
         <td>
-            <a data-index="{index}" data-cmd="detail">{number}</a>
+            <a data-index="{index}" data-cmd="detail">{license.number}</a>
         </td>
-        <td class="date">{date}</td>
+        <td class="date">{license.date}</td>
         <td class="number">{totalSize}</td>
         <td class="number">{totalCell}</td>
+        <td class="number">{saled-count}</td>
         <td class="number">{saled-totalSize}</td>
         <td class="number">{saled-totalCell}</td>
-        <td class="date">{datetime}</td>
+        <td class="date">{license.datetime}</td>
     </tr>
     #--row.end--#
 </table>

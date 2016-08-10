@@ -15,16 +15,6 @@ define('/Base', function (require, module) {
     panel.on('init', function () {
 
         API.on('success', {
-
-            'update': function (data) {
-                panel.fire('update', [data]);
-            },
-
-
-            'add': function (data) {
-                panel.fire('add', [data]);
-            },
-
             'post': function (data) {
                 panel.fire('change');
             },
@@ -60,9 +50,9 @@ define('/Base', function (require, module) {
 
     panel.on('render', function (data) {
 
-        var id = data.id;
-        if (id) {
-            API.get(id);
+        
+        if (typeof data == 'string') { //传进来是一个 id
+            API.get(data);
         }
         else {
             Form.render(data);

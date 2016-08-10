@@ -146,6 +146,17 @@ module.exports = {
 
         try {
             var list = db.refer('saleId', saleId);
+            var Saled = require('./Saled').db;
+
+            list = list.map(function (license) {
+                var saleds = Saled.refer('licenseId', license.id);
+
+                return {
+                    'license': license,
+                    'saleds': saleds,
+                };
+            });
+
             res.success(list);
         }
         catch (ex) {

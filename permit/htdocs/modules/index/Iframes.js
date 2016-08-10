@@ -139,6 +139,19 @@ define('/Iframes', function (require, module, exports) {
 
 
     function refresh(item) {
+       
+        //传进来的是一个 {'sn': sn}
+        if (typeof item == 'object' && 'sn' in item) {
+            var sn = item.sn;
+            var iframe = $('iframe[data-sn="' + sn + '"]').get(0);
+            var url = Url.randomQueryString(iframe.src); //增加一个随机 key，以确保缓存失效
+            iframe.src = url;
+            return;
+        }
+
+
+
+
         var index = findIndexById(item);
         if (index < 0) {
             return;

@@ -8,19 +8,10 @@ KISP.launch(function (require, module) {
     var Bridge = require('Bridge');
 
     var Url = MiniQuery.require('Url');
-
-    var API = module.require('API');
-    var Form = module.require('Form');
     var Header = module.require('Header');
+    var Base = module.require('Base');
+    var Saled = module.require('Saled');
 
-
-    API.on('success', {
-        'get': function (data) {
-            Header.render(data);
-            Form.render(data);
-        },
-
-    });
 
 
     Header.on('submit', function () {
@@ -30,19 +21,31 @@ KISP.launch(function (require, module) {
         });
     });
 
+    Base.on({
+        'render': function (data) {
+            Header.render(data);
+        },
+    });
 
+    Saled.on({
+        'detail': function (id) {
+            Bridge.open({
+                name: '已售记录详情',
+                url: 'html/sale/saled/detail/index.html?id=' + id,
+            });
+        },
+    });
 
 
     var qs = Url.getQueryString(window);
 
-    //从内存中传完整数据过来的。
+    //从内存中传完整数据过来的。 针对导入生成的预览。
     var key = qs.key;
 
     if (key) {
         var item = Bridge.data(key);
-
         Header.render(item);
-        Form.render(item);
+        Base.render(item);
         return;
     }
 
@@ -54,6 +57,10 @@ KISP.launch(function (require, module) {
         return;
     }
 
-    API.get(id);
+
+
+    Base.render(id);
+    Saled.render(id);
+
 
 });

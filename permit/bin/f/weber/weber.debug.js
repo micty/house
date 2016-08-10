@@ -2,7 +2,7 @@
 * weber - web develop tool
 * name: default 
 * version: 1.3.0
-* build: 2016-07-21 16:40:20
+* build: 2016-08-10 09:45:42
 * files: 65(63)
 *    partial/default/begin.js
 *    core/Module.js
@@ -8960,6 +8960,7 @@ define('Watcher', function (require, module, exports) {
     var Path = require('Path');
     var Defaults = require('Defaults');
     var MD5 = require('MD5');
+    var Directory = require('Directory');
 
     var $ = require('$');
     
@@ -9014,6 +9015,11 @@ define('Watcher', function (require, module, exports) {
 
                     //没有绑定该类型的事件。
                     if (!events[event]) {
+                        return;
+                    }
+
+                    //是一个目录。
+                    if (Directory.check(file)) {
                         return;
                     }
 

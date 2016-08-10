@@ -100,45 +100,12 @@ define('/API', function (require, module, exports) {
     }
 
 
-    function remove(id) {
-
-        var api = new API('PlanLicense.remove');
-
-        api.on({
-            'request': function () {
-                loading = loading || KISP.create('Loading');
-                loading.show('删除中...');
-            },
-
-            'response': function () {
-                loading.hide();
-            },
-
-            'success': function (data, json, xhr) {
-                var list = data;
-                emitter.fire('success', 'remove', [list]);
-            },
-
-            'fail': function (code, msg, json, xhr) {
-                KISP.alert('删除数据失败: {0} ({1})', msg, code);
-            },
-            'error': function (code, msg, json, xhr) {
-                KISP.alert('删除数据错误: 网络繁忙，请稍候再试');
-            },
-        });
-
-        api.get({
-            'id': id,
-        });
-
-    }
 
 
 
     return {
         'get': get,
         'post': post,
-        'remove': remove,
         'on': emitter.on.bind(emitter),
     };
 

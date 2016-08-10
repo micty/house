@@ -29,13 +29,7 @@ define('/Router', function (require, module, exports) {
         var id = qs.id;
 
         if (id) { //说明是编辑的
-            var data = {
-                'id': id,
-            };
-
-            panel.fire('render', [data]);
-            panel.fire('edit', [data]);
-
+            panel.fire('edit', [id]);
             return;
         }
 
@@ -66,7 +60,6 @@ define('/Router', function (require, module, exports) {
             'type': type,
         };
 
-        panel.fire('render', [data]);
         panel.fire('new', [data]);
        
     });

@@ -40,7 +40,7 @@ define('/License/API', function (require, module, exports) {
                 ];
 
                 list.forEach(function (item) {
-                    groups[item.type].push(item);
+                    groups[item.license.type].push(item);
                 });
            
                 emitter.fire('success', 'get', groups);
