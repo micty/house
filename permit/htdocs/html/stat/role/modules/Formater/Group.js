@@ -12,8 +12,8 @@ define('/Formater/Group', function (require, module, exports) {
         { name: '已办规划许可', key: 'plan', },
         { name: '已办施工许可', key: 'construct', },
         { name: '已办预售许可', key: 'prepare', },
-        { name: '预售已售面积', key: 'saled-prepare', },
         { name: '已办现售备案', key: 'doing', },
+        { name: '预售已售面积', key: 'saled-prepare', },
         { name: '现售已售面积', key: 'saled-doing', },
     ];
 

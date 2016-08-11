@@ -73,7 +73,7 @@ KISP.launch(function (require, module) {
         role = item.key;
 
         Header.render();
-        Filter.render();
+        Filter.render(item);
         Title.render(item);
 
         API.post({ 'role': role, });

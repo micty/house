@@ -7,17 +7,17 @@ module.exports = {
 
 
 
-    filter: function (dates, date) {
-        if (!date) {
+    filter: function (dates, dt) {
+        if (!dt) {
             return false;
         }
 
         try {
-            date = $.Date.parse(date);
-            date = $.Date.format(date, 'yyyyMMdd');
-            date = Number(date);
+            dt = $.Date.parse(dt);
+            dt = $.Date.format(dt, 'yyyyMMdd');
+            dt = Number(dt);
 
-            if (date < dates.begin || date > dates.end) {
+            if (dt < dates.begin || dt > dates.end) {
                 return false;
             }
 
@@ -48,6 +48,12 @@ module.exports = {
             'end': endDate,
 
         } : null;
+    },
+
+    toNumber: function (datetime) {
+        var dt = datetime.split(' ')[0].split('-').join('');
+        dt = Number(dt);
+        return dt;
     },
 
 

@@ -23,8 +23,8 @@ define('/Filter', function (require, module) {
 
 
 
-    panel.on('render', function () {
-        Dates.render();
+    panel.on('render', function (data) {
+        Dates.render(data);
     });
 
 

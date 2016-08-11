@@ -2,14 +2,22 @@
 
     var $ = require('$');
     var KISP = require('KISP');
+    var Template = KISP.require('Template');
     var DateTimePicker = require('DateTimePicker');
 
 
     var panel = KISP.create('Panel', '#li-filter-dates');
-
+    var span = panel.$.find('span').get(0);
 
     var name$value = {};
     var toast = null;
+
+    var role$title = {
+        land: '土地竞得时间',
+        plan: '规划许可时间',
+        construct: '施工许可时间',
+        sale: '已售提交时间',
+    };
 
     panel.on('init', function () {
 
@@ -62,8 +70,15 @@
 
 
 
-    panel.on('render', function () {
+    panel.on('render', function (data) {
+        var title = role$title[data.key];
 
+     
+
+        Template.fill(span, {
+            'title': title,
+
+        });
 
     });
 
