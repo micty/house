@@ -2,6 +2,7 @@
 var $ = require('../lib/MiniQuery');
 var DataBase = require('../lib/DataBase');
 
+var All = require('./Stat/All');
 var Dates = require('./Stat/Dates');
 var Towns = require('./Stat/Towns');
 var Uses = require('./Stat/Uses');
@@ -9,15 +10,7 @@ var Cache = require('./Stat/Cache');
 
 
 //按区域进行分类，再按功能进行求和。
-function sum(list, prefix, keys) {
-
-    //重载sum(list, keys)
-    if (Array.isArray(prefix)) {
-        keys = prefix;
-        prefix = '';
-    }
-
-    prefix = prefix || '';
+function sum(list, keys) {
     keys = keys || Uses;
 
     //初始化
@@ -36,8 +29,7 @@ function sum(list, prefix, keys) {
         var key$value = item.item;
 
         keys.forEach(function (key) {
-            var skey = prefix + key;
-            group[key] += key$value[skey];
+            group[key] += key$value[key];
         });
     });
 
@@ -169,16 +161,14 @@ module.exports = {
         });
 
 
-        function sum(list, prefix) {
-            prefix = prefix || '';
+        function sum(list) {
             var stat = {};
 
             Uses.forEach(function (key) {
                 stat[key] = 0;
-                var skey = prefix + key;
 
                 list.forEach(function (item) {
-                    var value = Number(item[skey]) || 0;
+                    var value = Number(item[key]) || 0;
                     stat[key] += value;
                 });
             });
@@ -714,147 +704,21 @@ module.exports = {
             return;
         }
 
+
+        var stat = null;
         var dates = Dates.normalize(data);
 
-        //如果指定了开始时间或结束时间，
+        //如果指定了开始时间或结束时间，则以已售记录的提交时间为准。
         if (dates) {
-            //根据已售记录的提交时间找出相应的记录。
-            saleds = Saled.list(true, function (saled) {
-
-                var license = saled.refer.licenseId;
-                var sale = license.refer.saleId;
-                var plan = sale.refer.planId;
-                var land = plan.refer.landId.item;
-
-                if (land.diy || land.town != town) {
-                    return false;
-                }
-
-
-                var dt = Dates.toNumber(saled.item.datetime);
-                if (dt < dates.begin || dt > dates.end) {
-                    return false;
-                }
-
-
-                //顺便收集相应的记录。
-                saleLicenses.push(license.item);
-                plans.push(plan.item);
-                lands.push(land);
-
-                return true;
-
-            });
-
-            //以 id 作为主键关联整条记录。
-            var id$plan = DataBase.map(plans);
-
-            //过滤出符合条件的规划许可证。
-            planLicenses = PlanLicense.list(function (item) {
-                return !!id$plan[item.planId];
-            });
-
-            //过滤出符合条件的施工许可证。
-            constructs = Construct.list(true, function (item) {
-                return !!id$plan[item.refer.licenseId.item.planId];
-            });
+            stat = All.dates(dates);
+        }
+        else {
+            stat = All.roles();
         }
 
-        var roles = {
-            'land': function () {
-                var Land = require('./Land').db;
-
-                var list = Land.list(function (item) {
-                    return !item.diy;
-                });
-
-                list = list.map(function (item) {
-                    return {
-                        'item': item,
-                        'town': item.town,
-                    };
-                });
-                var stat = sum(list);
-                return { 'land': stat };
-            },
-
-            'plan': function () {
-                var PlanLicense = require('./PlanLicense').db;
-
-                var list = PlanLicense.list(true, function (item) {
-                    var land = item.refer.planId.refer.landId.item;
-                    return !land.diy;
-                });
-
-                list = list.map(function (item) {
-                    return {
-                        'item': item.item,
-                        'town': item.refer.planId.refer.landId.item.town,
-                    };
-                });
-
-                var stat = sum(list);
-                return { 'plan': stat };
-            },
-
-            'construct': function () {
-                var Construct = require('./Construct').db;
-         
-                var list = Construct.list(true, function (item) {
-                    var land = item.refer.licenseId.refer.planId.refer.landId.item;
-                    return !land.diy;
-                });
-
-                //注意，这里用的规划许可证的字段。
-                list = list.map(function (item) {
-                    var license = item.refer.licenseId;
-                    return {
-                        'item': license.item,
-                        'town': license.refer.planId.refer.landId.item.town,
-                    };
-                });
-
-                var stat = sum(list);
-                return { 'construct': stat };
-            },
-
-            'sale': function () {
-                var SaleLicense = require('./SaleLicense').db;
-                var list = SaleLicense.list(true);
-                var types = { 0: [], 1: [], };
-
-                list.forEach(function (item) {
-                    var land = item.refer.saleId.refer.planId.refer.landId.item;
-                    if (land.diy) {
-                        return;
-                    }
-
-                    var data = item.item;
-                    types[data.type].push({
-                        'item': data,
-                        'town': land.town,
-                    });
-                });
-
-                var stat = {};
-
-                stat['prepare'] = sum(types[0]);
-                stat['doing'] = sum(types[1]);
-                stat['saled-prepare'] = sum(types[0], 'saled-');
-                stat['saled-doing'] = sum(types[1], 'saled-');
-
-                return stat;
-            },
-        };
-
-
-        var stat = {};
-
-        Object.keys(roles).forEach(function (key) {
-            var fn = roles[key];
-            var obj = fn();
-
-            $.Object.extend(stat, obj);
+        Object.keys(stat).forEach(function (key) {
+            var list = stat[key];
+            stat[key] = sum(list);
         });
 
         Cache.set('all', data, stat);

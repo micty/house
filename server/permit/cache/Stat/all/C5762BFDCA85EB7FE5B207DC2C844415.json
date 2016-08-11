@@ -1,0 +1,240 @@
+{
+    "land": {
+        "南庄": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "石湾": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "张槎": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "祖庙": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        }
+    },
+    "plan": {
+        "南庄": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "石湾": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "张槎": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "祖庙": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        }
+    },
+    "construct": {
+        "南庄": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "石湾": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "张槎": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "祖庙": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        }
+    },
+    "prepare": {
+        "南庄": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "石湾": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "张槎": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "祖庙": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        }
+    },
+    "doing": {
+        "南庄": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "石湾": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "张槎": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "祖庙": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        }
+    },
+    "saled-prepare": {
+        "南庄": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "石湾": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "张槎": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "祖庙": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        }
+    },
+    "saled-doing": {
+        "南庄": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "石湾": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "张槎": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        },
+        "祖庙": {
+            "residenceSize": 0,
+            "commerceSize": 0,
+            "officeSize": 0,
+            "otherSize": 0,
+            "parkSize": 0,
+            "otherSize1": 0
+        }
+    }
+}

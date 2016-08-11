@@ -28,7 +28,7 @@ define('/API', function (require, module, exports) {
 
         api.on({
             'request': function () {
-                loading = loading || KISP.create('Loading', {
+                loading = loading || top.KISP.create('Loading', { //页面太高了，用top的
                     mask: 0,
                 });
                 loading.show('加载中...');
@@ -44,11 +44,11 @@ define('/API', function (require, module, exports) {
             },
 
             'fail': function (code, msg, json, xhr) {
-                KISP.alert('获取数据失败: {0} ({1})', msg, code);
+                top.KISP.alert('获取数据失败: {0} ({1})', msg, code);
             },
 
             'error': function (code, msg, json, xhr) {
-                KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
+                top.KISP.alert('获取数据错误: 网络繁忙，请稍候再试');
             },
         });
 
