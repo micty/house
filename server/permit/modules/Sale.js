@@ -263,7 +263,7 @@ module.exports = {
     /**
     * 批量导入。 
     */
-    import: function (req, res) {
+    'import': function (req, res) {
 
         //同一个土地证号就为一个组。
         var groups = req.body.data; 
@@ -285,11 +285,17 @@ module.exports = {
         var imported = {
             'sales': [],
             'licenses': [],
+            'licenseId$saled': {},
         };
 
         //把 items 合并到 list 中。
         function concat(list, items) {
-            list.push.apply(list, items);
+            if (Array.isArray(list)) {
+                list.push.apply(list, items);
+            }
+            else { //两个 obj 合并
+                $.Object.extend(list, items);
+            }
         }
 
 
@@ -306,7 +312,7 @@ module.exports = {
                 return;
             }
 
-            //根据土地 id 向上找到整条规划记录
+            //根据土地 id 向下找到整条规划记录
             var plan = landId$plan[landItem.id];
             if (!plan) {
                 fail.plans.push(land);  //这里压进的是 land，而不是 plan。
@@ -339,6 +345,7 @@ module.exports = {
             });
 
             concat(imported.licenses, licenses);
+            concat(imported.licenseId$saled, group.licenseId$saled);
         });
 
 

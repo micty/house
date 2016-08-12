@@ -19,6 +19,19 @@ define('/Form', function (require, module, exports) {
 
         var license = data.license;
         var saled = data.saled;
+       
+        //针对预览，消除 xxxDesc 绑定符。
+        [license, saled].forEach(function (obj) {
+            $.Object.each(obj, function (key) {
+                key = key + 'Desc';
+                if (key in obj) {
+                    return;
+                }
+
+                obj[key] = '';
+            });
+        });
+
 
         data = $Object.linear(data);
 

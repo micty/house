@@ -28,6 +28,7 @@ define('/Header', function (require, module, exports) {
 
 
     panel.on('render', function () {
+
         panel.$.toggleClass('noop', !User.is('plan'));
 
     });

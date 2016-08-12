@@ -30,10 +30,17 @@ define('/Saled', function (require, module) {
 
     });
 
-    panel.on('render', function (licenseId) {
+    panel.on('render', function (data) {
 
-        API.get(licenseId);
+        //传进来的是预览数据对象。
+        if (typeof data == 'object') {
+            List.render([data]);
+            return;
+        }
 
+        //传进来的是 licenseId
+        API.get(data);
+        
     });
 
 

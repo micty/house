@@ -16,7 +16,7 @@
         land: '土地竞得时间',
         plan: '规划许可时间',
         construct: '施工许可时间',
-        sale: '已售提交时间',
+        sale: '已售记录提交时间',
     };
 
     panel.on('init', function () {

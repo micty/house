@@ -47,6 +47,13 @@ Cache.prototype = {
 
     get: function (name, dbs, data) {
 
+
+
+
+        //test
+        return;
+
+
         var meta = this.meta;
         var md5 = getMD5(data, dbs);
         var file = meta.root + name + '/' + md5 + '.json';
@@ -58,6 +65,9 @@ Cache.prototype = {
     },
 
     set: function (name, dbs, data, json) {
+
+        return;
+
         var meta = this.meta;
         var md5 = getMD5(data, dbs);
         var file = meta.root + name + '/' + md5 + '.json';

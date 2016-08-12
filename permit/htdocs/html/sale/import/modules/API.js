@@ -214,17 +214,21 @@ define('/API', function (require, module, exports) {
 
     function format(type, list) {
 
+        //同一个土地证号就为一个组。
+
         var land$sale = {};
         var land$licenses = {};
+        var land$licenseId$saled = {};
+
 
         list.forEach(function (item) {
 
-            var land = item.land;
+            var land = item.land.license; //土地证号
 
             var sale = land$sale[land];
             if (!sale) {
                 land$sale[land] = {
-                    'project': item.project,
+                    'project': item.sale.project,
                 };
             }
 
@@ -232,13 +236,18 @@ define('/API', function (require, module, exports) {
             if (!licenses) {
                 licenses = land$licenses[land] = [];
             }
+        
 
-            var license = $.Object.remove(item, ['land', 'project']);
+            var license = item.license;
             license.type = type;
-
             licenses.push(license);
 
+            var licenseId$saled = land$licenseId$saled[land];
+            if (!licenseId$saled) {
+                licenseId$saled = land$licenseId$saled[land] = {};
+            }
 
+            licenseId$saled[license.id] = item.saled;
         });
 
 
@@ -248,6 +257,7 @@ define('/API', function (require, module, exports) {
                 'land': { 'license': land, },
                 'sale': land$sale[land],
                 'licenses': land$licenses[land],
+                'licenseId$saled': land$licenseId$saled[land],
             };
         });
 

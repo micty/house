@@ -119,6 +119,31 @@ var roles = {
 
 module.exports = {
 
+    stat: function (data) {
+        var Dates = require('./Dates');
+        var Sum = require('./Sum');
+        var dates = Dates.normalize(data);
+
+        var stat = null;
+
+
+        //如果指定了开始时间或结束时间，则以已售记录的提交时间为准。
+        if (dates) {
+            stat = module.exports.dates(dates);
+        }
+        else {
+            stat = module.exports.roles();
+        }
+
+        Object.keys(stat).forEach(function (key) {
+            var list = stat[key];
+            stat[key] = Sum.stat(list);
+        });
+
+        return stat;
+    },
+
+
     dates: function (dates) {
         var Construct = require('../Construct').db;
         var PlanLicense = require('../PlanLicense').db;
@@ -139,8 +164,7 @@ module.exports = {
                 return false;
             }
 
-            var dt = Dates.toNumber(saled.item.datetime);
-            if (dt < dates.begin || dt > dates.end) {
+            if (!Dates.filter(dates, saled.item.datetime)) {
                 return false;
             }
 

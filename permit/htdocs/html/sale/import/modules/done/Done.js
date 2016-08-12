@@ -52,9 +52,9 @@ define('/Done', function (require, module) {
             },
             'remove': function (item) {
 
-                var id = item.id;
+                var id = item.license.id;
                 list = list.filter(function (item) {
-                    return item.id != id;
+                    return item.license.id != id;
                 });
 
                 panel.render(list);

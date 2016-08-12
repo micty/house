@@ -22,7 +22,9 @@ define('/Todo/List', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var data = $.Object.extend({}, item, {
+                    var data = $Object.linear(item);
+
+                    data = $.Object.extend(data, {
                         'index': index,
                         'order': index + 1,
                     });
@@ -45,7 +47,7 @@ define('/Todo/List', function (require, module) {
             var item = list[index];
 
             if (cmd == 'remove') {
-                var msg = '确认要移除预售证号为【' + item.number + '】的记录吗';
+                var msg = '确认要移除预售证号为【' + item.license.number + '】的记录吗';
 
                 top.KISP.confirm(msg, function () {
                     panel.fire(cmd, [item, index]);

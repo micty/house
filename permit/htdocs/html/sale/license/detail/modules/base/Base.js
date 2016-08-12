@@ -30,10 +30,12 @@ define('/Base', function (require, module) {
         
         if (typeof data == 'object') { //说明是导入生成的预览
             Form.render(data);
+            panel.$.addClass('temp');
             panel.fire('render', [data]);
         }
         else { //传进来的是一个 id
             API.get(data);
+            panel.$.removeClass('temp');
         }
     });
 

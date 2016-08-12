@@ -29,9 +29,17 @@ KISP.launch(function (require, module) {
 
     Saled.on({
         'detail': function (id) {
+            var url = 'html/sale/saled/detail/index.html';
+            if (id) {
+                url += '?id' + id;
+            }
+            else {
+                url += '?key=' + key; //预览的
+            }
+
             Bridge.open({
                 name: '已售记录详情',
-                url: 'html/sale/saled/detail/index.html?id=' + id,
+                url: url,
             });
         },
     });
@@ -44,10 +52,16 @@ KISP.launch(function (require, module) {
 
     if (key) {
         var item = Bridge.data(key);
-        Header.render(item);
-        Base.render(item);
+        
+        Header.render(item.license);
+        Base.render(item.license);
+        Saled.render(item.saled);
+
         return;
     }
+
+
+
 
 
     //只传 id，需要读取后台。

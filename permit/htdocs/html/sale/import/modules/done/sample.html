@@ -12,15 +12,15 @@
     <tr data-index="{index}">
         <td>{order}</td>
         <td>
-            <a data-index="{index}" data-cmd="land.detail">{land}</a>
+            <a data-index="{index}" data-cmd="land.detail">{land.license}</a>
         </td>
-        <td>{project}</td>
+        <td>{sale.project}</td>
         <td>
-            <a data-index="{index}" data-cmd="license.detail">{number}</a>
+            <a data-index="{index}" data-cmd="license.detail">{license.number}</a>
         </td>
 
-        <td>{date}</td>
-        <td>{location}</td>
+        <td>{license.date}</td>
+        <td>{license.location}</td>
         <td class="operate">
             <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
         </td>

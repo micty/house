@@ -37,6 +37,18 @@ KISP.launch(function (require, module) {
 
 
     var qs = Url.getQueryString(window);
+
+    //导入所生成的预览
+    var key = qs.key;
+    if (key) { 
+        var item = Bridge.data(key);
+        Form.render(item);
+        Header.render();
+        $(document.body).addClass('temp');
+        return;
+    }
+
+
     var id = qs.id;
 
     if (!id) {

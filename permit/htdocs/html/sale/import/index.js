@@ -62,7 +62,7 @@ KISP.launch(function (require, module) {
             var key = $.String.random();
             Bridge.data(key, item);
             Bridge.open({
-                name: item.type == 0 ? '预售许可证详情' : '现售备案详情',
+                name: item.license.type == 0 ? '预售许可证详情' : '现售备案详情',
                 url: 'html/sale/license/detail/index.html?key=' + key,
             });
         },

@@ -8,6 +8,11 @@ module.exports = {
 
 
     filter: function (dates, dt) {
+
+        if (arguments.length != 2) {
+            throw new Error('必须指定 2 个参数。');
+        }
+
         if (!dt) {
             return false;
         }
@@ -48,12 +53,6 @@ module.exports = {
             'end': endDate,
 
         } : null;
-    },
-
-    toNumber: function (datetime) {
-        var dt = datetime.split(' ')[0].split('-').join('');
-        dt = Number(dt);
-        return dt;
     },
 
 

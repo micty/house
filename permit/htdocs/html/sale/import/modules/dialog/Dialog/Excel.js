@@ -132,12 +132,12 @@ define('/Dialog/Excel', function (require, module, exports) {
                 }
                
             });
-            
+
+            item = split(item);
 
             return item;
 
         });
-
 
 
         return {
@@ -147,6 +147,49 @@ define('/Dialog/Excel', function (require, module, exports) {
 
     }
 
+    //把一条记录的字段分开成预售和已售两部分。
+    function split(item) {
+
+        var land = {
+            'license': item.land,
+        };
+
+        var sale = {
+            'project': item.project,
+        };
+
+        var license = {};
+
+        var saled = {
+            'datetime': $.Date.format(new Date(), 'yyyy-MM-dd (待定)'),
+            'licenseId': item.id,
+        };
+
+        var prefix = 'saled-';
+        var begin = prefix.length;
+
+        $.Object.each(item, function (key, value) {
+
+            if (key.startsWith(prefix)) {
+                key = key.slice(begin); //去掉前缀。
+                saled[key] = value;
+                return;
+            }
+
+            if (key == 'land' || key == 'project') {
+                return;
+            }
+            
+            license[key] = value;
+        });
+
+        return {
+            'land': land,
+            'sale': sale,
+            'license': license,
+            'saled': saled,
+        };
+    }
 
 
     return {
