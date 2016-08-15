@@ -105,7 +105,9 @@ KISP.launch(function (require, module) {
     });
 
 
-    Tabs.render();
+    var qs = Url.getQueryString(window) || {};
+    var tab = Number(qs.tab) || 0;
+    Tabs.render(tab);
 
    
     
