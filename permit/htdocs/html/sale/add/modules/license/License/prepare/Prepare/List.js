@@ -6,6 +6,7 @@ define('/License/Prepare/List', function (require, module) {
 
     var Cell = require('Cell');
     var Size = require('Size');
+    var $Object = require('$Object');
 
     var panel = KISP.create('Panel', '#div-license-prepare-list');
     var list = [];
@@ -24,18 +25,27 @@ define('/License/Prepare/List', function (require, module) {
 
                 fn: function (item, index) {
 
-                    var data = $.Object.extend({}, item, {
+                    var license = item.license;
+                    var saleds = item.saleds;
+
+                    license.datetime = license.datetime.split(' ')[0];
+
+
+                    var data = $Object.linear(item);
+
+                    data = $.Object.extend(data, {
                         'index': index,
                         'no': index + 1,
-                    
-                        'datetime': item.datetime.split(' ')[0],
 
-                        'totalSize': Size.totalText(item),
-                        'totalCell': Cell.totalText(item),
+                        'totalSize': Size.totalText(license),
+                        'totalCell': Cell.totalText(license),
 
-                        'saled-totalSize': Size.totalText('saled-', item),
-                        'saled-totalCell': Cell.totalText('saled-', item),
+                        'saled-totalSize': Size.sumText(saleds),
+                        'saled-totalCell': Cell.sumText(saleds),
+
+                        'saled-count': saleds.length,
                     });
+
 
                     return {
                         'data': data,
@@ -52,7 +62,7 @@ define('/License/Prepare/List', function (require, module) {
             var btn = this;
             var index = btn.getAttribute('data-index');
             var cmd = btn.getAttribute('data-cmd');
-            var item = list[index];
+            var item = list[index].license;
 
             if (cmd == 'remove') {
                 var msg = '确认要删除【' + item.number + '】';

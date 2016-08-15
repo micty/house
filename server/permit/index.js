@@ -26,7 +26,7 @@ app.use(compression());     //使用 gzip 压缩。
 
 
 //在政府的某些机子里，3001、3030端口会给屏蔽了。 经过测试 8080 是可以的。
-var server = app.listen(8081, function () {
+var server = app.listen(8082, function () {
     var host = server.address().address;
     var port = server.address().port;
 

@@ -41,7 +41,8 @@ define('/License/API', function (require, module, exports) {
                 ];
 
                 list.forEach(function (item) {
-                    groups[item.type].push(item);
+                    var license = item.license;
+                    groups[license.type].push(item);
                 });
            
                 emitter.fire('success', 'get', groups);
