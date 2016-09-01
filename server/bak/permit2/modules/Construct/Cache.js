@@ -5,12 +5,6 @@ var dbs = [
     'Land',
     'Plan',
     'PlanLicense',
-];
-
-var dbs2 = [
-    'Land',
-    'Plan',
-    'PlanLicense',
     'Construct',
 ];
 
@@ -32,12 +26,12 @@ module.exports = {
 
 
     getPage: function (data) {
-        var json = cache.get('page', dbs2, data);
+        var json = cache.get('page', dbs, data);
         return json;
     },
 
     setPage: function (data, json) {
-        cache.set('page', dbs2, data, json);
+        cache.set('page', dbs, data, json);
     },
 
    

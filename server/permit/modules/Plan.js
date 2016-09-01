@@ -153,7 +153,7 @@ module.exports = {
 
             if (keyword) {
                 list = list.filter(function (item) {
-                    var land = item.refer.landId;
+                    var land = item.refer.landId.item;
                     return land.number.indexOf(keyword) >= 0;
                 });
             }

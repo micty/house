@@ -1,13 +1,8 @@
 ﻿
 var Cache = require('../../lib/Cache');
 
+
 var dbs = [
-    'Land',
-    'Plan',
-];
-
-
-var dbs2 = [
     'Land',
     'Plan',
     'Sale',
@@ -31,12 +26,12 @@ module.exports = {
 
 
     getPage: function (data) {
-        var json = cache.get('page', dbs2, data);
+        var json = cache.get('page', dbs, data);
         return json;
     },
 
     setPage: function (data, json) {
-        cache.set('page', dbs2, data, json);
+        cache.set('page', dbs, data, json);
     },
 
    
