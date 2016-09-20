@@ -29,14 +29,13 @@ define('/Header', function (require, module, exports) {
 
 
 
-    panel.on('render', function (data) {
+    panel.on('render', function (data, isTemp) {
       
+
         panel.fill({
             'text': type$text[data.type],
         });
-
-        //有 land 字段，说明是导入的数据，在内存中的，不是真实的后台记录。
-        var isTemp = 'land' in data;
+  
 
         panel.$.toggleClass('noop', isTemp || !User.is('sale'));
 

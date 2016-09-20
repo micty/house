@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../../f/font-awesome/css/font-awesome.debug.css?3F05" rel="stylesheet" />
+    <link href="../../../../f/datetimepicker/datetimepicker.mod.debug.css?5B60" rel="stylesheet" />
+    <link href="../../../../f/kisp/kisp.debug.css?2350" rel="stylesheet" />
+
+    <link href="../../../../style/css/style.less.global.css?4152" rel="stylesheet" />
+
+    <!--weber.css.begin-->
+    <link href="../../../../style/css/html.sale.license.add.index.css?AD42" rel="stylesheet" />
+    <link href="../../../../style/css/html.sale.license.add.modules.base.panel.css?A3AA" rel="stylesheet" />
+    <link href="../../../../style/css/html.sale.license.add.modules.saled.panel.css?95A9" rel="stylesheet" />
+    <!--weber.css.end-->
+    
+
+    <style>
+        .iframe {
+            min-height: 800px;
+        }
+    </style>
+
+</head>
+<body class="iframe">
+    <div id="div-header" class="header">
+    <!--
+        {text} - 发布
+    -->
+    </div>
+
+    <div class="container">
+        <div id="div-panel-base" class="panel-base" >
+           
+            <div id="div-base-header" class="header">
+                <div class="toolbar">
+                    <button data-cmd="edit"><i class="icon fa fa-check"></i>保存</button>
+                </div>
+            </div>
+        
+            <div id="div-base-form">
+                <!--
+                
+                <table class="form-table" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr class="title">
+                            <td colspan="4">基本信息</td>
+                        </tr>
+                        <tr>
+                            <td class="name">{number}证号</td>
+                            <td class="value"><input name="number" type="text" /></td>
+                            <td class="tip"><span></span></td>
+                            <td class="desc"><input name="numberDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">发证日期</td>
+                            <td class="value"><input name="date" type="text" data-type="date" /></td>
+                            <td class="tip">日期<span>(年月日)</span></td>
+                            <td class="desc"><input name="dateDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                
+                        <tr>
+                            <td class="name">公安门牌</td>
+                            <td class="value"><input name="location" type="text" /></td>
+                            <td class="tip"></td>
+                            <td class="desc"><input name="locationDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                
+                
+                        <tr class="title">
+                            <td colspan="4">{title}信息</td>
+                        </tr>
+                
+                
+                        <tr class="sub-title">
+                            <td colspan="4">{title}计容面积</td>
+                        </tr>
+                        <tr>
+                            <td class="name">住宅</td>
+                            <td class="value"><input name="residenceSize" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(平方米)</span></td>
+                            <td class="desc"><input name="residenceSizeDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">商业</td>
+                            <td class="value"><input name="commerceSize" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(平方米)</span></td>
+                            <td class="desc"><input name="commerceSizeDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                
+                        <tr>
+                            <td class="name">办公</td>
+                            <td class="value"><input name="officeSize" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(平方米)</span></td>
+                            <td class="desc"><input name="officeSizeDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">其它</td>
+                            <td class="value"><input name="otherSize" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(平方米)</span></td>
+                            <td class="desc"><input name="otherSizeDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">总面积</td>
+                            <td class="value total" id="totalSize0"></td>
+                            <td class="tip">计算<span>(平方米)</span></td>
+                            <td class="desc none"></td>
+                        </tr>
+                
+                        <tr class="sub-title">
+                            <td colspan="4">{title}不计容面积</td>
+                        </tr>
+                        <tr>
+                            <td class="name">地下车库</td>
+                            <td class="value"><input name="parkSize" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(平方米)</span></td>
+                            <td class="desc"><input name="parkSizeDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">其它</td>
+                            <td class="value"><input name="otherSize1" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(平方米)</span></td>
+                            <td class="desc"><input name="otherSize1Desc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">总面积</td>
+                            <td class="value total" id="totalSize1"></td>
+                            <td class="tip">计算<span>(平方米)</span></td>
+                            <td class="desc none"></td>
+                        </tr>
+                
+                        <tr class="sub-title">
+                            <td colspan="4">{title}总面积</td>
+                        </tr>
+                        <tr>
+                            <td class="name">总面积</td>
+                            <td class="value total" id="totalSize"></td>
+                            <td class="tip">计算<span>(平方米)</span></td>
+                            <td class="desc none"></td>
+                        </tr>
+                
+                
+                
+                
+                        <tr class="sub-title">
+                            <td colspan="4">{title}房屋单元数</td>
+                        </tr>
+                        <tr>
+                            <td class="name">住宅</td>
+                            <td class="value"><input name="residenceCell" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(间)</span></td>
+                            <td class="desc"><input name="residenceCellDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">商业</td>
+                            <td class="value"><input name="commerceCell" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(间)</span></td>
+                            <td class="desc"><input name="commerceCellDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">办公</td>
+                            <td class="value"><input name="officeCell" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(间)</span></td>
+                            <td class="desc"><input name="officeCellDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">其它</td>
+                            <td class="value"><input name="otherCell" type="text" data-type="number" /></td>
+                            <td class="tip">数字<span>(间)</span></td>
+                            <td class="desc"><input name="otherCellDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">总单元数</td>
+                            <td class="value total" id="totalCell"></td>
+                            <td class="tip">计算<span>(间)</span></td>
+                            <td class="desc none"></td>
+                        </tr>
+                
+                    </tbody>
+                </table>
+                -->
+            </div>
+        </div>
+        
+        <div id="div-panel-saled" class="panel-saled">
+        
+            <div id="div-saled-header" class="header noop">
+                <div class="toolbar">
+                    <button data-cmd="edit"><i class="icon fa fa-edit"></i>添加</button>
+                </div>
+                <div class="name">已售记录</div>
+            </div>
+        
+            <div id="div-saled-list" class="list">
+                <!--
+                <table class="list-table" cellspacing="0" cellpadding="0">
+                    <tr class="header">
+                        <th>序号</th>
+                        <th>提交时间</th>
+                        <th class="number">总面积</th>
+                        <th class="number">计容面积</th>
+                        <th class="number">不计容面积</th>
+                        <th class="number">房屋单元数</th>
+                        <th>操作</th>
+                    </tr>
+                
+                    #--row.begin--#
+                    <tr data-index="{index}">
+                        <td>{no}</td>
+                        <td>
+                            <a data-index="{index}" data-cmd="detail">{datetime}</a>
+                        </td>
+                        <td class="number">{totalSize}</td>
+                        <td class="number">{totalSize0}</td>
+                        <td class="number">{totalSize1}</td>
+                        <td class="number">{totalCell}</td>
+                        <td class="operate">
+                            <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                            <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                        </td>
+                    </tr>
+                    #--row.end--#
+                </table>
+                -->
+            </div>
+        
+        </div>
+    </div>
+
+    <script src="../../../../f/jquery/jquery-2.1.1.debug.js?7403"></script>
+    <script src="../../../../f/miniquery/miniquery.debug.js?DBB5"></script>
+    <script src="../../../../f/kisp/kisp.debug.js?9EFD"></script>
+    <script src="../../../../f/autoNumeric/autoNumeric.debug.js?6D5E"></script>
+    <script src="../../../../f/datetimepicker/datetimepicker.mod.debug.js?D5DE"></script>
+
+    <script src="../../../../config.js?A66A"></script>
+
+
+    <!--weber.js.begin-->
+    <script src="../../../../lib/API.js?99BE"></script>
+    <script src="../../../../lib/Array.js?21FD"></script>
+    <script src="../../../../lib/Bridge.js?0723"></script>
+    <script src="../../../../lib/Cell.js?6C78"></script>
+    <script src="../../../../lib/Chart.js?EEEA"></script>
+    <script src="../../../../lib/DateTimePicker.js?67CE"></script>
+    <script src="../../../../lib/LocalStorage.js?2879"></script>
+    <script src="../../../../lib/logs/Logs.js?0190"></script>
+    <script src="../../../../lib/Multitask.js?0A21"></script>
+    <script src="../../../../lib/NumberField.js?BBED"></script>
+    <script src="../../../../lib/Object.js?4396"></script>
+    <script src="../../../../lib/pager/Pager/Helper.js?F5D0"></script>
+    <script src="../../../../lib/pager/Pager.js?6E81"></script>
+    <script src="../../../../lib/SessionStorage.js?B24D"></script>
+    <script src="../../../../lib/Size.js?93B9"></script>
+    <script src="../../../../lib/StatUse.js?F74B"></script>
+    <script src="../../../../lib/Tabs.js?F57E"></script>
+    <script src="../../../../lib/Url.js?4345"></script>
+    <script src="../../../../lib/User.js?C967"></script>
+    <script src="modules/base/Base/API.js?49B5"></script>
+    <script src="modules/base/Base/Form.js?66DA"></script>
+    <script src="modules/base/Base/Header.js?7375"></script>
+    <script src="modules/base/Base.js?ACA1"></script>
+    <script src="modules/Header.js?E0E1"></script>
+    <script src="modules/Router.js?C588"></script>
+    <script src="modules/saled/Saled/API.js?30FC"></script>
+    <script src="modules/saled/Saled/Header.js?790A"></script>
+    <script src="modules/saled/Saled/List.js?716F"></script>
+    <script src="modules/saled/Saled.js?676F"></script>
+    <script src="index.js?5EEE"></script>
+    <!--weber.js.end-->
+
+
+
+
+
+</body>
+</html>

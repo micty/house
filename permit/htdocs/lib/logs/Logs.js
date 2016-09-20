@@ -23,7 +23,7 @@ define('Logs', function (require, module, exports) {
             ],
             cssClass: 'dialog-Logs',
             height: 500,
-            width: 800,
+            width: 900,
             autoClosed: true,
             'z-index': 9999,
         });

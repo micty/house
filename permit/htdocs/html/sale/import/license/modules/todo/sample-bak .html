@@ -1,0 +1,57 @@
+﻿<table class="list-table" cellspacing="0" cellpadding="0">
+    <tr class="header">
+        <th>序号</th>
+        <th>土地证号</th>
+        <th>项目名称</th>
+        <th>预售证号</th>
+        <th>发证日期</th>
+        <th>公安门牌</th>
+
+        <th>住宅</th>
+        <th>商业</th>
+        <th>办公</th>
+        <th>其它</th>
+
+        <th>地下车库</th>
+        <th>其它</th>
+
+        <th>住宅</th>
+        <th>商业</th>
+        <th>办公</th>
+        <th>其它</th>
+        <th>操作</th>
+    </tr>
+    #--row.begin--#
+    <tr data-index="{index}">
+        <td>{order}</td>
+        <td>
+            <a data-index="{index}" data-cmd="land.detail">{land.license}</a>
+        </td>
+        <td>{sale.project}</td>
+        <td>
+            <a data-index="{index}" data-cmd="license.detail">{license.number}</a>
+        </td>
+
+        <td>{license.date}</td>
+        <td>{license.location}</td>
+      
+        <td>{license.residenceSize}</td>
+        <td>{license.commerceSize}</td>
+        <td>{license.officeSize}</td>
+        <td>{license.otherSize}</td>
+
+        <td>{license.parkSize}</td>
+        <td>{license.otherSize1}</td>
+
+        <td>{license.residenceCell}</td>
+        <td>{license.commerceCell}</td>
+        <td>{license.officeCell}</td>
+        <td>{license.otherCell}</td>
+
+        <td class="operate">
+            <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+        </td>
+    </tr>
+    #--row.end--#
+
+</table>

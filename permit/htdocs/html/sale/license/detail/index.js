@@ -53,7 +53,7 @@ KISP.launch(function (require, module) {
     if (key) {
         var item = Bridge.data(key);
         
-        Header.render(item.license);
+        Header.render(item.license, true);
         Base.render(item.license);
         Saled.render(item.saled);
 

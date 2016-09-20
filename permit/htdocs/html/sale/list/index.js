@@ -18,9 +18,10 @@ KISP.launch(function (require, module) {
     var current = null;
 
 
-    Header.on('import', function () {
-        Bridge.open(['sale', 'import']);
+    Header.on('import', function (cmd) {
+        Bridge.open(['sale', 'import', cmd]);
     });
+
 
 
     Tabs.on('change', {

@@ -285,7 +285,6 @@ module.exports = {
         var imported = {
             'sales': [],
             'licenses': [],
-            'licenseId$saled': {},
         };
 
         //把 items 合并到 list 中。
@@ -345,7 +344,6 @@ module.exports = {
             });
 
             concat(imported.licenses, licenses);
-            concat(imported.licenseId$saled, group.licenseId$saled);
         });
 
 

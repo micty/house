@@ -167,7 +167,7 @@ module.exports = {
     /**
     * 批量导入。
     */
-    import: function (items) {
+    'import': function (items) {
 
         //以证号作为主键。
         var number$item = db.map('number');
@@ -182,6 +182,7 @@ module.exports = {
             //已存在相同证号的记录，则合并覆盖。
             if (oldItem) {
                 item = $.Object.extend({}, oldItem, item);
+                item.id = oldItem.id;   // id 用回旧的。
                 updates.push(item);
                 return;
             }
@@ -192,6 +193,7 @@ module.exports = {
             //更新注册
             number$item[number] = item;
         });
+
 
         if (adds.length > 0) {
             adds = db.add(adds);

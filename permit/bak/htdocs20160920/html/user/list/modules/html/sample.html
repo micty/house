@@ -1,0 +1,33 @@
+﻿<table class="list-table" cellspacing="0" cellpadding="0">
+    <tr class="header">
+        <th>序号</th>
+        <th>管理部门</th>
+        <th>登录账号</th>
+        <th>用户姓名</th>
+        <th>用户性别</th>
+        <th>联系电话</th>
+        <th>联系地址</th>
+        <th class="date">提交时间</th>
+        <th style="{operate-display}">操作</th>
+    </tr>
+
+    #--row.begin--#
+    <tr data-index="{index}">
+        <td>{no}</td>
+        <td>{department}</td>
+        <td>
+            {number}
+        </td>
+        <td>{name}</td>
+        <td>{sex}</td>
+        <td>{phone}</td>
+        <td>{address}</td>
+        <td class="date">{datetime}</td>
+        <td class="operate" style="{operate-display}">
+            <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+            <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+        </td>
+    </tr>
+    #--row.end--#
+
+</table>

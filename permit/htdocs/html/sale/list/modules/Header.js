@@ -13,11 +13,32 @@ define('/Header', function (require, module) {
     
     panel.on('init', function () {
 
-        panel.$.on('click', 'button', function () {
+        var ul = panel.$.find('ul');
 
-            panel.fire('import');
+        var mask = KISP.create('Mask', {
+            opacity: 0,
+            volatile: true,
+            eventName: 'click',
         });
- 
+
+        mask.on('hide', function () {
+            ul.slideUp('fast');
+        });
+
+        panel.$.on('click', 'button', function click() {
+            mask.show();
+            ul.slideDown('fast');
+        });
+        
+        ul.on('click', 'li', function () {
+
+            mask.hide();
+            ul.slideUp('fast');
+
+            var cmd = this.getAttribute('data-cmd');
+            panel.fire('import', [cmd]);
+        });
+
 
     });
 

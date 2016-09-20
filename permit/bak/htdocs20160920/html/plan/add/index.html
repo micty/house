@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css?3F05" rel="stylesheet" />
+    <link href="../../../f/datetimepicker/datetimepicker.mod.debug.css?5B60" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css?2350" rel="stylesheet" />
+
+    <link href="../../../style/css/style.less.global.css?4152" rel="stylesheet" />
+
+    <!--weber.css.begin-->
+    <link href="../../../style/css/html.plan.add.index.css?D41D" rel="stylesheet" />
+    <link href="../../../style/css/html.plan.add.modules.base.panel.css?EC28" rel="stylesheet" />
+    <link href="../../../style/css/html.plan.add.modules.license.panel.css?CE57" rel="stylesheet" />
+    <!--weber.css.end-->
+    
+</head>
+<body class="iframe">
+    <div class="header">
+        规划许可 - 发布
+    </div>
+
+    <div class="container">
+        <div id="div-panel-base" class="panel-base" >
+           
+            <div id="div-base-header" class="header">
+                <div class="toolbar">
+                    <button data-cmd="edit"><i class="icon fa fa-check"></i>保存</button>
+                </div>
+                <div class="name">基本信息</div>
+            </div>
+        
+            <div id="div-base-form">
+                <table class="form-table" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="name">土地挂牌编号</td>
+                            <td class="value"></td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none"></td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地区域</td>
+                            <td class="value"></td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none"></td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地座落</td>
+                            <td class="value"></td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none"></td>
+                        </tr>
+                        <tr>
+                            <td class="name">项目名称</td>
+                            <td class="value"></td>
+                            <td class="tip">*<span>必填</span></td>
+                            <td class="desc"></td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地规划用途</td>
+                            <td class="value"></td>
+                            <td class="tip"><span></span></td>
+                            <td class="desc"></td>
+                        </tr>
+                        <tr>
+                            <td class="name">建设单位</td>
+                            <td class="value"></td>
+                            <td class="tip"><span></span></td>
+                            <td class="desc"></td>
+                        </tr>
+                    </tbody>
+                </table>
+        
+                <!--
+                <table class="form-table" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="name">土地挂牌编号</td>
+                            <td class="value readonly">
+                                <a data-cmd="land.detail">{number}</a>
+                            </td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{numberDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地区域</td>
+                            <td class="value none">{town}</td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{townDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地座落</td>
+                            <td class="value readonly">{location}</td>
+                            <td class="tip"><span>只读</span></td>
+                            <td class="desc none">{locationDesc}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">项目名称</td>
+                            <td class="value"><input name="project" type="text" /></td>
+                            <td class="tip"><span>必填</span></td>
+                            <td class="desc"><input name="projectDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">土地规划用途</td>
+                            <td class="value"><input name="use" type="text" /></td>
+                            <td class="tip"><span></span></td>
+                            <td class="desc"><input name="useDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                        <tr>
+                            <td class="name">建设单位</td>
+                            <td class="value"><input name="developer" type="text" /></td>
+                            <td class="tip"><span></span></td>
+                            <td class="desc"><input name="developerDesc" type="text" placeholder="备注" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                -->
+            </div>
+        </div>
+        
+        <div id="div-panel-license" class="panel-license">
+        
+            <div id="div-license-header" class="header noop">
+                <div class="toolbar">
+                    <button data-cmd="edit"><i class="icon fa fa-edit"></i>添加</button>
+                </div>
+                <div class="name">规划许可证</div>
+            </div>
+        
+            <div id="div-license-list" class="list">
+                <!--
+                <table class="list-table" cellspacing="0" cellpadding="0">
+                    <tr class="header">
+                        <th>序号</th>
+                        <th>规划许可证号</th>
+                        <th class="date">许可时间</th>
+                        <th class="number">总面积</th>
+                        <th class="number">计容面积</th>
+                        <th class="number">不计容面积</th>
+                        <th class="date">提交时间</th>
+                        <th>操作</th>
+                    </tr>
+                
+                    #--row.begin--#
+                    <tr data-index="{index}">
+                        <td>{no}</td>
+                        <td>
+                            <a data-index="{index}" data-cmd="detail">{number}</a>
+                        </td>
+                        <td class="date">{date}</td>
+                        <td class="number">{totalSize}</td>
+                        <td class="number">{totalSize0}</td>
+                        <td class="number">{totalSize1}</td>
+                        <td class="date">{datetime}</td>
+                        <td class="operate">
+                            <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                            <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                        </td>
+                    </tr>
+                    #--row.end--#
+                </table>
+                -->
+            </div>
+        
+        </div>
+    </div>
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js?7403"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js?DBB5"></script>
+    <script src="../../../f/kisp/kisp.debug.js?9EFD"></script>
+    <script src="../../../f/autoNumeric/autoNumeric.debug.js?6D5E"></script>
+    <script src="../../../f/datetimepicker/datetimepicker.mod.debug.js?D5DE"></script>
+
+    <script src="../../../config.js?A66A"></script>
+
+    <!--weber.js.begin-->
+    <script src="../../../lib/API.js?99BE"></script>
+    <script src="../../../lib/Array.js?21FD"></script>
+    <script src="../../../lib/Bridge.js?0723"></script>
+    <script src="../../../lib/Cell.js?6C78"></script>
+    <script src="../../../lib/Chart.js?EEEA"></script>
+    <script src="../../../lib/DateTimePicker.js?67CE"></script>
+    <script src="../../../lib/LocalStorage.js?2879"></script>
+    <script src="../../../lib/logs/Logs.js?0190"></script>
+    <script src="../../../lib/Multitask.js?0A21"></script>
+    <script src="../../../lib/NumberField.js?BBED"></script>
+    <script src="../../../lib/Object.js?4396"></script>
+    <script src="../../../lib/pager/Pager/Helper.js?F5D0"></script>
+    <script src="../../../lib/pager/Pager.js?6E81"></script>
+    <script src="../../../lib/SessionStorage.js?B24D"></script>
+    <script src="../../../lib/Size.js?93B9"></script>
+    <script src="../../../lib/StatUse.js?F74B"></script>
+    <script src="../../../lib/Tabs.js?F57E"></script>
+    <script src="../../../lib/Url.js?4345"></script>
+    <script src="../../../lib/User.js?C967"></script>
+    <script src="modules/base/Base/API.js?26AF"></script>
+    <script src="modules/base/Base/Form.js?D627"></script>
+    <script src="modules/base/Base/Header.js?3DA4"></script>
+    <script src="modules/base/Base.js?4ED2"></script>
+    <script src="modules/license/License/API.js?E6EB"></script>
+    <script src="modules/license/License/Header.js?B5E3"></script>
+    <script src="modules/license/License/List.js?8598"></script>
+    <script src="modules/license/License.js?D937"></script>
+    <script src="index.js?3E70"></script>
+    <!--weber.js.end-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "3C58B1ED56CA",
+        "department": "土地",
+        "number": "land",
+        "password": "900150983cd24fb0d6963f7d28e17f72",
+        "name": "邓先生",
+        "sex": "男",
+        "phone": "",
+        "address": "",
+        "role": "land",
+        "datetime": "2016-07-05 10:02:14"
+    },
+    {
+        "id": "A60CA49D17F6",
+        "department": "规划",
+        "number": "plan",
+        "password": "900150983cd24fb0d6963f7d28e17f72",
+        "name": "邓先生",
+        "sex": "男",
+        "phone": "",
+        "address": "",
+        "role": "plan",
+        "datetime": "2016-06-05 17:34:56"
+    },
+    {
+        "id": "694E445302EA",
+        "department": "建设",
+        "number": "construct",
+        "password": "900150983cd24fb0d6963f7d28e17f72",
+        "name": "邓先生",
+        "sex": "男",
+        "phone": "",
+        "address": "",
+        "role": "construct",
+        "datetime": "2016-06-05 17:35:05"
+    },
+    {
+        "id": "100F323C1432",
+        "department": "销售",
+        "number": "sale",
+        "password": "900150983cd24fb0d6963f7d28e17f72",
+        "name": "邓先生",
+        "sex": "男",
+        "phone": "",
+        "address": "",
+        "role": "sale",
+        "datetime": "2016-06-05 17:35:21"
+    },
+    {
+        "id": "DF282E75D2BE",
+        "department": "销售",
+        "number": "zdb",
+        "password": "ef73781effc5774100f87fe2f437a435",
+        "name": "黄志锋",
+        "sex": "男",
+        "phone": "",
+        "address": "",
+        "role": "sale",
+        "datetime": "2016-08-04 16:31:24"
+    }
+]

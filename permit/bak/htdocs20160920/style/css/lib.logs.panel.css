@@ -1,0 +1,17 @@
+.dialog-Logs {
+    margin-top: initial !important;
+}
+.dialog-Logs h1 {
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #FF5722;
+    padding: 4px 0px;
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 2px;
+}
+.dialog-Logs textarea {
+    height: 380px;
+    width: 100%;
+    font-size: 14px;
+}

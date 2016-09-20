@@ -1,0 +1,22 @@
+.panel-base {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 10px;
+}
+.panel-base .header {
+    display: none;
+    background: yellow;
+    padding: 0px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: red;
+    height: 40px;
+    line-height: 40px;
+}
+.panel-base.temp .header {
+    display: block;
+}
+.panel-base .form-table .name {
+    width: 70px;
+}

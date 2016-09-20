@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../../f/font-awesome/css/font-awesome.debug.css?3F05" rel="stylesheet" />
+    <link href="../../../f/kisp/kisp.debug.css?2350" rel="stylesheet" />
+
+    <link href="../../../style/css/style.less.global.css?4152" rel="stylesheet" />
+
+    <!--weber.css.begin-->
+    <link href="../../../style/css/lib.logs.panel.css?94C7" rel="stylesheet" />
+    <link href="../../../style/css/lib.pager.pager.css?BAB9" rel="stylesheet" />
+    <link href="../../../style/css/html.construct.list.index.css?5392" rel="stylesheet" />
+    <!--weber.css.end-->
+    
+</head>
+<body class="iframe">
+    <div class="header">
+        建设许可 - 列表
+    </div>
+    <div class="container">
+        <ul id="ul-tabs" class="tabs">
+            <!--<li data-index="{index}">{name}</li>-->
+        </ul>
+        
+        <div id="div-panel-todo" class="panel" style="display: none;">
+            <div id="div-todo-list" class="list">
+                <!--
+                    <table class="list-table" cellspacing="0" cellpadding="0">
+                        <tr class="header">
+                            <th>序号</th>
+                            <th >土地挂牌编号</th>
+                            <th style="display: none;">土地区域</th>
+                            <th>规划项目名称</th>
+                            <th style="display: none;">规划建设单位</th>
+                            <th>规划许可证名称</th>
+                            <th>规划许可证号</th>
+                            <th class="date" title="规划许可时间">许可时间</th>
+                            <th style="{operate-display}">操作</th>
+                        </tr>
+                        #--row.begin--#
+                        <tr data-index="{index}">
+                            <td>{no}</td>
+                            <td >
+                                <a data-index="{index}" data-cmd="land.detail">{land.number}</a>
+                            </td>
+                            <td class="town" style="display: none;">{land.town}</td>
+                            <td>
+                                <a data-index="{index}" data-cmd="plan.detail">{plan.project}</a>
+                            </td>
+                            <td style="display: none;">{plan.developer}</td>
+                            <td>
+                                <a data-index="{index}" data-cmd="license.detail">{license.name}</a>
+                            </td>
+                            <td>
+                                <a data-index="{index}" data-cmd="license.detail">{license.number}</a>
+                            </td>
+                            <td class="date">{license.date}</td>
+                            <td class="operate" style="{operate-display}">
+                                <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                            </td>
+                        </tr>
+                        #--row.end--#
+                    </table>
+                 -->
+            </div>
+        
+            <div id="div-todo-pager" class="pager"></div>
+        </div>
+        <div id="div-panel-done" class="panel" style="display: none;">
+        
+            <div id="div-done-list" class="list">
+                <!--
+                    <table class="list-table" cellspacing="0" cellpadding="0">
+                        <tr class="header">
+                            <th>序号</th>
+                            <th>土地挂牌编号</th>
+                            <th>项目名称</th>
+                            <th style="display: none;">建设单位</th>
+                            <th>规划许可证名称</th>
+                            <th>规划许可证号</th>
+                            <th style="display: none;">规划许可时间</th>
+                            <th>施工许可证号</th>
+                            <th class="date">发证日期</th>
+                            <th style="{operate-display}">操作</th>
+                        </tr>
+                        #--row.begin--#
+                        <tr data-index="{index}">
+                            <td>{no}</td>
+                            <td>
+                                <a data-index="{index}" data-cmd="land.detail">{land.number}</a>
+                            </td>
+                            <td>
+                                <a data-index="{index}" data-cmd="plan.detail">{plan.project}</a>
+                            </td>
+                            <td style="display: none;">{plan.developer}</td>
+                            <td>
+                                <a data-index="{index}" data-cmd="license.detail">{license.name}</a>
+                            </td>
+                            <td>
+                                <a data-index="{index}" data-cmd="license.detail">{license.number}</a>
+                            </td>
+                            <td style="display: none;">{license.date}</td>
+                            <td>
+                                <a data-index="{index}" data-cmd="detail">{construct.number}</a>
+                            </td>
+                            <td class="date">{construct.date}</td>
+                            <td class="operate" style="{operate-display}">
+                                <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+                                <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+                            </td>
+                        </tr>
+                        #--row.end--#
+                    
+                    </table>
+                 -->
+            </div>
+        
+            <div id="div-done-pager" class="pager"></div>
+        
+        </div>
+    </div>
+
+    <!--Samples.Pager--!
+    
+    <ul id="{ul-id}" class="Pager footer">
+        <li class="page-count">
+            共<span> {count} </span>页 <span> {total} </span>条记录
+        </li>
+        <li class="buttons">
+            <ul>
+                <li class="LR-button {first-disabled-class}" data-button="previous" title="上一页">
+                    <i class="left-btn"></i>
+                </li>
+    
+                #--item.begin--#
+                <li class="item {active}" {data-no}>{no}</li>
+                #--item.end--#
+    
+                #--more.begin--#
+                <li class="item more"></li>
+                #--more.end--#
+    
+                <li class="LR-button {final-disabled-class}"  data-button="next" title="下一页">
+                    <i class="right-btn"></i>
+                </li>
+            </ul>
+        </li>
+    
+    
+        <li class="page-jump">
+            <span>到第</span>
+            <input id="{txt-id}" type="text" class="page-number" value="{toNo}" {txt-disabled}/><span>页</span>
+            <a href="javascript:" class="jump-button {jump-disabled-class}" data-button="to">确定</a>
+        </li>
+    </ul>
+    
+    --Samples.Pager-->
+    
+    
+
+    <script src="../../../f/jquery/jquery-2.1.1.debug.js?7403"></script>
+    <script src="../../../f/miniquery/miniquery.debug.js?DBB5"></script>
+    <script src="../../../f/kisp/kisp.debug.js?9EFD"></script>
+    <script src="../../../config.js?A66A"></script>
+
+
+    <!--weber.js.begin-->
+    <script src="../../../lib/API.js?99BE"></script>
+    <script src="../../../lib/Array.js?21FD"></script>
+    <script src="../../../lib/Bridge.js?0723"></script>
+    <script src="../../../lib/Cell.js?6C78"></script>
+    <script src="../../../lib/Chart.js?EEEA"></script>
+    <script src="../../../lib/DateTimePicker.js?67CE"></script>
+    <script src="../../../lib/LocalStorage.js?2879"></script>
+    <script src="../../../lib/logs/Logs.js?0190"></script>
+    <script src="../../../lib/Multitask.js?0A21"></script>
+    <script src="../../../lib/NumberField.js?BBED"></script>
+    <script src="../../../lib/Object.js?4396"></script>
+    <script src="../../../lib/pager/Pager/Helper.js?F5D0"></script>
+    <script src="../../../lib/pager/Pager.js?6E81"></script>
+    <script src="../../../lib/SessionStorage.js?B24D"></script>
+    <script src="../../../lib/Size.js?93B9"></script>
+    <script src="../../../lib/StatUse.js?F74B"></script>
+    <script src="../../../lib/Tabs.js?F57E"></script>
+    <script src="../../../lib/Url.js?4345"></script>
+    <script src="../../../lib/User.js?C967"></script>
+    <script src="modules/done/Done/API.js?57BE"></script>
+    <script src="modules/done/Done/List.js?CDDE"></script>
+    <script src="modules/done/Done/Pager.js?6B3B"></script>
+    <script src="modules/done/Done.js?805E"></script>
+    <script src="modules/Tabs.js?AC80"></script>
+    <script src="modules/todo/Todo/API.js?0B6C"></script>
+    <script src="modules/todo/Todo/List.js?C422"></script>
+    <script src="modules/todo/Todo/Pager.js?EE4B"></script>
+    <script src="modules/todo/Todo.js?5A63"></script>
+    <script src="index.js?1C7A"></script>
+    <!--weber.js.end-->
+
+
+
+
+</body>
+</html>

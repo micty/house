@@ -1,0 +1,28 @@
+﻿<table class="list-table" cellspacing="0" cellpadding="0">
+    <tr class="header">
+        <th>序号</th>
+        <th>土地挂牌编号</th>
+        <th class="town">土地区域</th>
+        <th>土地座落</th>
+        <th class="number">土地面积</th>
+        <th class="number">建筑面积</th>
+        <th class="date">提交时间</th>
+        <th style="{operate-display}">操作</th>
+    </tr>
+    #--row.begin--#
+    <tr data-index="{index}">
+        <td>{no}</td>
+        <td class="{diy-class}">
+            <a data-index="{index}" data-cmd="detail">{number}</a>
+        </td>
+        <td class="town">{town}</td>
+        <td>{location}</td>
+        <td class="number">{size}</td>
+        <td class="number">{totalSize}</td>
+        <td class="date">{datetime}</td>
+        <td class="operate" style="{operate-display}">
+            <span data-index="{index}" data-cmd="edit"><i class="fa fa-file-text-o"></i>编辑</span>
+        </td>
+    </tr>
+    #--row.end--#
+</table>

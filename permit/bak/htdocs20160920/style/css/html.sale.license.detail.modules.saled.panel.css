@@ -1,0 +1,57 @@
+.panel-saled {
+    margin: auto;
+    max-width: 900px;
+}
+.panel-saled > .header {
+    /*隐藏操作按钮*/
+}
+.panel-saled > .header.noop .toolbar {
+    display: none;
+}
+.panel-saled > .header .toolbar {
+    position: relative;
+}
+.panel-saled > .header .toolbar button {
+    position: absolute;
+    right: 7px;
+    top: 3px;
+    background: #8BC34A;
+    border: none;
+    color: #fff;
+    padding: 0px 15px 0px 15px;
+    font-size: 13px;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    height: 26px;
+    line-height: 26px;
+    /* font-weight: bold; */
+}
+.panel-saled > .header .toolbar button i {
+    margin-right: 4px;
+}
+.panel-saled > .header .name {
+    background: #4C4C4C;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 6px 5px;
+    font-size: 14px;
+    border-bottom: solid 1px #9E9E9E;
+}
+.panel-saled .list.nodata {
+    text-align: center;
+    background-color: #f5f5f5;
+    border-radius: 0px 0px 5px 5px;
+    line-height: 170px;
+    border: solid 1px #D4D5DE;
+    border-top: none;
+    color: #7c7c7d;
+    font-size: 16px;
+}
+.panel-saled .list.nodata:after {
+    content: '暂无数据';
+}
+.panel-saled .list.nodata table {
+    display: none;
+}

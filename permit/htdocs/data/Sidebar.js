@@ -80,8 +80,8 @@
     {
         icon: 'plus',
         name: '销售记录导入',
-        url: 'html/sale/import/index.html',
-        cmd: ['sale', 'import'],
+        url: 'html/sale/import/license/index.html',
+        cmd: ['sale', 'import', 'license'],
         display: false,
 
     },
