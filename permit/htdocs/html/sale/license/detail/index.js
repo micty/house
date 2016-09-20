@@ -31,7 +31,7 @@ KISP.launch(function (require, module) {
         'detail': function (id) {
             var url = 'html/sale/saled/detail/index.html';
             if (id) {
-                url += '?id' + id;
+                url += '?id=' + id;
             }
             else {
                 url += '?key=' + key; //预览的
