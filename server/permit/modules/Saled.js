@@ -8,8 +8,9 @@ var DataBase = require('../lib/DataBase');
 
 var db = new DataBase('Saled', [
     { name: 'datetime', },
-
+ 
     { name: 'licenseId', required: true, refer: 'SaleLicense', },
+    { name: 'date', type: 'number', },
 
     { name: 'residenceSize', type: 'number', },
     { name: 'residenceSizeDesc', },
@@ -151,10 +152,73 @@ module.exports = {
         }
     },
 
+    current: function (req, res) {
+
+        //重载 current(licenseId); 获取指定证号的当前值。
+        if (typeof req == 'string') {
+            var licenseId = req;
+
+            return;
+        }
+
+
+    },
+
     /**
     * 批量导入。
     */
-    import: function (items) {
+    'import': function (req, res) {
+    
+
+        //许可证
+        var licenses = require('./SaleLicense').list();
+        var number$license = DataBase.map(licenses, 'number');  //证号作主键关联整条许可证。
+        var id$license = DataBase.map(licenses, 'id');          //
+
+        var number$saleds = {};     //以证号作为主键关联一组已售记录。
+        var list = db.list();       //全部已售记录列表。
+
+        list.forEach(function (item) {
+            var license = id$license[item.licenseId];
+            var number = license.number;
+            var saleds = number$saleds[number];
+
+            if (!saleds) {
+                saleds = number$saleds[number] || [];
+            }
+
+            saleds.push(item);
+        });
+
+        //对证号分组内的已售记录按录入日期进行排序。
+        Object.keys(number$saleds).forEach(function (number) {
+            var saleds = number$saleds[number];
+            saleds.sort(function (a, b) {
+                return a.date - b.date > 0 ? -1 : 1; //按日期值倒序
+            });
+        });
+
+
+
+
+        //记录无法关联的预售许可证或现售备案。
+        var fail = {
+            'licenses': [],
+        };
+
+        var items = req.body.data;
+
+        items.forEach(function (item) {
+            var licence = number$license[item.number];
+            if (!licence) {
+                fail.licenses.push(item);
+                return;
+            }
+
+
+
+        });
+
 
     },
 };

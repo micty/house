@@ -1,0 +1,47 @@
+﻿<table class="list-table" cellspacing="0" cellpadding="0">
+    <tr class="header">
+        <th>序号</th>
+        <th>预售(备案)证号</th>
+        <th>录入日期</th>
+        <th>住宅</th>
+        <th>商业</th>
+        <th>办公</th>
+        <th>其它</th>
+
+        <th>地下车库</th>
+        <th>其它</th>
+
+        <th>住宅</th>
+        <th>商业</th>
+        <th>办公</th>
+        <th>其它</th>
+        <th>操作</th>
+    </tr>
+    #--row.begin--#
+    <tr data-index="{index}">
+        <td>{order}</td>
+        <td>
+            <a data-index="{index}" data-cmd="detail">{number}</a>
+        </td>
+        <td>{date}</td>
+
+        <td>{residenceSize}</td>
+        <td>{commerceSize}</td>
+        <td>{officeSize}</td>
+        <td>{otherSize}</td>
+
+        <td>{parkSize}</td>
+        <td>{otherSize1}</td>
+
+        <td>{residenceCell}</td>
+        <td>{commerceCell}</td>
+        <td>{officeCell}</td>
+        <td>{otherCell}</td>
+      
+        <td class="operate">
+            <span data-index="{index}" data-cmd="remove" class="remove"><i class="fa fa-remove"></i>删除</span>
+        </td>
+    </tr>
+    #--row.end--#
+
+</table>

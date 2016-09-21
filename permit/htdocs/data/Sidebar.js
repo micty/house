@@ -85,6 +85,13 @@
         display: false,
 
     },
+    {
+        icon: 'plus',
+        name: '已售记录导入',
+        url: 'html/sale/import/saled/index.html',
+        cmd: ['sale', 'import', 'saled'],
+        display: false,
+    },
 
 
     ////详情页
