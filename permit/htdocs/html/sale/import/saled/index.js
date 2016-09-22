@@ -16,8 +16,8 @@ KISP.launch(function (require, module) {
 
 
 
-    API.on('success', function (type) {
-        Bridge.refresh(['sale', 'list']);
+    API.on('success', function () {
+        Main.render([]);
     });
 
 

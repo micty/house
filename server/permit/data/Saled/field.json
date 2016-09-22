@@ -8,6 +8,9 @@
         "refer": "SaleLicense"
     },
     {
+        "name": "date"
+    },
+    {
         "name": "residenceSize",
         "type": "number"
     },

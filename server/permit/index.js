@@ -175,6 +175,7 @@ Router.use(app, {
     post: [
         'add',
         'update',
+        'import',
     ],
 });
 

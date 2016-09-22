@@ -10,7 +10,7 @@ var db = new DataBase('Saled', [
     { name: 'datetime', },
  
     { name: 'licenseId', required: true, refer: 'SaleLicense', },
-    { name: 'date', type: 'number', },
+    { name: 'date', },
 
     { name: 'residenceSize', type: 'number', },
     { name: 'residenceSizeDesc', },
@@ -152,28 +152,16 @@ module.exports = {
         }
     },
 
-    current: function (req, res) {
-
-        //重载 current(licenseId); 获取指定证号的当前值。
-        if (typeof req == 'string') {
-            var licenseId = req;
-
-            return;
-        }
-
-
-    },
 
     /**
     * 批量导入。
     */
     'import': function (req, res) {
-    
 
         //许可证
-        var licenses = require('./SaleLicense').list();
-        var number$license = DataBase.map(licenses, 'number');  //证号作主键关联整条许可证。
-        var id$license = DataBase.map(licenses, 'id');          //
+        var licenses = require('./SaleLicense').db.list();
+        var number$license = DataBase.map(licenses, 'number');  //以证号作为主键关联整条许可证。
+        var id$license = DataBase.map(licenses, 'id');          //以 id 作为主键关联整条许可证。
 
         var number$saleds = {};     //以证号作为主键关联一组已售记录。
         var list = db.list();       //全部已售记录列表。
@@ -181,44 +169,84 @@ module.exports = {
         list.forEach(function (item) {
             var license = id$license[item.licenseId];
             var number = license.number;
-            var saleds = number$saleds[number];
-
-            if (!saleds) {
-                saleds = number$saleds[number] || [];
-            }
-
+            var saleds = number$saleds[number] = number$saleds[number] || [];
             saleds.push(item);
         });
 
-        //对证号分组内的已售记录按录入日期进行排序。
-        Object.keys(number$saleds).forEach(function (number) {
-            var saleds = number$saleds[number];
-            saleds.sort(function (a, b) {
-                return a.date - b.date > 0 ? -1 : 1; //按日期值倒序
-            });
-        });
-
-
-
-
         //记录无法关联的预售许可证或现售备案。
         var fail = {
-            'licenses': [],
+            'nones': [],
+            'duplicates': [],
         };
 
+        var adds = [];
+        var updates = [];
         var items = req.body.data;
 
         items.forEach(function (item) {
-            var licence = number$license[item.number];
+            var number = item.number;
+            var licence = number$license[number];   //根据证号找到整条许可证。
+
+            //不存在该证号的许可证。
             if (!licence) {
-                fail.licenses.push(item);
+                fail.nones.push(item);
                 return;
             }
 
+            //建立起关联
+            item.licenseId = licence.id;
 
+            var saleds = number$saleds[number] || [];
+
+            var oldItem = saleds.find(function (oldItem) {
+                return item.date == oldItem.date;
+            });
+
+            //已存在相同录入日期的记录，则合并覆盖。
+            if (oldItem) {
+                item = $.Object.extend({}, oldItem, item);
+                item.id = oldItem.id; // id 用回旧的。
+                updates.push(item);
+                return;
+            }
+
+            //可能会被添加的。 要先判断是否重复添加。
+
+            oldItem = adds.find(function (oldItem) {
+                return item.number == oldItem.number &&
+                    item.date == oldItem.date;
+            });
+
+            //要添加的列表里已存在该项，说明导入列表里有相同的项。
+            if (oldItem) {
+                fail.duplicates.push(item);
+                return;
+            }
+
+            adds.push(item);
 
         });
 
+
+        if (adds.length > 0) {
+            adds = db.add(adds);
+        }
+
+        if (updates.length > 0) {
+            updates = db.update(updates);
+        }
+
+
+        res.send({
+            code: 0,
+            msg: '',
+            data: {
+                'nones': fail.nones,
+                'duplicates': fail.duplicates,
+                'adds': adds,
+                'updates': updates,
+            },
+        });
 
     },
 };

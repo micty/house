@@ -47,31 +47,92 @@ module.exports = {
 
         //如果指定了开始时间或结束时间，
         if (dates) {
-            //根据已售记录的提交时间找出相应的记录。
-            saleds = Saled.list(true, function (saled) {
+            //全部已售记录
+            saleds = Saled.list(true, function (item) {
+                var land = item.refer.licenseId.refer.saleId.refer.planId.refer.landId.item;
+                return !land.diy && land.town == town;
+            });
 
-                var license = saled.refer.licenseId;
+            var list = saleds.map(function (item) {
+                return item.item;
+            });
+
+            //许可证关联的一条有效的已售记录，即把一组已售记录合并成一条。
+            var licenseId$saled = DataBase.group(list, 'licenseId', function (licenseId, items) {
+                //按日期值升序。
+                items.sort(function (a, b) {
+                    return a.date > b.date ? 1 : -1;   
+                });
+
+                //没有指定开始时间，即只指定了结束时间
+                if (!dates.begin) {
+                    var item = items.find(function (item) {
+                        return item.date >= dates.end;
+                    });
+                    //如果没有找到，说明指定的结束时间超过了最后一条，则以最后一条为准。
+                    return item || items.slice(-1)[0];
+                }
+
+                //指定了开始时间的
+
+                var endItem = null;
+
+                if (dates.end) {
+                    endItem = items.find(function (item) {
+                        return item.date >= dates.end;
+                    });
+                }
+                endItem = endItem || items.slice(-1)[0];
+
+                var beginItem = items.reverse().find(function (item) {
+                    return item.date <= dates.begin;
+                });
+
+                if (!beginItem) {
+                    return endItem;
+                }
+
+                var item = {};
+                var isValid = false;
+
+                $.Object.each(endItem, function (key, value) {
+                    if (typeof value != 'number') {
+                        item[key] = value;
+                        return;
+                    }
+                
+                    value = value - beginItem[key];
+
+                    //只要有一个不为 0，则为合法记录，用于向上搜索其它角色的记录。
+                    if (value != 0) {
+                        isValid = true;
+                    }
+
+                    item[key] = value;
+                });
+
+                return isValid ? item : null;
+            });
+
+            saleds = saleds.filter(function (item) {
+                var saled = licenseId$saled[item.item.licenseId];
+                if (!saled || saled.id != item.item.id) {
+                    return false;
+                }
+
+                //顺便收集相应的记录。
+                var license = item.refer.licenseId;
                 var sale = license.refer.saleId;
                 var plan = sale.refer.planId;
                 var land = plan.refer.landId.item;
 
-                if (land.diy || land.town != town) {
-                    return false;
-                }
-
-                if (!Dates.filter(dates, saled.item.datetime)) {
-                    return false;
-                }
-
-
-                //顺便收集相应的记录。
                 saleLicenses.push(license.item);
                 plans.push(plan.item);
                 lands.push(land);
 
                 return true;
-
             });
+
 
             //以 id 作为主键关联整条记录。
             var id$plan = DataBase.map(plans);
@@ -115,6 +176,25 @@ module.exports = {
                 var land = item.refer.licenseId.refer.saleId.refer.planId.refer.landId.item;
                 return !land.diy && land.town == town;
             });
+
+            var list = saleds.map(function (item) {
+                return item.item;
+            });
+
+            var licenseId$saled = DataBase.group(list, 'licenseId', function (licenseId, items) {
+                items.sort(function (a, b) {
+                    return a.date > b.date ? -1 : 1;   //按日期值倒序。
+                });
+
+                return items[0];  //日期最大值的一条记录
+            });
+
+            saleds = saleds.filter(function (item) {
+                item = item.item;
+                var saled = licenseId$saled[item.licenseId];
+                return saled.id == item.id;
+            });
+
         }
 
         //这里统一加个 type 字段。
@@ -129,7 +209,6 @@ module.exports = {
         constructs = constructs.map(function (item) {
             return item.refer.licenseId.item;
         });
-
 
 
         var stat = {};

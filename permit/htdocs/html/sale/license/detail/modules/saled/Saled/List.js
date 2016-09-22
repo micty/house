@@ -27,6 +27,7 @@ define('/Saled/List', function (require, module) {
                     data = $.Object.extend(data, item, {
                         'index': index,
                         'no': index + 1,
+                        'date': item.date,
                         'datetime': item.datetime,
                     
                         'totalSize0': Size.totalText(item, 0),

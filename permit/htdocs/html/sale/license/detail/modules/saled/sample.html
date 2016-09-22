@@ -1,23 +1,25 @@
 ﻿<table class="list-table" cellspacing="0" cellpadding="0">
     <tr class="header">
         <th>序号</th>
-        <th>提交时间</th>
+        <th>截止日期</th>
         <th class="number">总面积</th>
         <th class="number">计容面积</th>
         <th class="number">不计容面积</th>
         <th class="number">房屋单元数</th>
+        <th>提交时间</th>
     </tr>
 
     #--row.begin--#
     <tr data-index="{index}">
         <td>{no}</td>
         <td>
-            <a data-index="{index}" data-cmd="detail">{datetime}</a>
+            <a data-index="{index}" data-cmd="detail">{date}</a>
         </td>
         <td class="number">{totalSize}</td>
         <td class="number">{totalSize0}</td>
         <td class="number">{totalSize1}</td>
         <td class="number">{totalCell}</td>
+        <td>{datetime}</td>
     </tr>
     #--row.end--#
 </table>

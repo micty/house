@@ -18,6 +18,32 @@ define('/API', function (require, module, exports) {
         '__________________________________________________________';
 
 
+    function getValues(list) {
+
+        list = list.map(function (item, index) {
+            return [
+               '',
+               item.number,
+               item.date,
+               item.residenceSize || 0,
+               item.commerceSize || 0,
+               item.officeSize || 0,
+               item.otherSize || 0,
+               item.parkSize || 0,
+               item.otherSize1 || 0,
+               item.residenceCell || 0,
+               item.commerceCell || 0,
+               item.officeCell || 0,
+               item.otherCell || 0,
+
+            ].join('    ');
+        });
+
+        return list;
+       
+
+    }
+
 
 
     function post(list) {
@@ -56,7 +82,40 @@ define('/API', function (require, module, exports) {
 
             var msgs = [msg];
 
-            debugger;
+            var nones = data.nones;
+            var adds = data.adds;
+            var updates = data.updates;
+            var duplicates = data.duplicates;
+
+            if (nones.length > 0) {
+                nones = getValues(nones);
+                msgs.push(LINE);
+                msgs.push('无法关联到预售许可证或现售备案的已售记录' + ' ' + nones.length + ' 条:');
+                msgs = msgs.concat(nones);
+            }
+
+            if (adds.length > 0) {
+                adds = getValues(adds);
+                msgs.push(LINE);
+                msgs.push('新增导入的已售记录' + ' ' + adds.length + ' 条:');
+                msgs = msgs.concat(adds);
+            }
+
+            if (updates.length > 0) {
+                updates = getValues(updates);
+                msgs.push(LINE);
+                msgs.push('覆盖导入的已售记录' + ' ' + updates.length + ' 条:');
+                msgs = msgs.concat(updates);
+            }
+
+
+            if (duplicates.length > 0) {
+                duplicates = getValues(duplicates);
+                msgs.push(LINE);
+                msgs.push('重复导入(已跳过)的已售记录' + ' ' + duplicates.length + ' 条:');
+                msgs = msgs.concat(duplicates);
+            }
+
 
             Logs.render(msgs, function () {
                 emitter.fire('success', []);
@@ -64,9 +123,7 @@ define('/API', function (require, module, exports) {
 
         });
 
-        debugger;
-        //api.post(list);
-
+        api.post(list);
 
     }
 

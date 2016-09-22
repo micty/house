@@ -202,10 +202,49 @@ DataBase.map = function (list, key) {
     return id$item;
 };
 
+/**
+* 按某个键的值进行分组。
+*/
+DataBase.group = function (list, key, fn) {
+    var value$items = {};
+
+    list.forEach(function (item) {
+        var value = item[key];
+        var items = value$items[value];
+        if (!items) {
+            items = value$items[value] = [];
+        }
+
+        items.push(item);
+    });
+
+    //指定了处理函数。
+    if (fn) {
+        var all = value$items;
+        value$items = {};
+
+        Object.keys(all).forEach(function (value) {
+            var items = all[value];
+            items = fn(value, items);
+
+            if (items === null) {
+                return;
+            }
+
+            value$items[value] = items;
+        });
+    }
+
+    return value$items;
+};
+
+
 DataBase.newId = function () {
     var id = $.String.random();
     return id;
 };
+
+
 
 
 //实例方法。
