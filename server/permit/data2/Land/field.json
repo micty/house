@@ -3,13 +3,44 @@
         "name": "datetime"
     },
     {
-        "name": "licenseId",
+        "name": "number",
         "required": true,
-        "refer": "SaleLicense"
+        "alias": "土地挂牌编号"
     },
     {
-        "name": "date",
+        "name": "numberDesc"
+    },
+    {
+        "name": "town"
+    },
+    {
+        "name": "townDesc"
+    },
+    {
+        "name": "location"
+    },
+    {
+        "name": "locationDesc"
+    },
+    {
+        "name": "size",
         "type": "number"
+    },
+    {
+        "name": "sizeDesc"
+    },
+    {
+        "name": "use"
+    },
+    {
+        "name": "useDesc"
+    },
+    {
+        "name": "diy",
+        "type": "boolean"
+    },
+    {
+        "name": "diyDesc"
     },
     {
         "name": "residenceSize",
@@ -54,31 +85,34 @@
         "name": "otherSize1Desc"
     },
     {
-        "name": "residenceCell",
+        "name": "winner"
+    },
+    {
+        "name": "winnerDesc"
+    },
+    {
+        "name": "price",
         "type": "number"
     },
     {
-        "name": "residenceCellDesc"
+        "name": "priceDesc"
     },
     {
-        "name": "commerceCell",
-        "type": "number"
+        "name": "date"
     },
     {
-        "name": "commerceCellDesc"
+        "name": "dateDesc"
     },
     {
-        "name": "officeCell",
-        "type": "number"
+        "name": "contract"
     },
     {
-        "name": "officeCellDesc"
+        "name": "contractDesc"
     },
     {
-        "name": "otherCell",
-        "type": "number"
+        "name": "license"
     },
     {
-        "name": "otherCellDesc"
+        "name": "licenseDesc"
     }
 ]

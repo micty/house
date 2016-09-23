@@ -42,7 +42,7 @@ module.exports = {
         var PlanLicense = require('../PlanLicense').db;
         var Sale = require('../Sale').db;
         var SaleLicense = require('../SaleLicense').db;
-        var Saled = require('../Saled').db;
+        var Saled = require('../Saled'); //这里没有 .db
 
         var Dates = require('./Dates');
 
@@ -51,31 +51,24 @@ module.exports = {
         //如果指定了开始时间或结束时间，
         if (dates) {
 
-            //根据已售记录的提交时间找出相应的记录。
-            saleds = Saled.list(true, function (saled) {
+            //指定日期区间的有效已售记录。
+            saleds = Saled.byDates(dates, true, function (item) {
+                var land = item.refer.licenseId.refer.saleId.refer.planId.refer.landId.item;
+                return !land.diy;
+            });
+
+            //收集相应的记录。
+            saleds.forEach(function (saled) {
                 var license = saled.refer.licenseId;
                 var sale = license.refer.saleId;
                 var plan = sale.refer.planId;
                 var land = plan.refer.landId.item;
-
-                if (land.diy) {
-                    return false;
-                }
-
-                if (!Dates.filter(dates, saled.item.datetime)) {
-                    return false;
-                }
-
-
-                //顺便收集相应的记录。
+              
                 saleLicenses.push(license);
                 plans.push(plan.item);
                 lands.push(land);
-
-                return true;
-
             });
-
+            
             //以 id 作为主键关联整条记录。
             var id$plan = DataBase.map(plans);
 
@@ -109,10 +102,11 @@ module.exports = {
                 return !land.diy;
             });
 
-            saleds = Saled.list(true, function (item) {
+            saleds = Saled.currents(true, function (item) {
                 var land = item.refer.licenseId.refer.saleId.refer.planId.refer.landId.item;
                 return !land.diy;
             });
+           
         }
 
 
@@ -152,7 +146,7 @@ module.exports = {
             return {
                 'item': item.item,
                 'town': license.refer.saleId.refer.planId.refer.landId.item.town,
-                'type': license.item.type,  //这里多个 type 字段。
+                'type': license.item.type,  //这里加个 type 字段。
             };
         });
 

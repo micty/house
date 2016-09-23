@@ -1,0 +1,30 @@
+[
+    {
+        "name": "datetime"
+    },
+    {
+        "name": "licenseId",
+        "required": true,
+        "unique": true,
+        "refer": "PlanLicense"
+    },
+    {
+        "name": "number"
+    },
+    {
+        "name": "numberDesc"
+    },
+    {
+        "name": "date"
+    },
+    {
+        "name": "dateDesc"
+    },
+    {
+        "name": "size",
+        "type": "number"
+    },
+    {
+        "name": "sizeDesc"
+    }
+]

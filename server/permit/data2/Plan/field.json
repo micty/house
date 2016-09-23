@@ -1,0 +1,29 @@
+[
+    {
+        "name": "datetime"
+    },
+    {
+        "name": "landId",
+        "required": true,
+        "unique": true,
+        "refer": "Land"
+    },
+    {
+        "name": "project"
+    },
+    {
+        "name": "projectDesc"
+    },
+    {
+        "name": "use"
+    },
+    {
+        "name": "useDesc"
+    },
+    {
+        "name": "developer"
+    },
+    {
+        "name": "developerDesc"
+    }
+]

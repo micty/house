@@ -19,6 +19,9 @@ define('/Form', function (require, module, exports) {
 
         var license = data.license;
         var saled = data.saled;
+
+        var date = saled.date.toString();
+        saled.date = date.slice(0, 4) + '-' + date.slice(4, 6) + '-' + date.slice(6);
        
         //针对预览，消除 xxxDesc 绑定符。
         [license, saled].forEach(function (obj) {
@@ -41,6 +44,7 @@ define('/Form', function (require, module, exports) {
             'totalSize1': Size.totalText(saled, 1),
             'totalSize': Size.totalText(saled),
             'totalCell': Cell.totalText(saled),
+     
         });
 
 

@@ -1,0 +1,3582 @@
+{
+    "CD56D1ADAB27": [
+        "2016-06-27 10:22:22",
+        "2897D8E7D0DB",
+        "4406012014112801",
+        "{construct.numberDesc}",
+        "2014-11-28",
+        "{construct.dateDesc}",
+        7932.28,
+        "{construct.sizeDesc}"
+    ],
+    "B6883C103867": [
+        "2016-06-27 10:45:31",
+        "A5F7394BE069",
+        "4406012014111407",
+        "{construct.numberDesc}",
+        "2014-11-14",
+        "{construct.dateDesc}",
+        11437.5,
+        "{construct.sizeDesc}"
+    ],
+    "DF05AAF2377C": [
+        "2016-06-27 10:51:33",
+        "2D4B0DD3F007",
+        "4406012014111405",
+        "{construct.numberDesc}",
+        "2014-11-14",
+        "{construct.dateDesc}",
+        14651.48,
+        "{construct.sizeDesc}"
+    ],
+    "8C64D4FF74F1": [
+        "2016-06-27 10:52:27",
+        "22543166A14B",
+        "4406012014090503",
+        "{construct.numberDesc}",
+        "2014-09-05",
+        "{construct.dateDesc}",
+        11578.36,
+        "{construct.sizeDesc}"
+    ],
+    "4A2B14C54135": [
+        "2016-06-27 10:54:35",
+        "9A3E26D2F43A",
+        "4406012014090501",
+        "{construct.numberDesc}",
+        "2014-09-05",
+        "{construct.dateDesc}",
+        18384.32,
+        "{construct.sizeDesc}"
+    ],
+    "0890D22CD639": [
+        "2016-06-27 11:02:29",
+        "1E31F7F42953",
+        "4406012015122502",
+        "{construct.numberDesc}",
+        "2015-12-25",
+        "{construct.dateDesc}",
+        123144.45,
+        "{construct.sizeDesc}"
+    ],
+    "C7BCA7C5BED8": [
+        "2016-06-27 11:03:15",
+        "7B987060C231",
+        "4406012015122501",
+        "{construct.numberDesc}",
+        "2015-12-25",
+        "{construct.dateDesc}",
+        103096.79,
+        "{construct.sizeDesc}"
+    ],
+    "C10C5E5E3367": [
+        "2016-06-27 11:04:04",
+        "797781382E8B",
+        "4406012016042801",
+        "{construct.numberDesc}",
+        "2016-04-28",
+        "{construct.dateDesc}",
+        4816.57,
+        "{construct.sizeDesc}"
+    ],
+    "151AF29DE096": [
+        "2016-06-27 11:07:05",
+        "F65C3BA03263",
+        "4406012014081501",
+        "{construct.numberDesc}",
+        "2014-08-15",
+        "{construct.dateDesc}",
+        29152.12,
+        "{construct.sizeDesc}"
+    ],
+    "0EBE7D79FE1E": [
+        "2016-06-27 11:07:49",
+        "9CBF590C1425",
+        "4406012014080601",
+        "{construct.numberDesc}",
+        "2014-08-05",
+        "{construct.dateDesc}",
+        69982.67,
+        "{construct.sizeDesc}"
+    ],
+    "3DEA87070E80": [
+        "2016-06-27 11:10:04",
+        "FA3082CAD6DE",
+        "4406012014090502",
+        "{construct.numberDesc}",
+        "2014-09-05",
+        "{construct.dateDesc}",
+        1055.15,
+        "{construct.sizeDesc}"
+    ],
+    "EB856059D840": [
+        "2016-06-27 11:17:43",
+        "62F2107D5AF2",
+        "4406012015021503",
+        "{construct.numberDesc}",
+        "2015-02-15",
+        "{construct.dateDesc}",
+        53430.19,
+        "{construct.sizeDesc}"
+    ],
+    "4D6749F50124": [
+        "2016-06-27 11:18:38",
+        "D13FA0CBAB8F",
+        "4406012015021504",
+        "{construct.numberDesc}",
+        "2015-02-15",
+        "{construct.dateDesc}",
+        2039,
+        "{construct.sizeDesc}"
+    ],
+    "CFFF73C13528": [
+        "2016-06-27 11:21:17",
+        "09A6BA047EC5",
+        "4406012015072810",
+        "{construct.numberDesc}",
+        "2015-07-28",
+        "{construct.dateDesc}",
+        6858.83,
+        "{construct.sizeDesc}"
+    ],
+    "5EB4A87F65E6": [
+        "2016-06-27 11:22:05",
+        "B7D4300DC302",
+        "4406012015072809",
+        "{construct.numberDesc}",
+        "2015-07-28",
+        "{construct.dateDesc}",
+        3292.65,
+        "{construct.sizeDesc}"
+    ],
+    "19E71E4A36C8": [
+        "2016-06-27 11:22:45",
+        "6530598EEFC6",
+        "4406012015072808",
+        "{construct.numberDesc}",
+        "2015-07-28",
+        "{construct.dateDesc}",
+        5490.39,
+        "{construct.sizeDesc}"
+    ],
+    "4698CE66F491": [
+        "2016-06-27 11:23:16",
+        "4CBB00E23A33",
+        "4406012015072807",
+        "{construct.numberDesc}",
+        "2015-07-28",
+        "{construct.dateDesc}",
+        54229.66,
+        "{construct.sizeDesc}"
+    ],
+    "13B2EEA35AB8": [
+        "2016-06-27 11:23:55",
+        "BB773B688832",
+        "4406012015072806",
+        "{construct.numberDesc}",
+        "2015-07-28",
+        "{construct.dateDesc}",
+        49534.39,
+        "{construct.sizeDesc}"
+    ],
+    "8FC65CB6447F": [
+        "2016-06-27 11:24:30",
+        "10AF636AC82B",
+        "4406012015072805",
+        "{construct.numberDesc}",
+        "2015-07-28",
+        "{construct.dateDesc}",
+        13676.89,
+        "{construct.sizeDesc}"
+    ],
+    "1D47D528D19E": [
+        "2016-06-27 11:31:14",
+        "F77A11589960",
+        "4406012015072803",
+        "{construct.numberDesc}",
+        "2015-07-28",
+        "{construct.dateDesc}",
+        46098.3,
+        "{construct.sizeDesc}"
+    ],
+    "3D7643559185": [
+        "2016-06-27 11:31:55",
+        "EFCEF6BBF907",
+        "4406012015072804",
+        "{construct.numberDesc}",
+        "2015-07-28",
+        "{construct.dateDesc}",
+        47507.3,
+        "{construct.sizeDesc}"
+    ],
+    "0C86E1D1E99B": [
+        "2016-06-27 11:33:09",
+        "E362FFA31E78",
+        "4406012015020601",
+        "{construct.numberDesc}",
+        "2015-02-06",
+        "{construct.dateDesc}",
+        177694.62,
+        "{construct.sizeDesc}"
+    ],
+    "C73BF150CB61": [
+        "2016-06-27 11:34:41",
+        "052BE1C9CAAA",
+        "4406012015050401",
+        "{construct.numberDesc}",
+        "2015-05-04",
+        "{construct.dateDesc}",
+        49507.32,
+        "{construct.sizeDesc}"
+    ],
+    "8747912AEC4A": [
+        "2016-06-27 11:37:29",
+        "4DC64A163F09",
+        "4406012015051201",
+        "{construct.numberDesc}",
+        "2015-05-12",
+        "{construct.dateDesc}",
+        36040.79,
+        "{construct.sizeDesc}"
+    ],
+    "2D63E69D07D8": [
+        "2016-06-27 14:27:39",
+        "CE25B59C49DC",
+        "4406012014080701",
+        "{construct.numberDesc}",
+        "2014-08-06",
+        "{construct.dateDesc}",
+        123033.17,
+        "{construct.sizeDesc}"
+    ],
+    "66FF5C0AADE1": [
+        "2016-06-27 14:29:07",
+        "320EDB91DFC6",
+        "4406012013111501",
+        "{construct.numberDesc}",
+        "2013-11-15",
+        "{construct.dateDesc}",
+        40600.32,
+        "{construct.sizeDesc}"
+    ],
+    "46CB3914ACC0": [
+        "2016-06-27 14:34:46",
+        "22D76B263A55",
+        "4406012015111301",
+        "{construct.numberDesc}",
+        "2015-11-13",
+        "{construct.dateDesc}",
+        128328,
+        "{construct.sizeDesc}"
+    ],
+    "509B16D96D3A": [
+        "2016-06-27 14:36:11",
+        "A99F0B14FAFA",
+        "4406012015043001",
+        "{construct.numberDesc}",
+        "2015-04-30",
+        "{construct.dateDesc}",
+        48547.98,
+        "{construct.sizeDesc}"
+    ],
+    "AD9CF0F3C1BC": [
+        "2016-06-27 14:36:37",
+        "CA84F8FCEDE5",
+        "4406012015110303",
+        "{construct.numberDesc}",
+        "2015-11-03",
+        "{construct.dateDesc}",
+        71511.87,
+        "{construct.sizeDesc}"
+    ],
+    "AB5E23D10DA8": [
+        "2016-06-27 14:36:50",
+        "FBB3C2405543",
+        "4406012015042803",
+        "{construct.numberDesc}",
+        "2015-04-28",
+        "{construct.dateDesc}",
+        101560.89,
+        "{construct.sizeDesc}"
+    ],
+    "C53931A41440": [
+        "2016-06-27 14:39:15",
+        "2793326599DC",
+        "4406012015020601",
+        "{construct.numberDesc}",
+        "2015-02-06",
+        "{construct.dateDesc}",
+        177694.62,
+        "{construct.sizeDesc}"
+    ],
+    "E51F7FC640BB": [
+        "2016-06-27 14:41:33",
+        "E2B0C37FC4F5",
+        "440601201205280201",
+        "{construct.numberDesc}",
+        "2012-05-28",
+        "{construct.dateDesc}",
+        88295.22,
+        "{construct.sizeDesc}"
+    ],
+    "000D26F060E1": [
+        "2016-06-27 14:44:35",
+        "0789184EA1F3",
+        "4406012014123002",
+        "{construct.numberDesc}",
+        "2014-12-30",
+        "{construct.dateDesc}",
+        163217.65,
+        "{construct.sizeDesc}"
+    ],
+    "677142AD517B": [
+        "2016-06-27 14:53:58",
+        "23E8EF653467",
+        "4406012015080602",
+        "{construct.numberDesc}",
+        "2015-06-24",
+        "{construct.dateDesc}",
+        108750.07,
+        "{construct.sizeDesc}"
+    ],
+    "86F86A185AC9": [
+        "2016-06-27 15:08:42",
+        "4E1BCC83B440",
+        "4406012014032702",
+        "{construct.numberDesc}",
+        "2013-06-05",
+        "{construct.dateDesc}",
+        71902.97,
+        "{construct.sizeDesc}"
+    ],
+    "76E8A89F8DB3": [
+        "2016-06-27 15:08:58",
+        "891E59243FCA",
+        "440601201207120101",
+        "{construct.numberDesc}",
+        "2012-07-12",
+        "{construct.dateDesc}",
+        127807.57,
+        "{construct.sizeDesc}"
+    ],
+    "2E62DE668C86": [
+        "2016-06-27 15:10:10",
+        "9064C2AF3E06",
+        "440601201205280101",
+        "{construct.numberDesc}",
+        "2012-05-28",
+        "{construct.dateDesc}",
+        91781.56,
+        "{construct.sizeDesc}"
+    ],
+    "7B1B7421F263": [
+        "2016-06-27 15:11:09",
+        "511DF8893E01",
+        "440601201206290101",
+        "{construct.numberDesc}",
+        "2012-06-29",
+        "{construct.dateDesc}",
+        20185.37,
+        "{construct.sizeDesc}"
+    ],
+    "9632595E26BB": [
+        "2016-06-27 15:11:48",
+        "1CA4D69C2735",
+        "4406012013120601",
+        "{construct.numberDesc}",
+        "2013-12-06",
+        "{construct.dateDesc}",
+        153523.17,
+        "{construct.sizeDesc}"
+    ],
+    "8193A0A13493": [
+        "2016-06-27 15:16:53",
+        "5C6983FAF4BC",
+        "4406012014061301",
+        "{construct.numberDesc}",
+        "2014-06-13",
+        "{construct.dateDesc}",
+        51140.04,
+        "{construct.sizeDesc}"
+    ],
+    "8D3167718E69": [
+        "2016-06-27 15:19:45",
+        "DB4E7CD811AB",
+        "4406012014123002",
+        "{construct.numberDesc}",
+        "2014-12-30",
+        "{construct.dateDesc}",
+        163217.65,
+        "{construct.sizeDesc}"
+    ],
+    "EC48C2A57E8E": [
+        "2016-06-27 15:21:50",
+        "BAB64B057EA2",
+        "440601201031102",
+        "{construct.numberDesc}",
+        "2013-03-11",
+        "{construct.dateDesc}",
+        6620.43,
+        "{construct.sizeDesc}"
+    ],
+    "ABE2585F9381": [
+        "2016-06-27 15:22:00",
+        "2E4E708092F2",
+        "4406012014040302",
+        "{construct.numberDesc}",
+        "2014-04-03",
+        "{construct.dateDesc}",
+        29917.43,
+        "{construct.sizeDesc}"
+    ],
+    "4CABA6C10EDB": [
+        "2016-06-27 15:22:51",
+        "5DD598B8FD30",
+        "4406012014040303",
+        "{construct.numberDesc}",
+        "2014-04-03",
+        "{construct.dateDesc}",
+        44302.28,
+        "{construct.sizeDesc}"
+    ],
+    "E85562319ABF": [
+        "2016-06-27 15:23:39",
+        "34AE7F476D87",
+        "4406012014040301",
+        "{construct.numberDesc}",
+        "2014-04-03",
+        "{construct.dateDesc}",
+        66835.07,
+        "{construct.sizeDesc}"
+    ],
+    "0768FE2B8F36": [
+        "2016-06-27 15:24:27",
+        "911B35C4E3E3",
+        "4406012014040304",
+        "{construct.numberDesc}",
+        "2014-04-03",
+        "{construct.dateDesc}",
+        69838,
+        "{construct.sizeDesc}"
+    ],
+    "96C76A66F657": [
+        "2016-06-27 15:25:41",
+        "02FF7E6B5FDA",
+        "4406012014040305",
+        "{construct.numberDesc}",
+        "2014-05-09",
+        "{construct.dateDesc}",
+        82057.96,
+        "{construct.sizeDesc}"
+    ],
+    "9F5B57A6F396": [
+        "2016-06-27 15:26:44",
+        "D90FD089663D",
+        "4406012013080601",
+        "{construct.numberDesc}",
+        "2013-08-06",
+        "{construct.dateDesc}",
+        36794.46,
+        "{construct.sizeDesc}"
+    ],
+    "AA06830B8596": [
+        "2016-06-27 15:35:33",
+        "6C578B31630C",
+        "4406012013090401",
+        "{construct.numberDesc}",
+        "2013-09-04",
+        "{construct.dateDesc}",
+        197865.65,
+        "{construct.sizeDesc}"
+    ],
+    "E924A43F339D": [
+        "2016-06-27 15:38:25",
+        "7BD125123836",
+        "4406012015031101",
+        "{construct.numberDesc}",
+        "2015-03-11",
+        "{construct.dateDesc}",
+        70000,
+        "{construct.sizeDesc}"
+    ],
+    "656F1DFAAC7B": [
+        "2016-06-27 15:41:16",
+        "77BBDC0F6C84",
+        " 4406012016010601 ",
+        "{construct.numberDesc}",
+        "2016-01-06",
+        "{construct.dateDesc}",
+        2521.22,
+        "{construct.sizeDesc}"
+    ],
+    "E955B4611382": [
+        "2016-06-27 15:43:55",
+        "6F1D4E8BBB17",
+        "4406012016012601 ",
+        "{construct.numberDesc}",
+        "2016-01-26",
+        "{construct.dateDesc}",
+        18993.68,
+        "{construct.sizeDesc}"
+    ],
+    "EB8E7448966D": [
+        "2016-06-27 15:44:39",
+        "016EB3AA7896",
+        "440601201108050101",
+        "{construct.numberDesc}",
+        "2011-08-05",
+        "{construct.dateDesc}",
+        127915.69,
+        "{construct.sizeDesc}"
+    ],
+    "BD571ED9B648": [
+        "2016-06-27 15:48:04",
+        "63D443E631AC",
+        "4406012014121001",
+        "{construct.numberDesc}",
+        "2014-12-11",
+        "{construct.dateDesc}",
+        123527.29,
+        "{construct.sizeDesc}"
+    ],
+    "224D731DD1AE": [
+        "2016-06-27 15:53:21",
+        "E83BFABE6C0F",
+        "440601201209280101",
+        "{construct.numberDesc}",
+        "2012-09-28",
+        "{construct.dateDesc}",
+        12812.71,
+        "{construct.sizeDesc}"
+    ],
+    "3D762AAC1688": [
+        "2016-06-27 15:54:26",
+        "F9F9191899FD",
+        "4406012014041402",
+        "{construct.numberDesc}",
+        "2014-04-14",
+        "{construct.dateDesc}",
+        72740.01,
+        "{construct.sizeDesc}"
+    ],
+    "D27B5C0BF4B4": [
+        "2016-06-27 15:55:03",
+        "C85B5C0C920D",
+        "4406012014041401",
+        "{construct.numberDesc}",
+        "2014-04-14",
+        "{construct.dateDesc}",
+        32574.55,
+        "{construct.sizeDesc}"
+    ],
+    "BE499AAD2422": [
+        "2016-06-27 15:55:47",
+        "22266EF61FAB",
+        "4406012014081502",
+        "{construct.numberDesc}",
+        "2014-08-15",
+        "{construct.dateDesc}",
+        1543.82,
+        "{construct.sizeDesc}"
+    ],
+    "FA5388191E70": [
+        "2016-06-27 15:56:12",
+        "D37BE75E0C9A",
+        "4406012012101202",
+        "{construct.numberDesc}",
+        "2012-10-22",
+        "{construct.dateDesc}",
+        14084.15,
+        "{construct.sizeDesc}"
+    ],
+    "E5A8F451E348": [
+        "2016-06-27 15:57:00",
+        "8CEA03BD4A07",
+        "4406012013110701",
+        "{construct.numberDesc}",
+        "2013-11-07",
+        "{construct.dateDesc}",
+        125272,
+        "{construct.sizeDesc}"
+    ],
+    "A9C02E908D09": [
+        "2016-06-27 15:57:37",
+        "2FCABA5AB254",
+        "4406012013093002",
+        "{construct.numberDesc}",
+        "2013-09-30",
+        "{construct.dateDesc}",
+        29872,
+        "{construct.sizeDesc}"
+    ],
+    "1D424F663C29": [
+        "2016-06-27 15:59:13",
+        "D8678CA57989",
+        "4406012013051501",
+        "{construct.numberDesc}",
+        "2013-05-15",
+        "{construct.dateDesc}",
+        14794.95,
+        "{construct.sizeDesc}"
+    ],
+    "60B054975F0A": [
+        "2016-06-27 16:01:40",
+        "79D857556E71",
+        "4406012013120502",
+        "{construct.numberDesc}",
+        "2013-12-05",
+        "{construct.dateDesc}",
+        67531.94,
+        "{construct.sizeDesc}"
+    ],
+    "BE983FD65D41": [
+        "2016-06-27 16:04:48",
+        "2D2C8F917A62",
+        "4406012015110302",
+        "{construct.numberDesc}",
+        "2015-11-03",
+        "{construct.dateDesc}",
+        102039.55,
+        "{construct.sizeDesc}"
+    ],
+    "B95232A50C6C": [
+        "2016-06-27 16:05:40",
+        "04047EAFD046",
+        "4406012014063001",
+        "{construct.numberDesc}",
+        "2014-06-25",
+        "{construct.dateDesc}",
+        55534.34,
+        "{construct.sizeDesc}"
+    ],
+    "B4FA5C411EF9": [
+        "2016-06-27 16:06:51",
+        "25446F6CEA70",
+        "4406012015110303",
+        "{construct.numberDesc}",
+        "2015-11-03",
+        "{construct.dateDesc}",
+        71511.87,
+        "{construct.sizeDesc}"
+    ],
+    "E2BDA4BA0A16": [
+        "2016-06-27 16:07:31",
+        "E71468189EF7",
+        "440601201206110101",
+        "{construct.numberDesc}",
+        "2012-06-11",
+        "{construct.dateDesc}",
+        33848.64,
+        "{construct.sizeDesc}"
+    ],
+    "ECE45B208860": [
+        "2016-06-27 16:11:46",
+        "B9329AC63094",
+        "440601201205160101",
+        "{construct.numberDesc}",
+        "2012-05-31",
+        "{construct.dateDesc}",
+        68824.51,
+        "{construct.sizeDesc}"
+    ],
+    "4A27A2053268": [
+        "2016-06-27 16:13:42",
+        "245A49042729",
+        "440601201012210101",
+        "{construct.numberDesc}",
+        "2011-03-07",
+        "{construct.dateDesc}",
+        122113.9,
+        "{construct.sizeDesc}"
+    ],
+    "446EE9CE0A55": [
+        "2016-06-27 16:14:54",
+        "847EEA58FE35",
+        "440601201104180101",
+        "{construct.numberDesc}",
+        "2011-04-18",
+        "{construct.dateDesc}",
+        141023,
+        "{construct.sizeDesc}"
+    ],
+    "F9E66A8140F3": [
+        "2016-06-27 16:16:06",
+        "E4DFCD9BCF6C",
+        "4406012013052001",
+        "{construct.numberDesc}",
+        "2013-05-16",
+        "{construct.dateDesc}",
+        85704.98,
+        "{construct.sizeDesc}"
+    ],
+    "D2662211AA24": [
+        "2016-06-27 16:17:27",
+        "3E766295BBEC",
+        "440601201209050101",
+        "{construct.numberDesc}",
+        "2012-09-05",
+        "{construct.dateDesc}",
+        190.46,
+        "{construct.sizeDesc}"
+    ],
+    "E55F0D2CFCC3": [
+        "2016-06-27 16:18:59",
+        "32053399A02B",
+        "440601201204130101",
+        "{construct.numberDesc}",
+        "2012-04-13",
+        "{construct.dateDesc}",
+        19329.68,
+        "{construct.sizeDesc}"
+    ],
+    "9DF8125DC51D": [
+        "2016-06-27 16:19:05",
+        "B5B8650ACD63",
+        "4406012014041403",
+        "{construct.numberDesc}",
+        "2014-04-14",
+        "{construct.dateDesc}",
+        45773.84,
+        "{construct.sizeDesc}"
+    ],
+    "D766EADAF5F7": [
+        "2016-06-27 16:19:30",
+        "2E40C4DE8BFB",
+        "440601201103070201",
+        "{construct.numberDesc}",
+        "2011-03-08",
+        "{construct.dateDesc}",
+        70978.36,
+        "{construct.sizeDesc}"
+    ],
+    "4B87CC5407A8": [
+        "2016-06-27 16:21:22",
+        "FAE45FC75CD4",
+        "440601201206290101",
+        "{construct.numberDesc}",
+        "2012-06-29",
+        "{construct.dateDesc}",
+        20185.37,
+        "{construct.sizeDesc}"
+    ],
+    "A9B8E3546B5B": [
+        "2016-06-27 16:21:54",
+        "BF406A7F41DB",
+        "44060120114-40101",
+        "{construct.numberDesc}",
+        "2011-04-14",
+        "{construct.dateDesc}",
+        75270.9,
+        "{construct.sizeDesc}"
+    ],
+    "DAEDC6980775": [
+        "2016-06-27 16:31:37",
+        "079B0A80B5C1",
+        "440601201109260101",
+        "{construct.numberDesc}",
+        "2011-12-26",
+        "{construct.dateDesc}",
+        87567.76,
+        "{construct.sizeDesc}"
+    ],
+    "2CFE9FF68FA4": [
+        "2016-06-27 16:51:04",
+        "EA0D86246B66",
+        "440601201202070101",
+        "{construct.numberDesc}",
+        "2012-02-07",
+        "{construct.dateDesc}",
+        92256.64,
+        "{construct.sizeDesc}"
+    ],
+    "80310E1E708C": [
+        "2016-06-27 17:03:24",
+        "3B68922D64DE",
+        "440601201205160101",
+        "{construct.numberDesc}",
+        "2012-05-31",
+        "{construct.dateDesc}",
+        68824.51,
+        "{construct.sizeDesc}"
+    ],
+    "486FB4215F32": [
+        "2016-06-27 17:08:09",
+        "9A336F3B8A50",
+        "440601201101130101",
+        "{construct.numberDesc}",
+        "2011-07-07",
+        "{construct.dateDesc}",
+        27492.56,
+        "{construct.sizeDesc}"
+    ],
+    "8676DB1B1934": [
+        "2016-06-27 17:08:50",
+        "D6EE2F824075",
+        "4406012014111404",
+        "{construct.numberDesc}",
+        "2014-11-14",
+        "{construct.dateDesc}",
+        16374.16,
+        "{construct.sizeDesc}"
+    ],
+    "5AE4E391C8BC": [
+        "2016-06-27 17:09:49",
+        "5E320F4379F9",
+        "4406012014112801",
+        "{construct.numberDesc}",
+        "2014-11-28",
+        "{construct.dateDesc}",
+        5949.21,
+        "{construct.sizeDesc}"
+    ],
+    "191F8A72D18F": [
+        "2016-06-27 17:09:57",
+        "EB48F1FC97E6",
+        "4406012013121907",
+        "{construct.numberDesc}",
+        "2013-12-27",
+        "{construct.dateDesc}",
+        73208,
+        "{construct.sizeDesc}"
+    ],
+    "C24718B510C2": [
+        "2016-06-27 17:11:12",
+        "A5755BDC6191",
+        "4406012014111406",
+        "{construct.numberDesc}",
+        "2014-11-14",
+        "{construct.dateDesc}",
+        32830.08,
+        "{construct.sizeDesc}"
+    ],
+    "68A6A9113435": [
+        "2016-06-27 17:14:08",
+        "2CF14C1E6005",
+        "440601201111210101",
+        "{construct.numberDesc}",
+        "2011-07-21",
+        "{construct.dateDesc}",
+        16297.25,
+        "{construct.sizeDesc}"
+    ],
+    "2165452D2EAF": [
+        "2016-06-27 17:17:19",
+        "1055F65A2192",
+        "4406012014090501",
+        "{construct.numberDesc}",
+        "2014-09-05",
+        "{construct.dateDesc}",
+        18384.32,
+        "{construct.sizeDesc}"
+    ],
+    "1888865BA95F": [
+        "2016-06-27 17:18:52",
+        "7B9775580BAA",
+        "4406012015043002",
+        "{construct.numberDesc}",
+        "2015-04-30",
+        "{construct.dateDesc}",
+        102731.91,
+        "{construct.sizeDesc}"
+    ],
+    "C8E204C1D545": [
+        "2016-06-27 17:19:25",
+        "773C292F74D5",
+        "4406042011030101",
+        "{construct.numberDesc}",
+        "2011-03-03",
+        "{construct.dateDesc}",
+        30961.66,
+        "{construct.sizeDesc}"
+    ],
+    "ADEA988636CA": [
+        "2016-06-27 17:34:16",
+        "FFC71962C0C3",
+        "4406012015043003",
+        "{construct.numberDesc}",
+        "2015-04-30",
+        "{construct.dateDesc}",
+        10222.41,
+        "{construct.sizeDesc}"
+    ],
+    "76E62ACB186E": [
+        "2016-06-27 17:37:21",
+        "53D148F51444",
+        "440601201212280101",
+        "{construct.numberDesc}",
+        "2012-12-28",
+        "{construct.dateDesc}",
+        75757.06,
+        "{construct.sizeDesc}"
+    ],
+    "2FCC7A348C0F": [
+        "2016-06-27 17:38:06",
+        "D90271F2DAC6",
+        "4406012015042802",
+        "{construct.numberDesc}",
+        "2015-04-28",
+        "{construct.dateDesc}",
+        55911.55,
+        "{construct.sizeDesc}"
+    ],
+    "112BFFEB3DC5": [
+        "2016-06-27 17:43:52",
+        "7CAC0E57664B",
+        "440601201301160101",
+        "{construct.numberDesc}",
+        "2013-01-16",
+        "{construct.dateDesc}",
+        51414.98,
+        "{construct.sizeDesc}"
+    ],
+    "A3E41FD02864": [
+        "2016-06-27 17:47:37",
+        "F4946EAA6E95",
+        "440601201208140101",
+        "{construct.numberDesc}",
+        "2012-08-14",
+        "{construct.dateDesc}",
+        61402.42,
+        "{construct.sizeDesc}"
+    ],
+    "D3FDBDBA6460": [
+        "2016-06-27 17:48:47",
+        "7A240C5F8F44",
+        "4406012013122403",
+        "{construct.numberDesc}",
+        "2013-12-24",
+        "{construct.dateDesc}",
+        48531.12,
+        "{construct.sizeDesc}"
+    ],
+    "7644BEB129F8": [
+        "2016-06-27 17:50:11",
+        "11AE2BF7D77E",
+        "440601201211120201",
+        "{construct.numberDesc}",
+        "2012-11-09",
+        "{construct.dateDesc}",
+        37554.56,
+        "{construct.sizeDesc}"
+    ],
+    "741C5AC5EAFD": [
+        "2016-06-27 17:50:39",
+        "947A32891CA7",
+        "4406012013122401",
+        "{construct.numberDesc}",
+        "2013-12-24",
+        "{construct.dateDesc}",
+        41385.51,
+        "{construct.sizeDesc}"
+    ],
+    "A65A9E2D48AA": [
+        "2016-06-27 17:51:59",
+        "D972513D99B5",
+        "4406012014080101",
+        "{construct.numberDesc}",
+        "2014-08-01",
+        "{construct.dateDesc}",
+        72283.3,
+        "{construct.sizeDesc}"
+    ],
+    "63F098AF16C7": [
+        "2016-06-27 17:52:01",
+        "C5A637AEB19D",
+        "4406012013122406",
+        "{construct.numberDesc}",
+        "2013-12-24",
+        "{construct.dateDesc}",
+        34157.37,
+        "{construct.sizeDesc}"
+    ],
+    "93C3B71BB507": [
+        "2016-06-27 17:53:04",
+        "047D638279F6",
+        "4406012013122405",
+        "{construct.numberDesc}",
+        "2013-12-24",
+        "{construct.dateDesc}",
+        34527.05,
+        "{construct.sizeDesc}"
+    ],
+    "7919A0D82CB7": [
+        "2016-06-27 17:53:48",
+        "DBBA077B860E",
+        "440601201210230101",
+        "{construct.numberDesc}",
+        "2012-10-23",
+        "{construct.dateDesc}",
+        99825.55,
+        "{construct.sizeDesc}"
+    ],
+    "79E78ECE7054": [
+        "2016-06-27 17:55:08",
+        "6003BEFE5287",
+        "4406012012101902",
+        "{construct.numberDesc}",
+        "2012-10-19",
+        "{construct.dateDesc}",
+        64359.46,
+        "{construct.sizeDesc}"
+    ],
+    "B6DA27940209": [
+        "2016-06-27 17:55:42",
+        "C8ACC8982F07",
+        "4406012013102503",
+        "{construct.numberDesc}",
+        "2013-12-24",
+        "{construct.dateDesc}",
+        207727.87,
+        "{construct.sizeDesc}"
+    ],
+    "663E6473BBAC": [
+        "2016-06-27 17:57:09",
+        "9D5260149D67",
+        "4406012013122404",
+        "{construct.numberDesc}",
+        "2013-12-24",
+        "{construct.dateDesc}",
+        28017.91,
+        "{construct.sizeDesc}"
+    ],
+    "93D4017D9862": [
+        "2016-06-27 17:58:42",
+        "418571FC6723",
+        "4406012013031101",
+        "{construct.numberDesc}",
+        "2013-03-11",
+        "{construct.dateDesc}",
+        41577.87,
+        "{construct.sizeDesc}"
+    ],
+    "B7691E08CBEB": [
+        "2016-06-27 18:00:03",
+        "D894B4BA2748",
+        "4406012014052201",
+        "{construct.numberDesc}",
+        "2014-05-22",
+        "{construct.dateDesc}",
+        52212.01,
+        "{construct.sizeDesc}"
+    ],
+    "E9C5F0E46E8D": [
+        "2016-06-27 18:01:37",
+        "D6EAADE49946",
+        "4406012014071001",
+        "{construct.numberDesc}",
+        "2014-04-07",
+        "{construct.dateDesc}",
+        73388.92,
+        "{construct.sizeDesc}"
+    ],
+    "FF148F5BC3E2": [
+        "2016-06-27 18:03:03",
+        "CC08F4F849E7",
+        "4406012016042904",
+        "{construct.numberDesc}",
+        "2016-04-29",
+        "{construct.dateDesc}",
+        63404.2,
+        "{construct.sizeDesc}"
+    ],
+    "4C865FF602F1": [
+        "2016-06-27 18:03:09",
+        "EB49B291833D",
+        "4406012014052601",
+        "{construct.numberDesc}",
+        "2014-05-26",
+        "{construct.dateDesc}",
+        40967.35,
+        "{construct.sizeDesc}"
+    ],
+    "365092A2D637": [
+        "2016-06-27 18:04:01",
+        "E14A9FDFE6E1",
+        "4406012016042905",
+        "{construct.numberDesc}",
+        "2016-04-29",
+        "{construct.dateDesc}",
+        80257.45,
+        "{construct.sizeDesc}"
+    ],
+    "F151DFFCDBC7": [
+        "2016-06-27 18:05:04",
+        "AB0C99E25BCC",
+        "4406012016042906",
+        "{construct.numberDesc}",
+        "2016-04-29",
+        "{construct.dateDesc}",
+        69981.84,
+        "{construct.sizeDesc}"
+    ],
+    "19EBC9514BD1": [
+        "2016-06-27 18:05:54",
+        "A79CF2C821B3",
+        "4406012016042907",
+        "{construct.numberDesc}",
+        "2016-04-29",
+        "{construct.dateDesc}",
+        105686.94,
+        "{construct.sizeDesc}"
+    ],
+    "18F2E6927452": [
+        "2016-06-27 18:07:12",
+        "9CAF3A70ED1C",
+        "4406012012102501",
+        "{construct.numberDesc}",
+        "2010-10-25",
+        "{construct.dateDesc}",
+        53688.2,
+        "{construct.sizeDesc}"
+    ],
+    "FFB0028470C5": [
+        "2016-06-27 18:12:00",
+        "223EB1C0A701",
+        "4406012014092904",
+        "{construct.numberDesc}",
+        "2014-09-29",
+        "{construct.dateDesc}",
+        42264.21,
+        "{construct.sizeDesc}"
+    ],
+    "BF3AB7B0FA8D": [
+        "2016-06-27 18:15:56",
+        "5D3297B8B377",
+        "4406012015123004",
+        "{construct.numberDesc}",
+        "2015-12-30",
+        "{construct.dateDesc}",
+        46431.59,
+        "{construct.sizeDesc}"
+    ],
+    "77AC3614CB3B": [
+        "2016-06-27 18:18:17",
+        "2704EBB220A1",
+        "4406012015123005",
+        "{construct.numberDesc}",
+        "2015-12-30",
+        "{construct.dateDesc}",
+        35340.81,
+        "{construct.sizeDesc}"
+    ],
+    "C64D469F5B2D": [
+        "2016-06-27 18:19:41",
+        "919FF619100A",
+        "4406012014082803",
+        "{construct.numberDesc}",
+        "2014-04-10",
+        "{construct.dateDesc}",
+        195214.75,
+        "{construct.sizeDesc}"
+    ],
+    "FB6F1CE73AD7": [
+        "2016-06-27 18:21:30",
+        "CF9629AD1EDE",
+        "4406012014082802",
+        "{construct.numberDesc}",
+        "2014-04-10",
+        "{construct.dateDesc}",
+        170910.06,
+        "{construct.sizeDesc}"
+    ],
+    "8258A4C18726": [
+        "2016-06-27 18:22:47",
+        "A791B3AA49E0",
+        "440601201212190101",
+        "{construct.numberDesc}",
+        "2012-12-19",
+        "{construct.dateDesc}",
+        36321.32,
+        "{construct.sizeDesc}"
+    ],
+    "3C66C360F52A": [
+        "2016-06-27 18:23:51",
+        "59B53A64C148",
+        "440601201211230101",
+        "{construct.numberDesc}",
+        "2012-11-09",
+        "{construct.dateDesc}",
+        84313.29,
+        "{construct.sizeDesc}"
+    ],
+    "833B25F16E8F": [
+        "2016-06-27 18:24:15",
+        "AFECE968F5B8",
+        "4406012013082701",
+        "{construct.numberDesc}",
+        "2013-08-27",
+        "{construct.dateDesc}",
+        205433,
+        "{construct.sizeDesc}"
+    ],
+    "5D7650C30364": [
+        "2016-06-27 18:25:38",
+        "ED64F2FF0789",
+        "4406012013031801",
+        "{construct.numberDesc}",
+        "2013-03-18",
+        "{construct.dateDesc}",
+        17745.81,
+        "{construct.sizeDesc}"
+    ],
+    "1C5F41104CA0": [
+        "2016-06-27 18:25:44",
+        "89F58B5CC0F3",
+        "4406012013082701",
+        "{construct.numberDesc}",
+        "2013-08-27",
+        "{construct.dateDesc}",
+        205433,
+        "{construct.sizeDesc}"
+    ],
+    "23B63F0B249C": [
+        "2016-06-27 18:27:22",
+        "6771289E5610",
+        "4406012013082701",
+        "{construct.numberDesc}",
+        "2013-08-27",
+        "{construct.dateDesc}",
+        205433,
+        "{construct.sizeDesc}"
+    ],
+    "85DC83DC0C5F": [
+        "2016-06-27 18:30:02",
+        "A5DDFB1092FF",
+        "4406012013041004",
+        "{construct.numberDesc}",
+        "2013-04-10",
+        "{construct.dateDesc}",
+        33333.81,
+        "{construct.sizeDesc}"
+    ],
+    "75AF67DF0D24": [
+        "2016-06-27 18:32:20",
+        "C3CD751DA60A",
+        "4406012013041601",
+        "{construct.numberDesc}",
+        "2013-04-15",
+        "{construct.dateDesc}",
+        39376.26,
+        "{construct.sizeDesc}"
+    ],
+    "02B789D22B43": [
+        "2016-06-27 18:32:35",
+        "03D371D28739",
+        "4406012013030601",
+        "{construct.numberDesc}",
+        "2013-03-06",
+        "{construct.dateDesc}",
+        2733.5,
+        "{construct.sizeDesc}"
+    ],
+    "5835E2EE21CF": [
+        "2016-06-27 18:33:44",
+        "83F12450CF71",
+        "4406012014072501",
+        "{construct.numberDesc}",
+        "2014-07-25",
+        "{construct.dateDesc}",
+        55866.21,
+        "{construct.sizeDesc}"
+    ],
+    "561493490CCA": [
+        "2016-06-27 18:33:55",
+        "129CC1AFC8C6",
+        "4406012012112901",
+        "{construct.numberDesc}",
+        "2012-11-29",
+        "{construct.dateDesc}",
+        25332.82,
+        "{construct.sizeDesc}"
+    ],
+    "402A2D3AFBD2": [
+        "2016-06-27 18:35:06",
+        "7404A2036202",
+        "4406012012112902",
+        "{construct.numberDesc}",
+        "2012-11-29",
+        "{construct.dateDesc}",
+        54954.84,
+        "{construct.sizeDesc}"
+    ],
+    "F813CB4A41FA": [
+        "2016-06-27 18:35:41",
+        "399D12372707",
+        "4406012014092902",
+        "{construct.numberDesc}",
+        "2014-09-29",
+        "{construct.dateDesc}",
+        56071.46,
+        "{construct.sizeDesc}"
+    ],
+    "53F03FFB5781": [
+        "2016-06-27 18:36:52",
+        "963B5601026C",
+        "4406012014092903",
+        "{construct.numberDesc}",
+        "2014-09-29",
+        "{construct.dateDesc}",
+        18600.67,
+        "{construct.sizeDesc}"
+    ],
+    "11DC7F6FD54A": [
+        "2016-06-27 18:37:55",
+        "2FE8B2E9EA0D",
+        "4406012014112703",
+        "{construct.numberDesc}",
+        "2014-11-27",
+        "{construct.dateDesc}",
+        19183.52,
+        "{construct.sizeDesc}"
+    ],
+    "F6368AADF550": [
+        "2016-06-27 18:38:45",
+        "DB3D6C97FC03",
+        "4406012014112702",
+        "{construct.numberDesc}",
+        "2014-11-27",
+        "{construct.dateDesc}",
+        19515.45,
+        "{construct.sizeDesc}"
+    ],
+    "E8B9F752CD66": [
+        "2016-06-27 18:39:46",
+        "3D58A29449D5",
+        "4406012014112701",
+        "{construct.numberDesc}",
+        "2014-11-27",
+        "{construct.dateDesc}",
+        39406.72,
+        "{construct.sizeDesc}"
+    ],
+    "CA50E04ECC92": [
+        "2016-06-27 18:40:34",
+        "C6E07E618502",
+        "4406012015013001",
+        "{construct.numberDesc}",
+        "2015-01-30",
+        "{construct.dateDesc}",
+        3942.97,
+        "{construct.sizeDesc}"
+    ],
+    "BC3BD3B95747": [
+        "2016-06-27 18:41:41",
+        "DC96FD837646",
+        "4406012013041001",
+        "{construct.numberDesc}",
+        "2013-04-10",
+        "{construct.dateDesc}",
+        21131.07,
+        "{construct.sizeDesc}"
+    ],
+    "2254E3801D4C": [
+        "2016-06-27 18:42:40",
+        "8403CC590B4C",
+        "4406012013041602",
+        "{construct.numberDesc}",
+        "2013-04-15",
+        "{construct.dateDesc}",
+        44436.64,
+        "{construct.sizeDesc}"
+    ],
+    "FF5CA7A02C69": [
+        "2016-06-27 18:44:38",
+        "F4BBBAFF4252",
+        "4406012013041603",
+        "{construct.numberDesc}",
+        "2013-04-15",
+        "{construct.dateDesc}",
+        60676.67,
+        "{construct.sizeDesc}"
+    ],
+    "1C98888434B1": [
+        "2016-06-27 18:46:08",
+        "41E1BD3EE448",
+        "4406012013013102",
+        "{construct.numberDesc}",
+        "2013-01-31",
+        "{construct.dateDesc}",
+        62286.95,
+        "{construct.sizeDesc}"
+    ],
+    "DF73FCC5F763": [
+        "2016-06-27 18:47:46",
+        "64DFF2EEBACA",
+        "440601201211190101",
+        "{construct.numberDesc}",
+        "2012-11-19",
+        "{construct.dateDesc}",
+        7353.62,
+        "{construct.sizeDesc}"
+    ],
+    "83777C25411B": [
+        "2016-06-27 18:50:19",
+        "34923CCD1282",
+        "440601201301250101",
+        "{construct.numberDesc}",
+        "2013-01-24",
+        "{construct.dateDesc}",
+        130667.79,
+        "{construct.sizeDesc}"
+    ],
+    "E658DF079C81": [
+        "2016-06-27 18:54:07",
+        "96213362B556",
+        "440601201211190301",
+        "{construct.numberDesc}",
+        "2012-11-19",
+        "{construct.dateDesc}",
+        16037.88,
+        "{construct.sizeDesc}"
+    ],
+    "96D0113C2E55": [
+        "2016-06-27 18:55:28",
+        "99546A8E8719",
+        "440601201211190201",
+        "{construct.numberDesc}",
+        "2012-11-19",
+        "{construct.dateDesc}",
+        9379.52,
+        "{construct.sizeDesc}"
+    ],
+    "E1E326B8FF6F": [
+        "2016-06-27 19:00:00",
+        "2D18CF723D24",
+        "4406012013121901",
+        "{construct.numberDesc}",
+        "2013-12-19",
+        "{construct.dateDesc}",
+        127662.11,
+        "{construct.sizeDesc}"
+    ],
+    "EF16F287E00E": [
+        "2016-06-27 19:05:23",
+        "3E10CC6382AD",
+        "440601201211190101",
+        "{construct.numberDesc}",
+        "2012-11-19",
+        "{construct.dateDesc}",
+        7353.62,
+        "{construct.sizeDesc}"
+    ],
+    "B68E0DD65D16": [
+        "2016-06-27 19:07:08",
+        "BF61249592C5",
+        "4406012012112801",
+        "{construct.numberDesc}",
+        "2012-11-28",
+        "{construct.dateDesc}",
+        8202.13,
+        "{construct.sizeDesc}"
+    ],
+    "4C6826AA9AFF": [
+        "2016-06-27 19:11:28",
+        "5CC33703917B",
+        "4406012013121902",
+        "{construct.numberDesc}",
+        "2013-12-19",
+        "{construct.dateDesc}",
+        69645,
+        "{construct.sizeDesc}"
+    ],
+    "9585155FC7EB": [
+        "2016-06-27 19:14:53",
+        "543A8E28485C",
+        "440601201211190101",
+        "{construct.numberDesc}",
+        "2012-11-19",
+        "{construct.dateDesc}",
+        7353.62,
+        "{construct.sizeDesc}"
+    ],
+    "6D54CC1AD07B": [
+        "2016-06-27 19:18:32",
+        "8269E1FE68C5",
+        " 4406012016032501 ",
+        "{construct.numberDesc}",
+        "2016-03-25",
+        "{construct.dateDesc}",
+        52553.61,
+        "{construct.sizeDesc}"
+    ],
+    "2573E5C33751": [
+        "2016-06-27 19:20:03",
+        "D241F4534DCB",
+        "4406012016032502",
+        "{construct.numberDesc}",
+        "2016-03-25",
+        "{construct.dateDesc}",
+        52881.97,
+        "{construct.sizeDesc}"
+    ],
+    "184EB0547E92": [
+        "2016-06-27 19:27:29",
+        "E346892E09C9",
+        "4406012015043002",
+        "{construct.numberDesc}",
+        "2015-04-30",
+        "{construct.dateDesc}",
+        102731.91,
+        "{construct.sizeDesc}"
+    ],
+    "A43BBDD19E99": [
+        "2016-06-27 19:34:30",
+        "7B3175A0CFCF",
+        " 4406012014111401 ",
+        "{construct.numberDesc}",
+        "2014-11-14",
+        "{construct.dateDesc}",
+        70830.08,
+        "{construct.sizeDesc}"
+    ],
+    "38B6EDA66824": [
+        "2016-06-27 19:37:50",
+        "61CBDC6C0F52",
+        " 4406012014111401 ",
+        "{construct.numberDesc}",
+        "2014-11-14",
+        "{construct.dateDesc}",
+        70830.08,
+        "{construct.sizeDesc}"
+    ],
+    "D85CDDF2C6DB": [
+        "2016-06-27 19:39:31",
+        "7998E4FB60DE",
+        "4406012014082801",
+        "{construct.numberDesc}",
+        "2014-08-28",
+        "{construct.dateDesc}",
+        44659,
+        "{construct.sizeDesc}"
+    ],
+    "0F1F4080DE4B": [
+        "2016-06-27 19:41:27",
+        "0B3F036C3338",
+        "4406012015042901",
+        "{construct.numberDesc}",
+        "2015-04-29",
+        "{construct.dateDesc}",
+        33135.16,
+        "{construct.sizeDesc}"
+    ],
+    "475D3F0332D8": [
+        "2016-06-27 19:42:53",
+        "982D567CEA8C",
+        "4406012015043001",
+        "{construct.numberDesc}",
+        "2015-04-30",
+        "{construct.dateDesc}",
+        48547.98,
+        "{construct.sizeDesc}"
+    ],
+    "ED05766A90D6": [
+        "2016-06-27 19:46:22",
+        "F21CA08EF286",
+        "4406012013082701",
+        "{construct.numberDesc}",
+        "2013-08-27",
+        "{construct.dateDesc}",
+        205433,
+        "{construct.sizeDesc}"
+    ],
+    "66D0FA479B53": [
+        "2016-06-27 19:51:58",
+        "2A1477F37B0F",
+        "4406012014082101",
+        "{construct.numberDesc}",
+        "2014-08-21",
+        "{construct.dateDesc}",
+        2218.35,
+        "{construct.sizeDesc}"
+    ],
+    "190B05051AB2": [
+        "2016-06-27 19:53:08",
+        "46CF0867BFBA",
+        "4406012014082901",
+        "{construct.numberDesc}",
+        "2014-08-29",
+        "{construct.dateDesc}",
+        52180.7,
+        "{construct.sizeDesc}"
+    ],
+    "289380432861": [
+        "2016-06-27 19:54:01",
+        "A0EDF58771B6",
+        "4406012014082102",
+        "{construct.numberDesc}",
+        "2014-08-21",
+        "{construct.dateDesc}",
+        66100.52,
+        "{construct.sizeDesc}"
+    ],
+    "129D205E00AC": [
+        "2016-06-27 19:55:29",
+        "BEFB987A5AA2",
+        "4406012015101001",
+        "{construct.numberDesc}",
+        "2015-10-10",
+        "{construct.dateDesc}",
+        112789.17,
+        "{construct.sizeDesc}"
+    ],
+    "D9F5662FF896": [
+        "2016-06-27 19:57:23",
+        "D2B6012AA0CA",
+        "4406012014102801",
+        "{construct.numberDesc}",
+        "2014-10-28",
+        "{construct.dateDesc}",
+        59663.66,
+        "{construct.sizeDesc}"
+    ],
+    "188093FBF2F3": [
+        "2016-06-27 20:00:19",
+        "715E324BD660",
+        "4406012014032701",
+        "{construct.numberDesc}",
+        "2014-03-27",
+        "{construct.dateDesc}",
+        67181.13,
+        "{construct.sizeDesc}"
+    ],
+    "432468167AD0": [
+        "2016-06-27 20:02:19",
+        "63944FAB8996",
+        "4406012014032701",
+        "{construct.numberDesc}",
+        "2014-03-27",
+        "{construct.dateDesc}",
+        67181.13,
+        "{construct.sizeDesc}"
+    ],
+    "3F970D062B83": [
+        "2016-06-27 20:03:03",
+        "C328447321BB",
+        "4406012015011601",
+        "{construct.numberDesc}",
+        "2015-01-16",
+        "{construct.dateDesc}",
+        2823,
+        "{construct.sizeDesc}"
+    ],
+    "F0F7B35A4ED6": [
+        "2016-06-27 20:03:43",
+        "8676EE237AFE",
+        "4406012014061001",
+        "{construct.numberDesc}",
+        "2014-06-10",
+        "{construct.dateDesc}",
+        28321.57,
+        "{construct.sizeDesc}"
+    ],
+    "ABF19A470751": [
+        "2016-06-27 20:04:19",
+        "F325346CF5DD",
+        "4406012014051402",
+        "{construct.numberDesc}",
+        "2014-05-14",
+        "{construct.dateDesc}",
+        16694.99,
+        "{construct.sizeDesc}"
+    ],
+    "680081DA8064": [
+        "2016-06-27 20:04:56",
+        "DF9A7E038C61",
+        "4406012014061002",
+        "{construct.numberDesc}",
+        "2014-06-10",
+        "{construct.dateDesc}",
+        73141.85,
+        "{construct.sizeDesc}"
+    ],
+    "45D729E30F4B": [
+        "2016-06-27 20:05:32",
+        "7F2D85DCA065",
+        "4406012014051401",
+        "{construct.numberDesc}",
+        "2014-05-14",
+        "{construct.dateDesc}",
+        14717.67,
+        "{construct.sizeDesc}"
+    ],
+    "0C137CCDB86F": [
+        "2016-06-27 20:07:10",
+        "878FD774B8FA",
+        "4406012013042701",
+        "{construct.numberDesc}",
+        "2013-04-27",
+        "{construct.dateDesc}",
+        58904.97,
+        "{construct.sizeDesc}"
+    ],
+    "B9989EAF1E3A": [
+        "2016-06-27 20:07:56",
+        "103E22065F7E",
+        "4406012015010801",
+        "{construct.numberDesc}",
+        "2015-01-08",
+        "{construct.dateDesc}",
+        41059.07,
+        "{construct.sizeDesc}"
+    ],
+    "8EFF45CEF110": [
+        "2016-06-27 20:08:39",
+        "0D7EBF7E3A0C",
+        "4406012014022101",
+        "{construct.numberDesc}",
+        "2014-02-21",
+        "{construct.dateDesc}",
+        115202.49,
+        "{construct.sizeDesc}"
+    ],
+    "08132242FB8F": [
+        "2016-06-27 20:09:18",
+        "E23D58866D1D",
+        "4406012015020501",
+        "{construct.numberDesc}",
+        "2015-02-05",
+        "{construct.dateDesc}",
+        75588.38,
+        "{construct.sizeDesc}"
+    ],
+    "599926660EF3": [
+        "2016-06-27 20:11:09",
+        "FE91E490E9E6",
+        "4406012013032201",
+        "{construct.numberDesc}",
+        "2013-03-22",
+        "{construct.dateDesc}",
+        56800.71,
+        "{construct.sizeDesc}"
+    ],
+    "F440353D1540": [
+        "2016-06-27 20:12:51",
+        "F1013F47560E",
+        "4406012015010801",
+        "{construct.numberDesc}",
+        "2015-01-08",
+        "{construct.dateDesc}",
+        41059.07,
+        "{construct.sizeDesc}"
+    ],
+    "1FF725FD4251": [
+        "2016-06-27 20:16:40",
+        "6AE1E6A1D15A",
+        "4406012010121401",
+        "{construct.numberDesc}",
+        "2010-12-14",
+        "{construct.dateDesc}",
+        111724,
+        "{construct.sizeDesc}"
+    ],
+    "1F99BD2B9158": [
+        "2016-06-27 20:18:44",
+        "BA9FD10F6C5D",
+        "4406012014062502",
+        "{construct.numberDesc}",
+        "2014-06-25",
+        "{construct.dateDesc}",
+        80901.96,
+        "{construct.sizeDesc}"
+    ],
+    "F85476C06F4C": [
+        "2016-06-27 20:19:30",
+        "10AE8EAB8DDB",
+        "4406012014062501",
+        "{construct.numberDesc}",
+        "2014-06-25",
+        "{construct.dateDesc}",
+        122120.5,
+        "{construct.sizeDesc}"
+    ],
+    "F0073AB328C4": [
+        "2016-06-27 20:22:11",
+        "90B980281AE9",
+        "440601201207160101",
+        "{construct.numberDesc}",
+        "2012-07-16",
+        "{construct.dateDesc}",
+        134748.58,
+        "{construct.sizeDesc}"
+    ],
+    "3922361574A1": [
+        "2016-06-27 20:23:09",
+        "B6CC879AD868",
+        "4406012015041301",
+        "{construct.numberDesc}",
+        "2015-04-13",
+        "{construct.dateDesc}",
+        18089.93,
+        "{construct.sizeDesc}"
+    ],
+    "03DD5CC30D72": [
+        "2016-06-27 20:24:06",
+        "FF1205E7C4E3",
+        "4406012015041302",
+        "{construct.numberDesc}",
+        "2015-04-13",
+        "{construct.dateDesc}",
+        49123.43,
+        "{construct.sizeDesc}"
+    ],
+    "2C5FD2675ED9": [
+        "2016-06-27 20:25:20",
+        "1E0C80465A4D",
+        "4406012015041303",
+        "{construct.numberDesc}",
+        "2015-04-13",
+        "{construct.dateDesc}",
+        59697.72,
+        "{construct.sizeDesc}"
+    ],
+    "E6383D4DE2C5": [
+        "2016-06-27 20:27:12",
+        "26C6167A3B35",
+        "440601201031102",
+        "{construct.numberDesc}",
+        "2013-03-11",
+        "{construct.dateDesc}",
+        6620.43,
+        "{construct.sizeDesc}"
+    ],
+    "A4C763153D3B": [
+        "2016-06-27 20:30:19",
+        "A3E871CDEFB4",
+        "4406012015012001",
+        "{construct.numberDesc}",
+        "2015-01-20",
+        "{construct.dateDesc}",
+        0,
+        "{construct.sizeDesc}"
+    ],
+    "81601F78E319": [
+        "2016-06-27 20:32:13",
+        "E3922E6DEB3C",
+        "4406012013040301、4406012013040302",
+        "{construct.numberDesc}",
+        "2013-04-03",
+        "{construct.dateDesc}",
+        117264.5,
+        "{construct.sizeDesc}"
+    ],
+    "2A2B0087B664": [
+        "2016-06-27 20:32:58",
+        "471C8B37191E",
+        "4406012013040301、4406012013040302",
+        "{construct.numberDesc}",
+        "2013-04-03",
+        "{construct.dateDesc}",
+        117264.5,
+        "{construct.sizeDesc}"
+    ],
+    "FA73003E9A04": [
+        "2016-06-27 20:35:34",
+        "FA471FAFC8B3",
+        "4406012013032202",
+        "{construct.numberDesc}",
+        "2013-03-22",
+        "{construct.dateDesc}",
+        55337.76,
+        "{construct.sizeDesc}"
+    ],
+    "3065A1F7AB59": [
+        "2016-06-27 20:36:34",
+        "B0EA7B9E4882",
+        "4406012013042801",
+        "{construct.numberDesc}",
+        "2013-04-28",
+        "{construct.dateDesc}",
+        24391.64,
+        "{construct.sizeDesc}"
+    ],
+    "66897CF84F38": [
+        "2016-06-27 20:37:39",
+        "D0E98B74F80B",
+        "4406012015021501",
+        "{construct.numberDesc}",
+        "2015-02-15",
+        "{construct.dateDesc}",
+        59991.87,
+        "{construct.sizeDesc}"
+    ],
+    "ADDC1281D5EF": [
+        "2016-06-27 20:38:36",
+        "0F2F79C5019D",
+        "4406012015020601",
+        "{construct.numberDesc}",
+        "2015-02-06",
+        "{construct.dateDesc}",
+        177694.62,
+        "{construct.sizeDesc}"
+    ],
+    "FA0CD22AD1FC": [
+        "2016-06-27 20:39:07",
+        "6E3E7EEDD37A",
+        "4406012014062001",
+        "{construct.numberDesc}",
+        "2014-06-20",
+        "{construct.dateDesc}",
+        133850.42,
+        "{construct.sizeDesc}"
+    ],
+    "1F2BC357D499": [
+        "2016-06-27 20:40:25",
+        "84CF3AAF5E6D",
+        "4406012015021502",
+        "{construct.numberDesc}",
+        "2015-02-15",
+        "{construct.dateDesc}",
+        63204.38,
+        "{construct.sizeDesc}"
+    ],
+    "57243C293C08": [
+        "2016-06-27 20:49:10",
+        "8833B0BBBD4B",
+        "4406012015011602",
+        "{construct.numberDesc}",
+        "2015-01-16",
+        "{construct.dateDesc}",
+        77087.86,
+        "{construct.sizeDesc}"
+    ],
+    "8AD5F2131A43": [
+        "2016-06-27 20:51:15",
+        "5583C1CF60CD",
+        "440601201208270101、440601201209030101",
+        "{construct.numberDesc}",
+        "2012-09-03",
+        "{construct.dateDesc}",
+        304881.1,
+        "{construct.sizeDesc}"
+    ],
+    "4BBDF60C0646": [
+        "2016-06-27 20:53:34",
+        "9310EEE2C30C",
+        "440601201109080101",
+        "{construct.numberDesc}",
+        "2011-09-08",
+        "{construct.dateDesc}",
+        153073.69,
+        "{construct.sizeDesc}"
+    ],
+    "574D097E5CEE": [
+        "2016-06-27 20:54:32",
+        "1B687FC27FC7",
+        "440601201109200101",
+        "{construct.numberDesc}",
+        "2011-09-20",
+        "{construct.dateDesc}",
+        196050.39,
+        "{construct.sizeDesc}"
+    ],
+    "1F73D5E7EE07": [
+        "2016-06-27 20:55:06",
+        "CCEBA45A15E4",
+        "440601201110130101",
+        "{construct.numberDesc}",
+        "2011-10-13",
+        "{construct.dateDesc}",
+        300108.62,
+        "{construct.sizeDesc}"
+    ],
+    "BDF2BB44AF45": [
+        "2016-06-27 20:58:13",
+        "33F5C62967AD",
+        "4406012013041002、4406012013041003",
+        "{construct.numberDesc}",
+        "2013-4-10",
+        "{construct.dateDesc}",
+        64577.46,
+        "{construct.sizeDesc}"
+    ],
+    "8E15555C58E0": [
+        "2016-06-27 21:02:22",
+        "EDA71BA15130",
+        "440601201206290201",
+        "{construct.numberDesc}",
+        "2012-06-29",
+        "{construct.dateDesc}",
+        35443.5,
+        "{construct.sizeDesc}"
+    ],
+    "FB346F4879FA": [
+        "2016-06-27 21:07:15",
+        "EE4B8208A8AF",
+        "440601201208140201",
+        "{construct.numberDesc}",
+        "2012-08-14",
+        "{construct.dateDesc}",
+        91685.94,
+        "{construct.sizeDesc}"
+    ],
+    "0DBF5645B06A": [
+        "2016-06-27 21:08:30",
+        "D0C10A143130",
+        "440601201204010301",
+        "{construct.numberDesc}",
+        "2012-04-01",
+        "{construct.dateDesc}",
+        29808.63,
+        "{construct.sizeDesc}"
+    ],
+    "6B5AB650F19D": [
+        "2016-06-27 21:09:13",
+        "76F2D4534833",
+        "440601201204010201",
+        "{construct.numberDesc}",
+        "2012-04-01",
+        "{construct.dateDesc}",
+        45238.39,
+        "{construct.sizeDesc}"
+    ],
+    "1E7096393906": [
+        "2016-06-27 21:10:00",
+        "8E51137AA857",
+        "440601201204010101",
+        "{construct.numberDesc}",
+        "2012-04-01",
+        "{construct.dateDesc}",
+        33300.81,
+        "{construct.sizeDesc}"
+    ],
+    "20CBEF96C734": [
+        "2016-06-27 21:10:49",
+        "B07A31BBDB20",
+        "440601201204010501",
+        "{construct.numberDesc}",
+        "2012-04-01",
+        "{construct.dateDesc}",
+        62034.33,
+        "{construct.sizeDesc}"
+    ],
+    "634610C3E9A5": [
+        "2016-06-27 21:11:34",
+        "233283157B49",
+        "440601201204010401",
+        "{construct.numberDesc}",
+        "2012-4-1",
+        "{construct.dateDesc}",
+        29808.63,
+        "{construct.sizeDesc}"
+    ],
+    "74165DCAED45": [
+        "2016-06-27 21:12:15",
+        "5BFFDEAF5910",
+        "4406012013020102",
+        "{construct.numberDesc}",
+        "2013-02-01",
+        "{construct.dateDesc}",
+        3613.64,
+        "{construct.sizeDesc}"
+    ],
+    "CD63B651D88D": [
+        "2016-06-27 21:15:50",
+        "563987340641",
+        "4406012010020801",
+        "{construct.numberDesc}",
+        "2010-02-08",
+        "{construct.dateDesc}",
+        15799.3,
+        "{construct.sizeDesc}"
+    ],
+    "815A88C32035": [
+        "2016-06-27 21:22:43",
+        "E75042A22443",
+        "4406012012112801",
+        "{construct.numberDesc}",
+        "2012-11-28",
+        "{construct.dateDesc}",
+        8202.13,
+        "{construct.sizeDesc}"
+    ],
+    "1840FBC63E2B": [
+        "2016-06-27 21:30:11",
+        "2CA18900460B",
+        "4406012013102401",
+        "{construct.numberDesc}",
+        "2013-10-24",
+        "{construct.dateDesc}",
+        67121.03,
+        "{construct.sizeDesc}"
+    ],
+    "9D84FDB48B65": [
+        "2016-06-27 21:31:34",
+        "1F4167EF0BBF",
+        "4406012010120801",
+        "{construct.numberDesc}",
+        "2010-12-08",
+        "{construct.dateDesc}",
+        76004.76,
+        "{construct.sizeDesc}"
+    ],
+    "44D29651C09C": [
+        "2016-06-27 21:33:28",
+        "ACF6E6EDABF4",
+        "4406012013072201",
+        "{construct.numberDesc}",
+        "2013-07-22",
+        "{construct.dateDesc}",
+        96119.31,
+        "{construct.sizeDesc}"
+    ],
+    "A6008DCFD83C": [
+        "2016-06-27 21:34:31",
+        "EDB38384479D",
+        "4406012013082901",
+        "{construct.numberDesc}",
+        "2013-08-29",
+        "{construct.dateDesc}",
+        80818.08,
+        "{construct.sizeDesc}"
+    ],
+    "B21B84220901": [
+        "2016-06-27 21:37:14",
+        "940A5FCF211B",
+        "4406012014082902",
+        "{construct.numberDesc}",
+        "2014-08-29",
+        "{construct.dateDesc}",
+        69748.26,
+        "{construct.sizeDesc}"
+    ],
+    "F0804CDB68F0": [
+        "2016-06-27 21:38:13",
+        "0204D6375532",
+        "4406012014082903",
+        "{construct.numberDesc}",
+        "2014-08-29",
+        "{construct.dateDesc}",
+        74121.82,
+        "{construct.sizeDesc}"
+    ],
+    "9A394C6C1030": [
+        "2016-06-27 21:38:52",
+        "747F94E1AA42",
+        "4406012014071703",
+        "{construct.numberDesc}",
+        "2014-07-17",
+        "{construct.dateDesc}",
+        4808.09,
+        "{construct.sizeDesc}"
+    ],
+    "8AD63492A950": [
+        "2016-06-27 21:39:30",
+        "D53687A8AEC9",
+        "4406012014071702",
+        "{construct.numberDesc}",
+        "2014-07-17",
+        "{construct.dateDesc}",
+        5996.34,
+        "{construct.sizeDesc}"
+    ],
+    "71DAAA419563": [
+        "2016-06-27 21:40:24",
+        "39512575E9B0",
+        "4406012014071705",
+        "{construct.numberDesc}",
+        "2014-07-17",
+        "{construct.dateDesc}",
+        25738.59,
+        "{construct.sizeDesc}"
+    ],
+    "2263094B3A1F": [
+        "2016-06-27 21:41:04",
+        "2713EDA09D1B",
+        "4406012014071704",
+        "{construct.numberDesc}",
+        "2014-07-17",
+        "{construct.dateDesc}",
+        210,
+        "{construct.sizeDesc}"
+    ],
+    "1BE86CE91EB6": [
+        "2016-06-27 21:42:28",
+        "91BC5A4BD711",
+        "4406012015123003",
+        "{construct.numberDesc}",
+        "2015-12-30",
+        "{construct.dateDesc}",
+        18195.43,
+        "{construct.sizeDesc}"
+    ],
+    "404BE1AC83FB": [
+        "2016-06-27 21:43:09",
+        "1DAF61DA66D5",
+        "4406012015123006",
+        "{construct.numberDesc}",
+        "2015-12-30",
+        "{construct.dateDesc}",
+        28460.56,
+        "{construct.sizeDesc}"
+    ],
+    "A99A4E4AB52D": [
+        "2016-06-27 21:45:17",
+        "4B9458E88084",
+        "4406012012250101",
+        "{construct.numberDesc}",
+        "2012-12-25",
+        "{construct.dateDesc}",
+        18611.39,
+        "{construct.sizeDesc}"
+    ],
+    "DBBB65892920": [
+        "2016-07-08 14:52:27",
+        "32736D5B9C9F",
+        "4406012012091301",
+        "{construct.numberDesc}",
+        "2012-09-13",
+        "{construct.dateDesc}",
+        116199.33,
+        "{construct.sizeDesc}"
+    ],
+    "CA9F96A1AFF8": [
+        "2016-07-08 14:54:37",
+        "2A56D30C6EC7",
+        "4406012013051301",
+        "{construct.numberDesc}",
+        "2013-05-13",
+        "{construct.dateDesc}",
+        83389.8,
+        "{construct.sizeDesc}"
+    ],
+    "2267E7F9A488": [
+        "2016-07-08 14:57:33",
+        "334655719AFE",
+        "4406012010053101",
+        "{construct.numberDesc}",
+        "2010-05-31",
+        "{construct.dateDesc}",
+        20420,
+        "{construct.sizeDesc}"
+    ],
+    "E5FF2CDF9DB5": [
+        "2016-07-08 14:59:31",
+        "A3DB992CCC2B",
+        "4406012014123001",
+        "{construct.numberDesc}",
+        "2014-12-30",
+        "{construct.dateDesc}",
+        173130.66,
+        "{construct.sizeDesc}"
+    ],
+    "9C4FB79A30B3": [
+        "2016-07-08 15:00:24",
+        "1263278AD6C3",
+        "4406012014123001",
+        "{construct.numberDesc}",
+        "2014-12-30",
+        "{construct.dateDesc}",
+        173130.66,
+        "{construct.sizeDesc}"
+    ],
+    "9575DD64B8B2": [
+        "2016-07-08 15:02:07",
+        "185D69AF8518",
+        "4406012010061801",
+        "{construct.numberDesc}",
+        "2010-06-18",
+        "{construct.dateDesc}",
+        40438.01,
+        "{construct.sizeDesc}"
+    ],
+    "258A29C36C57": [
+        "2016-07-08 15:03:22",
+        "1144651E1F0A",
+        "4406012010052101",
+        "{construct.numberDesc}",
+        "2010-05-21",
+        "{construct.dateDesc}",
+        39396.07,
+        "{construct.sizeDesc}"
+    ],
+    "D11AA6526BA6": [
+        "2016-07-08 15:07:41",
+        "9573A6CAFA75",
+        "440601201012300101",
+        "{construct.numberDesc}",
+        "2011-04-05",
+        "{construct.dateDesc}",
+        101989.7,
+        "{construct.sizeDesc}"
+    ],
+    "628847C45525": [
+        "2016-07-08 15:10:43",
+        "BFDA05B4503B",
+        "440601201109020101",
+        "{construct.numberDesc}",
+        "2011-09-02",
+        "{construct.dateDesc}",
+        278.53,
+        "{construct.sizeDesc}"
+    ],
+    "22590D1BC035": [
+        "2016-07-08 15:11:51",
+        "4554CCBC6F36",
+        "440601201105260301",
+        "{construct.numberDesc}",
+        "2011-05-26",
+        "{construct.dateDesc}",
+        69962.97,
+        "{construct.sizeDesc}"
+    ],
+    "33E9564E13CA": [
+        "2016-07-08 15:13:21",
+        "89D3F4176B49",
+        "440601201011150101",
+        "{construct.numberDesc}",
+        "2010-11-15",
+        "{construct.dateDesc}",
+        45967.79,
+        "{construct.sizeDesc}"
+    ],
+    "3AF411CD3EFE": [
+        "2016-07-08 15:14:38",
+        "DD243BBE3D27",
+        "440601201103070301",
+        "{construct.numberDesc}",
+        "2011-03-07",
+        "{construct.dateDesc}",
+        61573.73,
+        "{construct.sizeDesc}"
+    ],
+    "B4A7D7F7DF63": [
+        "2016-07-08 15:16:37",
+        "0111EDDE0B41",
+        "440601201104020101",
+        "{construct.numberDesc}",
+        "2011-04-02",
+        "{construct.dateDesc}",
+        103507.49,
+        "{construct.sizeDesc}"
+    ],
+    "0776D5DDB1EA": [
+        "2016-07-08 15:18:23",
+        "BDAC8697614B",
+        "440601201006100101",
+        "{construct.numberDesc}",
+        "2010-06-10",
+        "{construct.dateDesc}",
+        90439.1,
+        "{construct.sizeDesc}"
+    ],
+    "A2D52A9A5E73": [
+        "2016-07-08 15:20:06",
+        "17E8A65605F4",
+        "",
+        "{construct.numberDesc}",
+        "2010-09-30",
+        "{construct.dateDesc}",
+        135949.3,
+        "{construct.sizeDesc}"
+    ],
+    "AE8CF7A52C99": [
+        "2016-07-08 15:21:43",
+        "61AD73B37171",
+        "",
+        "{construct.numberDesc}",
+        "2010-12-17",
+        "{construct.dateDesc}",
+        89542.2,
+        "{construct.sizeDesc}"
+    ],
+    "521358C43B9E": [
+        "2016-07-08 15:22:59",
+        "5F4353DEDD12",
+        "440601201007300101",
+        "{construct.numberDesc}",
+        "2010-07-30",
+        "{construct.dateDesc}",
+        128613.85,
+        "{construct.sizeDesc}"
+    ],
+    "C5364F51F6D8": [
+        "2016-07-08 15:24:11",
+        "A91E257AF7BD",
+        "440601200912240101",
+        "{construct.numberDesc}",
+        "2009-12-24",
+        "{construct.dateDesc}",
+        56630,
+        "{construct.sizeDesc}"
+    ],
+    "D5E97BF935EE": [
+        "2016-07-08 15:25:42",
+        "AD5BC4C4C7A9",
+        "440601201104020101",
+        "{construct.numberDesc}",
+        "2011-04-02",
+        "{construct.dateDesc}",
+        103507.49,
+        "{construct.sizeDesc}"
+    ],
+    "97F5DE076258": [
+        "2016-07-08 15:28:14",
+        "7895325C091D",
+        "440601200909250101",
+        "{construct.numberDesc}",
+        "2009-09-25",
+        "{construct.dateDesc}",
+        23267.47,
+        "{construct.sizeDesc}"
+    ],
+    "F176763462E1": [
+        "2016-07-08 15:30:44",
+        "BA9A0AE9F72A",
+        "440601200909250102",
+        "{construct.numberDesc}",
+        "2009-09-25",
+        "{construct.dateDesc}",
+        17803.32,
+        "{construct.sizeDesc}"
+    ],
+    "101B4856FFD8": [
+        "2016-07-08 15:31:21",
+        "77F3A0744994",
+        "440601200909250103",
+        "{construct.numberDesc}",
+        "2009-09-25",
+        "{construct.dateDesc}",
+        35621.49,
+        "{construct.sizeDesc}"
+    ],
+    "195F5F98C5B1": [
+        "2016-07-08 15:32:27",
+        "F0E1901B1B92",
+        "440601200909250104",
+        "{construct.numberDesc}",
+        "2009-09-25",
+        "{construct.dateDesc}",
+        42939.27,
+        "{construct.sizeDesc}"
+    ],
+    "F1CD87A46C10": [
+        "2016-07-08 15:41:02",
+        "0C1C0354B36D",
+        "4406012009092505",
+        "{construct.numberDesc}",
+        "2009-09-25",
+        "{construct.dateDesc}",
+        17803.32,
+        "{construct.sizeDesc}"
+    ],
+    "10664E559720": [
+        "2016-07-08 15:43:03",
+        "67381192C6F0",
+        "440601201007300101",
+        "{construct.numberDesc}",
+        "2010-07-30",
+        "{construct.dateDesc}",
+        105711.01,
+        "{construct.sizeDesc}"
+    ],
+    "8A212800F150": [
+        "2016-07-08 15:44:57",
+        "1BE2DBDCB854",
+        "440601201007300101",
+        "{construct.numberDesc}",
+        "2010-07-30",
+        "{construct.dateDesc}",
+        77554.96,
+        "{construct.sizeDesc}"
+    ],
+    "98A51F5915B9": [
+        "2016-07-08 15:46:10",
+        "93BCFF59E486",
+        "4406012013081901",
+        "{construct.numberDesc}",
+        "2013-08-19",
+        "{construct.dateDesc}",
+        29051.13,
+        "{construct.sizeDesc}"
+    ],
+    "9294AA814988": [
+        "2016-07-08 15:46:55",
+        "193B3C3511C5",
+        "4406012013082201",
+        "{construct.numberDesc}",
+        "2013-08-21",
+        "{construct.dateDesc}",
+        79521.36,
+        "{construct.sizeDesc}"
+    ],
+    "1AA6E36FAD80": [
+        "2016-07-08 16:17:50",
+        "97B82C9FB449",
+        "440601201208200101",
+        "{construct.numberDesc}",
+        "2012-08-20",
+        "{construct.dateDesc}",
+        15323.93,
+        "{construct.sizeDesc}"
+    ],
+    "CDFA22A57FD7": [
+        "2016-07-08 16:20:02",
+        "6540896C24A3",
+        "4406012014033102",
+        "{construct.numberDesc}",
+        "2013-09-26",
+        "{construct.dateDesc}",
+        46836.95,
+        "{construct.sizeDesc}"
+    ],
+    "460403F9E041": [
+        "2016-07-08 16:21:13",
+        "334483F2B6AA",
+        "4406012014033101",
+        "{construct.numberDesc}",
+        "2013-09-26",
+        "{construct.dateDesc}",
+        144302.56,
+        "{construct.sizeDesc}"
+    ],
+    "949BDFAD6A20": [
+        "2016-07-08 16:26:40",
+        "4D1FE94EEAD6",
+        "4406012014040801",
+        "{construct.numberDesc}",
+        "2014-04-28",
+        "{construct.dateDesc}",
+        60054.39,
+        "{construct.sizeDesc}"
+    ],
+    "DCE8AEE7EA3D": [
+        "2016-07-08 16:28:13",
+        "6EBC096FA011",
+        "4406012014040802",
+        "{construct.numberDesc}",
+        "2014-04-08",
+        "{construct.dateDesc}",
+        59839.94,
+        "{construct.sizeDesc}"
+    ],
+    "B4051DD69550": [
+        "2016-07-08 16:33:22",
+        "5B73DD9029AB",
+        "4406012013061801",
+        "{construct.numberDesc}",
+        "2013-06-18",
+        "{construct.dateDesc}",
+        99581.6,
+        "{construct.sizeDesc}"
+    ],
+    "BAE05AEB0C71": [
+        "2016-07-08 16:35:04",
+        "261F3FE581BD",
+        "4406012013061801",
+        "{construct.numberDesc}",
+        "2013-06-18",
+        "{construct.dateDesc}",
+        99581.6,
+        "{construct.sizeDesc}"
+    ],
+    "CC43BE31AE29": [
+        "2016-07-08 16:36:29",
+        "3141645F5A25",
+        "4406012014040803",
+        "{construct.numberDesc}",
+        "2014-04-08",
+        "{construct.dateDesc}",
+        64975.76,
+        "{construct.sizeDesc}"
+    ],
+    "FE998CC3B2C1": [
+        "2016-07-08 16:37:25",
+        "F6348F31AA8C",
+        "4406012014040804",
+        "{construct.numberDesc}",
+        "2014-04-08",
+        "{construct.dateDesc}",
+        28987.82,
+        "{construct.sizeDesc}"
+    ],
+    "4B6F7833C62A": [
+        "2016-07-08 16:38:49",
+        "1E54F8B16628",
+        "4406012013120202",
+        "{construct.numberDesc}",
+        "2013-12-02",
+        "{construct.dateDesc}",
+        46421.73,
+        "{construct.sizeDesc}"
+    ],
+    "7741D87851D4": [
+        "2016-07-08 16:40:01",
+        "786F7852F1BA",
+        "4406012014033104",
+        "{construct.numberDesc}",
+        "2014-03-31",
+        "{construct.dateDesc}",
+        5073.31,
+        "{construct.sizeDesc}"
+    ],
+    "1D7B51ECD3C2": [
+        "2016-07-08 16:41:42",
+        "BA45F9CD2CFD",
+        "4406012013103001",
+        "{construct.numberDesc}",
+        "2013-10-30",
+        "{construct.dateDesc}",
+        105982.64,
+        "{construct.sizeDesc}"
+    ],
+    "FE597F90A172": [
+        "2016-07-08 16:43:44",
+        "061CD4A3A6C1",
+        "4406012015012701",
+        "{construct.numberDesc}",
+        "2015-01-27",
+        "{construct.dateDesc}",
+        80206.22,
+        "{construct.sizeDesc}"
+    ],
+    "A39C996C73AA": [
+        "2016-07-08 16:45:00",
+        "F5C28B278ABE",
+        "4406012013090601",
+        "{construct.numberDesc}",
+        "2013-09-05",
+        "{construct.dateDesc}",
+        53938.65,
+        "{construct.sizeDesc}"
+    ],
+    "09E4E26E20A2": [
+        "2016-07-08 16:47:05",
+        "CB06B00FF31F",
+        "4406012013121001",
+        "{construct.numberDesc}",
+        "2013-12-10",
+        "{construct.dateDesc}",
+        72611.03,
+        "{construct.sizeDesc}"
+    ],
+    "6919A1763DD5": [
+        "2016-07-08 16:48:38",
+        "AFEF0AF8640E",
+        "4406012015112704",
+        "{construct.numberDesc}",
+        "2015-11-27",
+        "{construct.dateDesc}",
+        11513.93,
+        "{construct.sizeDesc}"
+    ],
+    "A97F7D1EA08C": [
+        "2016-07-08 16:51:52",
+        "B719DBE056C5",
+        "4406012015112703",
+        "{construct.numberDesc}",
+        "2015-11-27",
+        "{construct.dateDesc}",
+        17777.2,
+        "{construct.sizeDesc}"
+    ],
+    "797D5603683E": [
+        "2016-07-08 16:52:56",
+        "5F2802322935",
+        "4406012015112702",
+        "{construct.numberDesc}",
+        "2015-11-27",
+        "{construct.dateDesc}",
+        14924.7,
+        "{construct.sizeDesc}"
+    ],
+    "925AD5A517CD": [
+        "2016-07-08 16:53:50",
+        "3D61BA6EECE2",
+        "4406012015112701",
+        "{construct.numberDesc}",
+        "2015-11-27",
+        "{construct.dateDesc}",
+        37384.6,
+        "{construct.sizeDesc}"
+    ],
+    "9F16957EE2F5": [
+        "2016-07-08 17:01:58",
+        "823AA4688DE9",
+        "4406012013010501",
+        "{construct.numberDesc}",
+        "2013-01-05",
+        "{construct.dateDesc}",
+        120773.49,
+        "{construct.sizeDesc}"
+    ],
+    "08AA5E97FED7": [
+        "2016-07-08 17:02:27",
+        "1E1E85D2EACE",
+        "4406012015120201",
+        "{construct.numberDesc}",
+        "2015-12-02",
+        "{construct.dateDesc}",
+        27100.75,
+        "{construct.sizeDesc}"
+    ],
+    "C6A81F64EDCE": [
+        "2016-07-08 17:04:38",
+        "E1625F49E90E",
+        "4406012014071501",
+        "{construct.numberDesc}",
+        "2014-04-14",
+        "{construct.dateDesc}",
+        133391,
+        "{construct.sizeDesc}"
+    ],
+    "663A2300DFBA": [
+        "2016-07-08 17:05:08",
+        "479EAAE4E994",
+        "4406012016012901",
+        "{construct.numberDesc}",
+        "2016-01-29",
+        "{construct.dateDesc}",
+        69440.37,
+        "{construct.sizeDesc}"
+    ],
+    "A729C57DC5F7": [
+        "2016-07-08 17:06:15",
+        "F93CDC767307",
+        " 4406012016011202 ",
+        "{construct.numberDesc}",
+        "2016-01-12",
+        "{construct.dateDesc}",
+        32180.8,
+        "{construct.sizeDesc}"
+    ],
+    "21B4C189A3F0": [
+        "2016-07-08 17:07:08",
+        "AC60A925A803",
+        "4406012016042901",
+        "{construct.numberDesc}",
+        "2016-04-29",
+        "{construct.dateDesc}",
+        454.75,
+        "{construct.sizeDesc}"
+    ],
+    "1BF745248293": [
+        "2016-07-08 17:08:22",
+        "0A2BED3191B6",
+        "4406012015120202",
+        "{construct.numberDesc}",
+        "2015-12-02",
+        "{construct.dateDesc}",
+        13864.16,
+        "{construct.sizeDesc}"
+    ],
+    "3404AD237FBD": [
+        "2016-07-08 17:09:06",
+        "0388CAAF5065",
+        "4406012016012902",
+        "{construct.numberDesc}",
+        "2016-01-29",
+        "{construct.dateDesc}",
+        16039.86,
+        "{construct.sizeDesc}"
+    ],
+    "474C047F27C3": [
+        "2016-07-08 17:09:59",
+        "1AAA6D91C1F8",
+        "4406012016042902",
+        "{construct.numberDesc}",
+        "2016-04-29",
+        "{construct.dateDesc}",
+        1549.6,
+        "{construct.sizeDesc}"
+    ],
+    "1A1EF8780DDF": [
+        "2016-07-08 17:10:43",
+        "6A31BF4399BD",
+        "4406012016042903",
+        "{construct.numberDesc}",
+        "2016-04-29",
+        "{construct.dateDesc}",
+        1559.81,
+        "{construct.sizeDesc}"
+    ],
+    "06C6B29DD842": [
+        "2016-07-08 17:11:48",
+        "D2B930F32EB6",
+        " 4406012016011201 ",
+        "{construct.numberDesc}",
+        "2016-01-12",
+        "{construct.dateDesc}",
+        31191.86,
+        "{construct.sizeDesc}"
+    ],
+    "51EA0B8E05FF": [
+        "2016-07-08 17:13:14",
+        "D5CA6D64AB3A",
+        "440601201107060201",
+        "{construct.numberDesc}",
+        "2011-07-06",
+        "{construct.dateDesc}",
+        10076.72,
+        "{construct.sizeDesc}"
+    ],
+    "A56848C19F22": [
+        "2016-07-08 17:16:53",
+        "DBA83ADA1919",
+        "4406012015123002",
+        "{construct.numberDesc}",
+        "2015-12-30",
+        "{construct.dateDesc}",
+        111315.97,
+        "{construct.sizeDesc}"
+    ],
+    "033F4E4D5A4F": [
+        "2016-07-08 17:18:16",
+        "0C1170B974B1",
+        "4406012014071401",
+        "{construct.numberDesc}",
+        "2014-07-14",
+        "{construct.dateDesc}",
+        30050.5,
+        "{construct.sizeDesc}"
+    ],
+    "4FDAB49C5149": [
+        "2016-07-08 17:19:27",
+        "5812BA76A6CB",
+        "4406012015111001",
+        "{construct.numberDesc}",
+        "2015-11-10",
+        "{construct.dateDesc}",
+        19934.98,
+        "{construct.sizeDesc}"
+    ],
+    "6FF2586D9A60": [
+        "2016-07-08 17:20:21",
+        "6CDA7579B691",
+        "4406012015092302",
+        "{construct.numberDesc}",
+        "2015-09-23",
+        "{construct.dateDesc}",
+        2432.45,
+        "{construct.sizeDesc}"
+    ],
+    "CD0E9019BF42": [
+        "2016-07-08 17:20:26",
+        "C10BF44E6082",
+        "56",
+        "{construct.numberDesc}",
+        "2010-07-13",
+        "{construct.dateDesc}",
+        108718,
+        "{construct.sizeDesc}"
+    ],
+    "4813F7F61996": [
+        "2016-07-08 17:21:16",
+        "A283010724D6",
+        "4406012014092503",
+        "{construct.numberDesc}",
+        "2014-09-25",
+        "{construct.dateDesc}",
+        34218.17,
+        "{construct.sizeDesc}"
+    ],
+    "C5F085873592": [
+        "2016-07-08 17:22:50",
+        "D5A0AE6D1690",
+        "4406012014112401",
+        "{construct.numberDesc}",
+        "2014-07-23",
+        "{construct.dateDesc}",
+        39007.26,
+        "{construct.sizeDesc}"
+    ],
+    "6F7FEFF0DFEA": [
+        "2016-07-08 17:24:46",
+        "6119C35A4503",
+        "4406012013041801",
+        "{construct.numberDesc}",
+        "2013-04-18",
+        "{construct.dateDesc}",
+        83162.11,
+        "{construct.sizeDesc}"
+    ],
+    "95C313E872F5": [
+        "2016-07-08 17:24:54",
+        "890266710482",
+        "4406012016030101",
+        "{construct.numberDesc}",
+        "2016-03-01",
+        "{construct.dateDesc}",
+        114696.21,
+        "{construct.sizeDesc}"
+    ],
+    "665E37120B07": [
+        "2016-07-08 17:25:43",
+        "C8459DD14324",
+        "4406012014122401",
+        "{construct.numberDesc}",
+        "2014-12-24",
+        "{construct.dateDesc}",
+        22520.43,
+        "{construct.sizeDesc}"
+    ],
+    "2F0ABEF17D25": [
+        "2016-07-08 17:26:44",
+        "1B5F97DF40A9",
+        "4406012016031101",
+        "{construct.numberDesc}",
+        "2016-03-11",
+        "{construct.dateDesc}",
+        123066.63,
+        "{construct.sizeDesc}"
+    ],
+    "6B058981E83F": [
+        "2016-07-08 17:26:58",
+        "DF7A397964C3",
+        "4406012013071201",
+        "{construct.numberDesc}",
+        "2013-07-12",
+        "{construct.dateDesc}",
+        33241.03,
+        "{construct.sizeDesc}"
+    ],
+    "938831AA3B9C": [
+        "2016-07-08 17:27:02",
+        "5D68E39382B5",
+        "440601200909210101",
+        "{construct.numberDesc}",
+        "2009-09-21",
+        "{construct.dateDesc}",
+        55895,
+        "{construct.sizeDesc}"
+    ],
+    "46BE840798A0": [
+        "2016-07-08 17:27:58",
+        "A8603F884689",
+        "4406012014031801",
+        "{construct.numberDesc}",
+        "2014-03-18",
+        "{construct.dateDesc}",
+        96840.91,
+        "{construct.sizeDesc}"
+    ],
+    "FF1934213BD3": [
+        "2016-07-08 17:28:14",
+        "8CEB570DE7CF",
+        "440601201006080101",
+        "{construct.numberDesc}",
+        "2010-06-08",
+        "{construct.dateDesc}",
+        102166.62,
+        "{construct.sizeDesc}"
+    ],
+    "3C0D2741995D": [
+        "2016-07-08 17:29:22",
+        "62E0E05C5F98",
+        "4406012013112701",
+        "{construct.numberDesc}",
+        "2013-11-27",
+        "{construct.dateDesc}",
+        58471.7,
+        "{construct.sizeDesc}"
+    ],
+    "4EA5DFF41D86": [
+        "2016-07-08 17:30:28",
+        "D0CCC8C0F72D",
+        "440601201112310101",
+        "{construct.numberDesc}",
+        "2011-12-31",
+        "{construct.dateDesc}",
+        37907.37,
+        "{construct.sizeDesc}"
+    ],
+    "F397D0EF5BE1": [
+        "2016-07-08 17:30:28",
+        "1F3970B0E561",
+        "4406012016060304",
+        "{construct.numberDesc}",
+        "2016-06-03",
+        "{construct.dateDesc}",
+        15889.97,
+        "{construct.sizeDesc}"
+    ],
+    "DC7F7B968ECA": [
+        "2016-07-08 17:31:25",
+        "70661742B7F7",
+        "4406012013121801",
+        "{construct.numberDesc}",
+        "2013-12-18",
+        "{construct.dateDesc}",
+        104225.72,
+        "{construct.sizeDesc}"
+    ],
+    "2E6EDB25922F": [
+        "2016-07-08 17:32:04",
+        "8E094FCAA278",
+        "4406012013080701",
+        "{construct.numberDesc}",
+        "2013-08-07",
+        "{construct.dateDesc}",
+        60426.99,
+        "{construct.sizeDesc}"
+    ],
+    "23F34E42EB2A": [
+        "2016-07-08 17:33:43",
+        "CC252C7DE27B",
+        "440601201012280101",
+        "{construct.numberDesc}",
+        "2011-04-08",
+        "{construct.dateDesc}",
+        29832.29,
+        "{construct.sizeDesc}"
+    ],
+    "454FBE4BD1E9": [
+        "2016-07-08 17:35:17",
+        "78342950B922",
+        "4406012015071401",
+        "{construct.numberDesc}",
+        "2015-07-14",
+        "{construct.dateDesc}",
+        1953.31,
+        "{construct.sizeDesc}"
+    ],
+    "4ABDA2CD0443": [
+        "2016-07-08 17:35:21",
+        "EA928D2B9AB8",
+        "440601201112310101",
+        "{construct.numberDesc}",
+        "2011-12-31",
+        "{construct.dateDesc}",
+        37907.37,
+        "{construct.sizeDesc}"
+    ],
+    "7B3F3ECC3AAA": [
+        "2016-07-08 17:37:22",
+        "ED59250CD8C5",
+        "440601201104200101",
+        "{construct.numberDesc}",
+        "2011-4-20",
+        "{construct.dateDesc}",
+        122985.44,
+        "{construct.sizeDesc}"
+    ],
+    "852365CE2C27": [
+        "2016-07-08 17:37:22",
+        "D39AD8097E61",
+        "4406012013082202",
+        "{construct.numberDesc}",
+        "2013-08-19",
+        "{construct.dateDesc}",
+        120165.36,
+        "{construct.sizeDesc}"
+    ],
+    "95C6BF9710EC": [
+        "2016-07-08 17:39:17",
+        "7572D0558692",
+        "440601200912240101",
+        "{construct.numberDesc}",
+        "2009-12-24",
+        "{construct.dateDesc}",
+        12388.84,
+        "{construct.sizeDesc}"
+    ],
+    "CE5B89FFE7EC": [
+        "2016-07-08 17:40:33",
+        "F66174FF4FE9",
+        "440601201203200101",
+        "{construct.numberDesc}",
+        "2012-03-20",
+        "{construct.dateDesc}",
+        97007.43,
+        "{construct.sizeDesc}"
+    ],
+    "221A99C8EEB9": [
+        "2016-07-08 17:40:58",
+        "EC1A4B2B8B1C",
+        "440601201002040101",
+        "{construct.numberDesc}",
+        "2010-02-04",
+        "{construct.dateDesc}",
+        24829.76,
+        "{construct.sizeDesc}"
+    ],
+    "6C3DB8FBF4F5": [
+        "2016-07-08 17:42:57",
+        "23242C0BEE96",
+        "440601201010090101",
+        "{construct.numberDesc}",
+        "2010-10-09",
+        "{construct.dateDesc}",
+        33225.13,
+        "{construct.sizeDesc}"
+    ],
+    "CD7629DBA5AA": [
+        "2016-07-08 17:44:29",
+        "1E8169853D45",
+        "440601200907170101",
+        "{construct.numberDesc}",
+        "2009-07-17",
+        "{construct.dateDesc}",
+        5162.06,
+        "{construct.sizeDesc}"
+    ],
+    "11D020307E64": [
+        "2016-07-08 17:46:19",
+        "C33B2B049BB3",
+        "440601201002040101",
+        "{construct.numberDesc}",
+        "2010-02-04",
+        "{construct.dateDesc}",
+        14437.93,
+        "{construct.sizeDesc}"
+    ],
+    "56FC1B7CB2AD": [
+        "2016-07-08 17:46:34",
+        "F631C528A753",
+        "4406012013073101",
+        "{construct.numberDesc}",
+        "2013-07-31",
+        "{construct.dateDesc}",
+        23483.83,
+        "{construct.sizeDesc}"
+    ],
+    "6991857B7407": [
+        "2016-07-08 17:47:44",
+        "07B69C880793",
+        "440601201006120101",
+        "{construct.numberDesc}",
+        "2010-06-12",
+        "{construct.dateDesc}",
+        3997.38,
+        "{construct.sizeDesc}"
+    ],
+    "B8051CF77DFC": [
+        "2016-07-08 17:48:32",
+        "60532EB069DE",
+        "4406012013073101",
+        "{construct.numberDesc}",
+        "2013-07-31",
+        "{construct.dateDesc}",
+        23483.83,
+        "{construct.sizeDesc}"
+    ],
+    "8215161633A0": [
+        "2016-07-08 17:49:06",
+        "08248E9B5060",
+        "440601201002040101",
+        "{construct.numberDesc}",
+        "2010-02-04",
+        "{construct.dateDesc}",
+        4103.27,
+        "{construct.sizeDesc}"
+    ],
+    "0F7FA0DBFE3D": [
+        "2016-07-08 17:50:25",
+        "D16FF19F86E4",
+        "440601200905310101",
+        "{construct.numberDesc}",
+        "2009-05-31",
+        "{construct.dateDesc}",
+        1115,
+        "{construct.sizeDesc}"
+    ],
+    "2FB731F651A9": [
+        "2016-07-08 17:52:16",
+        "B00A67EBFBE7",
+        "440601201012070101",
+        "{construct.numberDesc}",
+        "2010-12-07",
+        "{construct.dateDesc}",
+        20526.85,
+        "{construct.sizeDesc}"
+    ],
+    "A48EF882FE4D": [
+        "2016-07-08 17:54:01",
+        "85946FBB11D5",
+        "440601201004280101",
+        "{construct.numberDesc}",
+        "2010-04-28",
+        "{construct.dateDesc}",
+        34695,
+        "{construct.sizeDesc}"
+    ],
+    "72A097A975ED": [
+        "2016-07-08 17:54:17",
+        "42CA24D9A166",
+        "4406012007011201",
+        "{construct.numberDesc}",
+        "2007-01-12",
+        "{construct.dateDesc}",
+        3640,
+        "{construct.sizeDesc}"
+    ],
+    "1CE7D7392410": [
+        "2016-07-08 17:55:30",
+        "440853587B6C",
+        "440601201208020101",
+        "{construct.numberDesc}",
+        "2012-08-01",
+        "{construct.dateDesc}",
+        5687.18,
+        "{construct.sizeDesc}"
+    ],
+    "203849E0E41D": [
+        "2016-07-08 17:55:54",
+        "7FB7B76DCDEB",
+        "440601200908180101",
+        "{construct.numberDesc}",
+        "2009-08-18",
+        "{construct.dateDesc}",
+        65054.3,
+        "{construct.sizeDesc}"
+    ],
+    "D27F57215A87": [
+        "2016-07-08 17:56:45",
+        "D00F098F4EB3",
+        "440601200907290101",
+        "{construct.numberDesc}",
+        "2009-07-29",
+        "{construct.dateDesc}",
+        48679.33,
+        "{construct.sizeDesc}"
+    ],
+    "5800CEF463C9": [
+        "2016-07-08 17:57:54",
+        "7F2E744C76E6",
+        "440601200908070101",
+        "{construct.numberDesc}",
+        "2009-08-07",
+        "{construct.dateDesc}",
+        37995.34,
+        "{construct.sizeDesc}"
+    ],
+    "6B6CC7AB1D39": [
+        "2016-07-08 17:59:18",
+        "4B2F31A705AB",
+        "4406012009030401",
+        "{construct.numberDesc}",
+        "2009-03-04",
+        "{construct.dateDesc}",
+        64099.04,
+        "{construct.sizeDesc}"
+    ],
+    "C5596AF7D711": [
+        "2016-07-08 17:59:21",
+        "A28CD01E4268",
+        "4406012011013102",
+        "{construct.numberDesc}",
+        "2011-01-31",
+        "{construct.dateDesc}",
+        82962.22,
+        "{construct.sizeDesc}"
+    ],
+    "595CF42283DD": [
+        "2016-07-08 18:00:29",
+        "B38F23E00E12",
+        "440601201104250101",
+        "{construct.numberDesc}",
+        "2011-04-25",
+        "{construct.dateDesc}",
+        86044.65,
+        "{construct.sizeDesc}"
+    ],
+    "1CF2188877C5": [
+        "2016-07-08 18:01:00",
+        "FD6C5D568D4E",
+        "440601201101050101",
+        "{construct.numberDesc}",
+        "2011-01-05",
+        "{construct.dateDesc}",
+        8798.77,
+        "{construct.sizeDesc}"
+    ],
+    "BE93396ABDC8": [
+        "2016-07-08 18:01:46",
+        "498851F42E25",
+        "440601201202240101",
+        "{construct.numberDesc}",
+        "2012-02-24",
+        "{construct.dateDesc}",
+        15170.08,
+        "{construct.sizeDesc}"
+    ],
+    "6D1EA2DDA1AB": [
+        "2016-07-08 18:02:43",
+        "F373032CC6AB",
+        "4406012013031201",
+        "{construct.numberDesc}",
+        "2013-03-12",
+        "{construct.dateDesc}",
+        52378.37,
+        "{construct.sizeDesc}"
+    ],
+    "85A25360434C": [
+        "2016-07-08 18:07:17",
+        "C2D86C812954",
+        "440601200910280101",
+        "{construct.numberDesc}",
+        "2009-10-28",
+        "{construct.dateDesc}",
+        77000,
+        "{construct.sizeDesc}"
+    ],
+    "5A8E50D2BAA3": [
+        "2016-07-08 18:09:05",
+        "E266E0850F79",
+        "440601201304170101",
+        "{construct.numberDesc}",
+        "2013-04-17",
+        "{construct.dateDesc}",
+        37289.55,
+        "{construct.sizeDesc}"
+    ],
+    "9D7D2985A87D": [
+        "2016-09-01 11:17:32",
+        "B5A1FE3167AC",
+        "440601201608090401",
+        "",
+        "2016-08-09",
+        "",
+        31705.39,
+        ""
+    ],
+    "9EF4E15B6D3B": [
+        "2016-09-01 11:19:42",
+        "AC4D197339FD",
+        "440601201608090601",
+        "",
+        "2016-08-09",
+        "",
+        17051.35,
+        ""
+    ],
+    "FD5FADAD1599": [
+        "2016-09-01 11:21:08",
+        "8A64025E8973",
+        "440601201608090301",
+        "",
+        "2016-08-09",
+        "",
+        33505.65,
+        ""
+    ],
+    "85FDE2F25177": [
+        "2016-09-01 11:22:06",
+        "E3A240A512E9",
+        " 44060120160711046",
+        "",
+        "2016-07-11",
+        "",
+        14849.37,
+        ""
+    ],
+    "46FDC18D89FB": [
+        "2016-09-01 11:23:18",
+        "41A7049628B4",
+        "440601201608090701",
+        "",
+        "2016-08-09",
+        "",
+        19868.86,
+        ""
+    ],
+    "C894EE71AEAD": [
+        "2016-09-01 11:23:52",
+        "38ABB63AA041",
+        " 44060120160711045",
+        "",
+        "2016-07-11",
+        "",
+        11225.32,
+        ""
+    ],
+    "90A70B5B2776": [
+        "2016-09-01 11:26:53",
+        "F19EFA4883FD",
+        "4406012016071503",
+        "",
+        "2016-07-15",
+        "",
+        1614.13,
+        ""
+    ],
+    "F10FB3ED3155": [
+        "2016-09-02 14:17:29",
+        "7924A0E94E0B",
+        "4406012016071501",
+        "",
+        "2016-07-15",
+        "",
+        48497.2,
+        ""
+    ],
+    "F020DA503613": [
+        "2016-09-02 14:18:33",
+        "2C4A2690C9A6",
+        "4406012016071502",
+        "",
+        "2016-07-15",
+        "",
+        52172.26,
+        ""
+    ],
+    "9C5888B0AEB5": [
+        "2016-09-02 14:19:39",
+        "57C06C1FCDC1",
+        "440601201608090401",
+        "",
+        "2016-08-09",
+        "",
+        31705.39,
+        ""
+    ],
+    "8C7A1537F95D": [
+        "2016-09-02 14:21:34",
+        "9042B8F13BEF",
+        " 4406012016072905 ",
+        "",
+        "2016-07-29",
+        "",
+        63044.18,
+        ""
+    ],
+    "9DFBFF8998FC": [
+        "2016-09-02 14:22:22",
+        "1D48875A059C",
+        " 4406012016072904 ",
+        "",
+        "2016-07-29",
+        "",
+        71225.21,
+        ""
+    ],
+    "2E77982D2DD5": [
+        "2016-09-02 14:23:05",
+        "245B00FA9E82",
+        "440601201608100201",
+        "",
+        "2016-08-10",
+        "",
+        6022.26,
+        ""
+    ],
+    "C49AB2652369": [
+        "2016-09-02 14:23:47",
+        "A210F0BF2323",
+        "4406012016072903",
+        "",
+        "2016-07-29",
+        "",
+        98811.02,
+        ""
+    ],
+    "F2F4CF44C48A": [
+        "2016-09-02 14:25:01",
+        "B86E77E3CD3C",
+        "440601201608300301",
+        "",
+        "2016-08-30",
+        "",
+        11683.94,
+        ""
+    ],
+    "F625F5F55924": [
+        "2016-09-02 14:26:16",
+        "99AF44BB484A",
+        "440601201608300201",
+        "",
+        "2016-08-30",
+        "",
+        31884.62,
+        ""
+    ],
+    "B0D63E30A830": [
+        "2016-09-02 14:28:14",
+        "429CAF663F6C",
+        "440601201608260101",
+        "",
+        "2016-08-26",
+        "",
+        59539.32,
+        ""
+    ],
+    "EEFDF5F74037": [
+        "2016-09-02 14:28:43",
+        "C2062F3942B8",
+        "440601201608180201",
+        "",
+        "2016-08-18",
+        "",
+        82605.46,
+        ""
+    ],
+    "C8DA6C36A6B1": [
+        "2016-09-02 14:29:09",
+        "47590A85DD1D",
+        "440601201608180101",
+        "",
+        "2016-08-18",
+        "",
+        93946.66,
+        ""
+    ],
+    "F70BAD945907": [
+        "2016-09-02 14:30:09",
+        "3918823FB192",
+        "4406012016072002",
+        "",
+        "2016-07-20",
+        "",
+        70293.87,
+        ""
+    ],
+    "02F3719BC322": [
+        "2016-09-02 14:31:02",
+        "AB4B878755A9",
+        " 44060120160718012",
+        "",
+        "2016-07-18",
+        "",
+        1220.09,
+        ""
+    ],
+    "3976402AE184": [
+        "2016-09-02 14:31:44",
+        "3B746336BD37",
+        "4406012016060303",
+        "",
+        "2016-06-03",
+        "",
+        32416.58,
+        ""
+    ],
+    "C0C6B012D8E5": [
+        "2016-09-02 14:33:44",
+        "752B25577C91",
+        " 4406012016071801 ",
+        "",
+        "2016-07-18",
+        "",
+        29207.28,
+        ""
+    ],
+    "6D7840B89CA1": [
+        "2016-09-23 15:42:19",
+        "B465FC28C824",
+        " 440601201609220301",
+        "",
+        "2016-09-22",
+        "",
+        31929.16,
+        ""
+    ],
+    "ECEB871BAB05": [
+        "2016-09-23 15:42:46",
+        "DE68C86B24FD",
+        " 440601201609220301",
+        "",
+        "2016-09-22",
+        "",
+        53250.03,
+        ""
+    ],
+    "646B84EAFCDF": [
+        "2016-09-23 15:46:13",
+        "AE3CF6A76546",
+        "4406012016072001",
+        "",
+        "2016-07-20",
+        "",
+        56747.98,
+        ""
+    ]
+}

@@ -10,7 +10,7 @@ var db = new DataBase('Saled', [
     { name: 'datetime', },
  
     { name: 'licenseId', required: true, refer: 'SaleLicense', },
-    { name: 'date', },
+    { name: 'date', type: 'number', },
 
     { name: 'residenceSize', type: 'number', },
     { name: 'residenceSizeDesc', },
@@ -152,7 +152,6 @@ module.exports = {
         }
     },
 
-
     /**
     * 批量导入。
     */
@@ -177,13 +176,23 @@ module.exports = {
         var fail = {
             'nones': [],
             'duplicates': [],
+            'dates': [],
         };
 
         var adds = [];
         var updates = [];
-        var items = req.body.data;
+        var items = req.body.data;  //提交的数据
 
         items.forEach(function (item) {
+
+            var date = item.date;
+            if (!date || /^\d{4}-\d{2}-\d{2}$/.test(date)) { //必须为 'yyyy-MM-dd' 的格式
+                fail.dates.push(item);
+                return;
+            }
+
+            item.date = Number(date.split('-').join(''));   //转成 yyyyMMdd 的数字格式。
+
             var number = item.number;
             var licence = number$license[number];   //根据证号找到整条许可证。
 
@@ -247,6 +256,142 @@ module.exports = {
                 'updates': updates,
             },
         });
+
+    },
+
+    /**
+    * 按预售许可证(或现售备案)合并一组已售流水(累积)记录，
+    * 找出组内日期最大的已售记录作为当前记录。
+    */
+    currents: function (refered, fn) {
+
+        var list = db.list(refered, fn);
+        var items = list;
+
+        if (refered) {
+            items = list.map(function (item) {
+                return item.item;
+            });
+        }
+       
+        var licenseId$current = DataBase.group(items, 'licenseId', function (licenseId, group) {
+
+            group.sort(function (a, b) {
+                return a.date > b.date ? -1 : 1;   //按日期值倒序。
+            });
+
+            return group[0];  //日期最大值的一条记录
+        });
+
+
+        list = list.filter(function (item) {
+            if (refered) {
+                item = item.item;
+            }
+
+            var current = licenseId$current[item.licenseId];
+            return current.id == item.id;
+        });
+
+        return list;
+
+    },
+
+    /**
+    * 按预售许可证(或现售备案)合并一组已售流水(累积)记录，
+    * 找出组内指定日期区间的已售记录作为当前记录。
+    */
+    byDates: function (dates, refered, fn) {
+
+        //全部已售记录
+        var list = db.list(refered, fn);
+        var items = list;
+
+        if (refered) {
+            items = list.map(function (item) {
+                return item.item;
+            });
+        }
+
+        //按许可证把一组已售记录合并成一条。
+        var licenseId$saled = DataBase.group(items, 'licenseId', function (licenseId, group) {
+
+            //按日期值升序。
+            group.sort(function (a, b) {
+                return a.date > b.date ? 1 : -1;
+            });
+
+            var beginItem = null;
+            var endItem = null;
+
+            //没有指定开始时间的，即只指定了结束时间
+            if (!dates.begin) {
+                endItem = group.reverse().find(function (item) {   //倒序搜索
+                    return item.date <= dates.end;
+                });
+                return endItem || null;
+            }
+
+            //指定了开始时间的
+            beginItem = group.find(function (item) {
+                return item.date >= dates.begin;
+            });
+
+            if (!beginItem) {
+                return null;
+            }
+
+            if (dates.end) {
+                endItem = group.reverse().find(function (item) { //倒序搜索
+                    return item.date <= dates.end;
+                });
+
+                if (!endItem) {
+                    return null;
+                }
+            }
+            else {
+                endItem = group.slice(-1)[0];
+            }
+
+            if (beginItem === endItem) {
+                return endItem;
+            }
+
+
+            var item = {};
+            var isValid = false;
+
+            $.Object.each(endItem, function (key, value) {
+                if (typeof value != 'number') {
+                    item[key] = value;
+                    return;
+                }
+
+                value = value - beginItem[key]; //相减。
+
+                //只要有一个不为 0，则为合法记录，用于向上搜索其它角色的记录。
+                if (value != 0) {
+                    isValid = true;
+                }
+
+                item[key] = value;
+            });
+
+            return isValid ? item : null;
+        });
+
+
+        list = list.filter(function (item) {
+            if (refered) {
+                item = item.item;
+            }
+
+            var saled = licenseId$saled[item.licenseId];
+            return saled && saled.id == item.id;
+        });
+
+        return list;
 
     },
 };

@@ -50,7 +50,7 @@ define('/Formater/Group', function (require, module, exports) {
                 var title = town.name;
                 var stat = town$stat[key];
                 var group = StatUse.get(stat, title);
-
+             
                 return group;
             });
 
@@ -66,10 +66,14 @@ define('/Formater/Group', function (require, module, exports) {
                     total += items[index].value;
                 });
 
-                var name = index == 0 ? role.name : item.name;
+                var isFirst = index == 0;
+                var name = isFirst ? role.name : item.name;
+
                 return {
                     'name': name,
                     'value': total,
+                    'group': isFirst,
+                    'subGroup': isFirst,
                 };
             });
 

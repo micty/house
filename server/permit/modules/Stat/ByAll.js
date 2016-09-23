@@ -4,7 +4,7 @@ var DataBase = require('../../lib/DataBase');
 
 
 
-var roles = {
+var Roles = {
     'land': function () {
         var Land = require('../Land').db;
 
@@ -19,7 +19,7 @@ var roles = {
             };
         });
 
-        return { 'land': list };
+        return { 'land': list, };
     },
 
     'plan': function () {
@@ -37,7 +37,7 @@ var roles = {
             };
         });
 
-        return { 'plan': list };
+        return { 'plan': list, };
     },
 
     'construct': function () {
@@ -57,7 +57,7 @@ var roles = {
             };
         });
 
-        return { 'construct': list };
+        return { 'construct': list, };
     },
 
     'sale': function () {
@@ -88,17 +88,18 @@ var roles = {
 
     //已售记录。
     'saled': function () {
-        var Saled = require('../Saled').db;
-        var list = Saled.list(true);
+        var Saled = require('../Saled');
+
+        var list = Saled.currents(true, function (item) {
+            var land = item.refer.licenseId.refer.saleId.refer.planId.refer.landId.item;
+            return !land.diy;
+        });
+
         var types = { 0: [], 1: [], };
 
         list.forEach(function (item) {
             var license = item.refer.licenseId;
             var land = license.refer.saleId.refer.planId.refer.landId.item;
-
-            if (land.diy) {
-                return;
-            }
 
             var type = license.item.type;
             types[type].push({
@@ -117,37 +118,12 @@ var roles = {
 };
 
 
-module.exports = {
+var Helper = {
 
-    stat: function (data) {
-        var Dates = require('./Dates');
-        var Sum = require('./Sum');
-        var dates = Dates.normalize(data);
-
-        var stat = null;
-
-
-        //如果指定了开始时间或结束时间，则以已售记录的提交时间为准。
-        if (dates) {
-            stat = module.exports.dates(dates);
-        }
-        else {
-            stat = module.exports.roles();
-        }
-
-        Object.keys(stat).forEach(function (key) {
-            var list = stat[key];
-            stat[key] = Sum.stat(list);
-        });
-
-        return stat;
-    },
-
-
-    dates: function (dates) {
+    byDates: function (dates) {
         var Construct = require('../Construct').db;
         var PlanLicense = require('../PlanLicense').db;
-        var Saled = require('../Saled').db;
+        var Saled = require('../Saled'); //这里没有 .db
         var Dates = require('./Dates');
 
         var lands = [];
@@ -155,19 +131,15 @@ module.exports = {
         var type$licenses = { 0: [], 1: [], };
         var type$saleds = { 0: [], 1: [], };
 
-        Saled.list(true, function (saled) {
+        var saleds = Saled.byDates(dates, true, function (item) {
+            var land = item.refer.licenseId.refer.saleId.refer.planId.refer.landId.item;
+            return !land.diy;
+        });
+
+        saleds.forEach(function (saled) {
             var license = saled.refer.licenseId;
             var plan = license.refer.saleId.refer.planId;
             var land = plan.refer.landId.item;
-
-            if (land.diy) {
-                return false;
-            }
-
-            if (!Dates.filter(dates, saled.item.datetime)) {
-                return false;
-            }
-
 
             //顺便收集相应的记录。
             plans.push(plan.item);
@@ -189,9 +161,8 @@ module.exports = {
                 'item': saled.item,
                 'town': land.town,
             });
-
-            return true;
         });
+
 
 
         //以 id 作为主键关联整条记录。
@@ -235,17 +206,48 @@ module.exports = {
 
 
 
-
-    roles: function () {
+    byRoles: function () {
 
         var stat = {};
 
-        Object.keys(roles).forEach(function (key) {
-            var fn = roles[key];
+        Object.keys(Roles).forEach(function (key) {
+            var fn = Roles[key];
             var obj = fn();
             $.Object.extend(stat, obj);
         });
 
         return stat;
     },
+};
+
+
+
+
+module.exports = {
+
+    stat: function (data) {
+        var Dates = require('./Dates');
+        var Sum = require('./Sum');
+        var dates = Dates.normalize(data);
+
+        var stat = null;
+
+
+        //如果指定了开始时间或结束时间，则以已售记录的截止时间为准。
+        if (dates) {
+            stat = Helper.byDates(dates);
+        }
+        else {
+            stat = Helper.byRoles();
+        }
+
+        Object.keys(stat).forEach(function (key) {
+            var list = stat[key];
+            stat[key] = Sum.stat(list);
+        });
+
+        return stat;
+    },
+
+
 };

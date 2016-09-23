@@ -3,13 +3,27 @@
         "name": "datetime"
     },
     {
-        "name": "licenseId",
+        "name": "planId",
         "required": true,
-        "refer": "SaleLicense"
+        "refer": "Plan"
     },
     {
-        "name": "date",
-        "type": "number"
+        "name": "number"
+    },
+    {
+        "name": "numberDesc"
+    },
+    {
+        "name": "name"
+    },
+    {
+        "name": "nameDesc"
+    },
+    {
+        "name": "date"
+    },
+    {
+        "name": "dateDesc"
     },
     {
         "name": "residenceSize",
@@ -52,33 +66,5 @@
     },
     {
         "name": "otherSize1Desc"
-    },
-    {
-        "name": "residenceCell",
-        "type": "number"
-    },
-    {
-        "name": "residenceCellDesc"
-    },
-    {
-        "name": "commerceCell",
-        "type": "number"
-    },
-    {
-        "name": "commerceCellDesc"
-    },
-    {
-        "name": "officeCell",
-        "type": "number"
-    },
-    {
-        "name": "officeCellDesc"
-    },
-    {
-        "name": "otherCell",
-        "type": "number"
-    },
-    {
-        "name": "otherCellDesc"
     }
 ]
