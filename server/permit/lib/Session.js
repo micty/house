@@ -6,7 +6,9 @@ var id$data = {};
 var id$time = {};
 
 //定时检查会话超时。
-var timeout = 10 * 60 * 1000;   //10min
+var timeout = 10 * 60 * 1000;       //10min
+//var timeout = 4 * 1000;           //4s    --test
+
 setInterval(function () {
 
     for (var id in id$time) {

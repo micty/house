@@ -1,0 +1,36 @@
+{
+    "construct": {
+        "南庄": {
+            "residenceSize": 1825272,
+            "commerceSize": 528038.2999999998,
+            "officeSize": 482594.38,
+            "otherSize": 51420.389999999985,
+            "parkSize": 957985.8500000002,
+            "otherSize1": 126601.48
+        },
+        "石湾": {
+            "residenceSize": 3222945.7500000005,
+            "commerceSize": 1129624.6100000003,
+            "officeSize": 578580.9,
+            "otherSize": 208474.98000000004,
+            "parkSize": 1586974.4699999997,
+            "otherSize1": 180944.53999999998
+        },
+        "张槎": {
+            "residenceSize": 1180028.53,
+            "commerceSize": 436976.72,
+            "officeSize": 464312.29000000004,
+            "otherSize": 849013.96,
+            "parkSize": 760984.8099999999,
+            "otherSize1": 57035.23999999998
+        },
+        "祖庙": {
+            "residenceSize": 2484125.74,
+            "commerceSize": 1042103.4799999994,
+            "officeSize": 1051946.1500000001,
+            "otherSize": 85546.97999999998,
+            "parkSize": 1502942.0499999996,
+            "otherSize1": 140063.24999999997
+        }
+    }
+}

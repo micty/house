@@ -31,7 +31,10 @@ define('/Saled/API', function (require, module, exports) {
 
             'success': function (data, json, xhr) {
                 var list = data;
-           
+                list.sort(function (a, b) {
+                    return a.date > b.date ? -1 : 1; //按截止日期倒序
+                });
+
                 emitter.fire('success', 'get', [list]);
             },
 

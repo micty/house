@@ -13,7 +13,8 @@ define('/Saled/List', function (require, module) {
 
 
 
-        panel.template(['row'],  function (data, index) {
+        panel.template(['row'], function (data, index) {
+
 
             return {
                 data: {
@@ -23,10 +24,14 @@ define('/Saled/List', function (require, module) {
 
                 fn: function (item, index) {
 
+                    var date = item.date.toString();
+                    date = date.slice(0, 4) + '-' + date.slice(4, 6) + '-' + date.slice(6);
+
 
                     data = $.Object.extend(data, item, {
                         'index': index,
                         'no': index + 1,
+                        'date': date,
                         'datetime': item.datetime,
                     
                         'totalSize0': Size.totalText(item, 0),

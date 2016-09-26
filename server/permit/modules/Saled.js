@@ -11,6 +11,7 @@ var db = new DataBase('Saled', [
  
     { name: 'licenseId', required: true, refer: 'SaleLicense', },
     { name: 'date', type: 'number', },
+    { name: 'dateDesc', },
 
     { name: 'residenceSize', type: 'number', },
     { name: 'residenceSizeDesc', },
@@ -186,7 +187,8 @@ module.exports = {
         items.forEach(function (item) {
 
             var date = item.date;
-            if (!date || /^\d{4}-\d{2}-\d{2}$/.test(date)) { //必须为 'yyyy-MM-dd' 的格式
+            var reg = /^\d{4}-\d{2}-\d{2}$/;
+            if (!date || !reg.test(date)) { //必须为 'yyyy-MM-dd' 的格式
                 fail.dates.push(item);
                 return;
             }

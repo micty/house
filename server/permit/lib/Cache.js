@@ -1,8 +1,6 @@
 ﻿
 
 
-
-
 function getMD5(data, dbs) {
     
     var MD5 = require('./MD5');
@@ -42,16 +40,20 @@ function Cache(name) {
 
 
 
+//是否启用缓存
+var enabled = true;
+
+
+
 Cache.prototype = {
     constructor: Cache,
 
     get: function (name, dbs, data) {
 
-
-
-
-        //test
-        return;
+        //不使用缓存
+        if (!enabled) {
+            return;
+        }
 
 
         var meta = this.meta;
@@ -66,8 +68,11 @@ Cache.prototype = {
 
     set: function (name, dbs, data, json) {
 
-        //test
-        return;
+
+        //不使用缓存
+        if (!enabled) {
+            return;
+        }
 
         var meta = this.meta;
         var md5 = getMD5(data, dbs);

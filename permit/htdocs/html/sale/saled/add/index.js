@@ -35,10 +35,12 @@ KISP.launch(function (require, module) {
     });
 
     Header.on('submit', function () {
-        var data = Form.get();
+        var data = Form.get(true);
         if (!data) {
             return;
         }
+
+   
 
         API.post(data);
     });

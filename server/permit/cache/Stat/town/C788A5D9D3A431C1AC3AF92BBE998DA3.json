@@ -1,0 +1,58 @@
+{
+    "land": {
+        "residenceSize": 2455953.6199999996,
+        "commerceSize": 1876069.0500000003,
+        "officeSize": 0,
+        "otherSize": 725816.79,
+        "parkSize": 1391595.97,
+        "otherSize1": 0
+    },
+    "plan": {
+        "residenceSize": 1425959.6199999999,
+        "commerceSize": 469657.76,
+        "officeSize": 599306.6000000001,
+        "otherSize": 855148.5400000002,
+        "parkSize": 918375.6200000001,
+        "otherSize1": 71143.10999999999
+    },
+    "construct": {
+        "residenceSize": 1180028.53,
+        "commerceSize": 436976.72,
+        "officeSize": 464312.29000000004,
+        "otherSize": 849013.96,
+        "parkSize": 760984.8099999999,
+        "otherSize1": 57035.23999999998
+    },
+    "prepare": {
+        "residenceSize": 1206308.100000001,
+        "commerceSize": 124329.62,
+        "officeSize": 409309.35,
+        "otherSize": 406936.42,
+        "parkSize": 0,
+        "otherSize1": 0
+    },
+    "doing": {
+        "residenceSize": 0,
+        "commerceSize": 0,
+        "officeSize": 0,
+        "otherSize": 20481.17,
+        "parkSize": 144842.37000000002,
+        "otherSize1": 6714.410000000001
+    },
+    "saled-prepare": {
+        "residenceSize": 1008927.2900000002,
+        "commerceSize": 50759.76000000001,
+        "officeSize": 255784.76,
+        "otherSize": 266865.13999999996,
+        "parkSize": 0,
+        "otherSize1": 0
+    },
+    "saled-doing": {
+        "residenceSize": 0,
+        "commerceSize": 0,
+        "officeSize": 0,
+        "otherSize": 14266.26,
+        "parkSize": 46305.32,
+        "otherSize1": 0
+    }
+}

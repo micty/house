@@ -12,6 +12,9 @@
         "type": "number"
     },
     {
+        "name": "dateDesc"
+    },
+    {
         "name": "residenceSize",
         "type": "number"
     },

@@ -40,12 +40,12 @@ app.use(function (req, res, next) {
         'Access-Control-Allow-Origin': '*',
     });
 
-    //if (!req.url.startsWith('/User/login?')) {
-    //    var valid = Session.check(req, res);
-    //    if (!valid) {
-    //        return;
-    //    }
-    //}
+    if (!req.url.startsWith('/User.login?')) {
+        var valid = Session.check(req, res);
+        if (!valid) {
+            return;
+        }
+    }
 
     next();
 });

@@ -16,7 +16,7 @@ define('/Form', function (require, module, exports) {
     var current = null;
 
 
-    function get() {
+    function get(needValidate) {
 
         var data = current.saled || {
             'licenseId': current.license.id,
@@ -39,6 +39,23 @@ define('/Form', function (require, module, exports) {
 
             data[name] = value;
         });
+
+        //需要验证数据，说明是外面调用来提交到后台的。
+        if (needValidate) {
+            var date = data.date;
+            if (!date) {
+                top.KISP.alert('必须指定截止日期');
+                return;
+            }
+
+            var reg = /^\d{4}-\d{2}-\d{2}$/;
+            if (!reg.test(date)) { //必须为 'yyyy-MM-dd' 的格式
+                top.KISP.alert('截止日期必须为 yyyy-MM-dd 的格式');
+                return;
+            }
+
+            data.date = date.split('-').join(''); //转成 yyyyMMdd 格式。
+        }
 
         return data;
     }
@@ -70,7 +87,7 @@ define('/Form', function (require, module, exports) {
         });
 
         DateTimePicker.create('[data-type="date"]', {
-            pickerPosition: 'bottom-right',
+            pickerPosition: 'top-right',
         });
 
     });
@@ -89,9 +106,11 @@ define('/Form', function (require, module, exports) {
 
         panel.fill(obj);
 
+        setTimeout(function () {
+            if (saled) {
+                var date = saled.date.toString();
+                saled.date = date.slice(0, 4) + '-' + date.slice(4, 6) + '-' + date.slice(6);
 
-        if (saled) {
-            setTimeout(function () {
                 panel.$.find('[name]').each(function () {
                     var name = this.name;
                     var value = saled[name];
@@ -103,12 +122,23 @@ define('/Form', function (require, module, exports) {
                     this.value = value;
                 });
 
-                NumberField.update('[data-type="number"]');
                 sum();
+            }
+               
 
-            }, 100);
+            NumberField.update('[data-type="number"]');
 
-        }
+            DateTimePicker.create('[data-type="date"]', {
+                pickerPosition: 'top-right',
+            });
+
+
+           
+
+        }, 100);
+
+
+     
 
     });
 

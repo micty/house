@@ -35,6 +35,23 @@ define('API', function (require, module, exports) {
             return post({'data': data, }, query);
         };
 
+   
+
+        api.on('fail', function (code) {
+            if (code == -2) {
+                top.KISP.alert('会话已超时，请重新登录。', function () {
+                    var Url = KISP.require('Url');
+                    top.location.href = Url.root() + 'login.html';
+                });
+
+                //防止确定后再弹出页面自己的 alert，这是个临时办法。
+                top.KISP.alert =
+                    KISP.alert = function () { };
+            }
+        });
+
+
+
         return api;
     }
 

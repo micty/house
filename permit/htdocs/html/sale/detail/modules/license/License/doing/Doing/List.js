@@ -38,8 +38,10 @@ define('/License/Doing/List', function (require, module) {
                         'totalSize': Size.totalText(license),
                         'totalCell': Cell.totalText(license),
 
-                        'saled-totalSize': Size.sumText(saleds),
-                        'saled-totalCell': Cell.sumText(saleds),
+
+                        //因为已售记录是累积的，这里采用按截止日期倒序后的第一条为准。
+                        'saled-totalSize': Size.sumText(saleds.slice(0, 1)),
+                        'saled-totalCell': Cell.sumText(saleds.slice(0, 1)),
 
                         'saled-count': saleds.length,
                     });

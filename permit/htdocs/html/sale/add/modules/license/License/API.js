@@ -41,6 +41,10 @@ define('/License/API', function (require, module, exports) {
                 ];
 
                 list.forEach(function (item) {
+                    item.saleds.sort(function (a, b) {
+                        return a.date > b.date ? -1 : 1; //按截止日期倒序。
+                    });
+
                     var license = item.license;
                     groups[license.type].push(item);
                 });
