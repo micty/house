@@ -7,6 +7,7 @@ define('/API', function (require, module, exports) {
     var KISP = require('KISP');
 
     var Emitter = MiniQuery.require('Emitter');
+    var API = require('API');
 
     var emitter = new Emitter();
     var loading = null;
@@ -15,9 +16,7 @@ define('/API', function (require, module, exports) {
     //获取数据
     function get() {
 
-        var api = KISP.create('API', 'User.list', {
-            
-        });
+        var api = new API('User.list');
 
 
         api.on({
@@ -59,7 +58,7 @@ define('/API', function (require, module, exports) {
 
     function remove(id) {
 
-        var api = KISP.create('API', 'User.remove');
+        var api = new API('User.remove');
 
         api.on({
 
@@ -99,9 +98,9 @@ define('/API', function (require, module, exports) {
 
 
     return {
-        get: get,
-        remove: remove,
-        on: emitter.on.bind(emitter),
+        'get': get,
+        'remove': remove,
+        'on': emitter.on.bind(emitter),
     };
 
 

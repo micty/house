@@ -27,6 +27,10 @@ define('User', function (require, module, exports) {
         LocalStorage.set('user', data);
     }
 
+    function clear() {
+        SessionStorage.remove('user');
+    }
+
     function isSuper() {
         var user = get();
         return user.role == 'administrator';
@@ -48,6 +52,7 @@ define('User', function (require, module, exports) {
     return {
         'get': get,
         'set': set,
+        'clear': clear,
         'isSuper': isSuper,
         'is': is,
         'display': display,

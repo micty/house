@@ -11,7 +11,7 @@ define('/UserInfos', function (require, module, exports) {
     var KISP = require('KISP');
 
     var Template = KISP.require('Template');
-    var SessionStorage = require('SessionStorage');
+    var User = require('User');
 
 
 
@@ -34,7 +34,7 @@ define('/UserInfos', function (require, module, exports) {
         
         panel.$.on('click', '[data-cmd="logout"]', function () {
 
-            SessionStorage.remove('user');
+            User.clear();
             panel.fire('logout');
         });
 
@@ -44,7 +44,7 @@ define('/UserInfos', function (require, module, exports) {
 
     panel.on('render', function () {
 
-        var user = SessionStorage.get('user');
+        var user = User.get();
         if (!user) {
             panel.fire('logout');
             return;

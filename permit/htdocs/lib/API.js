@@ -38,8 +38,12 @@ define('API', function (require, module, exports) {
    
 
         api.on('fail', function (code) {
-            if (code == -2) {
-                top.KISP.alert('会话已超时，请重新登录。', function () {
+            if (code == -1 || code == -2) {
+                var msg = code == -2 ?
+                    '会话已超时，请重新登录。' :
+                    '请先登录再操作。';
+
+                top.KISP.alert(msg, function () {
                     var Url = KISP.require('Url');
                     top.location.href = Url.root() + 'login.html';
                 });
@@ -48,6 +52,8 @@ define('API', function (require, module, exports) {
                 top.KISP.alert =
                     KISP.alert = function () { };
             }
+
+           
         });
 
 
