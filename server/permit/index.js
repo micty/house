@@ -78,6 +78,7 @@ Router.use(app, {
         'remove',
     ],
     post: [
+        'get',  //这里增加个
         'add',
         'update',
         'page',

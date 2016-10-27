@@ -17,9 +17,9 @@ define('/API', function (require, module, exports) {
         '__________________________________________________________';
 
 
-    function get(license) {
+    function get(land) {
 
-        var api = new API('Land.list');
+        var api = new API('Land.get');
 
         api.on({
             'request': function () {
@@ -34,17 +34,7 @@ define('/API', function (require, module, exports) {
             },
 
             'success': function (data, json, xhr) {
-                var list = data;
-                var item = list.find(function (item) {
-                    return item.license == license;
-                });
-
-                if (!item) {
-                    KISP.alert('不存在该土地记录');
-                    return;
-                }
-
-                emitter.fire('success', 'get', [item]);
+                emitter.fire('success', 'get', [data]);
             },
 
             'fail': function (code, msg, json) {
@@ -56,7 +46,9 @@ define('/API', function (require, module, exports) {
             },
         });
 
-        api.get();
+        api.post({
+            'license': land.license,
+        });
 
     }
 

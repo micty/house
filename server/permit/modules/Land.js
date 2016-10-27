@@ -52,23 +52,53 @@ module.exports = {
     */
     get: function (req, res) {
         var id = req.query.id;
-        if (!id) {
+        if (id) {
+            try {
+                var item = db.get(id);
+                if (item) {
+                    res.success(item);
+                }
+                else {
+                    res.none({ 'id': id });
+                }
+            }
+            catch (ex) {
+                res.error(ex);
+            }
+            return;
+        }
+
+        //没有指定 id，则当作是 post 提交多个字段来查询。
+        var form = req.body.data;
+        if (!form) {
             res.empty('id');
             return;
         }
 
-        try{
-            var item = db.get(id);
+        var list = db.list(function (item) {
+            for (var key in form) {
+                if (form[key] != item[key]) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+
+        try {
+            var item = list[0];
             if (item) {
                 res.success(item);
             }
             else {
-                res.none({'id': id });
+                res.none(form);
             }
         }
         catch (ex) {
             res.error(ex);
         }
+
+        
     },
 
     /**
@@ -197,6 +227,8 @@ module.exports = {
 
         return id$item;
     },
+
+    
 
 };
 
