@@ -78,15 +78,6 @@
         },
     });
 
-    KISP.data({
-        'demo': {
-            //在 paper/list 用到
-            url: '../../../../../demo/htdocs/index.html',
-        },
-    });
-
-
-
     //开发阶段，把 define 变成全局变量
     window.define = KISP.require('Module').define;
 
