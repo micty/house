@@ -22,7 +22,7 @@ define('/Formater', function (require, module, exports) {
 
     function exclude(group) {
         group.forEach(function (item, index) {
-            if (excludes[item.text]) {
+            if (excludes[item.name]) {
                 item.hidden = true;
             }
         });
@@ -48,8 +48,6 @@ define('/Formater', function (require, module, exports) {
         //未办施工许可 = 土地出让 - 已办施工许可
         groups[7] = Group.substract(groups[0], groups[2], '未办施工许可');
         exclude(groups[7]);
-
-
 
         var cols = groups.slice(0, 5).map(function (group, index) {
             return group.concat(groups[5 + index]);

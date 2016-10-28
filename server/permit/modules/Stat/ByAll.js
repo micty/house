@@ -1,4 +1,5 @@
 ﻿
+
 var $ = require('../../lib/MiniQuery');
 var DataBase = require('../../lib/DataBase');
 
@@ -81,7 +82,7 @@ var Roles = {
         var stat = {};
 
         stat['prepare'] = types[0];
-        stat['doing'] = types[0];
+        stat['doing'] = types[1];
 
         return stat;
     },
