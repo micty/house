@@ -13,6 +13,7 @@ define('/Table', function (require, module) {
 
             return {
                 data: {
+                    'formula0': data.formula0,
                     'total0': NumberField.text(data.total0),
                     'total1': NumberField.text(data.total1),
                 },

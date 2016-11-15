@@ -21,10 +21,11 @@ KISP.launch(function (require, module) {
 
     var type = Url.getQueryString(window, 'type') || '';
 
+    var current = null;
 
     API.on({
         'success': function (data) {
-            data = Formater.format(data);
+            data = Formater.format(data, current);
 
             switch (type) {
                 case 'table':
@@ -47,6 +48,8 @@ KISP.launch(function (require, module) {
 
 
     Tabs.on('change', function (item) {
+
+        current = item;
 
         Header.render();
         Filter.render();
