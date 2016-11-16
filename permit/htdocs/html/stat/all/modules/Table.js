@@ -10,18 +10,32 @@ define('/Table', function (require, module) {
 
     panel.on('init', function () {
 
+
+        function toText(value) {
+            value = value / 10000;
+
+            value = NumberField.text(value, {
+                decimalCount: 1,        //小数的位数
+            }) || '';
+
+            value = value.split(',').join('<span class="sep">,</span>');
+
+            return value;
+        }
+
+
         panel.template(['row', 'col'], function (data, index) {
 
             return {
                 data: {
-                    'total0': NumberField.text(data.total0),
-                    'total1': NumberField.text(data.total1),
+                    'total0': toText(data.total0),
+                    'total1': toText(data.total1),
 
-                    'total2': NumberField.text(data.total2),
-                    'total3': NumberField.text(data.total3),
+                    'total2': toText(data.total2),
+                    'total3': toText(data.total3),
 
-                    'total4': NumberField.text(data.total4),
-                    'total5': NumberField.text(data.total5),
+                    'total4': toText(data.total4),
+                    'total5': toText(data.total5),
                 },
 
                 list: data.rows,
@@ -34,9 +48,7 @@ define('/Table', function (require, module) {
 
                         fn: function (item, index) {
 
-                            var value = NumberField.text(item.value) || '';
-                            value = value.split(',').join('<span class="sep">,</span>');
-
+                            var value = toText(item.value);
                             var hidden = item.hidden;
 
                             return {
