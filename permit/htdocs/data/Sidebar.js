@@ -109,11 +109,7 @@
         name: '统计报表',
         url: 'html/stat/all/index.html',
     },
-    {
-        icon: 'table',
-        name: '项目统计',   //按销售项目
-        url: 'html/stat/sale/index.html',
-    },
+  
     {
         icon: 'area-chart',
         name: '区域统计表',
@@ -128,6 +124,11 @@
         icon: 'line-chart',
         name: '功能统计表',
         url: 'html/stat/use/index.html?type=table',
+    },
+    {
+        icon: 'table',
+        name: '项目统计',   //按销售项目
+        url: 'html/stat/sale/index.html',
     },
     {
         icon: 'line-chart',
@@ -151,6 +152,7 @@
         name: '功能统计图',
         url: 'html/stat/use/index.html?type=chart',
     },
+    
     {
         icon: 'line-chart',
         name: '自建房统计图',
