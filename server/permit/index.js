@@ -192,6 +192,7 @@ Router.use(app, {
         'role',
         'diy',
         'all',
+        'sale',
     ],
 });
 

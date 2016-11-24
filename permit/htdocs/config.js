@@ -60,7 +60,7 @@
         'API': {
             //url: 'http://localhost:8080/',
             //url: 'http://localhost:8081/',
-            //url: 'http://localhost:8082/',
+            url: 'http://localhost:8082/',
 
             //在开发阶段，为了防止后台过快的返回数据而显示让某些需要显示
             //"数据加载中"的效果不明显， 这里强行加上一个随机延迟时间，

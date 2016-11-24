@@ -117,6 +117,25 @@ module.exports = {
         res.success(stat);
     },
 
+    /**
+    * 按自建房进行统计。
+    */
+    sale: function (req, res) {
+        var data = req.body.data;
+
+        var cache = Cache.get('sale', data);
+        if (cache) {
+            res.success(cache);
+            return;
+        }
+
+        var BySale = require('./Stat/BySale');
+        var stat = BySale.stat(data);
+
+        Cache.set('sale', data, stat);
+        res.success(stat);
+    },
+
     
 };
 

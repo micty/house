@@ -1,0 +1,952 @@
+[
+    {
+        "sale": "佛山雅居乐花园",
+        "land": 102393.42,
+        "plan": 97395.81,
+        "construct": 97395.81,
+        "prepare": 342930.06000000006,
+        "doing": 80865.88,
+        "saled-prepare": 381505.3600000001,
+        "saled-doing": 55939.13
+    },
+    {
+        "sale": "雅庭豪苑",
+        "land": 38095,
+        "plan": 37995.340000000004,
+        "construct": 37995.340000000004,
+        "prepare": 16631.35,
+        "doing": 5287.86,
+        "saled-prepare": 16631.35,
+        "saled-doing": 5255.13
+    },
+    {
+        "sale": "阳光嘉苑",
+        "land": 165639.6,
+        "plan": 158062.16,
+        "construct": 158062.16,
+        "prepare": 118245.14,
+        "doing": 27631.82,
+        "saled-prepare": 90573.56,
+        "saled-doing": 5189.38
+    },
+    {
+        "sale": "美陶花园",
+        "land": 58326,
+        "plan": 67612.83,
+        "construct": 67612.82999999999,
+        "prepare": 48731.81,
+        "doing": 5408.469999999999,
+        "saled-prepare": 48731.81,
+        "saled-doing": 3428.5699999999997
+    },
+    {
+        "sale": "碧桂园城市花园",
+        "land": 813069.6,
+        "plan": 752265.5699999998,
+        "construct": 752265.57,
+        "prepare": 406429.06,
+        "doing": 244164.25,
+        "saled-prepare": 403606.61000000004,
+        "saled-doing": 59763.1
+    },
+    {
+        "sale": "恒福星汇国际公馆",
+        "land": 31176.5,
+        "plan": 30973.059999999998,
+        "construct": 30973.059999999998,
+        "prepare": 106723.11,
+        "doing": 3940.39,
+        "saled-prepare": 105751.33,
+        "saled-doing": 1359.13
+    },
+    {
+        "sale": "东江国际商住中心",
+        "land": 138889,
+        "plan": 114036.09,
+        "construct": 114036.08999999998,
+        "prepare": 61152.71,
+        "doing": 10647.099999999999,
+        "saled-prepare": 51834.53,
+        "saled-doing": 4958.59
+    },
+    {
+        "sale": "保利天玺花园",
+        "land": 171674,
+        "plan": 169054.77,
+        "construct": 169054.77,
+        "prepare": 99665.69,
+        "doing": 23278.14,
+        "saled-prepare": 85941.43000000001,
+        "saled-doing": 21611
+    },
+    {
+        "sale": "兆阳御花园",
+        "land": 271493,
+        "plan": 251458.19,
+        "construct": 251458.18999999997,
+        "prepare": 146294.83,
+        "doing": 32410.25,
+        "saled-prepare": 145669.56,
+        "saled-doing": 25989.12
+    },
+    {
+        "sale": "汇银新港湾花园",
+        "land": 372025,
+        "plan": 373206.2,
+        "construct": 373206.20000000007,
+        "prepare": 177851.19999999998,
+        "doing": 6149.46,
+        "saled-prepare": 156849.22999999995,
+        "saled-doing": 6114.12
+    },
+    {
+        "sale": "盛南新都花园",
+        "land": 493628,
+        "plan": 412939,
+        "construct": 412939,
+        "prepare": 304515.56999999995,
+        "doing": 26819.510000000002,
+        "saled-prepare": 289133.52,
+        "saled-doing": 12841.439999999999
+    },
+    {
+        "sale": "雅庭国际广场",
+        "land": 94417,
+        "plan": 0,
+        "construct": 0,
+        "prepare": 37133.06,
+        "doing": 7633.81,
+        "saled-prepare": 37133.06,
+        "saled-doing": 6759.18
+    },
+    {
+        "sale": "名汇嘉园",
+        "land": 74170.62,
+        "plan": 75270.91,
+        "construct": 75270.91,
+        "prepare": 55750.49,
+        "doing": 11028.95,
+        "saled-prepare": 55750.49,
+        "saled-doing": 3399.18
+    },
+    {
+        "sale": "东海国际商务公馆",
+        "land": 37225.79,
+        "plan": 33848.64,
+        "construct": 33848.64,
+        "prepare": 2636.58,
+        "doing": 4115.6,
+        "saled-prepare": 2636.58,
+        "saled-doing": 4115.6
+    },
+    {
+        "sale": "东海银湾豪园",
+        "land": 351673,
+        "plan": 343499.6099999999,
+        "construct": 343499.61000000004,
+        "prepare": 254248.63999999998,
+        "doing": 59535.67,
+        "saled-prepare": 241696.50999999998,
+        "saled-doing": 27388.739999999998
+    },
+    {
+        "sale": "世博嘉园1区地下一层停车场",
+        "land": 357959,
+        "plan": 364459.69999999995,
+        "construct": 364459.70000000007,
+        "prepare": 189926.75999999998,
+        "doing": 20759.45,
+        "saled-prepare": 151617.65,
+        "saled-doing": 13921.54
+    },
+    {
+        "sale": "万科广场",
+        "land": 98940.77,
+        "plan": 740986.9099999999,
+        "construct": 740986.91,
+        "prepare": 218360.75,
+        "doing": 9155.349999999999,
+        "saled-prepare": 186585.78999999998,
+        "saled-doing": 2942.94
+    },
+    {
+        "sale": "丽湾华府",
+        "land": 21633,
+        "plan": 20186.53,
+        "construct": 20186.53,
+        "prepare": 12901.29,
+        "doing": 4299.91,
+        "saled-prepare": 12901.29,
+        "saled-doing": 1162.07
+    },
+    {
+        "sale": "恒福国际",
+        "land": 127286.7,
+        "plan": 0,
+        "construct": 0,
+        "prepare": 209772.28999999998,
+        "doing": 0,
+        "saled-prepare": 202877.12000000002,
+        "saled-doing": 0
+    },
+    {
+        "sale": "沿海馨庭",
+        "land": 305744.06,
+        "plan": 307917.47000000003,
+        "construct": 307917.47000000003,
+        "prepare": 116662.18000000001,
+        "doing": 27693.09,
+        "saled-prepare": 112178.31,
+        "saled-doing": 23119.89
+    },
+    {
+        "sale": "禅城绿地金融中心（一期）地下停车场",
+        "land": 471130,
+        "plan": 571684.91,
+        "construct": 571684.9099999999,
+        "prepare": 142751.63999999998,
+        "doing": 10698.81,
+        "saled-prepare": 103324.35999999999,
+        "saled-doing": 4520.63
+    },
+    {
+        "sale": "水悦龙湾园",
+        "land": 390514,
+        "plan": 420776.73999999993,
+        "construct": 417573.87,
+        "prepare": 273356.67000000004,
+        "doing": 27011.730000000003,
+        "saled-prepare": 208076.88,
+        "saled-doing": 8473.32
+    },
+    {
+        "sale": "智博丽海花园",
+        "land": 211465,
+        "plan": 113143.2,
+        "construct": 113143.2,
+        "prepare": 80626.74999999999,
+        "doing": 20774.43,
+        "saled-prepare": 70474.62,
+        "saled-doing": 0
+    },
+    {
+        "sale": "星星广场",
+        "land": 380333.72,
+        "plan": 75878.34000000001,
+        "construct": 75878.34000000001,
+        "prepare": 124224.95,
+        "doing": 6628.46,
+        "saled-prepare": 122696.7,
+        "saled-doing": 2905.85
+    },
+    {
+        "sale": "市东上路10号",
+        "land": 13093.189999999999,
+        "plan": 13017.53,
+        "construct": 13017.53,
+        "prepare": 7423.74,
+        "doing": 556.02,
+        "saled-prepare": 7096,
+        "saled-doing": 0
+    },
+    {
+        "sale": "滨海御庭",
+        "land": 39130.35,
+        "plan": 229800.57,
+        "construct": 229800.56999999998,
+        "prepare": 182188.63999999998,
+        "doing": 0,
+        "saled-prepare": 174192.03,
+        "saled-doing": 0
+    },
+    {
+        "sale": "滨海御庭",
+        "land": 4939,
+        "plan": 227887.75,
+        "construct": 64099.04,
+        "prepare": 86996.3,
+        "doing": 8123.45,
+        "saled-prepare": 79275.72,
+        "saled-doing": 6124.17
+    },
+    {
+        "sale": "意境星语花园",
+        "land": 492458,
+        "plan": 65277.83,
+        "construct": 65277.83,
+        "prepare": 47976.55,
+        "doing": 12427.13,
+        "saled-prepare": 47660.08,
+        "saled-doing": 2349.67
+    },
+    {
+        "sale": "东建文华尚领花园",
+        "land": 173877.76,
+        "plan": 132721.66,
+        "construct": 132721.66,
+        "prepare": 100260.80999999998,
+        "doing": 2577.34,
+        "saled-prepare": 100197.29999999999,
+        "saled-doing": 29.78
+    },
+    {
+        "sale": "保利香槟花园",
+        "land": 368548,
+        "plan": 353234.47000000003,
+        "construct": 353234.47,
+        "prepare": 180299.08000000002,
+        "doing": 88118.35,
+        "saled-prepare": 179372.63,
+        "saled-doing": 33071.58
+    },
+    {
+        "sale": "翠堤明珠花园",
+        "land": 460530,
+        "plan": 195255.21999999997,
+        "construct": 195255.22,
+        "prepare": 50660.03,
+        "doing": 0,
+        "saled-prepare": 46185.96,
+        "saled-doing": 0
+    },
+    {
+        "sale": "星晖盛汇园",
+        "land": 167775.6,
+        "plan": 178561.81999999995,
+        "construct": 178561.82,
+        "prepare": 97184.93,
+        "doing": 0,
+        "saled-prepare": 84847.18,
+        "saled-doing": 0
+    },
+    {
+        "sale": "源海国金广场",
+        "land": 1220000,
+        "plan": 1202277.52,
+        "construct": 957140.1100000001,
+        "prepare": 538838.29,
+        "doing": 0,
+        "saled-prepare": 385049.37999999995,
+        "saled-doing": 0
+    },
+    {
+        "sale": "科秦君御华府",
+        "land": 27189,
+        "plan": 27492.559999999998,
+        "construct": 27492.559999999998,
+        "prepare": 21364.84,
+        "doing": 4756.5,
+        "saled-prepare": 20912.74,
+        "saled-doing": 3152.93
+    },
+    {
+        "sale": "安东尼商务大厦",
+        "land": 16650,
+        "plan": 16262.329999999998,
+        "construct": 16262.329999999998,
+        "prepare": 12872.68,
+        "doing": 0,
+        "saled-prepare": 8439.26,
+        "saled-doing": 0
+    },
+    {
+        "sale": "海湾城市嘉园三座、五座",
+        "land": 345989,
+        "plan": 241099.58,
+        "construct": 241099.58000000002,
+        "prepare": 172859.40000000002,
+        "doing": 0,
+        "saled-prepare": 135245.97,
+        "saled-doing": 0
+    },
+    {
+        "sale": "美誉紫薇花园",
+        "land": 96004,
+        "plan": 122092.66999999998,
+        "construct": 122092.67,
+        "prepare": 76937.33,
+        "doing": 0,
+        "saled-prepare": 60103.58,
+        "saled-doing": 0
+    },
+    {
+        "sale": "汇博国际广场",
+        "land": 4594.05,
+        "plan": 68880.65000000001,
+        "construct": 68880.65000000001,
+        "prepare": 41485.85999999999,
+        "doing": 0,
+        "saled-prepare": 15809.939999999999,
+        "saled-doing": 0
+    },
+    {
+        "sale": "万通国际大厦",
+        "land": 84819.36,
+        "plan": 92758.87,
+        "construct": 92758.87,
+        "prepare": 45698.01,
+        "doing": 0,
+        "saled-prepare": 38752.04,
+        "saled-doing": 0
+    },
+    {
+        "sale": "绿岛明珠花园",
+        "land": 479051,
+        "plan": 494112.7699999999,
+        "construct": 494112.76999999996,
+        "prepare": 311311.58,
+        "doing": 0,
+        "saled-prepare": 207754.09999999998,
+        "saled-doing": 0
+    },
+    {
+        "sale": "时代云图苑",
+        "land": 212083.80000000002,
+        "plan": 219940.78999999992,
+        "construct": 219940.78999999998,
+        "prepare": 102526.11,
+        "doing": 14365.69,
+        "saled-prepare": 95617.82,
+        "saled-doing": 2471.86
+    },
+    {
+        "sale": "天丰花园",
+        "land": 163721.72,
+        "plan": 186505.16,
+        "construct": 75757.06,
+        "prepare": 45098.46,
+        "doing": 0,
+        "saled-prepare": 44882.969999999994,
+        "saled-doing": 0
+    },
+    {
+        "sale": "泷景花园",
+        "land": 575595,
+        "plan": 416502.18999999994,
+        "construct": 289075.68,
+        "prepare": 64323.2,
+        "doing": 0,
+        "saled-prepare": 22426.04,
+        "saled-doing": 0
+    },
+    {
+        "sale": "卓远云峰台",
+        "land": 45226,
+        "plan": 36794.46,
+        "construct": 36794.46,
+        "prepare": 26865.14,
+        "doing": 0,
+        "saled-prepare": 26512.16,
+        "saled-doing": 0
+    },
+    {
+        "sale": "水悦龙湾园",
+        "land": 29972.9,
+        "plan": 0,
+        "construct": 0,
+        "prepare": 29704.88,
+        "doing": 0,
+        "saled-prepare": 16204.65,
+        "saled-doing": 0
+    },
+    {
+        "sale": "泷景花园",
+        "land": 341813,
+        "plan": 417873.41,
+        "construct": 417873.4099999999,
+        "prepare": 198540.4,
+        "doing": 0,
+        "saled-prepare": 178171.80000000002,
+        "saled-doing": 0
+    },
+    {
+        "sale": "明福智富广场",
+        "land": 138985,
+        "plan": 20185.39,
+        "construct": 20185.39,
+        "prepare": 90174.38,
+        "doing": 0,
+        "saled-prepare": 81125.85999999999,
+        "saled-doing": 0
+    },
+    {
+        "sale": "百业苑",
+        "land": 38711.600000000006,
+        "plan": 40600.32,
+        "construct": 40600.32,
+        "prepare": 30374.899999999998,
+        "doing": 0,
+        "saled-prepare": 25483.24,
+        "saled-doing": 0
+    },
+    {
+        "sale": "绿岛湖颐号花园",
+        "land": 16270.9,
+        "plan": 18993.679999999997,
+        "construct": 18993.679999999997,
+        "prepare": 84977.05,
+        "doing": 0,
+        "saled-prepare": 56850.11,
+        "saled-doing": 0
+    },
+    {
+        "sale": "领地海纳珑庭",
+        "land": 122092,
+        "plan": 114417.54999999999,
+        "construct": 114383.4,
+        "prepare": 78043.9,
+        "doing": 0,
+        "saled-prepare": 52126.799999999996,
+        "saled-doing": 0
+    },
+    {
+        "sale": "金谷国际五金交易中心",
+        "land": 539368.3300000001,
+        "plan": 311271.76999999996,
+        "construct": 311271.76999999996,
+        "prepare": 110872.85999999999,
+        "doing": 0,
+        "saled-prepare": 19960.16,
+        "saled-doing": 0
+    },
+    {
+        "sale": "华夏陶瓷中央广场",
+        "land": 51196.200000000004,
+        "plan": 0,
+        "construct": 0,
+        "prepare": 37349.18,
+        "doing": 0,
+        "saled-prepare": 7011.9,
+        "saled-doing": 0
+    },
+    {
+        "sale": "佛山华强广场",
+        "land": 117907.95,
+        "plan": 116044.72999999998,
+        "construct": 116044.72999999998,
+        "prepare": 66433.78,
+        "doing": 0,
+        "saled-prepare": 41535.28,
+        "saled-doing": 0
+    },
+    {
+        "sale": "依云轩九座",
+        "land": 211609,
+        "plan": 232722.63,
+        "construct": 232722.63,
+        "prepare": 77110.63,
+        "doing": 0,
+        "saled-prepare": 48585.549999999996,
+        "saled-doing": 0
+    },
+    {
+        "sale": "张槎商会大厦",
+        "land": 18105.800000000003,
+        "plan": 19313.99,
+        "construct": 19313.99,
+        "prepare": 13364.529999999999,
+        "doing": 0,
+        "saled-prepare": 0,
+        "saled-doing": 0
+    },
+    {
+        "sale": "卓远广场",
+        "land": 67410,
+        "plan": 73206.92,
+        "construct": 73206.92,
+        "prepare": 31386.96,
+        "doing": 0,
+        "saled-prepare": 21440.679999999997,
+        "saled-doing": 0
+    },
+    {
+        "sale": "华阳嘉苑",
+        "land": 223038,
+        "plan": 55534.340000000004,
+        "construct": 55534.340000000004,
+        "prepare": 43872.229999999996,
+        "doing": 0,
+        "saled-prepare": 41661.85999999999,
+        "saled-doing": 0
+    },
+    {
+        "sale": "华夏陶瓷中央广场",
+        "land": 60678.05,
+        "plan": 114544.27,
+        "construct": 114544.27,
+        "prepare": 43480.45,
+        "doing": 0,
+        "saled-prepare": 22398.24,
+        "saled-doing": 0
+    },
+    {
+        "sale": "星星广场四期",
+        "land": 67642.67,
+        "plan": 0,
+        "construct": 0,
+        "prepare": 65461.840000000004,
+        "doing": 0,
+        "saled-prepare": 59810.200000000004,
+        "saled-doing": 0
+    },
+    {
+        "sale": "达磐恒悦园",
+        "land": 129791.04000000001,
+        "plan": 190837.88,
+        "construct": 190837.88,
+        "prepare": 7255.02,
+        "doing": 0,
+        "saled-prepare": 7255.02,
+        "saled-doing": 0
+    },
+    {
+        "sale": "龙光天湖华府",
+        "land": 88361.64,
+        "plan": 96987.26999999999,
+        "construct": 96987.26999999999,
+        "prepare": 69269.68000000001,
+        "doing": 0,
+        "saled-prepare": 30736.399999999998,
+        "saled-doing": 0
+    },
+    {
+        "sale": "岭南隽庭",
+        "land": 290685,
+        "plan": 292529.9000000001,
+        "construct": 292529.9,
+        "prepare": 138857.18,
+        "doing": 0,
+        "saled-prepare": 73919.47,
+        "saled-doing": 0
+    },
+    {
+        "sale": "富凯国际公馆",
+        "land": 93568,
+        "plan": 87688.19,
+        "construct": 87688.19,
+        "prepare": 14720.16,
+        "doing": 0,
+        "saled-prepare": 11354.029999999999,
+        "saled-doing": 0
+    },
+    {
+        "sale": "涟岸花园",
+        "land": 255238.3,
+        "plan": 262087.16999999998,
+        "construct": 262087.17,
+        "prepare": 151341.02,
+        "doing": 0,
+        "saled-prepare": 77626.81999999999,
+        "saled-doing": 0
+    },
+    {
+        "sale": "富力广场",
+        "land": 294505,
+        "plan": 173893.22999999995,
+        "construct": 173893.23,
+        "prepare": 57899.509999999995,
+        "doing": 0,
+        "saled-prepare": 30355.79,
+        "saled-doing": 0
+    },
+    {
+        "sale": "粤晖富居",
+        "land": 198842,
+        "plan": 197875.87,
+        "construct": 197875.87,
+        "prepare": 76860.60999999999,
+        "doing": 0,
+        "saled-prepare": 51757.92,
+        "saled-doing": 0
+    },
+    {
+        "sale": "磐石大厦",
+        "land": 63352,
+        "plan": 51140.03999999999,
+        "construct": 51140.03999999999,
+        "prepare": 20504.76,
+        "doing": 0,
+        "saled-prepare": 2328.46,
+        "saled-doing": 0
+    },
+    {
+        "sale": "时代花样华庭",
+        "land": 54106,
+        "plan": 55469.76,
+        "construct": 55469.76,
+        "prepare": 42650.28,
+        "doing": 0,
+        "saled-prepare": 40605.21,
+        "saled-doing": 0
+    },
+    {
+        "sale": "禅城绿地金融中心(二期)3#楼",
+        "land": 66438,
+        "plan": 205560.1,
+        "construct": 149556,
+        "prepare": 88159.16,
+        "doing": 0,
+        "saled-prepare": 0,
+        "saled-doing": 0
+    },
+    {
+        "sale": "时代云图雅苑",
+        "land": 128724,
+        "plan": 123216.33000000002,
+        "construct": 123216.33000000002,
+        "prepare": 96716.9,
+        "doing": 0,
+        "saled-prepare": 39149.49,
+        "saled-doing": 0
+    },
+    {
+        "sale": "南裕欣府",
+        "land": 12369.279999999999,
+        "plan": 14794.95,
+        "construct": 14794.95,
+        "prepare": 9374.06,
+        "doing": 0,
+        "saled-prepare": 4910.63,
+        "saled-doing": 0
+    },
+    {
+        "sale": "绿地未来商业中心",
+        "land": 947094,
+        "plan": 612532.7299999999,
+        "construct": 472956.74,
+        "prepare": 168503.17,
+        "doing": 0,
+        "saled-prepare": 49568.049999999996,
+        "saled-doing": 0
+    },
+    {
+        "sale": "佛山雄盛王府广场",
+        "land": 315418,
+        "plan": 574734.6799999998,
+        "construct": 206209.14,
+        "prepare": 138062.40000000002,
+        "doing": 0,
+        "saled-prepare": 33152.270000000004,
+        "saled-doing": 0
+    },
+    {
+        "sale": "童梦家园",
+        "land": 116759,
+        "plan": 108750.06999999999,
+        "construct": 108750.06999999999,
+        "prepare": 55543.770000000004,
+        "doing": 0,
+        "saled-prepare": 44371.64000000001,
+        "saled-doing": 0
+    },
+    {
+        "sale": "科恒岭南水岸豪庭",
+        "land": 27626,
+        "plan": 85612.6,
+        "construct": 85612.6,
+        "prepare": 29719.28,
+        "doing": 0,
+        "saled-prepare": 22035.61,
+        "saled-doing": 0
+    },
+    {
+        "sale": "星星广场",
+        "land": 381590.75,
+        "plan": 381427.82999999996,
+        "construct": 377673.4099999999,
+        "prepare": 50228.57,
+        "doing": 0,
+        "saled-prepare": 47233.7,
+        "saled-doing": 0
+    },
+    {
+        "sale": "招商臻园",
+        "land": 162285,
+        "plan": 133360.19,
+        "construct": 133360.19,
+        "prepare": 13630.27,
+        "doing": 0,
+        "saled-prepare": 10631.949999999999,
+        "saled-doing": 0
+    },
+    {
+        "sale": "财富金鸿大厦",
+        "land": 36959.5,
+        "plan": 34218.170000000006,
+        "construct": 34218.170000000006,
+        "prepare": 21815.23,
+        "doing": 0,
+        "saled-prepare": 14073.330000000002,
+        "saled-doing": 0
+    },
+    {
+        "sale": "华宝世家雅苑",
+        "land": 18510,
+        "plan": 35235.84,
+        "construct": 35235.84,
+        "prepare": 11639.17,
+        "doing": 0,
+        "saled-prepare": 0,
+        "saled-doing": 0
+    },
+    {
+        "sale": "富凯国际公馆",
+        "land": 1907.8999999999999,
+        "plan": 33241.03,
+        "construct": 33241.03,
+        "prepare": 42341.18,
+        "doing": 10932.48,
+        "saled-prepare": 41810.65,
+        "saled-doing": 2671.39
+    },
+    {
+        "sale": "科恒文昌华府",
+        "land": 22924,
+        "plan": 41059.07,
+        "construct": 41059.07,
+        "prepare": 31481.620000000003,
+        "doing": 0,
+        "saled-prepare": 22373.32,
+        "saled-doing": 0
+    },
+    {
+        "sale": "兆阳大厦",
+        "land": 137575,
+        "plan": 123486.40000000001,
+        "construct": 123486.40000000001,
+        "prepare": 42926.52,
+        "doing": 0,
+        "saled-prepare": 5286.15,
+        "saled-doing": 0
+    },
+    {
+        "sale": "越秀可逸诚品广场",
+        "land": 219867,
+        "plan": 226571.58999999997,
+        "construct": 226571.59000000003,
+        "prepare": 74929.58000000002,
+        "doing": 0,
+        "saled-prepare": 58209.770000000004,
+        "saled-doing": 0
+    },
+    {
+        "sale": "融利大厦",
+        "land": 35284.71,
+        "plan": 39104.560000000005,
+        "construct": 39104.560000000005,
+        "prepare": 25646.510000000002,
+        "doing": 0,
+        "saled-prepare": 8798.21,
+        "saled-doing": 0
+    },
+    {
+        "sale": "瑞安东华嘉苑（车位）",
+        "land": 2002165.9,
+        "plan": 703283.2499999999,
+        "construct": 508833.42999999993,
+        "prepare": 314188.81,
+        "doing": 78038.11,
+        "saled-prepare": 264600.3300000001,
+        "saled-doing": 36634.380000000005
+    },
+    {
+        "sale": "港宏世家",
+        "land": 388325,
+        "plan": 383234.08,
+        "construct": 367148.70999999996,
+        "prepare": 266010.65,
+        "doing": 10195.28,
+        "saled-prepare": 251680.24,
+        "saled-doing": 8263.95
+    },
+    {
+        "sale": "万科城",
+        "land": 1040864.53,
+        "plan": 370405.57000000007,
+        "construct": 260870.06000000003,
+        "prepare": 430328.4199999999,
+        "doing": 52679.15,
+        "saled-prepare": 429748.04999999993,
+        "saled-doing": 33161.8
+    },
+    {
+        "sale": "普君新城",
+        "land": 467113.24000000005,
+        "plan": 569762.4600000001,
+        "construct": 569762.46,
+        "prepare": 381756.27999999997,
+        "doing": 193985.18,
+        "saled-prepare": 299480.04000000004,
+        "saled-doing": 164202.90999999997
+    },
+    {
+        "sale": "君悦华府",
+        "land": 86448.14,
+        "plan": 83159.25,
+        "construct": 83159.25,
+        "prepare": 63255.9,
+        "doing": 14124.93,
+        "saled-prepare": 61196.64,
+        "saled-doing": 4578.36
+    },
+    {
+        "sale": "欧洲工业园C区兴业路北侧地块项目",
+        "land": 59997.57,
+        "plan": 72839.51,
+        "construct": 72839.51,
+        "prepare": 112968.32,
+        "doing": 26149.71,
+        "saled-prepare": 55408.39,
+        "saled-doing": 14822.61
+    },
+    {
+        "sale": "华南电源创新科技园一期厂房",
+        "land": 232550.6,
+        "plan": 228217.56,
+        "construct": 228217.56,
+        "prepare": 138994.07,
+        "doing": 0,
+        "saled-prepare": 73367.76,
+        "saled-doing": 0
+    },
+    {
+        "sale": "绿地璀璨家园",
+        "land": 1164589.43,
+        "plan": 472100.87,
+        "construct": 472100.87,
+        "prepare": 82039.61,
+        "doing": 0,
+        "saled-prepare": 68720.62,
+        "saled-doing": 0
+    },
+    {
+        "sale": "同向新力商业大楼",
+        "land": 77981.93,
+        "plan": 81600.33,
+        "construct": 81600.32999999999,
+        "prepare": 9601.279999999999,
+        "doing": 0,
+        "saled-prepare": 0,
+        "saled-doing": 0
+    },
+    {
+        "sale": "卓景花园",
+        "land": 183476.4,
+        "plan": 206492.14999999997,
+        "construct": 0,
+        "prepare": 135243.97,
+        "doing": 19054.11,
+        "saled-prepare": 129292.78,
+        "saled-doing": 7394.76
+    },
+    {
+        "sale": "恒强春天里公寓",
+        "land": 14665.079999999998,
+        "plan": 15263.569999999998,
+        "construct": 15263.569999999998,
+        "prepare": 6799.14,
+        "doing": 1573.83,
+        "saled-prepare": 6799.14,
+        "saled-doing": 1573.83
+    }
+]

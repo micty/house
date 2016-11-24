@@ -110,6 +110,11 @@
         url: 'html/stat/all/index.html',
     },
     {
+        icon: 'table',
+        name: '项目统计',   //按销售项目
+        url: 'html/stat/sale/index.html',
+    },
+    {
         icon: 'area-chart',
         name: '区域统计表',
         url: 'html/stat/town/index.html?type=table',

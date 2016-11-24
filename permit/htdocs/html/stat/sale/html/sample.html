@@ -1,0 +1,51 @@
+﻿
+<ul class="sub">
+    <li class="left"></li>
+    <li class="right">单位：平方米</li>
+</ul>
+<table class="stat-table" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr class="header">
+            <td rowspan="2">序号</td>
+            <td rowspan="2">项目名称</td>
+            <td rowspan="2">土地出让</td>
+            <td colspan="2">规划</td>
+            <td colspan="2">施工</td>
+            <td colspan="2">销售许可</td>
+            <td colspan="2">销售已售</td>
+            <td colspan="2">销售未售</td>
+        </tr>
+        <tr class="header">
+            <td>规划许可</td>
+            <td>未规划</td>
+            <td>施工许可</td>
+            <td>未施工</td>
+            <td>预售</td>
+            <td>现售</td>
+            <td>预售</td>
+            <td>现售</td>
+            <td>预售</td>
+            <td>现售</td>
+        </tr>
+
+        #--row.begin--#
+        <tr class="{row-class}">
+            <td>{order}</td>
+            <td class="title">{sale}</td>
+            <td>{land}</td>
+            <td>{plan}</td>
+            <td>{un-plan}</td>
+            <td>{construct}</td>
+            <td>{un-construct}</td>
+            <td>{prepare}</td>
+            <td>{doing}</td>
+            <td>{saled-prepare}</td>
+            <td>{saled-doing}</td>
+            <td>{un-prepare}</td>
+            <td>{un-doing}</td>
+        </tr>
+        #--row.end--#
+
+        
+    </tbody>
+</table>
