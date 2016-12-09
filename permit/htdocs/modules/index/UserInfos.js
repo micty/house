@@ -55,6 +55,7 @@ define('/UserInfos', function (require, module, exports) {
             'number': user.number,
             'department': user.department || '',
             'message-count': 0,
+            'suffix': user.role == 'guest' ? '' : '管理员',
         });
     });
 

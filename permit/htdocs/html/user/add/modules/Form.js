@@ -10,6 +10,7 @@ define('/Form', function (require, module, exports) {
     var panel = KISP.create('Panel', '#table-form');
 
     var department$role = {
+        '游客': 'guest',
         '土地': 'land',
         '规划': 'plan',
         '建设': 'construct',
